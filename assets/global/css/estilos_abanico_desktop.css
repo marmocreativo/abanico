@@ -1,0 +1,172 @@
+/*
+| -------------------------------------------------------------------------
+| ESTILOS GENERALES
+| -------------------------------------------------------------------------
+*/
+html, body{
+  height: 100%;
+}
+/*
+| -------------------------------------------------------------------------
+| ESTILOS BOOTSTRAP
+| -------------------------------------------------------------------------
+*/
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS HEADER
+| -------------------------------------------------------------------------
+*/
+.menu-superior{
+  min-height: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: #fff;
+  font-size: 0.8em;
+}
+.menu-superior .btn-link{
+  color: #fff;
+}
+.post-menu{
+  width: 100%;
+  min-height: 100px;
+  padding: 5px;
+  background-color: #bbb;
+}
+
+.caracteristica .car-icono{
+  font-size: 4em;
+  color: #555;
+  width: 30%;
+  display: block;
+  float: left;
+}
+.car-contenido{
+  width: 70%;
+  float: left;
+  color: #555;
+  padding-top: 10px;
+}
+.car-titulo{
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS BODY
+| -------------------------------------------------------------------------
+*/
+.contenedor-servicios{
+  width: 100%;
+  background-color: #eee;
+  padding: 5px;
+  min-height: 300px;
+  text-align: center;
+}
+.contenedor-servicios-titulo{
+  width: 100%;
+  background-color: #333;
+  padding: 5px;
+  color: #fff;
+}
+.servicio-circulo{
+  width: 100px;
+  height: 100px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 50%;
+  padding:5%;
+  font-size: 3em;
+  font-weight: bold;
+  float: left;
+  margin:2%;
+}
+
+.fila{
+  padding-top:10px;
+  padding-bottom: 10px;
+}
+.fila-gris{
+  background-color: #ddd;
+}
+.fila-dark{
+  background-color: #333;
+  color: #fff;
+}
+.imagen-curioso{
+  transform: scale(1.5) translateY(50px) translateX(50px);
+  position: absolute;
+  z-index: 100;
+}
+.dato-curioso{
+  padding: 10px;
+  padding-left:50%;
+}
+.dato-ganador{
+  background-color: #ddd;
+}
+.contenedor-ganador{
+  text-align: right;
+
+}
+.fecha-ganador{
+  font-size: 1.8em;
+}
+.fecha-ganador span{
+  font-size: 2.8em;
+}
+.titulo-ganador{
+  font-size: 3em;
+  font-weight: 700;
+}
+.nombre-ganador{
+  font-size: 2em;
+  font-weight: 200;
+  color: orange;
+}
+/*
+| -------------------------------------------------------------------------
+| ESTILOS BODY INDEX
+| -------------------------------------------------------------------------
+*/
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS FOOTER
+| -------------------------------------------------------------------------
+*/
+
+.pre-footer{
+  min-height: 10px;
+}
+.barra-color{
+  width: 20%;
+  min-height: 10px;
+  background-color: #000;
+  float: left;
+}
+
+.barra-azul{
+  background-color: #73C8C8;
+}
+.barra-rosa{
+  background-color: #AD3692;
+}
+.barra-amarillo{
+  background-color: #EEC830;
+}
+.barra-verde{
+  background-color: #A5C845;
+}
+.barra-morado{
+  background-color: #AD36F7;
+}
+.footer{
+  min-height: 50px;
+  background-color: #EEE;
+}
+.creditos{
+  min-height: 50px;
+  background-color: #333;
+}
