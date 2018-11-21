@@ -54,5 +54,5 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 // Rutas abanico
-$route['categoria'] = 'categoria';
-$route['producto'] = 'producto';
+$route['categoria'] = 'Tienda_Categoria';
+$route['producto'] = 'Tienda_producto';

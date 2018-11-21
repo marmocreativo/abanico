@@ -12,9 +12,6 @@
       <div class="carousel-item">
         <img class="d-block w-100" src="contenido/img/sliders/sli-2.jpg" alt="Second slide">
       </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="contenido/img/sliders/sli-3.jpg" alt="Thirth slide">
-      </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Anterior</span>
@@ -135,15 +132,22 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <div class="card-deck">
+        <div class="card-deck mx-5">
           <?php for($i=0; $i<=5; $i++){ ?>
             <div class="col-6 col-sm-3 col-md-2 mb-3 px-0">
               <a href="producto">
               <div class="card mx-1">
                 <img class="card-img-top" src="assets/global/img/default.jpg" class="img-fluid" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Nombre del Producto</h5>
-                  <p class="card-text">$100.00</p>
+                <div class="card-body text-center">
+                  <h5 class="card-title text<?php echo $primary; ?>">Nombre del Producto</h5>
+                  <h3 class="card-text">$100.00</h3>
+                  <p class="text<?php echo $primary; ?>">
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                  </p>
                 </div>
               </div>
               </a>

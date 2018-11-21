@@ -25,6 +25,9 @@ class Tienda_Inicio extends CI_Controller {
 
 		$this->load->model('divisas_activas');
 		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
+
+		// Variables comunes
+		$this->data['primary'] = "-primary";
   }
 
 	public function index()

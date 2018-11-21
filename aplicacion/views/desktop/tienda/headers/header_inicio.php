@@ -13,7 +13,7 @@
   </head>
   <body>
     <!-- Header -->
-    <div class="menu-superior bg-primary">
+    <div class="menu-superior bg<?php echo $primary; ?>">
       <div class="container-fluid">
         <div class="row">
           <div class="col">
@@ -42,9 +42,9 @@
               <a class="nav-link" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias">CATEGORÍAS <span class="fa fa-list"></span> </a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0 w-50 d-flex flex-row">
+          <form class="form-inline my-2 my-lg-0 w-50 d-flex flex-row" action="categoria">
             <input class="form-control mr-sm-2 w-75" type="search" placeholder="Busca lo Mejor" aria-label="Search">
-            <button class="btn btn-primary my-2 my-sm-0 mw-100" type="submit"> <span class="fa fa-search"></span> Buscar</button>
+            <button class="btn btn<?php echo $primary; ?> my-2 my-sm-0 mw-100" type="submit"> <span class="fa fa-search"></span> Buscar</button>
           </form>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -63,27 +63,540 @@
     <div class="row">
       <div class="col-3">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Tecnología y Computación</a>
-          <a class="nav-link " id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="true">Belleza y Salud</a>
-          <a class="nav-link " id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="true">Deportes y Aire Libre</a>
-          <a class="nav-link " id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="true">Hogar y Electrodomésticos</a>
-          <a class="nav-link " id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="true">Herramientas e Industria</a>
-          <a class="nav-link " id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="true">Herramientas e Industria</a>
-          <a class="nav-link " id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="true">Herramientas e Industria</a>
-          <a class="nav-link " id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="true">Herramientas e Industria</a>
-          <a class="nav-link " id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="true">Herramientas e Industria</a>
-          <a class="nav-link " id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="true">Herramientas e Industria</a>
-          <a class="nav-link " id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="true">Herramientas e Industria</a>
-          <a class="nav-link " id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="true">Herramientas e Industria</a>
+          <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true"> <span class="fa fa-mobile-alt"></span> Tecnología y Computación</a>
+          <a class="nav-link " id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="true"> <span class="fa fa-umbrella-beach"></span> Belleza y Salud</a>
+          <a class="nav-link " id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="true"> <span class="fa fa-futbol"></span> Deportes y Aire Libre</a>
+          <a class="nav-link " id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="true"> <span class="fa fa-home"></span> Hogar y Electrodomésticos</a>
+          <a class="nav-link " id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="true"> <span class="fa fa-toolbox"></span> Herramientas e Industria</a>
+          <a class="nav-link " id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="true"> <span class="fa fa-horse"></span> Juguetes y Bebés</a>
+          <a class="nav-link " id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="true"> <span class="fa fa-book"></span> Libros</a>
+          <a class="nav-link " id="v-pills-8-tab" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-8" aria-selected="true"> <span class="fa fa-gem"></span> Moda, Joyas, Relojes</a>
+          <a class="nav-link " id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9" role="tab" aria-controls="v-pills-9" aria-selected="true"> <span class="fa fa-building"></span> Inmuebles</a>
+          <a class="nav-link " id="v-pills-10-tab" data-toggle="pill" href="#v-pills-10" role="tab" aria-controls="v-pills-10" aria-selected="true"> <span class="fa fa-car"></span> Vehículos y Accesorios</a>
         </div>
       </div>
       <div class="col-9">
         <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">Contenido 1</div>
-          <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">Contenido 2</div>
-          <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">Contenido 3</div>
-          <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">Contenido 4</div>
-          <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">Contenido 5</div>
+          <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+            <div class="row">
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <img src="assets/global/img/default.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+            <div class="row">
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <img src="assets/global/img/default.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+            <div class="row">
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <img src="assets/global/img/default.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+            <div class="row">
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <img src="assets/global/img/default.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+            <div class="row">
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <img src="assets/global/img/default.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
+            <div class="row">
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <img src="assets/global/img/default.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-7-tab">
+            <div class="row">
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <img src="assets/global/img/default.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-8" role="tabpanel" aria-labelledby="v-pills-8-tab">
+            <div class="row">
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <img src="assets/global/img/default.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-9" role="tabpanel" aria-labelledby="v-pills-9-tab">
+            <div class="row">
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <img src="assets/global/img/default.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-10" role="tabpanel" aria-labelledby="v-pills-10-tab">
+            <div class="row">
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <h4> <a href="categoria">Título Grupo</a> </h4>
+                <ul>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                  <li> <a href="categoria">Subcategoría</a></li>
+                </ul>
+              </div>
+              <div class="col">
+                <img src="assets/global/img/default.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
