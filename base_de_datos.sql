@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2018 a las 17:21:43
+-- Tiempo de generación: 21-11-2018 a las 16:28:44
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -91,9 +91,17 @@ CREATE TABLE `divisas` (
   `DIVISA_ISO` varchar(10) NOT NULL,
   `DIVISA_NOMBRE` varchar(255) NOT NULL,
   `DIVISA_SIGNO` varchar(3) NOT NULL,
-  `DIVISA_CONVERSION` decimal(10,2) NOT NULL,
+  `DIVISA_CONVERSION` decimal(10,3) NOT NULL,
   `ACTIVO` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `divisas`
+--
+
+INSERT INTO `divisas` (`ID_DIVISA`, `DIVISA_ISO`, `DIVISA_NOMBRE`, `DIVISA_SIGNO`, `DIVISA_CONVERSION`, `ACTIVO`) VALUES
+(1, 'MXN', 'Pesos', '$', '1.000', 1),
+(2, 'USD', 'Dollar', '$', '0.049', 1);
 
 -- --------------------------------------------------------
 
@@ -137,6 +145,14 @@ CREATE TABLE `lenguajes` (
   `ACTIVO` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `lenguajes`
+--
+
+INSERT INTO `lenguajes` (`ID_LENGUAJE`, `LENGUAJE_ISO`, `LENGUAJE_NOMBRE`, `ACTIVO`) VALUES
+(1, 'es_MX', 'Español', 1),
+(2, 'en_US', 'English', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -175,6 +191,18 @@ CREATE TABLE `opciones` (
   `OPCION_VALOR` longtext NOT NULL,
   `ACTIVO` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `opciones`
+--
+
+INSERT INTO `opciones` (`ID`, `OPCION_NOMBRE`, `OPCION_VALOR`, `ACTIVO`) VALUES
+(1, 'titulo_sitio', 'Abanico siempre lo mejor', 1),
+(2, 'modo_mantenimiento', 'no', 1),
+(3, 'modo_debug', 'no', 1),
+(4, 'lenguaje_predeterminado', 'es_MX', 1),
+(5, 'telefono_sitio', '01 5555 5555', 1),
+(6, 'correo_sitio', 'atencion_clientes@abanicoytu.com', 1);
 
 -- --------------------------------------------------------
 
@@ -299,6 +327,12 @@ ALTER TABLE `direcciones`
   ADD PRIMARY KEY (`ID_DIRECCION`);
 
 --
+-- Indices de la tabla `divisas`
+--
+ALTER TABLE `divisas`
+  ADD PRIMARY KEY (`ID_DIVISA`);
+
+--
 -- Indices de la tabla `estados`
 --
 ALTER TABLE `estados`
@@ -385,6 +419,11 @@ ALTER TABLE `categorias_productos`
 ALTER TABLE `direcciones`
   MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `divisas`
+--
+ALTER TABLE `divisas`
+  MODIFY `ID_DIVISA` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `estados`
 --
 ALTER TABLE `estados`
@@ -398,7 +437,7 @@ ALTER TABLE `imagenes_productos`
 -- AUTO_INCREMENT de la tabla `lenguajes`
 --
 ALTER TABLE `lenguajes`
-  MODIFY `ID_LENGUAJE` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_LENGUAJE` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `lista_blanca`
 --
@@ -413,7 +452,7 @@ ALTER TABLE `lista_negra`
 -- AUTO_INCREMENT de la tabla `opciones`
 --
 ALTER TABLE `opciones`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `paises`
 --
