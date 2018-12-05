@@ -32,7 +32,7 @@
                       <div class="col">
                         <div class="form-group">
                           <label for="ModeloProducto">Modelo</label>
-                          <input type="text" class="form-control" id="ModeloProducto" name="ModeloProducto" placeholder="" value="<?=!form_error('ModeloProducto')?set_value('ModeloProducto'):''?>">
+                          <input type="text" class="form-control" id="ModeloProducto" name="ModeloProducto" placeholder="" required value="<?=!form_error('ModeloProducto')?set_value('ModeloProducto'):''?>">
                         </div>
                       </div>
                       <div class="col">
@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-group">
                       <label for="DetallesProducto">Detalles del producto</label>
-                      <textarea id="DetallesProducto" name="DetallesProducto" class="form-control" rows="5"><?=!form_error('DetallesProducto')?set_value('DetallesProducto'):''?></textarea>
+                      <textarea id="DetallesProducto" name="DetallesProducto" class="form-control Editor" rows="5"><?=!form_error('DetallesProducto')?set_value('DetallesProducto'):''?></textarea>
                     </div>
                     <hr>
                     <h5>Datos de Inventario</h5>
@@ -59,7 +59,12 @@
                       <div class="col">
                         <div class="form-group">
                           <label for="PrecioProducto">Precio Unitario</label>
-                          <input type="text" class="form-control" id="PrecioProducto" name="PrecioProducto" placeholder="" value="<?=!form_error('PrecioProducto')?set_value('PrecioProducto'):''?>">
+                          <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">$</div>
+                            </div>
+                          <input type="text" class="form-control" id="PrecioProducto" name="PrecioProducto" required placeholder="" value="<?=!form_error('PrecioProducto')?set_value('PrecioProducto'):''?>">
+                          </div>
                         </div>
                       </div>
                       <div class="col">
@@ -71,13 +76,13 @@
                       <div class="col">
                         <div class="form-group">
                           <label for="CantidadProducto">Cantidad Disponibles para venta</label>
-                          <input type="number" class="form-control" id="CantidadProducto" name="CantidadProducto" placeholder="" min="1" value="1">
+                          <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="1" value="1">
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-group">
                           <label for="CantidadMinimaProducto">Cantidad Mínima para venta</label>
-                          <input type="number" class="form-control" id="CantidadMinimaProducto" name="CantidadMinimaProducto" placeholder="" min="1" value="1">
+                          <input type="number" class="form-control" id="CantidadMinimaProducto" required name="CantidadMinimaProducto" placeholder="" min="1" value="1">
                         </div>
                       </div>
                     </div>
@@ -87,25 +92,46 @@
                       <div class="col">
                         <div class="form-group">
                           <label for="AnchoProducto">Ancho</label>
-                          <input type="text" class="form-control" id="AnchoProducto" name="AnchoProducto" placeholder="" value="<?=!form_error('AnchoProducto')?set_value('AnchoProducto'):''?>">
+                          <div class="input-group mb-2">
+                            <input type="text" class="form-control" id="AnchoProducto" name="AnchoProducto" required placeholder="" value="<?=!form_error('AnchoProducto')?set_value('AnchoProducto'):''?>">
+                            <div class="input-group-append">
+                              <div class="input-group-text">cm</div>
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-group">
                           <label for="AltoProducto">Alto</label>
-                          <input type="text" class="form-control" id="AltoProducto" name="AltoProducto" placeholder="" value="<?=!form_error('AltoProducto')?set_value('AltoProducto'):''?>">
+                          <div class="input-group mb-2">
+                            <input type="text" class="form-control" id="AltoProducto" name="AltoProducto" required placeholder="" value="<?=!form_error('AltoProducto')?set_value('AltoProducto'):''?>">
+                            <div class="input-group-append">
+                              <div class="input-group-text">cm</div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-group">
                           <label for="ProfundoProducto">Profundo</label>
-                          <input type="text" class="form-control" id="ProfundoProducto" name="ProfundoProducto" placeholder="" value="<?=!form_error('ProfundoProducto')?set_value('ProfundoProducto'):''?>">
+                          <div class="input-group mb-2">
+                          <input type="text" class="form-control" id="ProfundoProducto" name="ProfundoProducto" required placeholder="" value="<?=!form_error('ProfundoProducto')?set_value('ProfundoProducto'):''?>">
+                            <div class="input-group-append">
+                              <div class="input-group-text">cm</div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-group">
                           <label for="PesoProducto">Peso</label>
-                          <input type="text" class="form-control" id="PesoProducto" name="PesoProducto" placeholder="" value="<?=!form_error('PesoProducto')?set_value('PesoProducto'):''?>">
+                          <div class="input-group mb-2">
+                          <input type="text" class="form-control" id="PesoProducto" name="PesoProducto" required placeholder="" value="<?=!form_error('PesoProducto')?set_value('PesoProducto'):''?>">
+                            <div class="input-group-append">
+                              <div class="input-group-text">Kg</div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

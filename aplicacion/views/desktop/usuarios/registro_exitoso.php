@@ -14,10 +14,10 @@
         <div class="col-12 col-sm-5">
           <div class="card">
             <div class="card-header">
-              <h4>Correcto</h4>
+              <h4>Producto Creado Exitosamente</h4>
             </div>
             <div class="card-body">
-                <p> <a href="<?php echo base_url('usuario/tienda');?>"> Intentarlo De Nuevo</a> </p>
+                <p> <a href="<?php echo base_url('usuario/tienda');?>"> Continiar</a> </p>
             </div>
           </div>
         </div>

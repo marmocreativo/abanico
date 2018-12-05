@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2018 a las 16:28:44
+-- Tiempo de generación: 05-12-2018 a las 22:00:10
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -38,6 +38,14 @@ CREATE TABLE `categorias` (
   `CATEGORIA_TIPO` varchar(255) NOT NULL,
   `ACTIVO` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `CATEGORIA_DESCRIPCION`, `CATEGORIA_PADRE`, `CATEGORIA_NIVEL`, `CATEGORIA_TIPO`, `ACTIVO`) VALUES
+(1, 'Tecnología y Computación', 'tecnologia-y-computacion', '', 0, 0, 'productos', 1),
+(2, 'Belleza y Salud', 'belleza-y-salud', '', 0, 0, 'productos', 1);
 
 -- --------------------------------------------------------
 
@@ -150,8 +158,8 @@ CREATE TABLE `lenguajes` (
 --
 
 INSERT INTO `lenguajes` (`ID_LENGUAJE`, `LENGUAJE_ISO`, `LENGUAJE_NOMBRE`, `ACTIVO`) VALUES
-(1, 'es_MX', 'Español', 1),
-(2, 'en_US', 'English', 1);
+(1, 'es', 'Español', 1),
+(2, 'en', 'English', 1);
 
 -- --------------------------------------------------------
 
@@ -200,9 +208,10 @@ INSERT INTO `opciones` (`ID`, `OPCION_NOMBRE`, `OPCION_VALOR`, `ACTIVO`) VALUES
 (1, 'titulo_sitio', 'Abanico siempre lo mejor', 1),
 (2, 'modo_mantenimiento', 'no', 1),
 (3, 'modo_debug', 'no', 1),
-(4, 'lenguaje_predeterminado', 'es_MX', 1),
+(4, 'lenguaje_predeterminado', 'es', 1),
 (5, 'telefono_sitio', '01 5555 5555', 1),
-(6, 'correo_sitio', 'atencion_clientes@abanicoytu.com', 1);
+(6, 'correo_sitio', 'atencion_clientes@abanicoytu.com', 1),
+(7, 'divisa_predeterminada', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -225,10 +234,13 @@ CREATE TABLE `paises` (
 
 CREATE TABLE `productos` (
   `ID_PRODUCTO` bigint(10) NOT NULL,
+  `ID_USUARIO` varchar(255) NOT NULL,
   `PRODUCTO_NOMBRE` varchar(255) NOT NULL,
   `PRODUCTO_URL` varchar(255) NOT NULL,
   `PRODUCTO_DESCRIPCION` text NOT NULL,
+  `PRODUCTO_DETALLES` longtext NOT NULL,
   `PRODUCTO_MODELO` varchar(255) NOT NULL,
+  `PRODUCTO_ORIGEN` varchar(255) NOT NULL DEFAULT 'MXN',
   `PRODUCTO_SKU` varchar(255) NOT NULL,
   `PRODUCTO_UPC` varchar(255) NOT NULL,
   `PRODUCTO_EAN` varchar(255) NOT NULL,
@@ -278,10 +290,18 @@ CREATE TABLE `tiendas` (
   `TIENDA_RAZON_SOCIAL` varchar(255) NOT NULL,
   `TIENDA_RFC` varchar(255) NOT NULL,
   `TIENDA_TELEFONO` varchar(255) NOT NULL,
-  `TIENDA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `TIENDA_FECHA_ACTUALIZACIÓN` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `TIENDA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `TIENDA_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `ACTIVO` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tiendas`
+--
+
+INSERT INTO `tiendas` (`ID_TIENDA`, `ID_USUARIO`, `TIENDA_NOMBRE`, `TIENDA_RAZON_SOCIAL`, `TIENDA_RFC`, `TIENDA_TELEFONO`, `TIENDA_FECHA_REGISTRO`, `TIENDA_FECHA_ACTUALIZACION`, `ACTIVO`) VALUES
+(1, '5c0653d43d92e7.75019474', 'Espejo Negro', 'Espejo Negro SA de CV', 'ESNE34565677', '26032335', '2018-12-05 14:05:30', '2018-12-05 21:05:30', 1),
+(2, '5c0839a2158e44.99631671', 'TIendota', 'klakjalkjalksj', 'lkjalksjalksj', '26032335', '2018-12-05 20:50:15', '2018-12-06 03:50:15', 1);
 
 -- --------------------------------------------------------
 
@@ -292,17 +312,24 @@ CREATE TABLE `tiendas` (
 CREATE TABLE `usuarios` (
   `ID_USUARIO` varchar(255) NOT NULL,
   `USUARIO_NOMBRE` varchar(255) NOT NULL,
-  `USUARIO_APELLIDO_PAT` varchar(255) NOT NULL,
-  `USUARIO_APELLIDO_MAT` varchar(255) NOT NULL,
+  `USUARIO_APELLIDOS` varchar(255) NOT NULL,
   `USUARIO_CORREO` varchar(255) NOT NULL,
-  `USUARIO_TELEFONO` varchar(255) NOT NULL,
-  `USUARIO_FECHA_NACIMIENTO` date NOT NULL DEFAULT '0000-00-00',
+  `USUARIO_TELEFONO` varchar(255) DEFAULT NULL,
+  `USUARIO_FECHA_NACIMIENTO` date DEFAULT '0000-00-00',
   `USUARIO_PASSWORD` varchar(255) NOT NULL,
   `USUARIO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `USUARIO_ FECHA_ACTUALIZACIÓN` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `USUARIO_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `USUARIO_TIPO` varchar(255) NOT NULL,
   `ACTIVO` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`ID_USUARIO`, `USUARIO_NOMBRE`, `USUARIO_APELLIDOS`, `USUARIO_CORREO`, `USUARIO_TELEFONO`, `USUARIO_FECHA_NACIMIENTO`, `USUARIO_PASSWORD`, `USUARIO_FECHA_REGISTRO`, `USUARIO_FECHA_ACTUALIZACION`, `USUARIO_TIPO`, `ACTIVO`) VALUES
+('5c0653d43d92e7.75019474', 'Manuel', 'Marmolejo Martínez', 'marmocreativo@gmail.com', '', '0000-00-00', '$2y$10$Ro3zfNS6c3tmNrdRsCJSE.btWNjzjbz0dhJ5hbUN9wmh2qo9T4gB6', '2018-12-04 17:15:48', '2018-12-04 17:15:48', 'usr-1', 1),
+('5c0839a2158e44.99631671', 'Franco', 'Martínez', 'stmarmo@hotmail.com', '26032335', '0000-00-00', '$2y$10$6KUpM4SS0kXpFVfsqxXuf.Z5JVEYdfzYz0kGGm5nZjpRxXnPbV0UK', '2018-12-06 03:48:34', '2018-12-06 03:48:34', 'usr-1', 1);
 
 --
 -- Índices para tablas volcadas
@@ -407,7 +434,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `categorias_productos`
 --
@@ -452,7 +479,7 @@ ALTER TABLE `lista_negra`
 -- AUTO_INCREMENT de la tabla `opciones`
 --
 ALTER TABLE `opciones`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `paises`
 --
@@ -472,7 +499,7 @@ ALTER TABLE `seguridad_usuarios`
 -- AUTO_INCREMENT de la tabla `tiendas`
 --
 ALTER TABLE `tiendas`
-  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
