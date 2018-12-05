@@ -83,9 +83,16 @@ html, body{
   margin:2%;
 }
 
+.contenido_principal{
+  min-height: 700px;
+}
+
 .fila{
   padding-top:10px;
   padding-bottom: 10px;
+}
+.fila-titulo{
+  border-bottom: solid 1px #ddd;
 }
 .fila-gris{
   background-color: #ddd;

@@ -8,6 +8,10 @@ class Lenguajes_activos extends CI_Model {
   $query = $this->db->get();
   return $query->result();
  }
+ function get_lenguaje($id){
+  $query = $this->db->get_where('lenguajes', array('LENGUAJE_ISO' => $id),1);
+  return $query->result();
+ }
 
 }
 ?>

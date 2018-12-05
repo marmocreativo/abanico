@@ -1,6 +1,6 @@
 <div class="btn-group" role="group">
   <button id="btnMenuMoneda" type="button" class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Lenguaje
+    <?php echo $_SESSION['lenguaje']['nombre']; ?>
   </button>
   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnMenuMoneda">
     <?php foreach($lenguajes_activos as $lenguajes){ ?>

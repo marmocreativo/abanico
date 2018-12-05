@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/global/css/bootstrap.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/global/css/estilos_abanico_desktop.css">
-    <title><?php echo $op['titulo_sitio'] ?></title>
+    <title>Prueba <?php //echo $op['titulo_sitio'] ?></title>
   </head>
   <body>
     <!-- Header -->
@@ -21,7 +21,7 @@
           </div>
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
-              <?php $this->load->view('desktop/tienda/widgets/menu_moneda'); ?>
+              <?php $this->load->view('desktop/tienda/widgets/menu_divisa'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_usuario'); ?>
             </div>
@@ -39,7 +39,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+              <a href="<?php echo base_url('categoria'); ?>">CATEGORÍAS <span class="fa fa-list"></span> </a>
+              <!--
               <a class="nav-link" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias">CATEGORÍAS <span class="fa fa-list"></span> </a>
+            -->
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0 w-50 d-flex flex-row" action="categoria">

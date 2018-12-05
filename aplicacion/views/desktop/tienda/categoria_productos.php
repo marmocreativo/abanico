@@ -1,7 +1,7 @@
 <div class="fila p-5">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12 col-md-2">
+    <!--  <div class="col-12 col-md-2">
         <div class="contenedor-filtros">
           <h4>Marca</h4>
           <hr>
@@ -65,16 +65,17 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-10">
+    -->
+      <div class="col-12">
         <div class="card-deck">
-          <?php for($i=0; $i<=30; $i++){ ?>
+          <?php foreach($productos as $producto){ ?>
           <div class="col-6 col-sm-4 col-md-2 mb-3 px-0">
-            <a href="producto">
+            <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
             <div class="card mx-1">
               <img class="card-img-top" src="assets/global/img/default.jpg" class="img-fluid" alt="Card image cap">
               <div class="card-body text-center">
-                <h5 class="card-title text<?php echo $primary; ?>">Nombre del Producto</h5>
-                <h3 class="card-text">$100.00</h3>
+                <h5 class="card-title text<?php echo $primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h5>
+                <h3 class="card-text">$<?php echo $producto->PRODUCTO_PRECIO; ?></h3>
                 <p class="text<?php echo $primary; ?>">
                   <span class="fa fa-star"></span>
                   <span class="fa fa-star"></span>
