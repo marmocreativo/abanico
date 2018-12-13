@@ -3,7 +3,7 @@ class Divisas_activas extends CI_Model {
 
   function get_divisas_activas(){
     $this->db->from('divisas');
-    $this->db->where('ACTIVO',"1");
+    $this->db->where('DIVISA_ESTADO',"activo");
     $query = $this->db->get();
     return $query->result();
   }

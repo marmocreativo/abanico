@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/global/css/bootstrap.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/bootstrap.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/global/css/estilos_abanico_desktop.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/estilos_abanico_desktop.css">
     <title>Prueba <?php //echo $op['titulo_sitio'] ?></title>
   </head>
   <body>
@@ -31,7 +31,7 @@
     </div>
     <div class="menu-principal">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="<?php echo $baseurl=base_url(); ?>"><img src="assets/global/img/logo.png" width="50px" alt=""> ABANICO</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" width="50px" alt=""> ABANICO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,8 +45,8 @@
             -->
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0 w-50 d-flex flex-row" action="categoria">
-            <input class="form-control mr-sm-2 w-75" type="search" placeholder="Busca lo Mejor" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0 w-50 d-flex flex-row" action="<?php echo base_url('categoria/busqueda') ?>" method="get">
+            <input class="form-control mr-sm-2 w-75" type="search" name="Busqueda" placeholder="Busca lo Mejor" aria-label="Search">
             <button class="btn btn<?php echo $primary; ?> my-2 my-sm-0 mw-100" type="submit"> <span class="fa fa-search"></span> Buscar</button>
           </form>
           <ul class="navbar-nav ml-auto">

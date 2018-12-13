@@ -90,7 +90,7 @@
                       <td>$<?php echo $producto->PRODUCTO_PRECIO; ?></td>
                       <td>
                         <div class="btn-group float-right">
-                          <a href="<?php echo base_url('usuario/producto_form_editar?id='.$producto->ID_PRODUCTO); ?>" class="btn btn-xs btn-warning" title="Editar Producto"> <span class="fa fa-pencil-alt"></span> </a>
+                          <a href="<?php echo base_url('usuario/producto_form_actualizar?id='.$producto->ID_PRODUCTO); ?>" class="btn btn-xs btn-warning" title="Editar Producto"> <span class="fa fa-pencil-alt"></span> </a>
                           <a href="<?php echo base_url('usuario/borrar_producto?id='.$producto->ID_PRODUCTO); ?>" class="btn btn-xs btn-danger" title="Editar Producto"> <span class="fa fa-ban"></span> </a>
                         </div>
                       </td>

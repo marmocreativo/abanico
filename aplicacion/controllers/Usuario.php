@@ -10,7 +10,7 @@ class Usuario extends CI_Controller {
 		$this->data['lenguajes_activos'] = $this->lenguajes_activos->get_lenguajes_activos();
 		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
 		// Cargo El modelo
-		$this->load->model('UsuariosModel');
+		$this->load->model('UsuariosModel_bak_bak');
 		// Variables defaults
 		$this->data['primary'] = "-secondary";
   }
@@ -146,7 +146,7 @@ class Usuario extends CI_Controller {
 	      } else {
 					// El formulario si es validado creo un usuario unico
 					$id_usuario = uniqid('', true);
-					$usuario=new UsuariosModel;
+					$usuario=new UsuariosModel_bak;
 					if(!$usuario->id_usuario_existe($id_usuario)){
 						$id_usuario = uniqid('', true);
 					}
@@ -226,7 +226,7 @@ class Usuario extends CI_Controller {
 					// El formulario si es validado verifico Identidad
 					$correo = $this->input->post('CorreoUsuario');
 					$pass = $this->input->post('PassUsuario');
-					$usuario=new UsuariosModel;
+					$usuario=new UsuariosModel_bak;
 					if($usuario->varifico_usuario_pass($correo,$pass)){
 						$usuario->inicio_sesion($correo);
 						redirect(base_url('usuario/index'));
@@ -260,7 +260,7 @@ class Usuario extends CI_Controller {
 			if($this->data['op']['modo_mantenimiento']=='no'){
 
 				// Obtengo los datos de mi tiendas
-				$this->data['tienda'] = $this->UsuariosModel->get_tienda_usuario($_SESSION['usuario']['id']);
+				$this->data['tienda'] = $this->UsuariosModel_bak->get_tienda_usuario($_SESSION['usuario']['id']);
 
 
 				// Reviso si se está revisando desde un celular o desde Escritorio
@@ -277,7 +277,7 @@ class Usuario extends CI_Controller {
 						$formulario = "tienda_usuario";
 					}else{
 						$formulario = "vista_tienda";
-						$this->data['productos'] = $this->UsuariosModel->get_productos($_SESSION['usuario']['id']);
+						$this->data['productos'] = $this->UsuariosModel_bak->get_productos($_SESSION['usuario']['id']);
 					}
 					$this->load->view($dispositivo.'/usuarios/headers/header',$this->data);
 					$this->load->view($dispositivo.'/usuarios/'.$formulario,$this->data);
@@ -298,7 +298,7 @@ class Usuario extends CI_Controller {
 		public function actualizar_tienda()
 		{
 			//$this->form_validation->set_rules('PassUsuario', 'Contraseña', 'required', array('required' => 'Debes escribir tu %s.'));
-			$usuario=new UsuariosModel;
+			$usuario=new UsuariosModel_bak;
 			$id_tienda = "";
 			$usuario->actualizar_tienda_usuario($id_tienda);
 			redirect(base_url('usuario/tienda'));
@@ -314,7 +314,7 @@ class Usuario extends CI_Controller {
 			if($this->data['op']['modo_mantenimiento']=='no'){
 
 				// Obtengo los datos de mi tiendas
-				$this->data['tienda'] = $this->UsuariosModel->get_tienda_usuario($_SESSION['usuario']['id']);
+				$this->data['tienda'] = $this->UsuariosModel_bak->get_tienda_usuario($_SESSION['usuario']['id']);
 
 
 				// Reviso si se está revisando desde un celular o desde Escritorio
@@ -327,6 +327,39 @@ class Usuario extends CI_Controller {
 				if(isset($_SESSION['usuario'])&&!empty($_SESSION['usuario'])){
 					$this->load->view($dispositivo.'/usuarios/headers/header',$this->data);
 					$this->load->view($dispositivo.'/usuarios/producto_form',$this->data);
+					$this->load->view($dispositivo.'/usuarios/footers/footer',$this->data);
+				}else{
+					redirect(base_url('usuario/login_form'));
+				}
+
+			}else{
+				$this->load->view('mantenimiento');
+			}
+		}
+		/*
+		| -------------------------------------------------------------------------
+		| Formulario creación Producto
+		| -------------------------------------------------------------------------
+		*/
+		public function producto_form_actualizar()
+		{
+			//Redirección al modo mantenimiento
+			if($this->data['op']['modo_mantenimiento']=='no'){
+
+				// Obtengo los datos de mi tiendas
+				$this->data['producto'] = $this->UsuariosModel_bak->get_detalles_producto($_SESSION['usuario']['id'],$_GET['id']);
+
+
+				// Reviso si se está revisando desde un celular o desde Escritorio
+				if($this->agent->is_mobile()){
+					$dispositivo = "mobile";
+				}else{
+					$dispositivo = "desktop";
+				}
+				// Debo redireccionar
+				if(isset($_SESSION['usuario'])&&!empty($_SESSION['usuario'])){
+					$this->load->view($dispositivo.'/usuarios/headers/header',$this->data);
+					$this->load->view($dispositivo.'/usuarios/producto_form_actualizar',$this->data);
 					$this->load->view($dispositivo.'/usuarios/footers/footer',$this->data);
 				}else{
 					redirect(base_url('usuario/login_form'));
@@ -352,7 +385,7 @@ class Usuario extends CI_Controller {
 						$dispositivo = "desktop";
 					}
 						// El formulario si es validado creo un usuario unico
-						$usuario=new UsuariosModel;
+						$usuario=new UsuariosModel_bak;
 						// Inserto los registros
 
 						$usuario->crear_producto($_SESSION['usuario']['id']);
@@ -382,7 +415,7 @@ class Usuario extends CI_Controller {
 						$dispositivo = "desktop";
 					}
 						// El formulario si es validado creo un usuario unico
-						$usuario=new UsuariosModel;
+						$usuario=new UsuariosModel_bak;
 						// Inserto los registros
 
 						$usuario->borrar_producto($_GET['id']);

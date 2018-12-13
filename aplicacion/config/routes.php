@@ -16,5 +16,24 @@ $route['translate_uri_dashes'] = FALSE;
 | -------------------------------------------------------------------------
 */
 $route['usuario'] = 'Usuario';
+$route['admin'] = 'Admin_Desktop';
+$route['admin/divisas'] = 'Admin_Divisas';
+$route['admin/divisas/([a-z]+)'] = 'Admin_Divisas/$1';
+$route['admin/paises'] = 'Admin_Paises';
+$route['admin/paises/([a-z]+)'] = 'Admin_Paises/$1';
+$route['admin/estados'] = 'Admin_Estados';
+$route['admin/estados/([a-z]+)'] = 'Admin_Estados/$1';
+$route['admin/lenguajes'] = 'Admin_Lenguajes';
+$route['admin/lenguajes/([a-z]+)'] = 'Admin_Lenguajes/$1';
+$route['admin/usuarios'] = 'Admin_Usuarios';
+$route['admin/usuarios/([a-z]+)'] = 'Admin_Usuarios/$1';
+$route['admin/tiendas'] = 'Admin_Tiendas';
+$route['admin/tiendas/([a-z]+)'] = 'Admin_Tiendas/$1';
+$route['admin/direcciones'] = 'Admin_Direcciones';
+$route['admin/direcciones/([a-z]+)'] = 'Admin_Direcciones/$1';
+$route['admin/productos'] = 'Admin_Productos';
+$route['admin/productos/([a-z]+)'] = 'Admin_Productos/$1';
 $route['categoria'] = 'Tienda_Categoria';
+$route['categoria/([a-z]+)'] = 'Tienda_Categoria/$1';
 $route['producto'] = 'Tienda_Producto';
+$route['mantenimiento'] = 'Mantenimiento';

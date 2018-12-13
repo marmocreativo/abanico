@@ -1,5 +1,5 @@
 <?php
-class UsuariosModel extends CI_Model {
+class EstadosModel extends CI_Model {
   function __construct()
   {
       parent::__construct();
@@ -11,12 +11,9 @@ class UsuariosModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista($parametros,$tipo_usuario,$orden,$limite){
+  function lista($parametros,$orden,$limite){
     if(!empty($parametros)){
       $this->db->or_like($parametros);
-    }
-    if(!empty($tipo_usuario)){
-      $this->db->where('USUARIO_TIPO', $tipo_usuario);
     }
     if(!empty($orden)){
       $this->db->order_by($orden);
@@ -24,20 +21,20 @@ class UsuariosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
-    $query = $this->db->get('usuarios');
+    $query = $this->db->get('estados');
     return $query->result();
   }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    return $this->db->get_where('usuarios',array('ID_USUARIO'=>$id))->row_array();
+    return $this->db->get_where('estados',array('ID_ESTADO'=>$id))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
-    $this->db->insert('usuarios',$parametros);
+    $this->db->insert('estados',$parametros);
     return $this->db->insert_id();
   }
   /*
@@ -46,15 +43,15 @@ class UsuariosModel extends CI_Model {
     * $parametros son los campos actualizados
  */
   function actualizar($id,$parametros){
-    $this->db->where('ID_USUARIO',$id);
-    return $this->db->update('usuarios',$parametros);
+    $this->db->where('ID_ESTADO',$id);
+    return $this->db->update('estados',$parametros);
   }
   /*
     * Borro una entrada
     * $id es el identificador de la entrada
  */
   function borrar($id){
-    return $this->db->delete('usuarios',array('ID_USUARIO'=>$id));
+    return $this->db->delete('estados',array('ID_ESTADO'=>$id));
   }
   /*
     * Interruptor cambia el estado de una entrada de activo a inactivo
@@ -74,8 +71,8 @@ class UsuariosModel extends CI_Model {
         $activo = "activo";
       break;
     }
-    $this->db->where('ID_USUARIO',$id);
-    return $this->db->update('usuarios',array('USUARIO_ESTADO'=>$activo));
+    $this->db->where('ID_ESTADO',$id);
+    return $this->db->update('estados',array('ESTADO_ESTADO'=>$activo));
   }
   /*
     * Cambio el estado de la entrada, puede ser cualquier estado
@@ -83,26 +80,19 @@ class UsuariosModel extends CI_Model {
     * $activo es el estado al que se quiere cambiar la entrada
  */
   function estado($id,$activo){
-    $this->db->where('USUARIO_ESTADO',$id);
-    return $this->db->update('usuarios',array('USUARIO_ESTADO'=>$activo));
+    $this->db->where('ID_ESTADO',$id);
+    return $this->db->update('estados',array('PAIS_ESTADO'=>$activo));
   }
   /*
     * Creo el orden de los elementos
     * $orden son los identificadores de las entradas en el orden en que quiero que aparezcan
  */
   function ordenar($orden){
-  }
-
-  /*
-    * Funciones de Verificación
-  */
-  public function id_usuario_existe($id){
-    $this->db->where('ID_USUARIO',$id);
-    $query = $this->db->get('usuarios');
-    if ($query->num_rows() > 0){
-        return true;
-    }else{
-        return false;
+    $i = 0;
+    foreach($orden as $orden){
+      $this->db->where('ID_ESTADO',$orden);
+      return $this->db->update('estados',array('ORDEN'=>$i));
+      $i++;
     }
   }
 

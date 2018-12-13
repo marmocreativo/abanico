@@ -72,7 +72,7 @@
           <div class="col-6 col-sm-4 col-md-2 mb-3 px-0">
             <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
             <div class="card mx-1">
-              <img class="card-img-top" src="assets/global/img/default.jpg" class="img-fluid" alt="Card image cap">
+              <img class="card-img-top" src="<?php echo base_url(); ?>assets/global/img/default.jpg" class="img-fluid" alt="Card image cap">
               <div class="card-body text-center">
                 <h5 class="card-title text<?php echo $primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h5>
                 <h3 class="card-text">$<?php echo $producto->PRODUCTO_PRECIO; ?></h3>
