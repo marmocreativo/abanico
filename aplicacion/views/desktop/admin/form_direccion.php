@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <div class="titulo">
-            <h1 class="h5"> <span class="fa fa-user"></span> Nueva Tienda</h1>
+            <h1 class="h5"> <span class="fa fa-user"></span> Nueva Direccion</h1>
           </div>
         </div>
         <div class="card-body">
@@ -19,14 +19,20 @@
             <input type="hidden" name="IdUsuario" value="<?php echo $_GET['id_usuario']; ?>">
               <h3>Datos Requeridos</h3>
                <div class="form-group">
-                 <label for="TiendaNombre">Nombre Público</label>
-                 <input type="text" class="form-control" id="TiendaNombre" name="TiendaNombre" placeholder="" value="" required>
+                 <label for="CalleDireccion">Calle y Número</label>
+                 <textarea name="CalleDireccion" class="form-control" rows="5" cols="80"></textarea>
                </div>
-               <hr>
-               <h5><span class="fa fa-file-invoice"></span> Datos Fiscales</h5>
                <div class="form-group">
-                 <label for="TiendaRazonSocial">Razón Social</label>
-                 <input type="text" class="form-control" id="TiendaRazonSocial" name="TiendaRazonSocial" placeholder="" value="" required>
+                 <label for="ColoniaDireccion">Colonia / Barrio</label>
+                 <input type="text" class="form-control" id="ColoniaDireccion" name="ColoniaDireccion" placeholder="" value="">
+               </div>
+               <div class="form-group">
+                 <label for="ColoniaDireccion">Delegación / municipio</label>
+                 <input type="text" class="form-control" id="ColoniaDireccion" name="ColoniaDireccion" placeholder="" value="">
+               </div>
+               <div class="form-group">
+                 <label for="ColoniaDireccion">Ciudad</label>
+                 <input type="text" class="form-control" id="ColoniaDireccion" name="ColoniaDireccion" placeholder="" value="">
                </div>
                <div class="form-group">
                  <label for="TiendaRFC">R.F.C.</label>

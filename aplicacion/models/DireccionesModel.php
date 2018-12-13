@@ -1,5 +1,5 @@
 <?php
-class TiendasModel extends CI_Model {
+class DireccionesModel extends CI_Model {
   function __construct()
   {
       parent::__construct();

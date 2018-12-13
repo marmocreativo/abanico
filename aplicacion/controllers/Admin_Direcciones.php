@@ -20,14 +20,14 @@ class Admin_Direcciones extends CI_Controller {
 		}
 
 		// Cargo el modelo
-		$this->load->model('TiendasModel');
+		$this->load->model('DireccionesModel');
   }
 
 	public function index()
 	{
-			$this->data['tiendas'] = $this->TiendasModel->lista('','','','');
+			$this->data['direcciones'] = $this->DireccionesModel->lista('','','','');
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
-			$this->load->view($this->data['dispositivo'].'/admin/lista_tiendas',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/lista_direcciones',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 	}
 
@@ -35,41 +35,41 @@ class Admin_Direcciones extends CI_Controller {
 	{
 		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
 			$parametros = array(
-				'TIENDA_NOMBRE'=>$_GET['Busqueda'],
-				'TIENDA_RAZON_SOCIAL'=>$_GET['Busqueda'],
-				'TIENDA_RFC'=>$_GET['Busqueda']
+				'DIRECCION_NOMBRE'=>$_GET['Busqueda'],
+				'DIRECCION_RAZON_SOCIAL'=>$_GET['Busqueda'],
+				'DIRECCION_RFC'=>$_GET['Busqueda']
 			);
-			$this->data['tiendas'] = $this->TiendasModel->lista($parametros,'','');
+			$this->data['direcciones'] = $this->DireccionesModel->lista($parametros,'','');
 
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
-			$this->load->view($this->data['dispositivo'].'/admin/lista_tiendas',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/lista_direcciones',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 
 		}else{
-			redirect(base_url('admin/tiendas'));
+			redirect(base_url('admin/direcciones'));
 		}
 	}
 	public function crear()
 	{
-		$this->form_validation->set_rules('TiendaRFC', 'RFC de la tienda', 'required|is_unique[tiendas.TIENDA_RFC]', array( 'required' => 'Debes designar el %s.', 'is_unique' => 'Este RFC ya ha sido registrado' ));
+		$this->form_validation->set_rules('DireccionCalle', 'Calle y Número', 'required', array( 'required' => 'Debes designar el %s.'));
 
 		if($this->form_validation->run())
     {
       $parametros = array(
           'ID_USUARIO'=> $this->input->post('IdUsuario'),
-          'TIENDA_NOMBRE' => $this->input->post('TiendaNombre'),
-          'TIENDA_RAZON_SOCIAL' => $this->input->post('TiendaRazonSocial'),
-          'TIENDA_RFC' => $this->input->post('TiendaRFC'),
-          'TIENDA_TELEFONO' => $this->input->post('TiendaTelefono'),
-          'TIENDA_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
-          'TIENDA_ESTADO'=>'activo'
+          'DIRECCION_NOMBRE' => $this->input->post('TiendaNombre'),
+          'DIRECCION_RAZON_SOCIAL' => $this->input->post('TiendaRazonSocial'),
+          'DIRECCION_RFC' => $this->input->post('TiendaRFC'),
+          'DIRECCION_TELEFONO' => $this->input->post('TiendaTelefono'),
+          'DIRECCION_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+          'DIRECCION_ESTADO'=>'activo'
       );
 
-      $pais_id = $this->TiendasModel->crear($parametros);
+      $pais_id = $this->DireccionesModel->crear($parametros);
       redirect(base_url('admin/usuarios/perfil?id=').$this->input->post('IdUsuario'));
     }else{
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
-			$this->load->view($this->data['dispositivo'].'/admin/form_tienda',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/form_direccion',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 		}
 	}
@@ -89,11 +89,11 @@ class Admin_Direcciones extends CI_Controller {
 
 			$parametros['PAIS_ESTADO']= $estado;
 
-      $pais_id = $this->TiendasModel->actualizar( $this->input->post('Identificador'),$parametros);
-      redirect(base_url('admin/tiendas'));
+      $pais_id = $this->DireccionesModel->actualizar( $this->input->post('Identificador'),$parametros);
+      redirect(base_url('admin/direcciones'));
     }else{
 
-			$this->data['pais'] = $this->TiendasModel->detalles($_GET['id']);
+			$this->data['pais'] = $this->DireccionesModel->detalles($_GET['id']);
 
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_pais',$this->data);
@@ -103,13 +103,13 @@ class Admin_Direcciones extends CI_Controller {
 
 	public function borrar()
 	{
-		$pais = $this->TiendasModel->detalles($_GET['id']);
+		$pais = $this->DireccionesModel->detalles($_GET['id']);
 
         // check if the institucione exists before trying to delete it
         if(isset($pais['ID_PAIS']))
         {
-            $this->TiendasModel->borrar($_GET['id']);
-            redirect(base_url('admin/tiendas'));
+            $this->DireccionesModel->borrar($_GET['id']);
+            redirect(base_url('admin/direcciones'));
         } else {
 
 	         	show_error('La entrada que deseas borrar no existe');
@@ -117,8 +117,8 @@ class Admin_Direcciones extends CI_Controller {
 	}
 	public function activar()
 	{
-		$this->TiendasModel->activar($_GET['id'],$_GET['estado']);
-		redirect(base_url('admin/tiendas'));
+		$this->DireccionesModel->activar($_GET['id'],$_GET['estado']);
+		redirect(base_url('admin/direcciones'));
 	}
 	public function estado()
 	{
