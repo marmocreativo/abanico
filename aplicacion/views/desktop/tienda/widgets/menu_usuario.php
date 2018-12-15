@@ -16,7 +16,7 @@ if(verificar_sesion()){ ?>
       <span class="fa fa-user"></span> Usuarios
     </button>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnMenuUsuario">
-      <a class="dropdown-item" href="<?php echo base_url('usuario/login_form');?>">Inicio Sesion</a>
+      <a class="dropdown-item" href="<?php echo base_url('login');?>">Inicio Sesion</a>
       <a class="dropdown-item" href="<?php echo base_url('usuario/registrar');?>">Registro</a>
     </div>
   </div>
