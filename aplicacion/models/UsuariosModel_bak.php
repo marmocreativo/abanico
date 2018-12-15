@@ -1,5 +1,5 @@
 <?php
-class UsuariosModel extends CI_Model{
+class UsuariosModel_bak extends CI_Model{
 
     public function get_usuarios(){
         if(!empty($this->input->get("search"))){

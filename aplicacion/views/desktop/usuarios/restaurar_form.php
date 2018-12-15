@@ -14,7 +14,7 @@
         <div class="col-12 col-sm-5">
           <div class="card">
             <div class="card-header">
-              <h4>Bienvenido</h4>
+              <h4>Restaura tu contraseña</h4>
             </div>
             <div class="card-body">
               <?php if(isset($_GET['mensaje'])){
@@ -35,14 +35,6 @@
                     $alerta = 'alert-success';
                     $mensaje = 'Usuario Creado correctamente, por favor inicia sesión';
                   break;
-                  case 'pass_restaurado':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Tu contraseña ha sido actualizada, ahora puedes iniciar sesión';
-                  break;
-                  case 'error_enlace':
-                    $alerta = 'alert-danger';
-                    $mensaje = 'El enlace que intentaste Usar no es válido';
-                  break;
                 }
                 ?>
 
@@ -54,16 +46,16 @@
                 <div class="alert alert-danger">
                   <?php echo validation_errors(); ?>
                 </div>
+                <hr>
               <?php } ?>
-              <hr>
-                <form class="" action="<?php echo base_url('login/iniciar');?>" method="post">
+                <form class="" action="<?php echo base_url('login/restaurar?id='.$_GET['id'].'&clave='.$_GET['clave']);?>" method="post">
                    <div class="form-group">
-                     <label for="CorreoUsuario">Correo</label>
-                     <input type="email" class="form-control" id="CorreoUsuario" name="CorreoUsuario" placeholder="Su correo electrónico">
+                     <label for="PassUsuario">Nueva Contraseña</label>
+                     <input type="password" class="form-control" id="PassUsuario" name="PassUsuario" placeholder="Contraseña">
                    </div>
                    <div class="form-group">
-                     <label for="PassUsuario">Contraseña</label>
-                     <input type="password" class="form-control" id="PassUsuario" name="PassUsuario" placeholder="Contraseña">
+                     <label for="PassUsuario">Confirmar Nueva Contraseña</label>
+                     <input type="password" class="form-control" id="PassUsuarioConf" name="PassUsuarioConf" placeholder="Confirmar">
                    </div>
                    <hr>
                    <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>

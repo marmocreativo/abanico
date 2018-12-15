@@ -14,34 +14,18 @@
         <div class="col-12 col-sm-5">
           <div class="card">
             <div class="card-header">
-              <h4>Bienvenido</h4>
+              <h4>¿Olvidaste tu contraseña?</h4>
             </div>
             <div class="card-body">
               <?php if(isset($_GET['mensaje'])){
                 switch($_GET['mensaje']){
-                  case 'error_login':
+                  case 'error_registro':
                     $alerta = 'alert-danger';
-                    $mensaje = 'Tu contraseña o correo electrónico son incorrectos';
-                  break;
-                  case 'error_activo':
-                    $alerta = 'alert-danger';
-                    $mensaje = 'Lo sentimos tu cuenta se encuentra Inactiva, por favor comunícate con nosotros para restaurarla.';
-                  break;
-                  case 'sesion_cerrada':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Sesión cerrada correctamente';
+                    $mensaje = 'El correo que proporcionaste no se encuentra en nuestra Base de datos';
                   break;
                   case 'registro_correcto':
                     $alerta = 'alert-success';
-                    $mensaje = 'Usuario Creado correctamente, por favor inicia sesión';
-                  break;
-                  case 'pass_restaurado':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Tu contraseña ha sido actualizada, ahora puedes iniciar sesión';
-                  break;
-                  case 'error_enlace':
-                    $alerta = 'alert-danger';
-                    $mensaje = 'El enlace que intentaste Usar no es válido';
+                    $mensaje = 'Te hemos enviado un correo con un enlace seguro para que puedas recuperar tu contraseña';
                   break;
                 }
                 ?>
@@ -54,24 +38,20 @@
                 <div class="alert alert-danger">
                   <?php echo validation_errors(); ?>
                 </div>
+                <hr>
               <?php } ?>
-              <hr>
-                <form class="" action="<?php echo base_url('login/iniciar');?>" method="post">
+                <form class="" action="<?php echo base_url('login/olvide');?>" method="post">
                    <div class="form-group">
-                     <label for="CorreoUsuario">Correo</label>
+                     <label for="CorreoUsuario">Escribe el Correo con el que te registraste</label>
                      <input type="email" class="form-control" id="CorreoUsuario" name="CorreoUsuario" placeholder="Su correo electrónico">
                    </div>
-                   <div class="form-group">
-                     <label for="PassUsuario">Contraseña</label>
-                     <input type="password" class="form-control" id="PassUsuario" name="PassUsuario" placeholder="Contraseña">
-                   </div>
                    <hr>
-                   <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                   <button type="submit" class="btn btn-primary btn-block">Recuperar Contraseña</button>
                  </form>
             </div>
             <div class="card-footer">
               <nav class="nav justify-content-center nav-fill">
-                <a class="nav-link" href="<?php echo base_url('login/olvide');?>"> <span class="fa fa-question-circle"></span> Olvide mi contraseña</a>
+                <a class="nav-link" href="<?php echo base_url('login');?>"> <span class="fa fa-pen-square"></span> Volver a Iniciar Sesión</a>
                 <a class="nav-link" href="<?php echo base_url('usuario/registrar');?>"> <span class="fa fa-pen-square"></span> Registrarme</a>
               </nav>
             </div>
