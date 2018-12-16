@@ -39,9 +39,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <!--<a href="<?php echo base_url('categoria'); ?>">CATEGORÍAS <span class="fa fa-list"></span> </a>
-              -->
-              <a class="nav-link" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias">CATEGORÍAS <span class="fa fa-list"></span> </a>
+              <a href="<?php echo base_url('categoria'); ?>">CATEGORÍAS <span class="fa fa-list"></span> </a>
+              <!--
+              <a class="nav-link" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias">CATEGORÍAS <span class="fa fa-list"></span> </a>-->
 
             </li>
           </ul>

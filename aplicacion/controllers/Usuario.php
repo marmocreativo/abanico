@@ -27,6 +27,8 @@ class Usuario extends CI_Controller {
 			redirect(base_url('login'));
 		}
 	}
+
+
 	public function registrar()
 	{
 		$this->form_validation->set_rules('NombreUsuario', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
@@ -66,20 +68,90 @@ class Usuario extends CI_Controller {
 			);
 
 			$usuario_id = $this->UsuariosModel->crear($parametros);
-			redirect(base_url('login?mensaje=error_registro'));
+			redirect(base_url('login?mensaje=registro_correcto'));
 		}else{
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/registro_form',$this->data);
+			$this->load->view($this->data['dispositivo'].'/usuarios/form_registro_usuario',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 		}
-	// Iniciar Sesión
 	}
+
+
 	public function actualizar()
 	{
-	// verificar Permisos
+		// Obtengo los datos de usuario
+
+		$this->data['usuario'] = $this->UsuariosModel->detalles($_SESSION['usuario']['id']);
+		$this->form_validation->set_rules('NombreUsuario', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('ApellidosUsuario', 'Apellidos', 'required', array('required' => 'Debes escribir tus %s.'));
+		$this->form_validation->set_rules('CorreoUsuario', 'Correo Electrónico', 'required|valid_email', array(
+			'required' => 'Debes escribir tu %s.',
+			'valid_email' => 'Debes escribir una dirección de correo valida.',
+			'is_unique' => 'La dirección de correo ya está registrada'
+		));
+
+		if($this->form_validation->run())
+		{
+			$parametros = array(
+				'USUARIO_NOMBRE' => $this->input->post('NombreUsuario'),
+				'USUARIO_APELLIDOS' => $this->input->post('ApellidosUsuario'),
+				'USUARIO_CORREO' => $this->input->post('CorreoUsuario'),
+				'USUARIO_TELEFONO' => $this->input->post('TelefonoUsuario'),
+				'USUARIO_FECHA_NACIMIENTO' => $this->input->post('FechaNacimientoUsuario'),
+				'USUARIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+			);
+
+			$usuario_id = $this->UsuariosModel->actualizar($_SESSION['usuario']['id'],$parametros);
+			redirect(base_url('usuario/actualizar?mensaje=actualizacion_correcta'));
+		}else{
+			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/usuarios/form_actualizar_usuario',$this->data);
+			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+		}
+	}
+	public function pass()
+	{
+		// Obtengo los datos de usuario
+
+		$this->data['usuario'] = $this->UsuariosModel->detalles($_SESSION['usuario']['id']);
+		$this->form_validation->set_rules('PassActualUsuario', 'Contraseña Actual', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('PassUsuario', 'Contraseña', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('PassUsuarioConf', 'Contraseña Confirmación', 'required|matches[PassUsuario]', array(
+			'required' => 'Debes confirmar la Contraseña',
+			'matches' => 'La confirmación de la contraseña no coincide.'
+		));
+
+		if($this->form_validation->run())
+		{
+			$this->load->model('AutenticacionModel');
+			echo $_SESSION['usuario']['correo'];
+			echo $this->input->post('PassActualUsuario');
+			if($this->AutenticacionModel->verificar_password($_SESSION['usuario']['correo'],$this->input->post('PassActualUsuario'))){
+				$id = $_SESSION['usuario']['id'];
+				$pass = password_hash($this->input->post('PassUsuario'), PASSWORD_DEFAULT);
+				$parametros = array(
+					'USUARIO_PASSWORD' => $pass
+				);
+				$this->AutenticacionModel->restaurar_pass($id,$parametros);
+				redirect(base_url('usuario/pass?mensaje=pass_actualizado'));
+			}else{
+				redirect(base_url('usuario/pass?mensaje=pass_incorrecto'));
+			}
+			//$usuario_id = $this->UsuariosModel->actualizar($_SESSION['usuario']['id'],$parametros);
+			//
+		}else{
+			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/usuarios/form_actualizar_pass',$this->data);
+			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+		}
 	}
 	public function borrar()
 	{
+		$this->load->model('ProductosModel');
+		$this->UsuariosModel->borrar($_SESSION['usuario']['id']);
+		$this->ProductosModel->borrar_productos_usuario($_SESSION['usuario']['id']);
+		redirect(base_url('login/cerrar'));
+
 	// Login Form
 	}
 }

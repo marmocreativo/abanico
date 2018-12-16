@@ -83,6 +83,13 @@ class ProductosModel extends CI_Model {
     return $this->db->delete('productos',array('ID_PRODUCTO'=>$id));
   }
   /*
+    * Borro una entrada
+    * $id es el identificador de la entrada
+ */
+  function borrar_productos_usuario($id){
+    return $this->db->delete('productos',array('ID_USUARIO'=>$id));
+  }
+  /*
     * Interruptor cambia el estado de una entrada de activo a inactivo
     * $id es el identificador de la entrada
     * $activo es el estado actual de la entrada

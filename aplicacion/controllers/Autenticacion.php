@@ -112,7 +112,7 @@ class Autenticacion extends CI_Controller {
 				$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
 				$this->email->to($correo);
 
-				$this->email->subject('Mensaje de Prueba');
+				$this->email->subject('Recupera tu contraseña');
 				$this->email->message($mensaje);
 				// envio el correo
 				if($this->email->send()){

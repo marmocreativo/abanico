@@ -36,6 +36,7 @@ $route['admin/productos'] = 'Admin_Productos';
 $route['admin/productos/([a-z]+)'] = 'Admin_Productos/$1';
 // Rutas de Usuario
 $route['usuario'] = 'Usuario';
+$route['usuario/([a-z]+)'] = 'Usuario/$1';
 // Rutas de Autenticacion
 $route['login'] = 'Autenticacion';
 $route['login/([a-z]+)'] = 'Autenticacion/$1';
