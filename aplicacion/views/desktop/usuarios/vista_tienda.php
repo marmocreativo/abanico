@@ -15,7 +15,7 @@
         <div class="col-sm-3 col-md-2 fila fila-gris">
           <?php $this->load->view('desktop/usuarios/widgets/menu_control_usuario'); ?>
         </div>
-        <div class="col-sm-6 col-md-8">
+        <div class="col">
           <div class="card">
             <div class="card-header">
               <h4> <span class="fa fa-store"></span> <?php echo $tienda->TIENDA_NOMBRE; ?></h4>
@@ -100,9 +100,6 @@
                 </table>
               </div>
             </div>
-        </div>
-        <div class="col-sm-3 col-md-2">
-          <?php $this->load->view('desktop/usuarios/widgets/mensajes_recientes'); ?>
         </div>
       </div>
     </div>

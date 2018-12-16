@@ -185,7 +185,6 @@
             </div>
         </div>
         <div class="col-sm-3 col-md-2">
-          <?php $this->load->view('desktop/usuarios/widgets/mensajes_recientes'); ?>
         </div>
       </div>
     </div>

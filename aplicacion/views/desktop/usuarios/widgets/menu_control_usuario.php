@@ -10,5 +10,6 @@
 </div>
 <div class="list-group">
   <a href="<?php echo base_url('usuario/actualizar');?>" class="list-group-item list-group-item-action"> <span class="fa fa-id-card"></span> Mi Perfil</a>
+  <a href="<?php echo base_url('usuario/tienda');?>" class="list-group-item list-group-item-action"> <span class="fa fa-store"></span> Mi Tienda</a>
   <a href="<?php echo base_url('usuario/pass');?>" class="list-group-item list-group-item-action"> <span class="fa fa-lock"></span> Contraseña</a>
 </div>

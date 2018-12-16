@@ -154,4 +154,180 @@ class Usuario extends CI_Controller {
 
 	// Login Form
 	}
+	/*
+	| -------------------------------------------------------------------------
+	| Tienda
+	| -------------------------------------------------------------------------
+	*/
+	public function tienda()
+	{
+		$this->load->model('UsuariosModel_bak');
+		// Obtengo los datos de mi tiendas
+		$this->data['tienda'] = $this->UsuariosModel_bak->get_tienda_usuario($_SESSION['usuario']['id']);
+
+
+		// Reviso si se está revisando desde un celular o desde Escritorio
+		if($this->agent->is_mobile()){
+			$dispositivo = "mobile";
+		}else{
+			$dispositivo = "desktop";
+		}
+		// Debo redireccionar
+		if(isset($_SESSION['usuario'])&&!empty($_SESSION['usuario'])){
+
+			// reviso si el usuario ya tiene tienda
+			if(empty($this->data['tienda'])){
+				$formulario = "tienda_usuario";
+			}else{
+				$formulario = "vista_tienda";
+				$this->data['productos'] = $this->UsuariosModel_bak->get_productos($_SESSION['usuario']['id']);
+			}
+			$this->load->view($dispositivo.'/usuarios/headers/header',$this->data);
+			$this->load->view($dispositivo.'/usuarios/'.$formulario,$this->data);
+			$this->load->view($dispositivo.'/usuarios/footers/footer',$this->data);
+		}else{
+			redirect(base_url('usuario/login_form'));
+		}
+	}
+	/*
+	| -------------------------------------------------------------------------
+	| Actualizar Tienda
+	| -------------------------------------------------------------------------
+	*/
+	public function actualizar_tienda()
+	{
+		$this->load->model('UsuariosModel_bak');
+		//$this->form_validation->set_rules('PassUsuario', 'Contraseña', 'required', array('required' => 'Debes escribir tu %s.'));
+		$usuario=new UsuariosModel_bak;
+		$id_tienda = "";
+		$usuario->actualizar_tienda_usuario($id_tienda);
+		redirect(base_url('usuario/tienda'));
+	}
+
+	/*
+	| -------------------------------------------------------------------------
+	| Formulario creación Producto
+	| -------------------------------------------------------------------------
+	*/
+	public function producto_form()
+	{
+		$this->load->model('UsuariosModel_bak');
+		//Redirección al modo mantenimiento
+		if($this->data['op']['modo_mantenimiento']=='no'){
+
+			// Obtengo los datos de mi tiendas
+			$this->data['tienda'] = $this->UsuariosModel_bak->get_tienda_usuario($_SESSION['usuario']['id']);
+
+
+			// Reviso si se está revisando desde un celular o desde Escritorio
+			if($this->agent->is_mobile()){
+				$dispositivo = "mobile";
+			}else{
+				$dispositivo = "desktop";
+			}
+			// Debo redireccionar
+			if(isset($_SESSION['usuario'])&&!empty($_SESSION['usuario'])){
+				$this->load->view($dispositivo.'/usuarios/headers/header',$this->data);
+				$this->load->view($dispositivo.'/usuarios/producto_form',$this->data);
+				$this->load->view($dispositivo.'/usuarios/footers/footer',$this->data);
+			}else{
+				redirect(base_url('usuario/login_form'));
+			}
+
+		}else{
+			$this->load->view('mantenimiento');
+		}
+	}
+	/*
+	| -------------------------------------------------------------------------
+	| Formulario creación Producto
+	| -------------------------------------------------------------------------
+	*/
+	public function producto_form_actualizar()
+	{
+		$this->load->model('UsuariosModel_bak');
+		//Redirección al modo mantenimiento
+		if($this->data['op']['modo_mantenimiento']=='no'){
+
+			// Obtengo los datos de mi tiendas
+			$this->data['producto'] = $this->UsuariosModel_bak->get_detalles_producto($_SESSION['usuario']['id'],$_GET['id']);
+
+
+			// Reviso si se está revisando desde un celular o desde Escritorio
+			if($this->agent->is_mobile()){
+				$dispositivo = "mobile";
+			}else{
+				$dispositivo = "desktop";
+			}
+			// Debo redireccionar
+			if(isset($_SESSION['usuario'])&&!empty($_SESSION['usuario'])){
+				$this->load->view($dispositivo.'/usuarios/headers/header',$this->data);
+				$this->load->view($dispositivo.'/usuarios/producto_form_actualizar',$this->data);
+				$this->load->view($dispositivo.'/usuarios/footers/footer',$this->data);
+			}else{
+				redirect(base_url('usuario/login_form'));
+			}
+
+		}else{
+			$this->load->view('mantenimiento');
+		}
+	}
+	/*
+	| -------------------------------------------------------------------------
+	| Crear Producto
+	| -------------------------------------------------------------------------
+	*/
+	public function crear_producto()
+	 {
+		 $this->load->model('UsuariosModel_bak');
+			if($this->data['op']['modo_mantenimiento']=='no'){
+
+				// Reviso si se está revisando desde un celular o desde Escritorio
+				if($this->agent->is_mobile()){
+					$dispositivo = "mobile";
+				}else{
+					$dispositivo = "desktop";
+				}
+					// El formulario si es validado creo un usuario unico
+					$usuario=new UsuariosModel_bak;
+					// Inserto los registros
+
+					$usuario->crear_producto($_SESSION['usuario']['id']);
+
+					redirect(base_url('usuario/tienda'));
+
+
+			}else{
+				$this->load->view('mantenimiento');
+			}
+		}
+	/*
+	| -------------------------------------------------------------------------
+	| Borrar Producto
+	| -------------------------------------------------------------------------
+	*/
+	public function borrar_producto()
+	 {
+		 $this->load->model('UsuariosModel_bak');
+			if($this->data['op']['modo_mantenimiento']=='no'){
+
+				// Reviso si se está revisando desde un celular o desde Escritorio
+				if($this->agent->is_mobile()){
+					$dispositivo = "mobile";
+				}else{
+					$dispositivo = "desktop";
+				}
+					// El formulario si es validado creo un usuario unico
+					$usuario=new UsuariosModel_bak;
+					// Inserto los registros
+
+					$usuario->borrar_producto($_GET['id']);
+
+					redirect(base_url('usuario/tienda'));
+
+
+			}else{
+				$this->load->view('mantenimiento');
+			}
+		}
 }
