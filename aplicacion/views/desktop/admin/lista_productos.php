@@ -1,10 +1,10 @@
 <?php
   // defino variables de opciones
   if(isset($_GET['id_usuario'])){
-    $redireccion = 'admin/productos/crear?id_usuario='.$_GET['id_usuario'];
+    $redireccion = 'admin/productos/crear?id_usuario='.$_GET['id_usuario'].'&tipo_producto='.$tipo_producto;
     $nombre = 'de '.$usuario['USUARIO_NOMBRE'];
   }else{
-    $redireccion = 'admin/productos/crear';
+    $redireccion = 'admin/productos/crear'.'?tipo_producto='.$tipo_producto;
     $nombre = '';
   }
 
@@ -15,7 +15,7 @@
     <div class="col-sm-3 col-md-2 fila fila-gris p-0">
       <?php $this->load->view('desktop/admin/widgets/menu_control_administrador'); ?>
     </div>
-    <div class="col">
+    <div class="col mt-3">
       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <div class="titulo">
@@ -83,7 +83,7 @@
                     <!--
                     <a href="<?php echo base_url('admin/usuarios/perfil')."?id=".$producto->ID_PRODUCTO; ?>" class="btn btn-sm btn-success"> <span class="fa fa-id-card"></span> Detalles</a>
                   -->
-                    <a href="<?php echo base_url('admin/productos/actualizar')."?id=".$producto->ID_PRODUCTO; ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
+                    <a href="<?php echo base_url('admin/productos/actualizar'."?id=".$producto->ID_PRODUCTO."&tipo_producto=".$tipo_producto); ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
                     <a href="<?php echo base_url('admin/productos/borrar')."?id=".$producto->ID_PRODUCTO."&id_usuario=".$producto->ID_USUARIO; ?>" class="btn btn-sm btn-danger"><span class="fa fa-trash-alt"></span></a>
                   </div>
                 </td>

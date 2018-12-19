@@ -26,8 +26,8 @@ class Admin_Desktop extends CI_Controller {
 	public function index()
 	{
 			$this->data['divisas'] = $this->DivisasModel->lista('','','');
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/admin_desktop',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
 }

@@ -4,7 +4,7 @@
     <div class="col-sm-3 col-md-2 fila fila-gris p-0">
       <?php $this->load->view('desktop/admin/widgets/menu_control_administrador'); ?>
     </div>
-    <div class="col">
+    <div class="col mt-3">
       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <div class="titulo">

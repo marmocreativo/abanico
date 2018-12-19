@@ -22,19 +22,24 @@ class Admin_Usuarios extends CI_Controller {
 		// Cargo el modelo
 		$this->load->model('UsuariosModel');
 		$this->load->model('TiendasModel');
+
+
   }
 
 	public function index()
 	{
-			if(!isset($_GET['tipo_usuario'])||empty($_GET['tipo_usuario'])){ $tipo_usuario='usr-1'; }else{ $tipo_usuario=$_GET['tipo_usuario']; }
-			$this->data['usuarios'] = $this->UsuariosModel->lista('',$tipo_usuario,'','');
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			// Tipo de Uusario por defecto
+			if(!isset($_GET['tipo_usuario'])||empty($_GET['tipo_usuario'])){ $this->data['tipo_usuario']='usr-1'; }else{ $this->data['tipo_usuario']=$_GET['tipo_usuario']; }
+			$this->data['usuarios'] = $this->UsuariosModel->lista('',$this->data['tipo_usuario'],'','');
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_usuarios',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
 
 	public function busqueda()
 	{
+		// Tipo de Uusario por defecto
+		if(!isset($_GET['tipo_usuario'])||empty($_GET['tipo_usuario'])){ $this->data['tipo_usuario']='usr-1'; }else{ $this->data['tipo_usuario']=$_GET['tipo_usuario']; }
 		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
 			$parametros = array(
 				'USUARIO_NOMBRE'=>$_GET['Busqueda'],
@@ -43,9 +48,9 @@ class Admin_Usuarios extends CI_Controller {
 			);
 			$this->data['usuarios'] = $this->UsuariosModel->lista($parametros,$_GET['tipo_usuario'],'','');
 
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_usuarios',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 
 		}else{
 			redirect(base_url('admin/usuarios?tipo_usuario='.$_GET['tipo_usuario']));
@@ -53,6 +58,9 @@ class Admin_Usuarios extends CI_Controller {
 	}
 	public function crear()
 	{
+		// Tipo de Uusario por defecto
+		if(!isset($_GET['tipo_usuario'])||empty($_GET['tipo_usuario'])){ $this->data['tipo_usuario']='usr-1'; }else{ $this->data['tipo_usuario']=$_GET['tipo_usuario']; }
+		// Validar Formulario
 		$this->form_validation->set_rules('NombreUsuario', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
 		$this->form_validation->set_rules('ApellidosUsuario', 'Apellidos', 'required', array('required' => 'Debes escribir tus %s.'));
 		$this->form_validation->set_rules('CorreoUsuario', 'Correo Electrónico', 'required|valid_email|is_unique[usuarios.USUARIO_CORREO]', array(
@@ -65,6 +73,7 @@ class Admin_Usuarios extends CI_Controller {
 			'required' => 'Debes confirmar la Contraseña',
 			'matches' => 'La confirmación de la contraseña no coincide.'
 		));
+		$this->form_validation->set_rules('EstadoUsuario', 'Estado del Usuario', 'required', array('required' => 'Debes definir el %s.'));
 
 		if($this->form_validation->run())
     {
@@ -86,25 +95,26 @@ class Admin_Usuarios extends CI_Controller {
 				'USUARIO_PASSWORD' => $pass,
 				'USUARIO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 				'USUARIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+				'USUARIO_FECHA_NACIMIENTO' => $this->input->post('FechaNacimientoUsuario'),
 				'USUARIO_TIPO' => $this->input->post('TipoUsuario'),
+				'USUARIO_ESTADO' => $this->input->post('EstadoUsuario'),
       );
-
-			if(null !== $this->input->post('EstadoUsuario') && !empty($this->input->post('EstadoUsuario'))){ $estado = "activo"; }else{ $estado = "inactivo"; }
-
-			$parametros['USUARIO_ESTADO']= $estado;
 
       $pais_id = $this->UsuariosModel->crear($parametros);
       redirect(base_url('admin/usuarios?tipo_usuario='.$this->input->post('TipoUsuario')));
     }else{
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_usuario',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}
 
 
 	public function actualizar()
 	{
+		// Tipo de Uusario por defecto
+		if(!isset($_GET['tipo_usuario'])||empty($_GET['tipo_usuario'])){ $this->data['tipo_usuario']='usr-1'; }else{ $this->data['tipo_usuario']=$_GET['tipo_usuario']; }
+		// Validar Formulario
 		$this->form_validation->set_rules('NombreUsuario', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
 		$this->form_validation->set_rules('ApellidosUsuario', 'Apellidos', 'required', array('required' => 'Debes escribir tus %s.'));
 		$this->form_validation->set_rules('CorreoUsuario', 'Correo Electrónico', 'required|valid_email', array(
@@ -130,10 +140,9 @@ class Admin_Usuarios extends CI_Controller {
 				'USUARIO_TELEFONO' => $this->input->post('TelefonoUsuario'),
 				'USUARIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
 				'USUARIO_TIPO' => $this->input->post('TipoUsuario'),
+				'USUARIO_ESTADO' => $this->input->post('EstadoUsuario')
       );
 			if(null!==$this->input->post('PassUsuario')&&!empty($this->input->post('PassUsuario'))){ $parametros['USUARIO_PASSWORD']= $pass; };
-
-			$parametros['USUARIO_ESTADO']= $estado;
 
       $pais_id = $this->UsuariosModel->actualizar( $this->input->post('Identificador'),$parametros);
       redirect(base_url('admin/usuarios?tipo_usuario='.$this->input->post('TipoUsuario')));
@@ -141,9 +150,9 @@ class Admin_Usuarios extends CI_Controller {
 
 			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id']);
 
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_usuario',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}
 
@@ -168,6 +177,8 @@ class Admin_Usuarios extends CI_Controller {
 	}
 	public function estado()
 	{
+		$this->UsuariosModel->estado($_GET['id'],$_GET['estado']);
+		redirect(base_url('admin/usuarios?tipo_usuario='.$_GET['tipo_usuario']));
 	}
 	public function orden()
 	{
@@ -182,9 +193,9 @@ class Admin_Usuarios extends CI_Controller {
 			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id']);
 			$this->data['tienda'] = $this->TiendasModel->detalles_tienda_usuario($_GET['id']);
 
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/perfil_usuario',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 
 }

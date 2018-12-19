@@ -26,9 +26,9 @@ class Admin_Paises extends CI_Controller {
 	public function index()
 	{
 			$this->data['paises'] = $this->PaisesModel->lista('','','');
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_paises',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
 
 	public function busqueda()
@@ -40,9 +40,9 @@ class Admin_Paises extends CI_Controller {
 			);
 			$this->data['paises'] = $this->PaisesModel->lista($parametros,'','');
 
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_paises',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 
 		}else{
 			redirect(base_url('admin/paises'));
@@ -67,9 +67,9 @@ class Admin_Paises extends CI_Controller {
       $pais_id = $this->PaisesModel->crear($parametros);
       redirect(base_url('admin/paises'));
     }else{
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_pais',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}
 	public function actualizar()
@@ -94,9 +94,9 @@ class Admin_Paises extends CI_Controller {
 
 			$this->data['pais'] = $this->PaisesModel->detalles($_GET['id']);
 
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_pais',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}
 

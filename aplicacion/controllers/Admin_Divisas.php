@@ -26,9 +26,9 @@ class Admin_Divisas extends CI_Controller {
 	public function index()
 	{
 			$this->data['divisas'] = $this->DivisasModel->lista('','','');
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_divisas',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
 	public function busqueda()
 	{
@@ -39,9 +39,9 @@ class Admin_Divisas extends CI_Controller {
 			);
 			$this->data['divisas'] = $this->DivisasModel->lista($parametros,'','');
 
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_divisas',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 
 		}else{
 			redirect(base_url('admin/divisas'));
@@ -70,9 +70,9 @@ class Admin_Divisas extends CI_Controller {
       $divisa_id = $this->DivisasModel->crear($parametros);
       redirect(base_url('admin/divisas'));
     }else{
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_divisa',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}
 	public function actualizar()
@@ -101,9 +101,9 @@ class Admin_Divisas extends CI_Controller {
 
 			$this->data['divisa'] = $this->DivisasModel->detalles($_GET['id']);
 
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_divisa',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}
 

@@ -26,9 +26,9 @@ class Admin_Direcciones extends CI_Controller {
 	public function index()
 	{
 			$this->data['direcciones'] = $this->DireccionesModel->lista('','','','');
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_direcciones',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
 
 	public function busqueda()
@@ -41,9 +41,9 @@ class Admin_Direcciones extends CI_Controller {
 			);
 			$this->data['direcciones'] = $this->DireccionesModel->lista($parametros,'','');
 
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_direcciones',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 
 		}else{
 			redirect(base_url('admin/direcciones'));
@@ -68,9 +68,9 @@ class Admin_Direcciones extends CI_Controller {
       $pais_id = $this->DireccionesModel->crear($parametros);
       redirect(base_url('admin/usuarios/perfil?id=').$this->input->post('IdUsuario'));
     }else{
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_direccion',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}
 	public function actualizar()
@@ -95,9 +95,9 @@ class Admin_Direcciones extends CI_Controller {
 
 			$this->data['pais'] = $this->DireccionesModel->detalles($_GET['id']);
 
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_pais',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}
 

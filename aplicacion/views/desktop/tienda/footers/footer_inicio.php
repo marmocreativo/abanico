@@ -17,5 +17,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="<?php echo base_url(); ?>assets/global/js/bootstrap.min.js"></script>
     <!--<script src="assets/global/js/scripts_globales.js"></script>-->
+    <script type="text/javascript">
+    // select all thumbnails
+      const galleryThumbnail = document.querySelectorAll(".thumbnails-list li");
+      // select featured
+      const galleryFeatured = document.querySelector(".product-gallery-featured img");
+
+      // loop all items
+      galleryThumbnail.forEach((item) => {
+      item.addEventListener("mouseover", function () {
+        let image = item.children[0].src;
+        galleryFeatured.src = image;
+      });
+      });
+    </script>
   </body>
 </html>

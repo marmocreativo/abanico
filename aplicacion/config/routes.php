@@ -28,12 +28,14 @@ $route['admin/lenguajes'] = 'Admin_Lenguajes';
 $route['admin/lenguajes/([a-z]+)'] = 'Admin_Lenguajes/$1';
 $route['admin/usuarios'] = 'Admin_Usuarios';
 $route['admin/usuarios/([a-z]+)'] = 'Admin_Usuarios/$1';
-$route['admin/tiendas'] = 'Admin_Tiendas';
-$route['admin/tiendas/([a-z]+)'] = 'Admin_Tiendas/$1';
 $route['admin/direcciones'] = 'Admin_Direcciones';
 $route['admin/direcciones/([a-z]+)'] = 'Admin_Direcciones/$1';
+$route['admin/tiendas'] = 'Admin_Tiendas';
+$route['admin/tiendas/([a-z]+)'] = 'Admin_Tiendas/$1';
+$route['admin/categorias'] = 'Admin_Categorias';
+$route['admin/categorias/([a-z]+)'] = 'Admin_Categorias/$1';
 $route['admin/productos'] = 'Admin_Productos';
-$route['admin/productos/([a-z]+)'] = 'Admin_Productos/$1';
+$route['admin/productos/(:any)'] = 'Admin_Productos/$1';
 // Rutas de Usuario
 $route['usuario'] = 'Usuario';
 $route['usuario/([a-z]+)'] = 'Usuario/$1';
@@ -42,7 +44,7 @@ $route['login'] = 'Autenticacion';
 $route['login/([a-z]+)'] = 'Autenticacion/$1';
 // Rutas de tienda
 $route['categoria'] = 'Tienda_Categoria';
-$route['categoria/([a-z]+)'] = 'Tienda_Categoria/$1';
+$route['categoria/(:any)'] = 'Tienda_Categoria/$1';
 $route['producto'] = 'Tienda_Producto';
 // Ruta de Mantenimiento
 $route['mantenimiento'] = 'Mantenimiento';

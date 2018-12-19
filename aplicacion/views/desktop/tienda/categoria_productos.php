@@ -1,5 +1,21 @@
-<div class="fila p-5">
+<?php
+  if(isset($categoria['CATEGORIA_NOMBRE'])){
+    $titulo_categoria = $categoria['CATEGORIA_NOMBRE'];
+  }else{
+    $titulo_categoria = 'Todos los productos';
+  }
+  if(isset($_GET['Busqueda'])){
+    $titulo_categoria = 'Resultados para tu Busqueda';
+  }
+
+?>
+<div class="fila p-3">
   <div class="container-fluid">
+    <div class="row">
+      <div class="fila">
+        <h1 class="h3 border-bottom pb-3"> <i class="fa fa-boxes"></i> <?php echo $titulo_categoria; ?></h1>
+      </div>
+    </div>
     <div class="row">
     <!--  <div class="col-12 col-md-2">
         <div class="contenedor-filtros">
@@ -72,7 +88,9 @@
           <div class="col-6 col-sm-4 col-md-2 mb-3 px-0">
             <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
             <div class="card mx-1">
-              <img class="card-img-top" src="<?php echo base_url(); ?>assets/global/img/default.jpg" class="img-fluid" alt="Card image cap">
+              <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = 'assets/global/img/default.jpg'; }else{ $ruta_portada = 'assets/tienda/img/productos/completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+
+              <img class="card-img-top" src="<?php echo base_url($ruta_portada); ?>" class="img-fluid" alt="Card image cap">
               <div class="card-body text-center">
                 <h5 class="card-title text<?php echo $primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h5>
                 <h3 class="card-text">$<?php echo $producto->PRODUCTO_PRECIO; ?></h3>

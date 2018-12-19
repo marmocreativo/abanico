@@ -51,6 +51,32 @@ class ProductosModel extends CI_Model {
     return $query->result();
   }
   /*
+    * Enlisto todas las entradas
+    * $parametros Debe ser un array de Columnas y Valores, Busco usando la función LIKE
+    * $orden indicará la Columna y si es ascendente o descendente
+    * $limite Solo se usará si hay una cantidad limite de productos a mostrar
+ */
+  function lista_categoria_activos($parametros,$id_CATEGORIA,$orden,$limite){
+    // Join
+    $this->db->join('categorias_productos', 'productos.ID_PRODUCTO = categorias_productos.ID_PRODUCTO');
+    // Parametros
+    if(!empty($parametros)){
+      $this->db->or_like($parametros);
+    }
+    if(!empty($id_CATEGORIA)){
+      $this->db->where('ID_CATEGORIA', $id_CATEGORIA);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $this->db->where('PRODUCTO_ESTADO', 'activo');
+    $query = $this->db->get('productos');
+    return $query->result();
+  }
+  /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){

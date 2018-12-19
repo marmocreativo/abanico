@@ -4,13 +4,18 @@
     <div class="col-sm-3 col-md-2 fila fila-gris p-0">
       <?php $this->load->view('desktop/admin/widgets/menu_control_administrador'); ?>
     </div>
-    <div class="col-3">
-      <div class="card">
-        <div class="card-header d-flex justify-content-between">
-          <div class="titulo">
-            <h1 class="h5"> <span class="fa fa-user"></span> Datos personales</h1>
-          </div>
+    <div class="col-3 mt-3">
+      <div class="row justify-content-center">
+        <div class="col-8 col-md-6">
+            <img src="<?php echo base_url('assets/global/img/usuario_default.png') ?>" class="img-fluid img-thumbnail rounded-circle mx-auto" alt="">
         </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <h2 class="h6"><?php  echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']; ?></h2>
+        </div>
+      </div>
+      <div class="card">
         <div class="card-body p-0">
           <table class="table table-sm table-striped" style="font-size:0.8em;">
             <tr>
@@ -46,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col mt-3">
       <div class="row">
 
         <div class="col-6">
