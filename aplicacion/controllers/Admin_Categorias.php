@@ -72,7 +72,7 @@ class Admin_Categorias extends CI_Controller {
 		      $config['max_height']           = 1920;
 
 		      $this->load->library('upload', $config);
-					$this->load->library('simpleimage');
+					$this->load->library('SimpleImage');
 
 		      if ( ! $this->upload->do_upload('ImagenCategoria'))
 		      { echo $this->upload->display_errors();   }else{
@@ -138,7 +138,7 @@ class Admin_Categorias extends CI_Controller {
 		      $config['max_height']           = 1920;
 
 		      $this->load->library('upload', $config);
-					$this->load->library('simpleimage');
+					$this->load->library('SimpleImage');
 
 		      if ( ! $this->upload->do_upload('ImagenCategoria'))
 		      { echo $this->upload->display_errors();   }else{

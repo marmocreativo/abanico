@@ -75,19 +75,17 @@ class Admin_Tiendas extends CI_Controller {
 	}
 	public function actualizar()
 	{
-		$this->form_validation->set_rules('IsoPais', 'Código ISO', 'required', array( 'required' => 'Debes designar el %s.'));
 		$this->form_validation->set_rules('NombrePais', 'Nombre', 'required|max_length[255]', array( 'required' => 'Debes designar el %s.', 'max_length' => 'El nombre no puede superar los 255 caracteres' ));
 
 		if($this->form_validation->run())
     {
       $parametros = array(
-				'PAIS_ISO' => $this->input->post('IsoPais'),
-				'PAIS_NOMBRE' => $this->input->post('NombrePais'),
+				'TIENDA_NOMBRE' => $this->input->post('NombreTienda'),
+				'TIENDA_RAZON_SOCIAL' => $this->input->post('RazonSocialTienda'),
+				'TIENDA_RFC' => $this->input->post('NombrePais'),
+				'TIENDA_TELEFONO' => $this->input->post('NombrePais'),
+				'TIENDA_FECHA_ACTUALIZACION' => $this->input->post('NombrePais')
       );
-
-			if(null !== $this->input->post('EstadoPais') && !empty($this->input->post('EstadoPais'))){ $estado = "activo"; }else{ $estado = "inactivo"; }
-
-			$parametros['PAIS_ESTADO']= $estado;
 
       $pais_id = $this->TiendasModel->actualizar( $this->input->post('Identificador'),$parametros);
       redirect(base_url('admin/tiendas'));

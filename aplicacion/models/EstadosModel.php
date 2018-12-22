@@ -24,6 +24,12 @@ class EstadosModel extends CI_Model {
     $query = $this->db->get('estados');
     return $query->result();
   }
+  function estados_del_pais($id_pais){
+    $this->db->where('ID_PAIS',$id_pais);
+    $this->db->order_by('ESTADO_NOMBRE','ASC');
+    $query = $this->db->get('estados');
+    return $query->result();
+  }
   /*
     * Obtengo todos los detalles de una sola entrada
  */

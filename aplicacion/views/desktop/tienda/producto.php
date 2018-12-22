@@ -9,23 +9,25 @@
                 <div class="product-gallery-thumbnails">
                   <ol class="thumbnails-list list-unstyled">
                     <?php foreach($galerias as $galeria){
-                      $ruta_galeria = 'assets/tienda/img/productos/completo/'.$galeria->GALERIA_ARCHIVO;
+                      $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO;
                       ?>
                     <li><img src="<?php echo base_url($ruta_galeria) ?>" alt=""></li>
                   <?php } ?>
                   </ol>
                 </div>
                 <div class="product-gallery-featured">
-                  <?php if(empty($portada)){ $ruta_portada = 'assets/global/img/default.jpg'; }else{ $ruta_portada = 'assets/tienda/img/productos/completo/'.$portada['GALERIA_ARCHIVO']; } ?>
+                  <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
                   <img src="<?php echo base_url($ruta_portada) ?>" alt="" class="img-fluid">
                 </div>
               </div>
               <div class="product-seller-recommended">
                 <!-- /.recommended-items-->
                 <div class="product-description mb-5">
-                  <h2 class="mb-5">Description</h2>
+                  <h2 class="mb-5">Descripción</h2>
                   <?php echo $producto['PRODUCTO_DETALLES']; ?>
                 </div>
+
+                <!--
                 <div class="product-faq mb-5">
                   <h2 class="mb-3">Preguntas y Comentarios</h2>
                   <p class="text-muted">¿Tienes alguna duda?</p>
@@ -41,6 +43,7 @@
                     <li><i class="fa fa-comment"></i> <span>¿Me lo pueden mandar a otro estado?</span></li>
                   </ol>
                 </div>
+              -->
               </div>
             </div>
             <div class="product-payment-details">

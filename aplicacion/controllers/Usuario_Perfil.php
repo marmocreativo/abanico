@@ -1,11 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuario extends CI_Controller {
+class Usuario_Perfil extends CI_Controller {
 	public function __construct(){
     parent::__construct();
 		$this->data['op'] = opciones_default();
 		sesion_default($this->data['op']);
+		$this->data['lenguajes_activos'] = $this->lenguajes_activos->get_lenguajes_activos();
+		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
 		// Variables defaults
 			$this->data['primary'] = "-primary";
 
@@ -93,6 +95,8 @@ class Usuario extends CI_Controller {
 			'valid_email' => 'Debes escribir una dirección de correo valida.',
 			'is_unique' => 'La dirección de correo ya está registrada'
 		));
+		// reviso si está marcada la casilla de lista de correo
+		if(!null==$this->input->post('ListaDeCorreoUsuario')){ $lista_correo = 'si'; }else{ $lista_correo = 'no'; }
 
 		if($this->form_validation->run())
 		{
@@ -101,6 +105,7 @@ class Usuario extends CI_Controller {
 				'USUARIO_APELLIDOS' => $this->input->post('ApellidosUsuario'),
 				'USUARIO_CORREO' => $this->input->post('CorreoUsuario'),
 				'USUARIO_TELEFONO' => $this->input->post('TelefonoUsuario'),
+				'USUARIO_LISTA_DE_CORREO' => $lista_correo,
 				'USUARIO_FECHA_NACIMIENTO' => $this->input->post('FechaNacimientoUsuario'),
 				'USUARIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
 			);
@@ -158,56 +163,6 @@ class Usuario extends CI_Controller {
 
 	// Login Form
 	}
-	/*
-	| -------------------------------------------------------------------------
-	| Tienda
-	| -------------------------------------------------------------------------
-	*/
-	public function tienda()
-	{
-		$this->load->model('UsuariosModel_bak');
-		// Obtengo los datos de mi tiendas
-		$this->data['tienda'] = $this->UsuariosModel_bak->get_tienda_usuario($_SESSION['usuario']['id']);
-
-
-		// Reviso si se está revisando desde un celular o desde Escritorio
-		if($this->agent->is_mobile()){
-			$dispositivo = "mobile";
-		}else{
-			$dispositivo = "desktop";
-		}
-		// Debo redireccionar
-		if(isset($_SESSION['usuario'])&&!empty($_SESSION['usuario'])){
-
-			// reviso si el usuario ya tiene tienda
-			if(empty($this->data['tienda'])){
-				$formulario = "tienda_usuario";
-			}else{
-				$formulario = "vista_tienda";
-				$this->data['productos'] = $this->UsuariosModel_bak->get_productos($_SESSION['usuario']['id']);
-			}
-			$this->load->view($dispositivo.'/usuarios/headers/header',$this->data);
-			$this->load->view($dispositivo.'/usuarios/'.$formulario,$this->data);
-			$this->load->view($dispositivo.'/usuarios/footers/footer',$this->data);
-		}else{
-			redirect(base_url('usuario/login_form'));
-		}
-	}
-	/*
-	| -------------------------------------------------------------------------
-	| Actualizar Tienda
-	| -------------------------------------------------------------------------
-	*/
-	public function actualizar_tienda()
-	{
-		$this->load->model('UsuariosModel_bak');
-		//$this->form_validation->set_rules('PassUsuario', 'Contraseña', 'required', array('required' => 'Debes escribir tu %s.'));
-		$usuario=new UsuariosModel_bak;
-		$id_tienda = "";
-		$usuario->actualizar_tienda_usuario($id_tienda);
-		redirect(base_url('usuario/tienda'));
-	}
-
 	/*
 	| -------------------------------------------------------------------------
 	| Formulario creación Producto

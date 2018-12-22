@@ -40,9 +40,7 @@ class ProductosModel extends CI_Model {
     if(!empty($id_usuario)){
       $this->db->where('ID_USUARIO', $id_usuario);
     }
-    if(!empty($orden)){
-      $this->db->order_by($orden);
-    }
+    $this->db->order_by('ID_PRODUCTO','RANDOM');
     if(!empty($limite)){
       $this->db->limit($limite);
     }
@@ -66,9 +64,7 @@ class ProductosModel extends CI_Model {
     if(!empty($id_CATEGORIA)){
       $this->db->where('ID_CATEGORIA', $id_CATEGORIA);
     }
-    if(!empty($orden)){
-      $this->db->order_by($orden);
-    }
+      $this->db->order_by('ID_PRODUCTO','RANDOM');
     if(!empty($limite)){
       $this->db->limit($limite);
     }

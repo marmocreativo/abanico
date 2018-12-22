@@ -138,7 +138,7 @@
           <div class="col-6 col-sm-4 col-md-2 mb-3 px-0">
             <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
             <div class="card mx-1">
-              <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = 'assets/global/img/default.jpg'; }else{ $ruta_portada = 'assets/tienda/img/productos/completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+              <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
               <img class="card-img-top" src="<?php echo base_url($ruta_portada); ?>" class="img-fluid" alt="Card image cap">
               <div class="card-body text-center">
                 <h5 class="card-title text<?php echo $primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h5>

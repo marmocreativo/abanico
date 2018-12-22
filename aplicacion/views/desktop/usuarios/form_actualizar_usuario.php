@@ -61,7 +61,11 @@
                         <div class="form-group">
                           <label for="FechaNacimientoUsuario">Fecha Nacimiento</label>
                           <input type="date" class="form-control" id="FechaNacimientoUsuario" name="FechaNacimientoUsuario" placeholder="" value="<?php echo $usuario['USUARIO_FECHA_NACIMIENTO']; ?>">
-
+                        </div>
+                        <hr>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                          <input type="checkbox" class="custom-control-input" id="ListaDeCorreoUsuario" name="ListaDeCorreoUsuario" <?php if($usuario['USUARIO_LISTA_DE_CORREO']=='si'){ echo 'checked'; } ?>>
+                          <label class="custom-control-label" for="ListaDeCorreoUsuario">Deseo Recibir ofertas por correo electrónico</label>
                         </div>
                       </div>
                     </div>
@@ -73,7 +77,6 @@
           </div>
         </div>
         <div class="col-sm-3 col-md-2">
-          <!--
           <div class="card border<?php echo $primary; ?> text-center mb-4">
             <div class="card-header bg<?php echo $primary; ?> text-white">
               <h4 class="h5"> <span class="fa fa-map-marker-alt"></span> Direcciones</h4>
@@ -82,7 +85,6 @@
               <a href="<?php echo base_url('usuario/direcciones');?>" class="disabled">Ver mis direcciones registradas</a>
             </div>
           </div>
-        -->
           <div class="card border-warning text-center  mb-4">
             <div class="card-header bg-warning text-white">
               <h4 class="h5"> <span class="fa fa-user-lock"></span> Mi Contraseña</h4>

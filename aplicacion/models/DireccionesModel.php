@@ -24,23 +24,49 @@ class DireccionesModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
-    $query = $this->db->get('tiendas');
+    $query = $this->db->get('direcciones');
+    return $query->result();
+  }
+  /*
+    * Lista Básica de las direcciones excepto dirección Fiscal
+ */
+  function lista_direcciones($id_usuario){
+    $this->db->where('ID_USUARIO', $id_usuario);
+    $this->db->where('DIRECCION_TIPO !=', 'fiscal');
+    $query = $this->db->get('direcciones');
     return $query->result();
   }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    return $this->db->get_where('tiendas',array('ID_TIENDA'=>$id))->row_array();
+    return $this->db->get_where('direcciones',array('ID_DIRECCION'=>$id))->row_array();
   }
-  function detalles_tienda_usuario($id){
-    return $this->db->get_where('tiendas',array('ID_USUARIO'=>$id))->row_array();
+  /*
+    * Obtengo la dirección enlazada a una tienda
+ */
+  function direccion_de_tienda($id){
+    return $this->db->get_where('direcciones',array('ID_TIENDA'=>$id))->row_array();
+  }
+  /*
+    * Obtengo tObtengo la dirección etiquetada como FISCAL
+ */
+  function direccion_fiscal($id){
+    return $this->db->get_where('direcciones',array('ID_USUARIO'=>$id,'DIRECCION_TIPO'=>'fiscal'))->row_array();
+  }
+  /*
+    * Dirección en una sola línea
+ */
+  function direccion_formateada($id){
+   $dir = $this->db->get_where('direcciones',array('ID_DIRECCION'=>$id))->row_array();
+   return $dir['DIRECCION_CALLE_Y_NUMERO'].', '.$dir['DIRECCION_BARRIO'].', '.$dir['DIRECCION_MUNICIPIO'].', '.$dir['DIRECCION_CIUDAD'].', '.$dir['DIRECCION_ESTADO'].', '.$dir['DIRECCION_CODIGO_POSTAL'].', '.$dir['DIRECCION_PAIS'];
+
   }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
-    $this->db->insert('tiendas',$parametros);
+    $this->db->insert('direcciones',$parametros);
     return $this->db->insert_id();
   }
   /*
@@ -49,64 +75,15 @@ class DireccionesModel extends CI_Model {
     * $parametros son los campos actualizados
  */
   function actualizar($id,$parametros){
-    $this->db->where('ID_TIENDA',$id);
-    return $this->db->update('tiendas',$parametros);
+    $this->db->where('ID_DIRECCION',$id);
+    return $this->db->update('direcciones',$parametros);
   }
   /*
     * Borro una entrada
     * $id es el identificador de la entrada
  */
   function borrar($id){
-    return $this->db->delete('tiendas',array('ID_TIENDA'=>$id));
-  }
-  /*
-    * Interruptor cambia el estado de una entrada de activo a inactivo
-    * $id es el identificador de la entrada
-    * $activo es el estado actual de la entrada
- */
-  function activar($id,$activo){
-
-    switch($activo){
-      case "activo":
-        $activo = "inactivo";
-      break;
-      case "inactivo":
-        $activo = "activo";
-      break;
-      default:
-        $activo = "activo";
-      break;
-    }
-    $this->db->where('ID_TIENDA',$id);
-    return $this->db->update('tiendas',array('ID_TIENDA'=>$activo));
-  }
-  /*
-    * Cambio el estado de la entrada, puede ser cualquier estado
-    * $id es el identificador de la entrada
-    * $activo es el estado al que se quiere cambiar la entrada
- */
-  function estado($id,$activo){
-    $this->db->where('USUARIO_ESTADO',$id);
-    return $this->db->update('tiendas',array('USUARIO_ESTADO'=>$activo));
-  }
-  /*
-    * Creo el orden de los elementos
-    * $orden son los identificadores de las entradas en el orden en que quiero que aparezcan
- */
-  function ordenar($orden){
-  }
-
-  /*
-    * Funciones de Verificación
-  */
-  public function id_usuario_existe($id){
-    $this->db->where('ID_USUARIO',$id);
-    $query = $this->db->get('tiendas');
-    if ($query->num_rows() > 0){
-        return true;
-    }else{
-        return false;
-    }
+    return $this->db->delete('direcciones',array('ID_DIRECCION'=>$id));
   }
 
 }

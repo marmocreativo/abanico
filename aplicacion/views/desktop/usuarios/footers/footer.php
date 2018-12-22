@@ -18,40 +18,7 @@
     <script src="<?php echo base_url(); ?>assets/global/js/bootstrap.min.js"></script>
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=y3nn7mnqo19xsacsvznxqarsmohkoz42yat38khcnolpk6bf"></script>
     <script src="<?php echo base_url(); ?>assets/global/js/sweetalert2/sweetalert2.all.min.js"></script>
-    <script>
-    tinymce.init({
-      selector:'.Editor'
-      });
-    $(window).on('load',function(){
-      $('#borrar_perfil').click(function (){
-
-        Swal({
-          title: '¿Estas seguro?',
-          text: "Todos tus productos y servicios serán desactivados.",
-          type: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Si, estoy seguro!',
-          cancelButtonText: 'Mejor no.',
-        }).then((result) => {
-          if (result.value) {
-            var enlace = $('#borrar_perfil').data('enlace');
-            window.location=enlace;
-          } else if (
-            // Read more about handling dismissals
-            result.dismiss === Swal.DismissReason.cancel
-          ) {
-            swalWithBootstrapButtons(
-              'Cancelado',
-              'Tu cuenta está segura :)',
-              'error'
-            )
-          }
-        });
-      });
-    });
-    </script>
-    <!--<script src="assets/global/js/scripts_globales.js"></script>-->
+    <?php $this->load->view('scripts/formularios_usuario');  ?>
+    <?php $this->load->view('scripts/alertas_usuario');  ?>
   </body>
 </html>

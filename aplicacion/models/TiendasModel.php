@@ -33,8 +33,9 @@ class TiendasModel extends CI_Model {
   function detalles($id){
     return $this->db->get_where('tiendas',array('ID_TIENDA'=>$id))->row_array();
   }
-  function detalles_tienda_usuario($id){
-    return $this->db->get_where('tiendas',array('ID_USUARIO'=>$id))->row_array();
+  
+  public function tienda_usuario($id){
+      return $this->db->get_where('tiendas',array('ID_USUARIO'=>$id),1)->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
