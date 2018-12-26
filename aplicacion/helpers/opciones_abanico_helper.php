@@ -53,3 +53,16 @@ if ( ! function_exists('sesion_default'))
 
     }
 }
+if ( ! function_exists('uniq_slug'))
+{
+    function uniq_slug($length)
+    {
+      $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+      $charactersLength = strlen($characters);
+      $randomString = '';
+      for ($i = 0; $i < $length; $i++) {
+          $randomString .= $characters[rand(0, $charactersLength - 1)];
+      }
+      return $randomString;
+    }
+}

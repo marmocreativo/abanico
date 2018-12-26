@@ -27,7 +27,7 @@
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
               <a class="nav-link text-white" href="<?php echo $baseurl=base_url(); ?>"> <span class="fa fa-shopping-bag"></span> Volver a la tienda</a>
               <?php $this->load->view('desktop/tienda/widgets/menu_divisa'); ?>
-              <?php $this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
+              <?php //$this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_usuario'); ?>
             </div>
           </div>

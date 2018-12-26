@@ -67,6 +67,14 @@
                   <a href="<?php echo base_url('usuario/productos');?>">Mi Catálogo de Productos</a>
                 </div>
               </div>
+              <div class="card <?php echo 'border'.$primary; ?> text-center  mb-4">
+                <div class="card-header <?php echo 'bg'.$primary; ?> text-white">
+                  <h4 class="h5"> <span class="fa fa-tools"></span> Servicios</h4>
+                </div>
+                <div class="card-body">
+                  <a href="<?php echo base_url('usuario/servicios');?>">Mi Catálogo de Servicios</a>
+                </div>
+              </div>
               <!--
               <div class="card <?php echo 'border'.$primary; ?> text-center  mb-4">
                 <div class="card-header <?php echo 'bg'.$primary; ?> text-white">
@@ -74,14 +82,6 @@
                 </div>
                 <div class="card-body">
                   <a href="<?php echo base_url('usuario/mayoreo');?>">Mi Catálogo de Mayoreo</a>
-                </div>
-              </div>
-              <div class="card <?php echo 'border'.$primary; ?> text-center  mb-4">
-                <div class="card-header <?php echo 'bg'.$primary; ?> text-white">
-                  <h4 class="h5"> <span class="fa fa-tools"></span> Servicios</h4>
-                </div>
-                <div class="card-body">
-                  <a href="<?php echo base_url('usuario/servicios');?>">Mi Catálogo de Servicios</a>
                 </div>
               </div>
             -->

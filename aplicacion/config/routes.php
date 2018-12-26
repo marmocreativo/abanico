@@ -24,6 +24,8 @@ $route['admin/paises'] = 'Admin_Paises';
 $route['admin/paises/([a-z]+)'] = 'Admin_Paises/$1';
 $route['admin/estados'] = 'Admin_Estados';
 $route['admin/estados/([a-z]+)'] = 'Admin_Estados/$1';
+$route['admin/municipios'] = 'Admin_Municipios';
+$route['admin/municipios/([a-z]+)'] = 'Admin_Municipios/$1';
 $route['admin/lenguajes'] = 'Admin_Lenguajes';
 $route['admin/lenguajes/([a-z]+)'] = 'Admin_Lenguajes/$1';
 $route['admin/usuarios'] = 'Admin_Usuarios';
@@ -39,8 +41,11 @@ $route['admin/productos/(:any)'] = 'Admin_Productos/$1';
 $route['admin'] = 'Admin_Desktop';
 // Rutas de Usuario
 
+$route['usuario/favoritos'] = 'Usuario_Favoritos';
 $route['usuario/direcciones'] = 'Usuario_Direcciones';
 $route['usuario/direcciones/(:any)'] = 'Usuario_Direcciones/$1';
+$route['usuario/servicios'] = 'Usuario_Servicios';
+$route['usuario/servicios/(:any)'] = 'Usuario_Servicios/$1';
 $route['usuario/productos'] = 'Usuario_Productos';
 $route['usuario/productos/(:any)'] = 'Usuario_Productos/$1';
 $route['usuario/tienda'] = 'Usuario_Tiendas';
@@ -55,8 +60,12 @@ $route['ajax/paises'] = 'Ajax_Paises';
 $route['login'] = 'Autenticacion';
 $route['login/([a-z]+)'] = 'Autenticacion/$1';
 // Rutas de tienda
+$route['categoria/servicios'] = 'Tienda_Categoria_Servicios';
+$route['categoria/servicios/(:any)'] = 'Tienda_Categoria_Servicios/$1';
 $route['categoria'] = 'Tienda_Categoria';
 $route['categoria/(:any)'] = 'Tienda_Categoria/$1';
 $route['producto'] = 'Tienda_Producto';
+$route['producto/(:any)'] = 'Tienda_Producto/$1';
+$route['servicio'] = 'Tienda_Servicio';
 // Ruta de Mantenimiento
 $route['mantenimiento'] = 'Mantenimiento';

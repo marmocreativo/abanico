@@ -8,10 +8,10 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="contenido/img/sliders/sli-1.jpg" alt="First slide">
+        <img class="d-block w-100" src="contenido/img/slider/sli-1.jpg" alt="First slide">
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="contenido/img/sliders/sli-2.jpg" alt="Second slide">
+        <img class="d-block w-100" src="contenido/img/slider/sli-2.jpg" alt="Second slide">
       </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -27,7 +27,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <a href="#" class="caracteristica">
+        <a href="<?php echo base_url('categoria/servicios'); ?>" class="caracteristica">
           <div class="car-icono"> <span class="fa fa-paint-roller"></span> </div>
           <div class="car-contenido">
             <div class="car-titulo">Servicios</div>

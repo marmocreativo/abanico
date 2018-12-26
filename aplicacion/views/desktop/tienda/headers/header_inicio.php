@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/bootstrap.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/estilos_abanico_desktop.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/barrating/themes/fontawesome-stars.css">
     <title>Prueba <?php //echo $op['titulo_sitio'] ?></title>
   </head>
   <body>
@@ -22,7 +23,7 @@
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
               <?php $this->load->view('desktop/tienda/widgets/menu_divisa'); ?>
-              <?php $this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
+              <?php //$this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_usuario'); ?>
             </div>
           </div>
@@ -48,7 +49,7 @@
           </form>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#"> <span class="fa fa-heart"></span> Favoritos</a>
+              <a class="nav-link" href="<?php echo base_url('usuario/favoritos'); ?>"> <span class="fa fa-heart"></span> Favoritos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#"> <span class="fa fa-shopping-cart"></span> Carrito</a>

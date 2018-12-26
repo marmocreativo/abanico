@@ -64,11 +64,11 @@
                   <li  data-toggle="collapse" data-target="#products" class="collapsed <?php echo 'bg'.$primary; ?>">
                     <a href="#"><i class="fa fa-globe"></i> Internacionalizar <span class="arrow"></span></a>
                   </li>
-                  <!--
                     <ul class="sub-menu collapse" id="products">
                         <li><a href="<?php echo base_url('admin/paises'); ?>">Paises</a></li>
                         <li><a href="<?php echo base_url('admin/lenguajes'); ?>">Lenguajes</a></li>
                     </ul>
+                    <!--
                   <li class="<?php echo 'bg'.$primary; ?>">
                     <a href="<?php echo base_url('admin/pagina?tipo=informacion'); ?>">
                       <i class="fa fa-file-alt"></i> Información Abanico

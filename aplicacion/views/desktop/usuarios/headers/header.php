@@ -22,7 +22,7 @@
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
               <?php $this->load->view('desktop/tienda/widgets/menu_divisa'); ?>
-              <?php $this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
+              <?php //$this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_usuario'); ?>
             </div>
           </div>

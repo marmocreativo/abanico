@@ -62,39 +62,27 @@ class Admin_Categorias extends CI_Controller {
 			PROCESO DE LA IMAGEN
 			*/
 			if(!empty($_FILES['ImagenCategoria']['name'])){
-					$folder_imagen = 'assets/tienda/img/categorias/originales';
-					$nombre_archivo = 'categoria-'.uniqid();
-					$config['upload_path']          = $folder_imagen;
-					$config['file_name']						= 'categoria-'.uniqid();
-		      $config['allowed_types']        = 'gif|jpg|png';
-		      $config['max_size']             = 1000;
-		      $config['max_width']            = 1920;
-		      $config['max_height']           = 1920;
 
-		      $this->load->library('upload', $config);
-					$this->load->library('SimpleImage');
+				$archivo = $_FILES['ImagenCategoria']['tmp_name'];
+				$ancho = $this->data['op']['ancho_imagenes_categorias'];
+				$alto = $this->data['op']['alto_imagenes_categorias'];
+				$calidad = 80;
+				$nombre = 'categoria-'.uniqid();
+				$destino = $this->data['op']['ruta_imagenes_categorias'].'completo/';
+				// Subo la imagen y obtengo el nombre Default si va vacía
+				$imagen = subir_imagen_abanico_cortar($archivo,$ancho,$alto,$calidad,$nombre,$destino);
 
-		      if ( ! $this->upload->do_upload('ImagenCategoria'))
-		      { echo $this->upload->display_errors();   }else{
-						try {
-						    $this->simpleimage->fromFile($this->upload->data('full_path'))
-						    ->thumbnail(634, 811)                          // resize to 320x200 pixels
-						    ->toFile('assets/tienda/img/categorias/completo/'.$nombre_archivo.'.jpg' );      // convert to PNG and save a copy to new-image.png
-						} catch(Exception $err) {
-						  // Handle errors
-						  echo $err->getMessage();
-							$imagen = 'default.jpg';
-						}
-						$imagen = $nombre_archivo.'.jpg';
-					}
-				}else{
-					$imagen = 'default.jpg';
-				}
+			}else{
+				$imagen = 'default.jpg';
+			}
 
 		// verifico la URI
 			$url = url_title($this->input->post('NombreCategoria'),'-',TRUE);
 			if($this->CategoriasModel->verificar_uri($url)){
-				$url = url_title($this->input->post('NombreCategoria'),'-',TRUE).'-1';
+				$url = url_title($this->input->post('NombreCategoria'),'-',TRUE).'-'.uniq_slug(3);
+				if($this->CategoriasModel->verificar_uri($url)){
+					$url = url_title($this->input->post('NombreCategoria'),'-',TRUE).'-'.uniq_slug(3);
+				}
 			}
 			echo $imagen;
       $parametros = array(
@@ -124,38 +112,35 @@ class Admin_Categorias extends CI_Controller {
 
 		if($this->form_validation->run())
     {
+			if(empty($this->input->post('UrlCategoria'))){
+				// Verifico URL
+				$url = url_title($this->input->post('NombreCategoria'),'-',TRUE);
+				if($this->ProductosModel->verificar_uri($url)){
+					$url = url_title($this->input->post('NombreCategoria'),'-',TRUE).'-'.uniq_slug(3);
+					if($this->ProductosModel->verificar_uri($url)){
+						$url = url_title($this->input->post('NombreCategoria'),'-',TRUE).'-'.uniq_slug(3);
+					}
+				}
+			}else{
+				$url = $this->input->post('UrlCategoria');
+			}
 			/*
 			PROCESO DE LA IMAGEN
 			*/
 			if(!empty($_FILES['ImagenCategoria']['name'])){
-					$folder_imagen = 'assets/tienda/img/categorias/originales';
-					$nombre_archivo = 'categoria-'.uniqid();
-					$config['upload_path']          = $folder_imagen;
-					$config['file_name']						= 'categoria-'.uniqid();
-		      $config['allowed_types']        = 'gif|jpg|png';
-		      $config['max_size']             = 1000;
-		      $config['max_width']            = 1920;
-		      $config['max_height']           = 1920;
 
-		      $this->load->library('upload', $config);
-					$this->load->library('SimpleImage');
+				$archivo = $_FILES['ImagenCategoria']['tmp_name'];
+				$ancho = $this->data['op']['ancho_imagenes_categorias'];
+				$alto = $this->data['op']['alto_imagenes_categorias'];
+				$calidad = 80;
+				$nombre = 'categoria-'.uniqid();
+				$destino = $this->data['op']['ruta_imagenes_categorias'].'completo/';
+				// Subo la imagen y obtengo el nombre Default si va vacía
+				$imagen = subir_imagen_abanico_cortar($archivo,$ancho,$alto,$calidad,$nombre,$destino);
 
-		      if ( ! $this->upload->do_upload('ImagenCategoria'))
-		      { echo $this->upload->display_errors();   }else{
-						try {
-						    $this->simpleimage->fromFile($this->upload->data('full_path'))
-						    ->thumbnail(634, 811)                          // resize to 320x200 pixels
-						    ->toFile('assets/tienda/img/categorias/completo/'.$nombre_archivo.'.jpg' );      // convert to PNG and save a copy to new-image.png
-						} catch(Exception $err) {
-						  // Handle errors
-						  echo $err->getMessage();
-							$imagen = $this->input->post('ImagenActualCategoria');
-						}
-						$imagen = $nombre_archivo.'.jpg';
-					}
-				}else{
-					$imagen = $this->input->post('ImagenActualCategoria');
-				}
+			}else{
+				$imagen = $this->input->post('ImagenActualCategoria');
+			}
 
 			$parametros = array(
 				'CATEGORIA_NOMBRE' => $this->input->post('NombreCategoria'),
@@ -170,6 +155,7 @@ class Admin_Categorias extends CI_Controller {
       );
 
       $categoria_id = $this->CategoriasModel->actualizar( $this->input->post('Identificador'),$parametros);
+
 
       redirect(base_url('admin/categorias?tipo_categoria='.$this->input->post('TipoCategoria')));
     }else{

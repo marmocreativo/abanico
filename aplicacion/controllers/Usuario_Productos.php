@@ -65,10 +65,19 @@ class Usuario_Productos extends CI_Controller {
 
 			if($this->form_validation->run())
 			{
+				// Verifico URL
+				$url = url_title($this->input->post('NombreProducto'),'-',TRUE);
+				if($this->ProductosModel->verificar_uri($url)){
+					$url = url_title($this->input->post('NombreProducto'),'-',TRUE).'-'.uniq_slug(3);
+					if($this->ProductosModel->verificar_uri($url)){
+						$url = url_title($this->input->post('NombreProducto'),'-',TRUE).'-'.uniq_slug(3);
+					}
+				}
 				// Parametros del producto
 				$parametros = array(
 					'ID_USUARIO'=> $this->input->post('IdUsuario'),
 					'PRODUCTO_NOMBRE'=> $this->input->post('NombreProducto'),
+					'PRODUCTO_URL'=> $url,
 					'PRODUCTO_DESCRIPCION'=> $this->input->post('DescripcionProducto'),
 					'PRODUCTO_DETALLES'=> $this->input->post('DetallesProducto'),
 					'PRODUCTO_MODELO'=> $this->input->post('ModeloProducto'),
@@ -80,6 +89,7 @@ class Usuario_Productos extends CI_Controller {
 					'PRODUCTO_ISBN'=> $this->input->post('IsbnProducto'),
 					'PRODUCTO_MPN'=> $this->input->post('MpnProducto'),
 					'PRODUCTO_PRECIO'=> $this->input->post('PrecioProducto'),
+					'PRODUCTO_PRECIO_LISTA'=> $this->input->post('PrecioListaProducto'),
 					'PRODUCTO_CANTIDAD'=> $this->input->post('CantidadProducto'),
 					'PRODUCTO_CANTIDAD_MINIMA'=> $this->input->post('CantidadMinimaProducto'),
 					'PRODUCTO_INVENTARIO'=> '1',
@@ -94,23 +104,12 @@ class Usuario_Productos extends CI_Controller {
 					'PRODUCTO_TIPO'=> $this->input->post('TipoProducto'),
 					'PRODUCTO_ESTADO'=> 'activo',
 					'ORDEN'=> '1'
-	      );
+				);
 				// Creo el Producto
 				$producto_id = $this->ProductosModel->crear($parametros);
 
 				// Reviso si llegó Imagen
 				if(!empty($_FILES['ImagenProducto']['name'])){
-					$folder_imagen = 'assets/tienda/img/productos/originales';
-					$nombre_archivo = 'categoria-'.uniqid();
-					$config['upload_path']          = $folder_imagen;
-					$config['file_name']						= 'producto-'.uniqid();
-		      $config['allowed_types']        = 'gif|jpg|png';
-		      $config['max_size']             = 5000;
-		      $config['max_width']            = 1920;
-		      $config['max_height']           = 1920;
-
-		      $this->load->library('upload', $config);
-					$this->load->library('SimpleImage');
 
 					$archivo = $_FILES['ImagenProducto']['tmp_name'];
 					$ancho = $this->data['op']['ancho_imagenes_producto'];
@@ -182,10 +181,24 @@ class Usuario_Productos extends CI_Controller {
 				if($this->form_validation->run())
 				{
 					$tab='categoria';
+					// verifico la Url del Producto
+					if(empty($this->input->post('UrlProducto'))){
+						// Verifico URL
+						$url = url_title($this->input->post('NombreProducto'),'-',TRUE);
+						if($this->ProductosModel->verificar_uri($url)){
+							$url = url_title($this->input->post('NombreProducto'),'-',TRUE).'-'.uniq_slug(3);
+							if($this->ProductosModel->verificar_uri($url)){
+								$url = url_title($this->input->post('NombreProducto'),'-',TRUE).'-'.uniq_slug(3);
+							}
+						}
+					}else{
+						$url = $this->$input->post('UrlProducto');
+					}
 					// Parametros del producto
 					$parametros = array(
 						'ID_USUARIO'=> $this->input->post('IdUsuario'),
 						'PRODUCTO_NOMBRE'=> $this->input->post('NombreProducto'),
+						'PRODUCTO_URL'=> $url,
 						'PRODUCTO_DESCRIPCION'=> $this->input->post('DescripcionProducto'),
 						'PRODUCTO_DETALLES'=> $this->input->post('DetallesProducto'),
 						'PRODUCTO_MODELO'=> $this->input->post('ModeloProducto'),
@@ -197,6 +210,7 @@ class Usuario_Productos extends CI_Controller {
 						'PRODUCTO_ISBN'=> $this->input->post('IsbnProducto'),
 						'PRODUCTO_MPN'=> $this->input->post('MpnProducto'),
 						'PRODUCTO_PRECIO'=> $this->input->post('PrecioProducto'),
+						'PRODUCTO_PRECIO_LISTA'=> $this->input->post('PrecioListaProducto'),
 						'PRODUCTO_CANTIDAD'=> $this->input->post('CantidadProducto'),
 						'PRODUCTO_CANTIDAD_MINIMA'=> $this->input->post('CantidadMinimaProducto'),
 						'PRODUCTO_INVENTARIO'=> '1',
@@ -211,23 +225,12 @@ class Usuario_Productos extends CI_Controller {
 						'PRODUCTO_TIPO'=> $this->input->post('TipoProducto'),
 						'PRODUCTO_ESTADO'=> 'activo',
 						'ORDEN'=> '1'
-		      );
+					);
 					// Creo el Producto
 					$producto_id = $this->ProductosModel->actualizar($this->input->post('Identificador'),$parametros);
 
 					// Reviso si llegó Imagen
 					if(!empty($_FILES['ImagenProducto']['name'])){
-						$folder_imagen = 'assets/tienda/img/productos/originales';
-						$nombre_archivo = 'categoria-'.uniqid();
-						$config['upload_path']          = $folder_imagen;
-						$config['file_name']						= 'producto-'.uniqid();
-			      $config['allowed_types']        = 'gif|jpg|png';
-			      $config['max_size']             = 5000;
-			      $config['max_width']            = 1920;
-			      $config['max_height']           = 1920;
-
-			      $this->load->library('upload', $config);
-						$this->load->library('SimpleImage');
 
 						$archivo = $_FILES['ImagenProducto']['tmp_name'];
 						$ancho = $this->data['op']['ancho_imagenes_producto'];
@@ -287,6 +290,8 @@ class Usuario_Productos extends CI_Controller {
 	        if(isset($producto['ID_PRODUCTO']))
 	        {
 	            $this->ProductosModel->borrar($_GET['id']);
+							$this->GaleriasModel->borrar_todo_de($_GET['id']);
+							$this->CategoriasProductoModel->borrar($_GET['id']);
 	            redirect(base_url('usuario/productos'));
 	        } else {
 

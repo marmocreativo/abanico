@@ -25,7 +25,7 @@
                     <div class="border border-primary p-2">
                       <h6 class="border-bottom pb-2"> <i class="fa fa-tag"></i> Información Básica Obligatoria</h6>
                       <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                           <div class="form-group">
                             <label for="NombreProducto">Nombre del producto</label>
                             <input type="text" class="form-control" id="NombreProducto" name="NombreProducto" placeholder="" value="<?=!form_error('NombreProducto')?set_value('NombreProducto'):''?>">
@@ -40,6 +40,18 @@
                               </div>
                             <input type="text" class="form-control" id="PrecioProducto" name="PrecioProducto" required placeholder="" value="<?=!form_error('PrecioProducto')?set_value('PrecioProducto'):''?>">
                             </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-group">
+                            <label for="PrecioListaProducto">Precio de Lista</label>
+                            <div class="input-group mb-2">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text">$</div>
+                              </div>
+                            <input type="text" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?=!form_error('PrecioListaProducto')?set_value('PrecioListaProducto'):''?>">
+                            </div>
+                            <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Este es el precio que aparecerá en la lista de producto Tachado</small>
                           </div>
                         </div>
                         <div class="col">

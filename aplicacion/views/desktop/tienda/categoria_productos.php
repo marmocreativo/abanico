@@ -9,101 +9,66 @@
   }
 
 ?>
-<div class="fila p-3">
-  <div class="container-fluid">
+<div class="fila p-3" style="background:#eee;">
+  <div class="container">
     <div class="row">
       <div class="fila">
         <h1 class="h3 border-bottom pb-3"> <i class="fa fa-boxes"></i> <?php echo $titulo_categoria; ?></h1>
       </div>
     </div>
     <div class="row">
-    <!--  <div class="col-12 col-md-2">
+    <div class="col-2 d-none d-sm-block fila fila-gris">
         <div class="contenedor-filtros">
-          <h4>Marca</h4>
-          <hr>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-            <label class="form-check-label" for="exampleRadios1">
-              Apple
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option1" checked>
-            <label class="form-check-label" for="exampleRadios2">
-              Samsung
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option1" >
-            <label class="form-check-label" for="exampleRadios3">
-              LG
-            </label>
-          </div>
-          <h4>Capacidad</h4>
-          <hr>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios4" id="exampleRadios4" value="option1" >
-            <label class="form-check-label" for="exampleRadios4">
-              32Gb
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios5" id="exampleRadios5" value="option1" >
-            <label class="form-check-label" for="exampleRadios5">
-              64Gb
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios6" id="exampleRadios6" value="option1" >
-            <label class="form-check-label" for="exampleRadios6">
-              128Gb
-            </label>
-          </div>
-          <h4>Precio</h4>
-          <hr>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios7" id="exampleRadios7" value="option1" checked>
-            <label class="form-check-label" for="exampleRadios7">
-              $200-$500
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios8" id="exampleRadios8" value="option1" >
-            <label class="form-check-label" for="exampleRadios8">
-              $600-$800
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios9" id="exampleRadios9" value="option1">
-            <label class="form-check-label" for="exampleRadios9">
-              $900-$1000
-            </label>
-          </div>
+          <h4>Filtros</h4>
+
         </div>
       </div>
-    -->
-      <div class="col-12">
+      <div class="col">
         <div class="card-deck">
           <?php foreach($productos as $producto){ ?>
-          <div class="col-6 col-sm-4 col-md-2 mb-3 px-0">
-            <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
-            <div class="card mx-1">
-              <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-
-              <img class="card-img-top" src="<?php echo base_url($ruta_portada); ?>" class="img-fluid" alt="Card image cap">
-              <div class="card-body text-center">
-                <h5 class="card-title text<?php echo $primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h5>
-                <h3 class="card-text">$<?php echo $producto->PRODUCTO_PRECIO; ?></h3>
-                <p class="text<?php echo $primary; ?>">
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </p>
+            <div class="col-xl-3 col-md-3 col-6 mb-3">
+              <div class="cuadricula-productos">
+                <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+                <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="enlace-principal">
+                  <div class="imagen-producto">
+                    <div class="contenedor-etiquetas">
+                      <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
+                        <span class="etiqueta-1">Mex</span>
+                      <?php } ?>
+                      <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
+                        <span class="etiqueta-2">Nuevo</span>
+                      <?php } ?>
+                      <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO_LISTA<$producto->PRODUCTO_PRECIO){ ?>
+                        <span class="etiqueta-3">Oferta</span>
+                      <?php } ?>
+                    </div>
+                      <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>
+                      <div class="overlay-producto <?php echo 'bg'.$primary; ?>"></div>
+                      <div class="boton-ver">
+                        <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
+                      <?php if(verificar_sesion()){ ?>
+                        <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+                      <?php }else{ ?>
+                        <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$producto->ID_PRODUCTO)); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+                      <?php } ?>
+                      </div>
+                  </div>
+                  </a>
+                  <div class="product-content text-center">
+                      <ul class="rating">
+                          <li class="fa fa-star"></li>
+                          <li class="fa fa-star"></li>
+                          <li class="fa fa-star"></li>
+                          <li class="far fa-star"></li>
+                          <li class="far fa-star"></li>
+                      </ul>
+                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h3>
+                      <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)){ ?>
+                        <div class="price-list"> $<?php echo $producto->PRODUCTO_PRECIO_LISTA; ?></div>
+                      <?php } ?>
+                      <div class="price"> $<?php echo $producto->PRODUCTO_PRECIO; ?></div>
+                  </div>
               </div>
-            </div>
-            </a>
           </div>
         <?php } ?>
         </div>

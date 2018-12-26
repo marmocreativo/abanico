@@ -52,7 +52,11 @@ class Autenticacion extends CI_Controller {
 						redirect(base_url('login?mensaje=error_activo'));
 				}else{
 					iniciar_sesion($parametros);
-					redirect(base_url('usuario'));
+					if(!null==$this->input->post('UrlRedirect') ){
+						redirect($this->input->post('UrlRedirect'));
+					}else{
+						redirect(base_url('usuario'));
+					}
 				}
 			}else{
 					// Si no coinciden vuelvo a cargar el formulario

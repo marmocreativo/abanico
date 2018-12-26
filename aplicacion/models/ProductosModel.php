@@ -73,6 +73,20 @@ class ProductosModel extends CI_Model {
     return $query->result();
   }
   /*
+    * Enlisto todas las entradas
+    * $parametros Debe ser un array de Columnas y Valores, Busco usando la función LIKE
+    * $orden indicará la Columna y si es ascendente o descendente
+    * $limite Solo se usará si hay una cantidad limite de productos a mostrar
+ */
+  function lista_favoritos_activos($favoritos){
+
+      $this->db->where_in('ID_PRODUCTO',$favoritos);
+    $this->db->order_by('PRODUCTO_FECHA_PUBLICACION','DESC');
+    $this->db->where('PRODUCTO_ESTADO', 'activo');
+    $query = $this->db->get('productos');
+    return $query->result();
+  }
+  /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
@@ -82,8 +96,21 @@ class ProductosModel extends CI_Model {
     return $this->db->get_where('productos',array('ID_USUARIO'=>$id))->row_array();
   }
   /*
+    * Obtengo todos los detalles de una sola entrada
+  */
+   function detalles_slug($id){
+     return $this->db->get_where('productos',array('PRODUCTO_URL'=>$id))->row_array();
+   }
+   /*
+     * Verificar URI
+  */
+  function verificar_uri($url){
+    $usuario = $this->db->get_where('productos',array('PRODUCTO_URL'=>$url))->row_array();
+    if(!empty($usuario)){ return TRUE; }else{ return FALSE; }
+  }
+  /*
     * Creo una nueva entrada usando los parámetros
- */
+  */
   function crear($parametros){
     $this->db->insert('productos',$parametros);
     return $this->db->insert_id();

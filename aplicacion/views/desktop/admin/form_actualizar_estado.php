@@ -20,12 +20,12 @@
             <input type="hidden" name="Identificador" value="<?php echo $estado['ID_ESTADO']; ?>">
             <div class="form-group">
               <label for="IsoEstado">Código ISO</label>
-              <input type="text" class="form-control" name="IsoEstado" id="IsoEstado" placeholder="" required value="<?php if(empty(form_error('IsoPais'))){ echo $estado['ESTADO_ISO']; } else { set_value('IsoPais'); } ?>">
+              <input type="text" class="form-control" name="IsoEstado" id="IsoEstado" placeholder="" required value="<?php if(empty(form_error('IsoEstado'))){ echo $estado['ESTADO_ISO']; } else { set_value('IsoEstado'); } ?>">
               <small class="text-info"> <span class="fa fa-info-circle"></span> Código internacional del pais 2 letras Ej. MXN</small>
             </div>
             <div class="form-group">
               <label for="NombreEstado">Nombre</label>
-              <input type="text" class="form-control" name="NombreEstado" id="NombreEstado" placeholder="" required value="<?php if(empty(form_error('NombrePais'))){ echo $estado['ESTADO_NOMBRE']; } else { set_value('NombrePais'); } ?>">
+              <input type="text" class="form-control" name="NombreEstado" id="NombreEstado" placeholder="" required value="<?php if(empty(form_error('NombreEstado'))){ echo $estado['ESTADO_NOMBRE']; } else { set_value('NombreEstado'); } ?>">
             </div>
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" name="EstadoEstado" id="EstadoEstado" <?php if($estado['ESTADO_ESTADO']){ echo "checked"; } ?>>

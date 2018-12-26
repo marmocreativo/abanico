@@ -57,6 +57,9 @@
               <?php } ?>
               <hr>
                 <form class="" action="<?php echo base_url('login/iniciar');?>" method="post">
+                  <?php if(isset($_GET['url_redirect'])&&!empty($_GET['url_redirect'])){ ?>
+                    <input type="hidden" name="UrlRedirect" value="<?php echo $_GET['url_redirect'] ?>">
+                  <?php } ?>
                    <div class="form-group">
                      <label for="CorreoUsuario">Correo</label>
                      <input type="email" class="form-control" id="CorreoUsuario" name="CorreoUsuario" placeholder="Su correo electrónico">

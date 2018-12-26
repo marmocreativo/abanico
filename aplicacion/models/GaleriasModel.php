@@ -57,6 +57,13 @@ class GaleriasModel extends CI_Model {
     return $this->db->delete('galeria_productos',array('ID_GALERIA'=>$id));
   }
   /*
+    * Borro una entrada
+    * $id es el identificador de la entrada
+ */
+  function borrar_todo_de($id){
+    return $this->db->delete('galeria_productos',array('ID_PRODUCTO'=>$id));
+  }
+  /*
     * Interruptor cambia el estado de una entrada de activo a inactivo
     * $id es el identificador de la entrada
     * $activo es el estado actual de la entrada
