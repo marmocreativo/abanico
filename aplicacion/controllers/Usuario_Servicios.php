@@ -66,7 +66,7 @@ class Usuario_Servicios extends CI_Controller {
 					'SERVICIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
 					'SERVICIO_FECHA_PUBLICACION' => date('Y-m-d H:i:s'),
 					'SERVICIO_TIPO'=> 'profesional',
-					'SERVICIO_ESTADO'=> 'pendiente',
+					'SERVICIO_ESTADO'=> 'activo',
 					'ORDEN'=> '1'
 	      );
 				// Creo el Servicio
@@ -143,7 +143,7 @@ class Usuario_Servicios extends CI_Controller {
 						'SERVICIO_MUNICIPIO'=> $this->input->post('MunicipioDireccion'),
 						'SERVICIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
 						'SERVICIO_TIPO'=> 'profesional',
-						'SERVICIO_ESTADO'=> 'pendiente',
+						'SERVICIO_ESTADO'=> 'activo',
 						'ORDEN'=> '1'
 		      );
 					// Creo el Servicio
