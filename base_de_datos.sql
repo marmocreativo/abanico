@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 22-12-2018 a las 12:44:05
+-- Tiempo de generación: 26-12-2018 a las 16:40:39
 -- Versión del servidor: 5.6.40-84.0-log
 -- Versión de PHP: 5.6.30
 
@@ -21,6 +21,38 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `quarkser_abanico`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `adjuntos_usuarios`
+--
+
+CREATE TABLE `adjuntos_usuarios` (
+  `ID_ADJUNTO` int(11) NOT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `ADJUNTO_NOMBRE` varchar(255) DEFAULT NULL,
+  `ADJUNTO_ARCHIVO` varchar(255) DEFAULT NULL,
+  `ADJUNTO_TIPO` varchar(255) DEFAULT NULL,
+  `REPORTE_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `calificaciones_productos`
+--
+
+CREATE TABLE `calificaciones_productos` (
+  `ID_CALIFICACION` int(11) NOT NULL,
+  `ID_PRODUCTO` int(11) DEFAULT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `ID_USUARIO_CALIFICADOR` varchar(255) DEFAULT NULL,
+  `CALIFICACION_ESTRELLAS` int(1) DEFAULT NULL,
+  `CALIFICACION_COMENTARIO` varchar(255) DEFAULT NULL,
+  `CALIFICACION_ESTADO` varchar(255) DEFAULT NULL,
+  `CALIFICACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -53,7 +85,14 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (23, 'Refrigeradores', 'refrigeradores', '', '-default', 'fas fa-list', 'default.jpg', 20, 0, 'productos', 'activo'),
 (24, 'Cucharas', 'cucharas', '', '-default', 'fas fa-list', 'default.jpg', 21, 0, 'productos', 'activo'),
 (25, 'Varios', 'varios', '', '-primary-1', 'fas fa-list', 'default.jpg', 19, 0, 'productos', 'activo'),
-(26, 'Varios', 'varios-1', '', '-primary-4', 'fas fa-list', 'default.jpg', 25, 0, 'productos', 'activo');
+(26, 'Varios', 'varios-1', '', '-primary-4', 'fas fa-list', 'default.jpg', 25, 0, 'productos', 'activo'),
+(27, 'Ingeniería y Construcción', 'ingeniería-y-construcción', 'Prueba de Categoría', '-primary', 'fas fa-wrench', 'default.jpg', 0, 0, 'servicios', 'activo'),
+(28, 'Ingenieros', 'ingenieros', '', '-primary-3', 'fas fa-list', 'default.jpg', 27, 0, 'servicios', 'activo'),
+(29, 'Constructores', 'constructores', '', '-primary-1', 'fas fa-list', 'default.jpg', 27, 0, 'servicios', 'activo'),
+(30, 'Otros', 'otros', '', '-primary-8', 'fas fa-list', 'default.jpg', 27, 0, 'servicios', 'activo'),
+(31, 'Ingenieros Industriales', 'ingenieros-industriales', '', '-primary-3', 'fas fa-list', 'default.jpg', 28, 0, 'servicios', 'activo'),
+(32, 'Albañilería', 'albañilería', '', '-primary-6', 'fas fa-list', 'default.jpg', 29, 0, 'servicios', 'activo'),
+(33, 'Varios', 'varios-un7', '', '-primary-3', 'fas fa-list', 'default.jpg', 30, 0, 'servicios', 'activo');
 
 -- --------------------------------------------------------
 
@@ -77,6 +116,54 @@ INSERT INTO `categorias_productos` (`ID`, `ID_CATEGORIA`, `ID_PRODUCTO`) VALUES
 (22, 24, 17),
 (23, 26, 18),
 (24, 26, 19);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categorias_publicaciones`
+--
+
+CREATE TABLE `categorias_publicaciones` (
+  `ID` bigint(6) NOT NULL,
+  `ID_CATEGORIA` bigint(6) NOT NULL,
+  `ID_PUBLICACION` bigint(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categorias_servicios`
+--
+
+CREATE TABLE `categorias_servicios` (
+  `ID` bigint(6) NOT NULL,
+  `ID_CATEGORIA` bigint(6) NOT NULL,
+  `ID_SERVICIO` bigint(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `categorias_servicios`
+--
+
+INSERT INTO `categorias_servicios` (`ID`, `ID_CATEGORIA`, `ID_SERVICIO`) VALUES
+(8, 33, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `ID_COMENTARIO` int(11) NOT NULL,
+  `ID_OBJETO` int(11) DEFAULT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `COMENTARIO_PADRE` int(11) DEFAULT NULL,
+  `COMENTARIO_TIPO` varchar(255) DEFAULT NULL,
+  `COMENTARIO_TEXTO` text,
+  `COMENTARIO_ESTADO` varchar(255) DEFAULT NULL,
+  `COMENTARIO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -240,6 +327,20 @@ INSERT INTO `estados` (`ID_ESTADO`, `ID_PAIS`, `ESTADO_ISO`, `ESTADO_NOMBRE`, `E
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `favoritos`
+--
+
+CREATE TABLE `favoritos` (
+  `ID_FAVORITO` int(11) NOT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `ID_OBJETO` int(11) DEFAULT NULL,
+  `FAVORITO_TIPO` varchar(255) DEFAULT NULL,
+  `FAVORITO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `galeria_productos`
 --
 
@@ -261,6 +362,45 @@ INSERT INTO `galeria_productos` (`ID_GALERIA`, `ID_PRODUCTO`, `GALERIA_ARCHIVO`,
 (19, 17, 'categoria-5c1d350ce81b6.jpg', 'si', 'activo', 1),
 (20, 18, 'producto-5c1e6b0dee919.jpg', 'si', 'activo', 1),
 (21, 19, 'producto-5c1e6c4534aed.jpg', 'si', 'activo', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `galeria_servicios`
+--
+
+CREATE TABLE `galeria_servicios` (
+  `ID_GALERIA` bigint(11) NOT NULL,
+  `ID_SERVICIO` bigint(11) NOT NULL,
+  `GALERIA_ARCHIVO` varchar(255) NOT NULL DEFAULT 'default.jpg',
+  `GALERIA_PORTADA` varchar(255) NOT NULL DEFAULT 'no',
+  `GALERIA_ESTADO` varchar(255) NOT NULL DEFAULT 'activo',
+  `ORDEN` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `galeria_servicios`
+--
+
+INSERT INTO `galeria_servicios` (`ID_GALERIA`, `ID_SERVICIO`, `GALERIA_ARCHIVO`, `GALERIA_PORTADA`, `GALERIA_ESTADO`, `ORDEN`) VALUES
+(8, 10, 'Servicio-5c24016ab1d69.jpg', 'si', 'activo', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `guias_abanico`
+--
+
+CREATE TABLE `guias_abanico` (
+  `GUIA_CODIGO` varchar(255) NOT NULL,
+  `GUIA_NOMBRE` varchar(255) DEFAULT NULL,
+  `GUIA_DIRECCION` text,
+  `GUIA_TELEFONO` varchar(255) DEFAULT NULL,
+  `GUIA_CORREO` varchar(255) DEFAULT NULL,
+  `GUIA_ESTADO` varchar(255) DEFAULT NULL,
+  `GUIA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `GUIA_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -308,6 +448,38 @@ CREATE TABLE `lista_negra` (
   `DIRECCION_IP` varchar(255) NOT NULL,
   `NOTAS` text NOT NULL,
   `FECHA_REGISTRO` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mensajes_pedidos`
+--
+
+CREATE TABLE `mensajes_pedidos` (
+  `ID_MENSAJE` int(11) NOT NULL,
+  `ID_PEDIDO` int(11) DEFAULT NULL,
+  `MENSAJE_ASUNTO` varchar(255) DEFAULT NULL,
+  `MENSAJE_CONTENIDO` text,
+  `MENSAJE_PRIVADO` varchar(255) DEFAULT NULL,
+  `MENSAJE_ESTADO` varchar(255) DEFAULT NULL,
+  `MENSAJE_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `movimientos`
+--
+
+CREATE TABLE `movimientos` (
+  `ID_MOVIMIENTO` int(11) NOT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `ID_TIENDA` int(11) DEFAULT NULL,
+  `MOVIMIENTO_TIPO` varchar(255) DEFAULT NULL,
+  `MOVIMIENTO_DESCRIPCION` text,
+  `MOVIMIENTO_IMPORTE` decimal(10,2) DEFAULT NULL,
+  `MOVIMIENTO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5937,6 +6109,20 @@ INSERT INTO `municipios` (`ID_MUNICIPIO`, `ID_PAIS`, `ESTADO_NOMBRE`, `MUNICIPIO
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `notificaciones`
+--
+
+CREATE TABLE `notificaciones` (
+  `ID_NOTIFICACION` int(11) NOT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `NOTIFICACION_CONTENIDO` varchar(255) DEFAULT NULL,
+  `NOTIFICACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `NOTIFICACION_ESTADO` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `opciones`
 --
 
@@ -5967,8 +6153,25 @@ INSERT INTO `opciones` (`ID`, `OPCION_NOMBRE`, `OPCION_VALOR`, `ACTIVO`) VALUES
 (13, 'ancho_imagenes_tienda', '300', 1),
 (14, 'alto_imagenes_tienda', '300', 1),
 (15, 'ruta_imagenes_producto', 'contenido/img/productos/', 1),
-(16, 'ancho_imagenes_producto', '634', 1),
-(17, 'alto_imagenes_producto', '811', 1);
+(16, 'ancho_imagenes_producto', '500', 1),
+(17, 'alto_imagenes_producto', '750', 1),
+(18, 'ruta_imagenes_servicios', 'contenido/img/servicios/', 1),
+(19, 'ancho_imagenes_servicios', '500', 1),
+(20, 'alto_imagenes_servicios', '750', 1),
+(21, 'ruta_imagenes_categorias', 'contenido/img/categorias/', 1),
+(22, 'ancho_imagenes_categorias', '500', 1),
+(23, 'alto_imagenes_categorias', '750', 1),
+(24, 'ruta_imagenes_slider', 'contenido/img/slider/', 1),
+(25, 'ancho_imagenes_slider', '1600', 1),
+(26, 'alto_imagenes_slider', '340', 1),
+(27, 'ruta_imagenes_publicaciones', 'contenido/img/publicaciones/', 1),
+(28, 'ancho_imagenes_publicaciones', '750', 1),
+(29, 'alto_imagenes_publicaciones', '500', 1),
+(30, 'ruta_imagenes_transportistas', 'contenido/img/transportistas/', 1),
+(31, 'ancho_imagenes_transportistas', '200', 1),
+(32, 'alto_imagenes_transportistas', '200', 1),
+(33, 'ruta_adjuntos_usuario', 'contenido/adjuntos/usuarios/', 1),
+(34, 'dias_productos_nuevos', '15', 1);
 
 -- --------------------------------------------------------
 
@@ -5994,6 +6197,57 @@ INSERT INTO `paises` (`ID_PAIS`, `PAIS_ISO`, `PAIS_NOMBRE`, `PAIS_ESTADO`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `ID_PEDIDO` int(11) NOT NULL,
+  `ID_USUARIO` int(11) DEFAULT NULL,
+  `PEDIDO_NOMBRE` text,
+  `PEDIDO_CORREO` varchar(255) DEFAULT NULL,
+  `PEDIDO_TELEFONO` varchar(255) DEFAULT NULL,
+  `ID_DIRECCION` int(11) DEFAULT NULL,
+  `PEDIDO_DIRECCION` text,
+  `PEDIDO_DIVISA` varchar(255) DEFAULT NULL,
+  `PEDIDO_conversion` decimal(10,2) DEFAULT NULL,
+  `PEDIDO_IMPORTE_PRODUCTOS` decimal(10,2) DEFAULT NULL,
+  `PEDIDO_IMPORTE_ENVIO` decimal(10,2) DEFAULT NULL,
+  `PEDIDO_ID_PAQUETERIA` int(11) DEFAULT NULL,
+  `PEDIDO_NOMBRE_PAQUETERIA` varchar(255) DEFAULT NULL,
+  `PEDIDO_GUIA_PAQUETERIA` varchar(255) DEFAULT NULL,
+  `PEDIDO_RECIBE` varchar(255) DEFAULT NULL,
+  `PEDIDO_COMENTARIOS` text,
+  `PEDIDO_IMPORTE_DESCUENTO` decimal(10,2) DEFAULT NULL,
+  `PEDIDO_DESCUENTO_DESCRIPCION` text,
+  `PEDIDO_IMPORTE_TOTAL` decimal(10,2) DEFAULT NULL,
+  `PEDIDO_CANTIDAD_PRODUCTOS` int(11) DEFAULT NULL,
+  `PEDIDO_FORMA_PAGO` varchar(255) DEFAULT NULL,
+  `PEDIDO_ESTADO_PAGO` varchar(255) DEFAULT NULL,
+  `PEDIDO_ESTADO_PEDIDO` varchar(255) DEFAULT NULL,
+  `PEDIDO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `PEDIDO_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `preguntas_frecuentes`
+--
+
+CREATE TABLE `preguntas_frecuentes` (
+  `ID_PREGUNTA` int(11) NOT NULL,
+  `ID_CATEGORIA` int(11) DEFAULT NULL,
+  `ID_OBJETO` int(11) DEFAULT NULL,
+  `PREGUNTA_TIPO` varchar(255) DEFAULT NULL,
+  `PREGUNTA_PREGUNTA` varchar(255) DEFAULT NULL,
+  `PREGUNTA_RESPUESTA` text,
+  `PREGUNTA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `ORDEN` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `productos`
 --
 
@@ -6013,6 +6267,7 @@ CREATE TABLE `productos` (
   `PRODUCTO_ISBN` varchar(255) NOT NULL,
   `PRODUCTO_MPN` varchar(255) NOT NULL,
   `PRODUCTO_PRECIO` decimal(10,2) NOT NULL,
+  `PRODUCTO_PRECIO_LISTA` decimal(10,2) NOT NULL,
   `PRODUCTO_CANTIDAD` int(6) NOT NULL,
   `PRODUCTO_CANTIDAD_MINIMA` int(6) NOT NULL,
   `PRODUCTO_INVENTARIO` tinyint(1) NOT NULL,
@@ -6033,20 +6288,139 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `PRODUCTO_NOMBRE`, `PRODUCTO_URL`, `PRODUCTO_DESCRIPCION`, `PRODUCTO_DETALLES`, `PRODUCTO_MODELO`, `PRODUCTO_ORIGEN`, `PRODUCTO_SKU`, `PRODUCTO_UPC`, `PRODUCTO_EAN`, `PRODUCTO_JAN`, `PRODUCTO_ISBN`, `PRODUCTO_MPN`, `PRODUCTO_PRECIO`, `PRODUCTO_CANTIDAD`, `PRODUCTO_CANTIDAD_MINIMA`, `PRODUCTO_INVENTARIO`, `PRODUCTO_MENSAJE_SIN_STOCK`, `PRODUCTO_FECHA_REGISTRO`, `PRODUCTO_FECHA_ACTUALIZACION`, `PRODUCTO_FECHA_PUBLICACION`, `PRODUCTO_ANCHO`, `PRODUCTO_ALTO`, `PRODUCTO_PROFUNDO`, `PRODUCTO_PESO`, `PRODUCTO_TIPO`, `PRODUCTO_ESTADO`, `ORDEN`) VALUES
-(1, '5c0653d43d92e7.75019474', 'Iphone X 256 Gb - Plata Apple', '', 'iPhone X 256 GB es elegancia e innovación al ser de vidrio más resistente, tanto en la parte frontal como en la trasera, además de contar con carga inalámbrica y resistencia al agua y polvo. Cuenta con chip A11 Bionic con el que disfrutarás de increíble experiencia de realidad aumentada en juegos y apps. Tendrás una pantalla con tecnología OLED y Super retina HD de 5.8 pulgadas con resolución de 2436 x 1125, 459 ppi. El futuro estará en tus manos con la cámara TrueDepth de 7 MP en un espacio pequeño de la pantalla en donde tendrás la más alta tecnología desarrollada y sensores que hacen posible Face ID ¡la autentificación más segura! Cámara dual trasera de 12 MP con nuevo filtro de color y estabilización óptica de imagen. ', '<p>ESTE TEL&Eacute;FONO VIENE DESBLOQUEADO POR LO QUE PODR&Aacute; COLOCARLE LA SIM DE CUALQUIER COMPA&Ntilde;&Iacute;A TELEF&Oacute;NICA. La garant&iacute;a es directamente con la marca.</p>', 'Iphone X 256', 'Otro', '', ' ', ' ', ' ', ' ', ' ', '21599.00', 100, 1, 1, 'No disponible para la venta', '2018-12-05 21:11:50', '2018-12-19 16:44:45', '2018-12-05 21:11:50', '10.00', '21.00', '2.00', '0.50', 'normal', 'activo', 1),
-(2, '5c0864799aba54.31749554', 'CAJA', '', 'ES  UNA CAJA', '<p>ES UNA CAJA GRANDE DE MADERA</p>', '345', 'México', '55665', '', '', '', '', '', '4.00', 8, 7, 1, 'No disponible para venta', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '12.00', '44.00', '23.00', '4.00', 'normal', 'activo', 1),
-(4, '5c08a9dc2cb096.56391251', 'Olla de 5 lts', '', 'Olla de 5 litros gabricada en acero inoxidable', '', 'OAI', 'México', '', '', '', '', '', '', '5000.00', 10, 1, 1, 'No disponible para la venta', '2018-12-13 04:37:54', '2018-12-13 23:20:05', '2018-12-13 04:37:54', '52.00', '68.00', '15.00', '5.00', 'normal', 'activo', 1),
-(5, '5c08a9dc2cb096.56391251', 'cafetera italina', '', 'Cafetera en acero inoxidable para 5 tazas. ', '<p>&nbsp; Terminado mate</p>', 'grecko', 'México', '', '', '', '', '', '', '862.00', 4, 1, 1, 'No disponible para la venta', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '15.00', '25.00', '12.00', '1.00', 'normal', 'activo', 1),
-(8, '5c0653d43d92e7.75019474', 'JABON', '', 'JGJJJJJJRTTTTTTTTTTTTTTT', '<p>GFFGFDGFGS</p>', 'ROMA', 'México', 'ROM', '   ', '   ', '   ', '   ', '   ', '50.00', 1, 1, 1, 'No disponible para la venta', '2018-12-13 16:15:03', '2018-12-19 16:54:26', '2018-12-13 16:15:03', '30.00', '25.00', '15.00', '20.00', 'normal', 'activo', 1),
-(11, '5c19944989f925.72741021', 'PASTA DENTAL', '', 'PASTA DENTAL DE VIAJE DE 60 GRAMOS.', '<p>PASTA DENTAL PRESENTACI&Oacute;N DE VIAJE GRAMAJE DE 60 GRAMOS.</p>', 'DE VIAJE', 'México', '12345', '', '', '', '', '', '70.00', 5, 1, 1, 'No disponible para venta', '2018-12-19 01:26:14', '2018-12-19 01:26:14', '2018-12-19 01:26:14', '5.00', '10.00', '5.00', '0.50', 'normal', 'activo', 1),
-(12, '5c19944989f925.72741021', 'PASTA DENTAL COLGATE', '', 'PASTA DENTAL DE VIAJE DE 60 GRAMOS.', '<p>PASTA DENTAL PRESENTACI&Oacute;N DE VIAJE GRAMAJE DE 60 GRAMOS.</p>', 'DE VIAJE', 'México', '12345', '', '', '', '', '', '70.00', 5, 1, 1, 'No disponible para venta', '2018-12-19 01:30:12', '2018-12-19 01:30:12', '2018-12-19 01:30:12', '5.00', '10.00', '5.00', '0.50', 'normal', 'activo', 1),
-(14, '5c19944989f925.72741021', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:42:41', '2018-12-19 01:42:41', '2018-12-19 01:42:41', '25.00', '10.00', '4.00', '1.00', 'normal', 'activo', 1),
-(15, '5c19944989f925.72741021', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:44:52', '2018-12-19 01:44:52', '2018-12-19 01:44:52', '25.00', '10.00', '4.00', '1.00', 'normal', 'activo', 1),
-(16, '5c19944989f925.72741021', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:44:56', '2018-12-19 01:44:56', '2018-12-19 01:44:56', '25.00', '10.00', '4.00', '1.00', 'normal', 'activo', 1),
-(17, '5c08a9dc2cb096.56391251', 'taza medidora', '', 'Tazas medidoras en 4 diferentes tamanos', '<p>Practico set de medicion para cocina. Cuatro tama&ntilde;os, 1/4, 1/2, 3/4 y 1 taza. Acero inoxidable grado alimenticio. Excelente para el control preciso de las cantidades al momento de elaborar tus recetas favoritas.&nbsp;</p>', 'A001', 'Otro', '', '', '', '', '', '', '280.00', 14, 1, 1, 'No disponible para la venta', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '15.00', '15.00', '15.00', '0.25', 'normal', 'activo', 1),
-(18, '5c0653d43d92e7.75019474', 'Librero', '', 'Librero de Madera', '<p>Peque&ntilde;o Librero de Madera</p>', 'lb-135', 'México', 'lb-1234', '', '', '', '', '', '1300.00', 25, 1, 1, 'No disponible para la venta', '2018-12-22 16:49:17', '2018-12-22 16:49:17', '2018-12-22 16:49:17', '60.00', '120.00', '30.00', '10.00', 'normal', 'activo', 1),
-(19, '5c0653d43d92e7.75019474', 'Escritorio', '', '', '', 'esc-5567', 'México', 'esc-34556', '', '', '', '', '', '2500.00', 10, 1, 1, 'No disponible para la venta', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '90.00', '60.00', '30.00', '30.00', 'normal', 'activo', 1);
+INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `PRODUCTO_NOMBRE`, `PRODUCTO_URL`, `PRODUCTO_DESCRIPCION`, `PRODUCTO_DETALLES`, `PRODUCTO_MODELO`, `PRODUCTO_ORIGEN`, `PRODUCTO_SKU`, `PRODUCTO_UPC`, `PRODUCTO_EAN`, `PRODUCTO_JAN`, `PRODUCTO_ISBN`, `PRODUCTO_MPN`, `PRODUCTO_PRECIO`, `PRODUCTO_PRECIO_LISTA`, `PRODUCTO_CANTIDAD`, `PRODUCTO_CANTIDAD_MINIMA`, `PRODUCTO_INVENTARIO`, `PRODUCTO_MENSAJE_SIN_STOCK`, `PRODUCTO_FECHA_REGISTRO`, `PRODUCTO_FECHA_ACTUALIZACION`, `PRODUCTO_FECHA_PUBLICACION`, `PRODUCTO_ANCHO`, `PRODUCTO_ALTO`, `PRODUCTO_PROFUNDO`, `PRODUCTO_PESO`, `PRODUCTO_TIPO`, `PRODUCTO_ESTADO`, `ORDEN`) VALUES
+(1, '5c0653d43d92e7.75019474', 'Iphone X 256 Gb - Plata Apple', '', 'iPhone X 256 GB es elegancia e innovación al ser de vidrio más resistente, tanto en la parte frontal como en la trasera, además de contar con carga inalámbrica y resistencia al agua y polvo. Cuenta con chip A11 Bionic con el que disfrutarás de increíble experiencia de realidad aumentada en juegos y apps. Tendrás una pantalla con tecnología OLED y Super retina HD de 5.8 pulgadas con resolución de 2436 x 1125, 459 ppi. El futuro estará en tus manos con la cámara TrueDepth de 7 MP en un espacio pequeño de la pantalla en donde tendrás la más alta tecnología desarrollada y sensores que hacen posible Face ID ¡la autentificación más segura! Cámara dual trasera de 12 MP con nuevo filtro de color y estabilización óptica de imagen. ', '<p>ESTE TEL&Eacute;FONO VIENE DESBLOQUEADO POR LO QUE PODR&Aacute; COLOCARLE LA SIM DE CUALQUIER COMPA&Ntilde;&Iacute;A TELEF&Oacute;NICA. La garant&iacute;a es directamente con la marca.</p>', 'Iphone X 256', 'Otro', '', ' ', ' ', ' ', ' ', ' ', '21599.00', '0.00', 100, 1, 1, 'No disponible para la venta', '2018-12-05 21:11:50', '2018-12-19 16:44:45', '2018-12-05 21:11:50', '10.00', '21.00', '2.00', '0.50', 'normal', 'activo', 1),
+(2, '5c0864799aba54.31749554', 'CAJA', '', 'ES  UNA CAJA', '<p>ES UNA CAJA GRANDE DE MADERA</p>', '345', 'México', '55665', '', '', '', '', '', '4.00', '0.00', 8, 7, 1, 'No disponible para venta', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '12.00', '44.00', '23.00', '4.00', 'normal', 'activo', 1),
+(4, '5c08a9dc2cb096.56391251', 'Olla de 5 lts', '', 'Olla de 5 litros gabricada en acero inoxidable', '', 'OAI', 'México', '', '', '', '', '', '', '5000.00', '0.00', 10, 1, 1, 'No disponible para la venta', '2018-12-13 04:37:54', '2018-12-13 23:20:05', '2018-12-13 04:37:54', '52.00', '68.00', '15.00', '5.00', 'normal', 'activo', 1),
+(5, '5c08a9dc2cb096.56391251', 'cafetera italina', '', 'Cafetera en acero inoxidable para 5 tazas. ', '<p>&nbsp; Terminado mate</p>', 'grecko', 'México', '', '', '', '', '', '', '862.00', '0.00', 4, 1, 1, 'No disponible para la venta', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '15.00', '25.00', '12.00', '1.00', 'normal', 'activo', 1),
+(8, '5c0653d43d92e7.75019474', 'JABON', '', 'JGJJJJJJRTTTTTTTTTTTTTTT', '<p>GFFGFDGFGS</p>', 'ROMA', 'México', 'ROM', '   ', '   ', '   ', '   ', '   ', '50.00', '0.00', 1, 1, 1, 'No disponible para la venta', '2018-12-13 16:15:03', '2018-12-19 16:54:26', '2018-12-13 16:15:03', '30.00', '25.00', '15.00', '20.00', 'normal', 'activo', 1),
+(11, '5c19944989f925.72741021', 'PASTA DENTAL', '', 'PASTA DENTAL DE VIAJE DE 60 GRAMOS.', '<p>PASTA DENTAL PRESENTACI&Oacute;N DE VIAJE GRAMAJE DE 60 GRAMOS.</p>', 'DE VIAJE', 'México', '12345', '', '', '', '', '', '70.00', '0.00', 5, 1, 1, 'No disponible para venta', '2018-12-19 01:26:14', '2018-12-19 01:26:14', '2018-12-19 01:26:14', '5.00', '10.00', '5.00', '0.50', 'normal', 'activo', 1),
+(12, '5c19944989f925.72741021', 'PASTA DENTAL COLGATE', '', 'PASTA DENTAL DE VIAJE DE 60 GRAMOS.', '<p>PASTA DENTAL PRESENTACI&Oacute;N DE VIAJE GRAMAJE DE 60 GRAMOS.</p>', 'DE VIAJE', 'México', '12345', '', '', '', '', '', '70.00', '0.00', 5, 1, 1, 'No disponible para venta', '2018-12-19 01:30:12', '2018-12-19 01:30:12', '2018-12-19 01:30:12', '5.00', '10.00', '5.00', '0.50', 'normal', 'activo', 1),
+(14, '5c19944989f925.72741021', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:42:41', '2018-12-19 01:42:41', '2018-12-19 01:42:41', '25.00', '10.00', '4.00', '1.00', 'normal', 'activo', 1),
+(15, '5c19944989f925.72741021', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:44:52', '2018-12-19 01:44:52', '2018-12-19 01:44:52', '25.00', '10.00', '4.00', '1.00', 'normal', 'activo', 1),
+(16, '5c19944989f925.72741021', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:44:56', '2018-12-19 01:44:56', '2018-12-19 01:44:56', '25.00', '10.00', '4.00', '1.00', 'normal', 'activo', 1),
+(17, '5c08a9dc2cb096.56391251', 'taza medidora', '', 'Tazas medidoras en 4 diferentes tamanos', '<p>Practico set de medicion para cocina. Cuatro tama&ntilde;os, 1/4, 1/2, 3/4 y 1 taza. Acero inoxidable grado alimenticio. Excelente para el control preciso de las cantidades al momento de elaborar tus recetas favoritas.&nbsp;</p>', 'A001', 'Otro', '', '', '', '', '', '', '280.00', '0.00', 14, 1, 1, 'No disponible para la venta', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '15.00', '15.00', '15.00', '0.25', 'normal', 'activo', 1),
+(18, '5c0653d43d92e7.75019474', 'Librero', '', 'Librero de Madera', '<p>Peque&ntilde;o Librero de Madera</p>', 'lb-135', 'México', 'lb-1234', '', '', '', '', '', '1300.00', '0.00', 25, 1, 1, 'No disponible para la venta', '2018-12-22 16:49:17', '2018-12-22 16:49:17', '2018-12-22 16:49:17', '60.00', '120.00', '30.00', '10.00', 'normal', 'activo', 1),
+(19, '5c0653d43d92e7.75019474', 'Escritorio', '', '', '', 'esc-5567', 'México', 'esc-34556', '', '', '', '', '', '2500.00', '0.00', 10, 1, 1, 'No disponible para la venta', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '90.00', '60.00', '30.00', '30.00', 'normal', 'activo', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos_pedidos`
+--
+
+CREATE TABLE `productos_pedidos` (
+  `ID` int(11) NOT NULL,
+  `ID_PEDIDO` int(11) DEFAULT NULL,
+  `ID_PRODUCTO` int(11) DEFAULT NULL,
+  `PRODUCTO_NOMBRE` varchar(255) DEFAULT NULL,
+  `PRODUCTO_DETALLES` text,
+  `PRODUCTO_IMAGEN` varchar(255) DEFAULT NULL,
+  `CANTIDAD` int(11) DEFAULT NULL,
+  `IMPORTE` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `publicaciones`
+--
+
+CREATE TABLE `publicaciones` (
+  `ID_PUBLICACION` int(11) NOT NULL,
+  `PUBLICACION_TITULO` varchar(255) DEFAULT NULL,
+  `PUBLICACION_RESUMEN` text,
+  `PUBLICACION_CONTENIDO` text,
+  `PUBLICACION_IMAGEN` varchar(255) DEFAULT NULL,
+  `PUBLICACION_TIPO` varchar(255) DEFAULT NULL,
+  `PUBLICACION_PLANTILLA` varchar(255) DEFAULT NULL,
+  `PUBLICACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `PUBLICACION_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `PUBLICACION_FECHA_PUBLICACION` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `PUBLICACION_ESTADO` varchar(255) DEFAULT NULL,
+  `ORDEN` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `puntos_registro`
+--
+
+CREATE TABLE `puntos_registro` (
+  `ID_PUNTO` bigint(6) NOT NULL,
+  `PUNTO_ALIAS` varchar(255) NOT NULL,
+  `PUNTO_PAIS` varchar(6255) NOT NULL,
+  `PUNTO_ESTADO` varchar(255) NOT NULL,
+  `PUNTO_CIUDAD` text NOT NULL,
+  `PUNTO_MUNICIPIO` varchar(255) NOT NULL,
+  `PUNTO_BARRIO` text NOT NULL,
+  `PUNTO_CALLE_Y_NUMERO` text NOT NULL,
+  `PUNTO_CODIGO_POSTAL` varchar(255) NOT NULL,
+  `PUNTO_REFERENCIAS` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `registro_sesiones`
+--
+
+CREATE TABLE `registro_sesiones` (
+  `ID_REGISTRO` int(11) NOT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `REGISTRO_IP` varchar(255) DEFAULT NULL,
+  `REGISTRO_BROWSER` varchar(255) DEFAULT NULL,
+  `REGISTRO_VERSION` varchar(255) DEFAULT NULL,
+  `REGISTRO_MOBILE` varchar(255) DEFAULT NULL,
+  `REGISTRO_PLATAFORMA` varchar(255) DEFAULT NULL,
+  `REGISTRO_FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reportes`
+--
+
+CREATE TABLE `reportes` (
+  `ID_REPORTE` int(11) NOT NULL,
+  `ID_OBJETO` int(11) DEFAULT NULL,
+  `REPORTE_TIPO` varchar(255) DEFAULT NULL,
+  `REPORTE_DESCRIPCION` varchar(255) DEFAULT NULL,
+  `REPORTE_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `REPORTE_ESTADO` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rutas_abanico`
+--
+
+CREATE TABLE `rutas_abanico` (
+  `ID` int(11) NOT NULL,
+  `GUIA_CODIGO` varchar(255) DEFAULT NULL,
+  `ID_PUNTO` int(11) DEFAULT NULL,
+  `PUNTO_ALIAS` varchar(255) DEFAULT NULL,
+  `PUNTO_DIRECCION` varchar(255) DEFAULT NULL,
+  `RUTA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `saldo_clientes`
+--
+
+CREATE TABLE `saldo_clientes` (
+  `ID_SALDO` int(11) NOT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `ID_TIENDA` int(11) DEFAULT NULL,
+  `SALDO_CANTIDAD` decimal(10,2) DEFAULT NULL,
+  `SALDO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `SALDO_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6071,6 +6445,94 @@ INSERT INTO `seguridad_usuarios` (`ID`, `ID_USUARIO`, `CLAVE`, `FECHA_REGISTRO`,
 (4, '5c0653d43d92e7.75019474', 'IjUMTXgysC', '2018-12-16 02:06:14', 'inactivo'),
 (5, '5c08a9dc2cb096.56391251', 'NT380VwLj3', '2018-12-16 02:49:23', 'inactivo'),
 (6, '5c19b1d094f6e6.26249130', 'xjCwbIXwbu', '2018-12-19 02:58:15', 'inactivo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `servicios`
+--
+
+CREATE TABLE `servicios` (
+  `ID_SERVICIO` bigint(20) NOT NULL,
+  `ID_USUARIO` varchar(255) NOT NULL,
+  `USUARIO_NOMBRE` varchar(255) NOT NULL,
+  `SERVICIO_NOMBRE` varchar(255) DEFAULT NULL,
+  `SERVICIO_DESCRIPCION` text,
+  `SERVICIO_DETALLES` text,
+  `SERVICIO_PAIS` varchar(255) DEFAULT NULL,
+  `SERVICIO_ESTADO_DIR` varchar(255) DEFAULT NULL,
+  `SERVICIO_MUNICIPIO` varchar(255) DEFAULT NULL,
+  `SERVICIO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `SERVICIO_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `SERVICIO_FECHA_PUBLICACION` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `SERVICIO_TIPO` varchar(255) NOT NULL DEFAULT 'normal',
+  `SERVICIO_ESTADO` varchar(255) NOT NULL DEFAULT 'activo',
+  `ORDEN` int(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `servicios`
+--
+
+INSERT INTO `servicios` (`ID_SERVICIO`, `ID_USUARIO`, `USUARIO_NOMBRE`, `SERVICIO_NOMBRE`, `SERVICIO_DESCRIPCION`, `SERVICIO_DETALLES`, `SERVICIO_PAIS`, `SERVICIO_ESTADO_DIR`, `SERVICIO_MUNICIPIO`, `SERVICIO_FECHA_REGISTRO`, `SERVICIO_FECHA_ACTUALIZACION`, `SERVICIO_FECHA_PUBLICACION`, `SERVICIO_TIPO`, `SERVICIO_ESTADO`, `ORDEN`) VALUES
+(10, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Diseño Gráfico', 'Imágenes Digitales, e Impresos', '<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae commodo elit. Donec laoreet fringilla dui, suscipit ultricies nunc accumsan ut. Sed eget risus aliquam, suscipit arcu in, feugiat massa. Sed semper, libero et luctus viverra, nulla risus egestas mauris, fringilla elementum orci augue nec est. Proin sed odio ipsum. Fusce vitae dignissim mi. In dapibus eros tortor, sit amet tincidunt metus varius a. Etiam at laoreet dolor.</p>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Fusce dictum arcu ac elit varius varius. Nunc lacinia, eros nec consequat egestas, orci odio rutrum quam, suscipit posuere ex diam eget magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam convallis purus velit, vitae faucibus mi ultrices ut. Donec orci nisl, pretium vitae lacinia et, sagittis ac sapien. Proin euismod sollicitudin pharetra. Maecenas interdum eros euismod sollicitudin pulvinar. Suspendisse sagittis semper ligula nec facilisis. Nulla quis sodales mi. Nullam ut odio aliquet, accumsan justo vitae, lacinia felis. Nam est mauris, vulputate a turpis in, facilisis maximus urna.</p>', 'México', 'Ciudad de México', 'Gustavo A. Madero', '2018-12-26 22:32:10', '2018-12-26 22:32:10', '2018-12-26 22:32:10', 'profesional', 'activo', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sliders`
+--
+
+CREATE TABLE `sliders` (
+  `ID_SLIDER` int(11) NOT NULL,
+  `SLIDER_ANCHO` varchar(255) DEFAULT NULL,
+  `SLIDER_ALTO` varchar(255) DEFAULT NULL,
+  `SLIDER_ANCHO_MOVIL` varchar(255) DEFAULT NULL,
+  `SLIDER_ALTO_MOVIL` varchar(255) DEFAULT NULL,
+  `SLIDER_NOMBRE` varchar(255) DEFAULT NULL,
+  `SLIDER_LENGUAJE` varchar(255) DEFAULT NULL,
+  `SLIDER_ESTADO` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `slides`
+--
+
+CREATE TABLE `slides` (
+  `ID_SLIDE` int(11) NOT NULL,
+  `ID_SLIDER` int(11) DEFAULT NULL,
+  `SLIDE_IMAGEN` varchar(255) DEFAULT NULL,
+  `SLIDE_IMAGEN_MOVIL` varchar(255) DEFAULT NULL,
+  `SLIDE_TITULO` varchar(255) DEFAULT NULL,
+  `SLIDE_SUBTITULO` varchar(255) DEFAULT NULL,
+  `SLIDE_BOTON` varchar(255) DEFAULT NULL,
+  `SLIDE_ENLACE` varchar(255) DEFAULT NULL,
+  `SLIDE_ESTADO` varchar(255) DEFAULT NULL,
+  `ORDEN` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `solicitudes_pago`
+--
+
+CREATE TABLE `solicitudes_pago` (
+  `ID_SOLICITUD` int(11) NOT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `ID_TIENDA` int(11) DEFAULT NULL,
+  `SOLICITUD_MOTIVO` varchar(255) DEFAULT NULL,
+  `SOLICITUD_DESCRIPCION` text,
+  `SOLICITUD_IMPORTE` decimal(10,2) DEFAULT NULL,
+  `SOLICITUD_ARCHIVO` varchar(255) DEFAULT NULL,
+  `SOLICITUD_FORMA_PAGO` varchar(255) DEFAULT NULL,
+  `SOLICITUD_FOLIO` varchar(255) DEFAULT NULL,
+  `SOLICITUD_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `SOLICITUD_FECHA_PAGO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `SOLICITUD_ESTADO` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6106,6 +6568,33 @@ INSERT INTO `tiendas` (`ID_TIENDA`, `ID_USUARIO`, `TIENDA_NOMBRE`, `TIENDA_RAZON
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `transportistas`
+--
+
+CREATE TABLE `transportistas` (
+  `ID_TRANSPORTISTA` int(11) NOT NULL,
+  `TRANSPORTISTA_NOMBRE` varchar(255) DEFAULT NULL,
+  `TRANSPORTISTA_LOGO` varchar(255) DEFAULT 'default.jpg',
+  `TRANSPORTISTA_URL_RASTREO` varchar(255) DEFAULT NULL,
+  `TRANSPORTISTA_ESTADO` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `transportistas_disponibilidad`
+--
+
+CREATE TABLE `transportistas_disponibilidad` (
+  `ID` int(11) NOT NULL,
+  `ID_TRANSPORTISTA` int(11) DEFAULT NULL,
+  `TRANSPORTISTA_PAIS` varchar(255) DEFAULT 'default.jpg',
+  `TRANSPORTISTA_ESTADO` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -6136,9 +6625,81 @@ INSERT INTO `usuarios` (`ID_USUARIO`, `USUARIO_NOMBRE`, `USUARIO_APELLIDOS`, `US
 ('5c19944989f925.72741021', 'Martha', 'Martínez Ruíz', 'mm@gmail.com', ' 5533227755  ', '2000-12-01', '$2y$10$rzDk0zx7IzDD0jogaHrKKeNUfBrOj48LqoTtbNO3PGKteIrWxDJwS', '2018-12-19 00:43:53', '2018-12-19 01:07:37', 'usr-1', 'si', 'activo'),
 ('5c19b1d094f6e6.26249130', 'Kimi', 'Luvi', 'kimi.luvi.tin.yee@gmail.com', NULL, '0000-00-00', '$2y$10$m8BAzr23tQqGWCX0sH0k5.zwPU0YpVtFlX2qFpfh8DjYSiW0YEO3q', '2018-12-19 02:49:52', '2018-12-19 02:58:15', 'usr-1', 'si', 'activo');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `variaciones_mayoreo`
+--
+
+CREATE TABLE `variaciones_mayoreo` (
+  `ID_VARIACION` int(11) NOT NULL,
+  `ID_PRODUCTO` int(11) DEFAULT NULL,
+  `VARIACION_UNIDAD` varchar(255) DEFAULT NULL,
+  `VARIACION_MINIMO` varchar(255) DEFAULT NULL,
+  `VARIACION_MAXIMO` varchar(255) DEFAULT NULL,
+  `VARIACION_PRECIO_UNITARIO` text,
+  `ORDEN` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `variaciones_simples_productos`
+--
+
+CREATE TABLE `variaciones_simples_productos` (
+  `ID_VARIACION` int(11) NOT NULL,
+  `ID_PRODUCTO` int(11) DEFAULT NULL,
+  `VARIACION_TEXTO` varchar(255) DEFAULT NULL,
+  `VARIACION_DETALLES` text,
+  `VARIACION_PRECIO` decimal(10,0) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vistas_generales`
+--
+
+CREATE TABLE `vistas_generales` (
+  `ID_VISTA` int(11) NOT NULL,
+  `VISTA_IP` varchar(255) DEFAULT NULL,
+  `VISTA_CANTIDAD` varchar(255) DEFAULT NULL,
+  `ID_OBJETO` int(11) DEFAULT NULL,
+  `VISTA_TIPO` varchar(255) DEFAULT NULL,
+  `VISTA_FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vistas_usuarios`
+--
+
+CREATE TABLE `vistas_usuarios` (
+  `ID_VISTA` int(11) NOT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `VISTA_CANTIDAD` varchar(255) DEFAULT NULL,
+  `ID_OBJETO` int(11) DEFAULT NULL,
+  `VISTA_TIPO` varchar(255) DEFAULT NULL,
+  `VISTA_FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `adjuntos_usuarios`
+--
+ALTER TABLE `adjuntos_usuarios`
+  ADD PRIMARY KEY (`ID_ADJUNTO`);
+
+--
+-- Indices de la tabla `calificaciones_productos`
+--
+ALTER TABLE `calificaciones_productos`
+  ADD PRIMARY KEY (`ID_CALIFICACION`);
 
 --
 -- Indices de la tabla `categorias`
@@ -6151,6 +6712,24 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `categorias_productos`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `categorias_publicaciones`
+--
+ALTER TABLE `categorias_publicaciones`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `categorias_servicios`
+--
+ALTER TABLE `categorias_servicios`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`ID_COMENTARIO`);
 
 --
 -- Indices de la tabla `direcciones`
@@ -6171,10 +6750,28 @@ ALTER TABLE `estados`
   ADD PRIMARY KEY (`ID_ESTADO`);
 
 --
+-- Indices de la tabla `favoritos`
+--
+ALTER TABLE `favoritos`
+  ADD PRIMARY KEY (`ID_FAVORITO`);
+
+--
 -- Indices de la tabla `galeria_productos`
 --
 ALTER TABLE `galeria_productos`
   ADD PRIMARY KEY (`ID_GALERIA`);
+
+--
+-- Indices de la tabla `galeria_servicios`
+--
+ALTER TABLE `galeria_servicios`
+  ADD PRIMARY KEY (`ID_GALERIA`);
+
+--
+-- Indices de la tabla `guias_abanico`
+--
+ALTER TABLE `guias_abanico`
+  ADD PRIMARY KEY (`GUIA_CODIGO`);
 
 --
 -- Indices de la tabla `lenguajes`
@@ -6195,10 +6792,28 @@ ALTER TABLE `lista_negra`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indices de la tabla `mensajes_pedidos`
+--
+ALTER TABLE `mensajes_pedidos`
+  ADD PRIMARY KEY (`ID_MENSAJE`);
+
+--
+-- Indices de la tabla `movimientos`
+--
+ALTER TABLE `movimientos`
+  ADD PRIMARY KEY (`ID_MOVIMIENTO`);
+
+--
 -- Indices de la tabla `municipios`
 --
 ALTER TABLE `municipios`
   ADD PRIMARY KEY (`ID_MUNICIPIO`);
+
+--
+-- Indices de la tabla `notificaciones`
+--
+ALTER TABLE `notificaciones`
+  ADD PRIMARY KEY (`ID_NOTIFICACION`);
 
 --
 -- Indices de la tabla `opciones`
@@ -6213,10 +6828,64 @@ ALTER TABLE `paises`
   ADD PRIMARY KEY (`ID_PAIS`);
 
 --
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`ID_PEDIDO`);
+
+--
+-- Indices de la tabla `preguntas_frecuentes`
+--
+ALTER TABLE `preguntas_frecuentes`
+  ADD PRIMARY KEY (`ID_PREGUNTA`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`ID_PRODUCTO`);
+
+--
+-- Indices de la tabla `productos_pedidos`
+--
+ALTER TABLE `productos_pedidos`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `publicaciones`
+--
+ALTER TABLE `publicaciones`
+  ADD PRIMARY KEY (`ID_PUBLICACION`);
+
+--
+-- Indices de la tabla `puntos_registro`
+--
+ALTER TABLE `puntos_registro`
+  ADD PRIMARY KEY (`ID_PUNTO`);
+
+--
+-- Indices de la tabla `registro_sesiones`
+--
+ALTER TABLE `registro_sesiones`
+  ADD PRIMARY KEY (`ID_REGISTRO`);
+
+--
+-- Indices de la tabla `reportes`
+--
+ALTER TABLE `reportes`
+  ADD PRIMARY KEY (`ID_REPORTE`);
+
+--
+-- Indices de la tabla `rutas_abanico`
+--
+ALTER TABLE `rutas_abanico`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `saldo_clientes`
+--
+ALTER TABLE `saldo_clientes`
+  ADD PRIMARY KEY (`ID_SALDO`);
 
 --
 -- Indices de la tabla `seguridad_usuarios`
@@ -6225,10 +6894,46 @@ ALTER TABLE `seguridad_usuarios`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indices de la tabla `servicios`
+--
+ALTER TABLE `servicios`
+  ADD PRIMARY KEY (`ID_SERVICIO`);
+
+--
+-- Indices de la tabla `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`ID_SLIDER`);
+
+--
+-- Indices de la tabla `slides`
+--
+ALTER TABLE `slides`
+  ADD PRIMARY KEY (`ID_SLIDE`);
+
+--
+-- Indices de la tabla `solicitudes_pago`
+--
+ALTER TABLE `solicitudes_pago`
+  ADD PRIMARY KEY (`ID_SOLICITUD`);
+
+--
 -- Indices de la tabla `tiendas`
 --
 ALTER TABLE `tiendas`
   ADD PRIMARY KEY (`ID_TIENDA`);
+
+--
+-- Indices de la tabla `transportistas`
+--
+ALTER TABLE `transportistas`
+  ADD PRIMARY KEY (`ID_TRANSPORTISTA`);
+
+--
+-- Indices de la tabla `transportistas_disponibilidad`
+--
+ALTER TABLE `transportistas_disponibilidad`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -6238,19 +6943,68 @@ ALTER TABLE `usuarios`
   ADD UNIQUE KEY `USUARIO_CORREO` (`USUARIO_CORREO`);
 
 --
+-- Indices de la tabla `variaciones_mayoreo`
+--
+ALTER TABLE `variaciones_mayoreo`
+  ADD PRIMARY KEY (`ID_VARIACION`);
+
+--
+-- Indices de la tabla `variaciones_simples_productos`
+--
+ALTER TABLE `variaciones_simples_productos`
+  ADD PRIMARY KEY (`ID_VARIACION`);
+
+--
+-- Indices de la tabla `vistas_generales`
+--
+ALTER TABLE `vistas_generales`
+  ADD PRIMARY KEY (`ID_VISTA`);
+
+--
+-- Indices de la tabla `vistas_usuarios`
+--
+ALTER TABLE `vistas_usuarios`
+  ADD PRIMARY KEY (`ID_VISTA`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `adjuntos_usuarios`
+--
+ALTER TABLE `adjuntos_usuarios`
+  MODIFY `ID_ADJUNTO` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `calificaciones_productos`
+--
+ALTER TABLE `calificaciones_productos`
+  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT de la tabla `categorias_productos`
 --
 ALTER TABLE `categorias_productos`
   MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+--
+-- AUTO_INCREMENT de la tabla `categorias_publicaciones`
+--
+ALTER TABLE `categorias_publicaciones`
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `categorias_servicios`
+--
+ALTER TABLE `categorias_servicios`
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `ID_COMENTARIO` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `direcciones`
 --
@@ -6267,10 +7021,20 @@ ALTER TABLE `divisas`
 ALTER TABLE `estados`
   MODIFY `ID_ESTADO` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 --
+-- AUTO_INCREMENT de la tabla `favoritos`
+--
+ALTER TABLE `favoritos`
+  MODIFY `ID_FAVORITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT de la tabla `galeria_productos`
 --
 ALTER TABLE `galeria_productos`
   MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT de la tabla `galeria_servicios`
+--
+ALTER TABLE `galeria_servicios`
+  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `lenguajes`
 --
@@ -6287,35 +7051,140 @@ ALTER TABLE `lista_blanca`
 ALTER TABLE `lista_negra`
   MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `mensajes_pedidos`
+--
+ALTER TABLE `mensajes_pedidos`
+  MODIFY `ID_MENSAJE` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `movimientos`
+--
+ALTER TABLE `movimientos`
+  MODIFY `ID_MOVIMIENTO` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `municipios`
 --
 ALTER TABLE `municipios`
   MODIFY `ID_MUNICIPIO` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8191;
 --
+-- AUTO_INCREMENT de la tabla `notificaciones`
+--
+ALTER TABLE `notificaciones`
+  MODIFY `ID_NOTIFICACION` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `opciones`
 --
 ALTER TABLE `opciones`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT de la tabla `paises`
 --
 ALTER TABLE `paises`
   MODIFY `ID_PAIS` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `preguntas_frecuentes`
+--
+ALTER TABLE `preguntas_frecuentes`
+  MODIFY `ID_PREGUNTA` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
   MODIFY `ID_PRODUCTO` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT de la tabla `productos_pedidos`
+--
+ALTER TABLE `productos_pedidos`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `publicaciones`
+--
+ALTER TABLE `publicaciones`
+  MODIFY `ID_PUBLICACION` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `registro_sesiones`
+--
+ALTER TABLE `registro_sesiones`
+  MODIFY `ID_REGISTRO` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `reportes`
+--
+ALTER TABLE `reportes`
+  MODIFY `ID_REPORTE` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `rutas_abanico`
+--
+ALTER TABLE `rutas_abanico`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `saldo_clientes`
+--
+ALTER TABLE `saldo_clientes`
+  MODIFY `ID_SALDO` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `seguridad_usuarios`
 --
 ALTER TABLE `seguridad_usuarios`
   MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT de la tabla `servicios`
+--
+ALTER TABLE `servicios`
+  MODIFY `ID_SERVICIO` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `ID_SLIDER` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `slides`
+--
+ALTER TABLE `slides`
+  MODIFY `ID_SLIDE` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `solicitudes_pago`
+--
+ALTER TABLE `solicitudes_pago`
+  MODIFY `ID_SOLICITUD` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `tiendas`
 --
 ALTER TABLE `tiendas`
-  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
+  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `transportistas`
+--
+ALTER TABLE `transportistas`
+  MODIFY `ID_TRANSPORTISTA` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `transportistas_disponibilidad`
+--
+ALTER TABLE `transportistas_disponibilidad`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `variaciones_mayoreo`
+--
+ALTER TABLE `variaciones_mayoreo`
+  MODIFY `ID_VARIACION` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `variaciones_simples_productos`
+--
+ALTER TABLE `variaciones_simples_productos`
+  MODIFY `ID_VARIACION` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `vistas_generales`
+--
+ALTER TABLE `vistas_generales`
+  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `vistas_usuarios`
+--
+ALTER TABLE `vistas_usuarios`
+  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

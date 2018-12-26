@@ -37,7 +37,7 @@
                       <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
                         <span class="etiqueta-2">Nuevo</span>
                       <?php } ?>
-                      <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO_LISTA<$producto->PRODUCTO_PRECIO){ ?>
+                      <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                         <span class="etiqueta-3">Oferta</span>
                       <?php } ?>
                     </div>
@@ -62,7 +62,7 @@
                           <li class="far fa-star"></li>
                       </ul>
                       <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h3>
-                      <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)){ ?>
+                      <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                         <div class="price-list"> $<?php echo $producto->PRODUCTO_PRECIO_LISTA; ?></div>
                       <?php } ?>
                       <div class="price"> $<?php echo $producto->PRODUCTO_PRECIO; ?></div>
