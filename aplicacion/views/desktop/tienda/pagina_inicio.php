@@ -37,16 +37,16 @@
       </div>
 
       <div class="col">
-        <a href="#" class="caracteristica">
+        <a href="<?php echo base_url('categoria'); ?>" class="caracteristica">
           <div class="car-icono"> <span class="fa fa-boxes"></span> </div>
           <div class="car-contenido">
-            <div class="car-titulo">Mayoristas</div>
+            <div class="car-titulo">Productos</div>
             <div class="car-subtitulo">Venta a Mayoristas</div>
           </div>
         </a>
       </div>
       <div class="col">
-        <a href="#" class="caracteristica">
+        <a href="<?php echo base_url('usuario/registrar'); ?>" class="caracteristica">
           <div class="car-icono"> <span class="fa fa-handshake"></span> </div>
           <div class="car-contenido">
             <div class="car-titulo">Únete</div>
@@ -66,29 +66,9 @@
     <div class="col-3">
       <div class="contenedor-servicios">
         <div class="contenedor-servicios-titulo">
-
           <h4>Servicios</h4>
         </div>
-        <div class="categorias-servicios">
-          <div class="servicio-circulo">
-            <span class="fa fa-paint-roller"></span>
-          </div>
-          <div class="servicio-circulo">
-            <span class="fa fa-paint-roller"></span>
-          </div>
-          <div class="servicio-circulo">
-            <span class="fa fa-paint-roller"></span>
-          </div>
-          <div class="servicio-circulo">
-            <span class="fa fa-paint-roller"></span>
-          </div>
-          <div class="servicio-circulo">
-            <span class="fa fa-paint-roller"></span>
-          </div>
-          <div class="servicio-circulo">
-            <span class="fa fa-paint-roller"></span>
-          </div>
-        </div>
+        <a href="<?php echo base_url('categoria/servicios'); ?>" class="btn btnblock btn-primary btn-lg">Ver Servicios</a>
       </div>
     </div>
     <div class="col-9">

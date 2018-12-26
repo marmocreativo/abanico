@@ -91,50 +91,6 @@
                 </div>
             </div>
           </div>
-          <div class="row mt-5 pt-3 border-top">
-            <div class="col-12">
-                <h6 class=""> <span class="fa fa-comments"></span> Comentarios</h6>
-            </div>
-            <div class="col-8 pt-3">
-              <ul class="list-unstyled">
-                <li class="media">
-                  <img class="mr-3 img-thumbnail rounded-circle" src="<?php echo base_url('assets/global/img/usuario_default.png') ?>" width="64" alt="">
-                  <div class="media-body">
-                    <h5 class="mt-0 mb-1">Nombre del comentario</h5>
-                    <div class="d-flex border-top border-bottom py-3">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <p>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="col-4">
-                <form class="" action="usuario/calificacion" method="post">
-                  <div class="form-group">
-                    <label for="Calificacion">Calificación</label>
-                    <select id="example" class="form-control">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="Comentario">Comentario</label>
-                    <textarea name="name" class="form-control" rows="3" cols="80"></textarea>
-                  </div>
-                  <button type="submit" class="btn <?php echo 'btn'.$primary; ?> float-right"> Comentario</button>
-                </form>
-            </div>
-          </div>
         </div>
         <div class="col-2">
           <div class="fila fila-gris">

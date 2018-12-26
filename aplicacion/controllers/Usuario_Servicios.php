@@ -179,7 +179,7 @@ class Usuario_Servicios extends CI_Controller {
 						// Parametros Categoria
 						$parametros_relacion_categorias = array(
 							'ID_CATEGORIA'=>$this->input->post('CategoriaServicio'),
-							'ID_Servicio'=>$SERVICIO_id
+							'ID_Servicio'=>$this->input->post('Identificador')
 						);
 						$this->CategoriasServiciosModel->crear($parametros_relacion_categorias);
 					}

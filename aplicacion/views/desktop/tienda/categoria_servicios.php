@@ -19,7 +19,6 @@
     <div class="row">
     <div class="col-2 d-none d-sm-block fila fila-gris">
         <div class="contenedor-filtros">
-          <h4>Filtros</h4>
 
         </div>
       </div>
