@@ -42,8 +42,12 @@ class Tienda_Producto extends CI_Controller {
 
 		// Calificaciones
 		// Reviso si ya lo calificó el usuario
-		$this->data['mi_calificacion']= $this->CalificacionesModel->ya_calificado($this->data['producto']['ID_PRODUCTO'],$_SESSION['usuario']['id']);
-		$this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($_GET['id'],$this->data['mi_calificacion']['ID_CALIFICACION']);
+		if(isset($_SESSION['usuario']['id'])&!empty($_SESSION['usuario']['id'])){
+			$this->data['mi_calificacion']= $this->CalificacionesModel->ya_calificado($this->data['producto']['ID_PRODUCTO'],$_SESSION['usuario']['id']);
+			$this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($_GET['id'],$this->data['mi_calificacion']['ID_CALIFICACION']);
+		}else{
+				$this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($_GET['id'],'');
+		}
 
  		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/producto',$this->data);

@@ -56,6 +56,8 @@ $route['usuario/([a-z]+)'] = 'Usuario_Perfil/$1';
 $route['ajax/municipios'] = 'Ajax_Municipios';
 $route['ajax/estados'] = 'Ajax_Estados';
 $route['ajax/paises'] = 'Ajax_Paises';
+$route['ajax/carrito'] = 'Ajax_Cargar_Carrito';
+$route['ajax/carrito/(:any)'] = 'Ajax_Cargar_Carrito/$1';
 // Rutas de Autenticacion
 $route['login'] = 'Autenticacion';
 $route['login/([a-z]+)'] = 'Autenticacion/$1';
@@ -67,5 +69,11 @@ $route['categoria/(:any)'] = 'Tienda_Categoria/$1';
 $route['producto'] = 'Tienda_Producto';
 $route['producto/(:any)'] = 'Tienda_Producto/$1';
 $route['servicio'] = 'Tienda_Servicio';
+
+// Proceso de Pago
+$route['pago_paso_4'] = 'Proceso_Pago/paso4';
+$route['pago_paso_3'] = 'Proceso_Pago/paso3';
+$route['pago_paso_2'] = 'Proceso_Pago/paso2';
+$route['pago_paso_1'] = 'Proceso_Pago/paso1';
 // Ruta de Mantenimiento
 $route['mantenimiento'] = 'Mantenimiento';

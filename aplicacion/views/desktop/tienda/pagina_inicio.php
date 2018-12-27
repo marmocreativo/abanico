@@ -113,29 +113,108 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <div class="card-deck mx-5">
-          <?php foreach($productos as $producto){ ?>
-          <div class="col-6 col-sm-4 col-md-2 mb-3 px-0">
-            <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
-            <div class="card mx-1">
-              <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-              <img class="card-img-top" src="<?php echo base_url($ruta_portada); ?>" class="img-fluid" alt="Card image cap">
-              <div class="card-body text-center">
-                <h5 class="card-title text<?php echo $primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h5>
-                <h3 class="card-text">$<?php echo $producto->PRODUCTO_PRECIO; ?></h3>
-                <p class="text<?php echo $primary; ?>">
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </p>
+        <section class="slider">
+        <div class="flexslider carousel">
+          <ul class="slides">
+            <?php foreach($productos as $producto){ ?>
+            <li>
+              <div class="cuadricula-productos">
+                <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+                <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="enlace-principal">
+                  <div class="imagen-producto">
+                    <div class="contenedor-etiquetas">
+                      <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
+                        <span class="etiqueta-1">Mex</span>
+                      <?php } ?>
+                      <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
+                        <span class="etiqueta-2">Nuevo</span>
+                      <?php } ?>
+                      <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                        <span class="etiqueta-3">Oferta</span>
+                      <?php } ?>
+                    </div>
+                      <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>
+                      <div class="overlay-producto <?php echo 'bg'.$primary; ?>"></div>
+                      <div class="boton-ver">
+                        <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
+                      <?php if(verificar_sesion()){ ?>
+                        <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+                      <?php }else{ ?>
+                        <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$producto->ID_PRODUCTO)); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+                      <?php } ?>
+                      </div>
+                  </div>
+                  </a>
+                  <div class="product-content text-center">
+                      <ul class="rating">
+                          <li class="fa fa-star"></li>
+                          <li class="fa fa-star"></li>
+                          <li class="fa fa-star"></li>
+                          <li class="far fa-star"></li>
+                          <li class="far fa-star"></li>
+                      </ul>
+                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h3>
+                      <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                        <div class="price-list"> $<?php echo $producto->PRODUCTO_PRECIO_LISTA; ?></div>
+                      <?php } ?>
+                      <div class="price"> $<?php echo $producto->PRODUCTO_PRECIO; ?></div>
+                  </div>
               </div>
-            </div>
-            </a>
+  	    		</li>
+            <?php } ?>
+          </ul>
+        </div>
+      </section>
+        <!--
+        <div class="card-deck mx-5 slides">
+          <?php foreach($productos as $producto){ ?>
+            <div class="col-3">
+              <div class="cuadricula-productos">
+                <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+                <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="enlace-principal">
+                  <div class="imagen-producto">
+                    <div class="contenedor-etiquetas">
+                      <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
+                        <span class="etiqueta-1">Mex</span>
+                      <?php } ?>
+                      <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
+                        <span class="etiqueta-2">Nuevo</span>
+                      <?php } ?>
+                      <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                        <span class="etiqueta-3">Oferta</span>
+                      <?php } ?>
+                    </div>
+                      <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>
+                      <div class="overlay-producto <?php echo 'bg'.$primary; ?>"></div>
+                      <div class="boton-ver">
+                        <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
+                      <?php if(verificar_sesion()){ ?>
+                        <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+                      <?php }else{ ?>
+                        <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$producto->ID_PRODUCTO)); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+                      <?php } ?>
+                      </div>
+                  </div>
+                  </a>
+                  <div class="product-content text-center">
+                      <ul class="rating">
+                          <li class="fa fa-star"></li>
+                          <li class="fa fa-star"></li>
+                          <li class="fa fa-star"></li>
+                          <li class="far fa-star"></li>
+                          <li class="far fa-star"></li>
+                      </ul>
+                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h3>
+                      <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                        <div class="price-list"> $<?php echo $producto->PRODUCTO_PRECIO_LISTA; ?></div>
+                      <?php } ?>
+                      <div class="price"> $<?php echo $producto->PRODUCTO_PRECIO; ?></div>
+                  </div>
+              </div>
           </div>
         <?php } ?>
         </div>
+      -->
       </div>
     </div>
   </div>

@@ -11,12 +11,48 @@
   <div class="creditos">
 
   </div>
+  <!-- MODAL CARRITO -->
+  <!-- Modal -->
+<div class="modal fade" id="ModalCarrito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Carrito</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0" id="CargarCarrito">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="BotonVaciar" class="btn btn-outline-danger">Vaciar Carrito</button>
+        <a href="<?php echo base_url('pago_paso_1'); ?>" class="btn btn-primary">Comprar Ahora</a>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="<?php echo base_url(); ?>assets/global/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/tienda/js/barrating/jquery.barrating.min.js"></script>
+    <script defer src="<?php echo base_url(); ?>assets/tienda/js/flexslider/jquery.flexslider.js"></script>
+    <script type="text/javascript">
+       $(window).on('load',function(){
+         $('.flexslider').flexslider({
+           animation: "slide",
+           animationLoop: true,
+           itemWidth: 300,
+           itemMargin: 20,
+           pausePlay: false,
+           start: function(slider){
+             $('body').removeClass('loading');
+           }
+         });
+       });
+     </script>
     <?php $this->load->view('scripts/scripts_tienda');  ?>
 
   </body>

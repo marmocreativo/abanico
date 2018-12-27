@@ -8,8 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/bootstrap.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/estilos_abanico_desktop.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/barrating/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/flexslider/flexslider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/estilos_abanico_desktop.css">
     <title>Prueba <?php //echo $op['titulo_sitio'] ?></title>
   </head>
   <body>
@@ -52,7 +53,7 @@
               <a class="nav-link" href="<?php echo base_url('usuario/favoritos'); ?>"> <span class="fa fa-heart"></span> Favoritos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"> <span class="fa fa-shopping-cart"></span> Carrito</a>
+              <button class="nav-link btn btn-outline-primary" data-toggle="modal" data-target="#ModalCarrito"> <span class="fa fa-shopping-cart"></span> Carrito</button>
             </li>
           </ul>
         </div>

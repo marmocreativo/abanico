@@ -230,6 +230,12 @@ html, body{
 .cuadricula-productos .add-to-cart{display:block;color:#c0392b;font-weight:600;font-size:14px;opacity:0;position:absolute;left:10px;bottom:-20px;transition:all .5s ease 0s}
 .cuadricula-productos:hover .add-to-cart{opacity:1;bottom:0}
 @media only screen and (max-width:990px){ .cuadricula-productos{margin-bottom:30px} }
+
+.flexslider{
+  background-color: transparent;
+  border:none;
+}
+
 /*
 | -------------------------------------------------------------------------
 | ESTILOS SERVICIOS
@@ -318,6 +324,53 @@ html, body{
 */
 .custom-file-input:lang(es) ~ .custom-file-label::after {
   content: "Elegir"; }
+  /*
+  | -------------------------------------------------------------------------
+  | ESTILOS PAGO
+  | -------------------------------------------------------------------------
+  */
+
+  .stepwizard-step p {
+      margin-top: 10px;
+  }
+  .stepwizard-row {
+      display: table-row;
+  }
+  .stepwizard {
+      display: table;
+      width: 100%;
+      position: relative;
+  }
+  .stepwizard-step button[disabled] {
+      opacity: 1 !important;
+      filter: alpha(opacity=100) !important;
+  }
+  .stepwizard-row:before {
+      top: 14px;
+      bottom: 0;
+      position: absolute;
+      content: " ";
+      width: 100%;
+      height: 1px;
+      background-color: #ccc;
+      z-order: 0;
+  }
+  .stepwizard-step {
+      display: table-cell;
+      text-align: center;
+      position: relative;
+      width:25%;
+  }
+  .btn-circle {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      padding: 6px 0;
+      font-size: 12px;
+      line-height: 1.428571429;
+      border-radius: 15px;
+  }
+
 /*
 | -------------------------------------------------------------------------
 | ESTILOS FOOTER

@@ -29,31 +29,30 @@
                 <hr>
                 <?php echo $producto['PRODUCTO_DESCRIPCION']; ?>
                 <hr>
-                <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])){ ?>
+                <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
                 <h3 class="product-price-descuento h6">$ <?php echo $producto['PRODUCTO_PRECIO_LISTA']; ?></h3>
                 <?php } ?>
                 <h2 class="product-price display-6">$ <?php echo $producto['PRODUCTO_PRECIO']; ?></h2>
                 <hr>
                 <div class="row">
-                  <!--
-                  <div class="col">
-                    <div class="form-group">
-                      <label for="" class="sr-only">Variacion</label>
-                      <select class="form-control" name="">
-                        <option value="">Opción 1</option>
-                        <option value="">Opción 2</option>
-                      </select>
-                    </div>
-                  </div>
-                -->
                   <div class="col">
                     <div class="form-group">
                       <label for="" class="sr-only">Cantidad</label>
-                      <input type="number" class="form-control" name="" min="1" max="100" value="1">
+                      <input type="number" class="form-control" name="CantidadProducto" id='CantidadProducto' min="1" max="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>" value="<?php echo $producto['PRODUCTO_CANTIDAD_MINIMA']; ?>">
                     </div>
                   </div>
                   <div class="col">
-                    <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block"> <span class="fa fa-shopping-cart"></span> Comprar Ahora</button>
+                    <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonComprar"
+                        data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
+                        data-nombre-producto='<?php echo $producto['PRODUCTO_NOMBRE']; ?>'
+                        data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
+                        data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
+                        data-detalles-producto=''
+                        data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
+                        data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
+                        data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
+                        >
+                       <span class="fa fa-shopping-cart"></span> Comprar Ahora</button>
                   </div>
                 </div>
               </div>

@@ -49,6 +49,16 @@ if ( ! function_exists('sesion_default'))
 
         $CI->session->set_userdata($default_sesion);
       }
+      if(!isset($_SESSION['carrito'])||empty($_SESSION['carrito'])){
+        $default_sesion = array(
+          'carrito'=> array(
+            'tiendas'=>array(),
+            'productos'=>array(),
+          )
+        );
+
+        $CI->session->set_userdata($default_sesion);
+      }
       // Cargo las sesiones
 
     }
