@@ -19,13 +19,21 @@ class Admin_Desktop extends CI_Controller {
 			$this->data['dispositivo']  = "desktop";
 		}
 
-		// Cargo el modelo
-		$this->load->model('DivisasModel');
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// Verifico Permiso
+		if(!verificar_permiso(['tec-5','adm-6'])){
+			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
+			redirect(base_url('usuario'));
+		}
+
   }
 
 	public function index()
 	{
-			$this->data['divisas'] = $this->DivisasModel->lista('','','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/admin_desktop',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);

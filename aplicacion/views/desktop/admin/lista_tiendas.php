@@ -1,10 +1,6 @@
-<div class="contenido_principal">
-<div class="container-fluid">
+
   <div class="row">
-    <div class="col-sm-3 col-md-2 fila fila-gris p-0">
-      <?php $this->load->view('desktop/admin/widgets/menu_control_administrador'); ?>
-    </div>
-    <div class="col mt-3">
+    <div class="col">
       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <div class="titulo">
@@ -20,28 +16,12 @@
             </form>
           </div>
           <div class="opciones d-flex">
-            <div class="btn-group btn-sm">
-              <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="fa fa-cogs"></span>
-              </button>
-              <div class="dropdown-menu">
-                <!--
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              -->
-              </div>
-            </div>
-
           </div>
         </div>
         <div class="card-body p-0">
-          <table class="table table-sm table-hover table-striped">
+          <table class="table table-hover table-striped">
             <thead class="text-light bg<?php echo $primary; ?>">
               <tr>
-                <th class="text-center">id</th>
                 <th class="text-center">Nombre</th>
                 <th class="text-center">Razón Social</th>
                 <th class="text-center">R.F.C.</th>
@@ -52,7 +32,6 @@
             <tbody>
               <?php foreach($tiendas as $tienda){ ?>
               <tr>
-                <td class="text-center"><?php echo $tienda->ID_TIENDA; ?></td>
                 <td class="text-center"><?php echo $tienda->TIENDA_NOMBRE; ?></td>
                 <td class="text-center"><?php echo $tienda->TIENDA_RAZON_SOCIAL; ?></td>
                 <td class="text-center"><?php echo $tienda->TIENDA_RFC; ?></td>
@@ -65,9 +44,10 @@
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="<?php echo base_url('admin/usuarios/perfil')."?id=".$tienda->ID_USUARIO; ?>" class="btn btn-sm btn-success"> <span class="fa fa-id-card"></span> Usuario</a>
-                    <a href="<?php echo base_url('admin/usuarios/actualizar')."?id=".$tienda->ID_TIENDA; ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
-                    <a href="<?php echo base_url('admin/usuarios/borrar')."?id=".$tienda->ID_TIENDA; ?>" class="btn btn-sm btn-danger"><span class="fa fa-trash-alt"></span></a>
+                    <a href="<?php echo base_url('admin/usuarios/perfil')."?id=".$tienda->ID_USUARIO; ?>" class="btn btn-sm btn-success" title="Usuario Propietario de la tienda"> <span class="fa fa-id-card"></span> Usuario</a>
+                    <a href="<?php echo base_url('admin/productos')."?id_usuario=".$tienda->ID_USUARIO; ?>" class="btn btn-sm btn-info" title="Productos asociados a la tienda"> <span class="fa fa-box"></span> Productos</a>
+                    <a href="<?php echo base_url('admin/usuarios/actualizar')."?id=".$tienda->ID_TIENDA; ?>" class="btn btn-sm btn-warning" title="Editar Tienda"> <span class="fa fa-pencil-alt"></span> </a>
+                    <button data-enlace='<?php echo base_url('admin/tiendas/borrar')."?id=".$tienda->ID_TIENDA; ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Tienda"> <span class="fa fa-trash"></span> </button>
                   </div>
                 </td>
               </tr>
@@ -78,5 +58,3 @@
       </div>
     </div>
   </div>
-</div>
-</div>

@@ -11,12 +11,12 @@ class MunicipiosModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista($parametros,$orden,$limite){
+  function lista($parametros,$estado,$limite){
     if(!empty($parametros)){
       $this->db->or_like($parametros);
     }
-    if(!empty($orden)){
-      $this->db->order_by($orden);
+    if(!empty($estado)){
+      $this->db->where('ESTADO_NOMBRE',$estado);
     }
     if(!empty($limite)){
       $this->db->limit($limite);

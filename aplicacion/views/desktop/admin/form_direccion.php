@@ -1,52 +1,94 @@
-<div class="container">
   <div class="row">
     <div class="col">
       <div class="card">
-        <div class="card-header d-flex justify-content-between">
-          <div class="titulo">
-            <h1 class="h5"> <span class="fa fa-user"></span> Nueva Direccion</h1>
-          </div>
+        <div class="card-header">
+          <h5> <i class="fa fa-map-marker-alt"></i> Nueva Dirección</h5>
         </div>
         <div class="card-body">
           <?php if(!empty(validation_errors())){ ?>
             <div class="alert alert-danger">
               <?php echo validation_errors(); ?>
             </div>
-            <hr>
           <?php } ?>
-
-          <form class="" action="<?php echo base_url('admin/tiendas/crear'); ?>" method="post">
+          <form class="" action="<?php echo base_url('admin/direcciones/crear');?>" method="post">
             <input type="hidden" name="IdUsuario" value="<?php echo $_GET['id_usuario']; ?>">
-              <h3>Datos Requeridos</h3>
-               <div class="form-group">
-                 <label for="CalleDireccion">Calle y Número</label>
-                 <textarea name="CalleDireccion" class="form-control" rows="5" cols="80"></textarea>
-               </div>
-               <div class="form-group">
-                 <label for="ColoniaDireccion">Colonia / Barrio</label>
-                 <input type="text" class="form-control" id="ColoniaDireccion" name="ColoniaDireccion" placeholder="" value="">
-               </div>
-               <div class="form-group">
-                 <label for="ColoniaDireccion">Delegación / municipio</label>
-                 <input type="text" class="form-control" id="ColoniaDireccion" name="ColoniaDireccion" placeholder="" value="">
-               </div>
-               <div class="form-group">
-                 <label for="ColoniaDireccion">Ciudad</label>
-                 <input type="text" class="form-control" id="ColoniaDireccion" name="ColoniaDireccion" placeholder="" value="">
-               </div>
-               <div class="form-group">
-                 <label for="TiendaRFC">R.F.C.</label>
-                 <input type="text" class="form-control" id="TiendaRFC" name="TiendaRFC" placeholder="" value="" required>
-               </div>
-               <div class="form-group">
-                 <label for="TiendaTelefono">Teléfono</label>
-                 <input type="text" class="form-control" id="TiendaTelefono" name="TiendaTelefono" placeholder="" value="">
-               </div>
-               <hr>
-               <button type="submit" class="btn btn-primary float-right">Registrar</button>
-             </form>
+            <div class="row">
+              <div class="col">
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="AliasDireccion">Nombre <small>Para identificar tu dirección</small> </label>
+                        <input type="text" name="AliasDireccion" class="form-control" placeholder="Ej. Mi casa, Trabajo">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="TipoDireccion">Tipo de Dirección </label>
+                        <select class="form-control" name="TipoDireccion" id="TipoDireccion" required>
+                          <option value="envio">Para envío</option>
+                          <option value="facturacion">Para Facturación</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                 <div class="row">
+                   <div class="col">
+                     <div class="form-group">
+                       <label for="PaisDireccion">País </label>
+                       <select class="form-control" name="PaisDireccion" id="PaisDireccion" required>
+                         <option value="">Selecciona un País</option>
+                       </select>
+                     </div>
+                   </div>
+                   <div class="col">
+                     <div class="form-group">
+                       <label for="EstadoDireccion">Estado </label>
+                       <select class="form-control" name="EstadoDireccion" id="EstadoDireccion" required>
+                         <option value="">Selecciona tu estado</option>
+                       </select>
+                     </div>
+                   </div>
+                   <div class="col">
+                     <div class="form-group">
+                       <label for="MunicipioDireccion">Municipio / Alcaldía</label>
+                       <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" required>
+                         <option value="">Selecciona tu Municipio / Alcaldía</option>
+                       </select>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="row">
+                   <div class="col">
+                     <div class="form-group">
+                       <label for="CiudadDireccion">Ciudad (Opcional)</label>
+                       <input type="text" name="CiudadDireccion" class="form-control">
+                     </div>
+                   </div>
+                   <div class="col">
+                     <div class="form-group">
+                       <label for="CodigoPostalDireccion">Código Postal</label>
+                       <input type="text" name="CodigoPostalDireccion" class="form-control" required>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="form-group">
+                   <label for="BarrioDireccion">Barrio / Colonia</label>
+                   <input type="text" name="BarrioDireccion" class="form-control" required>
+                 </div>
+                 <div class="form-group">
+                   <label for="CalleDireccion">Calle y Número</label>
+                   <textarea name="CalleDireccion" class="form-control" rows="3" required></textarea>
+                 </div>
+                 <div class="form-group">
+                   <label for="ReferenciasDireccion">Referencias</label>
+                   <textarea name="ReferenciasDireccion" class="form-control" rows="3"></textarea>
+                 </div>
+                 <hr>
+                 <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Registrar Direeción</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-</div>

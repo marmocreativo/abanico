@@ -233,7 +233,7 @@
           <h5 class="mb-3"> <span class="fa fa-star"></span> Calificaciones</h5>
           <div class="row">
             <div class="col">
-            <?php if(verificar_sesion()){ ?>
+            <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
               <?php if(empty($mi_calificacion)){ ?>
               <div class="card">
                   <div class="card-body">

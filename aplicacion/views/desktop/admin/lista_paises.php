@@ -1,9 +1,5 @@
-<div class="contenido_principal">
-<div class="container-fluid">
+
   <div class="row">
-    <div class="col-sm-3 col-md-2 fila fila-gris p-0">
-      <?php $this->load->view('desktop/admin/widgets/menu_control_administrador'); ?>
-    </div>
     <div class="col mt-3">
       <div class="card">
         <div class="card-header d-flex justify-content-between">
@@ -22,27 +18,14 @@
           <div class="opciones d-flex">
             <div class="btn-group btn-sm">
               <a href="<?php echo base_url('admin/paises/crear'); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span> Nuevo Pais </a>
-              <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="fa fa-cogs"></span>
-              </button>
-              <div class="dropdown-menu">
-                <!--
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              -->
-              </div>
             </div>
 
           </div>
         </div>
         <div class="card-body p-0">
-          <table class="table table-sm table-hover table-striped">
+          <table class="table table-hover table-striped">
             <thead class="text-light bg<?php echo $primary; ?>">
               <tr>
-                <th class="text-center">id</th>
                 <th class="text-center">Nombre</th>
                 <th class="text-center">Iso</th>
                 <th class="text-center">Estado</th>
@@ -52,7 +35,6 @@
             <tbody>
               <?php foreach($paises as $pais){ ?>
               <tr>
-                <td class="text-center"><?php echo $pais->ID_PAIS; ?></td>
                 <td class="text-center"><?php echo $pais->PAIS_NOMBRE; ?></td>
                 <td class="text-center"><?php echo $pais->PAIS_ISO; ?></td>
                 <td class="text-center">
@@ -77,5 +59,3 @@
       </div>
     </div>
   </div>
-</div>
-</div>

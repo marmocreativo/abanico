@@ -22,6 +22,7 @@
             <input type="hidden" name="Identificador" value="<?php echo $categoria['ID_CATEGORIA']; ?>">
             <input type="hidden" name="UrlCategoria" value="<?php echo $categoria['CATEGORIA_URL']; ?>">
             <input type="hidden" name="ImagenActualCategoria" value="<?php echo $categoria['CATEGORIA_IMAGEN']; ?>">
+            <input type="hidden" name="Tab" value="<?php if(isset($_GET['tab'])){ echo $_GET['tab']; } ?>">
                <div class="form-group">
                  <label for="NombreCategoria">Nombre</label>
                  <input type="text" class="form-control" id="NombreCategoria" name="NombreCategoria" placeholder="" value="<?php echo $categoria['CATEGORIA_NOMBRE']; ?>" required>
@@ -53,6 +54,18 @@
                        <option value="-primary-6" class="bg-primary-6" <?php if($categoria['CATEGORIA_COLOR']=='-primary-6'){ echo 'selected'; } ?>>  Color 13</option>
                        <option value="-primary-7" class="bg-primary-7" <?php if($categoria['CATEGORIA_COLOR']=='-primary-7'){ echo 'selected'; } ?>>  Color 14</option>
                        <option value="-primary-8" class="bg-primary-8" <?php if($categoria['CATEGORIA_COLOR']=='-primary-8'){ echo 'selected'; } ?>>  Color 15</option>
+                       <option value="-primary-9" class="bg-primary-9" <?php if($categoria['CATEGORIA_COLOR']=='-primary-9'){ echo 'selected'; } ?>>  Color 16</option>
+                       <option value="-primary-10" class="bg-primary-10" <?php if($categoria['CATEGORIA_COLOR']=='-primary-10'){ echo 'selected'; } ?>>  Color 17</option>
+                       <option value="-primary-11" class="bg-primary-11" <?php if($categoria['CATEGORIA_COLOR']=='-primary-11'){ echo 'selected'; } ?>>  Color 18</option>
+                       <option value="-primary-12" class="bg-primary-12" <?php if($categoria['CATEGORIA_COLOR']=='-primary-12'){ echo 'selected'; } ?>>  Color 19</option>
+                       <option value="-primary-13" class="bg-primary-13" <?php if($categoria['CATEGORIA_COLOR']=='-primary-13'){ echo 'selected'; } ?>>  Color 20</option>
+                       <option value="-primary-14" class="bg-primary-14" <?php if($categoria['CATEGORIA_COLOR']=='-primary-14'){ echo 'selected'; } ?>>  Color 21</option>
+                       <option value="-primary-15" class="bg-primary-15" <?php if($categoria['CATEGORIA_COLOR']=='-primary-15'){ echo 'selected'; } ?>>  Color 22</option>
+                       <option value="-primary-16" class="bg-primary-16" <?php if($categoria['CATEGORIA_COLOR']=='-primary-16'){ echo 'selected'; } ?>>  Color 23</option>
+                       <option value="-primary-17" class="bg-primary-17" <?php if($categoria['CATEGORIA_COLOR']=='-primary-17'){ echo 'selected'; } ?>>  Color 24</option>
+                       <option value="-primary-18" class="bg-primary-18" <?php if($categoria['CATEGORIA_COLOR']=='-primary-18'){ echo 'selected'; } ?>>  Color 25</option>
+                       <option value="-primary-19" class="bg-primary-19" <?php if($categoria['CATEGORIA_COLOR']=='-primary-19'){ echo 'selected'; } ?>>  Color 26</option>
+                       <option value="-primary-20" class="bg-primary-20" <?php if($categoria['CATEGORIA_COLOR']=='-primary-20'){ echo 'selected'; } ?>>  Color 27</option>
                      </select>
                    </div>
                  </div>

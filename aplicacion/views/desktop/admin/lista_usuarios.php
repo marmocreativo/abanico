@@ -1,51 +1,32 @@
-<div class="contenido_principal">
-<div class="container-fluid">
   <div class="row">
-    <div class="col-sm-3 col-md-2 fila fila-gris p-0">
-      <?php $this->load->view('desktop/admin/widgets/menu_control_administrador'); ?>
-    </div>
-    <div class="col mt-3">
+    <div class="col">
         <div class="card">
           <div class="card-header d-flex justify-content-between">
-            <div class="titulo">
-              <h1 class="h5"> <span class="fa fa-user"></span> Usuarios</h1>
+            <div class="titulo d-flex align-items-center">
+              <h1 class="h6"> <span class="fa fa-user"></span> Usuarios</h1>
             </div>
-            <div class="formulario">
+            <div class="formulario d-flex align-items-center">
               <form class="form-inline" action="<?php echo base_url('admin/usuarios/busqueda');?>" method="get">
                 <input type="hidden" name="tipo_usuario" value="<?php echo $tipo_usuario; ?>">
                 <div class="form-group">
                   <label for="Busqueda" class="sr-only">Busqueda</label>
-                  <input type="text" class="form-control" id="Busqueda" name="Busqueda" placeholder="Buscar">
+                  <input type="text" class="form-control form-control-sm" id="Busqueda" name="Busqueda" placeholder="Buscar">
                 </div>
-                <button type="submit" class="btn btn<?php echo $primary ?>"> <span class="fa fa-search"></span> </button>
+                <button type="submit" class="btn btn<?php echo $primary ?> btn-sm"> <span class="fa fa-search"></span> </button>
               </form>
             </div>
-            <div class="opciones d-flex">
+            <div class="opciones d-flex align-items-center">
               <div class="btn-group btn-sm">
-                <a href="<?php echo base_url('admin/usuarios/crear?tipo_usuario='.$tipo_usuario); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span> Nuevo Usuario </a>
-                <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="fa fa-cogs"></span>
-                </button>
-                <div class="dropdown-menu">
-                  <!--
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Separated link</a>
-                -->
-                </div>
+                <a href="<?php echo base_url('admin/usuarios/crear?tipo_usuario='.$tipo_usuario); ?>" class="btn btn-success btn-sm"> <span class="fa fa-plus"></span> Nuevo Usuario </a>
               </div>
 
             </div>
           </div>
           <div class="card-body p-0">
-            <table class="table table-sm table-hover table-striped">
+            <table class="table table-hover table-striped">
               <thead class="text-light bg<?php echo $primary; ?>">
                 <tr>
-                  <th class="text-center">id</th>
                   <th class="text-center">Nombre</th>
-                  <th class="text-center">Apellidos</th>
                   <th class="text-center">Correo</th>
                   <th class="text-center">Estado</th>
                   <th class="text-right">Controles</th>
@@ -54,9 +35,7 @@
               <tbody>
                 <?php foreach($usuarios as $usuario){ ?>
                 <tr>
-                  <td class="text-center"><?php echo $usuario->ID_USUARIO; ?></td>
-                  <td class="text-center"><?php echo $usuario->USUARIO_NOMBRE; ?></td>
-                  <td class="text-center"><?php echo $usuario->USUARIO_APELLIDOS; ?></td>
+                  <td class="text-center"><?php echo $usuario->USUARIO_NOMBRE.' '.$usuario->USUARIO_APELLIDOS; ?></td>
                   <td class="text-center"><?php echo $usuario->USUARIO_CORREO; ?></td>
                   <td class="text-center">
                       <?php
@@ -79,7 +58,7 @@
                         }
                       ?>
                     <div class="dropdown">
-                      <button type="button" class="btn <?php echo 'btn-'.$color; ?> dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn <?php echo 'btn-'.$color; ?> btn-sm dropdown-toggle" data-toggle="dropdown">
                         <?php echo $estado_actual; ?>
                       </button>
                       <div class="dropdown-menu">
@@ -91,9 +70,7 @@
                   </td>
                   <td class="text-right">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <a href="<?php echo base_url('admin/usuarios/perfil')."?id=".$usuario->ID_USUARIO; ?>" class="btn btn-sm btn-success"> <span class="fa fa-id-card"></span> Detalles</a>
-                      <a href="<?php echo base_url('admin/usuarios/actualizar')."?id=".$usuario->ID_USUARIO; ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
-                      <a href="<?php echo base_url('admin/usuarios/borrar')."?id=".$usuario->ID_USUARIO; ?>" class="btn btn-sm btn-danger"><span class="fa fa-trash-alt"></span></a>
+                      <a href="<?php echo base_url('admin/usuarios/perfil')."?id_usuario=".$usuario->ID_USUARIO; ?>" class="btn btn-sm btn-success" title="Ver todos los datos del Usuario"> <span class="fa fa-id-card"></span> Detalles</a>
                     </div>
                   </td>
                 </tr>
@@ -104,5 +81,3 @@
         </div>
     </div>
   </div>
-</div>
-</div>

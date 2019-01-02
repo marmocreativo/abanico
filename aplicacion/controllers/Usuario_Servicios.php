@@ -22,24 +22,35 @@ class Usuario_Servicios extends CI_Controller {
 			$this->load->model('GaleriasServiciosModel');
 			$this->load->model('CategoriasModel');
 			$this->load->model('CategoriasServiciosModel');
-			$this->load->model('TiendasModel');
+			$this->load->model('PerfilServiciosModel');
 			$this->load->model('DireccionesModel');
   }
 
 	public function index()
 	{
-		if(verificar_sesion()){
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// reviso si el usuario tiene una tienda
+		$this->data['perfil'] = $this->PerfilServiciosModel->perfil_usuario($_SESSION['usuario']['id']);
+		if(!empty($this->data['perfil'])){
 			$this->data['servicios'] = $this->ServiciosModel->lista('',$_SESSION['usuario']['id'],'','');
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/lista_servicios',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 		}else{
-			redirect(base_url('login'));
+			// si ya existe una sesión activa redirijo con el siguiente mensaje
+			$this->session->set_flashdata('advertencia', 'No puedes entrar al administrador de servicios si no has registrado tu perfil');
+			redirect(base_url('usuario/perfil_servicios'));
 		}
 	}
 	public function crear()
 	{
-		if(verificar_sesion()){
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
 			// Defino el tipo de Categoria
 			$tipo_categoria = 'servicios';
 
@@ -111,14 +122,14 @@ class Usuario_Servicios extends CI_Controller {
 				$this->load->view($this->data['dispositivo'].'/usuarios/form_servicio',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 			}
-		}else{
-			redirect(base_url('login'));
-		}
 	}
 
 		public function actualizar()
 		{
-			if(verificar_sesion()){
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
 				// Defino tipo de Servicio y tipo de Categoría
 				$tipo_categoria = 'servicios';
 
@@ -206,14 +217,16 @@ class Usuario_Servicios extends CI_Controller {
 					$this->load->view($this->data['dispositivo'].'/usuarios/form_actualizar_servicio',$this->data);
 					$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 				}
-			}else{
-				redirect(base_url('login'));
-			}
 	}
 
 
 		public function borrar()
 		{
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
+
 			$Servicio = $this->ServiciosModel->detalles($_GET['id']);
 
 	        // check if the institucione exists before trying to delete it
@@ -229,7 +242,12 @@ class Usuario_Servicios extends CI_Controller {
 					}
 		}
 		public function borrar_galeria()
-		{	$tab = 'galeria';
+		{
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
+			$tab = 'galeria';
 			$galeria = $this->GaleriasServiciosModel->detalles($_GET['id']);
 					// check if the institucione exists before trying to delete it
 					if(isset($galeria['ID_GALERIA']))
@@ -243,12 +261,20 @@ class Usuario_Servicios extends CI_Controller {
 		}
 		public function portada()
 		{
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
 			$tab = 'galeria';
 			$this->GaleriasServiciosModel->portada($_GET['id_servicio'],$_GET['id']);
 			redirect(base_url('usuario/servicios/actualizar?id='.$_GET['id_servicio'].'&tab='.$tab));
 		}
 		public function activar()
 		{
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
 			$this->ServiciosModel->activar($_GET['id'],$_GET['estado']);
 			redirect(base_url('usuario/servicios'));
 		}

@@ -29,7 +29,6 @@
               <table class="table table-sm">
                 <thead>
                   <tr>
-                    <th>id</th>
                     <th>Nombre</th>
                     <th>SKU</th>
                     <th>Cantidad</th>
@@ -40,7 +39,6 @@
                 <tbody>
                   <?php foreach($productos as $producto){ ?>
                   <tr>
-                    <td><?php echo $producto->ID_PRODUCTO; ?></td>
                     <td><?php echo $producto->PRODUCTO_NOMBRE; ?></td>
                     <td><?php echo $producto->PRODUCTO_SKU; ?></td>
                     <td><?php echo $producto->PRODUCTO_CANTIDAD; ?></td>
@@ -48,7 +46,7 @@
                     <td>
                       <div class="btn-group float-right">
                         <a href="<?php echo base_url('usuario/productos/actualizar?id='.$producto->ID_PRODUCTO); ?>" class="btn btn-sm btn-warning" title="Editar Producto"> <span class="fa fa-pencil-alt"></span> </a>
-                        <a href="<?php echo base_url('usuario/productos/borrar?id='.$producto->ID_PRODUCTO); ?>" class="btn btn-sm btn-danger" title="Editar Producto"> <span class="fa fa-ban"></span> </a>
+                        <button data-enlace='<?php echo base_url('usuario/productos/borrar?id='.$producto->ID_PRODUCTO); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Producto"> <span class="fa fa-trash"></span> </button>
                       </div>
                     </td>
                   </tr>

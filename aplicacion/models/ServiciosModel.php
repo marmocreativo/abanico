@@ -73,6 +73,15 @@ class serviciosModel extends CI_Model {
     return $query->result();
   }
   /*
+    * Conteo de servicios
+ */
+  function conteo_servicios_usuario($id_usuario){
+
+    $this->db->where('ID_USUARIO',$id_usuario);
+    $query = $this->db->count_all_results('servicios');
+    return $query;
+  }
+  /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
@@ -131,6 +140,13 @@ class serviciosModel extends CI_Model {
     }
     $this->db->where('ID_SERVICIO',$id);
     return $this->db->update('servicios',array('SERVICIO_ESTADO'=>$activo));
+  }
+  /*
+    * Desactivar servicios de un Usuario
+ */
+  function descativar_servicios_usuario($id){
+    $this->db->where('ID_USUARIO',$id);
+    return $this->db->update('servicios',array('SERVICIO_ESTADO'=>'inactivo'));
   }
   /*
     * Cambio el estado de la entrada, puede ser cualquier estado

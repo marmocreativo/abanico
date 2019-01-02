@@ -67,7 +67,25 @@ class CategoriasModel extends CI_Model {
     * $id es el identificador de la entrada
  */
   function borrar($id){
-    return $this->db->delete('categorias',array('ID_CATEGORIA'=>$id));
+
+    $arbol_categorias = array();
+    $arbol_categorias[] =  $id;
+    $this->db->where('CATEGORIA_PADRE',$id);
+    $segundo_nivel = $this->db->get('categorias');
+    //var_dump($segundo_nivel);
+    foreach($segundo_nivel->result() as $segundo){
+      $arbol_categorias[]= $segundo->ID_CATEGORIA;
+      $this->db->where('CATEGORIA_PADRE',$segundo->ID_CATEGORIA);
+      $tercer_nivel = $this->db->get('categorias');
+      foreach($tercer_nivel->result() as $tercer){
+        $arbol_categorias[]= $tercer->ID_CATEGORIA;
+      }
+
+    }
+    // Borro el arbol completo
+    foreach($arbol_categorias as $arbol){
+      $this->db->delete('categorias',array('ID_CATEGORIA'=>$arbol));
+    }
   }
   /*
     * Interruptor cambia el estado de una entrada de activo a inactivo

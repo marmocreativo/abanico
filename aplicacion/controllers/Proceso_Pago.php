@@ -33,7 +33,7 @@ class Proceso_Pago extends CI_Controller {
 	}
 	public function paso1()
 	{
-		if(verificar_sesion()){
+		if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			redirect(base_url('pago_paso_2'));
 		}else{
 			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
@@ -44,7 +44,7 @@ class Proceso_Pago extends CI_Controller {
 
 	public function paso2()
 	{
-		if(verificar_sesion()){
+		if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			$this->data['direcciones'] = $this->DireccionesModel->lista_direcciones($_SESSION['usuario']['id']);
 			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
 			$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_2',$this->data);
@@ -56,7 +56,7 @@ class Proceso_Pago extends CI_Controller {
 	}
 	public function paso3()
 	{
-		if(verificar_sesion()){
+		if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			$this->data['usuario'] = $this->UsuariosModel->detalles($_SESSION['usuario']['id']);
 			$this->data['detalles_direccion'] = $this->DireccionesModel->detalles($this->input->post('IdDireccion'));
 			$this->data['direccion'] = $this->DireccionesModel->direccion_formateada($this->input->post('IdDireccion'));

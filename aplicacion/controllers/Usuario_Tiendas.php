@@ -23,14 +23,20 @@ class Usuario_Tiendas extends CI_Controller {
 			$this->load->model('CategoriasModel');
 			$this->load->model('CategoriasProductoModel');
 			$this->load->model('TiendasModel');
+			$this->load->model('PerfilServiciosModel');
 			$this->load->model('DireccionesModel');
   }
+
 	public function index()
 	{
-			// Obtengo los datos de mi tiendas
-			$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 			// Debo redireccionar
-			if(verificar_sesion()){
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
+
+				// Obtengo los datos de mi tiendas
+				$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 				// reviso si el usuario ya tiene tienda
 				if(empty($this->data['tienda'])){
 					$vista_tienda = "form_tienda";
@@ -40,20 +46,20 @@ class Usuario_Tiendas extends CI_Controller {
 				}
 
 				$direccion_fiscal = $this->DireccionesModel->direccion_fiscal($_SESSION['usuario']['id']);
-				$this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($direccion_fiscal['ID_DIRECCION']);
+				$this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($this->data['tienda']['ID_DIRECCION']);
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/'.$vista_tienda,$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
-			}else{
-				redirect(base_url('login'));
-			}
 	}
 
 
 	public function crear()
 	{
 			// Debo redireccionar
-			if(verificar_sesion()){
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
 				// Validaciones de Formulario
 				$this->form_validation->set_rules('NombreTienda', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
 				$this->form_validation->set_rules('RazonSocialTienda', 'Razón Social', 'required', array('required' => 'Debes escribir tu %s.'));
@@ -107,7 +113,32 @@ class Usuario_Tiendas extends CI_Controller {
 					 );
 					 $direccion_id = $this->DireccionesModel->crear($parametros_direccion);
 
-			    	redirect(base_url('usuario/tienda'));
+					 // Registro la dirección en la tienda
+					 $tienda_id = $this->TiendasModel->actualizar($tienda_id,array('ID_DIRECCION'=>$direccion_id));
+					 // Reviso los permisos del Usuario
+					 $usuario = $this->UsuariosModel->detalles($this->input->post('IdUsuario'));
+					 $tienda = $this->TiendasModel->tienda_usuario($usuario['ID_USUARIO']);
+					 $perfil = $this->PerfilServiciosModel->perfil_usuario($usuario['ID_USUARIO']);
+					 $permiso = $usuario['USUARIO_TIPO'];
+
+					 if($usuario['USUARIO_TIPO']!='tec-5'&&$usuario['USUARIO_TIPO']!='adm-6'){
+						 if(!null == $tienda){
+  						 $permiso = 'vnd-2';
+  					 }
+  					 if(!null == $perfil){
+  						 $permiso = 'ser-3';
+  					 }
+  					 if(!null == $tienda&& !null == $perfil){
+  						 $permiso = 'vns-4';
+  					 }
+					 }
+					 // Actualizo el tipo de Usuario
+					 $this->UsuariosModel->permiso($usuario['ID_USUARIO'],$permiso);
+
+					 // Mensaje de Feedback
+					 $this->session->set_flashdata('exito', 'Se registró la tienda con éxito');
+					 // Redirección
+			    redirect(base_url('usuario/tienda'));
 
 				}else{
 					// Obtengo los datos de mi tiendas
@@ -116,14 +147,16 @@ class Usuario_Tiendas extends CI_Controller {
 					$this->load->view($this->data['dispositivo'].'/usuarios/form_tienda',$this->data);
 					$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 				}
-			}
 	}
 
 
 	public function actualizar()
 	{
 		// Debo redireccionar
-		if(verificar_sesion()){
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
 			// Validaciones de Formulario
 			$this->form_validation->set_rules('NombreTienda', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
 			$this->form_validation->set_rules('RazonSocialTienda', 'Razón Social', 'required', array('required' => 'Debes escribir tu %s.'));
@@ -181,8 +214,30 @@ class Usuario_Tiendas extends CI_Controller {
 					}else{
 						$direccion_id = $this->DireccionesModel->crear($parametros_direccion);
 					}
+					// Registro la dirección en la tienda
+					$tienda_id = $this->TiendasModel->actualizar($tienda_id,array('ID_DIRECCION'=>$direccion_id));
+					// Reviso los permisos del Usuario
+					$usuario = $this->UsuariosModel->detalles($this->input->post('IdUsuario'));
+					$tienda = $this->TiendasModel->tienda_usuario($usuario['ID_USUARIO']);
+					$perfil = $this->PerfilServiciosModel->perfil_usuario($usuario['ID_USUARIO']);
+					$permiso = $usuario['USUARIO_TIPO'];
 
-
+					if($usuario['USUARIO_TIPO']!='tec-5'||$usuario['USUARIO_TIPO']!='adm-6'){
+					 if(!null == $tienda){
+						 $permiso = 'vnd-2';
+					 }
+					 if(!null == $perfil){
+						 $permiso = 'ser-3';
+					 }
+					 if(!null == $tienda&& !null == $perfil){
+						 $permiso = 'vns-4';
+					 }
+					}
+					// Actualizo el tipo de Usuario
+					$this->UsuariosModel->permiso($usuario['ID_USUARIO'],$permiso);
+					// Mensaje de Feedback
+					$this->session->set_flashdata('exito', 'Se actualizó la tienda con éxito');
+					// Redirección
 		      redirect(base_url('usuario/tienda'));
 
 			}else{
@@ -193,12 +248,5 @@ class Usuario_Tiendas extends CI_Controller {
 				$this->load->view($this->data['dispositivo'].'/usuarios/form_actualizar_tienda',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 			}
-		}else{
-			redirect(base_url('login'));
-		}
-	}
-	public function borrar()
-	{
-		echo 'Borrar Tienda';
 	}
 }

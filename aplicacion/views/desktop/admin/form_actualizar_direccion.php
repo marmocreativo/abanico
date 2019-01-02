@@ -2,49 +2,94 @@
   <div class="row">
     <div class="col">
       <div class="card">
-        <div class="card-header d-flex justify-content-between">
-          <div class="titulo">
-            <h1 class="h5"> <span class="fa fa-globe-americas"></span> Actualizar <?php echo $usuario['USUARIO_NOMBRE']; ?></h1>
-          </div>
+        <div class="card-header">
+          <h5> <i class="fa fa-map-marker-alt"></i> Actualizar Dirección</h5>
         </div>
         <div class="card-body">
           <?php if(!empty(validation_errors())){ ?>
             <div class="alert alert-danger">
               <?php echo validation_errors(); ?>
             </div>
-            <hr>
           <?php } ?>
-            <form class="" action="<?php echo base_url('admin/usuarios/actualizar'); ?>" method="post">
-              <input type="hidden" name="Identificador" value="<?php echo $producto['ID_PRODUCTO']; ?>">
-                <h3>Datos Requeridos</h3>
-                 <div class="form-group">
-                   <label for="NombreUsuario">Nombre</label>
-                   <input type="text" class="form-control" id="NombreUsuario" name="NombreUsuario" placeholder="" value="<?php if(empty(form_error('NombreUsuario'))){ echo $usuario['USUARIO_NOMBRE']; } else { set_value('NombreUsuario'); } ?>">
+          <form class="" action="<?php echo base_url('admin/direcciones/actualizar');?>" method="post">
+            <input type="hidden" name="IdUsuario" value="<?php echo $direccion['ID_USUARIO']; ?>">
+            <input type="hidden" name="Identificador" value="<?php echo $direccion['ID_DIRECCION']; ?>">
+            <div class="row">
+              <div class="col">
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="AliasDireccion">Nombre <small>Para identificar tu dirección</small> </label>
+                        <input type="text" name="AliasDireccion" class="form-control" value="<?php echo $direccion['DIRECCION_ALIAS']; ?>">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="TipoDireccion">Tipo de Dirección </label>
+                        <select class="form-control" name="TipoDireccion" id="TipoDireccion" required>
+                          <option value="envio" <?php if($direccion['DIRECCION_TIPO']=='envio'){ echo 'selected'; } ?>>Para envío</option>
+                          <option value="facturacion" <?php if($direccion['DIRECCION_TIPO']=='facturacion'){ echo 'selected'; } ?>>Para Facturación</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                 <div class="row">
+                   <div class="col">
+                     <div class="form-group">
+                       <label for="PaisDireccion">País </label>
+                       <select class="form-control" name="PaisDireccion" id="PaisDireccion" data-valor-anterior="<?php echo $direccion['DIRECCION_PAIS']; ?>"  required>
+                         <option value="">Selecciona un País</option>
+                       </select>
+                     </div>
+                   </div>
+                   <div class="col">
+                     <div class="form-group">
+                       <label for="EstadoDireccion">Estado </label>
+                       <select class="form-control" name="EstadoDireccion" id="EstadoDireccion" data-valor-anterior="<?php echo $direccion['DIRECCION_ESTADO']; ?>" required>
+                         <option value="">Selecciona tu estado</option>
+                       </select>
+                     </div>
+                   </div>
+
+                   <div class="col">
+                     <div class="form-group">
+                       <label for="MunicipioDireccion">Municipio / Alcaldía</label>
+                       <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php echo $direccion['DIRECCION_MUNICIPIO']; ?>" required>
+                         <option value="">Selecciona tu Municipio / Alcaldía</option>
+                       </select>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="row">
+                   <div class="col">
+                     <div class="form-group">
+                       <label for="CiudadDireccion">Ciudad (Opcional)</label>
+                       <input type="text" name="CiudadDireccion" class="form-control"  value="<?php echo $direccion['DIRECCION_CIUDAD']; ?>">
+                     </div>
+                   </div>
+                   <div class="col">
+                     <div class="form-group">
+                       <label for="CodigoPostalDireccion">Código Postal</label>
+                       <input type="text" name="CodigoPostalDireccion" class="form-control"  value="<?php echo $direccion['DIRECCION_CODIGO_POSTAL']; ?>" required>
+                     </div>
+                   </div>
                  </div>
                  <div class="form-group">
-                   <label for="ApellidosUsuario">Apellidos</label>
-                   <input type="text" class="form-control" id="ApellidosUsuario" name="ApellidosUsuario" placeholder="" value="<?php if(empty(form_error('ApellidosUsuario'))){ echo $usuario['USUARIO_APELLIDOS']; } else { set_value('ApellidosUsuario'); } ?>">
+                   <label for="BarrioDireccion">Barrio / Colonia</label>
+                   <input type="text" name="BarrioDireccion" class="form-control" value="<?php echo $direccion['DIRECCION_BARRIO']; ?>" required>
                  </div>
                  <div class="form-group">
-                   <label for="CorreoUsuario">Correo Electrónico</label>
-                   <input type="email" class="form-control" id="CorreoUsuario" name="CorreoUsuario" placeholder="" value="<?php if(empty(form_error('CorreoUsuario'))){ echo $usuario['USUARIO_CORREO']; } else { set_value('CorreoUsuario'); } ?>">
+                   <label for="CalleDireccion">Calle y Número</label>
+                   <textarea name="CalleDireccion" class="form-control" rows="3" required><?php echo $direccion['DIRECCION_CALLE_Y_NUMERO']; ?></textarea>
                  </div>
                  <div class="form-group">
-                   <label for="PassUsuario">Contraseña</label>
-                   <input type="password" class="form-control" id="PassUsuario" name="PassUsuario" placeholder="">
-                 </div>
-                 <div class="form-group">
-                   <label for="PassUsuario">Confirmar Contraseña</label>
-                   <input type="password" class="form-control" id="PassUsuarioConf" name="PassUsuarioConf" placeholder="">
+                   <label for="ReferenciasDireccion">Referencias</label>
+                   <textarea name="ReferenciasDireccion" class="form-control" rows="3"><?php echo $direccion['DIRECCION_REFERENCIAS']; ?></textarea>
                  </div>
                  <hr>
-                 <h4>Datos Opcionales</h4>
-                 <div class="form-group">
-                   <label for="TelefonoUsuario">Teléfono</label>
-                   <input type="text" class="form-control" id="TelefonoUsuario" name="TelefonoUsuario" placeholder="" value="<?php if(empty(form_error('TelefonoUsuario'))){ echo $usuario['USUARIO_TELEFONO']; } else { set_value('TelefonoUsuario'); } ?> ">
-                 </div>
-            <hr>
-            <button type="submit" class="btn btn<?php echo $primary; ?> float-right" name="button"> <span class="fa fa-save"></span> Guardar</button>
+                 <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Actualizar Direeción</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>

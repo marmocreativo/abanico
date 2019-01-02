@@ -8,7 +8,7 @@
         <div class="col-12 col-md-6">
           <div class="card">
             <div class="card-header">
-              <h5> <i class="fa fa-map-marker-alt"></i> Nueva Dirección</h5>
+              <h5> <i class="fa fa-map-marker-alt"></i> Actualizar Dirección</h5>
             </div>
             <div class="card-body">
               <?php if(!empty(validation_errors())){ ?>
@@ -24,16 +24,18 @@
                       <div class="row">
                         <div class="col">
                           <div class="form-group">
-                            <label for="AliasDireccion">Alias</label>
+                            <label for="AliasDireccion">Nombre <small>Para identificar tu dirección</small> </label>
                             <input type="text" name="AliasDireccion" class="form-control" value="<?php echo $direccion['DIRECCION_ALIAS']; ?>">
                           </div>
                         </div>
-                        <div class="form-group">
-                          <label for="TipoDireccion">Tipo de Dirección </label>
-                          <select class="form-control" name="TipoDireccion" id="TipoDireccion" required>
-                            <option value="envio" <?php if($direccion['DIRECCION_TIPO']=='envio'){ echo 'selected'; } ?>>Para envío</option>
-                            <option value="facturacion" <?php if($direccion['DIRECCION_TIPO']=='facturacion'){ echo 'selected'; } ?>>Para Facturación</option>
-                          </select>
+                        <div class="col">
+                          <div class="form-group">
+                            <label for="TipoDireccion">Tipo de Dirección </label>
+                            <select class="form-control" name="TipoDireccion" id="TipoDireccion" required>
+                              <option value="envio" <?php if($direccion['DIRECCION_TIPO']=='envio'){ echo 'selected'; } ?>>Para envío</option>
+                              <option value="facturacion" <?php if($direccion['DIRECCION_TIPO']=='facturacion'){ echo 'selected'; } ?>>Para Facturación</option>
+                            </select>
+                          </div>
                         </div>
                       </div>
                      <div class="row">
@@ -53,20 +55,21 @@
                            </select>
                          </div>
                        </div>
-                     </div>
-                     <div class="row">
-                       <div class="col">
-                         <div class="form-group">
-                           <label for="CiudadDireccion">Ciudad</label>
-                           <input type="text" name="CiudadDireccion" class="form-control"  value="<?php echo $direccion['DIRECCION_CIUDAD']; ?>" required>
-                         </div>
-                       </div>
+
                        <div class="col">
                          <div class="form-group">
                            <label for="MunicipioDireccion">Municipio / Alcaldía</label>
                            <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php echo $direccion['DIRECCION_MUNICIPIO']; ?>" required>
                              <option value="">Selecciona tu Municipio / Alcaldía</option>
                            </select>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col">
+                         <div class="form-group">
+                           <label for="CiudadDireccion">Ciudad (Opcional)</label>
+                           <input type="text" name="CiudadDireccion" class="form-control"  value="<?php echo $direccion['DIRECCION_CIUDAD']; ?>">
                          </div>
                        </div>
                        <div class="col">

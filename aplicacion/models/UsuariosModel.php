@@ -91,9 +91,9 @@ class UsuariosModel extends CI_Model {
     * $id es el identificador de la entrada
     * $activo es el estado al que se quiere cambiar la entrada
  */
-  function permiso($id,$estado){
+  function permiso($id,$permiso){
     $this->db->where('ID_USUARIO',$id);
-    return $this->db->update('usuarios',array('USUARIO_TIPO'=>$estado));
+    return $this->db->update('usuarios',array('USUARIO_TIPO'=>$permiso));
   }
   /*
     * Creo el orden de los elementos

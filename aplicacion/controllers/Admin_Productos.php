@@ -22,24 +22,36 @@ class Admin_Productos extends CI_Controller {
 		// Cargo el modelo
 		$this->load->model('ProductosModel');
 		$this->load->model('UsuariosModel');
+		$this->load->model('TiendasModel');
 		$this->load->model('GaleriasModel');
 		$this->load->model('CategoriasModel');
 		$this->load->model('CategoriasProductoModel');
+
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// Verifico Permiso
+		if(!verificar_permiso(['tec-5','adm-6'])){
+			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
+			redirect(base_url('usuario'));
+		}
   }
 
 	public function index()
 	{
+			// Tipo de Producto
 			if(!isset($_GET['tipo_producto'])||empty($_GET['tipo_producto'])){ $this->data['tipo_producto']='normal'; }else{ $this->data['tipo_producto']=$_GET['tipo_producto']; }
-			$this->data['productos'] = $this->ProductosModel->lista(['PRODUCTO_TIPO'=>$this->data['tipo_producto']],'','','');
-			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
-			$this->load->view($this->data['dispositivo'].'/admin/lista_productos',$this->data);
-			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
-	}
-	public function usuario()
-	{
-			if(!isset($_GET['tipo_producto'])||empty($_GET['tipo_producto'])){ $this->data['tipo_producto']='normal'; }else{ $this->data['tipo_producto']=$_GET['tipo_producto']; }
-			$this->data['productos'] = $this->ProductosModel->lista(['PRODUCTO_TIPO'=>$this->data['tipo_producto']],$_GET['id_usuario'],'','');
-			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
+
+			// Reviso si hay id del usuario
+			if(isset($_GET['id_usuario'])){
+				$this->data['productos'] = $this->ProductosModel->lista(['PRODUCTO_TIPO'=>$this->data['tipo_producto']],$_GET['id_usuario'],'PRODUCTO_FECHA_REGISTRO DESC','');
+				$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
+				$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_GET['id_usuario']);
+			}else{
+				$this->data['productos'] = $this->ProductosModel->lista(['PRODUCTO_TIPO'=>$this->data['tipo_producto']],'','PRODUCTO_FECHA_REGISTRO DESC','');
+			}
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_productos',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
@@ -162,10 +174,14 @@ class Admin_Productos extends CI_Controller {
 				);
 				$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
 			}
-			redirect(base_url('admin/productos/actualizar?id=').$producto_id.'&mensaje=producto_creado');
+			// Mensaje de feedback
+			$this->session->set_flashdata('exito', 'Tu producto se ha actualizado, puedes continuar añadiendo imagenes a la galería');
+			// redirección
+			redirect(base_url('admin/productos/actualizar?id='.$producto_id));
     }else{
 			if(!isset($_GET['tipo_producto'])||empty($_GET['tipo_producto'])){ $this->data['tipo_producto']='normal'; }else{ $this->data['tipo_producto']=$_GET['tipo_producto']; }
-			$this->data['usuarios'] = $this->UsuariosModel->lista([ 'USUARIO_ESTADO'=>'activo' ],'','','');
+			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
+			$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_GET['id_usuario']);
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_producto',$this->data);
@@ -206,7 +222,7 @@ class Admin_Productos extends CI_Controller {
 					}
 				}
 			}else{
-				$url = $this->$input->post('UrlProducto');
+				$url = $this->input->post('UrlProducto');
 			}
 			// Parametros del producto
 			$parametros = array(
@@ -279,13 +295,16 @@ class Admin_Productos extends CI_Controller {
 				);
 				$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
 			}
-
+			// Mensaje de Feedback
+			$this->session->set_flashdata('exito', 'Actualización correcta');
+			// Redirección
 			redirect(base_url('admin/productos/actualizar?id=').$this->input->post('Identificador').'&mensaje=producto_actualizado');
     }else{
 
 			$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
 			$this->data['usuarios'] = $this->UsuariosModel->lista([ 'USUARIO_ESTADO'=>'activo' ],'','','');
 			$this->data['usuario_producto'] = $this->UsuariosModel->detalles($this->data['producto']['ID_USUARIO']);
+			$this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['usuario_producto']['ID_USUARIO']);
 			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'','5');
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 			$this->data['relacion_categorias'] = $this->CategoriasProductoModel->lista($_GET['id']);
@@ -303,7 +322,10 @@ class Admin_Productos extends CI_Controller {
         if(isset($producto['ID_PRODUCTO']))
         {
             $this->ProductosModel->borrar($_GET['id']);
-            redirect(base_url('admin/productos/usuario?id_usuario=').$_GET['id_usuario']);
+						// Mensaje de Feedback
+						$this->session->set_flashdata('exito', 'Producto Borrado');
+						// Redirección
+            redirect(base_url('admin/productos?id_usuario=').$_GET['id_usuario']);
         } else {
 
 	         	show_error('La entrada que deseas borrar no existe');

@@ -23,18 +23,22 @@ class Usuario_Direcciones extends CI_Controller {
 
 	public function index()
 	{
-		if(verificar_sesion()){
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
 			$this->data['direcciones'] = $this->DireccionesModel->lista_direcciones($_SESSION['usuario']['id']);
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/lista_direcciones',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
-		}else{
-			redirect(base_url('login'));
-		}
 	}
 	public function crear()
 	{
-		if(verificar_sesion()){
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+
 			$this->form_validation->set_rules('CalleDireccion', 'Calle y Número', 'required', array('required' => 'Debes escribir tu %s.'));
 			$this->form_validation->set_rules('PaisDireccion', 'País', 'required', array('required' => 'Debes elegir tu %s.'));
 			$this->form_validation->set_rules('EstadoDireccion', 'Estado', 'required', array('required' => 'Debes elegir tu %s.'));
@@ -61,21 +65,25 @@ class Usuario_Direcciones extends CI_Controller {
 				);
 
 				$usuario_id = $this->DireccionesModel->crear($parametros);
+				// Mensaje de feedback
+				$this->session->set_flashdata('exito', 'Dirección creada correctamente');
+				// redirección
 				redirect(base_url('usuario/direcciones'));
 			}else{
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/form_direccion',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 			}
-		}else{
-			redirect(base_url('login'));
-		}
 	}
 
 
 	public function actualizar()
 	{
-		if(verificar_sesion()){
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+
 			$this->form_validation->set_rules('CalleDireccion', 'Calle y Número', 'required', array('required' => 'Debes escribir tu %s.'));
 			$this->form_validation->set_rules('PaisDireccion', 'País', 'required', array('required' => 'Debes elegir tu %s.'));
 			$this->form_validation->set_rules('EstadoDireccion', 'Estado', 'required', array('required' => 'Debes elegir tu %s.'));
@@ -101,6 +109,9 @@ class Usuario_Direcciones extends CI_Controller {
 				);
 
 				$usuario_id = $this->DireccionesModel->actualizar( $this->input->post('Identificador'),$parametros);
+				// Mensaje de feedback
+				$this->session->set_flashdata('exito', 'Dirección actualizada');
+				// redirección
 				redirect(base_url('usuario/direcciones'));
 			}else{
 				$this->data['direccion'] = $this->DireccionesModel->detalles($_GET['id']);
@@ -108,18 +119,18 @@ class Usuario_Direcciones extends CI_Controller {
 				$this->load->view($this->data['dispositivo'].'/usuarios/form_actualizar_direccion',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 			}
-		}else{
-			redirect(base_url('login'));
-		}
 	}
 	public function borrar()
 	{
-		if(verificar_sesion()){
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
 			$this->DireccionesModel->borrar($_GET['id']);
+			// Mensaje de feedback
+			$this->session->set_flashdata('exito', 'Dirección eliminada');
+			// redirección
 			redirect(base_url('usuario/direcciones'));
-		}else{
-			redirect(base_url('login'));
-	}
 
 	// Login Form
 	}

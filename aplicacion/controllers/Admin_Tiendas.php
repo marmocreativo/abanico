@@ -20,7 +20,25 @@ class Admin_Tiendas extends CI_Controller {
 		}
 
 		// Cargo el modelo
+		$this->load->model('ProductosModel');
+		$this->load->model('UsuariosModel');
+		$this->load->model('GaleriasModel');
+		$this->load->model('CategoriasModel');
+		$this->load->model('CategoriasProductoModel');
 		$this->load->model('TiendasModel');
+		$this->load->model('PerfilServiciosModel');
+		$this->load->model('DireccionesModel');
+
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// Verifico Permiso
+		if(!verificar_permiso(['tec-5','adm-6'])){
+			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
+			redirect(base_url('usuario'));
+		}
   }
 
 	public function index()
@@ -51,23 +69,87 @@ class Admin_Tiendas extends CI_Controller {
 	}
 	public function crear()
 	{
-		$this->form_validation->set_rules('TiendaRFC', 'RFC de la tienda', 'required|is_unique[tiendas.TIENDA_RFC]', array( 'required' => 'Debes designar el %s.', 'is_unique' => 'Este RFC ya ha sido registrado' ));
+		// Validaciones de Formulario
+		$this->form_validation->set_rules('NombreTienda', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('RazonSocialTienda', 'Razón Social', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('RfcTienda', 'R.F.C.', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('TelefonoTienda', 'Teléfono', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('TerminosyCondiciones', 'Términos y condiciones', 'required', array('required' => 'Debes aceptar los %s.'));
 
+
+		// Valido
 		if($this->form_validation->run())
-    {
-      $parametros = array(
-          'ID_USUARIO'=> $this->input->post('IdUsuario'),
-          'TIENDA_NOMBRE' => $this->input->post('TiendaNombre'),
-          'TIENDA_RAZON_SOCIAL' => $this->input->post('TiendaRazonSocial'),
-          'TIENDA_RFC' => $this->input->post('TiendaRFC'),
-          'TIENDA_TELEFONO' => $this->input->post('TiendaTelefono'),
-          'TIENDA_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
-          'TIENDA_ESTADO'=>'activo'
-      );
+		{
+			// Preparo archivo para imagen
+			$archivo = $_FILES['ImagenTienda']['tmp_name'];
+			$ancho = $this->data['op']['ancho_imagenes_tienda'];
+			$alto = $this->data['op']['alto_imagenes_tienda'];
+			$calidad = 80;
+			$nombre = 'tienda-'.uniqid();
+			$destino = $this->data['op']['ruta_imagenes_tienda'].'completo/';
+			// Subo la imagen y obtengo el nombre Default si va vacía
+			$imagen = subir_imagen_abanico_cortar($archivo,$ancho,$alto,$calidad,$nombre,$destino);
+			// Parametros de la tienda
+				$parametros = array(
+					'ID_USUARIO' => $this->input->post('IdUsuario'),
+					'TIENDA_NOMBRE' => $this->input->post('NombreTienda'),
+					'TIENDA_RAZON_SOCIAL' => $this->input->post('RazonSocialTienda'),
+					'TIENDA_RFC' => $this->input->post('RfcTienda'),
+					'TIENDA_TELEFONO' => $this->input->post('TelefonoTienda'),
+					'TIENDA_IMAGEN' => $imagen,
+					'TIENDA_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+					'TIENDA_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+					'TIENDA_ESTADO' => 'activo'
+				);
+				// Registro la Tienda
+				$tienda_id = $this->TiendasModel->crear($parametros);
+				// Parametros dirección
+				$parametros_direccion = array(
+				 'ID_USUARIO' => $this->input->post('IdUsuario'),
+				 'ID_TIENDA' => $tienda_id,
+				 'DIRECCION_TIPO' => $this->input->post('TipoDireccion'),
+				 'DIRECCION_ALIAS' => $this->input->post('AliasDireccion'),
+				 'DIRECCION_PAIS' => $this->input->post('PaisDireccion'),
+				 'DIRECCION_ESTADO' => $this->input->post('EstadoDireccion'),
+				 'DIRECCION_CIUDAD' => $this->input->post('CiudadDireccion'),
+				 'DIRECCION_MUNICIPIO' => $this->input->post('MunicipioDireccion'),
+				 'DIRECCION_BARRIO' => $this->input->post('BarrioDireccion'),
+				 'DIRECCION_CALLE_Y_NUMERO' => $this->input->post('CalleDireccion'),
+				 'DIRECCION_CODIGO_POSTAL' => $this->input->post('CodigoPostalDireccion'),
+				 'DIRECCION_REFERENCIAS' => $this->input->post('ReferenciasDireccion'),
+				 'DIRECCION_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+				 'DIRECCION_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s')
+			 );
+			 $direccion_id = $this->DireccionesModel->crear($parametros_direccion);
 
-      $pais_id = $this->TiendasModel->crear($parametros);
-      redirect(base_url('admin/usuarios/perfil?id=').$this->input->post('IdUsuario'));
+			 // Registro la dirección en la tienda
+			 $tienda_id = $this->TiendasModel->actualizar($tienda_id,array('ID_DIRECCION'=>$direccion_id));
+
+			 // Reviso los permisos del Usuario
+			 $usuario = $this->UsuariosModel->detalles($this->input->post('IdUsuario'));
+			 $tienda = $this->TiendasModel->tienda_usuario($usuario['ID_USUARIO']);
+			 $perfil = $this->PerfilServiciosModel->perfil_usuario($usuario['ID_USUARIO']);
+			 $permiso = $usuario['USUARIO_TIPO'];
+
+			 if($usuario['USUARIO_TIPO']!='tec-5'&&$usuario['USUARIO_TIPO']!='adm-6'){
+				if(!null == $tienda){
+ 					$permiso = 'vnd-2';
+ 				}
+ 				if(!null == $perfil){
+ 					$permiso = 'ser-3';
+ 				}
+ 				if(!null == $tienda&& !null == $perfil){
+ 					$permiso = 'vns-4';
+ 				}
+			 }
+			 // Actualizo el tipo de Usuario
+			 $this->UsuariosModel->permiso($usuario['ID_USUARIO'],$permiso);
+			 // Mensaje de Feedback
+			 $this->session->set_flashdata('exito', 'Se registró la tienda con éxito');
+			 // Redirección
+      redirect(base_url('admin/usuarios/perfil?id_usuario=').$this->input->post('IdUsuario'));
     }else{
+			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_tienda',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
@@ -75,36 +157,105 @@ class Admin_Tiendas extends CI_Controller {
 	}
 	public function actualizar()
 	{
-		$this->form_validation->set_rules('NombrePais', 'Nombre', 'required|max_length[255]', array( 'required' => 'Debes designar el %s.', 'max_length' => 'El nombre no puede superar los 255 caracteres' ));
+		// Validaciones de Formulario
+		$this->form_validation->set_rules('NombreTienda', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('RazonSocialTienda', 'Razón Social', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('RfcTienda', 'R.F.C.', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('TelefonoTienda', 'Teléfono', 'required', array('required' => 'Debes escribir tu %s.'));
 
+
+		// Valido
 		if($this->form_validation->run())
-    {
-      $parametros = array(
-				'TIENDA_NOMBRE' => $this->input->post('NombreTienda'),
-				'TIENDA_RAZON_SOCIAL' => $this->input->post('RazonSocialTienda'),
-				'TIENDA_RFC' => $this->input->post('NombrePais'),
-				'TIENDA_TELEFONO' => $this->input->post('NombrePais'),
-				'TIENDA_FECHA_ACTUALIZACION' => $this->input->post('NombrePais')
-      );
+		{
+				// Preparo archivo para imagen
+				$archivo = $_FILES['ImagenTienda']['tmp_name'];
+				$ancho = $this->data['op']['ancho_imagenes_tienda'];
+				$alto = $this->data['op']['alto_imagenes_tienda'];
+				$calidad = 80;
+				$nombre = 'tienda-'.uniqid();
+				$destino = $this->data['op']['ruta_imagenes_tienda'].'completo/';
+				// Subo la imagen y obtengo el nombre Default si va vacía
+				$imagen = subir_imagen_abanico_cortar($archivo,$ancho,$alto,$calidad,$nombre,$destino);
+				if($imagen=='default.jpg'){ $imagen = $this->input->post('ImagenAnteriorTienda'); }
 
-      $pais_id = $this->TiendasModel->actualizar( $this->input->post('Identificador'),$parametros);
-      redirect(base_url('admin/tiendas'));
+				$parametros = array(
+					'ID_USUARIO' => $this->input->post('IdUsuario'),
+					'TIENDA_NOMBRE' => $this->input->post('NombreTienda'),
+					'TIENDA_RAZON_SOCIAL' => $this->input->post('RazonSocialTienda'),
+					'TIENDA_RFC' => $this->input->post('RfcTienda'),
+					'TIENDA_TELEFONO' => $this->input->post('TelefonoTienda'),
+					'TIENDA_IMAGEN' => $imagen,
+					'TIENDA_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+					'TIENDA_ESTADO' => 'activo'
+				);
+				// Actualizo la tienda
+				$tienda_id = $this->TiendasModel->actualizar( $this->input->post('Identificador'),$parametros);
+				// Parámetros de la dirección
+				// Parametros dirección
+				$parametros_direccion = array(
+				 'ID_USUARIO' => $this->input->post('IdUsuario'),
+				 'ID_TIENDA' => $this->input->post('Identificador'),
+				 'DIRECCION_TIPO' => $this->input->post('TipoDireccion'),
+				 'DIRECCION_ALIAS' => $this->input->post('AliasDireccion'),
+				 'DIRECCION_PAIS' => $this->input->post('PaisDireccion'),
+				 'DIRECCION_ESTADO' => $this->input->post('EstadoDireccion'),
+				 'DIRECCION_CIUDAD' => $this->input->post('CiudadDireccion'),
+				 'DIRECCION_MUNICIPIO' => $this->input->post('MunicipioDireccion'),
+				 'DIRECCION_BARRIO' => $this->input->post('BarrioDireccion'),
+				 'DIRECCION_CALLE_Y_NUMERO' => $this->input->post('CalleDireccion'),
+				 'DIRECCION_CODIGO_POSTAL' => $this->input->post('CodigoPostalDireccion'),
+				 'DIRECCION_REFERENCIAS' => $this->input->post('ReferenciasDireccion'),
+				 'DIRECCION_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+				 'DIRECCION_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s')
+			 );
+				// Reviso si la dirección está vacía
+				if(!empty($this->input->post('IdentificadorDireccion'))){
+					$direccion_id = $this->input->post('IdentificadorDireccion');
+					$this->DireccionesModel->actualizar($this->input->post('IdentificadorDireccion'),$parametros_direccion);
+				}else{
+					$direccion_id = $this->DireccionesModel->crear($parametros_direccion);
+				}
+				// Registro la dirección en la tienda
+				$tienda_id = $this->TiendasModel->actualizar($this->input->post('Identificador'),array('ID_DIRECCION'=>$direccion_id));
+				// Reviso los permisos del Usuario
+ 			 $usuario = $this->UsuariosModel->detalles($this->input->post('IdUsuario'));
+ 			 $tienda = $this->TiendasModel->tienda_usuario($usuario['ID_USUARIO']);
+ 			 $perfil = $this->PerfilServiciosModel->perfil_usuario($usuario['ID_USUARIO']);
+ 			 $permiso = $usuario['USUARIO_TIPO'];
+
+ 			 if($usuario['USUARIO_TIPO']!='tec-5'&&$usuario['USUARIO_TIPO']!='adm-6'){
+ 				if(!null == $tienda){
+  					$permiso = 'vnd-2';
+  				}
+  				if(!null == $perfil){
+  					$permiso = 'ser-3';
+  				}
+  				if(!null == $tienda&& !null == $perfil){
+  					$permiso = 'vns-4';
+  				}
+ 			 }
+ 			 // Actualizo el tipo de Usuario
+ 			 $this->UsuariosModel->permiso($usuario['ID_USUARIO'],$permiso);
+
+				$this->session->set_flashdata('exito', 'Tienda Actualizada');
+				redirect(base_url('admin/usuarios/perfil?id_usuario='.$this->input->post('IdUsuario')));
     }else{
-
-			$this->data['pais'] = $this->TiendasModel->detalles($_GET['id']);
+			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
+			$this->data['tienda'] = $this->TiendasModel->detalles($_GET['id_tienda']);
+			$this->data['direccion_tienda'] = $this->DireccionesModel->direccion_fiscal($_GET['id_usuario']);
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
-			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_pais',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_tienda',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}
 
 	public function borrar()
 	{
-		$pais = $this->TiendasModel->detalles($_GET['id']);
+		$tienda = $this->TiendasModel->detalles($_GET['id']);
 
         // check if the institucione exists before trying to delete it
-        if(isset($pais['ID_PAIS']))
+        if(isset($tienda['ID_TIENDA']))
         {
             $this->TiendasModel->borrar($_GET['id']);
             redirect(base_url('admin/tiendas'));

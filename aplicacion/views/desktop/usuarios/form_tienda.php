@@ -6,18 +6,20 @@
           <?php $this->load->view('desktop/usuarios/widgets/menu_control_usuario'); ?>
         </div>
         <div class="col">
+          <?php retro_alimentacion(); ?>
           <div class="card">
             <div class="card-header">
-              <h5> <i class="fa fa-store"></i> Tu tienda</h5>
+              <h5> <i class="fa fa-store"></i> Crea tu tienda</h5>
             </div>
             <div class="card-body">
               <div class="card card-info mb-3">
                 <div class="card-body">
-                  <h5>Hola, Bienvenido al creador de tiendas, al crear tu tienda tendrás la facultad de.</h5>
+                  <h5>Hola, Bienvenido al creador de tiendas.</h5>
+                  <p>Debes registrar una tienda para tener la facultad de:</p>
                   <ul>
                     <li>Crear Productos y ofrecerlos a la venta</li>
-                    <li>Crear Productos Mayoristas y presentar tus datos de contacto</li>
-                    <li>Crear Servicios y mostrar tus datos para que te contacten</li>
+                    <li>Recibir comentarios</li>
+                    <li>Recibir calificaciones en tus productos</li>
                   </ul>
                 </div>
               </div>
@@ -78,20 +80,20 @@
                            </select>
                          </div>
                        </div>
-                     </div>
-                     <div class="row">
-                       <div class="col">
-                         <div class="form-group">
-                           <label for="CiudadDireccion">Ciudad</label>
-                           <input type="text" name="CiudadDireccion" class="form-control" required>
-                         </div>
-                       </div>
                        <div class="col">
                          <div class="form-group">
                            <label for="MunicipioDireccion">Municipio / Alcaldía</label>
                            <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" required>
                              <option value="">Selecciona tu Municipio / Alcaldía</option>
                            </select>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col">
+                         <div class="form-group">
+                           <label for="CiudadDireccion">Ciudad <small>(Opcional)</small> </label>
+                           <input type="text" name="CiudadDireccion" class="form-control">
                          </div>
                        </div>
                        <div class="col">

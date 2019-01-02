@@ -4,12 +4,14 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" href="<?php echo base_url(); ?>assets/global/img/favicon.png">
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/global/img/favicon.png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/bootstrap.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/estilos_abanico_desktop.css">
-    <title>Prueba <?php //echo $op['titulo_sitio'] ?></title>
+    <title>Usuarios | <?php echo $op['titulo_sitio']; ?></title>
   </head>
   <body>
     <!-- Header -->
@@ -30,25 +32,20 @@
       </div>
     </div>
     <div class="menu-principal">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="<?php echo $baseurl=base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" width="50px" alt=""> ABANICO</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <nav class="navbar navbar-expand">
+        <div class="d-flex justify-content-arround align-items-center">
+          <a class="navbar-brand mr-1" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
+        </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <!--<li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias">CATEGORÍAS <span class="fa fa-list"></span> </a>
-            </li>-->
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo $baseurl=base_url(); ?>"> <span class="fa fa-shopping-bag"></span> Volver a la tienda</a>
-            </li>
-          </ul>
+        <div class="collapse navbar-collapse d-flex justify-content-between">
+          <div class="w-100 d-flex justify-content-end">
+            <a class="nav-link" href="<?php echo base_url(); ?>"> <span class="fa fa-shopping-bag"></span> Volver a la tienda</a>
+
+          <?php if(isset($_SESSION['usuario'])&&verificar_permiso(['tec-5','adm-6'])){ ?>
+            <a class="nav-link" href="<?php echo base_url('admin'); ?>"> <span class="fa fa-tachometer-alt"></span> Administrador</a>
+          <?php } ?>
+          </div>
         </div>
       </nav>
     </div>
-
     <!-- Termina Header -->

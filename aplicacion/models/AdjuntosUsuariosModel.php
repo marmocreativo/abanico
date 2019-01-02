@@ -34,12 +34,6 @@ class AdjuntosUsuariosModel extends CI_Model {
     * Obtengo todos los detalles de una sola entrada
  */
   function adjuntos_usuario($id){
-    return $this->db->get_where('adjuntos_usuarios',array('ID_USUARIO'=>$id))->result();
-  }
-  /*
-    * Obtengo todos los detalles de una sola entrada
- */
-  function adjuntos_usuario($id){
     $this->db->where('ID_USUARIO'=>$id);
     $query = $this->db->get('adjuntos_usuarios');
     return $query->result();
@@ -67,27 +61,7 @@ class AdjuntosUsuariosModel extends CI_Model {
   function borrar($id){
     return $this->db->delete('adjuntos_usuarios',array('ID_GALERIA'=>$id));
   }
-  /*
-    * Interruptor cambia el estado de una entrada de activo a inactivo
-    * $id es el identificador de la entrada
-    * $activo es el estado actual de la entrada
- */
-  function activar($id,$activo){
 
-    switch($activo){
-      case "activo":
-        $activo = "inactivo";
-      break;
-      case "inactivo":
-        $activo = "activo";
-      break;
-      default:
-        $activo = "activo";
-      break;
-    }
-    $this->db->where('ID_GALERIA',$id);
-    return $this->db->update('adjuntos_usuarios',array('GALERIA_ESTADO'=>$activo));
-  }
   /*
     * Cambio el estado de la entrada, puede ser cualquier estado
     * $id es el identificador de la entrada

@@ -17,23 +17,7 @@
               <h4>¿Olvidaste tu contraseña?</h4>
             </div>
             <div class="card-body">
-              <?php if(isset($_GET['mensaje'])){
-                switch($_GET['mensaje']){
-                  case 'error_registro':
-                    $alerta = 'alert-danger';
-                    $mensaje = 'El correo que proporcionaste no se encuentra en nuestra Base de datos';
-                  break;
-                  case 'registro_correcto':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Te hemos enviado un correo con un enlace seguro para que puedas recuperar tu contraseña';
-                  break;
-                }
-                ?>
-
-                <div class="alert <?php echo  $alerta; ?>">
-                  <p><?php echo  $mensaje; ?></p>
-                </div>
-              <?php }// Termina la condicionante ?>
+              <?php retro_alimentacion();?>
               <?php if(!empty(validation_errors())){ ?>
                 <div class="alert alert-danger">
                   <?php echo validation_errors(); ?>

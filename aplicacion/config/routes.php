@@ -34,6 +34,8 @@ $route['admin/direcciones'] = 'Admin_Direcciones';
 $route['admin/direcciones/([a-z]+)'] = 'Admin_Direcciones/$1';
 $route['admin/tiendas'] = 'Admin_Tiendas';
 $route['admin/tiendas/([a-z]+)'] = 'Admin_Tiendas/$1';
+$route['admin/perfiles_servicios'] = 'Admin_Perfiles_Servicios';
+$route['admin/perfiles_servicios/(:any)'] = 'Admin_Perfiles_Servicios/$1';
 $route['admin/categorias'] = 'Admin_Categorias';
 $route['admin/categorias/([a-z]+)'] = 'Admin_Categorias/$1';
 $route['admin/productos'] = 'Admin_Productos';
@@ -50,6 +52,8 @@ $route['usuario/productos'] = 'Usuario_Productos';
 $route['usuario/productos/(:any)'] = 'Usuario_Productos/$1';
 $route['usuario/tienda'] = 'Usuario_Tiendas';
 $route['usuario/tienda/(:any)'] = 'Usuario_Tiendas/$1';
+$route['usuario/perfil_servicios'] = 'Usuario_Perfiles_Servicios';
+$route['usuario/perfil_servicios/(:any)'] = 'Usuario_Perfiles_Servicios/$1';
 $route['usuario'] = 'Usuario_Perfil';
 $route['usuario/([a-z]+)'] = 'Usuario_Perfil/$1';
 // Rutas de Ajax

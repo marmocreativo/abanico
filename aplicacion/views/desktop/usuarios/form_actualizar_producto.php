@@ -8,10 +8,16 @@
         </div>
         <div class="col">
             <div class="card">
-              <div class="card-header">
-                <h5 class="float-left"> <span class="fa fa-box"></span> Nuevo Producto</h5>
+              <div class="card-header d-flex justify-content-between">
+                <div class="titulo">
+                  <h1 class="h5"> <span class="fa fa-box"></span> Actualizar <?php echo $producto['PRODUCTO_NOMBRE']; ?></h1>
+                </div>
+                <div class="herramientas">
+                    <a href="<?php echo base_url('usuario/productos'); ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-arrow-left"></span> Regresar a los productos</a>
+                </div>
               </div>
               <div class="card-body">
+                <?php retro_alimentacion(); ?>
                 <?php if(!empty(validation_errors())){ ?>
                   <div class="alert alert-danger">
                     <?php echo validation_errors(); ?>
@@ -21,7 +27,9 @@
               <form class="" action="<?php echo base_url('usuario/productos/actualizar'); ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="TipoProducto" value="<?php echo $tipo_producto; ?>">
                 <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id']; ?>">
+                <input type="hidden" name="IdTienda" value="<?php echo $tienda['ID_TIENDA']; ?>">
                 <input type="hidden" name="Identificador" value="<?php echo $_GET['id']; ?>">
+                <input type="hidden" name="UrlProducto" value="<?php echo $producto['PRODUCTO_URL']; ?>">
                 <div class="row mb-3">
                   <div class="col-9">
                     <div class="border border-primary p-2">
@@ -226,7 +234,7 @@
                               <label for="OrigenProducto">Origen</label>
                               <select class="form-control form-control-sm" name="OrigenProducto" id="OrigenProducto">
                                 <option value="México" <?php if($producto['PRODUCTO_ORIGEN']=='México'){ echo 'selected';} ?>>México</option>
-                                <option value="Otro" <?php if($producto['PPRODUCTO_ORIGEN']=='Otro'){ echo 'selected';} ?>>Otro</option>
+                                <option value="Otro" <?php if($producto['PRODUCTO_ORIGEN']=='Otro'){ echo 'selected';} ?>>Otro</option>
                               </select>
                             </div>
                           </div>

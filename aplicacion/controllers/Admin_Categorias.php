@@ -21,6 +21,16 @@ class Admin_Categorias extends CI_Controller {
 
 		// Cargo el modelo
 		$this->load->model('CategoriasModel');
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// Verifico Permiso
+		if(!verificar_permiso(['tec-5','adm-6'])){
+			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
+			redirect(base_url('usuario'));
+		}
   }
 
 	public function index()
@@ -52,7 +62,7 @@ class Admin_Categorias extends CI_Controller {
 	public function crear()
 	{
 		if(!isset($_GET['tipo_categoria'])||empty($_GET['tipo_categoria'])){ $this->data['tipo_categoria']='productos'; }else{ $this->data['tipo_categoria']=$_GET['tipo_categoria']; }
-		if(!isset($_GET['tipo_categoria'])||empty($_GET['categoria_padre'])){ $this->data['categoria_padre']='0'; }else{ $this->data['categoria_padre']=$_GET['categoria_padre']; }
+
 
 		$this->form_validation->set_rules('NombreCategoria', 'Nombre', 'required|max_length[255]', array( 'required' => 'Debes designar el %s.', 'max_length' => 'El nombre no puede superar los 255 caracteres' ));
 
@@ -99,8 +109,19 @@ class Admin_Categorias extends CI_Controller {
 			// Creo la categoría
       $categoria_id = $this->CategoriasModel->crear($parametros);
 			// Redirecciono
-      redirect(base_url('admin/categorias?tipo_categoria='.$this->input->post('TipoCategoria')));
+      redirect(base_url('admin/categorias?tipo_categoria='.$this->input->post('TipoCategoria').'&tab=collapse'.$this->input->post('Tab')));
     }else{
+
+			if(!isset($_GET['categoria_padre'])||empty($_GET['categoria_padre'])){
+				$this->data['categoria_padre']='0';
+				$this->data['categoria_color']='-primary';
+				$this->data['categoria_icono']='fas fa-list';
+			}else{
+				$datos_categoria_padre = $this->CategoriasModel->detalles($_GET['categoria_padre']);
+				$this->data['categoria_padre']=$datos_categoria_padre['ID_CATEGORIA'];
+				$this->data['categoria_color']=$datos_categoria_padre['CATEGORIA_COLOR'];
+				$this->data['categoria_icono']=$datos_categoria_padre['CATEGORIA_ICONO'];
+			}
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_categoria',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
@@ -156,8 +177,10 @@ class Admin_Categorias extends CI_Controller {
 
       $categoria_id = $this->CategoriasModel->actualizar( $this->input->post('Identificador'),$parametros);
 
-
-      redirect(base_url('admin/categorias?tipo_categoria='.$this->input->post('TipoCategoria')));
+			// Mensaje Feedback
+			$this->session->set_flashdata('exito', 'Categoría actualizada');
+			//  Redirecciono
+      redirect(base_url('admin/categorias?tipo_categoria='.$this->input->post('TipoCategoria').'&tab=collapse'.$this->input->post('Tab')));
     }else{
 
 			$this->data['categoria'] = $this->CategoriasModel->detalles($_GET['id']);
@@ -176,7 +199,10 @@ class Admin_Categorias extends CI_Controller {
         if(isset($categoria['ID_CATEGORIA']))
         {
             $this->CategoriasModel->borrar($_GET['id']);
-            redirect(base_url('admin/categorias?tipo_categoria'.$_GET['tipo_categoria']));
+						// Mensaje Feedback
+						$this->session->set_flashdata('exito', 'Categorías borradas');
+						//  Redirecciono
+            redirect(base_url('admin/categorias?tipo_categoria='.$_GET['tipo_categoria'].'&tab=collapse'.$_GET['tab']));
         } else {
 
 	         	show_error('La entrada que deseas borrar no existe');
@@ -186,11 +212,5 @@ class Admin_Categorias extends CI_Controller {
 	{
 		$this->CategoriasModel->activar($_GET['id'],$_GET['estado']);
 		redirect(base_url('admin/categorias'));
-	}
-	public function estado()
-	{
-	}
-	public function orden()
-	{
 	}
 }

@@ -56,7 +56,7 @@ class Tienda_Producto extends CI_Controller {
  	}
 	public function favorito()
  {
-	 if(verificar_sesion()){
+	 if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 		 // verifico si ya existe
 		 $es_favorito = $this->FavoritosModel->es_favorito($_GET['id'],$_SESSION['usuario']['id'],'producto');
 		 if(!$es_favorito){
@@ -71,13 +71,13 @@ class Tienda_Producto extends CI_Controller {
 		 }
 		 redirect(base_url('usuario/favoritos'));
 	}else{
-		redirect(base_url('login'));
+		redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 	}
 
  }
  public function quitar_favorito()
 {
-	if(verificar_sesion()){
+	if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 		// verifico si ya existe
 		$es_favorito = $this->FavoritosModel->es_favorito($_GET['id'],$_SESSION['usuario']['id'],'producto');
 		if($es_favorito){
@@ -87,13 +87,13 @@ class Tienda_Producto extends CI_Controller {
 		}
 		redirect(base_url('usuario/favoritos'));
  }else{
-	 redirect(base_url('login'));
+	 redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
  }
 
 }
 public function calificar()
 {
- if(verificar_sesion()){
+ if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 	 // Preparo mis parámetros
 	 $parametros = array(
 		 'ID_PRODUCTO'=>$this->input->post('IdProducto'),
@@ -107,7 +107,7 @@ public function calificar()
 	 $this->CalificacionesModel->crear($parametros);
 	 redirect(base_url('producto?id='.$this->input->post('IdProducto')));
 }else{
-	redirect(base_url('login'));
+	redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 }
 
 }

@@ -23,7 +23,7 @@ class Autenticacion extends CI_Controller {
 	*/
 	public function index()
 	{
-		if(verificar_sesion()){
+		if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			redirect(base_url('usuario'));
 		}else{
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
@@ -49,7 +49,10 @@ class Autenticacion extends CI_Controller {
 				// Si todo está correcto inicio sesión
 				$parametros = $this->AutenticacionModel->detalles($correo);
 				if($parametros['USUARIO_ESTADO']!='activo'){
-						redirect(base_url('login?mensaje=error_activo'));
+						// Mensaje de feedback
+						$this->session->set_flashdata('alerta', 'Tu cuenta parece estar inactiva por favor contacta con nosotros.');
+						// redirección
+						redirect(base_url('login'));
 				}else{
 					iniciar_sesion($parametros);
 					if(!null==$this->input->post('UrlRedirect') ){
@@ -59,8 +62,11 @@ class Autenticacion extends CI_Controller {
 					}
 				}
 			}else{
+				// Mensaje de feedback
+				$this->session->set_flashdata('alerta', 'Tu correo y contraseña no coinciden');
+				// redirección
 					// Si no coinciden vuelvo a cargar el formulario
-					redirect(base_url('login?mensaje=error_login'));
+					redirect(base_url('login'));
 			}
 		}else{
 			// Si el formulario no se verifica cargo de nuevo el Login
@@ -68,13 +74,6 @@ class Autenticacion extends CI_Controller {
 			$this->load->view($this->data['dispositivo'].'/usuarios/login_form',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 		}
-	}
-	/*
-	Método  para verificar permisos
-	*/
-	public function verificar_permisos()
-	{
-	// verificar Permisos
 	}
 	/*
 	Método  para contraseña Olvidad
@@ -120,11 +119,17 @@ class Autenticacion extends CI_Controller {
 				$this->email->message($mensaje);
 				// envio el correo
 				if($this->email->send()){
-					redirect(base_url('login/olvide?mensaje=registro_correcto'));
+					// Mensaje de feedback
+					$this->session->set_flashdata('exito', 'Encontramos tu cuenta, te hemos enviado un correo con un enlace seguro para recuperar tu contraseña');
+					// redirección
+					redirect(base_url('login'));
 				}
 			}else{
 					// Si no coinciden vuelvo a cargar el formulario
-					redirect(base_url('login/olvide?mensaje=error_registro'));
+					// Mensaje de feedback
+					$this->session->set_flashdata('alerta', 'El correo no parece estar registrado');
+					// redirección
+					redirect(base_url('login/olvide'));
 			}
 		}else{
 			// Si el formulario no se verifica cargo de nuevo el Login

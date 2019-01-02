@@ -17,45 +17,13 @@
               <h4>Bienvenido</h4>
             </div>
             <div class="card-body">
-              <?php if(isset($_GET['mensaje'])){
-                switch($_GET['mensaje']){
-                  case 'error_login':
-                    $alerta = 'alert-danger';
-                    $mensaje = 'Tu contraseña o correo electrónico son incorrectos';
-                  break;
-                  case 'error_activo':
-                    $alerta = 'alert-danger';
-                    $mensaje = 'Lo sentimos tu cuenta se encuentra Inactiva, por favor comunícate con nosotros para restaurarla.';
-                  break;
-                  case 'sesion_cerrada':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Sesión cerrada correctamente';
-                  break;
-                  case 'registro_correcto':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Usuario Creado correctamente, por favor inicia sesión';
-                  break;
-                  case 'pass_restaurado':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Tu contraseña ha sido actualizada, ahora puedes iniciar sesión';
-                  break;
-                  case 'error_enlace':
-                    $alerta = 'alert-danger';
-                    $mensaje = 'El enlace que intentaste Usar no es válido';
-                  break;
-                }
-                ?>
-
-                <div class="alert <?php echo  $alerta; ?>">
-                  <p><?php echo  $mensaje; ?></p>
-                </div>
-              <?php }// Termina la condicionante ?>
+              <?php retro_alimentacion(); ?>
               <?php if(!empty(validation_errors())){ ?>
                 <div class="alert alert-danger">
                   <?php echo validation_errors(); ?>
                 </div>
+                <hr>
               <?php } ?>
-              <hr>
                 <form class="" action="<?php echo base_url('login/iniciar');?>" method="post">
                   <?php if(isset($_GET['url_redirect'])&&!empty($_GET['url_redirect'])){ ?>
                     <input type="hidden" name="UrlRedirect" value="<?php echo $_GET['url_redirect'] ?>">

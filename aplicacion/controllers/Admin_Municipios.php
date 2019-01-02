@@ -21,15 +21,24 @@ class Admin_Municipios extends CI_Controller {
 
 		// Cargo el modelo
 		$this->load->model('MunicipiosModel');
+
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// Verifico Permiso
+		if(!verificar_permiso(['tec-5','adm-6'])){
+			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
+			redirect(base_url('usuario'));
+		}
   }
 
 	public function index()
 	{
-			if(isset($_GET['estado'])&&!empty($_GET['estado'])){
-				$parametros = array( 'ESTADO_NOMBRE'=>$_GET['estado'] );
-			}else{$parametros = ''; }
+			$parametros = '';
 
-			$this->data['municipios'] = $this->MunicipiosModel->lista($parametros,'','');
+			$this->data['municipios'] = $this->MunicipiosModel->lista($parametros,$_GET['estado'],'');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_municipios',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
@@ -37,16 +46,12 @@ class Admin_Municipios extends CI_Controller {
 
 	public function busqueda()
 	{
-		if(isset($_GET['pais'])&&!empty($_GET['pais'])){
-			$pais = "?pais=".$_GET['pais'];
-		}else{ $pais = ''; }
 
 		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
 			$parametros = array(
-				'ESTADO_ISO'=>$_GET['Busqueda'],
-				'ESTADO_NOMBRE'=>$_GET['Busqueda']
+				'MUNICIPIO_NOMBRE'=>$_GET['Busqueda'],
 			);
-			$this->data['municipios'] = $this->MunicipiosModel->lista($parametros,'','');
+			$this->data['municipios'] = $this->MunicipiosModel->lista($parametros,$_GET['estado'],'');
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_municipios',$this->data);

@@ -33,6 +33,7 @@ class DireccionesModel extends CI_Model {
   function lista_direcciones($id_usuario){
     $this->db->where('ID_USUARIO', $id_usuario);
     $this->db->where('DIRECCION_TIPO !=', 'fiscal');
+    $this->db->where('DIRECCION_TIPO !=', 'perfil');
     $query = $this->db->get('direcciones');
     return $query->result();
   }
@@ -59,8 +60,11 @@ class DireccionesModel extends CI_Model {
  */
   function direccion_formateada($id){
    $dir = $this->db->get_where('direcciones',array('ID_DIRECCION'=>$id))->row_array();
-   return $dir['DIRECCION_CALLE_Y_NUMERO'].', '.$dir['DIRECCION_BARRIO'].', '.$dir['DIRECCION_MUNICIPIO'].', '.$dir['DIRECCION_CIUDAD'].', '.$dir['DIRECCION_ESTADO'].', '.$dir['DIRECCION_CODIGO_POSTAL'].', '.$dir['DIRECCION_PAIS'];
-
+   if(!empty($dir)){
+     return $dir['DIRECCION_CALLE_Y_NUMERO'].', '.$dir['DIRECCION_BARRIO'].', '.$dir['DIRECCION_MUNICIPIO'].', '.$dir['DIRECCION_CIUDAD'].', '.$dir['DIRECCION_ESTADO'].', '.$dir['DIRECCION_CODIGO_POSTAL'].', '.$dir['DIRECCION_PAIS'];
+   }else{
+     return 'No hay dirección registrada';
+   }
   }
   /*
     * Creo una nueva entrada usando los parámetros

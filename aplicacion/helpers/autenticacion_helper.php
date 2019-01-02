@@ -4,14 +4,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   /*
   Función que revisa si existe una sesión de usuario creada
   */
-  function verificar_sesion()
+  function verificar_sesion($tiempo)
   {
+    $CI =& get_instance();
+    // Reviso que exista la función del usuario
     if(isset($_SESSION['usuario'])&&!empty($_SESSION['usuario'])){
-      return TRUE;
+      // verifico el tiempo de sesión
+      if(strtotime($_SESSION['usuario']['ultima_actividad']) <= strtotime('-'.$tiempo.' Minutes')){
+        // si ha pasado mucho tiempo:
+        // Madno un mensaje, destruyo la sesión y retorno falso
+        $CI->session->set_flashdata('mensaje', 'Tu sesión se ha cerrado por falta de actividad');
+        session_destroy();
+        return FALSE;
+      }else{
+        // de lo contrario
+        // Actualizo el tiempo de actividad retorno true
+        $_SESSION['usuario']['ultima_actividad'] = date('Y-m-d H:i:s');
+        return TRUE;
+      }
     }else{
+      // No hay sesión de usuario retorno false
       return FALSE;
     }
   }
+  /*
+    Verifico si el tipo de usuario está permitido en un controlador
+  */
   function verificar_permiso($permisos)
   {
     // creo una llave y la coloco en 0
@@ -35,7 +53,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         'nombre'  => $parametros['USUARIO_NOMBRE'],
         'apellidos'  => $parametros['USUARIO_APELLIDOS'],
         'correo'  => $parametros['USUARIO_CORREO'],
-        'tipo_usuario'  => $parametros['USUARIO_TIPO']
+        'tipo_usuario'  => $parametros['USUARIO_TIPO'],
+        'ultima_actividad'  => date('Y-m-d H:i:s'),
       )
     );
     $CI->session->set_userdata($datos_del_usuario);

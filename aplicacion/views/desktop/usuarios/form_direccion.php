@@ -23,16 +23,18 @@
                       <div class="row">
                         <div class="col">
                           <div class="form-group">
-                            <label for="AliasDireccion">Alias</label>
-                            <input type="text" name="AliasDireccion" class="form-control">
+                            <label for="AliasDireccion">Nombre <small>Para identificar tu dirección</small> </label>
+                            <input type="text" name="AliasDireccion" class="form-control" placeholder="Ej. Mi casa, Trabajo">
                           </div>
                         </div>
-                        <div class="form-group">
-                          <label for="TipoDireccion">Tipo de Dirección </label>
-                          <select class="form-control" name="TipoDireccion" id="TipoDireccion" required>
-                            <option value="envio">Para envío</option>
-                            <option value="facturacion">Para Facturación</option>
-                          </select>
+                        <div class="col">
+                          <div class="form-group">
+                            <label for="TipoDireccion">Tipo de Dirección </label>
+                            <select class="form-control" name="TipoDireccion" id="TipoDireccion" required>
+                              <option value="envio">Para envío</option>
+                              <option value="facturacion">Para Facturación</option>
+                            </select>
+                          </div>
                         </div>
                       </div>
                      <div class="row">
@@ -52,20 +54,20 @@
                            </select>
                          </div>
                        </div>
-                     </div>
-                     <div class="row">
-                       <div class="col">
-                         <div class="form-group">
-                           <label for="CiudadDireccion">Ciudad</label>
-                           <input type="text" name="CiudadDireccion" class="form-control" required>
-                         </div>
-                       </div>
                        <div class="col">
                          <div class="form-group">
                            <label for="MunicipioDireccion">Municipio / Alcaldía</label>
                            <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" required>
                              <option value="">Selecciona tu Municipio / Alcaldía</option>
                            </select>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col">
+                         <div class="form-group">
+                           <label for="CiudadDireccion">Ciudad (Opcional)</label>
+                           <input type="text" name="CiudadDireccion" class="form-control">
                          </div>
                        </div>
                        <div class="col">

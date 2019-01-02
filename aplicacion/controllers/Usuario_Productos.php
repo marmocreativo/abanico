@@ -28,18 +28,29 @@ class Usuario_Productos extends CI_Controller {
 
 	public function index()
 	{
-		if(verificar_sesion()){
-			$this->data['productos'] = $this->ProductosModel->lista('',$_SESSION['usuario']['id'],'','');
-			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/lista_productos',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// reviso si el usuario tiene una tienda
+		$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
+		if(!empty($this->data['tienda'])){
+				$this->data['productos'] = $this->ProductosModel->lista('',$_SESSION['usuario']['id'],'','');
+				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+				$this->load->view($this->data['dispositivo'].'/usuarios/lista_productos',$this->data);
+				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 		}else{
-			redirect(base_url('login'));
+			// si ya existe una sesión activa redirijo con el siguiente mensaje
+			$this->session->set_flashdata('advertencia', 'No puedes entrar al administrador de productos si no has creado una tienda');
+			redirect(base_url('usuario/tienda'));
 		}
 	}
 	public function crear()
 	{
-		if(verificar_sesion()){
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
 			// Defino tipo de producto y tipo de Categoría
 			if(!isset($_GET['tipo_producto'])||empty($_GET['tipo_producto'])){ $this->data['tipo_producto']='normal'; }else{ $this->data['tipo_producto']=$_GET['tipo_producto']; }
 			// Defino el tipo de Categoria
@@ -142,19 +153,20 @@ class Usuario_Productos extends CI_Controller {
 
 				redirect(base_url('usuario/productos'));
 			}else{
+				$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 				$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/form_producto',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 			}
-		}else{
-			redirect(base_url('login'));
-		}
 	}
 
 		public function actualizar()
 		{
-			if(verificar_sesion()){
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
 				// Defino tipo de producto y tipo de Categoría
 				if(!isset($_GET['tipo_producto'])||empty($_GET['tipo_producto'])){ $this->data['tipo_producto']='normal'; }else{ $this->data['tipo_producto']=$_GET['tipo_producto']; }
 				// Defino el tipo de Categoria
@@ -192,7 +204,7 @@ class Usuario_Productos extends CI_Controller {
 							}
 						}
 					}else{
-						$url = $this->$input->post('UrlProducto');
+						$url = $this->input->post('UrlProducto');
 					}
 					// Parametros del producto
 					$parametros = array(
@@ -266,8 +278,12 @@ class Usuario_Productos extends CI_Controller {
 						$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
 					}
 
+					// Mensaje Feedback
+						$this->session->set_flashdata('exito', 'Actualización correcta');
+					// Redirecciono
 					redirect(base_url('usuario/productos/actualizar?id='.$this->input->post('Identificador').'&tab='.$tab));
 				}else{
+					$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 					$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
 					$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 					$this->data['relacion_categorias'] = $this->CategoriasProductoModel->lista($_GET['id']);
@@ -276,14 +292,15 @@ class Usuario_Productos extends CI_Controller {
 					$this->load->view($this->data['dispositivo'].'/usuarios/form_actualizar_producto',$this->data);
 					$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 				}
-			}else{
-				redirect(base_url('login'));
-			}
 	}
 
 
 		public function borrar()
 		{
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
 			$producto = $this->ProductosModel->detalles($_GET['id']);
 
 	        // check if the institucione exists before trying to delete it
@@ -299,7 +316,12 @@ class Usuario_Productos extends CI_Controller {
 					}
 		}
 		public function borrar_galeria()
-		{	$tab = 'galeria';
+		{
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
+			$tab = 'galeria';
 			$galeria = $this->GaleriasModel->detalles($_GET['id']);
 					// check if the institucione exists before trying to delete it
 					if(isset($galeria['ID_GALERIA']))
@@ -313,12 +335,20 @@ class Usuario_Productos extends CI_Controller {
 		}
 		public function portada()
 		{
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
 			$tab = 'galeria';
 			$this->GaleriasModel->portada($_GET['id_producto'],$_GET['id']);
 			redirect(base_url('usuario/productos/actualizar?id='.$_GET['id_producto'].'&tab='.$tab));
 		}
 		public function activar()
 		{
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
 			$this->ProductosModel->activar($_GET['id'],$_GET['estado']);
 			redirect(base_url('usuario/productos'));
 		}

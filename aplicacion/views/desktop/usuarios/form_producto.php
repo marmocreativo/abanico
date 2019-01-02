@@ -20,6 +20,7 @@
               <form class="" action="<?php echo base_url('usuario/productos/crear'); ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="TipoProducto" value="<?php echo $tipo_producto; ?>">
                 <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id']; ?>">
+                <input type="hidden" name="IdTienda" value="<?php echo $tienda['ID_TIENDA']; ?>">
                 <div class="row mb-3">
                   <div class="col-9">
                     <div class="border border-primary p-2">
@@ -33,7 +34,7 @@
                         </div>
                         <div class="col">
                           <div class="form-group">
-                            <label for="PrecioProducto">Precio Unitario</label>
+                            <label for="PrecioProducto">Precio de Venta</label>
                             <div class="input-group mb-2">
                               <div class="input-group-prepend">
                                 <div class="input-group-text">$</div>
@@ -51,7 +52,7 @@
                               </div>
                             <input type="text" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?=!form_error('PrecioListaProducto')?set_value('PrecioListaProducto'):''?>">
                             </div>
-                            <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Este es el precio que aparecerá en la lista de producto Tachado</small>
+                            <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Este es el precio Tachado que aparecerá en la lista de productos</small>
                           </div>
                         </div>
                         <div class="col">

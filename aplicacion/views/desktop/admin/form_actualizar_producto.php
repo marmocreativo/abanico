@@ -1,9 +1,6 @@
-<?php if(isset($producto['ID_USUARIO'])){
+<?php
   $id_usuario = $producto['ID_USUARIO'];
-}else{
-  $id_usuario = '';
-}
-if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
+  if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
 ?>
 <div class="contenido_principal">
   <div class="container-fluid">
@@ -16,28 +13,11 @@ if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
             </div>
             <div class="herramientas">
                 <a href="<?php echo base_url('admin/productos/'); ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-arrow-left"></span> Salir a todos los Productos </a>
-                <a href="<?php echo base_url('admin/productos/usuario?id_usuario='.$usuario_producto['ID_USUARIO']); ?>" class="btn btn-sm btn-success"> <span class="fa fa-chevron-left"></span> Salir a Productos de <?php echo $usuario_producto['USUARIO_NOMBRE']." ".$usuario_producto['USUARIO_APELLIDOS'];  ?> </a>
+                <a href="<?php echo base_url('admin/productos/?id_usuario='.$usuario_producto['ID_USUARIO']); ?>" class="btn btn-sm btn-success"> <span class="fa fa-chevron-left"></span> Salir a Productos de <?php echo $usuario_producto['USUARIO_NOMBRE']." ".$usuario_producto['USUARIO_APELLIDOS'];  ?> </a>
             </div>
           </div>
           <div class="card-body">
-            <!-- Alertas y Mensajes -->
-            <?php if(isset($_GET['mensaje'])){
-              switch($_GET['mensaje']){
-                case 'producto_actualizado':
-                  $alerta = 'alert-success';
-                  $mensaje = 'Tu Producto se actualizó correctamente';
-                break;
-                case 'producto_creado':
-                  $alerta = 'alert-success';
-                  $mensaje = 'Tu Producto se ha creado correctamente, Puedes seguir añadiendo imagenes a la galería';
-                break;
-              }
-              ?>
-
-              <div class="alert <?php echo  $alerta; ?>">
-                <p><?php echo  $mensaje; ?></p>
-              </div>
-            <?php }// Termina la condicionante ?>
+            <?php retro_alimentacion(); ?>
             <!-- Alertas de Validación -->
             <?php if(!empty(validation_errors())){ ?>
               <div class="alert alert-danger">
@@ -48,12 +28,13 @@ if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
             <form class="" action="<?php echo base_url('admin/productos/actualizar'); ?>" method="post" enctype="multipart/form-data">
               <input type="hidden" name="TipoProducto" value="<?php echo $tipo_producto; ?>">
               <input type="hidden" name="IdUsuario" value="<?php echo $id_usuario; ?>">
+              <input type="hidden" name="IdTienda" value="<?php echo $tienda['ID_TIENDA']; ?>">
               <input type="hidden" name="Identificador" value="<?php echo $_GET['id']; ?>">
               <input type="hidden" name="UrlProducto" value="<?php echo $producto['PRODUCTO_URL']; ?>">
               <div class="row mb-3">
                 <div class="col-9">
                   <div class="border border-primary p-2">
-                    <h6 class="border-bottom pb-2"> <i class="fa fa-tag"></i> Información Básica Obligatoria</h6>
+                    <h6 class="border-bottom pb-2 mb-2"> <i class="fa fa-tag"></i> Información Básica Obligatoria</h6>
                     <div class="row">
                       <div class="col-12">
                         <div class="form-group">
@@ -68,7 +49,7 @@ if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
                             <div class="input-group-prepend">
                               <div class="input-group-text">$</div>
                             </div>
-                          <input type="text" class="form-control" id="PrecioProducto" name="PrecioProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO']; ?>">
+                          <input type="number" min="0.01" step="0.01" class="form-control" id="PrecioProducto" name="PrecioProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO']; ?>">
                           </div>
                         </div>
                       </div>
@@ -79,7 +60,7 @@ if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
                             <div class="input-group-prepend">
                               <div class="input-group-text">$</div>
                             </div>
-                          <input type="text" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO_LISTA']; ?>">
+                          <input type="number" min="0.01" step="0.01" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO_LISTA']; ?>">
                           </div>
                           <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Este es el precio que aparecerá en la lista de producto Tachado</small>
                         </div>
@@ -91,7 +72,7 @@ if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
                         </div>
                       </div>
                     </div>
-                    <h6 class="border-bottom pb-2"> <i class="fa fa-clipboard-list"></i> Cantidades</h6>
+                    <h6 class="border-bottom pb-2 mb-2"> <i class="fa fa-clipboard-list"></i> Cantidades</h6>
                       <div class="row">
                         <div class="col">
                           <div class="form-group">
@@ -101,7 +82,7 @@ if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
                         </div>
                         <div class="col">
                           <div class="form-group">
-                            <label for="SkuProducto">SKU (Clave de Inventario)</label>
+                            <label for="SkuProducto">SKU <small>(Clave de Inventario)</small></label>
                             <input type="text" class="form-control" id="SkuProducto" name="SkuProducto" placeholder="" value="<?php echo $producto['PRODUCTO_SKU']; ?>">
                           </div>
                         </div>
@@ -112,13 +93,13 @@ if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
                           </div>
                         </div>
                       </div>
-                    <h6 class="border-bottom pb-2"> <i class="fa fa-cube"></i> Dimensiones</h6>
+                    <h6 class="border-bottom pb-2 mb-2"> <i class="fa fa-cube"></i> Dimensiones</h6>
                     <div class="row">
                       <div class="col">
                         <div class="form-group">
                           <label for="AnchoProducto">Ancho</label>
                           <div class="input-group input-group-sm mb-2">
-                            <input type="text" class="form-control" id="AnchoProducto" name="AnchoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_ANCHO']; ?>">
+                            <input type="number" min="0.01" step="0.01" class="form-control" id="AnchoProducto" name="AnchoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_ANCHO']; ?>">
                             <div class="input-group-append">
                               <div class="input-group-text">cm</div>
                             </div>
@@ -129,7 +110,7 @@ if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
                         <div class="form-group">
                           <label for="AltoProducto">Alto</label>
                           <div class="input-group input-group-sm mb-2">
-                            <input type="text" class="form-control" id="AltoProducto" name="AltoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_ALTO']; ?>">
+                            <input type="number" min="0.01" step="0.01" class="form-control" id="AltoProducto" name="AltoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_ALTO']; ?>">
                             <div class="input-group-append">
                               <div class="input-group-text">cm</div>
                             </div>
@@ -140,7 +121,7 @@ if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
                         <div class="form-group">
                           <label for="ProfundoProducto">Profundo</label>
                           <div class="input-group input-group-sm mb-2">
-                          <input type="text" class="form-control" id="ProfundoProducto" name="ProfundoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PROFUNDO']; ?>">
+                          <input type="number" min="0.01" step="0.01" class="form-control" id="ProfundoProducto" name="ProfundoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PROFUNDO']; ?>">
                             <div class="input-group-append">
                               <div class="input-group-text">cm</div>
                             </div>
@@ -151,7 +132,7 @@ if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
                         <div class="form-group">
                           <label for="PesoProducto">Peso</label>
                           <div class="input-group input-group-sm mb-2">
-                          <input type="text" class="form-control" id="PesoProducto" name="PesoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PESO']; ?>">
+                          <input type="number" min="0.01" step="0.01" class="form-control" id="PesoProducto" name="PesoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PESO']; ?>">
                             <div class="input-group-append">
                               <div class="input-group-text">Kg</div>
                             </div>
@@ -177,7 +158,7 @@ if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; }
 
                 <div class="col">
                   <div class="border border-default p-2">
-                  <h6> <i class="fa fa-file"></i> Descripción e Información extra</h6>
+                  <h6 class="my-2"> <i class="fa fa-file"></i> Descripción e Información extra</h6>
                   <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                     <li class="nav-item">
                       <a class="nav-link <?php if($tab=='categoria'){ echo 'active'; } ?>" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab" aria-controls="categoria" aria-selected="false"> <span class="fa fa-list"></span> Categorias</a>

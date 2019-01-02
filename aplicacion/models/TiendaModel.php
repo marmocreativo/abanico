@@ -18,7 +18,7 @@ class TiendaModel extends CI_Model{
     public function detalles($id){
         return $this->db->get_where('tiendas',array('ID_TIENDA'=>$id))->row_array();
     }
-    
+
     public function tienda_usuario($id){
         return $this->db->get_where('tiendas',array('ID_USUARIO'=>$id),1)->row_array();
     }
@@ -65,6 +65,13 @@ class TiendaModel extends CI_Model{
       }
       $this->db->where('ID_TIENDA',$id);
       return $this->db->update('tiendas',array('TIENDA_ESTADO'=>$activo));
+    }
+    /*
+      * Desactivar Tienda de un Usuario
+   */
+    function descativar_tienda_usuario($id){
+      $this->db->where('ID_USUARIO',$id);
+      return $this->db->update('tiendas',array('TIENDA_ESTADO'=>'inactivo'));
     }
     /*
       * Cambio el estado de la entrada, puede ser cualquier estado

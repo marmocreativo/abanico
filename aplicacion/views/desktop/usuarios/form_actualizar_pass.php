@@ -64,7 +64,7 @@
               <h4 class="h5"> <span class="fa fa-map-marker-alt"></span> Direcciones</h4>
             </div>
             <div class="card-body">
-              <a href="usuario/direcciones">Ver mis direcciones registradas</a>
+              <a href="<?php echo base_url('usuario/direcciones');?>">Ver mis direcciones registradas</a>
             </div>
           </div>
           <div class="card border-warning text-center  mb-4">
@@ -72,7 +72,7 @@
               <h4 class="h5"> <span class="fa fa-user-lock"></span> Mi Contraseña</h4>
             </div>
             <div class="card-body">
-              <a href="usuario/pass">Cambiar mi contraseña</a>
+              <a href="<?php echo base_url('usuario/pass');?>">Cambiar mi contraseña</a>
             </div>
           </div>
           <div class="card border-danger text-center  mb-4">
@@ -80,7 +80,8 @@
               <h4 class="h5"> <span class="fa fa-trash"></span> Borrar mi cuenta</h4>
             </div>
             <div class="card-body">
-              <a href="usuario/borrar">Borrar tu cuenta</a>
+              <!--<a href="<?php echo base_url('usuario/borrar');?>">Borrar tu cuenta</a>-->
+              <button type="button" id="borrar_perfil" class="btn btn-link" data-enlace="<?php echo base_url('usuario/borrar');?>">Borrar tu cuenta</button>
             </div>
           </div>
         </div>

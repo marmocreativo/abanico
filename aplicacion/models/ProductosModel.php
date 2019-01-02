@@ -73,6 +73,15 @@ class ProductosModel extends CI_Model {
     return $query->result();
   }
   /*
+    * Conteo de productos
+ */
+  function conteo_productos_usuario($id_usuario){
+
+    $this->db->where('ID_USUARIO',$id_usuario);
+    $query = $this->db->count_all_results('productos');
+    return $query;
+  }
+  /*
     * Enlisto todas las entradas
     * $parametros Debe ser un array de Columnas y Valores, Busco usando la función LIKE
     * $orden indicará la Columna y si es ascendente o descendente
@@ -80,7 +89,7 @@ class ProductosModel extends CI_Model {
  */
   function lista_favoritos_activos($favoritos){
 
-      $this->db->where_in('ID_PRODUCTO',$favoritos);
+    $this->db->where_in('ID_PRODUCTO',$favoritos);
     $this->db->order_by('PRODUCTO_FECHA_PUBLICACION','DESC');
     $this->db->where('PRODUCTO_ESTADO', 'activo');
     $query = $this->db->get('productos');
@@ -158,6 +167,13 @@ class ProductosModel extends CI_Model {
     }
     $this->db->where('ID_PRODUCTO',$id);
     return $this->db->update('productos',array('PRODUCTO_ESTADO'=>$activo));
+  }
+  /*
+    * Desactivar servicios de un Usuario
+ */
+  function descativar_productos_usuario($id){
+    $this->db->where('ID_USUARIO',$id);
+    return $this->db->update('productos',array('PRODUCTO_ESTADO'=>'inactivo'));
   }
   /*
     * Cambio el estado de la entrada, puede ser cualquier estado

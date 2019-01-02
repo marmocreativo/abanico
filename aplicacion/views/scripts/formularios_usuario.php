@@ -5,7 +5,7 @@ tinymce.init({
   });
 //
 // Cargo Los Paises
-$.ajax({
+jQuery.ajax({
   method: "GET",
   url: "<?php echo base_url('ajax/paises'); ?>",
   dataType: "json",
@@ -13,21 +13,21 @@ $.ajax({
    {
       var response = texto;
       response.forEach(function(fila) {
-        $('#PaisDireccion').append('<option value="'+fila['PAIS_NOMBRE']+'" data-id="'+fila['ID_PAIS']+'" >'+fila['PAIS_NOMBRE']+'</option>');
+        jQuery('#PaisDireccion').append('<option value="'+fila['PAIS_NOMBRE']+'" data-id="'+fila['ID_PAIS']+'" >'+fila['PAIS_NOMBRE']+'</option>');
       });
-      var valor_anterior =   $('#PaisDireccion').data('valor-anterior');
+      var valor_anterior =   jQuery('#PaisDireccion').data('valor-anterior');
       if(valor_anterior){
-        if($("#PaisDireccion[value='"+valor_anterior+"']")){
-            $('#PaisDireccion').val(valor_anterior);
-            $( "#PaisDireccion" ).trigger( "change" );
+        if(jQuery("#PaisDireccion[value='"+valor_anterior+"']")){
+            jQuery('#PaisDireccion').val(valor_anterior);
+            jQuery( "#PaisDireccion" ).trigger( "change" );
         }
       }
    }
 });
 // en cambio en PaisDireccion
-$('#PaisDireccion').on('change',function(e){
-  var pais = $(this).find(':selected').data('id');
-  var estados = $.ajax({
+jQuery('#PaisDireccion').on('change',function(e){
+  var pais = jQuery(this).find(':selected').data('id');
+  var estados = jQuery.ajax({
     method: "GET",
     url: "<?php echo base_url('ajax/estados'); ?>",
     dataType: "json",
@@ -35,18 +35,18 @@ $('#PaisDireccion').on('change',function(e){
     success : function(texto)
      {
        var response = texto;
-       $('#EstadoDireccion').html('<option value="-" >Selecciona un Estado</option>');
-       $('#MunicipioDireccion').html('<option value="-" >Selecciona tu Municipio / Alcaldía</option>');
+       jQuery('#EstadoDireccion').html('<option value="-" >Selecciona un Estado</option>');
+       jQuery('#MunicipioDireccion').html('<option value="-" >Selecciona tu Municipio / Alcaldía</option>');
        response.forEach(function(fila) {
-         $('#EstadoDireccion').append('<option value="'+fila['ESTADO_NOMBRE']+'" >'+fila['ESTADO_NOMBRE']+'</option>');
+         jQuery('#EstadoDireccion').append('<option value="'+fila['ESTADO_NOMBRE']+'" >'+fila['ESTADO_NOMBRE']+'</option>');
       });
-      var valor_anterior =   $('#EstadoDireccion').data('valor-anterior');
+      var valor_anterior =   jQuery('#EstadoDireccion').data('valor-anterior');
       if(valor_anterior){
-        if($("#EstadoDireccion[value='"+valor_anterior+"']")){
-          $('#EstadoDireccion').val(valor_anterior);
-          $( "#EstadoDireccion" ).trigger( "change" );
+        if(jQuery("#EstadoDireccion[value='"+valor_anterior+"']")){
+          jQuery('#EstadoDireccion').val(valor_anterior);
+          jQuery( "#EstadoDireccion" ).trigger( "change" );
         }else{
-          $('#EstadoDireccion').val('-');
+          jQuery('#EstadoDireccion').val('-');
         }
       }
      }
@@ -54,10 +54,10 @@ $('#PaisDireccion').on('change',function(e){
 });
 
 // en cambio en PaisDireccion
-$('#EstadoDireccion').on('change',function(e){
-  var pais = $('#PaisDireccion').find(':selected').data('id');
-  var estado_seleccionado = $(this).find(':selected').val();
-  var municipios = $.ajax({
+jQuery('#EstadoDireccion').on('change',function(e){
+  var pais = jQuery('#PaisDireccion').find(':selected').data('id');
+  var estado_seleccionado = jQuery(this).find(':selected').val();
+  var municipios = jQuery.ajax({
     method: "GET",
     url: "<?php echo base_url('ajax/municipios'); ?>",
     dataType: "json",
@@ -65,21 +65,20 @@ $('#EstadoDireccion').on('change',function(e){
     success : function(texto)
      {
        var response = texto;
-       $('#MunicipioDireccion').html('<option value="-" >Selecciona tu Municipio / Alcaldía</option>');
+       jQuery('#MunicipioDireccion').html('<option value="-" >Selecciona tu Municipio / Alcaldía</option>');
        response.forEach(function(fila) {
-         $('#MunicipioDireccion').append('<option value="'+fila['MUNICIPIO_NOMBRE']+'" >'+fila['MUNICIPIO_NOMBRE']+'</option>');
+         jQuery('#MunicipioDireccion').append('<option value="'+fila['MUNICIPIO_NOMBRE']+'" >'+fila['MUNICIPIO_NOMBRE']+'</option>');
       });
-      var valor_anterior =  $('#MunicipioDireccion').data('valor-anterior');
+      var valor_anterior =  jQuery('#MunicipioDireccion').data('valor-anterior');
       if(valor_anterior){
-        if($("#MunicipioDireccion[value='"+valor_anterior+"']")){
-          $('#MunicipioDireccion').val(valor_anterior);
+        if(jQuery("#MunicipioDireccion[value='"+valor_anterior+"']")){
+          jQuery('#MunicipioDireccion').val(valor_anterior);
         }
       }else{
-        $('#MunicipioDireccion').val('');
+        jQuery('#MunicipioDireccion').val('');
       }
      }
   });
 
-  console.log(municipios);
 });
 </script>

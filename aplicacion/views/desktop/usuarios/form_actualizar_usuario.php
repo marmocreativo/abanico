@@ -11,20 +11,7 @@
               <h2 class="h5"> <span class="fa fa-id-card"></span> Perfil y datos personales</h2>
             </div>
             <div class="card-body">
-
-              <?php if(isset($_GET['mensaje'])){
-                switch($_GET['mensaje']){
-                  case 'actualizacion_correcta':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Tu información se actualizó correctamente';
-                  break;
-                }
-                ?>
-
-                <div class="alert <?php echo  $alerta; ?>">
-                  <p><?php echo  $mensaje; ?></p>
-                </div>
-              <?php }// Termina la condicionante ?>
+              <?php retro_alimentacion(); ?>
               <?php if(!empty(validation_errors())){ ?>
                 <div class="alert alert-danger">
                   <?php echo validation_errors(); ?>
@@ -99,7 +86,7 @@
             </div>
             <div class="card-body">
               <!--<a href="<?php echo base_url('usuario/borrar');?>">Borrar tu cuenta</a>-->
-              <button type="button" id="borrar_perfil" class="btn btn-link" data-enlace="<?php echo base_url('usuario/borrar');?>">Borrar tu cuenta</button>
+              <button type="button" id="borrar_perfil" class="btn btn-link borrar_entrada" data-enlace="<?php echo base_url('usuario/borrar');?>">Borrar tu cuenta</button>
             </div>
           </div>
         </div>

@@ -23,35 +23,25 @@
     </a>
   </div>
 </div>
-<div class="post-menu">
+<div class="post-menu py-4">
   <div class="container-fluid">
     <div class="row">
-      <div class="col">
-        <a href="<?php echo base_url('categoria/servicios'); ?>" class="caracteristica">
-          <div class="car-icono"> <span class="fa fa-paint-roller"></span> </div>
-          <div class="car-contenido">
-            <div class="car-titulo">Servicios</div>
-            <div class="car-subtitulo">Profesionales en todo el país</div>
-          </div>
-        </a>
-      </div>
-
-      <div class="col">
-        <a href="<?php echo base_url('categoria'); ?>" class="caracteristica">
-          <div class="car-icono"> <span class="fa fa-boxes"></span> </div>
-          <div class="car-contenido">
-            <div class="car-titulo">Productos</div>
-            <div class="car-subtitulo">Venta a Mayoristas</div>
-          </div>
+      <div class="col border-right">
+        <a href="<?php echo base_url('categoria/servicios'); ?>" class="d-flex justify-content-center align-items-center">
+          <div class="car-icono text-primary"> <span class="fa fa-tools"></span> </div>
+          <div class="car-titulo">Servicios</div>
         </a>
       </div>
       <div class="col">
-        <a href="<?php echo base_url('usuario/registrar'); ?>" class="caracteristica">
-          <div class="car-icono"> <span class="fa fa-handshake"></span> </div>
-          <div class="car-contenido">
-            <div class="car-titulo">Únete</div>
-            <div class="car-subtitulo">Ofrece tus servicios con nosotros</div>
-          </div>
+        <a href="<?php echo base_url('categoria'); ?>"  class="d-flex justify-content-center align-items-center">
+          <div class="car-icono text-primary"> <span class="fa fa-box"></span> </div>
+          <div class="car-titulo">Productos</div>
+        </a>
+      </div>
+      <div class="col border-left">
+        <a href="<?php echo base_url('usuario/registrar'); ?>" class="d-flex justify-content-center align-items-center">
+          <div class="car-icono text-primary"> <span class="fa fa-handshake"></span> </div>
+          <div class="car-titulo">Únete</div>
         </a>
       </div>
     </div>
@@ -61,7 +51,7 @@
 
 <!-- Inicia el cuerpo del texto -->
 
-<div class="container-fluid py-4">
+<div class="container-fluid py-4 d-none">
   <div class="row">
     <div class="col-3">
       <div class="contenedor-servicios">
@@ -113,6 +103,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
+        <h2 class="h3 text-center border-bottom pb-3 mb-3">Productos Destacados</h2>
         <section class="slider">
         <div class="flexslider carousel">
           <ul class="slides">
@@ -137,7 +128,7 @@
                       <div class="overlay-producto <?php echo 'bg'.$primary; ?>"></div>
                       <div class="boton-ver">
                         <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
-                      <?php if(verificar_sesion()){ ?>
+                      <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
                         <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
                       <?php }else{ ?>
                         <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$producto->ID_PRODUCTO)); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
@@ -188,7 +179,7 @@
                       <div class="overlay-producto <?php echo 'bg'.$primary; ?>"></div>
                       <div class="boton-ver">
                         <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
-                      <?php if(verificar_sesion()){ ?>
+                      <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
                         <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
                       <?php }else{ ?>
                         <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$producto->ID_PRODUCTO)); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>

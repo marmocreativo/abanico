@@ -11,16 +11,6 @@
               <div class="titulo">
                 <h2 class="h5 mb-0"> <span class="fa fa-box"></span> Tus Servicios</h2>
               </div>
-              <div class="formulario">
-                <form class="form-inline" action="<?php echo base_url('usuario/servicios/busqueda');?>" method="get">
-                  <div class="input-group">
-                    <input type="text" class="form-control" id="Busqueda" name="Busqueda" placeholder="Buscar">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline<?php echo $primary ?>" type="submit"><span class="fa fa-search"></span></button>
-                      </div>
-                    </div>
-                </form>
-              </div>
               <div class="opciones">
                   <a href="<?php echo base_url('usuario/servicios/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Nuevo Servicio </a>
               </div>
@@ -29,7 +19,6 @@
               <table class="table table-sm">
                 <thead>
                   <tr>
-                    <th>id</th>
                     <th>Servicio</th>
                     <th>Estado</th>
                     <th class="text-right">Controles</th>
@@ -38,13 +27,12 @@
                 <tbody>
                   <?php foreach($servicios as $servicio){ ?>
                   <tr>
-                    <td><?php echo $servicio->ID_SERVICIO; ?></td>
                     <td><?php echo $servicio->SERVICIO_NOMBRE; ?></td>
                     <td><?php echo $servicio->SERVICIO_ESTADO; ?></td>
                     <td>
                       <div class="btn-group float-right">
-                        <a href="<?php echo base_url('usuario/servicios/actualizar?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-sm btn-warning" title="Editar Producto"> <span class="fa fa-pencil-alt"></span> </a>
-                        <a href="<?php echo base_url('usuario/servicios/borrar?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-sm btn-danger" title="Editar Producto"> <span class="fa fa-ban"></span> </a>
+                        <a href="<?php echo base_url('usuario/servicios/actualizar?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-sm btn-warning" title="Editar Servicio"> <span class="fa fa-pencil-alt"></span> </a>
+                        <button data-enlace='<?php echo base_url('usuario/servicios/borrar?id='.$servicio->ID_SERVICIO); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Servicio"> <span class="fa fa-trash"></span> </button>
                       </div>
                     </td>
                   </tr>

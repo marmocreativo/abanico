@@ -22,6 +22,21 @@ class Admin_Usuarios extends CI_Controller {
 		// Cargo el modelo
 		$this->load->model('UsuariosModel');
 		$this->load->model('TiendasModel');
+		$this->load->model('PerfilServiciosModel');
+		$this->load->model('ProductosModel');
+		$this->load->model('ServiciosModel');
+		$this->load->model('DireccionesModel');
+
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// Verifico Permiso
+		if(!verificar_permiso(['tec-5','adm-6'])){
+			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
+			redirect(base_url('usuario'));
+		}
 
 
   }
@@ -119,39 +134,65 @@ class Admin_Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('ApellidosUsuario', 'Apellidos', 'required', array('required' => 'Debes escribir tus %s.'));
 		$this->form_validation->set_rules('CorreoUsuario', 'Correo Electrónico', 'required|valid_email', array(
 			'required' => 'Debes escribir tu %s.',
-			'valid_email' => 'Debes escribir una dirección de correo valida.'
+			'valid_email' => 'Debes escribir una dirección de correo valida.',
+			'is_unique' => 'La dirección de correo ya está registrada'
 		));
+		// reviso si está marcada la casilla de lista de correo
+		if(!null==$this->input->post('ListaDeCorreoUsuario')){ $lista_correo = 'si'; }else{ $lista_correo = 'no'; }
 
-		// Si envio contraseña la actualizo también
-		if(!null==$this->input->post('PassUsuario')&&!empty($this->input->post('PassUsuario'))){
-				$this->form_validation->set_rules('PassUsuario', 'Contraseña', 'required', array('required' => 'Debes escribir tu %s.'));
-				$this->form_validation->set_rules('PassUsuarioConf', 'Contraseña Confirmación', 'required|matches[PassUsuario]', array(
-					'required' => 'Debes confirmar la Contraseña',
-					'matches' => 'La confirmación de la contraseña no coincide.'
-				));
-				$pass = password_hash($this->input->post('PassUsuario'), PASSWORD_DEFAULT);
-			}
 		if($this->form_validation->run())
-    {
-      $parametros = array(
+		{
+			$parametros = array(
 				'USUARIO_NOMBRE' => $this->input->post('NombreUsuario'),
 				'USUARIO_APELLIDOS' => $this->input->post('ApellidosUsuario'),
 				'USUARIO_CORREO' => $this->input->post('CorreoUsuario'),
 				'USUARIO_TELEFONO' => $this->input->post('TelefonoUsuario'),
-				'USUARIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
-				'USUARIO_TIPO' => $this->input->post('TipoUsuario'),
-				'USUARIO_ESTADO' => $this->input->post('EstadoUsuario')
-      );
+				'USUARIO_LISTA_DE_CORREO' => $lista_correo,
+				'USUARIO_FECHA_NACIMIENTO' => $this->input->post('FechaNacimientoUsuario'),
+				'USUARIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s')
+			);
 			if(null!==$this->input->post('PassUsuario')&&!empty($this->input->post('PassUsuario'))){ $parametros['USUARIO_PASSWORD']= $pass; };
 
-      $pais_id = $this->UsuariosModel->actualizar( $this->input->post('Identificador'),$parametros);
-      redirect(base_url('admin/usuarios?tipo_usuario='.$this->input->post('TipoUsuario')));
+      $this->UsuariosModel->actualizar( $this->input->post('Identificador'),$parametros);
+			$this->session->set_flashdata('exito', 'Usuario Actualizado');
+      redirect(base_url('admin/usuarios/perfil?id_usuario='.$this->input->post('Identificador')));
     }else{
 
 			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id']);
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_usuario',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+		}
+	}
+
+	public function pass()
+	{
+		// Obtengo los datos de usuario
+
+		$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
+		$this->form_validation->set_rules('PassUsuario', 'Contraseña', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('PassUsuarioConf', 'Contraseña Confirmación', 'required|matches[PassUsuario]', array(
+			'required' => 'Debes confirmar la Contraseña',
+			'matches' => 'La confirmación de la contraseña no coincide.'
+		));
+
+		if($this->form_validation->run())
+		{
+			$this->load->model('AutenticacionModel');
+				$id = $this->input->post('Identificador');
+				$pass = password_hash($this->input->post('PassUsuario'), PASSWORD_DEFAULT);
+				$parametros = array(
+					'USUARIO_PASSWORD' => $pass
+				);
+				$this->AutenticacionModel->restaurar_pass($id,$parametros);
+				// Mensaje de feedback
+				$this->session->set_flashdata('exito', 'Contraseña actualizada correctamente');
+				// redirección
+				redirect(base_url('admin/usuarios/perfil?id_usuario='.$id));
+		}else{
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_pass',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}
@@ -190,8 +231,11 @@ class Admin_Usuarios extends CI_Controller {
 		*/
 		public function perfil()
 		{
-			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id']);
-			$this->data['tienda'] = $this->TiendasModel->detalles_tienda_usuario($_GET['id']);
+			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
+			$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_GET['id_usuario']);
+			$this->data['perfil'] = $this->PerfilServiciosModel->perfil_usuario($_GET['id_usuario']);
+			$this->data['direccion_perfil'] = $this->DireccionesModel->direccion_formateada($this->data['perfil']['ID_DIRECCION']);
+			$this->data['direccion_tienda'] = $this->DireccionesModel->direccion_formateada($this->data['tienda']['ID_DIRECCION']);
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/perfil_usuario',$this->data);

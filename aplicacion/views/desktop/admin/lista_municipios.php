@@ -1,9 +1,5 @@
-<div class="contenido_principal">
-<div class="container-fluid">
+
   <div class="row">
-    <div class="col-sm-3 col-md-2 fila fila-gris p-0">
-      <?php $this->load->view('desktop/admin/widgets/menu_control_administrador'); ?>
-    </div>
     <div class="col mt-3">
       <div class="card">
         <div class="card-header d-flex justify-content-between">
@@ -11,39 +7,28 @@
             <h1 class="h5"> <span class="fa fa-globe-americas"></span> Municipios</h1>
           </div>
           <div class="formulario">
-            <form class="form-inline" action="<?php echo base_url('admin/estados/busqueda');?>" method="get">
+            <form class="form-inline" action="<?php echo base_url('admin/municipios/busqueda');?>" method="get">
               <input type="hidden" name="pais" value="<?php echo $_GET['pais']; ?>">
+              <input type="hidden" name="estado" value="<?php echo $_GET['estado']; ?>">
               <div class="form-group">
                 <label for="Busqueda" class="sr-only">Busqueda</label>
-                <input type="text" class="form-control" id="Busqueda" name="Busqueda" placeholder="Buscar">
+                <input type="text" class="form-control form-control-sm" id="Busqueda" name="Busqueda" placeholder="Buscar">
               </div>
-              <button type="submit" class="btn btn<?php echo $primary ?>"> <span class="fa fa-search"></span> </button>
+              <button type="submit" class="btn btn-sm btn<?php echo $primary ?>"> <span class="fa fa-search"></span> </button>
             </form>
           </div>
           <div class="opciones d-flex">
             <div class="btn-group btn-sm">
+              <a href="<?php echo base_url('admin/estados')."?pais=".$_GET['pais']; ?>" class="btn btn-outline-default btn-sm"> <span class="fa fa-chevron-left"></span> volver a estados </a>
               <a href="<?php echo base_url('admin/municipios/crear').'?pais='.$_GET['pais']; ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span> Nuevo Municipio </a>
-              <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="fa fa-cogs"></span>
-              </button>
-              <div class="dropdown-menu">
-                <!--
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              -->
-              </div>
             </div>
 
           </div>
         </div>
         <div class="card-body p-0">
-          <table class="table table-sm table-hover table-striped">
+          <table class="table table-hover table-striped">
             <thead class="text-light bg<?php echo $primary; ?>">
               <tr>
-                <th class="text-center">id</th>
                 <th class="text-center">Nombre</th>
                 <th class="text-center">Estado</th>
                 <th class="text-center">Municipio</th>
@@ -53,9 +38,8 @@
             <tbody>
               <?php foreach($municipios as $municpio){ ?>
               <tr>
-                <td class="text-center"><?php echo $municpio->ID_MUNICIPIO; ?></td>
-                <td class="text-center"><?php echo $municpio->ESTADO_NOMBRE; ?></td>
                 <td class="text-center"><?php echo $municpio->MUNICIPIO_NOMBRE; ?></td>
+                <td class="text-center"><?php echo $municpio->ESTADO_NOMBRE; ?></td>
                 <td class="text-center">
                   <?php if($municpio->MUNICIPIO_ESTADO=='activo'){ ?>
                     <a href="<?php echo base_url('admin/municipios/activar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS."&estado=".$municpio->MUNICIPIO_ESTADO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
@@ -77,5 +61,3 @@
       </div>
     </div>
   </div>
-</div>
-</div>

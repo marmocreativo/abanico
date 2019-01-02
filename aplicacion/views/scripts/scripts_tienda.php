@@ -5,23 +5,23 @@ Carrito
 -----------------
 */
 // Cargo el carrito por defecto
-$('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
 
 // Cargo el carrito
-$('#BotonComprar').on('click',function(e){
+jQuery('#BotonComprar').on('click',function(e){
   // Leo las variables del botón
-  var id_producto = $(this).data('id-producto');
-  var nombre_producto = $(this).data('nombre-producto');
-  var imagen_producto = $(this).data('imagen-producto');
-  var peso_producto = $(this).data('peso-producto');
-  var detalles_producto = $(this).data('detalles-producto');
-  var cantidad_producto = $('#CantidadProducto').val();
-  var precio_producto = $(this).data('precio-producto');
-  var id_tienda = $(this).data('id-tienda');
-  var nombre_tienda = $(this).data('nombre-tienda');
+  var id_producto = jQuery(this).data('id-producto');
+  var nombre_producto = jQuery(this).data('nombre-producto');
+  var imagen_producto = jQuery(this).data('imagen-producto');
+  var peso_producto = jQuery(this).data('peso-producto');
+  var detalles_producto = jQuery(this).data('detalles-producto');
+  var cantidad_producto = jQuery('#CantidadProducto').val();
+  var precio_producto = jQuery(this).data('precio-producto');
+  var id_tienda = jQuery(this).data('id-tienda');
+  var nombre_tienda = jQuery(this).data('nombre-tienda');
 
   // Envio la información por ajax
-  $.ajax({
+  jQuery.ajax({
     method: "POST",
     url: "<?php echo base_url('ajax/carrito/cargar'); ?>",
     dataType: "text",
@@ -38,18 +38,18 @@ $('#BotonComprar').on('click',function(e){
     },
     success : function(texto)
      {
-        $('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
-        $('#ModalCarrito').modal();
+        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('#ModalCarrito').modal();
      }
   });
 });
 // Boton Incrementar
-$('#CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
+jQuery('#CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
   // Leo las variables del botón
-  var id_producto = $(this).data('id-producto');
+  var id_producto = jQuery(this).data('id-producto');
 
   // Envio la información por ajax
-  $.ajax({
+  jQuery.ajax({
     method: "POST",
     url: "<?php echo base_url('ajax/carrito/incrementar'); ?>",
     dataType: "text",
@@ -59,18 +59,18 @@ $('#CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
     success : function(texto)
      {
        console.log(texto);
-        $('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
-        $('#ModalCarrito').modal();
+        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('#ModalCarrito').modal();
      }
   });
 });
 // Boton Disminuir
-$('#CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
+jQuery('#CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
   // Leo las variables del botón
-  var id_producto = $(this).data('id-producto');
+  var id_producto = jQuery(this).data('id-producto');
 
   // Envio la información por ajax
-  $.ajax({
+  jQuery.ajax({
     method: "POST",
     url: "<?php echo base_url('ajax/carrito/disminuir'); ?>",
     dataType: "text",
@@ -79,19 +79,19 @@ $('#CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
     },
     success : function(texto)
      {
-        $('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
-        $('#ModalCarrito').modal();
+        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('#ModalCarrito').modal();
      }
   });
 });
 // Campo cantidad
-$('#CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
+jQuery('#CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
   // Leo las variables del botón
-  var id_producto = $(this).data('id-producto');
-  var cantidad_producto = $(this).val();
+  var id_producto = jQuery(this).data('id-producto');
+  var cantidad_producto = jQuery(this).val();
 
   // Envio la información por ajax
-  $.ajax({
+  jQuery.ajax({
     method: "POST",
     url: "<?php echo base_url('ajax/carrito/cantidad'); ?>",
     dataType: "text",
@@ -101,17 +101,17 @@ $('#CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
     },
     success : function(texto)
      {
-        $('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
-        $('#ModalCarrito').modal();
+        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('#ModalCarrito').modal();
      }
   });
 });
-$('#CargarCarrito').on('click', '.boton-eliminar-carrito', function() {
+jQuery('#CargarCarrito').on('click', '.boton-eliminar-carrito', function() {
   // Leo las variables del botón
-  var id_producto = $(this).data('id-producto');
+  var id_producto = jQuery(this).data('id-producto');
 
   // Envio la información por ajax
-  $.ajax({
+  jQuery.ajax({
     method: "POST",
     url: "<?php echo base_url('ajax/carrito/eliminar'); ?>",
     dataType: "text",
@@ -121,22 +121,22 @@ $('#CargarCarrito').on('click', '.boton-eliminar-carrito', function() {
     success : function(texto)
      {
        console.log(texto);
-        $('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
-        $('#ModalCarrito').modal();
+        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('#ModalCarrito').modal();
      }
   });
 });
 
 // Vaciar Carrito
-$('#BotonVaciar').on('click',function(e){
+jQuery('#BotonVaciar').on('click',function(e){
   // Envio la información por ajax
-  $.ajax({
+  jQuery.ajax({
     method: "POST",
     url: "<?php echo base_url('ajax/carrito/vaciar'); ?>",
     success : function(texto)
      {
-        $('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
-        $('#ModalCarrito').modal();
+        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('#ModalCarrito').modal();
      }
   });
 });
@@ -161,8 +161,8 @@ GALERIA
     });
   });
 
-  $(function() {
-      $('#EstrellasCalificacion').barrating({
+  jQuery(function() {
+      jQuery('#EstrellasCalificacion').barrating({
         theme: 'fontawesome-stars'
       });
    });

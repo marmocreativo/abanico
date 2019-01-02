@@ -3,7 +3,7 @@
     $titulo_categoria = 'Mis Favoritos';
 
 ?>
-<div class="fila p-3" style="background:#eee;">
+<div class="contenido_principal pt-3">
   <div class="container">
     <div class="row">
       <div class="fila">
