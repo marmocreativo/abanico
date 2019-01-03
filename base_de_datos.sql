@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 02-01-2019 a las 14:36:33
+-- Tiempo de generación: 03-01-2019 a las 13:41:46
 -- Versión del servidor: 5.6.40-84.0-log
 -- Versión de PHP: 5.6.30
 
@@ -64,6 +64,23 @@ INSERT INTO `calificaciones_productos` (`ID_CALIFICACION`, `ID_PRODUCTO`, `ID_US
 (7, 19, '5c0653d43d92e7.75019474', '5c08a9dc2cb096.56391251', 1, 'Este librero esta muy feo', 'activo', '2018-12-27 18:07:28'),
 (8, 8, '5c0653d43d92e7.75019474', '5c08a9dc2cb096.56391251', 5, '', 'activo', '2018-12-27 18:17:55'),
 (9, 20, '5c25209703a210.25306180', '5c0653d43d92e7.75019474', 4, 'excelente ', 'activo', '2018-12-28 16:19:30');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `calificaciones_servicios`
+--
+
+CREATE TABLE `calificaciones_servicios` (
+  `ID_CALIFICACION` int(11) NOT NULL,
+  `ID_SERVICIO` int(11) DEFAULT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `ID_USUARIO_CALIFICADOR` varchar(255) DEFAULT NULL,
+  `CALIFICACION_ESTRELLAS` int(1) DEFAULT NULL,
+  `CALIFICACION_COMENTARIO` varchar(255) DEFAULT NULL,
+  `CALIFICACION_ESTADO` varchar(255) DEFAULT NULL,
+  `CALIFICACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -166,7 +183,122 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (106, 'Mecánicos y Automotrices', 'mec??nicos-y-automotrices', '', '-primary-16', 'fas fa-car', 'default.jpg', 0, 0, 'servicios', 'activo'),
 (107, 'Administración', 'administraci??n', '', '-primary-17', 'fas fa-user-tie', 'default.jpg', 0, 0, 'servicios', 'activo'),
 (108, 'Arte y entretenimiento', 'arte-y-entretenimiento', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 0, 0, 'servicios', 'activo'),
-(109, 'Salud', 'm??dicos-y-enfermer??a', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 0, 0, 'servicios', 'activo');
+(109, 'Salud', 'm??dicos-y-enfermer??a', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 0, 0, 'servicios', 'activo'),
+(111, 'Bicicletas', 'bicicletas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
+(112, ' Fitness', 'entrenamiento-y-fitness', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
+(113, 'Campismo', 'campismo', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
+(114, 'Montaña', 'montaña', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
+(115, 'Urbana', 'urbana', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
+(116, 'Plegables', 'plegables', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
+(117, 'Electricas', 'electricas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
+(118, 'Infantil', 'infantil', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
+(119, 'Accesorios', 'accesorios-chk', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
+(120, 'Barras y pesas', 'barras-y-pesas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
+(121, 'Caminadoras y equipo', 'caminadoras-y-equipo', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
+(122, 'Entrenamiento funcional', 'entrenamiento-funcional', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
+(123, 'Yoga', 'yoga', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
+(124, 'Casas de campaña', 'casas-de-campaña', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
+(125, 'Colchones inflables', 'colchones-inflables', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
+(126, 'Hieleras', 'hieleras', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
+(127, 'Mochilas', 'mochilas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
+(128, 'Sillas y mesas', 'sillas-y-mesas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
+(129, 'Muebles', 'muebles-4gk', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
+(130, 'Cocina', 'cocina', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
+(132, 'Colchones y almohadas', 'colchones-y-almohadas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
+(133, 'Decoración', 'decoración', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
+(134, 'Iluminación', 'iluminación', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
+(135, 'Línea blanca', 'linea-blanca', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
+(136, 'Salas', 'salas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
+(137, 'Recámaras', 'recámaras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
+(138, 'Estudio', 'estudio', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
+(139, 'Baño', 'baño', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
+(140, 'Jardín', 'jardín', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
+(141, 'Cubiertos y cuchillos', 'cubiertos-y-cuchillos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
+(142, 'Repostería', 'repostería', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
+(143, 'Ollas y sartenes', 'ollas-y-sartenes', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
+(144, 'Accesorios de cocina', 'accesorios-de-cocina', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
+(145, 'Colchones', 'colchones', '', '-primary-4', 'fas fa-blender', 'default.jpg', 132, 0, 'productos', 'activo'),
+(146, 'Almohadas', 'almohadas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 132, 0, 'productos', 'activo'),
+(147, 'Box', 'box', '', '-primary-4', 'fas fa-blender', 'default.jpg', 132, 0, 'productos', 'activo'),
+(148, 'Refrigeradores', 'refrigeradores', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
+(149, 'Lavadoras', 'lavadoras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
+(150, 'Hornos', 'hornos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
+(151, 'Lavavajillas', 'lavavajillas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
+(152, 'Ropa infantil', 'ropa-infantil', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
+(153, 'Muebles infantiles', 'muebles-infantiles', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
+(154, 'Bebés', 'bebés', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
+(155, 'Juguetes y juegos', 'juguetes-y-juegos', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
+(156, 'Drones', 'drones', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
+(157, 'Artículos escolares', 'artículos-escolares', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
+(158, 'Pañales', 'pañales', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
+(159, 'Carriolas', 'carriolas', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
+(160, 'Cunas', 'cunas', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
+(161, 'Seguridad y monitores', 'seguridad-y-monitores', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
+(162, 'Aseo e higiene', 'aseo-e-higiene', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
+(163, 'Juegos de mesa', 'juegos-de-mesa', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
+(164, 'Peluches', 'peluches', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
+(165, 'Figuras de acción', 'figuras-de-acción', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
+(166, 'Juguetes para niña', 'juguetes-para-niña', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
+(167, 'Juguetes electrónicos', 'juguetes-electrónicos', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
+(168, 'Juguetes de jardín', 'juguetes-de-jardín', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
+(169, 'Libros en inglés', 'libros-en-inglés', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(170, 'Infantil y juvenil', 'infantil-y-juvenil', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(171, 'Literatura y ficción ', 'literatura-y-ficción', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(172, 'Profesional y técnico', 'profesional-y-técnico', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(173, 'Romance', 'romance', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(174, 'eBooks Kindle', 'ebooks-kindle', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(175, 'Ciencia Ficción y Fantasía', 'ciencia-ficción-y-fantasía', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(176, 'Ropa de hombre', 'ropa', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 31, 0, 'productos', 'activo'),
+(177, 'Ropa de mujer', 'zapatos', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 31, 0, 'productos', 'activo'),
+(178, 'Ropa y calzado infantil', 'ropa-y-calzado-infantil', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 31, 0, 'productos', 'activo'),
+(179, 'Accesorios', 'accesorios-4ri', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 31, 0, 'productos', 'activo'),
+(180, 'Calzando de mujer', 'ropa-de-mujer', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 31, 0, 'productos', 'activo'),
+(181, 'Calzado de hombre', 'calzado-de-hombre', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 31, 0, 'productos', 'activo'),
+(182, 'Vestidos', 'vestidos', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 177, 0, 'productos', 'activo'),
+(183, 'Blusas', 'blusas', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 177, 0, 'productos', 'activo'),
+(184, 'Playeras', 'playeras', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 177, 0, 'productos', 'activo'),
+(185, 'Faldas', 'faldas', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 177, 0, 'productos', 'activo'),
+(186, 'Pantalones', 'pantalones', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 177, 0, 'productos', 'activo'),
+(187, 'Suéters', 'suéters', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 177, 0, 'productos', 'activo'),
+(188, 'Camisas', 'camisas', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 176, 0, 'productos', 'activo'),
+(189, 'Playeras', 'playeras-v8b', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 176, 0, 'productos', 'activo'),
+(190, 'Pantalones', 'pantalones-xhi', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 176, 0, 'productos', 'activo'),
+(191, 'Jeans', 'jeans', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 176, 0, 'productos', 'activo'),
+(192, 'Chamarras  y abrigos', 'chamarras-y-abrigos', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 176, 0, 'productos', 'activo'),
+(193, 'Ropa deportiva', 'ropa-deportiva', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 176, 0, 'productos', 'activo'),
+(194, 'Sandalias', 'sandalias', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 180, 0, 'productos', 'activo'),
+(195, 'Tenis', 'tenis', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 180, 0, 'productos', 'activo'),
+(196, 'Botas', 'botas', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 180, 0, 'productos', 'activo'),
+(197, 'Flats', 'flats', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 180, 0, 'productos', 'activo'),
+(198, 'Tacones', 'tacones', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 180, 0, 'productos', 'activo'),
+(199, 'Tenis deportivos', 'tenis-deportivos', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
+(200, 'Botas', 'botas-pan', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
+(201, 'Casuales', 'casuales', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
+(202, 'Formales', 'formales', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
+(203, 'Camas', 'camas', '', '-primary-9', 'fas fa-couch', 'default.jpg', 32, 0, 'productos', 'activo'),
+(204, 'Sillones', 'sillones', '', '-primary-9', 'fas fa-couch', 'default.jpg', 32, 0, 'productos', 'activo'),
+(205, 'Mesas', 'mesas', '', '-primary-9', 'fas fa-couch', 'default.jpg', 32, 0, 'productos', 'activo'),
+(206, 'Muebles de jardín ', 'muebles-de-jardín', '', '-primary-9', 'fas fa-couch', 'default.jpg', 32, 0, 'productos', 'activo'),
+(207, 'Muebles de baño', 'muebles-de-baño', '', '-primary-9', 'fas fa-couch', 'default.jpg', 32, 0, 'productos', 'activo'),
+(208, 'Mesas', 'mesas-m9c', '', '-primary-9', 'fas fa-couch', 'default.jpg', 206, 0, 'productos', 'activo'),
+(209, 'Sombrillas', 'sombrillas', '', '-primary-9', 'fas fa-couch', 'default.jpg', 206, 0, 'productos', 'activo'),
+(210, 'Automóviles ', 'automóviles', '', '-primary-10', 'fas fa-car', 'default.jpg', 33, 0, 'productos', 'activo'),
+(211, 'Accesorios para auto', 'accesorios-para-auto', '', '-primary-10', 'fas fa-car', 'default.jpg', 33, 0, 'productos', 'activo'),
+(212, 'Motocicletas', 'motocicletas', '', '-primary-10', 'fas fa-car', 'default.jpg', 33, 0, 'productos', 'activo'),
+(213, 'Camionetas', 'camionetas', '', '-primary-11', 'fas fa-car', 'default.jpg', 210, 0, 'productos', 'activo'),
+(214, 'Accesorios', 'accesorios-0ww', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 34, 0, 'productos', 'activo'),
+(215, 'Jarrones', 'jarrones', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 34, 0, 'productos', 'activo'),
+(216, 'Macetas', 'macetas', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 34, 0, 'productos', 'activo'),
+(217, 'Collares', 'collares', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 214, 0, 'productos', 'activo'),
+(218, 'Aretes', 'aretes', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 214, 0, 'productos', 'activo'),
+(219, 'Anillos', 'anillos', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 214, 0, 'productos', 'activo'),
+(220, 'Pulceras', 'pulceras', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 214, 0, 'productos', 'activo'),
+(221, 'Carnes  y pescados', 'carnes-y-pescados', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
+(222, 'Congelados', 'congelados', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
+(223, 'Despensa', 'despensa', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
+(224, 'Frutas y verduras', 'frutas-y-verduras', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
+(225, 'Lácteos ', 'lácteos', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
+(226, 'Vinos y licores', 'vinos-y-licores', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo');
 
 -- --------------------------------------------------------
 
@@ -6434,6 +6566,24 @@ INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOM
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `productos_combinaciones`
+--
+
+CREATE TABLE `productos_combinaciones` (
+  `ID_COMBINACION` int(11) NOT NULL,
+  `ID_PRODUCTO` varchar(255) DEFAULT NULL,
+  `COMBINACION_GRUPO` varchar(255) DEFAULT NULL,
+  `COMBINACION_OPCION` varchar(255) DEFAULT NULL,
+  `COMBINACION_PRECIO` decimal(10,2) DEFAULT NULL,
+  `COMBINACION_ANCHO` decimal(10,2) DEFAULT NULL,
+  `COMBINACION_ALTO` decimal(10,2) DEFAULT NULL,
+  `COMBINACION_PROFUNDO` decimal(10,2) DEFAULT NULL,
+  `COMBINACION_PESO` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `productos_preguntas`
 --
 
@@ -6474,39 +6624,6 @@ CREATE TABLE `productos_respuestas` (
   `RESPUESTA_TEXTO` text,
   `RESPUESTA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `RESPUESTA_ESTADO` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `producto_combinaciones`
---
-
-CREATE TABLE `producto_combinaciones` (
-  `ID_COMBINACION` int(11) NOT NULL,
-  `ID_PRODUCTO` varchar(255) DEFAULT NULL,
-  `CONDICION_A` varchar(255) DEFAULT NULL,
-  `CONDICION_B` varchar(255) DEFAULT NULL,
-  `COMBINACION_DESCRIPCION` text,
-  `COMBINACION_PRECIO` decimal(10,2) DEFAULT NULL,
-  `COMBINACION_ANCHO` decimal(10,2) DEFAULT NULL,
-  `COMBINACION_ALTO` decimal(10,2) DEFAULT NULL,
-  `COMBINACION_PROFUNDO` decimal(10,2) DEFAULT NULL,
-  `COMBINACION_PESO` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `producto_variaciones`
---
-
-CREATE TABLE `producto_variaciones` (
-  `ID_VARIACION` int(11) NOT NULL,
-  `VARIACION_ID_GRUPO` varchar(255) DEFAULT NULL,
-  `VARIACION_NOMBRE_GRUPO` varchar(255) DEFAULT NULL,
-  `VARIACION_OPCION` varchar(255) DEFAULT NULL,
-  `VARIACION_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6915,6 +7032,12 @@ ALTER TABLE `calificaciones_productos`
   ADD PRIMARY KEY (`ID_CALIFICACION`);
 
 --
+-- Indices de la tabla `calificaciones_servicios`
+--
+ALTER TABLE `calificaciones_servicios`
+  ADD PRIMARY KEY (`ID_CALIFICACION`);
+
+--
 -- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
@@ -7071,6 +7194,12 @@ ALTER TABLE `productos`
   ADD PRIMARY KEY (`ID_PRODUCTO`);
 
 --
+-- Indices de la tabla `productos_combinaciones`
+--
+ALTER TABLE `productos_combinaciones`
+  ADD PRIMARY KEY (`ID_COMBINACION`);
+
+--
 -- Indices de la tabla `productos_preguntas`
 --
 ALTER TABLE `productos_preguntas`
@@ -7087,18 +7216,6 @@ ALTER TABLE `productos_rangos_mayoreo`
 --
 ALTER TABLE `productos_respuestas`
   ADD PRIMARY KEY (`ID_RESPUESTA`);
-
---
--- Indices de la tabla `producto_combinaciones`
---
-ALTER TABLE `producto_combinaciones`
-  ADD PRIMARY KEY (`ID_COMBINACION`);
-
---
--- Indices de la tabla `producto_variaciones`
---
-ALTER TABLE `producto_variaciones`
-  ADD PRIMARY KEY (`ID_VARIACION`);
 
 --
 -- Indices de la tabla `publicaciones`
@@ -7236,10 +7353,15 @@ ALTER TABLE `adjuntos_usuarios`
 ALTER TABLE `calificaciones_productos`
   MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
+-- AUTO_INCREMENT de la tabla `calificaciones_servicios`
+--
+ALTER TABLE `calificaciones_servicios`
+  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
 --
 -- AUTO_INCREMENT de la tabla `categorias_productos`
 --
@@ -7361,6 +7483,11 @@ ALTER TABLE `preguntas_frecuentes`
 ALTER TABLE `productos`
   MODIFY `ID_PRODUCTO` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
+-- AUTO_INCREMENT de la tabla `productos_combinaciones`
+--
+ALTER TABLE `productos_combinaciones`
+  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `productos_preguntas`
 --
 ALTER TABLE `productos_preguntas`
@@ -7375,16 +7502,6 @@ ALTER TABLE `productos_rangos_mayoreo`
 --
 ALTER TABLE `productos_respuestas`
   MODIFY `ID_RESPUESTA` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `producto_combinaciones`
---
-ALTER TABLE `producto_combinaciones`
-  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `producto_variaciones`
---
-ALTER TABLE `producto_variaciones`
-  MODIFY `ID_VARIACION` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
