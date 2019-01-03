@@ -47,6 +47,7 @@ jQuery('#BotonComprar').on('click',function(e){
 jQuery('#CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
   // Leo las variables del botón
   var id_producto = jQuery(this).data('id-producto');
+  var detalles_producto = jQuery(this).data('detalles-producto');
 
   // Envio la información por ajax
   jQuery.ajax({
@@ -54,7 +55,8 @@ jQuery('#CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
     url: "<?php echo base_url('ajax/carrito/incrementar'); ?>",
     dataType: "text",
     data: {
-      IdProducto: id_producto
+      IdProducto: id_producto,
+      DetallesProducto: detalles_producto
     },
     success : function(texto)
      {
@@ -68,6 +70,7 @@ jQuery('#CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
 jQuery('#CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
   // Leo las variables del botón
   var id_producto = jQuery(this).data('id-producto');
+  var detalles_producto = jQuery(this).data('detalles-producto');
 
   // Envio la información por ajax
   jQuery.ajax({
@@ -75,7 +78,8 @@ jQuery('#CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
     url: "<?php echo base_url('ajax/carrito/disminuir'); ?>",
     dataType: "text",
     data: {
-      IdProducto: id_producto
+      IdProducto: id_producto,
+      DetallesProducto: detalles_producto
     },
     success : function(texto)
      {
@@ -88,6 +92,7 @@ jQuery('#CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
 jQuery('#CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
   // Leo las variables del botón
   var id_producto = jQuery(this).data('id-producto');
+  var detalles_producto = jQuery(this).data('detalles-producto');
   var cantidad_producto = jQuery(this).val();
 
   // Envio la información por ajax
@@ -97,6 +102,7 @@ jQuery('#CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
     dataType: "text",
     data: {
       IdProducto: id_producto,
+      DetallesProducto: detalles_producto,
       CantidadProducto: cantidad_producto
     },
     success : function(texto)
@@ -109,6 +115,7 @@ jQuery('#CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
 jQuery('#CargarCarrito').on('click', '.boton-eliminar-carrito', function() {
   // Leo las variables del botón
   var id_producto = jQuery(this).data('id-producto');
+  var detalles_producto = jQuery(this).data('detalles-producto');
 
   // Envio la información por ajax
   jQuery.ajax({
@@ -116,11 +123,11 @@ jQuery('#CargarCarrito').on('click', '.boton-eliminar-carrito', function() {
     url: "<?php echo base_url('ajax/carrito/eliminar'); ?>",
     dataType: "text",
     data: {
-      IdProducto: id_producto
+      IdProducto: id_producto,
+      DetallesProducto: detalles_producto
     },
     success : function(texto)
      {
-       console.log(texto);
         jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
         jQuery('#ModalCarrito').modal();
      }
@@ -140,8 +147,26 @@ jQuery('#BotonVaciar').on('click',function(e){
      }
   });
 });
+/*
+-----------------
+VARIACIONES
+-----------------
+*/
+// Al cargar
+var precio = $('.CombinacionProducto').find(':selected').data('precio-producto');
+var detalles = $('.CombinacionProducto').find(':selected').data('detalles-producto');
+jQuery('#Precio_Producto').html(precio);
+jQuery('#BotonComprar').data('precio-producto',precio);
+jQuery('#BotonComprar').data('detalles-producto',detalles);
+// Al cambiar
+jQuery('.CombinacionProducto').on('change',function(e){
+  var precio = jQuery(this).find(':selected').data('precio-producto');
+  var detalles = jQuery(this).find(':selected').data('detalles-producto');
+  jQuery('#Precio_Producto').html(precio);
+  jQuery('#BotonComprar').data('precio-producto',precio);
+  jQuery('#BotonComprar').data('detalles-producto',detalles);
 
-
+});
 
 /*
 -----------------

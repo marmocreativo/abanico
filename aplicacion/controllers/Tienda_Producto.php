@@ -13,7 +13,7 @@ class Tienda_Producto extends CI_Controller {
 		$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo'] = "mobile";
+			$this->data['dispositivo']  = "desktop";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
@@ -22,13 +22,15 @@ class Tienda_Producto extends CI_Controller {
 		$this->load->model('ProductosModel');
 		$this->load->model('GaleriasModel');
 		$this->load->model('CategoriasModel');
+		$this->load->model('CategoriasProductoModel');
 		$this->load->model('TiendasModel');
 		$this->load->model('DireccionesModel');
 		$this->load->model('FavoritosModel');
 		$this->load->model('CalificacionesModel');
+		$this->load->model('ProductosCombinacionesModel');
 
 		// Variables comunes
-		$this->data['primary'] = "-primary-1";
+		$this->data['primary'] = "-primary";
   }
 	 public function index()
  	{
@@ -39,6 +41,23 @@ class Tienda_Producto extends CI_Controller {
 		$direccion_fiscal = $this->DireccionesModel->direccion_fiscal($this->data['producto']['ID_USUARIO']);
 		$this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($direccion_fiscal['ID_DIRECCION']);
 		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+		$this->data['relacion_categoria_producto'] = $this->CategoriasProductoModel->lista($_GET['id']);
+		$this->data['categoria_producto'] = $this->CategoriasModel->detalles($this->data['relacion_categoria_producto']['ID_CATEGORIA']);
+		if(!null==$this->data['categoria_producto']){
+			$this->data['primary'] = $this->data['categoria_producto']['CATEGORIA_COLOR'];
+		}
+		$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'','');
+
+		// Calificaciones
+		$this->data['cantidad_calificaciones']= $this->CalificacionesModel->conteo_calificaciones_producto($_GET['id']);
+		$this->data['promedio_calificaciones']= $this->CalificacionesModel->promedio_calificaciones_producto($_GET['id']);
+		$estrellas = array();
+		$estrellas['5']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],5);
+		$estrellas['4']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],4);
+		$estrellas['3']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],3);
+		$estrellas['2']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],2);
+		$estrellas['1']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],1);
+		$this->data['estrellas'] = $estrellas;
 
 		// Calificaciones
 		// Reviso si ya lo calificó el usuario
@@ -54,61 +73,61 @@ class Tienda_Producto extends CI_Controller {
  		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 
  	}
-	public function favorito()
+public function favorito()
  {
 	 if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 		 // verifico si ya existe
 		 $es_favorito = $this->FavoritosModel->es_favorito($_GET['id'],$_SESSION['usuario']['id'],'producto');
 		 if(!$es_favorito){
-			 $parametros = array(
-				 'ID_USUARIO'=>$_SESSION['usuario']['id'],
-				 'ID_OBJETO'=>$_GET['id'],
-				 'FAVORITO_TIPO'=>'producto',
-				 'FAVORITO_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
-			 );
+				 $parametros = array(
+					 'ID_USUARIO'=>$_SESSION['usuario']['id'],
+					 'ID_OBJETO'=>$_GET['id'],
+					 'FAVORITO_TIPO'=>'producto',
+					 'FAVORITO_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+				 );
 
-			$this->FavoritosModel->crear($parametros);
-		 }
-		 redirect(base_url('usuario/favoritos'));
-	}else{
-		redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
-	}
+				$this->FavoritosModel->crear($parametros);
+			 }
+			 redirect(base_url('usuario/favoritos'));
+		}else{
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
 
  }
  public function quitar_favorito()
-{
-	if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-		// verifico si ya existe
-		$es_favorito = $this->FavoritosModel->es_favorito($_GET['id'],$_SESSION['usuario']['id'],'producto');
-		if($es_favorito){
-			$favorito = $this->FavoritosModel->detalles($_GET['id'],$_SESSION['usuario']['id'],'producto');
+	{
+		if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			// verifico si ya existe
+			$es_favorito = $this->FavoritosModel->es_favorito($_GET['id'],$_SESSION['usuario']['id'],'producto');
+			if($es_favorito){
+				$favorito = $this->FavoritosModel->detalles($_GET['id'],$_SESSION['usuario']['id'],'producto');
 
-		 $this->FavoritosModel->borrar($favorito['ID_FAVORITO']);
+			 $this->FavoritosModel->borrar($favorito['ID_FAVORITO']);
+			}
+			redirect(base_url('usuario/favoritos'));
+	 }else{
+		 redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+	 }
+
+	}
+	public function calificar()
+	{
+	 if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+		 // Preparo mis parámetros
+		 $parametros = array(
+			 'ID_PRODUCTO'=>$this->input->post('IdProducto'),
+			 'ID_USUARIO'=>$this->input->post('IdUsuario'),
+			 'ID_USUARIO_CALIFICADOR'=>$this->input->post('IdCalificador'),
+			 'CALIFICACION_ESTRELLAS'=>$this->input->post('EstrellasCalificacion'),
+			 'CALIFICACION_COMENTARIO'=>$this->input->post('ComentarioCalificacion'),
+			 'CALIFICACION_ESTADO'=>'activo',
+			 'CALIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+		 );
+		 $this->CalificacionesModel->crear($parametros);
+			 redirect(base_url('producto?id='.$this->input->post('IdProducto')));
+		}else{
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
-		redirect(base_url('usuario/favoritos'));
- }else{
-	 redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
- }
 
-}
-public function calificar()
-{
- if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-	 // Preparo mis parámetros
-	 $parametros = array(
-		 'ID_PRODUCTO'=>$this->input->post('IdProducto'),
-		 'ID_USUARIO'=>$this->input->post('IdUsuario'),
-		 'ID_USUARIO_CALIFICADOR'=>$this->input->post('IdCalificador'),
-		 'CALIFICACION_ESTRELLAS'=>$this->input->post('EstrellasCalificacion'),
-		 'CALIFICACION_COMENTARIO'=>$this->input->post('ComentarioCalificacion'),
-		 'CALIFICACION_ESTADO'=>'activo',
-		 'CALIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
-	 );
-	 $this->CalificacionesModel->crear($parametros);
-	 redirect(base_url('producto?id='.$this->input->post('IdProducto')));
-}else{
-	redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
-}
-
-}
+	}
 }

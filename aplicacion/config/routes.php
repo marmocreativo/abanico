@@ -40,6 +40,8 @@ $route['admin/categorias'] = 'Admin_Categorias';
 $route['admin/categorias/([a-z]+)'] = 'Admin_Categorias/$1';
 $route['admin/productos'] = 'Admin_Productos';
 $route['admin/productos/(:any)'] = 'Admin_Productos/$1';
+$route['admin/productos_combinaciones'] = 'Admin_Productos_Combinaciones';
+$route['admin/productos_combinaciones/(:any)'] = 'Admin_Productos_Combinaciones/$1';
 $route['admin'] = 'Admin_Desktop';
 // Rutas de Usuario
 
@@ -50,6 +52,8 @@ $route['usuario/servicios'] = 'Usuario_Servicios';
 $route['usuario/servicios/(:any)'] = 'Usuario_Servicios/$1';
 $route['usuario/productos'] = 'Usuario_Productos';
 $route['usuario/productos/(:any)'] = 'Usuario_Productos/$1';
+$route['usuario/productos_combinaciones'] = 'Usuario_Productos_Combinaciones';
+$route['usuario/productos_combinaciones/(:any)'] = 'Usuario_Productos_Combinaciones/$1';
 $route['usuario/tienda'] = 'Usuario_Tiendas';
 $route['usuario/tienda/(:any)'] = 'Usuario_Tiendas/$1';
 $route['usuario/perfil_servicios'] = 'Usuario_Perfiles_Servicios';
@@ -73,6 +77,7 @@ $route['categoria/(:any)'] = 'Tienda_Categoria/$1';
 $route['producto'] = 'Tienda_Producto';
 $route['producto/(:any)'] = 'Tienda_Producto/$1';
 $route['servicio'] = 'Tienda_Servicio';
+$route['servicio/(:any)'] = 'Tienda_Servicio/$1';
 
 // Proceso de Pago
 $route['pago_paso_4'] = 'Proceso_Pago/paso4';

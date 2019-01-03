@@ -13,16 +13,20 @@ class Usuario_Favoritos extends CI_Controller {
 		$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo'] = "mobile";
+			$this->data['dispositivo']  = "desktop";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
 
 		$this->load->model('TiendaModel');
 		$this->load->model('ProductosModel');
+		$this->load->model('ServiciosModel');
 		$this->load->model('CategoriasModel');
 		$this->load->model('FavoritosModel');
 		$this->load->model('GaleriasModel');
+		$this->load->model('GaleriasServiciosModel');
+		$this->load->model('CalificacionesModel');
+		$this->load->model('CalificacionesServiciosModel');
 		$this->load->model('CategoriasProductoModel');
 
 		// Variables comunes
@@ -35,7 +39,7 @@ class Usuario_Favoritos extends CI_Controller {
 			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
-
+				// Productos Favoritos
 				$productos_favoritos_raw = $this->FavoritosModel->favoritos_usuario($_SESSION['usuario']['id'],'producto');
 				$productos_favoritos = array();
 				foreach($productos_favoritos_raw as $favorito){
@@ -47,6 +51,19 @@ class Usuario_Favoritos extends CI_Controller {
 				}else{
 					$this->data['productos'] = $this->ProductosModel->lista_favoritos_activos($productos_favoritos);
 				}
+				// Servicios Favoritos
+				$servicios_favoritos_raw = $this->FavoritosModel->favoritos_usuario($_SESSION['usuario']['id'],'servicio');
+				$servicios_favoritos = array();
+				foreach($servicios_favoritos_raw as $favorito){
+					$servicios_favoritos[]=$favorito->ID_OBJETO;
+				}
+
+				if(empty($servicios_favoritos)){
+					$this->data['servicios'] = array();
+				}else{
+					$this->data['servicios'] = $this->ServiciosModel->lista_favoritos_activos($servicios_favoritos);
+				}
+				// Categorías
 				$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 
 		 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);

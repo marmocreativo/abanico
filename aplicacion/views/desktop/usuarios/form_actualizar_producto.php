@@ -1,4 +1,4 @@
-<?php if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab='categoria'; } ?>
+<?php if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab=''; } ?>
 <div class="contenido_principal">
   <div class="fila">
     <div class="container-fluid">
@@ -30,160 +30,152 @@
                 <input type="hidden" name="IdTienda" value="<?php echo $tienda['ID_TIENDA']; ?>">
                 <input type="hidden" name="Identificador" value="<?php echo $_GET['id']; ?>">
                 <input type="hidden" name="UrlProducto" value="<?php echo $producto['PRODUCTO_URL']; ?>">
-                <div class="row mb-3">
-                  <div class="col-9">
-                    <div class="border border-primary p-2">
-                      <h6 class="border-bottom pb-2"> <i class="fa fa-tag"></i> Información Básica Obligatoria</h6>
-                      <div class="row">
-                        <div class="col-12">
-                          <div class="form-group">
-                            <label for="NombreProducto">Nombre del producto</label>
-                            <input type="text" class="form-control" id="NombreProducto" name="NombreProducto" placeholder="" value="<?php echo $producto['PRODUCTO_NOMBRE']; ?>">
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="PrecioProducto">Precio Unitario</label>
-                            <div class="input-group mb-2">
-                              <div class="input-group-prepend">
-                                <div class="input-group-text">$</div>
-                              </div>
-                            <input type="text" class="form-control" id="PrecioProducto" name="PrecioProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO']; ?>">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="PrecioListaProducto">Precio de Lista</label>
-                            <div class="input-group mb-2">
-                              <div class="input-group-prepend">
-                                <div class="input-group-text">$</div>
-                              </div>
-                            <input type="text" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO_LISTA']; ?>">
-                            </div>
-                            <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Este es el precio que aparecerá en la lista de producto Tachado</small>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="CantidadProducto">Cantidad Disponibles</label>
-                            <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="1" value="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>">
-                          </div>
-                        </div>
-                      </div>
-                      <h6 class="border-bottom pb-2"> <i class="fa fa-clipboard-list"></i> Cantidades</h6>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label for="ModeloProducto">Modelo</label>
-                              <input type="text" class="form-control" id="ModeloProducto" name="ModeloProducto" placeholder="" value="<?php echo $producto['PRODUCTO_MODELO']; ?>">
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="form-group">
-                              <label for="SkuProducto">SKU (Clave de Inventario)</label>
-                              <input type="text" class="form-control" id="SkuProducto" name="SkuProducto" placeholder="" value="<?php echo $producto['PRODUCTO_SKU']; ?>">
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="form-group">
-                              <label for="CantidadMinimaProducto">Venta mínima</label>
-                              <input type="number" class="form-control" id="CantidadMinimaProducto" required name="CantidadMinimaProducto" placeholder="" min="1" value="<?php echo $producto['PRODUCTO_CANTIDAD_MINIMA']; ?>">
-                            </div>
-                          </div>
-                        </div>
-                      <h6 class="border-bottom pb-2"> <i class="fa fa-cube"></i> Dimensiones</h6>
-                      <div class="row">
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="AnchoProducto">Ancho</label>
-                            <div class="input-group input-group-sm mb-2">
-                              <input type="text" class="form-control" id="AnchoProducto" name="AnchoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_ANCHO']; ?>">
-                              <div class="input-group-append">
-                                <div class="input-group-text">cm</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="AltoProducto">Alto</label>
-                            <div class="input-group input-group-sm mb-2">
-                              <input type="text" class="form-control" id="AltoProducto" name="AltoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_ALTO']; ?>">
-                              <div class="input-group-append">
-                                <div class="input-group-text">cm</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="ProfundoProducto">Profundo</label>
-                            <div class="input-group input-group-sm mb-2">
-                            <input type="text" class="form-control" id="ProfundoProducto" name="ProfundoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PROFUNDO']; ?>">
-                              <div class="input-group-append">
-                                <div class="input-group-text">cm</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="PesoProducto">Peso</label>
-                            <div class="input-group input-group-sm mb-2">
-                            <input type="text" class="form-control" id="PesoProducto" name="PesoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PESO']; ?>">
-                              <div class="input-group-append">
-                                <div class="input-group-text">Kg</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="border border-default p-2">
-                    <div class="form-group">
-                      <label for="EstadoProducto">Estado del Producto</label>
-                      <select class="form-control" id="EstadoProducto" name="EstadoProducto" placeholder="">
-                        <option value="activo" <?php if($producto['PRODUCTO_ESTADO']=='activo'){ echo 'selected';} ?> >Publicado</option>
-                        <option value="inactivo" <?php if($producto['PRODUCTO_ESTADO']=='inactivo'){ echo 'selected';} ?>>Borrador</option>
-                      </select>
-                    </div>
-                  </div>
-                  </div>
-                </div>
                 <div class="row">
-
                   <div class="col">
-                    <div class="border border-default p-2">
-                    <h6> <i class="fa fa-file"></i> Descripción e Información extra</h6>
                     <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link <?php if($tab==''){ echo 'active'; } ?>" id="basicos-tab" data-toggle="tab" href="#basicos" role="tab" aria-controls="basicos" aria-selected="false"> <span class="fa fa-list"></span> Datos Básicos</a>
+                      </li>
                       <li class="nav-item">
                         <a class="nav-link <?php if($tab=='categoria'){ echo 'active'; } ?>" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab" aria-controls="categoria" aria-selected="false"> <span class="fa fa-list"></span> Categorias</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link <?php if($tab=='datos'){ echo 'active'; } ?>" id="datos-tab" data-toggle="tab" href="#datos" role="tab" aria-controls="datos" aria-selected="true"> <span class="fa fa-file-alt"></span> Descripción</a>
                       </li>
-
-                      <!--
-                      <li class="nav-item">
-                        <a class="nav-link " id="inventario-tab" data-toggle="tab" href="#inventario" role="tab" aria-controls="inventario" aria-selected="true"> <span class="fa fa-boxes"></span> Inventario</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link " id="envio-tab" data-toggle="tab" href="#envio" role="tab" aria-controls="envio" aria-selected="true"> <span class="fa fa-truck"></span> Envio</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="extras-tab" data-toggle="tab" href="#extras" role="tab" aria-controls="extras" aria-selected="false"> <span class="fa fa-table"></span> Datos Extra</a>
-                      </li>
-
-                    -->
                       <li class="nav-item">
                         <a class="nav-link <?php if($tab=='galeria'){ echo 'active'; } ?>" id="galeria-tab" data-toggle="tab" href="#galeria" role="tab" aria-controls="galeria" aria-selected="false"> <span class="fa fa-image"></span> Galeria</a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('usuario/productos_combinaciones?id='.$_GET['id']); ?>" > <span class="fa fa-sitemap"></span> Combinaciones</a>
+                      </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                      <div class="tab-pane fade <?php if($tab=='categoria'|| $tab==''){ echo 'show active'; } ?> p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
+                      <div class="tab-pane fade <?php if($tab==''){ echo 'show active'; } ?> p-3" id="basicos" role="tabpanel" aria-labelledby="basicos-tab">
+                        <div class="row mb-3">
+                          <div class="col-9">
+                            <div class="border border-primary p-2">
+                              <h6 class="border-bottom pb-2"> <i class="fa fa-tag"></i> Información Básica Obligatoria</h6>
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="form-group">
+                                    <label for="NombreProducto">Nombre del producto</label>
+                                    <input type="text" class="form-control" id="NombreProducto" name="NombreProducto" placeholder="" value="<?php echo $producto['PRODUCTO_NOMBRE']; ?>">
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label for="PrecioProducto">Precio Unitario</label>
+                                    <div class="input-group mb-2">
+                                      <div class="input-group-prepend">
+                                        <div class="input-group-text">$</div>
+                                      </div>
+                                    <input type="text" class="form-control" id="PrecioProducto" name="PrecioProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO']; ?>">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label for="PrecioListaProducto">Precio de Lista</label>
+                                    <div class="input-group mb-2">
+                                      <div class="input-group-prepend">
+                                        <div class="input-group-text">$</div>
+                                      </div>
+                                    <input type="text" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO_LISTA']; ?>">
+                                    </div>
+                                    <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Este es el precio que aparecerá en la lista de producto Tachado</small>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label for="CantidadProducto">Cantidad Disponibles</label>
+                                    <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="1" value="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>">
+                                  </div>
+                                </div>
+                              </div>
+                              <h6 class="border-bottom pb-2"> <i class="fa fa-clipboard-list"></i> Cantidades</h6>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="ModeloProducto">Modelo</label>
+                                      <input type="text" class="form-control" id="ModeloProducto" name="ModeloProducto" placeholder="" value="<?php echo $producto['PRODUCTO_MODELO']; ?>">
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="SkuProducto">SKU (Clave de Inventario)</label>
+                                      <input type="text" class="form-control" id="SkuProducto" name="SkuProducto" placeholder="" value="<?php echo $producto['PRODUCTO_SKU']; ?>">
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="CantidadMinimaProducto">Venta mínima</label>
+                                      <input type="number" class="form-control" id="CantidadMinimaProducto" required name="CantidadMinimaProducto" placeholder="" min="1" value="<?php echo $producto['PRODUCTO_CANTIDAD_MINIMA']; ?>">
+                                    </div>
+                                  </div>
+                                </div>
+                              <h6 class="border-bottom pb-2"> <i class="fa fa-cube"></i> Dimensiones</h6>
+                              <div class="row">
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label for="AnchoProducto">Ancho</label>
+                                    <div class="input-group input-group-sm mb-2">
+                                      <input type="text" class="form-control" id="AnchoProducto" name="AnchoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_ANCHO']; ?>">
+                                      <div class="input-group-append">
+                                        <div class="input-group-text">cm</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label for="AltoProducto">Alto</label>
+                                    <div class="input-group input-group-sm mb-2">
+                                      <input type="text" class="form-control" id="AltoProducto" name="AltoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_ALTO']; ?>">
+                                      <div class="input-group-append">
+                                        <div class="input-group-text">cm</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label for="ProfundoProducto">Profundo</label>
+                                    <div class="input-group input-group-sm mb-2">
+                                    <input type="text" class="form-control" id="ProfundoProducto" name="ProfundoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PROFUNDO']; ?>">
+                                      <div class="input-group-append">
+                                        <div class="input-group-text">cm</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label for="PesoProducto">Peso</label>
+                                    <div class="input-group input-group-sm mb-2">
+                                    <input type="text" class="form-control" id="PesoProducto" name="PesoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PESO']; ?>">
+                                      <div class="input-group-append">
+                                        <div class="input-group-text">Kg</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-3">
+                            <div class="border border-default p-2">
+                            <div class="form-group">
+                              <label for="EstadoProducto">Estado del Producto</label>
+                              <select class="form-control" id="EstadoProducto" name="EstadoProducto" placeholder="">
+                                <option value="activo" <?php if($producto['PRODUCTO_ESTADO']=='activo'){ echo 'selected';} ?> >Publicado</option>
+                                <option value="inactivo" <?php if($producto['PRODUCTO_ESTADO']=='inactivo'){ echo 'selected';} ?>>Borrador</option>
+                              </select>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade <?php if($tab=='categoria'){ echo 'show active'; } ?> p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
                         <div class="row">
                             <?php foreach($categorias as $categoria){ ?>
                                 <div class="col-12 border border-default p-3">
@@ -271,19 +263,6 @@
                           </div>
                         </div>
                       </div>
-                      <div class="tab-pane fade p-3" id="inventario" role="tabpanel" aria-labelledby="datos-tab">
-                      </div>
-                      <div class="tab-pane fade p-3" id="envio" role="tabpanel" aria-labelledby="datos-tab">
-                        <!-- Espacio para datos de envio-->
-                      </div>
-                      <div class="tab-pane fade p-3" id="extras" role="tabpanel" aria-labelledby="extras-tab">
-                        <h5>Datos extra del producto</h5>
-                        <div class="row">
-                          <div class="col">
-
-                          </div>
-                        </div>
-                      </div>
                       <div class="tab-pane fade <?php if($tab=='galeria'){ echo 'show active'; } ?> p-3" id="galeria" role="tabpanel" aria-labelledby="extras-tab">
                         <div class="row">
                           <div class="col">
@@ -327,7 +306,6 @@
                         </div>
                       </div>
                     </div>
-                  </div>
                   </div>
                 </div>
                 <div class="row border-top mt-3 pt-3">

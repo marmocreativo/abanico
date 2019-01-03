@@ -137,12 +137,19 @@
                   </div>
                   </a>
                   <div class="product-content text-center">
+                    <?php
+                    $promedio = $this->CalificacionesModel->promedio_calificaciones_producto($producto->ID_PRODUCTO);
+                    $cantidad = $this->CalificacionesModel->conteo_calificaciones_producto($producto->ID_PRODUCTO);
+                    ?>
                       <ul class="rating">
+                        <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
+                        <?php for($i = 1; $i<=$estrellas; $i++){ ?>
                           <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
+                        <?php } ?>
+                        <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
                           <li class="far fa-star"></li>
-                          <li class="far fa-star"></li>
+                        <?php } ?>
+                        <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
                       </ul>
                       <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h3>
                       <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>

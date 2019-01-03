@@ -81,6 +81,21 @@ class serviciosModel extends CI_Model {
     $query = $this->db->count_all_results('servicios');
     return $query;
   }
+
+  /*
+    * Enlisto todas las entradas
+    * $parametros Debe ser un array de Columnas y Valores, Busco usando la función LIKE
+    * $orden indicará la Columna y si es ascendente o descendente
+    * $limite Solo se usará si hay una cantidad limite de productos a mostrar
+ */
+  function lista_favoritos_activos($favoritos){
+
+    $this->db->where_in('ID_SERVICIO',$favoritos);
+    $this->db->order_by('SERVICIO_FECHA_PUBLICACION','DESC');
+    $this->db->where('SERVICIO_ESTADO', 'activo');
+    $query = $this->db->get('servicios');
+    return $query->result();
+  }
   /*
     * Obtengo todos los detalles de una sola entrada
  */

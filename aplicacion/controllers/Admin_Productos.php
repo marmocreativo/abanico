@@ -14,7 +14,7 @@ class Admin_Productos extends CI_Controller {
 		$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo'] = "mobile";
+			$this->data['dispositivo']  = "desktop";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
@@ -111,6 +111,7 @@ class Admin_Productos extends CI_Controller {
 			// Parametros del producto
 			$parametros = array(
 				'ID_USUARIO'=> $this->input->post('IdUsuario'),
+				'ID_TIENDA'=> $this->input->post('IdTienda'),
 				'PRODUCTO_NOMBRE'=> $this->input->post('NombreProducto'),
 				'PRODUCTO_URL'=> $url,
 				'PRODUCTO_DESCRIPCION'=> $this->input->post('DescripcionProducto'),
@@ -227,6 +228,7 @@ class Admin_Productos extends CI_Controller {
 			// Parametros del producto
 			$parametros = array(
 				'ID_USUARIO'=> $this->input->post('IdUsuario'),
+				'ID_TIENDA'=> $this->input->post('IdTienda'),
 				'PRODUCTO_NOMBRE'=> $this->input->post('NombreProducto'),
 				'PRODUCTO_URL'=> $url,
 				'PRODUCTO_DESCRIPCION'=> $this->input->post('DescripcionProducto'),
@@ -298,7 +300,7 @@ class Admin_Productos extends CI_Controller {
 			// Mensaje de Feedback
 			$this->session->set_flashdata('exito', 'Actualización correcta');
 			// Redirección
-			redirect(base_url('admin/productos/actualizar?id=').$this->input->post('Identificador').'&mensaje=producto_actualizado');
+			redirect(base_url('admin/productos/actualizar?id=').$this->input->post('Identificador'));
     }else{
 
 			$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);

@@ -32,16 +32,30 @@
                   <div class="portada-servicios img-thumbnail rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>)"> </div>
                 </a>
                   <div class="product-content text-center">
+                    <?php
+                    $promedio = $this->CalificacionesServiciosModel->promedio_calificaciones_producto($servicio->ID_SERVICIO);
+                    $cantidad = $this->CalificacionesServiciosModel->conteo_calificaciones_producto($servicio->ID_SERVICIO);
+                    ?>
                       <ul class="rating">
+                        <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
+                        <?php for($i = 1; $i<=$estrellas; $i++){ ?>
                           <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
+                        <?php } ?>
+                        <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
                           <li class="far fa-star"></li>
-                          <li class="far fa-star"></li>
+                        <?php } ?>
+                        <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
                       </ul>
                       <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $servicio->SERVICIO_NOMBRE; ?></h3>
-                      <div class="">
+                      <div class="border-top mt-3 pt-3">
                         <?php echo $servicio->SERVICIO_DESCRIPCION; ?>
+                      </div>
+                      <div class="">
+                        <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+                          <a href="<?php echo base_url('servicio/favorito?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-outline-primary" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+                        <?php }else{ ?>
+                          <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$servicio->ID_SERVICIO)); ?>" class="btn btn-outline-primary" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+                        <?php } ?>
                       </div>
                   </div>
               </div>

@@ -34,6 +34,11 @@
                 </div>
               </div>
             </div>
+            <div class="col-3">
+              <div class="fila fila-gris">
+
+              </div>
+            </div>
           </div>
           <div class="row mt-5">
             <div class="col">
@@ -90,11 +95,116 @@
                   </div>
                 </div>
             </div>
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="fila fila-gris">
 
+              <div class="col-4">
+                <?php $promedio_calificaciones = $promedio_calificaciones['CALIFICACION_ESTRELLAS']; $estrellas_restan= 5-$promedio_calificaciones; ?>
+                <h5 class="mb-3">
+                  <?php for($i = 1; $i<=$promedio_calificaciones; $i++){ ?>
+                    <i class="fa fa-star"></i>
+                  <?php } ?>
+                  <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+                    <i class="far fa-star"></i>
+                  <?php } ?>
+                   Calificaciones (<?php echo $cantidad_calificaciones; ?>)</h5>
+                <?php $e = 5; foreach($estrellas as $estrella){ ?>
+                <?php $restan = 5-$e; ?>
+                <?php if($cantidad_calificaciones!=0){ $porcentaje = ($estrella*100)/$cantidad_calificaciones; }else{ $porcentaje=0; }?>
+                <div class="row">
+                  <div class="col-4 ">
+                    <ul class=" list-unstyled rating m-0">
+                      <?php for($i = 1; $i<=$e; $i++){ ?>
+                        <i class="fa fa-star" style="font-size:0.8em;"></i>
+                      <?php } ?>
+                      <?php for($i = 1; $i<=$restan; $i++){ ?>
+                        <i class="far fa-star" style="font-size:0.8em;"></i>
+                      <?php } ?>
+                    </ul>
+                  </div>
+                  <div class="col-8">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: <?php echo $porcentaje; ?>%" aria-valuenow="<?php echo $porcentaje; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+                </div>
+              <?php $e--; } ?>
+                <div class="row mt-3">
+                  <div class="col">
+                  <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+                    <?php if(empty($mi_calificacion)){ ?>
+                    <div class="card">
+                        <div class="card-body">
+                          <form class="" action="<?php echo base_url('servicio/calificar'); ?>" method="post">
+                            <input type="hidden" name="IdServicio" value="<?php echo $servicio['ID_SERVICIO']; ?>">
+                            <input type="hidden" name="IdUsuario" value="<?php echo $servicio['ID_USUARIO']; ?>">
+                            <input type="hidden" name="IdCalificador" value="<?php echo $_SESSION['usuario']['id'] ?>">
+                            <label for="EstrellasCalificacion">Califica este servicio</label>
+                            <select id="EstrellasCalificacion" name="EstrellasCalificacion">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                            </select>
+                            <div class="form-group">
+                              <label for="ComentarioCalificacion">Comentario</label>
+                              <textarea class="form-control" name="ComentarioCalificacion" rows="2" cols="80"></textarea>
+                            </div>
+                            <button type="submit" class="btn <?php echo 'btn'.$primary; ?> btn-sm float-right" name="button"> <i class="fa fa-star"></i> Calificar</button>
+                          </form>
+                        </div>
+                    </div>
+                  <?php }else{ ?>
+                    <h6>Gracias por tu Calificación</h6>
+                  <?php } ?>
+                  <?php }else{ ?>
+                    <div class="card">
+                      <div class="card-body">
+                        <p>Para calificar este producto.</p>
+                        <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$servicio['ID_SERVICIO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
+                      </div>
+                    </div>
+                  <?php } ?>
+                  </div>
+                </div>
+                <ul class="list-unstyled">
+                  <?php if(!empty($mi_calificacion)){ ?>
+                    <li class="media border border-info p-3">
+                      <img class="mr-3 img-thumbnail rounded-circle" src="<?php echo base_url('assets/global/img/usuario_default.png') ?>" width="64" alt="">
+                      <div class="media-body">
+                        <h5 class="mt-0 mb-1"><?php echo $mi_calificacion['USUARIO_NOMBRE'].' '.$mi_calificacion['USUARIO_APELLIDOS']; ?></h5>
+                        <div class="d-flex border-top border-bottom py-3">
+                          <?php $estrellas = $mi_calificacion['CALIFICACION_ESTRELLAS']; $estrellas_restan= 5-$estrellas; ?>
+                          <?php for($i = 1; $i<=$estrellas; $i++){ ?>
+                            <i class="fa fa-star"></i>
+                          <?php } ?>
+                          <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+                            <i class="far fa-star"></i>
+                          <?php } ?>
+                        </div>
+                        <p><?php echo $mi_calificacion['CALIFICACION_COMENTARIO']; ?></p>
+                      </div>
+                    </li>
+                  <?php } ?>
+                  <?php foreach($calificaciones as $calificacion){ ?>
+                  <li class="media p-3">
+                    <img class="mr-3 img-thumbnail rounded-circle" src="<?php echo base_url('assets/global/img/usuario_default.png') ?>" width="64" alt="">
+                    <div class="media-body">
+                      <h5 class="mt-0 mb-1"><?php echo $calificacion->USUARIO_NOMBRE.' '.$calificacion->USUARIO_APELLIDOS; ?></h5>
+                      <div class="d-flex border-top border-bottom py-3">
+                        <?php $estrellas = $calificacion->CALIFICACION_ESTRELLAS; $estrellas_restan= 5-$estrellas; ?>
+                        <?php for($i = 1; $i<=$estrellas; $i++){ ?>
+                          <i class="fa fa-star"></i>
+                        <?php } ?>
+                        <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+                          <i class="far fa-star"></i>
+                        <?php } ?>
+                      </div>
+                      <p><?php echo $calificacion->CALIFICACION_COMENTARIO; ?></p>
+                    </div>
+                  </li>
+                <?php } ?>
+                </ul>
+              </div>
           </div>
         </div>
       </div>

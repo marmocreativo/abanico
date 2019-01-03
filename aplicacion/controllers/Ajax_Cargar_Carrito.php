@@ -7,7 +7,7 @@ class Ajax_Cargar_Carrito extends CI_Controller {
     parent::__construct();
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo'] = "mobile";
+			$this->data['dispositivo']  = "desktop";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
@@ -54,7 +54,7 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 			$existe = false;
 			$i = 0;
 			foreach($_SESSION['carrito']['productos'] as $producto){
-				if($producto['id_producto']==$_POST['IdProducto']){
+				if($producto['id_producto']==$_POST['IdProducto']&&$producto['detalles_producto']==$_POST['DetallesProducto']){
 					$cantidad_anterior = $_SESSION['carrito']['productos'][$i]['cantidad_producto'];
 					$cantidad_nueva = $_SESSION['carrito']['productos'][$i]['cantidad_producto'] - 1;
 					if($cantidad_nueva<=0){ unset( $_SESSION['carrito']['productos'][$i]); }else{$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $cantidad_nueva;  }
@@ -71,12 +71,12 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 			$existe = false;
 			$i = 0;
 			foreach($_SESSION['carrito']['productos'] as $producto){
-				if($producto['id_producto']==$_POST['IdProducto']){
+				if($producto['id_producto']==$_POST['IdProducto']&&$producto['detalles_producto']==$_POST['DetallesProducto']){
 					$cantidad_anterior = $_SESSION['carrito']['productos'][$i]['cantidad_producto'];
 					$_SESSION['carrito']['productos'][$i]['cantidad_producto'] += 1;
 					$existe = true;
-					$i++;
 				}
+				$i++;
 			}
 		}
 	}
@@ -90,29 +90,25 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 				if($producto['id_producto']==$_POST['IdProducto']){
 					if($_POST['CantidadProducto']<=0){ unset( $_SESSION['carrito']['productos'][$i]); }else{$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $_POST['CantidadProducto'];  }
 					$existe = true;
-					$i++;
 				}
+				$i++;
 			}
 		}
 	}
 	public function eliminar()
 	{
-		echo 'Funcion';
 		if(isset($_POST['IdProducto'])){
-			echo 'Variables';
 			// Reviso si el producto ya existe
 			$existe = false;
 			$i = 0;
 			foreach($_SESSION['carrito']['productos'] as $producto){
-				if($producto['id_producto']==$_POST['IdProducto']){
+				if($producto['id_producto']==$_POST['IdProducto']&&$producto['detalles_producto']==$_POST['DetallesProducto']){
 					unset( $_SESSION['carrito']['productos'][$i]);
 					$existe = true;
-					$i++;
-					echo 'Bucle';
 				}
+				$i++;
 			}
 			$_SESSION['carrito']['productos']	= array_values($_SESSION['carrito']['productos']);
-			echo 'Fin';
 		}
 	}
 

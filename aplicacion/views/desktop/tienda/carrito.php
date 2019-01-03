@@ -1,3 +1,6 @@
+<pre>
+<?php //var_dump($_SESSION['carrito']['productos']); ?>
+</pre>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -29,17 +32,17 @@
       <td style="vertical-align:middle">
         <div class="input-group input-group-sm">
           <div class="input-group-prepend">
-            <button class="btn btn-outline-primary boton-disminuir-carrito" type="button" data-id-producto = <?php echo $producto['id_producto']; ?>>-</button>
+            <button class="btn btn-outline-primary boton-disminuir-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'>-</button>
           </div>
-            <input type="text" class="form-control form-cantidad-carrito" data-id-producto = <?php echo $producto['id_producto']; ?> value="<?php echo $producto['cantidad_producto'];  ?>">
+            <input type="text" class="form-control form-cantidad-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>' value="<?php echo $producto['cantidad_producto'];  ?>">
           <div class="input-group-append">
-            <button class="btn btn-outline-primary boton-incrementar-carrito" type="button" data-id-producto = <?php echo $producto['id_producto']; ?>>+</button>
+            <button class="btn btn-outline-primary boton-incrementar-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'>+</button>
           </div>
         </div>
       </td>
       <td style="vertical-align:middle"><small>$</small><?php echo $producto['precio_producto'];  ?></td>
       <td style="vertical-align:middle"><strong><small>$</small><?php $suma = $producto['cantidad_producto']*$producto['precio_producto']; echo $suma;  ?></strong></td>
-      <td style="vertical-align:middle"> <button type="button" class="btn btn-danger btn-sm boton-eliminar-carrito" data-id-producto = <?php echo $producto['id_producto']; ?>> <i class="fa fa-trash"></i> </button> </td>
+      <td style="vertical-align:middle"> <button type="button" class="btn btn-danger btn-sm boton-eliminar-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'> <i class="fa fa-trash"></i> </button> </td>
     </tr>
     <?php $suma_productos +=  $suma; ?>
   <?php } ?>

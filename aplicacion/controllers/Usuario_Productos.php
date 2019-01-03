@@ -12,7 +12,7 @@ class Usuario_Productos extends CI_Controller {
 			$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo'] = "mobile";
+			$this->data['dispositivo']  = "desktop";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
@@ -35,7 +35,7 @@ class Usuario_Productos extends CI_Controller {
 		// reviso si el usuario tiene una tienda
 		$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 		if(!empty($this->data['tienda'])){
-				$this->data['productos'] = $this->ProductosModel->lista('',$_SESSION['usuario']['id'],'','');
+				$this->data['productos'] = $this->ProductosModel->lista('',$_SESSION['usuario']['id'],'PRODUCTO_FECHA_REGISTRO DESC','');
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/lista_productos',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
@@ -87,6 +87,7 @@ class Usuario_Productos extends CI_Controller {
 				// Parametros del producto
 				$parametros = array(
 					'ID_USUARIO'=> $this->input->post('IdUsuario'),
+					'ID_TIENDA'=> $this->input->post('IdTienda'),
 					'PRODUCTO_NOMBRE'=> $this->input->post('NombreProducto'),
 					'PRODUCTO_URL'=> $url,
 					'PRODUCTO_DESCRIPCION'=> $this->input->post('DescripcionProducto'),
@@ -150,7 +151,9 @@ class Usuario_Productos extends CI_Controller {
 					);
 					$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
 				}
-
+				// Mensaje Retroalimentación
+				$this->session->set_flashdata('exito', 'Producto Creado!');
+				// Redirección
 				redirect(base_url('usuario/productos'));
 			}else{
 				$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
@@ -209,6 +212,7 @@ class Usuario_Productos extends CI_Controller {
 					// Parametros del producto
 					$parametros = array(
 						'ID_USUARIO'=> $this->input->post('IdUsuario'),
+						'ID_TIENDA'=> $this->input->post('IdTienda'),
 						'PRODUCTO_NOMBRE'=> $this->input->post('NombreProducto'),
 						'PRODUCTO_URL'=> $url,
 						'PRODUCTO_DESCRIPCION'=> $this->input->post('DescripcionProducto'),

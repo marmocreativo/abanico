@@ -13,7 +13,7 @@ class Tienda_Categoria extends CI_Controller {
 		$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo'] = "mobile";
+			$this->data['dispositivo']  = "desktop";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
@@ -23,6 +23,7 @@ class Tienda_Categoria extends CI_Controller {
 		$this->load->model('CategoriasModel');
 		$this->load->model('GaleriasModel');
 		$this->load->model('CategoriasProductoModel');
+		$this->load->model('CalificacionesModel');
 
 		// Variables comunes
   }
