@@ -29,7 +29,7 @@
                 <hr>
                 <div class="row">
                   <div class="col">
-                    <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block"> <span class="fa fa-envelope"></span> Contactar</button>
+                    <a href="<?php echo base_url('servicio/contacto?id='.$servicio['ID_SERVICIO']); ?>" class="btn <?php echo 'btn'.$primary; ?> btn- btn-block"> <span class="fa fa-envelope"></span> Contactar</a>
                   </div>
                 </div>
               </div>

@@ -88,11 +88,11 @@
                       <div class="row">
                         <?php foreach($segundo_categorias as $segunda_categoria){ ?>
                           <div class="col-4">
-                            <h4><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h4>
+                            <a href="<?php echo base_url('categoria/servicios?slug='.$segunda_categoria->CATEGORIA_URL); ?>"><h4><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h4></a>
                             <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                             <ul class="list list-unstyled">
                               <?php foreach($tercero_categorias as $tercera_categoria){ ?>
-                                <li> <a href="<?php echo base_url('categoria?slug='.$tercera_categoria->CATEGORIA_URL); ?>"><?php echo $tercera_categoria->CATEGORIA_NOMBRE;  ?></a></li>
+                                <li> <a href="<?php echo base_url('categoria/servicios?slug='.$tercera_categoria->CATEGORIA_URL); ?>"><?php echo $tercera_categoria->CATEGORIA_NOMBRE;  ?></a></li>
                               <?php } ?>
                             </ul>
                           </div>

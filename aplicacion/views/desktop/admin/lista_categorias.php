@@ -59,7 +59,7 @@
                                 <div class="border border-default p-2">
                                   <p class="h6">
                                     <?php echo $segunda_categoria->CATEGORIA_NOMBRE  ?>
-                                    <a href="<?php echo base_url('admin/categorias/actualizar?id='.$segunda_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>" class="btn btn-outline-warning btn-sm"> <span class="fa fa-pencil-alt"></span> </a>
+                                    <a href="<?php echo base_url('admin/categorias/actualizar?id='.$segunda_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>" class="btn btn-outline-warning btn-sm" title="Editar Categoría"> <span class="fa fa-pencil-alt"></span> </a>
                                     <button data-enlace='<?php echo base_url('admin/categorias/borrar?id='.$segunda_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>' class="btn btn-outline-danger btn-sm borrar_entrada" title="Eliminar Categoría"> <span class="fa fa-trash"></span> </button>
                                   </p>
                                     <ul class="list-group mb-3">

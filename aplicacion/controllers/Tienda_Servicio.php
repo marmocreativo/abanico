@@ -27,6 +27,8 @@ class Tienda_Servicio extends CI_Controller {
 		$this->load->model('FavoritosModel');
 		$this->load->model('CalificacionesServiciosModel');
 		$this->load->model('FavoritosModel');
+		$this->load->model('ConversacionesModel');
+		$this->load->model('MensajesModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-info";
@@ -125,4 +127,51 @@ public function favorito()
 		}
 
 	}
+	public function contacto()
+ {
+	 if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+		 $this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+		 redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+	 }
+	 $this->form_validation->set_rules('MensajeTexto', 'Mensaje', 'required', array( 'required' => 'Debes enviar un mensaje %s'));
+
+		if($this->form_validation->run())
+		{
+			// Conversación
+			$parametros_conversacion = array(
+				'ID_REMITENTE'=>$this->input->post('IdRemitente'),
+				'ID_RECEPTOR'=>$this->input->post('IdReceptor'),
+				'CONVERSACION_FECHA_CREACION'=> date('Y-m-d H:i:s'),
+				'CONVERSACION_ESTADO'=>'no leido'
+			);
+			$conversacion_id = $this->ConversacionesModel->crear($parametros_conversacion);
+			// Mensaje
+			$mensaje = '<p><b>Servicio:<b> '.$this->input->post('ServicioNombre').'</p>';
+			$mensaje .= '<p>'.$this->input->post('MensajeTexto').'</p>';
+			$parametros_mensaje = array(
+				'ID_CONVERSACION'=>$conversacion_id,
+				'ID_REMITENTE'=>$this->input->post('IdRemitente'),
+				'MENSAJE_TEXTO'=>$mensaje,
+				'MENSAJE_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+				'MENSAJE_ESTADO'=>'no leido'
+			);
+			$conversacion_id = $this->MensajesModel->crear($parametros_mensaje);
+			// Mensaje FeedBack
+			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado');
+			// Redirecciono
+			redirect(base_url('servicio/contacto?id='.$this->input->post('IdServicio')));
+
+		}else{
+		 $this->data['servicio'] = $this->ServiciosModel->detalles($_GET['id']);
+		 $this->data['portada'] = $this->GaleriasServiciosModel->galeria_portada($_GET['id']);
+		 $this->data['galerias'] = $this->GaleriasServiciosModel->galeria_servicio($_GET['id']);
+		 $this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['servicio']['ID_USUARIO']);
+		 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+
+		 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_servicios',$this->data);
+		 $this->load->view($this->data['dispositivo'].'/tienda/servicio_form_contacto',$this->data);
+		 $this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
+		}
+
+ }
 }
