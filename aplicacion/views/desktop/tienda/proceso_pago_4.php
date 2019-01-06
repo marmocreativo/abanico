@@ -27,13 +27,10 @@
             <hr>
             <div class="row">
               <div class="col text-center">
-                <h5>Simulación de Pedido Completo</h5>
-                <h5>El carrito se ha vaciado</h5>
-                <div class="alert alert-info">
-                  <p> <strong>Notas del desarrollo: </strong> Antes de llegar a esta pantalla se hará la comprobación de pago con Paypal o algún otro servicio, en caso de que el pago no se confirme se regresará al paso anterior.</p>
-                  <p>Les llegarán avisos por correo electrónico de los pedidos. a las "Tiendas" involucradas en la venta</p>
-                </div>
-                <a href="<?php echo base_url('usuario'); ?>" class="btn btn-outline-info btn-block">Regresar a tu perfil</a>
+                <h5>Pedido Completo</h5>
+                <h5>Gracias por comprar con nosotros</h5>
+                <p>Te llegará una confirmación del pedido por correo.</p>
+                <a href="<?php echo base_url('usuario'); ?>" class="btn btn-outline-info btn-block">Ir a tu perfil.</a>
               </div>
             </div>
           </div>

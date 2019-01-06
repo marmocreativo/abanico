@@ -12,8 +12,8 @@ class NotificacionesModel extends CI_Model {
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
   function lista($id_usuario,$limite){
-    if(!empty($parametros)){
-      $this->db->or_like($parametros);
+    if(!empty($id_usuario)){
+      $this->db->where('ID_USUARIO',$id_usuario);
     }
     $this->db->order_by('NOTIFICACION_FECHA_REGISTRO','DESC');
     if(!empty($limite)){

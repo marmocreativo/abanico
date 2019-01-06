@@ -1,5 +1,5 @@
 <?php
-class MensajesModel extends CI_Model {
+class TransportistasDisponibilidadModel extends CI_Model {
   function __construct()
   {
       parent::__construct();
@@ -13,7 +13,7 @@ class MensajesModel extends CI_Model {
  */
   function lista($parametros,$orden,$limite){
     if(!empty($parametros)){
-      $this->db->or_like($parametros);
+      $this->db->where($parametros);
     }
     if(!empty($orden)){
       $this->db->order_by($orden);
@@ -21,30 +21,14 @@ class MensajesModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
-    $query = $this->db->get('mensajes');
+    $query = $this->db->get('transportistas_disponibilidad');
     return $query->result();
-  }
-
-  function lista_mensajes_conversacion($id_conversacion){
-    $this->db->select('usuarios.USUARIO_NOMBRE, usuarios.USUARIO_APELLIDOS ,mensajes.*');
-    $this->db->join('usuarios', 'usuarios.ID_USUARIO = mensajes.ID_REMITENTE');
-    $this->db->where('ID_CONVERSACION',$id_conversacion);
-    $this->db->order_by('mensajes.MENSAJE_FECHA_REGISTRO');
-
-    $query = $this->db->get('mensajes');
-    return $query->result();
-  }
-  /*
-    * Obtengo todos los detalles de una sola entrada
- */
-  function detalles($id){
-    return $this->db->get_where('mensajes',array('ID_MENSAJE'=>$id))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
-    $this->db->insert('mensajes',$parametros);
+    $this->db->insert('transportistas_disponibilidad',$parametros);
     return $this->db->insert_id();
   }
   /*
@@ -53,15 +37,15 @@ class MensajesModel extends CI_Model {
     * $parametros son los campos actualizados
  */
   function actualizar($id,$parametros){
-    $this->db->where('ID_MENSAJE',$id);
-    return $this->db->update('mensajes',$parametros);
+    $this->db->where('ID_TRANSPORTISTA',$id);
+    return $this->db->update('transportistas_disponibilidad',$parametros);
   }
   /*
     * Borro una entrada
     * $id es el identificador de la entrada
  */
   function borrar($id){
-    return $this->db->delete('mensajes',array('ID_MENSAJE'=>$id));
+    return $this->db->delete('transportistas_disponibilidad',array('ID_TRANSPORTISTA'=>$id));
   }
   /*
     * Interruptor cambia el estado de una entrada de activo a inactivo
@@ -81,30 +65,14 @@ class MensajesModel extends CI_Model {
         $activo = "activo";
       break;
     }
-    $this->db->where('ID_MENSAJE',$id);
-    return $this->db->update('mensajes',array('MENSAJE_ESTADO'=>$activo));
+    $this->db->where('ID_TRANSPORTISTA',$id);
+    return $this->db->update('transportistas_disponibilidad',array('TRANSPORTISTA_ESTADO'=>$activo));
   }
   /*
     * Cambio el estado de la entrada, puede ser cualquier estado
     * $id es el identificador de la entrada
     * $activo es el estado al que se quiere cambiar la entrada
  */
-  function estado($id,$activo){
-    $this->db->where('ID_MENSAJE',$id);
-    return $this->db->update('mensajes',array('MENSAJE_ESTADO'=>$activo));
-  }
-  /*
-    * Creo el orden de los elementos
-    * $orden son los identificadores de las entradas en el orden en que quiero que aparezcan
- */
-  function ordenar($orden){
-    $i = 0;
-    foreach($orden as $orden){
-      $this->db->where('ID_MENSAJE',$orden);
-      return $this->db->update('mensajes',array('ORDEN'=>$i));
-      $i++;
-    }
-  }
 
 }
 ?>

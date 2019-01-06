@@ -10,10 +10,7 @@
           <div class="card">
             <div class="card-header d-flex justify-content-between">
               <div class="titulo">
-                <h2 class="h5 mb-0"> <span class="fa fa-map-marker-alt"></span> Tus Direcciones</h2>
-              </div>
-              <div class="opciones">
-                  <a href="<?php echo base_url('usuario/direcciones/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Nueva Dirección </a>
+                <h2 class="h5 mb-0"> <span class="fa fa-map-marker-alt"></span> Tus Pedidos</h2>
               </div>
             </div>
             <div class="card-body py-0">
@@ -27,15 +24,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach($direcciones as $direccion){ ?>
+                  <?php foreach($pedidos as $pedido){ ?>
                   <tr>
-                    <td><?php echo $direccion->DIRECCION_ALIAS; ?></td>
-                    <td><?php echo $this->DireccionesModel->direccion_formateada($direccion->ID_DIRECCION); ?></td>
-                    <td><?php echo $direccion->DIRECCION_TIPO; ?></td>
+                    <td><?php echo $pedido->DIRECCION_ALIAS; ?></td>
+                    <td><?php echo $this->DireccionesModel->direccion_formateada($pedido->ID_DIRECCION); ?></td>
+                    <td><?php echo $pedido->DIRECCION_TIPO; ?></td>
                     <td>
                       <div class="btn-group float-right">
-                        <a href="<?php echo base_url('usuario/direcciones/actualizar?id='.$direccion->ID_DIRECCION); ?>" class="btn btn-sm btn-warning" title="Editar Dirección"> <span class="fa fa-pencil-alt"></span> </a>
-                        <button data-enlace='<?php echo base_url('usuario/direcciones/borrar?id='.$direccion->ID_DIRECCION); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Dirección"> <span class="fa fa-trash"></span> </button>
+                        <a href="<?php echo base_url('usuario/direcciones/actualizar?id='.$pedido->ID_DIRECCION); ?>" class="btn btn-sm btn-warning" title="Editar Dirección"> <span class="fa fa-pencil-alt"></span> </a>
+                        <button data-enlace='<?php echo base_url('usuario/direcciones/borrar?id='.$pedido->ID_DIRECCION); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Dirección"> <span class="fa fa-trash"></span> </button>
                       </div>
                     </td>
                   </tr>

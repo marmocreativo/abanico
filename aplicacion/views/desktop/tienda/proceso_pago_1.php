@@ -29,9 +29,7 @@
               <div class="col text-center">
                 <h6> <i class="fa fa-sign-in-alt"></i> Iniciar Sesión</h6>
                 <form class="" action="<?php echo base_url('login/iniciar');?>" method="post">
-                  <?php if(isset($_GET['url_redirect'])&&!empty($_GET['url_redirect'])){ ?>
-                    <input type="hidden" name="UrlRedirect" value="<?php echo base_url('pago_paso_1'); ?>">
-                  <?php } ?>
+                  <input type="hidden" name="UrlRedirect" value="<?php echo base_url('proceso_pago_1'); ?>">
                    <div class="form-group">
                      <label for="CorreoUsuario">Correo</label>
                      <input type="email" class="form-control" id="CorreoUsuario" name="CorreoUsuario" placeholder="Su correo electrónico">

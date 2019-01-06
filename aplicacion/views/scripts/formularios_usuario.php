@@ -1,4 +1,6 @@
 <script>
+// Popover
+jQuery('[data-toggle="popover"]').popover();
 // Editor Tinymce para todas las clases .Editor
 tinymce.init({
   selector:'.Editor'
@@ -80,5 +82,21 @@ jQuery('#EstadoDireccion').on('change',function(e){
      }
   });
 
+});
+
+// Controles checkboxes transportistas
+// en cambio en PaisDireccion
+jQuery('input[class*="control"]').on('change',function(e){
+  var controla = jQuery(this).data('controla');
+  if(this.checked) {
+      jQuery('input[class*='+controla+']').prop('checked', true);
+    }else{
+      jQuery('input[class*='+controla+']').prop('checked', false);
+    }
+});
+
+jQuery('input[class*="hijo"]').on('change',function(e){
+  var padre = jQuery(this).data('padre');
+    jQuery('input[name='+padre+']').prop('indeterminate', true);
 });
 </script>

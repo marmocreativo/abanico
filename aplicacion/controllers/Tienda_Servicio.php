@@ -28,7 +28,7 @@ class Tienda_Servicio extends CI_Controller {
 		$this->load->model('CalificacionesServiciosModel');
 		$this->load->model('FavoritosModel');
 		$this->load->model('ConversacionesModel');
-		$this->load->model('MensajesModel');
+		$this->load->model('ConversacionesMensajesModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-info";
@@ -155,7 +155,7 @@ public function favorito()
 				'MENSAJE_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 				'MENSAJE_ESTADO'=>'no leido'
 			);
-			$conversacion_id = $this->MensajesModel->crear($parametros_mensaje);
+			$conversacion_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
 			// Mensaje FeedBack
 			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado');
 			// Redirecciono

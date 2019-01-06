@@ -1,5 +1,5 @@
 <?php
-class PedidosModel extends CI_Model {
+class PedidosProductosModel extends CI_Model {
   function __construct()
   {
       parent::__construct();
@@ -12,16 +12,14 @@ class PedidosModel extends CI_Model {
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
   function lista($parametros,$orden,$limite){
-    if(!empty($parametros)){
-      $this->db->or_like($parametros);
-    }
+      $this->db->where($parametros);
     if(!empty($orden)){
       $this->db->order_by($orden);
     }
     if(!empty($limite)){
       $this->db->limit($limite);
     }
-    $query = $this->db->get('pedidos');
+    $query = $this->db->get('pedidos_productos');
     return $query->result();
   }
   /*
@@ -43,39 +41,21 @@ class PedidosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
-    $query = $this->db->get('pedidos');
+    $query = $this->db->get('pedidos_productos');
     return $query->result();
   }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    return $this->db->get_where('pedidos',array('ID_PEDIDO'=>$id))->row_array();
+    return $this->db->get_where('pedidos_productos',array('ID_PEDIDO'=>$id))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
-    $this->db->insert('pedidos',$parametros);
+    $this->db->insert('pedidos_productos',$parametros);
     return $this->db->insert_id();
-  }
-  /*
-    * Actualizo una entrada
-    * $id es el identificador de la entrada
-    * $parametros son los campos actualizados
- */
-  function actualizar($id,$parametros){
-    $this->db->where('ID_PEDIDO',$id);
-    return $this->db->update('pedidos',$parametros);
-  }
-  /*
-    * Cambio el estado de la entrada, puede ser cualquier estado
-    * $id es el identificador de la entrada
-    * $activo es el estado al que se quiere cambiar la entrada
- */
-  function estado($id,$activo){
-    $this->db->where('ID_PEDIDO',$id);
-    return $this->db->update('pedidos',array('PAIS_ESTADO'=>$activo));
   }
 
 }

@@ -12,10 +12,9 @@ class ConversacionesModel extends CI_Model {
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
   function lista($id_usuario){
-    $this->db->select('usuarios.USUARIO_NOMBRE, usuarios.USUARIO_APELLIDOS ,conversaciones.*');
-    $this->db->join('usuarios', 'usuarios.ID_USUARIO = conversaciones.ID_RECEPTOR');
-    $this->db->where('ID_RECEPTOR',$id_usuario);
-      $this->db->order_by('CONVERSACION_FECHA_CREACION','DESC');
+    $this->db->or_where('ID_USUARIO_A',$id_usuario);
+    $this->db->or_where('ID_USUARIO_B',$id_usuario);
+    $this->db->order_by('CONVERSACION_FECHA_CREACION','DESC');
     $query = $this->db->get('conversaciones');
     return $query->result();
   }
@@ -23,8 +22,6 @@ class ConversacionesModel extends CI_Model {
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    $this->db->select('usuarios.USUARIO_NOMBRE, usuarios.USUARIO_APELLIDOS ,conversaciones.*');
-    $this->db->join('usuarios', 'usuarios.ID_USUARIO = conversaciones.ID_RECEPTOR');
     return $this->db->get_where('conversaciones',array('ID_CONVERSACION'=>$id))->row_array();
   }
   /*

@@ -24,6 +24,13 @@ class PaisesModel extends CI_Model {
     $query = $this->db->get('paises');
     return $query->result();
   }
+
+  function lista_activos(){
+      $this->db->where('PAIS_ESTADO','activo');
+      $this->db->order_by('ID_PAIS','ASC');
+    $query = $this->db->get('paises');
+    return $query->result();
+  }
   /*
     * Obtengo todos los detalles de una sola entrada
  */

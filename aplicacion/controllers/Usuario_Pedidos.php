@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuario_Mensajes extends CI_Controller {
+class Usuario_Pedidos extends CI_Controller {
 	public function __construct(){
     parent::__construct();
 		$this->data['op'] = opciones_default();
@@ -24,8 +24,7 @@ class Usuario_Mensajes extends CI_Controller {
 			$this->load->model('CategoriasProductoModel');
 			$this->load->model('TiendasModel');
 			$this->load->model('PerfilServiciosModel');
-			$this->load->model('ConversacionesModel');
-			$this->load->model('ConversacionesMensajesModel');
+			$this->load->model('PedidosModel');
   }
 
 	public function index()
@@ -37,9 +36,9 @@ class Usuario_Mensajes extends CI_Controller {
 			}
 
 				// Obtengo los datos de mi tiendas
-				$this->data['conversaciones'] = $this->ConversacionesModel->lista($_SESSION['usuario']['id']);
+				$this->data['conversaciones'] = $this->PedidosModel->lista_usuario('',$_SESSION['usuario']['id'],'PEDIDO_FECHA_REGISTRO DESC','');
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
-				$this->load->view($this->data['dispositivo'].'/usuarios/lista_conversaciones',$this->data);
+				$this->load->view($this->data['dispositivo'].'/usuarios/lista_pedidos',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 	}
 	public function conversacion()
@@ -51,7 +50,7 @@ class Usuario_Mensajes extends CI_Controller {
 			}
 
 				// Obtengo los datos de mi tiendas
-				$this->data['conversacion'] = $this->ConversacionesModel->detalles($_GET['id']);
+				$this->data['conversacion'] = $this->PedidosModel->detalles($_GET['id']);
 				$this->data['mensajes'] = $this->ConversacionesMensajesModel->lista_mensajes_conversacion($_GET['id']);
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/lista_mensajes',$this->data);

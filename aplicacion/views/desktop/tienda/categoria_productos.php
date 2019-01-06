@@ -19,7 +19,7 @@
     <div class="row">
     <div class="col-2 d-none d-sm-block fila fila-gris">
         <div class="contenedor-filtros">
-          
+
         </div>
       </div>
       <div class="col">
@@ -66,13 +66,13 @@
                         <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
                           <li class="far fa-star"></li>
                         <?php } ?>
-                        <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
+                        <li class="text-dark">(<?php echo $cantidad; ?>)</li>
                       </ul>
                       <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h3>
                       <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
-                        <div class="price-list"> $<?php echo $producto->PRODUCTO_PRECIO_LISTA; ?></div>
+                        <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
                       <?php } ?>
-                      <div class="price"> $<?php echo $producto->PRODUCTO_PRECIO; ?></div>
+                      <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
                   </div>
               </div>
           </div>

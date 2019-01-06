@@ -5,7 +5,7 @@ Carrito
 -----------------
 */
 // Cargo el carrito por defecto
-jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
 
 // Cargo el carrito
 jQuery('#BotonComprar').on('click',function(e){
@@ -38,13 +38,13 @@ jQuery('#BotonComprar').on('click',function(e){
     },
     success : function(texto)
      {
-        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
         jQuery('#ModalCarrito').modal();
      }
   });
 });
 // Boton Incrementar
-jQuery('#CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
+jQuery('.CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
   // Leo las variables del botón
   var id_producto = jQuery(this).data('id-producto');
   var detalles_producto = jQuery(this).data('detalles-producto');
@@ -60,14 +60,12 @@ jQuery('#CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
     },
     success : function(texto)
      {
-       console.log(texto);
-        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
-        jQuery('#ModalCarrito').modal();
+        jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
      }
   });
 });
 // Boton Disminuir
-jQuery('#CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
+jQuery('.CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
   // Leo las variables del botón
   var id_producto = jQuery(this).data('id-producto');
   var detalles_producto = jQuery(this).data('detalles-producto');
@@ -83,13 +81,12 @@ jQuery('#CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
     },
     success : function(texto)
      {
-        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
-        jQuery('#ModalCarrito').modal();
+        jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
      }
   });
 });
 // Campo cantidad
-jQuery('#CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
+jQuery('.CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
   // Leo las variables del botón
   var id_producto = jQuery(this).data('id-producto');
   var detalles_producto = jQuery(this).data('detalles-producto');
@@ -107,12 +104,12 @@ jQuery('#CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
     },
     success : function(texto)
      {
-        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
         jQuery('#ModalCarrito').modal();
      }
   });
 });
-jQuery('#CargarCarrito').on('click', '.boton-eliminar-carrito', function() {
+jQuery('.CargarCarrito').on('click', '.boton-eliminar-carrito', function() {
   // Leo las variables del botón
   var id_producto = jQuery(this).data('id-producto');
   var detalles_producto = jQuery(this).data('detalles-producto');
@@ -128,7 +125,7 @@ jQuery('#CargarCarrito').on('click', '.boton-eliminar-carrito', function() {
     },
     success : function(texto)
      {
-        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
         jQuery('#ModalCarrito').modal();
      }
   });
@@ -142,7 +139,7 @@ jQuery('#BotonVaciar').on('click',function(e){
     url: "<?php echo base_url('ajax/carrito/vaciar'); ?>",
     success : function(texto)
      {
-        jQuery('#CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
         jQuery('#ModalCarrito').modal();
      }
   });
@@ -155,14 +152,16 @@ VARIACIONES
 // Al cargar
 var precio = $('.CombinacionProducto').find(':selected').data('precio-producto');
 var detalles = $('.CombinacionProducto').find(':selected').data('detalles-producto');
-jQuery('#Precio_Producto').html(precio);
+var precio_visible = $('.CombinacionProducto').find(':selected').data('precio-visible-producto');
+jQuery('#Precio_Producto').html(precio_visible);
 jQuery('#BotonComprar').data('precio-producto',precio);
 jQuery('#BotonComprar').data('detalles-producto',detalles);
 // Al cambiar
 jQuery('.CombinacionProducto').on('change',function(e){
   var precio = jQuery(this).find(':selected').data('precio-producto');
   var detalles = jQuery(this).find(':selected').data('detalles-producto');
-  jQuery('#Precio_Producto').html(precio);
+  var precio_visible = jQuery(this).find(':selected').data('precio-visible-producto');
+  jQuery('#Precio_Producto').html(precio_visible);
   jQuery('#BotonComprar').data('precio-producto',precio);
   jQuery('#BotonComprar').data('detalles-producto',detalles);
 

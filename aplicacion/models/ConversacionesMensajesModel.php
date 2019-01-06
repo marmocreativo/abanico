@@ -1,5 +1,5 @@
 <?php
-class DivisasModel extends CI_Model {
+class ConversacionesMensajesModel extends CI_Model {
   function __construct()
   {
       parent::__construct();
@@ -21,20 +21,28 @@ class DivisasModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
-    $query = $this->db->get('divisas');
+    $query = $this->db->get('conversaciones_mensajes');
+    return $query->result();
+  }
+
+  function lista_conversaciones_mensajes_conversacion($id_conversacion){
+    $this->db->where('ID_CONVERSACION',$id_conversacion);
+    $this->db->order_by('conversaciones_mensajes.MENSAJE_FECHA_REGISTRO');
+
+    $query = $this->db->get('conversaciones_mensajes');
     return $query->result();
   }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    return $this->db->get_where('divisas',array('DIVISA_ISO'=>$id))->row_array();
+    return $this->db->get_where('conversaciones_mensajes',array('ID_MENSAJE'=>$id))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
-    $this->db->insert('divisas',$parametros);
+    $this->db->insert('conversaciones_mensajes',$parametros);
     return $this->db->insert_id();
   }
   /*
@@ -43,15 +51,15 @@ class DivisasModel extends CI_Model {
     * $parametros son los campos actualizados
  */
   function actualizar($id,$parametros){
-    $this->db->where('ID_DIVISA',$id);
-    return $this->db->update('divisas',$parametros);
+    $this->db->where('ID_MENSAJE',$id);
+    return $this->db->update('conversaciones_mensajes',$parametros);
   }
   /*
     * Borro una entrada
     * $id es el identificador de la entrada
  */
   function borrar($id){
-    return $this->db->delete('divisas',array('ID_DIVISA'=>$id));
+    return $this->db->delete('conversaciones_mensajes',array('ID_MENSAJE'=>$id));
   }
   /*
     * Interruptor cambia el estado de una entrada de activo a inactivo
@@ -71,8 +79,8 @@ class DivisasModel extends CI_Model {
         $activo = "activo";
       break;
     }
-    $this->db->where('ID_DIVISA',$id);
-    return $this->db->update('divisas',array('DIVISA_ESTADO'=>$activo));
+    $this->db->where('ID_MENSAJE',$id);
+    return $this->db->update('conversaciones_mensajes',array('MENSAJE_ESTADO'=>$activo));
   }
   /*
     * Cambio el estado de la entrada, puede ser cualquier estado
@@ -80,8 +88,8 @@ class DivisasModel extends CI_Model {
     * $activo es el estado al que se quiere cambiar la entrada
  */
   function estado($id,$activo){
-    $this->db->where('ID_DIVISA',$id);
-    return $this->db->update('divisas',array('DIVISA_ESTADO'=>$activo));
+    $this->db->where('ID_MENSAJE',$id);
+    return $this->db->update('conversaciones_mensajes',array('MENSAJE_ESTADO'=>$activo));
   }
   /*
     * Creo el orden de los elementos
@@ -90,8 +98,8 @@ class DivisasModel extends CI_Model {
   function ordenar($orden){
     $i = 0;
     foreach($orden as $orden){
-      $this->db->where('ID_DIVISA',$orden);
-      return $this->db->update('divisas',array('ORDEN'=>$i));
+      $this->db->where('ID_MENSAJE',$orden);
+      return $this->db->update('conversaciones_mensajes',array('ORDEN'=>$i));
       $i++;
     }
   }

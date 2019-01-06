@@ -1,14 +1,17 @@
-<pre>
-<?php //var_dump($_SESSION['carrito']['productos']); ?>
-</pre>
+
+<?php
+  //echo '<pre>';
+  //var_dump($_SESSION['carrito']['tiendas']);
+  //echo '</pre>';
+?>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Producto</th>
-      <th>Cantidad</th>
-      <th>Precio</th>
-      <th>Total</th>
-      <th></th>
+      <th style="width:45%">Producto</th>
+      <th style="width:20%">Cantidad</th>
+      <th style="width:15%">Precio</th>
+      <th style="width:15%">Total</th>
+      <th style="width:5%"></th>
     </tr>
   </thead>
   <tbody>
@@ -40,9 +43,17 @@
           </div>
         </div>
       </td>
-      <td style="vertical-align:middle"><small>$</small><?php echo $producto['precio_producto'];  ?></td>
-      <td style="vertical-align:middle"><strong><small>$</small><?php $suma = $producto['cantidad_producto']*$producto['precio_producto']; echo $suma;  ?></strong></td>
-      <td style="vertical-align:middle"> <button type="button" class="btn btn-danger btn-sm boton-eliminar-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'> <i class="fa fa-trash"></i> </button> </td>
+      <td style="vertical-align:middle">
+        <small><?php echo $_SESSION['divisa']['signo']; ?></small>
+        <?php echo number_format($_SESSION['divisa']['conversion']*$producto['precio_producto'],2);  ?><br>
+        <small><?php echo $_SESSION['divisa']['iso']; ?></small>
+      </td>
+      <td style="vertical-align:middle">
+        <small><?php echo $_SESSION['divisa']['signo']; ?></small>
+          <?php $suma = $producto['cantidad_producto']*$producto['precio_producto']; echo number_format($_SESSION['divisa']['conversion']*$suma,2);  ?><br>
+        <small><?php echo $_SESSION['divisa']['iso']; ?></small>
+      </td>
+      <td style="vertical-align:middle;"> <button type="button" class="btn btn-danger btn-sm boton-eliminar-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>' title="Eliminar del carrito"> <i class="fa fa-trash"></i> </button> </td>
     </tr>
     <?php $suma_productos +=  $suma; ?>
   <?php } ?>
@@ -54,8 +65,12 @@
 
     <!-- Suma -->
     <tr>
-      <td colspan="4" class="text-right">Subtotal</td>
-      <td><h5 class="display-5"><small>$</small><strong><?php echo $suma_productos; ?></strong></h5></td>
+      <td colspan="3" class="text-right">Subtotal</td>
+      <td colspan="2" style="text-align:right"><h5 class="display-5">
+        <small><?php echo $_SESSION['divisa']['signo']; ?></small>
+        <strong><?php echo number_format($_SESSION['divisa']['conversion']*$suma_productos,2); ?></strong>
+        <small><?php echo $_SESSION['divisa']['iso']; ?></small>
+      </h5></td>
     </tr>
   </tbody>
 </table>

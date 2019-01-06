@@ -1,5 +1,5 @@
 <?php
-class PedidosModel extends CI_Model {
+class PedidosTiendasModel extends CI_Model {
   function __construct()
   {
       parent::__construct();
@@ -21,7 +21,7 @@ class PedidosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
-    $query = $this->db->get('pedidos');
+    $query = $this->db->get('pedidos_tiendas');
     return $query->result();
   }
   /*
@@ -43,20 +43,20 @@ class PedidosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
-    $query = $this->db->get('pedidos');
+    $query = $this->db->get('pedidos_tiendas');
     return $query->result();
   }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    return $this->db->get_where('pedidos',array('ID_PEDIDO'=>$id))->row_array();
+    return $this->db->get_where('pedidos_tiendas',array('ID_PEDIDO'=>$id))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
-    $this->db->insert('pedidos',$parametros);
+    $this->db->insert('pedidos_tiendas',$parametros);
     return $this->db->insert_id();
   }
   /*
@@ -66,7 +66,7 @@ class PedidosModel extends CI_Model {
  */
   function actualizar($id,$parametros){
     $this->db->where('ID_PEDIDO',$id);
-    return $this->db->update('pedidos',$parametros);
+    return $this->db->update('pedidos_tiendas',$parametros);
   }
   /*
     * Cambio el estado de la entrada, puede ser cualquier estado
@@ -75,7 +75,7 @@ class PedidosModel extends CI_Model {
  */
   function estado($id,$activo){
     $this->db->where('ID_PEDIDO',$id);
-    return $this->db->update('pedidos',array('PAIS_ESTADO'=>$activo));
+    return $this->db->update('pedidos_tiendas',array('PAIS_ESTADO'=>$activo));
   }
 
 }

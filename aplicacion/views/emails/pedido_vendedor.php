@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Abanico, Contraseña Olvidada</title>
+    <title>Pedido Abanico</title>
     <style>
       /* -------------------------------------
           GLOBAL RESETS
@@ -49,16 +49,16 @@
         display: block;
         Margin: 0 auto !important;
         /* makes it centered */
-        max-width: 580px;
+        max-width: 960px;
         padding: 10px;
-        width: 580px;
+        width: 960px;
       }
       /* This should also be a block element, so that it will fill 100% of the .container */
       .content {
         box-sizing: border-box;
         display: block;
         Margin: 0 auto;
-        max-width: 580px;
+        max-width: 960px;
         padding: 10px;
       }
       /* -------------------------------------
@@ -310,28 +310,106 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <p>Hola, <?php echo $info['NOMBRE']; ?></p>
-                        <p>Parece que has olvidado tu contraseña, para restaurarla solo tienes que dar click en el siguiente enlace</p>
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                          <tbody>
+                        <img src="<?php echo base_url('assets/global/img/logo.png'); ?>" alt="" width="100px">
+                        <h3>Felicidades alguien ha comprado algunos de tus productos.</h3>
+                        <p>Este es el pedido.</p>
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
                             <tr>
-                              <td align="left">
-                                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                  <tbody>
-                                    <tr>
-                                      <td> <a href="<?php echo base_url('login/restaurar?id='.$info['ID'].'&clave='.$info['CLAVE']); ?>" target="_blank">Enlace Seguro</a> </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                                <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;;">
+                                    No. Pedido:<br>
+                                    <strong><?php echo $pedido['ID_PEDIDO']; ?></strong>
+                                </td>
+                                <td colspan="2" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;;">
+                                    CLIENTE:<br>
+                                    <strong><?php echo $pedido['PEDIDO_NOMBRE']; ?></strong>
+                                </td>
+                                <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;;">
+                                    FECHA:<br>
+                                    <strong><?php echo $pedido['PEDIDO_FECHA_REGISTRO']; ?></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                              <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;;">
+                                  CORREO:<br>
+                                  <strong><?php echo $pedido['PEDIDO_CORREO']; ?></strong>
+                              </td>
+                              <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;;">
+                                  TELÉFONO:<br>
+                                  <strong><?php echo $pedido['PEDIDO_TELEFONO']; ?></strong>
                               </td>
                             </tr>
-                          </tbody>
-                        </table>
-                        <p>Si tienes problemas para dar click en el enlace puedes copiar y pegar la siguiente dirección en tu navegador</p>
-                        <p><?php echo base_url('login/restaurar?id='.$info['ID'].'&clave='.$info['CLAVE']); ?></p>
-                        <hr>
-                        <p>Si no has solicitado la restauración de la contraseña haz caso omiso de este mensaje.</p>
-                        <p>El enlace estará disponible durante 3 Hrs.</p>
+                            <tr>
+                                <td colspan="4" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;;">
+                                    DIRECCION:<br>
+                                    <strong><?php echo $pedido['PEDIDO_DIRECCION']; ?></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;;">
+                                </td>
+                            </tr>
+                      </tbody>
+                      </table>
+                      <table width="100%" border="1" cellpadding="2" cellspacing="0">
+                        <thead>
+                          <tr style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;;">
+                            <th style="width:50%">Producto</th>
+                            <th style="width:10%">Cantidad</th>
+                            <th style="width:20%">Precio Unit.</th>
+                            <th style="width:20%">Importe</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        	<?php foreach($productos as $producto){ ?>
+                            <tr>
+                              <td style="vertical-align:middle">
+                                <img src="<?php echo $producto->PRODUCTO_IMAGEN;  ?>" style="float:left;" width="70" alt="">
+                                <h5><?php echo $producto->PRODUCTO_NOMBRE;  ?></h5>
+                                <p style="font-size:0.8em;" style="margin-bottom:10px;"><?php echo $producto->PRODUCTO_DETALLES;  ?></p>
+                              </td>
+                              <td style="vertical-align:middle; text-align:center;">
+                                <?php echo $producto->CANTIDAD;  ?>
+                              </td>
+                              <td style="vertical-align:middle" class="text-right">
+                                <small>$</small>
+                                <?php echo number_format($producto->IMPORTE,2);  ?>
+                                <small><?php echo $pedido['PEDIDO_DIVISA']; ?></small>
+                              </td>
+                              <td style="vertical-align:middle" class="text-right">
+                                <small>$</small>
+                                  <?php echo number_format($producto->IMPORTE_TOTAL,2);  ?>
+                                <small><?php echo $pedido['PEDIDO_DIVISA']; ?></small>
+                              </td>
+                            </tr>
+                          <?php } ?>
+                          <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">
+
+                              <table border="0" cellpadding="1" cellspacing="0" align="right">
+                                  <tr>
+                                      <td style="text-align:center;"><h5>Importe Productos:</h5></td>
+                                      <td style="text-align:center; padding:5px;"><h5>$<strong><?php echo number_format($pedido ['PEDIDO_IMPORTE_PRODUCTOS_TOTAL'],2); ?></strong><?php echo $pedido['PEDIDO_DIVISA']; ?></h5></td>
+                                  </tr>
+                                  <tr>
+                                      <td style="text-align:center;"><h5>Envio Abanico:</h5></td>
+                                      <td style="text-align:center; padding:5px;"><h5>$<strong><?php echo number_format($pedido ['PEDIDO_IMPORTE_ENVIO_PARCIAL'],2); ?></strong><?php echo $pedido['PEDIDO_DIVISA']; ?></h5></td>
+                                  </tr>
+                                  <tr>
+                                      <td style="text-align:center;"><h5>Envio otras tiendas:</h5></td>
+                                      <td style="text-align:center; padding:5px;"><h5>$<strong><?php echo number_format($pedido ['PEDIDO_IMPORTE_ENVIO_TOTAL']-$pedido ['PEDIDO_IMPORTE_ENVIO_PARCIAL'],2); ?></strong><?php echo $pedido['PEDIDO_DIVISA']; ?></h5></td>
+                                  </tr>
+                                  <tr>
+                                      <td style="text-align:center;"><h5>Total:</h5></td>
+                                      <td style="text-align:center; padding:5px;"><h5>$<strong><?php echo number_format($pedido ['PEDIDO_IMPORTE_TOTAL'],2); ?></strong><?php echo $pedido['PEDIDO_DIVISA']; ?></h5></td>
+                                  </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                        <p style="text-align:right">Tu pedido estará pronto en camino.</p>
                       </td>
                     </tr>
                   </table>

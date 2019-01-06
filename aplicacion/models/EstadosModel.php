@@ -24,11 +24,25 @@ class EstadosModel extends CI_Model {
     $query = $this->db->get('estados');
     return $query->result();
   }
+  /*
+  * Lista de estados asignados a un país
+  */
   function estados_del_pais($id_pais){
     $this->db->where('ID_PAIS',$id_pais);
     $this->db->order_by('ESTADO_NOMBRE','ASC');
     $query = $this->db->get('estados');
     return $query->result();
+  }
+
+  /*
+  * Obtengo el Estado y el país usando el nombre del estado
+  */
+  function datos_por_estado($estado){
+    $this->db->select('PAIS_NOMBRE, ESTADO_NOMBRE');
+    $this->db->join('paises', 'paises.ID_PAIS = estados.ID_PAIS');
+    $this->db->where('estados.ESTADO_NOMBRE',$estado);
+    $query = $this->db->get('estados');
+    return $query->row_array();
   }
   /*
     * Obtengo todos los detalles de una sola entrada
