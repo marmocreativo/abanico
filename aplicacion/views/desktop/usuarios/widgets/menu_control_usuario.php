@@ -10,6 +10,7 @@
 </div>
 <div class="list-group">
   <a href="<?php echo base_url('usuario/');?>" class="list-group-item list-group-item-action"> <span class="fa fa-tachometer-alt"></span> Escritorio</a>
+  <a href="<?php echo base_url('usuario/pedidos');?>" class="list-group-item list-group-item-action"> <span class="fa fa-shopping-bag"></span> Mis Pedidos</a>
   <a href="<?php echo base_url('usuario/actualizar');?>" class="list-group-item list-group-item-action"> <span class="fa fa-id-card"></span> Mi Perfil</a>
   <a href="<?php echo base_url('usuario/perfil_servicios');?>" class="list-group-item list-group-item-action"> <span class="fa fa-user-tie"></span> Mis Servicios</a>
   <a href="<?php echo base_url('usuario/tienda');?>" class="list-group-item list-group-item-action"> <span class="fa fa-store"></span> Mi Tienda</a>

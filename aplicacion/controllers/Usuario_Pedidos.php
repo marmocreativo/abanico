@@ -25,6 +25,8 @@ class Usuario_Pedidos extends CI_Controller {
 			$this->load->model('TiendasModel');
 			$this->load->model('PerfilServiciosModel');
 			$this->load->model('PedidosModel');
+			$this->load->model('PedidosTiendasModel');
+			$this->load->model('PedidosProductosModel');
   }
 
 	public function index()
@@ -36,9 +38,25 @@ class Usuario_Pedidos extends CI_Controller {
 			}
 
 				// Obtengo los datos de mi tiendas
-				$this->data['conversaciones'] = $this->PedidosModel->lista_usuario('',$_SESSION['usuario']['id'],'PEDIDO_FECHA_REGISTRO DESC','');
+				$this->data['pedidos'] = $this->PedidosModel->lista_usuario('',$_SESSION['usuario']['id'],'PEDIDO_FECHA_REGISTRO DESC','');
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/lista_pedidos',$this->data);
+				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+	}
+	public function detalles()
+	{
+			// Debo redireccionar
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
+
+				// Obtengo los datos de mi tiendas
+				$this->data['pedido'] = $this->PedidosModel->detalles($_GET['id_pedido']);
+				$this->data['usuario'] = $this->UsuariosModel->detalles($_SESSION['usuario']['id']);
+				$this->data['productos'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$_GET['id_pedido']],'','');
+				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+				$this->load->view($this->data['dispositivo'].'/usuarios/detalles_pedido',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 	}
 	public function conversacion()

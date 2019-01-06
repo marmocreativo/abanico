@@ -52,6 +52,16 @@ class PedidosModel extends CI_Model {
   function detalles($id){
     return $this->db->get_where('pedidos',array('ID_PEDIDO'=>$id))->row_array();
   }
+
+  /*
+    * Conteo de productos
+ */
+  function conteo_pedidos_usuario($id_usuario){
+
+    $this->db->where('ID_USUARIO',$id_usuario);
+    $query = $this->db->count_all_results('pedidos');
+    return $query;
+  }
   /*
     * Creo una nueva entrada usando los parámetros
  */

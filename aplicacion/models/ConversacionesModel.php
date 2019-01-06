@@ -14,7 +14,7 @@ class ConversacionesModel extends CI_Model {
   function lista($id_usuario){
     $this->db->or_where('ID_USUARIO_A',$id_usuario);
     $this->db->or_where('ID_USUARIO_B',$id_usuario);
-    $this->db->order_by('CONVERSACION_FECHA_CREACION','DESC');
+    $this->db->order_by('CONVERSACION_FECHA_REGISTRO','DESC');
     $query = $this->db->get('conversaciones');
     return $query->result();
   }
@@ -23,6 +23,16 @@ class ConversacionesModel extends CI_Model {
  */
   function detalles($id){
     return $this->db->get_where('conversaciones',array('ID_CONVERSACION'=>$id))->row_array();
+  }
+  /*
+  * Conteo Conversaciones
+  */
+  function conteo_conversaciones_usuario($id_usuario){
+
+    $this->db->or_where('ID_USUARIO_A',$id_usuario);
+    $this->db->or_where('ID_USUARIO_B',$id_usuario);
+    $query = $this->db->count_all_results('conversaciones');
+    return $query;
   }
   /*
     * Creo una nueva entrada usando los parámetros

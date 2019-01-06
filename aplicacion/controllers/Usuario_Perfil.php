@@ -29,6 +29,7 @@ class Usuario_Perfil extends CI_Controller {
 			$this->load->model('CategoriasProductoModel');
 			$this->load->model('DireccionesModel');
 			$this->load->model('PedidosModel');
+			$this->load->model('ConversacionesModel');
   }
 	public function index()
 	{
@@ -45,6 +46,8 @@ class Usuario_Perfil extends CI_Controller {
 			$this->data['perfil'] = $this->PerfilServiciosModel->perfil_usuario($_SESSION['usuario']['id']);
 			$this->data['conteo_productos'] = $this->ProductosModel->conteo_productos_usuario($_SESSION['usuario']['id']);
 			$this->data['conteo_servicios'] = $this->ServiciosModel->conteo_servicios_usuario($_SESSION['usuario']['id']);
+			$this->data['conteo_pedidos'] = $this->PedidosModel->conteo_pedidos_usuario($_SESSION['usuario']['id']);
+			$this->data['conteo_mensajes'] = $this->ConversacionesModel->conteo_conversaciones_usuario($_SESSION['usuario']['id']);
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/panel_usuario',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);

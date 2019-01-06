@@ -10,29 +10,32 @@
           <div class="card">
             <div class="card-header d-flex justify-content-between">
               <div class="titulo">
-                <h2 class="h5 mb-0"> <span class="fa fa-map-marker-alt"></span> Tus Pedidos</h2>
+                <h2 class="h5 mb-0"> <span class="fa fa-shopping-bag"></span> Tus Pedidos</h2>
               </div>
             </div>
             <div class="card-body py-0">
               <table class="table table-sm">
                 <thead>
                   <tr>
-                    <th>Alias</th>
-                    <th>Direccion</th>
-                    <th>Tipo Dirección</th>
+                    <th>orden</th>
+                    <th>Importe</th>
+                    <th>Fecha</th>
+                    <th>Estado del pedido</th>
+                    <th>Estado del pago</th>
                     <th class="text-right">Controles</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php foreach($pedidos as $pedido){ ?>
                   <tr>
-                    <td><?php echo $pedido->DIRECCION_ALIAS; ?></td>
-                    <td><?php echo $this->DireccionesModel->direccion_formateada($pedido->ID_DIRECCION); ?></td>
-                    <td><?php echo $pedido->DIRECCION_TIPO; ?></td>
+                    <td><?php echo $pedido->ID_PEDIDO; ?></td>
+                    <td>$<?php echo $pedido->PEDIDO_IMPORTE_TOTAL; ?></td>
+                    <td>$<?php echo $pedido->PEDIDO_FECHA_REGISTRO; ?></td>
+                    <td><?php echo $pedido->PEDIDO_ESTADO_PEDIDO; ?></td>
+                    <td><?php echo $pedido->PEDIDO_ESTADO_PAGO; ?></td>
                     <td>
                       <div class="btn-group float-right">
-                        <a href="<?php echo base_url('usuario/direcciones/actualizar?id='.$pedido->ID_DIRECCION); ?>" class="btn btn-sm btn-warning" title="Editar Dirección"> <span class="fa fa-pencil-alt"></span> </a>
-                        <button data-enlace='<?php echo base_url('usuario/direcciones/borrar?id='.$pedido->ID_DIRECCION); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Dirección"> <span class="fa fa-trash"></span> </button>
+                        <a href="<?php echo base_url('usuario/pedidos/detalles?id_pedido='.$pedido->ID_PEDIDO); ?>" class="btn btn-sm btn-outline-success" title="Detalles del pedido"> <span class="fa fa-eye"></span> Detalles</a>
                       </div>
                     </td>
                   </tr>

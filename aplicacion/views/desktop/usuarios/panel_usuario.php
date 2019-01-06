@@ -12,16 +12,12 @@
 
               <div class="card">
                 <div class="card-body bg-primary text-white">
-
-                    <div class="alert alert-danger">
-                      <p>Sección en desarrollo</p>
-                    </div>
                   <div class="row">
                     <div class="col">
                       <i class="fa fa-shopping-bag fa-3x" aria-hidden="true"></i>
                     </div>
                     <div class="col">
-                      <h2 class="card-title">0</h2>
+                      <h2 class="card-title"><?php echo $conteo_pedidos; ?></h2>
                         <h5>Compras</h5>
                     </div>
                   </div>
@@ -34,16 +30,12 @@
             <div class="col-3">
               <div class="card">
                 <div class="card-body bg-primary text-white">
-
-                    <div class="alert alert-danger">
-                      <p>Sección en desarrollo</p>
-                    </div>
                   <div class="row">
                     <div class="col">
                       <i class="fa fa-envelope fa-3x" aria-hidden="true"></i>
                     </div>
                     <div class="col">
-                      <h2 class="card-title">0</h2>
+                      <h2 class="card-title"><?php echo $conteo_mensajes; ?></h2>
                         <h5>Mensajes</h5>
                     </div>
                   </div>
