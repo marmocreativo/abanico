@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 03-01-2019 a las 13:41:46
+-- Tiempo de generación: 06-01-2019 a las 15:37:41
 -- Versión del servidor: 5.6.40-84.0-log
 -- Versión de PHP: 5.6.30
 
@@ -63,7 +63,8 @@ INSERT INTO `calificaciones_productos` (`ID_CALIFICACION`, `ID_PRODUCTO`, `ID_US
 (6, 18, '5c0653d43d92e7.75019474', '5c08a9dc2cb096.56391251', 1, '', 'activo', '2018-12-27 17:59:18'),
 (7, 19, '5c0653d43d92e7.75019474', '5c08a9dc2cb096.56391251', 1, 'Este librero esta muy feo', 'activo', '2018-12-27 18:07:28'),
 (8, 8, '5c0653d43d92e7.75019474', '5c08a9dc2cb096.56391251', 5, '', 'activo', '2018-12-27 18:17:55'),
-(9, 20, '5c25209703a210.25306180', '5c0653d43d92e7.75019474', 4, 'excelente ', 'activo', '2018-12-28 16:19:30');
+(9, 20, '5c25209703a210.25306180', '5c0653d43d92e7.75019474', 4, 'excelente ', 'activo', '2018-12-28 16:19:30'),
+(10, 22, '5c0653d43d92e7.75019474', '5c0653d43d92e7.75019474', 5, 'Deliciosa', 'activo', '2019-01-03 23:07:12');
 
 -- --------------------------------------------------------
 
@@ -81,6 +82,13 @@ CREATE TABLE `calificaciones_servicios` (
   `CALIFICACION_ESTADO` varchar(255) DEFAULT NULL,
   `CALIFICACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `calificaciones_servicios`
+--
+
+INSERT INTO `calificaciones_servicios` (`ID_CALIFICACION`, `ID_SERVICIO`, `ID_USUARIO`, `ID_USUARIO_CALIFICADOR`, `CALIFICACION_ESTRELLAS`, `CALIFICACION_COMENTARIO`, `CALIFICACION_ESTADO`, `CALIFICACION_FECHA_REGISTRO`) VALUES
+(4, 11, '5c25209703a210.25306180', '5c0653d43d92e7.75019474', 3, 'hola', 'activo', '2019-01-03 23:08:18');
 
 -- --------------------------------------------------------
 
@@ -298,7 +306,26 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (223, 'Despensa', 'despensa', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
 (224, 'Frutas y verduras', 'frutas-y-verduras', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
 (225, 'Lácteos ', 'lácteos', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
-(226, 'Vinos y licores', 'vinos-y-licores', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo');
+(226, 'Vinos y licores', 'vinos-y-licores', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
+(227, 'Eléctrica y Electrónica', 'eléctrica-y-electrónica', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(228, 'Ingeniería Civil', 'ingeniería-civil', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(229, 'Ingeniería Ambiental', 'ingeniería-ambiental', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(230, 'Computación', 'computación', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(231, 'Ingeniería Mecánica', 'ingeniería-mecánica', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(232, 'Ingeniería Industrial', 'ingeniería-industrial', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(233, 'Instalaciones ', 'instalaciones', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(234, 'Obras', 'obras', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(235, 'Eléctrico ', 'electricista', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(236, 'Plomería', 'plomería', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(237, 'Cerrajería ', 'cerrajería', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(238, 'Albañilería', 'albañilería', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(239, 'Actores', 'actores', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
+(240, 'Pediatra', 'pediatra', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(241, 'Dermatología', 'dermatología', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(242, 'Psicología ', 'psicología', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(243, 'Ginecología', 'ginecología', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(244, 'Dentista', 'dentista', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(245, 'Ortopedista ', 'ortopedista', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo');
 
 -- --------------------------------------------------------
 
@@ -317,12 +344,12 @@ CREATE TABLE `categorias_productos` (
 --
 
 INSERT INTO `categorias_productos` (`ID`, `ID_CATEGORIA`, `ID_PRODUCTO`) VALUES
-(18, 26, 1),
 (21, 26, 8),
 (22, 24, 17),
 (24, 26, 19),
 (25, 26, 18),
-(26, 26, 20);
+(26, 26, 20),
+(29, 42, 22);
 
 -- --------------------------------------------------------
 
@@ -365,10 +392,28 @@ INSERT INTO `categorias_servicios` (`ID`, `ID_CATEGORIA`, `ID_SERVICIO`) VALUES
 
 CREATE TABLE `conversaciones` (
   `ID_CONVERSACION` int(11) NOT NULL,
-  `ID_REMITENTE` varchar(255) DEFAULT NULL,
-  `ID_RECEPTOR` varchar(255) DEFAULT NULL,
-  `CONVERSACION_FECHA_CREACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `ID_USUARIO_A` varchar(255) DEFAULT NULL,
+  `ID_USUARIO_B` varchar(255) DEFAULT NULL,
+  `CONVERSACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `CONVERSACION_FECHA_ACTUALIZACIÓN` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `CONVERSACION_TIPO` varchar(255) NOT NULL,
   `CONVERSACION_ESTADO` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `conversaciones_mensajes`
+--
+
+CREATE TABLE `conversaciones_mensajes` (
+  `ID_MENSAJE` int(11) NOT NULL,
+  `ID_CONVERSACION` int(11) DEFAULT NULL,
+  `ID_REMITENTE` int(11) DEFAULT NULL,
+  `MENSAJE_ASUNTO` varchar(255) NOT NULL,
+  `MENSAJE_TEXTO` text,
+  `MENSAJE_ESTADO` varchar(255) DEFAULT NULL,
+  `MENSAJE_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -403,7 +448,8 @@ INSERT INTO `direcciones` (`ID_DIRECCION`, `ID_USUARIO`, `ID_TIENDA`, `DIRECCION
 (10, '5c0653d43d92e7.75019474', 0, 'envio', 'Casa', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', 'Cerca de Escuela Primaria No. 12 Ernesto Alconedo', '2018-12-22 16:40:33', '2018-12-22 16:40:33'),
 (11, '5c0653d43d92e7.75019474', 1, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '-', '2018-12-22 16:48:05', '2018-12-22 16:48:05'),
 (13, '5c251a08bf0109.40704946', 7, 'fiscal', 'Direccion Tienda', 'México', 'Nuevo León', 'Nuevo Leon ', 'Ciénega de Flores', 'cienga', '598 interior 8', '11850', '-', '2018-12-27 18:53:23', '2018-12-27 18:53:23'),
-(14, '5c25209703a210.25306180', 8, 'fiscal', 'Direccion Tienda', 'México', 'Veracruz', 'Banderilla', 'Banderilla', 'a', 'San Juan de Letran 68', '11850', '-', '2018-12-27 19:01:26', '2018-12-27 19:01:26');
+(14, '5c25209703a210.25306180', 8, 'fiscal', 'Direccion Tienda', 'México', 'Veracruz', 'Banderilla', 'Banderilla', 'a', 'San Juan de Letran 68', '11850', '-', '2018-12-27 19:01:26', '2018-12-27 19:01:26'),
+(15, '5c0653d43d92e7.75019474', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'Avenida 561 No. 148', 'Avenida 561 No. 148', '07969', '-', '2019-01-03 23:36:42', '2019-01-03 23:36:42');
 
 -- --------------------------------------------------------
 
@@ -551,7 +597,8 @@ CREATE TABLE `favoritos` (
 --
 
 INSERT INTO `favoritos` (`ID_FAVORITO`, `ID_USUARIO`, `ID_OBJETO`, `FAVORITO_TIPO`, `FAVORITO_FECHA_REGISTRO`) VALUES
-(8, '5c0653d43d92e7.75019474', 17, 'producto', '2018-12-28 17:03:04');
+(9, '5c0653d43d92e7.75019474', 20, 'producto', '2019-01-03 23:07:38'),
+(10, '5c0653d43d92e7.75019474', 11, 'servicio', '2019-01-03 23:07:50');
 
 -- --------------------------------------------------------
 
@@ -577,7 +624,8 @@ INSERT INTO `galeria_productos` (`ID_GALERIA`, `ID_PRODUCTO`, `GALERIA_ARCHIVO`,
 (19, 17, 'categoria-5c1d350ce81b6.jpg', 'si', 'activo', 1),
 (20, 18, 'producto-5c1e6b0dee919.jpg', 'si', 'activo', 1),
 (21, 19, 'producto-5c1e6c4534aed.jpg', 'si', 'activo', 1),
-(22, 20, 'producto-5c2526234e278.jpg', 'si', 'activo', 1);
+(22, 20, 'producto-5c2526234e278.jpg', 'si', 'activo', 1),
+(23, 22, 'producto-5c2e9538ac8ee.jpg', 'si', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -664,21 +712,6 @@ CREATE TABLE `lista_negra` (
   `DIRECCION_IP` varchar(255) NOT NULL,
   `NOTAS` text NOT NULL,
   `FECHA_REGISTRO` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `mensajes`
---
-
-CREATE TABLE `mensajes` (
-  `ID_MENSAJE` int(11) NOT NULL,
-  `ID_CONVERSACION` int(11) DEFAULT NULL,
-  `ID_REMITENTE` int(11) DEFAULT NULL,
-  `MENSAJE_TEXTO` text,
-  `MENSAJE_ESTADO` varchar(255) DEFAULT NULL,
-  `MENSAJE_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6428,18 +6461,18 @@ CREATE TABLE `pedidos` (
   `ID_DIRECCION` int(11) DEFAULT NULL,
   `PEDIDO_DIRECCION` text,
   `PEDIDO_DIVISA` varchar(255) DEFAULT NULL,
-  `PEDIDO_conversion` decimal(10,2) DEFAULT NULL,
-  `PEDIDO_IMPORTE_PRODUCTOS` decimal(10,2) DEFAULT NULL,
-  `PEDIDO_IMPORTE_ENVIO` decimal(10,2) DEFAULT NULL,
-  `PEDIDO_ID_PAQUETERIA` int(11) DEFAULT NULL,
-  `PEDIDO_NOMBRE_PAQUETERIA` varchar(255) DEFAULT NULL,
-  `PEDIDO_GUIA_PAQUETERIA` varchar(255) DEFAULT NULL,
+  `PEDIDO_CONVERSION` decimal(10,3) DEFAULT NULL,
+  `PEDIDO_IMPORTE_PRODUCTOS_PARCIAL` decimal(10,2) DEFAULT NULL,
+  `PEDIDO_IMPORTE_PRODUCTOS_TOTAL` decimal(10,2) NOT NULL,
+  `PEDIDO_IMPORTE_ENVIO_PARCIAL` decimal(10,2) DEFAULT NULL,
+  `PEDIDO_IMPORTE_ENVIO_TOTAL` decimal(10,2) NOT NULL,
+  `PEDIDO_ID_TRANSPORTISTA` int(11) DEFAULT NULL,
+  `PEDIDO_NOMBRE_TRANSPORTISTA` varchar(255) DEFAULT NULL,
   `PEDIDO_RECIBE` varchar(255) DEFAULT NULL,
   `PEDIDO_COMENTARIOS` text,
   `PEDIDO_IMPORTE_DESCUENTO` decimal(10,2) DEFAULT NULL,
   `PEDIDO_DESCUENTO_DESCRIPCION` text,
   `PEDIDO_IMPORTE_TOTAL` decimal(10,2) DEFAULT NULL,
-  `PEDIDO_CANTIDAD_PRODUCTOS` int(11) DEFAULT NULL,
   `PEDIDO_FORMA_PAGO` varchar(255) DEFAULT NULL,
   `PEDIDO_ESTADO_PAGO` varchar(255) DEFAULT NULL,
   `PEDIDO_ESTADO_PEDIDO` varchar(255) DEFAULT NULL,
@@ -6456,14 +6489,32 @@ CREATE TABLE `pedidos` (
 CREATE TABLE `pedidos_productos` (
   `ID` int(11) NOT NULL,
   `ID_PEDIDO` int(11) DEFAULT NULL,
-  `ID_USUARIO` varchar(255) NOT NULL,
   `ID_TIENDA` int(11) NOT NULL,
   `ID_PRODUCTO` int(11) DEFAULT NULL,
   `PRODUCTO_NOMBRE` varchar(255) DEFAULT NULL,
   `PRODUCTO_DETALLES` text,
   `PRODUCTO_IMAGEN` varchar(255) DEFAULT NULL,
   `CANTIDAD` int(11) DEFAULT NULL,
-  `IMPORTE` decimal(10,2) DEFAULT NULL
+  `IMPORTE` decimal(10,2) DEFAULT NULL,
+  `IMPORTE_TOTAL` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos_tiendas`
+--
+
+CREATE TABLE `pedidos_tiendas` (
+  `ID` int(11) NOT NULL,
+  `ID_PEDIDO` int(11) DEFAULT NULL,
+  `ID_TIENDA` int(11) NOT NULL,
+  `PEDIDO_TIENDA_IMPORTE_PRODUCTOS` decimal(10,2) DEFAULT NULL,
+  `PEDIDO_TIENDA_IMPORTE_ENVIO` decimal(10,2) DEFAULT NULL,
+  `ID_TRANSPORTISTA` int(11) DEFAULT NULL,
+  `TRANSPORTISTA_NOMBRE` varchar(255) DEFAULT NULL,
+  `GUIA_PAQUETERIA` varchar(255) DEFAULT NULL,
+  `PEDIDO_TIENDA_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6485,6 +6536,13 @@ CREATE TABLE `perfiles_servicios` (
   `PERFIL_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `PERFIL_ESTADO` varchar(255) NOT NULL DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `perfiles_servicios`
+--
+
+INSERT INTO `perfiles_servicios` (`ID_PERFIL`, `ID_USUARIO`, `PERFIL_NOMBRE`, `PERFIL_RAZON_SOCIAL`, `PERFIL_RFC`, `PERFIL_TELEFONO`, `ID_DIRECCION`, `PERFIL_IMAGEN`, `PERFIL_FECHA_REGISTRO`, `PERFIL_FECHA_ACTUALIZACION`, `PERFIL_ESTADO`) VALUES
+(10, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', '', '', '55555', 15, 'default.jpg', '2019-01-03 23:36:42', '2019-01-03 23:36:42', 'activo');
 
 -- --------------------------------------------------------
 
@@ -6548,7 +6606,6 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOMBRE`, `PRODUCTO_URL`, `PRODUCTO_DESCRIPCION`, `PRODUCTO_DETALLES`, `PRODUCTO_MODELO`, `PRODUCTO_ORIGEN`, `PRODUCTO_SKU`, `PRODUCTO_UPC`, `PRODUCTO_EAN`, `PRODUCTO_JAN`, `PRODUCTO_ISBN`, `PRODUCTO_MPN`, `PRODUCTO_PRECIO`, `PRODUCTO_PRECIO_LISTA`, `PRODUCTO_CANTIDAD`, `PRODUCTO_CANTIDAD_MINIMA`, `PRODUCTO_INVENTARIO`, `PRODUCTO_MENSAJE_SIN_STOCK`, `PRODUCTO_FECHA_REGISTRO`, `PRODUCTO_FECHA_ACTUALIZACION`, `PRODUCTO_FECHA_PUBLICACION`, `PRODUCTO_ANCHO`, `PRODUCTO_ALTO`, `PRODUCTO_PROFUNDO`, `PRODUCTO_PESO`, `PRODUCTO_TIPO`, `PRODUCTO_ESTADO`, `ORDEN`) VALUES
-(1, '5c0653d43d92e7.75019474', '', 'Iphone X 256 Gb - Plata Apple', '', 'iPhone X 256 GB es elegancia e innovación al ser de vidrio más resistente, tanto en la parte frontal como en la trasera, además de contar con carga inalámbrica y resistencia al agua y polvo. Cuenta con chip A11 Bionic con el que disfrutarás de increíble experiencia de realidad aumentada en juegos y apps. Tendrás una pantalla con tecnología OLED y Super retina HD de 5.8 pulgadas con resolución de 2436 x 1125, 459 ppi. El futuro estará en tus manos con la cámara TrueDepth de 7 MP en un espacio pequeño de la pantalla en donde tendrás la más alta tecnología desarrollada y sensores que hacen posible Face ID ¡la autentificación más segura! Cámara dual trasera de 12 MP con nuevo filtro de color y estabilización óptica de imagen. ', '<p>ESTE TEL&Eacute;FONO VIENE DESBLOQUEADO POR LO QUE PODR&Aacute; COLOCARLE LA SIM DE CUALQUIER COMPA&Ntilde;&Iacute;A TELEF&Oacute;NICA. La garant&iacute;a es directamente con la marca.</p>', 'Iphone X 256', 'Otro', '', ' ', ' ', ' ', ' ', ' ', '21599.00', '0.00', 100, 1, 1, 'No disponible para la venta', '2018-12-05 21:11:50', '2018-12-19 16:44:45', '2018-12-05 21:11:50', '10.00', '21.00', '2.00', '0.50', 'normal', 'activo', 1),
 (2, '5c0864799aba54.31749554', '', 'CAJA', '', 'ES  UNA CAJA', '<p>ES UNA CAJA GRANDE DE MADERA</p>', '345', 'México', '55665', '', '', '', '', '', '4.00', '0.00', 8, 7, 1, 'No disponible para venta', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '12.00', '44.00', '23.00', '4.00', 'normal', 'activo', 1),
 (4, '5c08a9dc2cb096.56391251', '', 'Olla de 5 lts', '', 'Olla de 5 litros gabricada en acero inoxidable', '', 'OAI', 'México', '', '', '', '', '', '', '5000.00', '0.00', 10, 1, 1, 'No disponible para la venta', '2018-12-13 04:37:54', '2018-12-13 23:20:05', '2018-12-13 04:37:54', '52.00', '68.00', '15.00', '5.00', 'normal', 'activo', 1),
 (5, '5c08a9dc2cb096.56391251', '', 'cafetera italina', '', 'Cafetera en acero inoxidable para 5 tazas. ', '<p>&nbsp; Terminado mate</p>', 'grecko', 'México', '', '', '', '', '', '', '862.00', '0.00', 4, 1, 1, 'No disponible para la venta', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '15.00', '25.00', '12.00', '1.00', 'normal', 'activo', 1),
@@ -6561,7 +6618,8 @@ INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOM
 (17, '5c08a9dc2cb096.56391251', '', 'taza medidora', '', 'Tazas medidoras en 4 diferentes tamanos', '<p>Practico set de medicion para cocina. Cuatro tama&ntilde;os, 1/4, 1/2, 3/4 y 1 taza. Acero inoxidable grado alimenticio. Excelente para el control preciso de las cantidades al momento de elaborar tus recetas favoritas.&nbsp;</p>', 'A001', 'Otro', '', '', '', '', '', '', '280.00', '0.00', 14, 1, 1, 'No disponible para la venta', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '15.00', '15.00', '15.00', '0.25', 'normal', 'activo', 1),
 (18, '5c0653d43d92e7.75019474', '', 'Librero', 'librero', 'Librero de Madera', '<p>Peque&ntilde;o Librero de Madera</p>', 'lb-135', 'México', 'lb-1234', '', '', '', '', '', '1300.00', '15000.00', 25, 1, 1, 'No disponible para la venta', '2018-12-26 22:50:03', '2018-12-26 22:50:03', '2018-12-26 22:50:03', '60.00', '120.00', '30.00', '10.00', 'normal', 'activo', 1),
 (19, '5c0653d43d92e7.75019474', '', 'Escritorio', '', '', '', 'esc-5567', 'México', 'esc-34556', '', '', '', '', '', '2500.00', '0.00', 10, 1, 1, 'No disponible para la venta', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '90.00', '60.00', '30.00', '30.00', 'normal', 'activo', 1),
-(20, '5c25209703a210.25306180', '', 'libretas hechas a mano', 'libretas-hechas-a-mano', 'Hermosas libretas hechas a mano ', '<p>kajiejfnaniovna inafiaf an ha ghao nakajaa&nbsp;</p>', 'Constelaciones', 'México', '', '', '', '', '', '', '158.00', '170.00', 15, 1, 1, 'No disponible para la venta', '2018-12-27 19:21:07', '2018-12-27 19:21:07', '2018-12-27 19:21:07', '15.00', '18.00', '5.00', '0.50', 'normal', 'activo', 1);
+(20, '5c25209703a210.25306180', '', 'libretas hechas a mano', 'libretas-hechas-a-mano', 'Hermosas libretas hechas a mano ', '<p>kajiejfnaniovna inafiaf an ha ghao nakajaa&nbsp;</p>', 'Constelaciones', 'México', '', '', '', '', '', '', '158.00', '170.00', 15, 1, 1, 'No disponible para la venta', '2018-12-27 19:21:07', '2018-12-27 19:21:07', '2018-12-27 19:21:07', '15.00', '18.00', '5.00', '0.50', 'normal', 'activo', 1),
+(22, '5c0653d43d92e7.75019474', '1', 'Pizza', 'pizza', '', '', 'kjlkjlk', 'México', 'kjlkjlk', '', '', '', '', '', '120.00', '150.00', 50, 1, 1, 'No disponible para la venta', '2019-01-03 23:05:27', '2019-01-03 23:05:27', '2019-01-03 23:05:27', '30.00', '30.00', '3.00', '1.00', 'normal', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -6580,6 +6638,14 @@ CREATE TABLE `productos_combinaciones` (
   `COMBINACION_PROFUNDO` decimal(10,2) DEFAULT NULL,
   `COMBINACION_PESO` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `productos_combinaciones`
+--
+
+INSERT INTO `productos_combinaciones` (`ID_COMBINACION`, `ID_PRODUCTO`, `COMBINACION_GRUPO`, `COMBINACION_OPCION`, `COMBINACION_PRECIO`, `COMBINACION_ANCHO`, `COMBINACION_ALTO`, `COMBINACION_PROFUNDO`, `COMBINACION_PESO`) VALUES
+(1, '22', 'Tamaño', 'Familiar', '150.00', '30.00', '30.00', '3.00', '1.00'),
+(2, '22', 'Tamaño', 'individual', '120.00', '30.00', '30.00', '3.00', '1.00');
 
 -- --------------------------------------------------------
 
@@ -6900,10 +6966,19 @@ INSERT INTO `tiendas` (`ID_TIENDA`, `ID_USUARIO`, `TIENDA_NOMBRE`, `TIENDA_RAZON
 CREATE TABLE `transportistas` (
   `ID_TRANSPORTISTA` int(11) NOT NULL,
   `TRANSPORTISTA_NOMBRE` varchar(255) DEFAULT NULL,
+  `TRANSPORTISTA_DESCRIPCION` text NOT NULL,
   `TRANSPORTISTA_LOGO` varchar(255) DEFAULT 'default.jpg',
+  `TRANSPORTISTA_TIEMPO_ENTREGA` varchar(255) NOT NULL,
   `TRANSPORTISTA_URL_RASTREO` varchar(255) DEFAULT NULL,
   `TRANSPORTISTA_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `transportistas`
+--
+
+INSERT INTO `transportistas` (`ID_TRANSPORTISTA`, `TRANSPORTISTA_NOMBRE`, `TRANSPORTISTA_DESCRIPCION`, `TRANSPORTISTA_LOGO`, `TRANSPORTISTA_TIEMPO_ENTREGA`, `TRANSPORTISTA_URL_RASTREO`, `TRANSPORTISTA_ESTADO`) VALUES
+(3, 'Abanico', 'Abanico en Área Metropolitana', 'transportista-5c30404f9128b.jpg', '1 a 2 días hábiles', '', 'activo');
 
 -- --------------------------------------------------------
 
@@ -6912,11 +6987,136 @@ CREATE TABLE `transportistas` (
 --
 
 CREATE TABLE `transportistas_disponibilidad` (
-  `ID` int(11) NOT NULL,
   `ID_TRANSPORTISTA` int(11) DEFAULT NULL,
-  `TRANSPORTISTA_PAIS` varchar(255) DEFAULT 'default.jpg',
+  `TRANSPORTISTA_PAIS` varchar(255) DEFAULT NULL,
   `TRANSPORTISTA_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `transportistas_disponibilidad`
+--
+
+INSERT INTO `transportistas_disponibilidad` (`ID_TRANSPORTISTA`, `TRANSPORTISTA_PAIS`, `TRANSPORTISTA_ESTADO`) VALUES
+(NULL, 'México', 'Aguascalientes'),
+(NULL, 'México', 'Baja California'),
+(NULL, 'México', 'Baja California Sur'),
+(NULL, 'México', 'Campeche'),
+(NULL, 'México', 'Chiapas'),
+(NULL, 'México', 'Chihuahua'),
+(NULL, 'México', 'Coahuila'),
+(NULL, 'México', 'Colima'),
+(NULL, 'México', 'Durango'),
+(NULL, 'México', 'Guanajuato'),
+(NULL, 'México', 'Guerrero'),
+(NULL, 'México', 'Hidalgo'),
+(NULL, 'México', 'Jalisco'),
+(NULL, 'México', 'Michoacán'),
+(NULL, 'México', 'Morelos'),
+(NULL, 'México', 'Nayarit'),
+(NULL, 'México', 'Nuevo León'),
+(NULL, 'México', 'Oaxaca'),
+(NULL, 'México', 'Puebla'),
+(NULL, 'México', 'Querétaro'),
+(NULL, 'México', 'Quintana Roo'),
+(NULL, 'México', 'San Luis Potosí'),
+(NULL, 'México', 'Sinaloa'),
+(NULL, 'México', 'Sonora'),
+(NULL, 'México', 'Tabasco'),
+(NULL, 'México', 'Tamaulipas'),
+(NULL, 'México', 'Tlaxcala'),
+(NULL, 'México', 'Veracruz'),
+(NULL, 'México', 'Yucatán'),
+(NULL, 'México', 'Zacatecas'),
+(8, 'México', 'Aguascalientes'),
+(8, 'México', 'Baja California'),
+(8, 'México', 'Baja California Sur'),
+(8, 'México', 'Campeche'),
+(8, 'México', 'Chiapas'),
+(8, 'México', 'Chihuahua'),
+(8, 'México', 'Coahuila'),
+(8, 'México', 'Colima'),
+(8, 'México', 'Durango'),
+(8, 'México', 'Guanajuato'),
+(8, 'México', 'Guerrero'),
+(8, 'México', 'Hidalgo'),
+(8, 'México', 'Jalisco'),
+(8, 'México', 'Michoacán'),
+(8, 'México', 'Morelos'),
+(8, 'México', 'Nayarit'),
+(8, 'México', 'Nuevo León'),
+(8, 'México', 'Oaxaca'),
+(8, 'México', 'Puebla'),
+(8, 'México', 'Querétaro'),
+(8, 'México', 'Quintana Roo'),
+(8, 'México', 'San Luis Potosí'),
+(8, 'México', 'Sinaloa'),
+(8, 'México', 'Sonora'),
+(8, 'México', 'Tabasco'),
+(8, 'México', 'Tamaulipas'),
+(8, 'México', 'Tlaxcala'),
+(8, 'México', 'Veracruz'),
+(8, 'México', 'Yucatán'),
+(8, 'México', 'Zacatecas'),
+(3, 'México', 'Aguascalientes'),
+(3, 'México', 'Baja California'),
+(3, 'México', 'Baja California Sur'),
+(3, 'México', 'Campeche'),
+(3, 'México', 'Chiapas'),
+(3, 'México', 'Chihuahua'),
+(3, 'México', 'Ciudad de México'),
+(3, 'México', 'Coahuila'),
+(3, 'México', 'Colima'),
+(3, 'México', 'Durango'),
+(3, 'México', 'Estado de México'),
+(3, 'México', 'Guanajuato'),
+(3, 'México', 'Guerrero'),
+(3, 'México', 'Hidalgo'),
+(3, 'México', 'Jalisco'),
+(3, 'México', 'Michoacán'),
+(3, 'México', 'Morelos'),
+(3, 'México', 'Nayarit'),
+(3, 'México', 'Nuevo León'),
+(3, 'México', 'Oaxaca'),
+(3, 'México', 'Puebla'),
+(3, 'México', 'Querétaro'),
+(3, 'México', 'Quintana Roo'),
+(3, 'México', 'San Luis Potosí'),
+(3, 'México', 'Sinaloa'),
+(3, 'México', 'Sonora'),
+(3, 'México', 'Tabasco'),
+(3, 'México', 'Tamaulipas'),
+(3, 'México', 'Tlaxcala'),
+(3, 'México', 'Veracruz'),
+(3, 'México', 'Yucatán'),
+(3, 'México', 'Zacatecas');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `transportistas_rangos`
+--
+
+CREATE TABLE `transportistas_rangos` (
+  `ID` int(11) NOT NULL,
+  `ID_TRANSPORTISTA` int(11) DEFAULT NULL,
+  `PESO_MAX` decimal(10,2) DEFAULT NULL,
+  `IMPORTE_MIN` decimal(10,2) DEFAULT NULL,
+  `IMPORTE` decimal(10,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `transportistas_rangos`
+--
+
+INSERT INTO `transportistas_rangos` (`ID`, `ID_TRANSPORTISTA`, `PESO_MAX`, `IMPORTE_MIN`, `IMPORTE`) VALUES
+(8, 3, '1.00', '1.00', '156.00'),
+(9, 3, '2.00', '1.00', '164.00'),
+(10, 3, '3.00', '1.00', '171.00'),
+(11, 3, '4.00', '1.00', '178.00'),
+(12, 3, '5.00', '1.00', '185.00'),
+(13, 3, '6.00', '1.00', '192.00'),
+(14, 3, '50.00', '1.00', '250.00'),
+(15, 3, '200.00', '1.00', '500.00');
 
 -- --------------------------------------------------------
 
@@ -6953,7 +7153,8 @@ INSERT INTO `usuarios` (`ID_USUARIO`, `USUARIO_NOMBRE`, `USUARIO_APELLIDOS`, `US
 ('5c251a08bf0109.40704946', 'Pancho', 'Villa', 'lapancha@hotmail.com', ' 55555555555', '0000-00-00', '$2y$10$yJwpkii8XRpiWITyeKohIerglVyEPvwq2Vn0Db.B6NDsi/XxzVRyy', '2018-12-27 18:29:28', '2018-12-27 18:34:44', 'usr-1', 'si', 'activo'),
 ('5c251a8521d321.20926810', 'Beatriz', 'Buendía', 'bb@gmail.com', NULL, '0000-00-00', '$2y$10$eiVFTY6iznQ9yBrV5Nvn5uS7IcWd0rIe82gEil5V1SePx93cSraEy', '2018-12-27 18:31:33', '2018-12-27 18:31:33', 'usr-1', 'si', 'activo'),
 ('5c25209703a210.25306180', 'casiopea', 'ende', 'casiopea76@hotmail.com', NULL, '0000-00-00', '$2y$10$z4Y71tC689Osp7F08TmfHuW1hrRSLAHGAsngHRifprTaSjdfIj10u', '2018-12-27 18:57:27', '2018-12-27 18:57:27', 'usr-1', 'si', 'activo'),
-('5c2669552891b4.61655757', 'pedrito', 'q', 'correo7@prueba.com', NULL, '0000-00-00', '$2y$10$UJ/I13bBDVdEE6o99CUvu.POCiJ8xPKEYeCRSgkpQduh0ZiKOSk0O', '2018-12-28 18:20:05', '2018-12-28 18:20:05', 'usr-1', 'si', 'activo');
+('5c2669552891b4.61655757', 'pedrito', 'q', 'correo7@prueba.com', NULL, '0000-00-00', '$2y$10$UJ/I13bBDVdEE6o99CUvu.POCiJ8xPKEYeCRSgkpQduh0ZiKOSk0O', '2018-12-28 18:20:05', '2018-12-28 18:20:05', 'usr-1', 'si', 'activo'),
+('5c2e93b02a6ee1.32959007', 'Andres', 'Ruelas', 'pixelbiff@gmail.com', NULL, '0000-00-00', '$2y$10$mNOgUy/odIeAKFj2nStNPe1IpV0QwN6KvWuszild2WkJfT9wtePum', '2019-01-03 22:58:56', '2019-01-03 22:58:56', 'usr-1', 'si', 'activo');
 
 -- --------------------------------------------------------
 
@@ -7068,6 +7269,12 @@ ALTER TABLE `conversaciones`
   ADD PRIMARY KEY (`ID_CONVERSACION`);
 
 --
+-- Indices de la tabla `conversaciones_mensajes`
+--
+ALTER TABLE `conversaciones_mensajes`
+  ADD PRIMARY KEY (`ID_MENSAJE`);
+
+--
 -- Indices de la tabla `direcciones`
 --
 ALTER TABLE `direcciones`
@@ -7128,12 +7335,6 @@ ALTER TABLE `lista_negra`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indices de la tabla `mensajes`
---
-ALTER TABLE `mensajes`
-  ADD PRIMARY KEY (`ID_MENSAJE`);
-
---
 -- Indices de la tabla `mensajes_pedidos`
 --
 ALTER TABLE `mensajes_pedidos`
@@ -7173,6 +7374,12 @@ ALTER TABLE `pedidos`
 -- Indices de la tabla `pedidos_productos`
 --
 ALTER TABLE `pedidos_productos`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `pedidos_tiendas`
+--
+ALTER TABLE `pedidos_tiendas`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -7302,9 +7509,9 @@ ALTER TABLE `transportistas`
   ADD PRIMARY KEY (`ID_TRANSPORTISTA`);
 
 --
--- Indices de la tabla `transportistas_disponibilidad`
+-- Indices de la tabla `transportistas_rangos`
 --
-ALTER TABLE `transportistas_disponibilidad`
+ALTER TABLE `transportistas_rangos`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -7351,22 +7558,22 @@ ALTER TABLE `adjuntos_usuarios`
 -- AUTO_INCREMENT de la tabla `calificaciones_productos`
 --
 ALTER TABLE `calificaciones_productos`
-  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `calificaciones_servicios`
 --
 ALTER TABLE `calificaciones_servicios`
-  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
+  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
 --
 -- AUTO_INCREMENT de la tabla `categorias_productos`
 --
 ALTER TABLE `categorias_productos`
-  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT de la tabla `categorias_publicaciones`
 --
@@ -7383,10 +7590,15 @@ ALTER TABLE `categorias_servicios`
 ALTER TABLE `conversaciones`
   MODIFY `ID_CONVERSACION` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `conversaciones_mensajes`
+--
+ALTER TABLE `conversaciones_mensajes`
+  MODIFY `ID_MENSAJE` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `direcciones`
 --
 ALTER TABLE `direcciones`
-  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `divisas`
 --
@@ -7401,12 +7613,12 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `ID_FAVORITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_FAVORITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `galeria_productos`
 --
 ALTER TABLE `galeria_productos`
-  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `galeria_servicios`
 --
@@ -7427,11 +7639,6 @@ ALTER TABLE `lista_blanca`
 --
 ALTER TABLE `lista_negra`
   MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `mensajes`
---
-ALTER TABLE `mensajes`
-  MODIFY `ID_MENSAJE` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `mensajes_pedidos`
 --
@@ -7461,17 +7668,22 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_productos`
 --
 ALTER TABLE `pedidos_productos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT de la tabla `pedidos_tiendas`
+--
+ALTER TABLE `pedidos_tiendas`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT de la tabla `perfiles_servicios`
 --
 ALTER TABLE `perfiles_servicios`
-  MODIFY `ID_PERFIL` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID_PERFIL` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `preguntas_frecuentes`
 --
@@ -7481,12 +7693,12 @@ ALTER TABLE `preguntas_frecuentes`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `ID_PRODUCTO` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID_PRODUCTO` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `productos_combinaciones`
 --
 ALTER TABLE `productos_combinaciones`
-  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `productos_preguntas`
 --
@@ -7566,12 +7778,12 @@ ALTER TABLE `tiendas`
 -- AUTO_INCREMENT de la tabla `transportistas`
 --
 ALTER TABLE `transportistas`
-  MODIFY `ID_TRANSPORTISTA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_TRANSPORTISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT de la tabla `transportistas_disponibilidad`
+-- AUTO_INCREMENT de la tabla `transportistas_rangos`
 --
-ALTER TABLE `transportistas_disponibilidad`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `transportistas_rangos`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `variaciones_mayoreo`
 --

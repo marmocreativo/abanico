@@ -47,6 +47,7 @@
                    <a class="nav-link" href="<?php echo base_url('usuario/registrar');?>"> <span class="fa fa-pen-square"></span> Registrarme</a>
                  </nav>
               </div>
+              <!--
               <div class="col border-left text-center">
                 <h6> <i class="fa fa-user"></i> Invitado</h6>
                 <form class="" action="<?php echo base_url('pago_invitado_paso_2');?>" method="post">
@@ -70,6 +71,7 @@
                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
                  </form>
               </div>
+            -->
             </div>
           </div>
         </div>
