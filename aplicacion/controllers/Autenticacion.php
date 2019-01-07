@@ -97,7 +97,7 @@ class Autenticacion extends CI_Controller {
 				$this->data['info'] = array();
 				$this->data['info']['NOMBRE'] = $parametros['USUARIO_NOMBRE'];
 				$this->data['info']['ID'] = $parametros['ID_USUARIO'];
-				$this->data['info']['CLAVE'] = $this->AutenticacionModel->crear_pin($parametros['ID_USUARIO']);;
+				$this->data['info']['CLAVE'] = $this->AutenticacionModel->crear_pin($parametros['ID_USUARIO']);
 
 					$config['protocol']    = 'smtp';
 	        $config['smtp_host']    = $this->data['op']['mailer_host'];
