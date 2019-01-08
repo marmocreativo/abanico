@@ -130,6 +130,15 @@ html, body{
   background-color: #333;
   color: #fff;
 }
+.filtro-cont{
+  background-color: transparent;
+  padding: 0;
+}
+.filtro-sel {
+    background: lightgray;
+    border-radius: 0;
+    border-bottom: solid 1px #b5b5b5;
+}
 .imagen-curioso{
   transform: scale(1.5) translateY(50px) translateX(50px);
   position: absolute;
@@ -197,9 +206,14 @@ html, body{
   margin-bottom: 5px;
   font-size: 0.8em;
   color:#fff;
-  background-color:#0081c2;
   -webkit-clip-path:polygon(10% 0,100% 0,100% 100%,0 100%);
   clip-path:polygon(10% 0,100% 0,100% 100%,0 100%)
+}
+.cuadricula-productos a .etiqueta-1{
+  background-color: #28a745;
+}
+.cuadricula-productos a .etiqueta-3{
+  background-color: #dc3545;
 }
 .cuadricula-productos .imagen-producto .overlay-producto{
   position: absolute;
@@ -209,6 +223,12 @@ html, body{
   background-color: red;
   opacity: 0;
   transition: all ease 500ms;
+}
+.cuadricula-productos .imagen-producto .overlay-producto .overlay-producto-in{
+  width: 80%;
+  height: 80%;
+  border: solid 1px white;
+  margin: 12.5% 9.8%;
 }
 .cuadricula-productos .imagen-producto:hover .overlay-producto{
   opacity: 0.8;
@@ -254,8 +274,8 @@ html, body{
 .cuadricula-productos .title{font-size:16px;font-weight:400;text-transform:capitalize;margin:0 0 3px;transition:all .3s ease 0s}
 .cuadricula-productos .title a{color:rgba(0,0,0,.5)}
 .cuadricula-productos .title a:hover{color:#c0392b}
-.cuadricula-productos .price{color:#000;font-size:17px;font-weight: bold;margin:0;display:block;transition:all .5s ease 0s}
-.cuadricula-productos .price-list{color:#000;font-size:15px; text-decoration: line-through; margin:0;display:block;transition:all .5s ease 0s}
+.cuadricula-productos .price{color:#6c757d;font-size:20px;font-weight: bold;margin:0;display:block;transition:all .5s ease 0s}
+.cuadricula-productos .price-list{color:#6c757d;font-size:14px; text-decoration: line-through; margin:0;display:block;transition:all .5s ease 0s}
 .cuadricula-productos .add-to-cart{display:block;color:#c0392b;font-weight:600;font-size:14px;opacity:0;position:absolute;left:10px;bottom:-20px;transition:all .5s ease 0s}
 .cuadricula-productos:hover .add-to-cart{opacity:1;bottom:0}
 @media only screen and (max-width:990px){ .cuadricula-productos{margin-bottom:30px} }
