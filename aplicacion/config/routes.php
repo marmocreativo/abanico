@@ -86,6 +86,7 @@ $route['ajax/carrito/(:any)'] = 'Ajax_Cargar_Carrito/$1';
 $route['login'] = 'Autenticacion';
 $route['login/(:any)'] = 'Autenticacion/$1';
 // Rutas de tienda}
+$route['test'] = 'Tienda_Test';
 $route['divisas'] = 'Tienda_Divisas';
 $route['divisas/(:any)'] = 'Tienda_Divisas/$1';
 $route['categoria/servicios'] = 'Tienda_Categoria_Servicios';
