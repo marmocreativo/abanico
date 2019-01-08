@@ -145,6 +145,11 @@
             <a href="<?php echo base_url('admin/perfiles_servicios/actualizar?id_usuario='.$usuario['ID_USUARIO'].'&id_perfil='.$perfil['ID_PERFIL']); ?>" class="btn btn-link btn-block"> <i class="fa fa-pencil-alt"></i> Editar</a>
           </div>
         </div>
+        <div class="card border-warning text-center  mb-4">
+          <div class="card-body">
+            <a href="<?php echo base_url('admin/servicios?id_usuario='.$usuario['ID_USUARIO']);?>">Ver Servicios</a>
+          </div>
+        </div>
       <?php }else{ ?>
         <div class="card">
           <div class="card-header">

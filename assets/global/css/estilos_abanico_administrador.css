@@ -43,6 +43,16 @@ background-color: red;
   min-height: 700px;
   padding-top:1%;
 }
+.portada-servicios {
+  display:block;
+  width:100%;
+  max-width: 600px;
+  background-color: red;
+   padding-top: 100%;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
 
 /*
 | -------------------------------------------------------------------------
