@@ -1,5 +1,5 @@
 <?php
-class PedidosTiendasModel extends CI_Model {
+class RutasGuiasModel extends CI_Model {
   function __construct()
   {
       parent::__construct();
@@ -21,7 +21,7 @@ class PedidosTiendasModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
-    $query = $this->db->get('pedidos_tiendas');
+    $query = $this->db->get('rutas_abanico');
     return $query->result();
   }
   /*
@@ -30,24 +30,33 @@ class PedidosTiendasModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista_tiendas($id_pedido){
-    $this->db->select('tiendas.*,pedidos_tiendas.*');
-    $this->db->join('tiendas','pedidos_tiendas.ID_TIENDA = tiendas.ID_TIENDA');
-    $this->db->where('ID_PEDIDO',$id_pedido);
-    $query = $this->db->get('pedidos_tiendas');
+  function lista_rutas($guia){
+      $this->db->where('GUIA_CODIGO',$guia);
+      $this->db->order_by('RUTA_FECHA_REGISTRO DESC');
+    $query = $this->db->get('rutas_abanico');
     return $query->result();
   }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
-  function detalles($id){
-    return $this->db->get_where('pedidos_tiendas',array('ID_PEDIDO'=>$id))->row_array();
+  function detalles($guia){
+    return $this->db->get_where('rutas_abanico',array('GUIA_CODIGO'=>$guia))->row_array();
+  }
+
+  /*
+    * Conteo de productos
+ */
+  function conteo_rutas_abanico_usuario($id_usuario){
+
+    $this->db->where('ID_USUARIO',$id_usuario);
+    $query = $this->db->count_all_results('rutas_abanico');
+    return $query;
   }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
-    $this->db->insert('pedidos_tiendas',$parametros);
+    $this->db->insert('rutas_abanico',$parametros);
     return $this->db->insert_id();
   }
   /*
@@ -57,7 +66,7 @@ class PedidosTiendasModel extends CI_Model {
  */
   function actualizar($id,$parametros){
     $this->db->where('ID_PEDIDO',$id);
-    return $this->db->update('pedidos_tiendas',$parametros);
+    return $this->db->update('rutas_abanico',$parametros);
   }
   /*
     * Cambio el estado de la entrada, puede ser cualquier estado
@@ -66,7 +75,7 @@ class PedidosTiendasModel extends CI_Model {
  */
   function estado($id,$activo){
     $this->db->where('ID_PEDIDO',$id);
-    return $this->db->update('pedidos_tiendas',array('PAIS_ESTADO'=>$activo));
+    return $this->db->update('rutas_abanico',array('PAIS_ESTADO'=>$activo));
   }
 
 }

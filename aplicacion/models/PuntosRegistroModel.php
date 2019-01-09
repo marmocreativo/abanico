@@ -32,8 +32,6 @@ class PuntosRegistroModel extends CI_Model {
  */
   function lista_puntos_registro($id_usuario){
     $this->db->where('ID_USUARIO', $id_usuario);
-    $this->db->where('PUNTO_TIPO !=', 'fiscal');
-    $this->db->where('PUNTO_TIPO !=', 'perfil');
     $query = $this->db->get('puntos_registro');
     return $query->result();
   }

@@ -45,6 +45,16 @@ class PedidosProductosModel extends CI_Model {
     return $query->result();
   }
   /*
+  * Conteo
+  */
+  function conteo_productos_pedido($id_pedido){
+
+    $this->db->where('ID_PEDIDO',$id_pedido);
+    $this->db->select_sum('CANTIDAD');
+    $query = $this->db->get('pedidos_productos');
+    return $query->row();
+  }
+  /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){

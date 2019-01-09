@@ -47,6 +47,7 @@
         <ul class="sub-menu children dropdown-menu">
           <li><i class="fa fa-truck"></i><a href="<?php echo base_url('admin/transportistas'); ?>">Transportistas</a></li>
           <li><i class="fa fa-map-marker"></i><a href="<?php echo base_url('admin/puntos_registro'); ?>">Puntos de Registro</a></li>
+          <li><i class="fa fa-recipt"></i><a href="<?php echo base_url('admin/guias'); ?>">Guías Abanico</a></li>
         </ul>
     </li>
     <li class="menu-item-has-children dropdown">
