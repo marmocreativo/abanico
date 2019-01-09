@@ -28,6 +28,8 @@ class Tienda_Producto extends CI_Controller {
 		$this->load->model('FavoritosModel');
 		$this->load->model('CalificacionesModel');
 		$this->load->model('ProductosCombinacionesModel');
+		$this->load->model('ConversacionesModel');
+		$this->load->model('ConversacionesMensajesModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-primary";
@@ -130,4 +132,45 @@ public function favorito()
 		}
 
 	}
+	public function contacto()
+ {
+	 if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+		 $this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+		 redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+	 }
+	 $this->form_validation->set_rules('MensajeTexto', 'Mensaje', 'required', array( 'required' => 'Debes enviar un mensaje %s'));
+
+		if($this->form_validation->run())
+		{
+			// Conversación
+			$parametros_conversacion = array(
+				'ID_USUARIO_A'=>$this->input->post('IdRemitente'),
+				'ID_USUARIO_B'=>$this->input->post('IdReceptor'),
+				'ID_OBJETO'=>$this->input->post('IdProducto'),
+				'CONVERSACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+				'CONVERSACION_FECHA_ACTUALIZACION'=> date('Y-m-d H:i:s'),
+				'CONVERSACION_TIPO'=>'pregunta producto',
+				'CONVERSACION_ESTADO'=>'no leido'
+			);
+			$conversacion_id = $this->ConversacionesModel->crear($parametros_conversacion);
+			// Mensaje
+			$mensaje = '<p><b>Producto:</b> '.$this->input->post('ProductoNombre').'</p>';
+			$mensaje .= '<p>'.$this->input->post('MensajeTexto').'</p>';
+			$parametros_mensaje = array(
+				'ID_CONVERSACION'=>$conversacion_id,
+				'ID_REMITENTE'=>$this->input->post('IdRemitente'),
+				'MENSAJE_ASUNTO'=>'Pregunta sobre un Producto',
+				'MENSAJE_TEXTO'=>$mensaje,
+				'MENSAJE_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+				'MENSAJE_ESTADO'=>'no leido'
+			);
+			$mensaje_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
+			// Mensaje FeedBack
+			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado, recibirás la respuesta en tu <a href="'.base_url('usuario/mensajes').'">Bandeja de Entrada</a>');
+			// Redirecciono
+			redirect(base_url('producto?id='.$this->input->post('IdProducto')));
+
+		}
+
+ }
 }

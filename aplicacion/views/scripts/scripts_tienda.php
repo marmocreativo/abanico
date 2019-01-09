@@ -184,12 +184,19 @@ GALERIA
       galleryFeatured.src = image;
     });
   });
-
-  jQuery(function() {
-      jQuery('#EstrellasCalificacion').barrating({
-        theme: 'fontawesome-stars'
-      });
-   });
+  /*
+  -----------------
+  Calificación Estrellas
+  -----------------
+  */
+ jQuery(function() {
+   jQuery('.estrellas').starrr({
+     emptyClass: 'far fa-star',
+    change: function(e, value){
+      jQuery('#EstrellasCalificacion').val(value)
+   }
+});
+  });
 
    // CARRITO
 </script>

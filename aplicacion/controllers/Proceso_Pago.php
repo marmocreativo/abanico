@@ -135,9 +135,11 @@ class Proceso_Pago extends CI_Controller {
 		if(empty($_SESSION['carrito']['productos'])){
 			redirect(base_url('carrito'));
 		}
+		$folio = folio_pedido();
 		// Variables inicializadas
 		$correos_tiendas= array();
 		$parametros_pedido = array(
+			'PEDIDO_FOLIO'=>$folio,
 			'ID_USUARIO' => $this->input->post('IdUsuario'),
 			'PEDIDO_NOMBRE' => $this->input->post('PedidoNombre'),
 			'PEDIDO_CORREO' => $this->input->post('PedidoCorreo'),

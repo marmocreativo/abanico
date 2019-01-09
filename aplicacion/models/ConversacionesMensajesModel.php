@@ -25,10 +25,17 @@ class ConversacionesMensajesModel extends CI_Model {
     return $query->result();
   }
 
-  function lista_conversaciones_mensajes_conversacion($id_conversacion){
-    $this->db->where('ID_CONVERSACION',$id_conversacion);
-    $this->db->order_by('conversaciones_mensajes.MENSAJE_FECHA_REGISTRO');
-
+  function lista_mensajes_conversacion($id_conversacion){
+    $this->db->select([
+      'usuarios.USUARIO_NOMBRE',
+      'usuarios.USUARIO_APELLIDOS',
+      'conversaciones_mensajes.ID_REMITENTE',
+      'conversaciones_mensajes.MENSAJE_ASUNTO',
+      'conversaciones_mensajes.MENSAJE_TEXTO'
+    ]);
+    $this->db->join('usuarios','conversaciones_mensajes.ID_REMITENTE = usuarios.ID_USUARIO','right');
+    $this->db->order_by('conversaciones_mensajes.MENSAJE_FECHA_REGISTRO ASC');
+    $this->db->where('conversaciones_mensajes.ID_CONVERSACION',$id_conversacion);
     $query = $this->db->get('conversaciones_mensajes');
     return $query->result();
   }

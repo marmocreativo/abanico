@@ -91,6 +91,9 @@
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Características</a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-link" id="preguntas-tab" data-toggle="tab" href="#preguntas" role="tab" aria-controls="preguntas" aria-selected="false">Preguntas</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Acerca del Vendedor</a>
                   </li>
                 </ul>
@@ -178,6 +181,30 @@
                           </table>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="preguntas" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="p-3">
+                      <form class="" action="<?php echo base_url('producto/contacto'); ?>" method="post">
+                        <input type="hidden" name="IdReceptor" value="<?php echo $producto['ID_USUARIO']; ?>">
+                        <input type="hidden" name="IdRemitente" value="<?php echo $_SESSION['usuario']['id']; ?>">
+                        <input type="hidden" name="ProductoNombre" value="<?php echo $producto['PRODUCTO_NOMBRE']; ?>">
+                        <input type="hidden" name="IdProducto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
+                        <div class="row">
+                          <table class="table">
+                            <tr>
+                              <td><strong>Remitente:</strong></td>
+                              <td><?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']?></td>
+                            </tr>
+                          </table>
+                        </div>
+                        <p> <i class="fa fa-info-circle"></i> Tienes dudas sobre el producto?</p>
+                        <div class="form-group">
+                          <label for="MensajeTexto">Mensaje</label>
+                          <textarea class="form-control" name="MensajeTexto" rows="8" required></textarea>
+                        </div>
+                        <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> Contactar</button>
+                      </form>
                     </div>
                   </div>
                   <div class="tab-pane fade p-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -330,33 +357,6 @@
               </div>
           </div>
         </div>
-      </div>
-      <div class="row mt-5 pt-3 border-top">
-        <!--
-        <div class="col">
-          <h5 class="mb-3"> <span class="fa fa-comments"></span> Comentarios</h5>
-          <div class="media">
-            <img class="mr-3 img-thumbnail rounded-circle" src="<?php echo base_url('assets/global/img/usuario_default.png') ?>" width="64" alt="">
-            <div class="media-body">
-              <h5 class="mt-0 mb-1">Nombre del usuario</h5>
-              <p>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </p>
-              <div class="media mt-3">
-                <a class="pr-3" href="#">
-                    <img class="mr-3 img-thumbnail rounded-circle" src="<?php echo base_url('assets/global/img/usuario_default.png') ?>" width="64" alt="">
-                </a>
-                <div class="media-body">
-                  <h5 class="mt-0 mb-1">Nombre del usuario</h5>
-                  <p>
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      -->
       </div>
     </div>
   </div>

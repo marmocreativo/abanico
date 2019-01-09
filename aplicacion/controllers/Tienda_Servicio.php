@@ -139,25 +139,29 @@ public function favorito()
 		{
 			// Conversación
 			$parametros_conversacion = array(
-				'ID_REMITENTE'=>$this->input->post('IdRemitente'),
-				'ID_RECEPTOR'=>$this->input->post('IdReceptor'),
-				'CONVERSACION_FECHA_CREACION'=> date('Y-m-d H:i:s'),
+				'ID_USUARIO_A'=>$this->input->post('IdRemitente'),
+				'ID_USUARIO_B'=>$this->input->post('IdReceptor'),
+				'ID_OBJETO'=>$this->input->post('IdServicio'),
+				'CONVERSACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+				'CONVERSACION_FECHA_ACTUALIZACION'=> date('Y-m-d H:i:s'),
+				'CONVERSACION_TIPO'=>'mensaje servicio',
 				'CONVERSACION_ESTADO'=>'no leido'
 			);
 			$conversacion_id = $this->ConversacionesModel->crear($parametros_conversacion);
 			// Mensaje
-			$mensaje = '<p><b>Servicio:<b> '.$this->input->post('ServicioNombre').'</p>';
+			$mensaje = '<p><b>Servicio:</b> '.$this->input->post('ServicioNombre').'</p>';
 			$mensaje .= '<p>'.$this->input->post('MensajeTexto').'</p>';
 			$parametros_mensaje = array(
 				'ID_CONVERSACION'=>$conversacion_id,
 				'ID_REMITENTE'=>$this->input->post('IdRemitente'),
+				'MENSAJE_ASUNTO'=>'Solicitud de Servicio',
 				'MENSAJE_TEXTO'=>$mensaje,
 				'MENSAJE_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 				'MENSAJE_ESTADO'=>'no leido'
 			);
-			$conversacion_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
+			$mensaje_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
 			// Mensaje FeedBack
-			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado');
+			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado, recibirás la respuesta en tu <a href="'.base_url('usuario/mensajes').'">Bandeja de Entrada</a>');
 			// Redirecciono
 			redirect(base_url('servicio/contacto?id='.$this->input->post('IdServicio')));
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 07-01-2019 a las 19:29:38
+-- Tiempo de generación: 09-01-2019 a las 12:27:42
 -- Versión del servidor: 5.6.40-84.0-log
 -- Versión de PHP: 5.6.30
 
@@ -64,7 +64,8 @@ INSERT INTO `calificaciones_productos` (`ID_CALIFICACION`, `ID_PRODUCTO`, `ID_US
 (7, 19, '5c0653d43d92e7.75019474', '5c08a9dc2cb096.56391251', 1, 'Este librero esta muy feo', 'activo', '2018-12-27 18:07:28'),
 (8, 8, '5c0653d43d92e7.75019474', '5c08a9dc2cb096.56391251', 5, '', 'activo', '2018-12-27 18:17:55'),
 (9, 20, '5c25209703a210.25306180', '5c0653d43d92e7.75019474', 4, 'excelente ', 'activo', '2018-12-28 16:19:30'),
-(10, 22, '5c0653d43d92e7.75019474', '5c0653d43d92e7.75019474', 5, 'Deliciosa', 'activo', '2019-01-03 23:07:12');
+(10, 22, '5c0653d43d92e7.75019474', '5c0653d43d92e7.75019474', 5, 'Deliciosa', 'activo', '2019-01-03 23:07:12'),
+(11, 17, '5c08a9dc2cb096.56391251', '5c25209703a210.25306180', 4, 'muy utilies y practicas', 'activo', '2019-01-08 23:16:51');
 
 -- --------------------------------------------------------
 
@@ -394,8 +395,9 @@ CREATE TABLE `conversaciones` (
   `ID_CONVERSACION` int(11) NOT NULL,
   `ID_USUARIO_A` varchar(255) DEFAULT NULL,
   `ID_USUARIO_B` varchar(255) DEFAULT NULL,
+  `ID_OBJETO` int(11) DEFAULT NULL,
   `CONVERSACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `CONVERSACION_FECHA_ACTUALIZACIÓN` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `CONVERSACION_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `CONVERSACION_TIPO` varchar(255) NOT NULL,
   `CONVERSACION_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -409,7 +411,7 @@ CREATE TABLE `conversaciones` (
 CREATE TABLE `conversaciones_mensajes` (
   `ID_MENSAJE` int(11) NOT NULL,
   `ID_CONVERSACION` int(11) DEFAULT NULL,
-  `ID_REMITENTE` int(11) DEFAULT NULL,
+  `ID_REMITENTE` varchar(255) NOT NULL,
   `MENSAJE_ASUNTO` varchar(255) NOT NULL,
   `MENSAJE_TEXTO` text,
   `MENSAJE_ESTADO` varchar(255) DEFAULT NULL,
@@ -448,10 +450,11 @@ INSERT INTO `direcciones` (`ID_DIRECCION`, `ID_USUARIO`, `ID_TIENDA`, `DIRECCION
 (10, '5c0653d43d92e7.75019474', 0, 'envio', 'Casa', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', 'Cerca de Escuela Primaria No. 12 Ernesto Alconedo', '2018-12-22 16:40:33', '2018-12-22 16:40:33'),
 (11, '5c0653d43d92e7.75019474', 1, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '-', '2018-12-22 16:48:05', '2018-12-22 16:48:05'),
 (13, '5c251a08bf0109.40704946', 7, 'fiscal', 'Direccion Tienda', 'México', 'Nuevo León', 'Nuevo Leon ', 'Ciénega de Flores', 'cienga', '598 interior 8', '11850', '-', '2018-12-27 18:53:23', '2018-12-27 18:53:23'),
-(14, '5c25209703a210.25306180', 8, 'fiscal', 'Direccion Tienda', 'México', 'Veracruz', 'Banderilla', 'Banderilla', 'a', 'San Juan de Letran 68', '11850', '-', '2018-12-27 19:01:26', '2018-12-27 19:01:26'),
+(14, '5c25209703a210.25306180', 8, 'fiscal', 'Direccion Tienda', 'México', 'Veracruz', 'Banderilla', 'Banderilla', 'a', 'San Juan de Letran 68', '11850', '-', '2019-01-08 23:22:54', '2019-01-08 23:22:54'),
 (15, '5c0653d43d92e7.75019474', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'Avenida 561 No. 148', 'Avenida 561 No. 148', '07969', '-', '2019-01-03 23:36:42', '2019-01-03 23:36:42'),
 (16, '5c0653d43d92e7.75019474', 0, 'envio', 'Trabajo', 'México', 'Ciudad de México', 'Ciudad de México', 'Benito Juárez', 'Roma Norte', 'Medellín 101', '06700 ', '', '2019-01-06 22:06:35', '2019-01-06 22:06:35'),
-(17, '5c08a9dc2cb096.56391251', 0, 'envio', 'la ofi', 'México', 'Ciudad de México', '', 'Milpa Alta', 'Chalmita', '35 6 ', '12410', '', '2019-01-07 17:55:28', '2019-01-07 17:55:28');
+(17, '5c08a9dc2cb096.56391251', 0, 'envio', 'la ofi', 'México', 'Ciudad de México', '', 'Milpa Alta', 'Chalmita', '35 6 ', '12410', '', '2019-01-07 17:55:28', '2019-01-07 17:55:28'),
+(18, '5c0839a2158e44.99631671', 2, 'fiscal', 'Direccion Tienda', 'México', 'Chihuahua', '', 'Bocoyna', 'kjjj', 'hhhh', '5568', '-', '2019-01-08 22:41:23', '2019-01-08 22:41:23');
 
 -- --------------------------------------------------------
 
@@ -660,6 +663,7 @@ INSERT INTO `galeria_servicios` (`ID_GALERIA`, `ID_SERVICIO`, `GALERIA_ARCHIVO`,
 
 CREATE TABLE `guias_abanico` (
   `GUIA_CODIGO` varchar(255) NOT NULL,
+  `ID_PEDIDO` int(11) NOT NULL,
   `GUIA_NOMBRE` varchar(255) DEFAULT NULL,
   `GUIA_DIRECCION` text,
   `GUIA_TELEFONO` varchar(255) DEFAULT NULL,
@@ -6456,6 +6460,7 @@ INSERT INTO `paises` (`ID_PAIS`, `PAIS_ISO`, `PAIS_NOMBRE`, `PAIS_ESTADO`) VALUE
 
 CREATE TABLE `pedidos` (
   `ID_PEDIDO` int(11) NOT NULL,
+  `PEDIDO_FOLIO` varchar(255) NOT NULL,
   `ID_USUARIO` varchar(255) NOT NULL,
   `PEDIDO_NOMBRE` text,
   `PEDIDO_CORREO` varchar(255) DEFAULT NULL,
@@ -6486,11 +6491,11 @@ CREATE TABLE `pedidos` (
 -- Volcado de datos para la tabla `pedidos`
 --
 
-INSERT INTO `pedidos` (`ID_PEDIDO`, `ID_USUARIO`, `PEDIDO_NOMBRE`, `PEDIDO_CORREO`, `PEDIDO_TELEFONO`, `ID_DIRECCION`, `PEDIDO_DIRECCION`, `PEDIDO_DIVISA`, `PEDIDO_CONVERSION`, `PEDIDO_IMPORTE_PRODUCTOS_PARCIAL`, `PEDIDO_IMPORTE_PRODUCTOS_TOTAL`, `PEDIDO_IMPORTE_ENVIO_PARCIAL`, `PEDIDO_IMPORTE_ENVIO_TOTAL`, `PEDIDO_ID_TRANSPORTISTA`, `PEDIDO_NOMBRE_TRANSPORTISTA`, `PEDIDO_RECIBE`, `PEDIDO_COMENTARIOS`, `PEDIDO_IMPORTE_DESCUENTO`, `PEDIDO_DESCUENTO_DESCRIPCION`, `PEDIDO_IMPORTE_TOTAL`, `PEDIDO_FORMA_PAGO`, `PEDIDO_ESTADO_PAGO`, `PEDIDO_ESTADO_PEDIDO`, `PEDIDO_FECHA_REGISTRO`, `PEDIDO_FECHA_ACTUALIZACION`) VALUES
-(21, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '158.00', '158.00', '156.00', '156.00', 3, 'Abanico', NULL, NULL, NULL, NULL, '314.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:52', '2019-01-08 01:21:52'),
-(22, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 16, 'Medellín 101, Roma Norte, Benito Juárez, Ciudad de México, Ciudad de México, 06700 , México', 'USD', '0.049', '7.74', '13.62', '7.64', '15.29', 3, 'Abanico', NULL, NULL, NULL, NULL, '28.91', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:55', '2019-01-08 01:21:55'),
-(23, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '280.00', '430.00', '156.00', '312.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '742.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:58', '2019-01-08 01:21:58'),
-(24, '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', 17, '35 6 , Chalmita, Milpa Alta, , Ciudad de México, 12410, México', 'MXN', '1.000', '500.00', '500.00', '156.00', '156.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '656.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:22:10', '2019-01-08 01:22:10');
+INSERT INTO `pedidos` (`ID_PEDIDO`, `PEDIDO_FOLIO`, `ID_USUARIO`, `PEDIDO_NOMBRE`, `PEDIDO_CORREO`, `PEDIDO_TELEFONO`, `ID_DIRECCION`, `PEDIDO_DIRECCION`, `PEDIDO_DIVISA`, `PEDIDO_CONVERSION`, `PEDIDO_IMPORTE_PRODUCTOS_PARCIAL`, `PEDIDO_IMPORTE_PRODUCTOS_TOTAL`, `PEDIDO_IMPORTE_ENVIO_PARCIAL`, `PEDIDO_IMPORTE_ENVIO_TOTAL`, `PEDIDO_ID_TRANSPORTISTA`, `PEDIDO_NOMBRE_TRANSPORTISTA`, `PEDIDO_RECIBE`, `PEDIDO_COMENTARIOS`, `PEDIDO_IMPORTE_DESCUENTO`, `PEDIDO_DESCUENTO_DESCRIPCION`, `PEDIDO_IMPORTE_TOTAL`, `PEDIDO_FORMA_PAGO`, `PEDIDO_ESTADO_PAGO`, `PEDIDO_ESTADO_PEDIDO`, `PEDIDO_FECHA_REGISTRO`, `PEDIDO_FECHA_ACTUALIZACION`) VALUES
+(21, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '158.00', '158.00', '156.00', '156.00', 3, 'Abanico', NULL, NULL, NULL, NULL, '314.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:52', '2019-01-08 01:21:52'),
+(22, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 16, 'Medellín 101, Roma Norte, Benito Juárez, Ciudad de México, Ciudad de México, 06700 , México', 'USD', '0.049', '7.74', '13.62', '7.64', '15.29', 3, 'Abanico', NULL, NULL, NULL, NULL, '28.91', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:55', '2019-01-08 01:21:55'),
+(23, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '280.00', '430.00', '156.00', '312.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '742.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:58', '2019-01-08 01:21:58'),
+(24, '', '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', 17, '35 6 , Chalmita, Milpa Alta, , Ciudad de México, 12410, México', 'MXN', '1.000', '500.00', '500.00', '156.00', '156.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '656.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:22:10', '2019-01-08 01:22:10');
 
 -- --------------------------------------------------------
 
@@ -6681,7 +6686,10 @@ CREATE TABLE `productos_combinaciones` (
 
 INSERT INTO `productos_combinaciones` (`ID_COMBINACION`, `ID_PRODUCTO`, `COMBINACION_GRUPO`, `COMBINACION_OPCION`, `COMBINACION_PRECIO`, `COMBINACION_ANCHO`, `COMBINACION_ALTO`, `COMBINACION_PROFUNDO`, `COMBINACION_PESO`) VALUES
 (1, '22', 'Tamaño', 'Familiar', '150.00', '30.00', '30.00', '3.00', '1.00'),
-(2, '22', 'Tamaño', 'individual', '120.00', '30.00', '30.00', '3.00', '1.00');
+(2, '22', 'Tamaño', 'individual', '120.00', '30.00', '30.00', '3.00', '1.00'),
+(3, '20', 'tamano carta', 'blanca', '148.00', '15.00', '18.00', '5.00', '0.50'),
+(4, '20', 'tamano oficio', 'blanca', '158.00', '12.00', '18.00', '5.00', '0.50'),
+(5, '20', 'Tamano bolsillo', 'azul', '128.00', '15.00', '18.00', '5.00', '0.50');
 
 -- --------------------------------------------------------
 
@@ -6984,14 +6992,14 @@ CREATE TABLE `tiendas` (
 --
 
 INSERT INTO `tiendas` (`ID_TIENDA`, `ID_USUARIO`, `TIENDA_NOMBRE`, `TIENDA_RAZON_SOCIAL`, `TIENDA_RFC`, `TIENDA_TELEFONO`, `ID_DIRECCION`, `TIENDA_IMAGEN`, `TIENDA_ADMINISTRACION_PEDIDOS`, `TIENDA_FECHA_REGISTRO`, `TIENDA_FECHA_ACTUALIZACION`, `TIENDA_ESTADO`) VALUES
-(1, '5c0653d43d92e7.75019474', 'Espejo Negro', 'Espejo Negro SA de CV', 'ESNE34565677', '26032335', 0, 'tienda-5c1e6ac549a93.jpg', 'propio', '2018-12-05 14:05:30', '2019-01-06 22:02:39', 'activo'),
-(2, '5c0839a2158e44.99631671', 'TIendota', 'klakjalkjalksj', 'lkjalksjalksj', '26032335', 0, 'default.jpg', 'abanico', '2018-12-05 20:50:15', '2018-12-22 16:43:39', 'activo'),
+(1, '5c0653d43d92e7.75019474', 'Espejo Negro', 'Espejo Negro SA de CV', 'ESNE34565677', '26032335', 1, 'tienda-5c1e6ac549a93.jpg', 'propio', '2018-12-05 14:05:30', '2019-01-08 23:22:54', 'activo'),
+(2, '5c0839a2158e44.99631671', 'TIendota', 'klakjalkjalksj', 'lkjalksjalksj', '26032335', 18, 'default.jpg', 'abanico', '2018-12-05 20:50:15', '2019-01-08 22:41:23', 'activo'),
 (3, '5c0864799aba54.31749554', 'tania', 'tania saenz', 'SART880719368', '5555555555555', 0, 'default.jpg', 'abanico', '2018-12-05 23:52:48', '2018-12-22 16:43:41', 'activo'),
 (4, '5c08a9dc2cb096.56391251', 'Las mejores ollas', 'S.A. de C.V.', 'ROPC830134A33', '5555555555', 0, 'default.jpg', 'abanico', '2018-12-12 23:07:24', '2018-12-22 16:43:44', 'activo'),
 (5, '5c19944989f925.72741021', 'TIENDA DE MARTHA', 'TIENDA DE MARTHA SA DE CV', 'MAR456789R01', '5530003000', 0, 'default.jpg', 'abanico', '2018-12-19 01:22:24', '2018-12-22 16:43:46', 'activo'),
 (6, '5c19a694185cc1.36196879', 'TEINDA DE CARLOS', 'TIENDA DE CARLOS SA DE CV', 'CAR2343843TR25', '534545435', 0, 'default.jpg', 'abanico', '2018-12-19 02:03:05', '2018-12-22 16:43:49', 'activo'),
 (7, '5c251a08bf0109.40704946', 'PanchoVilla y asociados', 'S.R de LC', 'VPA601852', '222888666', 0, 'tienda-5c251fa34b3ed.jpg', 'abanico', '2018-12-27 18:53:23', '2018-12-27 18:53:23', 'activo'),
-(8, '5c25209703a210.25306180', 'Ende y ende ', 'S.R de LC', 'CAS080808', '12345678', 0, 'default.jpg', 'abanico', '2018-12-27 19:01:26', '2018-12-27 19:01:26', 'activo');
+(8, '5c25209703a210.25306180', 'Ende y ende ', 'S.R de LC', 'CAS080808', '12345678', 14, 'default.jpg', 'abanico', '2018-12-27 19:01:26', '2019-01-08 23:22:54', 'activo');
 
 -- --------------------------------------------------------
 
@@ -7180,14 +7188,14 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`ID_USUARIO`, `USUARIO_NOMBRE`, `USUARIO_APELLIDOS`, `USUARIO_CORREO`, `USUARIO_TELEFONO`, `USUARIO_FECHA_NACIMIENTO`, `USUARIO_PASSWORD`, `USUARIO_FECHA_REGISTRO`, `USUARIO_FECHA_ACTUALIZACION`, `USUARIO_TIPO`, `USUARIO_LISTA_DE_CORREO`, `USUARIO_ESTADO`) VALUES
 ('5c0653d43d92e7.75019474', 'Manuel', 'Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', '1989-04-18', '$2y$10$LXIw8Tq1BsAT3xaK6AQJBuA0l9Dxw/3qzMAbsRuzi4OQLoFQip3WS', '2018-12-04 17:15:48', '2019-01-02 20:30:12', 'adm-6', 'si', 'activo'),
-('5c0839a2158e44.99631671', 'Franco', 'Martínez', 'stmarmo@hotmail.com', '26032335', '0000-00-00', '$2y$10$8DAj92eWNoKP7RQ5y74Ds.A71kKPjCMk7tYBZXGlKayG/CnJkCpw2', '2018-12-06 03:48:34', '2018-12-28 17:14:25', 'usr-1', 'si', 'activo'),
+('5c0839a2158e44.99631671', 'Franco', 'Martínez', 'stmarmo@hotmail.com', '26032335  ', '0000-00-00', '$2y$10$8DAj92eWNoKP7RQ5y74Ds.A71kKPjCMk7tYBZXGlKayG/CnJkCpw2', '2018-12-06 03:48:34', '2019-01-08 22:41:23', 'vnd-2', 'si', 'activo'),
 ('5c0864799aba54.31749554', 'TANIA', 'RODRIGUEZ', 'saenztania19@gmail.com', '(559) 194-5042', '0000-00-00', '$2y$10$cNIjKg5FVO8kZ.qWWMiEYu1ZYGEykVraUjMobNXCjENE/g1GUl6Vy', '2018-12-05 23:51:21', '2019-01-02 20:30:19', 'adm-6', 'si', 'activo'),
 ('5c08a9dc2cb096.56391251', 'JORGE', 'CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', '0000-00-00', '$2y$10$a0nvxJfzsdHyQp6A8GGKwOnqQW/YmRDOw3En0gtVPtzjQZlhC3nE6', '2018-12-06 04:47:24', '2019-01-02 20:30:24', 'adm-6', 'si', 'activo'),
 ('5c19944989f925.72741021', 'Martha', 'Martínez Ruíz', 'mm@gmail.com', ' 5533227755  ', '2000-12-01', '$2y$10$rzDk0zx7IzDD0jogaHrKKeNUfBrOj48LqoTtbNO3PGKteIrWxDJwS', '2018-12-19 00:43:53', '2018-12-19 01:07:37', 'usr-1', 'si', 'activo'),
 ('5c19b1d094f6e6.26249130', 'Kimi', 'Luvi', 'kimi.luvi.tin.yee@gmail.com', NULL, '0000-00-00', '$2y$10$m8BAzr23tQqGWCX0sH0k5.zwPU0YpVtFlX2qFpfh8DjYSiW0YEO3q', '2018-12-19 02:49:52', '2018-12-19 02:58:15', 'usr-1', 'si', 'activo'),
 ('5c251a08bf0109.40704946', 'Pancho', 'Villa', 'lapancha@hotmail.com', ' 55555555555', '0000-00-00', '$2y$10$yJwpkii8XRpiWITyeKohIerglVyEPvwq2Vn0Db.B6NDsi/XxzVRyy', '2018-12-27 18:29:28', '2018-12-27 18:34:44', 'usr-1', 'si', 'activo'),
 ('5c251a8521d321.20926810', 'Beatriz', 'Buendía', 'bb@gmail.com', NULL, '0000-00-00', '$2y$10$eiVFTY6iznQ9yBrV5Nvn5uS7IcWd0rIe82gEil5V1SePx93cSraEy', '2018-12-27 18:31:33', '2018-12-27 18:31:33', 'usr-1', 'si', 'activo'),
-('5c25209703a210.25306180', 'casiopea', 'ende', 'casiopea76@hotmail.com', NULL, '0000-00-00', '$2y$10$z4Y71tC689Osp7F08TmfHuW1hrRSLAHGAsngHRifprTaSjdfIj10u', '2018-12-27 18:57:27', '2019-01-06 22:08:13', 'adm-6', 'si', 'activo'),
+('5c25209703a210.25306180', 'casiopea', 'ende', 'casiopea76@hotmail.com', NULL, '0000-00-00', '$2y$10$z4Y71tC689Osp7F08TmfHuW1hrRSLAHGAsngHRifprTaSjdfIj10u', '2018-12-27 18:57:27', '2019-01-08 23:22:54', 'vnd-2', 'si', 'activo'),
 ('5c2669552891b4.61655757', 'pedrito', 'q', 'correo7@prueba.com', NULL, '0000-00-00', '$2y$10$UJ/I13bBDVdEE6o99CUvu.POCiJ8xPKEYeCRSgkpQduh0ZiKOSk0O', '2018-12-28 18:20:05', '2018-12-28 18:20:05', 'usr-1', 'si', 'activo'),
 ('5c2e93b02a6ee1.32959007', 'Andres', 'Ruelas', 'pixelbiff@gmail.com', NULL, '0000-00-00', '$2y$10$mNOgUy/odIeAKFj2nStNPe1IpV0QwN6KvWuszild2WkJfT9wtePum', '2019-01-03 22:58:56', '2019-01-03 22:58:56', 'usr-1', 'si', 'activo');
 
@@ -7593,7 +7601,7 @@ ALTER TABLE `adjuntos_usuarios`
 -- AUTO_INCREMENT de la tabla `calificaciones_productos`
 --
 ALTER TABLE `calificaciones_productos`
-  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `calificaciones_servicios`
 --
@@ -7633,7 +7641,7 @@ ALTER TABLE `conversaciones_mensajes`
 -- AUTO_INCREMENT de la tabla `direcciones`
 --
 ALTER TABLE `direcciones`
-  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `divisas`
 --
@@ -7733,7 +7741,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `productos_combinaciones`
 --
 ALTER TABLE `productos_combinaciones`
-  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `productos_preguntas`
 --
