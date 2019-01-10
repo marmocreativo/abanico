@@ -185,6 +185,7 @@
                   </div>
                   <div class="tab-pane fade" id="preguntas" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="p-3">
+                      <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
                       <form class="" action="<?php echo base_url('producto/contacto'); ?>" method="post">
                         <input type="hidden" name="IdReceptor" value="<?php echo $producto['ID_USUARIO']; ?>">
                         <input type="hidden" name="IdRemitente" value="<?php echo $_SESSION['usuario']['id']; ?>">
@@ -205,6 +206,14 @@
                         </div>
                         <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> Contactar</button>
                       </form>
+                    <?php }else{ ?>
+                      <div class="card">
+                        <div class="card-body">
+                          <p>Para preguntar debes Iniciar Sesión.</p>
+                          <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
+                        </div>
+                      </div>
+                    <?php } ?>
                     </div>
                   </div>
                   <div class="tab-pane fade p-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -288,13 +297,8 @@
                             <input type="hidden" name="IdUsuario" value="<?php echo $producto['ID_USUARIO']; ?>">
                             <input type="hidden" name="IdCalificador" value="<?php echo $_SESSION['usuario']['id'] ?>">
                             <label for="EstrellasCalificacion">Califica este producto</label>
-                            <select id="EstrellasCalificacion" name="EstrellasCalificacion">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                            </select>
+                            <div class="estrellas"></div>
+                            <input type="hidden" id="EstrellasCalificacion" name="EstrellasCalificacion" value="1">
                             <div class="form-group">
                               <label for="ComentarioCalificacion">Comentario</label>
                               <textarea class="form-control" name="ComentarioCalificacion" rows="2" cols="80"></textarea>

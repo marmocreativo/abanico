@@ -24,6 +24,8 @@ class Admin_Pedidos extends CI_Controller {
 		$this->load->model('UsuariosModel');
 		$this->load->model('PedidosProductosModel');
 		$this->load->model('TiendasModel');
+		$this->load->model('PedidosTiendasModel');
+		$this->load->model('GuiasPedidosModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -79,9 +81,49 @@ class Admin_Pedidos extends CI_Controller {
 	{
 			$this->data['pedido'] = $this->PedidosModel->detalles($_GET['id_pedido']);
 			$this->data['usuario'] = $this->UsuariosModel->detalles($this->data['pedido']['ID_USUARIO']);
+			$this->data['tiendas'] = $this->PedidosTiendasModel->lista_tiendas($_GET['id_pedido']);
 			$this->data['productos'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$_GET['id_pedido']],'','');
+			$this->data['guias'] = $this->GuiasPedidosModel->lista_guias($_GET['id_pedido']);
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/detalles_pedido',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+	}
+	public function actualizar_estado()
+	{
+			$parametros = array(
+				'PEDIDO_ESTADO_PEDIDO'=>$this->input->post('EstadoPedido'),
+				'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s')
+			);
+			$this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros);
+			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
+      redirect(base_url('admin/pedidos/detalles?id_pedido=').$this->input->post('IdPedido'));
+	}
+	public function guia()
+	{
+			$this->form_validation->set_rules('IdPedido', 'Número de Orden del Pedido', 'required', array('required' => 'Debes escribir tu %s.'));
+
+		if($this->form_validation->run())
+		{
+			$guia = folio_pedido().'-'.$this->input->post('IdPedido');
+			$parametros = array(
+				'GUIA_CODIGO' => $guia,
+				'ID_PEDIDO' => $this->input->post('IdPedido'),
+				'GUIA_NOMBRE' => $this->input->post('NombreGuia'),
+				'GUIA_DIRECCION' => $this->input->post('DireccionGuia'),
+				'GUIA_TELEFONO' => $this->input->post('TelefonoGuia'),
+				'GUIA_CORREO' => $this->input->post('CorreoGuia'),
+				'GUIA_ESTADO' => 'Preparacion',
+				'GUIA_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+				'GUIA_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s')
+			);
+			$guia_id = $this->GuiasPedidosModel->crear($parametros);
+			$this->session->set_flashdata('exito', 'Tu Guía se asigno correctamente');
+      redirect(base_url('admin/pedidos/detalles?id_pedido=').$this->input->post('IdPedido'));
+
+		}else{
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/detalles_pedido',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+		}
 	}
 }
