@@ -27,8 +27,33 @@
                 </div>
                 <div class="card-body fila-gris">
                   <div class="row">
-                    <p class="card-text col-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel sem at leo sagittis lacinia. Nulla in tincidunt risus. Quisque et nisl dolor. Integer urna ante, cursus at magna sit amet, maximus ultricies eros. Sed tincidunt laoreet metus eget pellentesque. Sed at velit lectus. Cras gravida turpis vel congue varius.</p>
-                    <p class="card-text col-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel sem at leo sagittis lacinia. Nulla in tincidunt risus. Quisque et nisl dolor. Integer urna ante, cursus at magna sit amet, maximus ultricies eros. Sed tincidunt laoreet metus eget pellentesque. Sed at velit lectus. Cras gravida turpis vel congue varius.</p>
+                    <div class="card-text col-6"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel sem at leo sagittis lacinia. Nulla in tincidunt risus. Quisque et nisl dolor. Integer urna ante, cursus at magna sit amet, maximus ultricies eros. Sed tincidunt laoreet metus eget pellentesque. Sed at velit lectus. Cras gravida turpis vel congue varius.</p>
+                      <p>Maecenas ac dolor mattis mi commodo molestie ut eu arcu. Proin volutpat ipsum eu pellentesque tristique. Sed ultricies ex ut mauris pretium, et tincidunt lorem ultricies. Suspendisse non mauris orci. Suspendisse dignissim ante nec molestie dapibus. Aenean et nibh lectus. Fusce sit amet laoreet massa. Aenean vel lectus turpis. Etiam viverra erat id augue ornare, eget posuere justo pellentesque. Curabitur vel ultricies enim. Praesent vel metus et tellus ornare viverra in ac tellus. Quisque nulla orci, cursus a tincidunt sit amet, cursus et purus.</p></div>
+                    <div class="col-6">
+                      <div class="card border-primary">
+                        <h6 class="card-header bg-primary-15">Anexos</h6>
+                        <div class="card-body text-primary">
+                          <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">
+                              <i class="far fa-file-alt"></i>
+                              <span class="border-right mx-2"></span>
+                              Documento
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                              <i class="far fa-file-alt"></i>
+                              <span class="border-right mx-2"></span>
+                              Documento
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                              <i class="far fa-file-alt"></i>
+                              <span class="border-right mx-2"></span>
+                              Documento
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
                 </div>
                 </div>
               </div>
@@ -69,11 +94,17 @@
                 <div class="card opiniones-serv">
                   <div class="card-body">
                     <h5 class="card-title">Calificación promedio del servicio</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Opiniones</h6>
+                    <h1 style="display:inline;">4.6</h1>
+                      <span class="fa fa-star <?php echo 'text'.$primary; ?>"></span>
+                      <span class="fa fa-star <?php echo 'text'.$primary; ?>"></span>
+                      <span class="fa fa-star <?php echo 'text'.$primary; ?>"></span>
+                      <span class="fa fa-star <?php echo 'text'.$primary; ?>"></span>
+                      <span class="fa fa-star <?php echo 'text'.$primary; ?>"></span>
+                    <h6 class="card-subtitle my-3 text-muted">Opiniones de los usuarios</h6>
                     <div class="list-group">
                       <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
-                          <ul class="rating">
+                          <ul class="rating pl-0">
                             <li class="fa fa-star <?php echo 'text'.$primary; ?>"></li>
                             <li class="fa fa-star <?php echo 'text'.$primary; ?>"></li>
                             <li class="fa fa-star <?php echo 'text'.$primary; ?>"></li>
@@ -87,7 +118,7 @@
                       </a>
                       <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
-                          <ul class="rating">
+                          <ul class="rating pl-0">
                             <li class="fa fa-star <?php echo 'text'.$primary; ?>"></li>
                             <li class="fa fa-star <?php echo 'text'.$primary; ?>"></li>
                             <li class="fa fa-star <?php echo 'text'.$primary; ?>"></li>
@@ -101,7 +132,7 @@
                       </a>
                       <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
-                          <ul class="rating">
+                          <ul class="rating pl-0">
                             <li class="fa fa-star <?php echo 'text'.$primary; ?>"></li>
                             <li class="fa fa-star <?php echo 'text'.$primary; ?>"></li>
                             <li class="fa fa-star <?php echo 'text'.$primary; ?>"></li>
