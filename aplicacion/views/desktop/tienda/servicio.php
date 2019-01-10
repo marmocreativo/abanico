@@ -138,13 +138,8 @@
                             <input type="hidden" name="IdUsuario" value="<?php echo $servicio['ID_USUARIO']; ?>">
                             <input type="hidden" name="IdCalificador" value="<?php echo $_SESSION['usuario']['id'] ?>">
                             <label for="EstrellasCalificacion">Califica este servicio</label>
-                            <select id="EstrellasCalificacion" name="EstrellasCalificacion">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                            </select>
+                            <div class="estrellas"></div>
+                            <input type="hidden" id="EstrellasCalificacion" name="EstrellasCalificacion" value="1">
                             <div class="form-group">
                               <label for="ComentarioCalificacion">Comentario</label>
                               <textarea class="form-control" name="ComentarioCalificacion" rows="2" cols="80"></textarea>

@@ -3,7 +3,7 @@
         <a href="<?php echo base_url('admin'); ?>"><i class="menu-icon fa fa-laptop"></i>Escritorio </a>
     </li>
     <li class="menu-item-has-children dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-shopping-bag"></i>Pedios</a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-shopping-bag"></i>Pedidos</a>
         <ul class="sub-menu children dropdown-menu">
           <li><i class="fa fa-shopping-bag"></i><a href="<?php echo base_url('admin/pedidos'); ?>">Pedidos</a></li>
         </ul>
@@ -46,6 +46,8 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-truck"></i>Envios y Transporte</a>
         <ul class="sub-menu children dropdown-menu">
           <li><i class="fa fa-truck"></i><a href="<?php echo base_url('admin/transportistas'); ?>">Transportistas</a></li>
+          <li><i class="fa fa-map-marker"></i><a href="<?php echo base_url('admin/puntos_registro'); ?>">Puntos de Registro</a></li>
+          <li><i class="fa fa-recipt"></i><a href="<?php echo base_url('admin/guias'); ?>">Guías Abanico</a></li>
         </ul>
     </li>
     <li class="menu-item-has-children dropdown">
