@@ -38,6 +38,7 @@
         <div class="d-flex justify-content-arround align-items-center">
           <a class="navbar-brand mr-1" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
           <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias"><i class="fas fa-angle-down mr-2"></i>CATEGORÍAS</a>
+          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias"><i class="fas fa-angle-down mr-2"></i>SERVICIOS</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -53,7 +54,7 @@
                 <option value="servicios">En Servicios</option>
               </select>
               <div class="input-group-append">
-                <button type="submit" class="btn <?php echo 'btn'.$primary; ?>" type="button"> <i class="fa fa-search"></i> </button>
+                <button type="submit" class="btn <?php echo 'btn-outline'.$primary; ?>" type="button"> <i class="fa fa-search"></i> </button>
               </div>
             </div>
           </form>
@@ -67,6 +68,13 @@
           </ul>
         </div>
       </nav>
+    </div>
+    <div class="pre-footer">
+      <div class="barra-color barra-azul"></div>
+      <div class="barra-color barra-rosa"></div>
+      <div class="barra-color barra-amarillo"></div>
+      <div class="barra-color barra-verde"></div>
+      <div class="barra-color barra-morado"></div>
     </div>
     <div class="menu-inferior collapse" id="menu-categorias">
 <div class="" >
