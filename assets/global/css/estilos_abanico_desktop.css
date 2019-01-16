@@ -555,7 +555,7 @@ html, body{
   pointer-events: none;
 }
 .slider-pro img.sp-image {
-  width: 80%
+  width: 80% !important;
 }
 .sp-thumbnails-container {
   z-index: 998;
