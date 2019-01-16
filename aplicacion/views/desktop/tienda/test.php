@@ -1,70 +1,61 @@
 <div class="contenido_principal">
   <div class="main">
       <div class="serv-profile">
-        <div class="jumbotron mb-2">
-        </div>
         <div class="container">
-          <div class="row mb-5">
-            <div class="col-3">
-              <img src="http://lorempixel.com/180/180/people/9/" class="img-thumbnail image-profile float-left" alt="Profile image example">
-            </div>
-            <div class="col-9">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Inicio</a></li>
-                    <li class="breadcrumb-item active <?php echo 'text'.$primary; ?>" aria-current="page">Mis servicios</li>
-                  </ol>
-                </nav>
-                <h2>Nombre del prestador de servicios</h2>
-                <h6>Nombre del prestador de servicios</h6>
-            </div>
-          </div>
-          <div class="row mb-5">
-            <div class="col-12">
-              <div class="card card-desc-servicio">
-                <div class="card-header">
-                  <h5 class="card-title">Descripción del servicio</h5>
-                </div>
-                <div class="card-body fila-gris">
-                  <div class="row">
-                    <div class="card-text col-6"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel sem at leo sagittis lacinia. Nulla in tincidunt risus. Quisque et nisl dolor. Integer urna ante, cursus at magna sit amet, maximus ultricies eros. Sed tincidunt laoreet metus eget pellentesque. Sed at velit lectus. Cras gravida turpis vel congue varius.</p>
-                      <p>Maecenas ac dolor mattis mi commodo molestie ut eu arcu. Proin volutpat ipsum eu pellentesque tristique. Sed ultricies ex ut mauris pretium, et tincidunt lorem ultricies. Suspendisse non mauris orci. Suspendisse dignissim ante nec molestie dapibus. Aenean et nibh lectus. Fusce sit amet laoreet massa. Aenean vel lectus turpis. Etiam viverra erat id augue ornare, eget posuere justo pellentesque. Curabitur vel ultricies enim. Praesent vel metus et tellus ornare viverra in ac tellus. Quisque nulla orci, cursus a tincidunt sit amet, cursus et purus.</p></div>
-                    <div class="col-6">
-                      <div class="card border-primary">
-                        <h6 class="card-header bg-primary-15">Anexos</h6>
-                        <div class="card-body text-primary">
-                          <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">
-                              <i class="far fa-file-alt"></i>
-                              <span class="border-right mx-2"></span>
-                              Documento
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                              <i class="far fa-file-alt"></i>
-                              <span class="border-right mx-2"></span>
-                              Documento
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                              <i class="far fa-file-alt"></i>
-                              <span class="border-right mx-2"></span>
-                              Documento
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Inicio</a></li>
+              <li class="breadcrumb-item active <?php echo 'text'.$primary; ?>" aria-current="page">Mis servicios</li>
+            </ol>
+          </nav>
           <div class="row mb-5">
             <div class="col-8">
+              <div class="slider-pro" id="my-slider">
+              	<div class="sp-slides">
+              		<!-- Slide 1 -->
+              		<div class="sp-slide">
+              			<img class="sp-image" src="https://images.pexels.com/photos/15964/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
+              		</div>
+
+              		<!-- Slide 2 -->
+              		<div class="sp-slide">
+              			<img class="sp-image" src="https://images.pexels.com/photos/15964/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
+              		</div>
+
+              		<!-- Slide 3 -->
+              		<div class="sp-slide">
+              			<img class="sp-image" src="https://images.pexels.com/photos/15964/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
+              		</div>
+
+                  <!-- Slide 4 -->
+              		<div class="sp-slide">
+              			<img class="sp-image" src="https://images.pexels.com/photos/15964/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
+              		</div>
+              	</div>
+                <div class="sp-thumbnails">
+                  <div class="sp-thumbnail">
+              			<img class="sp-thumbnail-image" src="https://images.pexels.com/photos/15964/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
+              		</div>
+                  <div class="sp-thumbnail">
+              			<img class="sp-thumbnail-image" src="https://images.pexels.com/photos/15964/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
+              		</div>
+                  <div class="sp-thumbnail">
+              			<img class="sp-thumbnail-image" src="https://images.pexels.com/photos/15964/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
+              		</div>
+                  <div class="sp-thumbnail">
+              			<img class="sp-thumbnail-image" src="https://images.pexels.com/photos/15964/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
+              		</div>
+              	</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <h5>Información detallada del producto</h5>
+              <p>Maecenas ac dolor mattis mi commodo molestie ut eu arcu. Proin volutpat ipsum eu pellentesque tristique. Sed ultricies ex ut mauris pretium, et tincidunt lorem ultricies. Suspendisse non mauris orci. Suspendisse dignissim ante nec molestie dapibus. Aenean et nibh lectus. Fusce sit amet laoreet massa. Aenean vel lectus turpis. Etiam viverra erat id augue ornare, eget posuere justo pellentesque. Curabitur vel ultricies enim. Praesent vel metus et tellus ornare viverra in ac tellus. Quisque nulla orci, cursus a tincidunt sit amet, cursus et purus.</p>
+              <button type="button" class="btn btn-primary-18 btn-lg btn-block btn-contacto  mb-3">Comprar ahora</button>
               <div class="card-group">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Zona de Trabajo</h5>
+                    <h5 class="card-title">Formas de pago</h5>
                     <p class="card-text">Pais:</p>
                     <p class="card-text">Estado:</p>
                   </div>
@@ -74,23 +65,84 @@
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Colonias con servicio</h5>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Colonia 1</li>
-                      <li class="list-group-item">Colonia 2</li>
-                      <li class="list-group-item">Colonia 3</li>
-                    </ul>
+                    <h5 class="card-title">Formas de entrega</h5>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-primary-18 btn-lg btn-block btn-contacto">Contactar ahora</button>
+          </div>
+
+          <div class="row mb-5">
+            <div class="col-12">
+              <div class="card card-desc-servicio">
+                <div class="card-body fila-gris">
+
+                    <h5 class="card-title">Información detallada del producto</h5>
+                  <div class="row">
+                    <div class="card-text col-6"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel sem at leo sagittis lacinia. Nulla in tincidunt risus. Quisque et nisl dolor. Integer urna ante, cursus at magna sit amet, maximus ultricies eros. Sed tincidunt laoreet metus eget pellentesque. Sed at velit lectus. Cras gravida turpis vel congue varius.</p>
+                      <p>Maecenas ac dolor mattis mi commodo molestie ut eu arcu. Proin volutpat ipsum eu pellentesque tristique. Sed ultricies ex ut mauris pretium, et tincidunt lorem ultricies. Suspendisse non mauris orci. Suspendisse dignissim ante nec molestie dapibus. Aenean et nibh lectus. Fusce sit amet laoreet massa. Aenean vel lectus turpis. Etiam viverra erat id augue ornare, eget posuere justo pellentesque. Curabitur vel ultricies enim. Praesent vel metus et tellus ornare viverra in ac tellus. Quisque nulla orci, cursus a tincidunt sit amet, cursus et purus.</p></div>
+                    <div class="col-6">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel sem at leo sagittis lacinia. Nulla in tincidunt risus. Quisque et nisl dolor. Integer urna ante, cursus at magna sit amet, maximus ultricies eros. Sed tincidunt laoreet metus eget pellentesque. Sed at velit lectus. Cras gravida turpis vel congue varius.</p>
+                        <p>Maecenas ac dolor mattis mi commodo molestie ut eu arcu. Proin volutpat ipsum eu pellentesque tristique. Sed ultricies ex ut mauris pretium, et tincidunt lorem ultricies. Suspendisse non mauris orci. Suspendisse dignissim ante nec molestie dapibus. Aenean et nibh lectus. Fusce sit amet laoreet massa. Aenean vel lectus turpis. Etiam viverra erat id augue ornare, eget posuere justo pellentesque. Curabitur vel ultricies enim. Praesent vel metus et tellus ornare viverra in ac tellus. Quisque nulla orci, cursus a tincidunt sit amet, cursus et purus.</p>
+                    </div>
+                </div>
+                </div>
+              </div>
             </div>
           </div>
+
           <div class="row mb-5">
-            <div class="container-fluid fila-gris py-4">
-              <div class="col-12">
+              <div class="col-5">
+                <div class="accordion" id="accordionPreguntas">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="">Featured</h5>
+                    </div>
+                    <div class="" id="headingOne">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          ¿Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid?
+                        </button>
+                      </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                      <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="" id="headingTwo">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Collapsible Group Item #2
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                      <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="" id="headingThree">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Collapsible Group Item #3
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                      <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
                 <div class="card opiniones-serv">
                   <div class="card-body">
                     <h5 class="card-title">Calificación promedio del servicio</h5>
@@ -148,7 +200,6 @@
                   </div>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

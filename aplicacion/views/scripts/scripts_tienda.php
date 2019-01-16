@@ -201,9 +201,17 @@ GALERIA
    // CARRITO
  /*
  -----------------
-Rangos
+Slider Productos
  -----------------
  */
-
+ 	jQuery( document ).ready(function( $ ) {
+ 		$( '#my-slider' ).sliderPro({
+      thumbnailsPosition: 'right',
+      thumbnailPointer: true,
+      buttons: false,
+      width: '100%',
+      fade: true,
+    });
+ 	});
 
 </script>
