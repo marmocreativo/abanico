@@ -29,6 +29,7 @@ class Tienda_Servicio extends CI_Controller {
 		$this->load->model('FavoritosModel');
 		$this->load->model('ConversacionesModel');
 		$this->load->model('ConversacionesMensajesModel');
+		$this->load->model('AdjuntosUsuariosModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-info";
@@ -39,6 +40,7 @@ class Tienda_Servicio extends CI_Controller {
 		$this->data['servicio'] = $this->ServiciosModel->detalles($_GET['id']);
 		$this->data['portada'] = $this->GaleriasServiciosModel->galeria_portada($_GET['id']);
 		$this->data['galerias'] = $this->GaleriasServiciosModel->galeria_servicio($_GET['id']);
+		$this->data['adjuntos'] = $this->AdjuntosUsuariosModel->lista_adjuntos_servicio($_GET['id'],'servicio');
 		$this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['servicio']['ID_USUARIO']);
 		$direccion_fiscal = $this->DireccionesModel->direccion_fiscal($this->data['servicio']['ID_USUARIO']);
 		$this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($direccion_fiscal['ID_DIRECCION']);
@@ -65,7 +67,7 @@ class Tienda_Servicio extends CI_Controller {
 				$this->data['calificaciones'] = $this->CalificacionesServiciosModel->calificaciones_producto($_GET['id'],'');
 		}
 
- 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_servicios',$this->data);
+ 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/servicio',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 
@@ -174,7 +176,7 @@ public function favorito()
 		 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
  		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 
-		 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_servicios',$this->data);
+		 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		 $this->load->view($this->data['dispositivo'].'/tienda/servicio_form_contacto',$this->data);
 		 $this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 		}

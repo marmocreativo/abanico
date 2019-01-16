@@ -11,6 +11,7 @@ class AdjuntosUsuariosModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
+
   function lista($id_usuario,$orden,$limite){
     if(!empty($ID_USUARIO)){
       $this->db->where('ID_USUARIO', $id_usuario);
@@ -21,6 +22,12 @@ class AdjuntosUsuariosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
+    $query = $this->db->get('adjuntos_usuarios');
+    return $query->result();
+  }
+  function lista_adjuntos_servicio($id_objeto,$tipo_adjunto){
+      $this->db->where('ID_OBJETO', $id_objeto);
+      $this->db->where('ADJUNTO_TIPO', $tipo_adjunto);
     $query = $this->db->get('adjuntos_usuarios');
     return $query->result();
   }
