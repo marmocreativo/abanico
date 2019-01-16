@@ -195,6 +195,10 @@ html, body{
 | ESTILOS BODY INDEX
 | -------------------------------------------------------------------------
 */
+.imagen-producto {
+  border: 1px solid #ced4da;
+  border-bottom: none;
+}
 .cuadricula-productos{
   background-color: #fff;
   display: block;
@@ -212,7 +216,13 @@ html, body{
    background-position: center;
    background-repeat: no-repeat;
 }
-.cuadricula-productos .product-content{padding:12px;overflow:hidden;position:relative}
+.cuadricula-productos .product-content{
+  padding:12px;
+  overflow:hidden;
+  position:relative;
+  border: 1px solid #ced4da;
+  border-top: none;
+}
 .cuadricula-productos .contenedor-etiquetas{
   display: block;
   width: 30%;
