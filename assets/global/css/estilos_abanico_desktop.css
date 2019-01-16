@@ -554,7 +554,7 @@ html, body{
   box-shadow: inset 0 0 0px 1px #e1e0e0, inset 0 0 0px 13px white;
   pointer-events: none;
 }
-img.sp-image {
+.slider-pro img.sp-image {
   width: 80%
 }
 .sp-thumbnails-container {
