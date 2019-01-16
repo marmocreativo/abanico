@@ -26,6 +26,7 @@ class Admin_Pedidos extends CI_Controller {
 		$this->load->model('TiendasModel');
 		$this->load->model('PedidosTiendasModel');
 		$this->load->model('GuiasPedidosModel');
+		$this->load->model('PagosPedidosModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -84,6 +85,7 @@ class Admin_Pedidos extends CI_Controller {
 			$this->data['tiendas'] = $this->PedidosTiendasModel->lista_tiendas($_GET['id_pedido']);
 			$this->data['productos'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$_GET['id_pedido']],'','');
 			$this->data['guias'] = $this->GuiasPedidosModel->lista_guias($_GET['id_pedido']);
+			$this->data['pagos'] = $this->PagosPedidosModel->lista($_GET['id_pedido']);
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/detalles_pedido',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);

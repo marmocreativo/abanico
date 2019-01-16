@@ -21,7 +21,7 @@ class Tienda_Servicio extends CI_Controller {
 		$this->load->model('ServiciosModel');
 		$this->load->model('GaleriasServiciosModel');
 		$this->load->model('CategoriasModel');
-		$this->load->model('CategoriasModel');
+		$this->load->model('CategoriasServiciosModel');
 		$this->load->model('TiendasModel');
 		$this->load->model('DireccionesModel');
 		$this->load->model('FavoritosModel');
@@ -42,7 +42,8 @@ class Tienda_Servicio extends CI_Controller {
 		$this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['servicio']['ID_USUARIO']);
 		$direccion_fiscal = $this->DireccionesModel->direccion_fiscal($this->data['servicio']['ID_USUARIO']);
 		$this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($direccion_fiscal['ID_DIRECCION']);
-		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 
 		// Calificaciones
 		$this->data['cantidad_calificaciones']= $this->CalificacionesServiciosModel->conteo_calificaciones_producto($_GET['id']);
@@ -170,7 +171,8 @@ public function favorito()
 		 $this->data['portada'] = $this->GaleriasServiciosModel->galeria_portada($_GET['id']);
 		 $this->data['galerias'] = $this->GaleriasServiciosModel->galeria_servicio($_GET['id']);
 		 $this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['servicio']['ID_USUARIO']);
-		 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+		 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+ 		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 
 		 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_servicios',$this->data);
 		 $this->load->view($this->data['dispositivo'].'/tienda/servicio_form_contacto',$this->data);

@@ -53,6 +53,18 @@
                            <textarea class="form-control" name="DescripcionServicio" rows="3" cols="80" required><?php echo set_value('DescripcionServicio'); ?></textarea>
                          </div>
                          <hr>
+                         <div class="row">
+                           <div class="col">
+                             <div class="form-group">
+                               <label for="TipoServicio">Tipo de Servicio</label>
+                               <select class="form-control" name="TipoServicio">
+                                 <option value="profesional">Servicio Presencial</option>
+                                 <option value="digital">Servicio a Distancia</option>
+                               </select>
+                             </div>
+                             <p class="text-muted"> <i class="fa fa-info-circle"></i> Los Servicios a distancia, son los que se pueden ejercer a traves de internet.</p>
+                           </div>
+                         </div>
                          <h6> <i class="fa fa-map-marker"></i> ¿En dónde ofreces tu servicio?</h6>
                          <div class="row">
                            <div class="col">
@@ -157,7 +169,7 @@
               <div class="col-4">
                 <div class="card border">
                   <div class="card-body">
-                    <h6>Espacio reservado para anexos</h6>
+                    <h6> <i class="fa fa-exclamation"></i> Primero debes guardar tu servicio para poder Adjuntar Archivos</h6>
                   </div>
                 </div>
               </div>

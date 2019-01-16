@@ -39,7 +39,7 @@
         <div class="d-flex justify-content-arround align-items-center">
           <a class="navbar-brand mr-1" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
           <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias"><i class="fas fa-angle-down mr-2"></i>PRODUCTOS</a>
-          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias"><i class="fas fa-angle-down mr-2"></i>SERVICIOS</a>
+          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" data-toggle="collapse" href="#menu-categorias-servicios" role="button" aria-expanded="false" aria-controls="menu-categorias-servicios"><i class="fas fa-angle-down mr-2"></i>SERVICIOS</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -78,52 +78,100 @@
       <div class="barra-color barra-morado"></div>
     </div>
     <div class="menu-inferior collapse" id="menu-categorias">
-<div class="" >
-  <div class="card card-body">
-    <div class="row">
-      <div class="col-3">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link" href="<?php echo base_url('categoria'); ?>"> <i class="fa fa-boxes"></i> TODOS LOS PRODUCTOS</a>
-          <?php $i=0; foreach($categorias as $categoria){ ?>
-          <a class="nav-link <?php if($i==0){ echo 'active bg'.$primary;} ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
-            <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
-          </a>
-          <?php $i++;  } ?>
-        </div>
-      </div>
-      <div class="col-9">
-        <div class="tab-content" id="v-pills-tabContent">
-          <?php $i=0; foreach($categorias as $categoria){ ?>
-          <div class="tab-pane fade <?php if($i==0){ echo 'active show';} ?>" id="cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tabpanel" aria-labelledby="v-pills-1-tab">
-            <div class="row">
-              <div class="col-9">
-                <?php   $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
-                <div class="row">
-                  <?php foreach($segundo_categorias as $segunda_categoria){ ?>
-                    <div class="col-4">
-                      <h4><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h4>
-                      <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
-                      <ul class="list list-unstyled">
-                        <?php foreach($tercero_categorias as $tercera_categoria){ ?>
-                          <li> <a href="<?php echo base_url('categoria?slug='.$tercera_categoria->CATEGORIA_URL); ?>"><?php echo $tercera_categoria->CATEGORIA_NOMBRE;  ?></a></li>
-                        <?php } ?>
-                      </ul>
-                    </div>
-                  <?php } ?>
-                </div>
+      <div class="" >
+        <div class="card card-body">
+          <div class="row">
+            <div class="col-3">
+              <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" href="<?php echo base_url('categoria'); ?>"> <i class="fa fa-boxes"></i> TODOS LOS PRODUCTOS</a>
+                <?php $i=0; foreach($categorias as $categoria){ ?>
+                <a class="nav-link <?php if($i==0){ echo 'active';} ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
+                  <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
+                </a>
+                <?php $i++;  } ?>
               </div>
-              <div class="col">
-                <img src="<?php echo base_url('assets/tienda/img/categorias/completo/'.$categoria->CATEGORIA_IMAGEN); ?>" class="img-fluid" alt="">
+            </div>
+            <div class="col-9">
+              <div class="tab-content" id="v-pills-tabContent">
+                <?php $i=0; foreach($categorias as $categoria){ ?>
+                <div class="tab-pane fade <?php if($i==0){ echo 'active show';} ?>" id="cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                  <div class="row">
+                    <div class="col-9">
+                      <?php   $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
+                      <div class="row">
+                        <?php foreach($segundo_categorias as $segunda_categoria){ ?>
+                          <div class="col-4">
+                            <h4><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h4>
+                            <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
+                            <ul class="list list-unstyled">
+                              <?php foreach($tercero_categorias as $tercera_categoria){ ?>
+                                <li> <a href="<?php echo base_url('categoria?slug='.$tercera_categoria->CATEGORIA_URL); ?>"><?php echo $tercera_categoria->CATEGORIA_NOMBRE;  ?></a></li>
+                              <?php } ?>
+                            </ul>
+                          </div>
+                        <?php } ?>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <img src="<?php echo base_url('assets/tienda/img/categorias/completo/'.$categoria->CATEGORIA_IMAGEN); ?>" class="img-fluid" alt="">
+                    </div>
+                  </div>
+                </div>
+              <?php $i++; } ?>
               </div>
             </div>
           </div>
-        <?php $i++; } ?>
+
         </div>
       </div>
     </div>
+    <div class="menu-inferior collapse" id="menu-categorias-servicios">
+      <div class="" >
+        <div class="card card-body">
+          <div class="row">
+            <div class="col-3">
+              <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" href="<?php echo base_url('categoria/servicios'); ?>"> <i class="fa fa-boxes"></i> TODOS LOS SERVICIOS</a>
+                <?php $i=0; foreach($categorias_servicios as $categoria){ ?>
+                <a class="nav-link <?php if($i==0){ echo 'active';} ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
+                  <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
+                </a>
+                <?php $i++;  } ?>
+              </div>
+            </div>
+            <div class="col-9">
+              <div class="tab-content" id="v-pills-tabContent">
+                <?php $i=0; foreach($categorias_servicios as $categoria){ ?>
+                <div class="tab-pane fade <?php if($i==0){ echo 'active show';} ?>" id="cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                  <div class="row">
+                    <div class="col-9">
+                      <?php   $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
+                      <div class="row">
+                        <?php foreach($segundo_categorias as $segunda_categoria){ ?>
+                          <div class="col-4">
+                            <h4><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h4>
+                            <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
+                            <ul class="list list-unstyled">
+                              <?php foreach($tercero_categorias as $tercera_categoria){ ?>
+                                <li> <a href="<?php echo base_url('categoria?slug='.$tercera_categoria->CATEGORIA_URL); ?>"><?php echo $tercera_categoria->CATEGORIA_NOMBRE;  ?></a></li>
+                              <?php } ?>
+                            </ul>
+                          </div>
+                        <?php } ?>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <img src="<?php echo base_url('assets/tienda/img/categorias/completo/'.$categoria->CATEGORIA_IMAGEN); ?>" class="img-fluid" alt="">
+                    </div>
+                  </div>
+                </div>
+              <?php $i++; } ?>
+              </div>
+            </div>
+          </div>
 
-  </div>
-</div>
+        </div>
+      </div>
     </div>
 
     <!-- Termina Header -->

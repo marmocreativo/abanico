@@ -133,7 +133,7 @@ class Proceso_Pago extends CI_Controller {
 	public function paso4()
 	{
 		if(empty($_SESSION['carrito']['productos'])){
-			redirect(base_url('carrito'));
+			//redirect(base_url('carrito'));
 		}
 		$folio = folio_pedido();
 		// Variables inicializadas
@@ -205,29 +205,7 @@ class Proceso_Pago extends CI_Controller {
 			$this->data['pedido_tienda'] = $this->PedidosModel->detalles($pedido_id);
 			$this->data['productos_tienda'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$pedido_id, 'ID_TIENDA'=>$id_tienda],'','');
 			$correos_tienda[] = $this->input->post('PedidoCorreo');
-			/*
-			$config['protocol']    = 'smtp';
-			$config['smtp_host']    = $this->data['op']['mailer_host'];
-			$config['smtp_port']    = $this->data['op']['mailer_port'];
-			$config['smtp_timeout'] = '7';
-			$config['smtp_user']    = $this->data['op']['mailer_user'];
-			$config['smtp_pass']    = $this->data['op']['mailer_pass'];
-			$config['charset']    = 'utf-8';
-			$config['mailtype'] = 'html'; // or html
-			$config['validation'] = TRUE; // bool whether to validate email or not
 
-			$mensaje = $this->load->view('emails/pedido_usuario',$this->data,true);
-			$this->email->initialize($config);
-
-			$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
-			$correos_tienda[] = $this->input->post('PedidoCorreo');
-			$this->email->to($correos_tienda);
-
-			$this->email->subject('Pedido Abanico | '.$pedido_id);
-			$this->email->message($mensaje);
-			// envio el correo
-			$this->email->send();
-			*/
 			$remitente = $this->data['op']['correo_sitio'];
 			$destinatarios = $correos_tienda;
 			$plantilla = 'emails/pedido_usuario';

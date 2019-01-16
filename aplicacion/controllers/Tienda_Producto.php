@@ -22,6 +22,7 @@ class Tienda_Producto extends CI_Controller {
 		$this->load->model('ProductosModel');
 		$this->load->model('GaleriasModel');
 		$this->load->model('CategoriasModel');
+		$this->load->model('CategoriasServiciosModel');
 		$this->load->model('CategoriasProductoModel');
 		$this->load->model('TiendasModel');
 		$this->load->model('DireccionesModel');
@@ -43,6 +44,7 @@ class Tienda_Producto extends CI_Controller {
 		$direccion_fiscal = $this->DireccionesModel->direccion_fiscal($this->data['producto']['ID_USUARIO']);
 		$this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($direccion_fiscal['ID_DIRECCION']);
 		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 		$this->data['relacion_categoria_producto'] = $this->CategoriasProductoModel->lista($_GET['id']);
 		$this->data['categoria_producto'] = $this->CategoriasModel->detalles($this->data['relacion_categoria_producto']['ID_CATEGORIA']);
 		if(!null==$this->data['categoria_producto']){

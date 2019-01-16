@@ -56,23 +56,30 @@
                 <h6><i class="fa fa-money-bill"></i>Pagos:</h6>
               </div>
               <div class="card-body">
-                <table class="table table-sm">
+                <table class="table table-sm table-bordered">
                   <thead>
                     <tr>
                       <th>Fecha</th>
                       <th>Método de Pago</th>
-                      <th>ID Transacción</th>
-                      <th>Cantidad</th>
+                      <th>Folio</th>
+                      <th>Documento</th>
+                      <th>Importe</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <?php foreach($pagos as $pago){ ?>
                     <tr>
-                      <td colspan="4">
-                        <div class="alert alert-info">
-                          <p>Sección en desarrollo</p>
-                        </div>
+                      <td><?php echo $pago->PAGO_FECHA_REGISTRO; ?> </td>
+                      <td><?php echo $pago->PAGO_FORMA; ?> </td>
+                      <td><?php echo $pago->PAGO_FOLIO; ?> </td>
+                      <td>
+                        <img src="<?php echo base_url('contenido/adjuntos/pedidos/').$pago->PAGO_ARCHIVO; ?>" alt="" width="100">
+                      <hr>
+                      <a href="<?php echo base_url('contenido/adjuntos/pedidos/').$pago->PAGO_ARCHIVO; ?>" target="_blank" class="btn btn-outline-success btn-sm">Descargar</a></td>
+                      <td>$<?php echo number_format($pago->PAGO_IMPORTE,2,'.',','); ?>
                       </td>
                     </tr>
+                    <?php } ?>
                   </tbody>
                 </table>
                 <!--

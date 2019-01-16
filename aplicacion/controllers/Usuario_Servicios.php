@@ -24,6 +24,7 @@ class Usuario_Servicios extends CI_Controller {
 			$this->load->model('CategoriasServiciosModel');
 			$this->load->model('PerfilServiciosModel');
 			$this->load->model('DireccionesModel');
+			$this->load->model('AdjuntosUsuariosModel');
   }
 
 	public function index()
@@ -76,7 +77,7 @@ class Usuario_Servicios extends CI_Controller {
 					'SERVICIO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 					'SERVICIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
 					'SERVICIO_FECHA_PUBLICACION' => date('Y-m-d H:i:s'),
-					'SERVICIO_TIPO'=> 'profesional',
+					'SERVICIO_TIPO'=> $this->input->post('TipoServicio'),
 					'SERVICIO_ESTADO'=> 'activo',
 					'ORDEN'=> '1'
 	      );
@@ -114,8 +115,8 @@ class Usuario_Servicios extends CI_Controller {
 					);
 					$this->CategoriasServiciosModel->crear($parametros_relacion_categorias);
 				}
-
-				redirect(base_url('usuario/servicios'));
+				$this->session->set_flashdata('exito', 'Servicio Creado, ahora puedes Adjuntar archivos y Subir fotos a la Galería');
+				redirect(base_url('usuario/servicios/actualizar?id='.$servicio_id));
 			}else{
 				$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
@@ -153,7 +154,7 @@ class Usuario_Servicios extends CI_Controller {
 						'SERVICIO_ESTADO_DIR'=> $this->input->post('EstadoDireccion'),
 						'SERVICIO_MUNICIPIO'=> $this->input->post('MunicipioDireccion'),
 						'SERVICIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
-						'SERVICIO_TIPO'=> 'profesional',
+						'SERVICIO_TIPO'=> $this->input->post('TipoServicio'),
 						'SERVICIO_ESTADO'=> 'activo',
 						'ORDEN'=> '1'
 		      );
@@ -213,11 +214,77 @@ class Usuario_Servicios extends CI_Controller {
 					$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 					$this->data['relacion_categorias'] = $this->CategoriasServiciosModel->lista($_GET['id']);
 					$this->data['galerias'] = $this->GaleriasServiciosModel->lista($_GET['id'],'','5');
+					$this->data['adjuntos'] = $this->AdjuntosUsuariosModel->lista_archivos_adjuntos($_SESSION['usuario']['id'],$_GET['id'],'servicio');
 					$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 					$this->load->view($this->data['dispositivo'].'/usuarios/form_actualizar_servicio',$this->data);
 					$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 				}
 	}
+	public function subir_adjunto()
+	{
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+			// Defino tipo de Servicio y tipo de Categoría
+			$tipo_categoria = 'servicios';
+
+			$this->form_validation->set_rules('NombreAdjunto', 'Nombre del Archivo', 'required', array( 'required' => 'Debes designar el %s'));
+
+			if($this->form_validation->run())
+			{
+				$tab = 'categorias';
+				// Subo el archivo
+				$nombre_archivo = 'archivo-'.uniqid();
+				$config['upload_path']          = 'contenido/adjuntos/servicios';
+				$config['allowed_types']        = 'pdf|jpg|png';
+				$config['file_name']						=	$nombre_archivo;
+
+				$this->load->library('upload', $config);
+
+				if ( ! $this->upload->do_upload('ArchivoAdjunto')){
+					$this->session->set_flashdata('alerta', 'No se pudo subir el archivo');
+					redirect(base_url('usuario/servicios/actualizar?id='.$this->input->post('IdObjeto').'&tab='.$tab));
+				}else{
+					$archivo = $this->upload->data('file_name');
+					// Parametros del Servicio
+					$parametros = array(
+						'ID_USUARIO'=> $this->input->post('IdUsuario'),
+						'ID_OBJETO'=> $this->input->post('IdObjeto'),
+						'ADJUNTO_NOMBRE'=> $this->input->post('NombreAdjunto'),
+						'ADJUNTO_ARCHIVO'=>$archivo,
+						'ADJUNTO_TIPO'=> 'servicio',
+						'ADJUNTO_FECHA_REGISTRO' => date('Y-m-d H:i:s')
+					);
+				}
+				// Creo el Servicio
+				$adjunto_id = $this->AdjuntosUsuariosModel->crear($parametros);
+				$this->session->set_flashdata('exito', 'Archivo Adjunto');
+				redirect(base_url('usuario/servicios/actualizar?id='.$this->input->post('IdObjeto').'&tab='.$tab));
+			}else{
+				$this->session->set_flashdata('alerta', 'No se pudo subir el archivo');
+				redirect(base_url('usuario/servicios/actualizar?id='.$this->input->post('IdObjeto').'&tab='.$tab));
+			}
+}
+public function borrar_adjunto()
+{
+	if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+		$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+		redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+	}
+	$tab = 'categorias';
+	$adjunto = $this->AdjuntosUsuariosModel->detalles($_GET['id']);
+			// check if the institucione exists before trying to delete it
+			if(isset($adjunto['ID_ADJUNTO']))
+			{
+					$this->AdjuntosUsuariosModel->borrar($_GET['id']);
+					$this->session->set_flashdata('exito', 'Archivo Eliminado');
+					redirect(base_url('usuario/servicios/actualizar?id='.$adjunto['ID_OBJETO'].'&tab='.$tab));
+			} else {
+
+					show_error('La entrada que deseas borrar no existe');
+			}
+}
 
 
 		public function borrar()

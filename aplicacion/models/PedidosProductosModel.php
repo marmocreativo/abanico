@@ -28,7 +28,7 @@ class PedidosProductosModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista_usuario($parametros,$id_usuario,$orden,$limite){
+  function lista_tienda($parametros,$id_usuario,$orden,$limite){
     if(!empty($parametros)){
       $this->db->or_like($parametros);
     }

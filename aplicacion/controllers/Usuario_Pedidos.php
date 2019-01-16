@@ -27,6 +27,8 @@ class Usuario_Pedidos extends CI_Controller {
 			$this->load->model('PedidosModel');
 			$this->load->model('PedidosTiendasModel');
 			$this->load->model('PedidosProductosModel');
+			$this->load->model('GuiasPedidosModel');
+			$this->load->model('PagosPedidosModel');
   }
 
 	public function index()
@@ -55,10 +57,66 @@ class Usuario_Pedidos extends CI_Controller {
 				$this->data['pedido'] = $this->PedidosModel->detalles($_GET['id_pedido']);
 				$this->data['usuario'] = $this->UsuariosModel->detalles($_SESSION['usuario']['id']);
 				$this->data['productos'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$_GET['id_pedido']],'','');
+				$this->data['tiendas'] = $this->PedidosTiendasModel->lista_tiendas($_GET['id_pedido']);
+				$this->data['guias_abanico'] = $this->GuiasPedidosModel->lista(['ID_PEDIDO'=>$_GET['id_pedido']],'','');
+				$this->data['pagos'] = $this->PagosPedidosModel->lista($_GET['id_pedido']);
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/detalles_pedido',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 	}
+
+	public function subir_comprobante()
+	{
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+			// Defino tipo de Servicio y tipo de Categoría
+			$tipo_categoria = 'servicios';
+
+			$this->form_validation->set_rules('FormaPago', 'Forma de Pago', 'required', array( 'required' => 'Debes designar la %s'));
+
+			if($this->form_validation->run())
+			{
+				// Subo el archivo
+				$nombre_archivo = 'pago-'.uniqid();
+				$config['upload_path']          = 'contenido/adjuntos/pedidos';
+				$config['allowed_types']        = 'pdf|jpg|png';
+				$config['file_name']						=	$nombre_archivo;
+
+				$this->load->library('upload', $config);
+
+				if ( ! $this->upload->do_upload('ArchivoPago')){
+					$this->session->set_flashdata('alerta', 'No se pudo subir el archivo');
+					redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+				}else{
+					$archivo = $this->upload->data('file_name');
+					// Parametros del Servicio
+					$parametros = array(
+						'ID_PEDIDO'=> $this->input->post('IdPedido'),
+						'PAGO_FORMA'=> $this->input->post('FormaPago'),
+						'PAGO_FOLIO'=> $this->input->post('FolioPago'),
+						'PAGO_ARCHIVO'=>$archivo,
+						'PAGO_DESCRIPCION'=> $this->input->post('DescripcionPago'),
+						'PAGO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+						'PAGO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+						'PAGO_ESTADO'=> $this->input->post('EstadoPago'),
+					);
+					$parametros_pedido = array(
+						'PEDIDO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+						'PEDIDO_ESTADO_PAGO'=> $this->input->post('EstadoPago'),
+					);
+				}
+				// Creo el Servicio
+				$adjunto_id = $this->PagosPedidosModel->crear($parametros);
+				$adjunto_id = $this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros_pedido);
+				$this->session->set_flashdata('exito', 'Comprobante cargado correctamente');
+				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+			}else{
+				$this->session->set_flashdata('alerta', 'No se pudo subir el archivo');
+				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+			}
+}
 	public function conversacion()
 	{
 			// Debo redireccionar

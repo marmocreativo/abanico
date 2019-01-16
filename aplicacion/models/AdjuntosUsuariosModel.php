@@ -11,9 +11,9 @@ class AdjuntosUsuariosModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista($ID_USUARIO,$orden,$limite){
+  function lista($id_usuario,$orden,$limite){
     if(!empty($ID_USUARIO)){
-      $this->db->where('ID_USUARIO', $ID_USUARIO);
+      $this->db->where('ID_USUARIO', $id_usuario);
     }
     if(!empty($orden)){
       $this->db->order_by($orden);
@@ -25,27 +25,20 @@ class AdjuntosUsuariosModel extends CI_Model {
     return $query->result();
   }
   /*
+  * Lista de usuarios por tipo de usuario
+  */
+  function lista_archivos_adjuntos($id_usuario,$id_objeto,$tipo){
+    $this->db->where('ID_USUARIO', $id_usuario);
+    $this->db->where('ID_OBJETO', $id_objeto);
+    $this->db->where('ADJUNTO_TIPO', $tipo);
+    $query = $this->db->get('adjuntos_usuarios');
+    return $query->result();
+  }
+  /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    return $this->db->get_where('adjuntos_usuarios',array('ID_GALERIA'=>$id))->row_array();
-  }
-  /*
-    * Obtengo todos los detalles de una sola entrada
- */
-  function adjuntos_usuario($id){
-    $this->db->where('ID_USUARIO'=>$id);
-    $query = $this->db->get('adjuntos_usuarios');
-    return $query->result();
-  }
-  /*
-    * Obtengo todos los detalles de una sola entrada
- */
-  function adjuntos_usuario_tipo($id,$tipo){
-    $this->db->where('ID_USUARIO'=>$id);
-    $this->db->where('ADJUNTO_TIPO'=>$id);
-    $query = $this->db->get('adjuntos_usuarios');
-    return $query->result();
+    return $this->db->get_where('adjuntos_usuarios',array('ID_ADJUNTO'=>$id))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
@@ -59,32 +52,7 @@ class AdjuntosUsuariosModel extends CI_Model {
     * $id es el identificador de la entrada
  */
   function borrar($id){
-    return $this->db->delete('adjuntos_usuarios',array('ID_GALERIA'=>$id));
-  }
-
-  /*
-    * Cambio el estado de la entrada, puede ser cualquier estado
-    * $id es el identificador de la entrada
-    * $activo es el estado al que se quiere cambiar la entrada
- */
-  function portada($ID_USUARIO,$id){
-    $this->db->where('ID_USUARIO',$ID_USUARIO);
-    $this->db->update('adjuntos_usuarios',array('GALERIA_PORTADA'=>'no'));
-    $this->db->reset_query();
-    $this->db->where('ID_GALERIA',$id);
-    $this->db->update('adjuntos_usuarios',array('GALERIA_PORTADA'=>'si'));
-  }
-  /*
-    * Creo el orden de los elementos
-    * $orden son los identificadores de las entradas en el orden en que quiero que aparezcan
- */
-  function ordenar($orden){
-    $i = 0;
-    foreach($orden as $orden){
-      $this->db->where('ID_GALERIA',$orden);
-      return $this->db->update('adjuntos_usuarios',array('ORDEN'=>$i));
-      $i++;
-    }
+    return $this->db->delete('adjuntos_usuarios',array('ID_ADJUNTO'=>$id));
   }
 
 }
