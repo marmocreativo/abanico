@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 09-01-2019 a las 12:27:42
+-- Tiempo de generación: 16-01-2019 a las 16:17:33
 -- Versión del servidor: 5.6.40-84.0-log
 -- Versión de PHP: 5.6.30
 
@@ -31,10 +31,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `adjuntos_usuarios` (
   `ID_ADJUNTO` int(11) NOT NULL,
   `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `ID_OBJETO` int(11) NOT NULL,
   `ADJUNTO_NOMBRE` varchar(255) DEFAULT NULL,
   `ADJUNTO_ARCHIVO` varchar(255) DEFAULT NULL,
   `ADJUNTO_TIPO` varchar(255) DEFAULT NULL,
-  `REPORTE_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `ADJUNTO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -402,6 +403,14 @@ CREATE TABLE `conversaciones` (
   `CONVERSACION_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `conversaciones`
+--
+
+INSERT INTO `conversaciones` (`ID_CONVERSACION`, `ID_USUARIO_A`, `ID_USUARIO_B`, `ID_OBJETO`, `CONVERSACION_FECHA_REGISTRO`, `CONVERSACION_FECHA_ACTUALIZACION`, `CONVERSACION_TIPO`, `CONVERSACION_ESTADO`) VALUES
+(1, '5c0653d43d92e7.75019474', '5c25209703a210.25306180', 20, '2019-01-09 22:55:40', '2019-01-09 22:55:40', 'pregunta producto', 'no leido'),
+(2, '5c0653d43d92e7.75019474', '5c25209703a210.25306180', 11, '2019-01-09 22:59:09', '2019-01-09 22:59:09', 'mensaje servicio', 'no leido');
+
 -- --------------------------------------------------------
 
 --
@@ -417,6 +426,14 @@ CREATE TABLE `conversaciones_mensajes` (
   `MENSAJE_ESTADO` varchar(255) DEFAULT NULL,
   `MENSAJE_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `conversaciones_mensajes`
+--
+
+INSERT INTO `conversaciones_mensajes` (`ID_MENSAJE`, `ID_CONVERSACION`, `ID_REMITENTE`, `MENSAJE_ASUNTO`, `MENSAJE_TEXTO`, `MENSAJE_ESTADO`, `MENSAJE_FECHA_REGISTRO`) VALUES
+(1, 1, '5c0653d43d92e7.75019474', 'Pregunta sobre un Producto', '<p><b>Producto:</b> libretas hechas a mano</p><p>Quisiera saber si no son toxicos</p>', 'no leido', '2019-01-09 22:55:40'),
+(2, 2, '5c0653d43d92e7.75019474', 'Solicitud de Servicio', '<p><b>Servicio:</b> Redaccion y correccion de textos </p><p>Hola quisiera mas información.</p>', 'no leido', '2019-01-09 22:59:09');
 
 -- --------------------------------------------------------
 
@@ -454,7 +471,8 @@ INSERT INTO `direcciones` (`ID_DIRECCION`, `ID_USUARIO`, `ID_TIENDA`, `DIRECCION
 (15, '5c0653d43d92e7.75019474', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'Avenida 561 No. 148', 'Avenida 561 No. 148', '07969', '-', '2019-01-03 23:36:42', '2019-01-03 23:36:42'),
 (16, '5c0653d43d92e7.75019474', 0, 'envio', 'Trabajo', 'México', 'Ciudad de México', 'Ciudad de México', 'Benito Juárez', 'Roma Norte', 'Medellín 101', '06700 ', '', '2019-01-06 22:06:35', '2019-01-06 22:06:35'),
 (17, '5c08a9dc2cb096.56391251', 0, 'envio', 'la ofi', 'México', 'Ciudad de México', '', 'Milpa Alta', 'Chalmita', '35 6 ', '12410', '', '2019-01-07 17:55:28', '2019-01-07 17:55:28'),
-(18, '5c0839a2158e44.99631671', 2, 'fiscal', 'Direccion Tienda', 'México', 'Chihuahua', '', 'Bocoyna', 'kjjj', 'hhhh', '5568', '-', '2019-01-08 22:41:23', '2019-01-08 22:41:23');
+(18, '5c0839a2158e44.99631671', 2, 'fiscal', 'Direccion Tienda', 'México', 'Chihuahua', '', 'Bocoyna', 'kjjj', 'hhhh', '5568', '-', '2019-01-08 22:41:23', '2019-01-08 22:41:23'),
+(19, '5c19b1d094f6e6.26249130', 0, 'envio', 'Trabajo', 'México', 'Ciudad de México', '', 'Cuauhtémoc', 'Doctores', 'Dr. Galvez 555', '65364', 'Entre Dr. Lucio y Dr. Tejeda', '2019-01-10 23:04:09', '2019-01-10 23:07:32');
 
 -- --------------------------------------------------------
 
@@ -672,6 +690,13 @@ CREATE TABLE `guias_abanico` (
   `GUIA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `GUIA_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `guias_abanico`
+--
+
+INSERT INTO `guias_abanico` (`GUIA_CODIGO`, `ID_PEDIDO`, `GUIA_NOMBRE`, `GUIA_DIRECCION`, `GUIA_TELEFONO`, `GUIA_CORREO`, `GUIA_ESTADO`, `GUIA_FECHA_REGISTRO`, `GUIA_FECHA_ACTUALIZACION`) VALUES
+('RLHO5T-25', 25, 'Manuel Marmolejo Martínez', 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', ' 26032335  ', 'marmocreativo@gmail.com', 'Entregado', '2019-01-09 23:22:28', '2019-01-09 23:22:28');
 
 -- --------------------------------------------------------
 
@@ -6495,7 +6520,9 @@ INSERT INTO `pedidos` (`ID_PEDIDO`, `PEDIDO_FOLIO`, `ID_USUARIO`, `PEDIDO_NOMBRE
 (21, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '158.00', '158.00', '156.00', '156.00', 3, 'Abanico', NULL, NULL, NULL, NULL, '314.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:52', '2019-01-08 01:21:52'),
 (22, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 16, 'Medellín 101, Roma Norte, Benito Juárez, Ciudad de México, Ciudad de México, 06700 , México', 'USD', '0.049', '7.74', '13.62', '7.64', '15.29', 3, 'Abanico', NULL, NULL, NULL, NULL, '28.91', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:55', '2019-01-08 01:21:55'),
 (23, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '280.00', '430.00', '156.00', '312.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '742.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:58', '2019-01-08 01:21:58'),
-(24, '', '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', 17, '35 6 , Chalmita, Milpa Alta, , Ciudad de México, 12410, México', 'MXN', '1.000', '500.00', '500.00', '156.00', '156.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '656.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:22:10', '2019-01-08 01:22:10');
+(24, '', '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', 17, '35 6 , Chalmita, Milpa Alta, , Ciudad de México, 12410, México', 'MXN', '1.000', '500.00', '500.00', '156.00', '156.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '656.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:22:10', '2019-01-08 01:22:10'),
+(25, 'LPBYMC', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', 0, '', NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-09 23:13:14', '2019-01-09 23:13:14'),
+(26, 'ZE5CZ7', '5c19b1d094f6e6.26249130', 'Kimi Luvi', 'kimi.luvi.tin.yee@gmail.com', '', 19, 'Dr. Galvez 555, Doctores, Cuauhtémoc, , Ciudad de México, 65364, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', 0, '', NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-10 23:05:01', '2019-01-10 23:05:01');
 
 -- --------------------------------------------------------
 
@@ -6526,7 +6553,9 @@ INSERT INTO `pedidos_productos` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `ID_PRODUCTO`, 
 (33, 22, 8, 20, 'libretas hechas a mano', '', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2526234e278.jpg', 1, '7.74', '7.74'),
 (34, 23, 1, 22, 'Pizza', 'Tamaño-Familiar', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00'),
 (35, 23, 4, 17, 'taza medidora', '', 'http://abanicoytu.com/demo/contenido/img/productos/completo/categoria-5c1d350ce81b6.jpg', 1, '280.00', '280.00'),
-(36, 24, 5, 14, 'LIBRO', '', 'http://abanicoytu.com/demo/contenido/img/productos/completo/default.jpg', 1, '500.00', '500.00');
+(36, 24, 5, 14, 'LIBRO', '', 'http://abanicoytu.com/demo/contenido/img/productos/completo/default.jpg', 1, '500.00', '500.00'),
+(37, 25, 1, 22, 'Pizza', 'Tamaño-Familiar', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00'),
+(38, 26, 1, 22, 'Pizza', 'Tamaño-Familiar', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00');
 
 -- --------------------------------------------------------
 
@@ -6543,6 +6572,7 @@ CREATE TABLE `pedidos_tiendas` (
   `ID_TRANSPORTISTA` int(11) DEFAULT NULL,
   `TRANSPORTISTA_NOMBRE` varchar(255) DEFAULT NULL,
   `GUIA_PAQUETERIA` varchar(255) DEFAULT NULL,
+  `URL_RASTREO` varchar(255) NOT NULL,
   `PEDIDO_TIENDA_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -6550,13 +6580,15 @@ CREATE TABLE `pedidos_tiendas` (
 -- Volcado de datos para la tabla `pedidos_tiendas`
 --
 
-INSERT INTO `pedidos_tiendas` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `PEDIDO_TIENDA_IMPORTE_PRODUCTOS`, `PEDIDO_TIENDA_IMPORTE_ENVIO`, `ID_TRANSPORTISTA`, `TRANSPORTISTA_NOMBRE`, `GUIA_PAQUETERIA`, `PEDIDO_TIENDA_ESTADO`) VALUES
-(31, 21, 8, '158.00', '0.00', 0, '', NULL, 'Espera Pago'),
-(32, 22, 1, '120.00', '7.64', 3, 'Abanico', NULL, 'Espera Pago'),
-(33, 22, 8, '158.00', '0.00', 0, '', NULL, 'Espera Pago'),
-(34, 23, 1, '150.00', '156.00', 3, 'Abanico México', NULL, 'Espera Pago'),
-(35, 23, 4, '280.00', '0.00', 0, '', NULL, 'Espera Pago'),
-(36, 24, 5, '500.00', '0.00', 0, '', NULL, 'Espera Pago');
+INSERT INTO `pedidos_tiendas` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `PEDIDO_TIENDA_IMPORTE_PRODUCTOS`, `PEDIDO_TIENDA_IMPORTE_ENVIO`, `ID_TRANSPORTISTA`, `TRANSPORTISTA_NOMBRE`, `GUIA_PAQUETERIA`, `URL_RASTREO`, `PEDIDO_TIENDA_ESTADO`) VALUES
+(31, 21, 8, '158.00', '0.00', 0, '', NULL, '', 'Espera Pago'),
+(32, 22, 1, '120.00', '7.64', 3, 'Abanico', NULL, '', 'Espera Pago'),
+(33, 22, 8, '158.00', '0.00', 0, '', NULL, '', 'Espera Pago'),
+(34, 23, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', 'Espera Pago'),
+(35, 23, 4, '280.00', '0.00', 0, '', NULL, '', 'Espera Pago'),
+(36, 24, 5, '500.00', '0.00', 0, '', NULL, '', 'Espera Pago'),
+(37, 25, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', 'Espera Pago'),
+(38, 26, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', 'Espera Pago');
 
 -- --------------------------------------------------------
 
@@ -6776,6 +6808,13 @@ CREATE TABLE `puntos_registro` (
   `PUNTO_REFERENCIAS` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `puntos_registro`
+--
+
+INSERT INTO `puntos_registro` (`ID_PUNTO`, `PUNTO_ALIAS`, `PUNTO_PAIS`, `PUNTO_ESTADO`, `PUNTO_CIUDAD`, `PUNTO_MUNICIPIO`, `PUNTO_BARRIO`, `PUNTO_CALLE_Y_NUMERO`, `PUNTO_CODIGO_POSTAL`, `PUNTO_REFERENCIAS`) VALUES
+(0, 'Almacen', 'México', 'Ciudad de México', 'Ciudad de México', 'Miguel Hidalgo', 'San Miguel Chapultepec', '14-5', '11850', '');
+
 -- --------------------------------------------------------
 
 --
@@ -6822,6 +6861,16 @@ CREATE TABLE `rutas_abanico` (
   `PUNTO_DIRECCION` varchar(255) DEFAULT NULL,
   `RUTA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `rutas_abanico`
+--
+
+INSERT INTO `rutas_abanico` (`ID`, `GUIA_CODIGO`, `ID_PUNTO`, `PUNTO_ALIAS`, `PUNTO_DIRECCION`, `RUTA_FECHA_REGISTRO`) VALUES
+(1, 'H8FA35-3', 0, 'En Preparación', 'Preparando Paquete', '2019-01-09 20:55:26'),
+(2, 'RLHO5T-25', 0, 'En bodega', 'Preparando para salir', '2019-01-09 23:20:06'),
+(3, 'RLHO5T-25', 0, 'Almacen', '14-5, San Miguel Chapultepec, Miguel Hidalgo, Ciudad de México, Ciudad de México, 11850, México', '2019-01-09 23:22:21'),
+(4, 'RLHO5T-25', 0, 'Entregado', 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', '2019-01-09 23:22:28');
 
 -- --------------------------------------------------------
 
@@ -6875,7 +6924,8 @@ INSERT INTO `seguridad_usuarios` (`ID`, `ID_USUARIO`, `CLAVE`, `FECHA_REGISTRO`,
 (4, '5c0653d43d92e7.75019474', 'IjUMTXgysC', '2018-12-16 02:06:14', 'inactivo'),
 (5, '5c08a9dc2cb096.56391251', 'NT380VwLj3', '2018-12-16 02:49:23', 'inactivo'),
 (6, '5c19b1d094f6e6.26249130', 'xjCwbIXwbu', '2018-12-19 02:58:15', 'inactivo'),
-(7, '5c0839a2158e44.99631671', '5V8TEIUnUJ', '2018-12-28 17:14:25', 'inactivo');
+(7, '5c0839a2158e44.99631671', '5V8TEIUnUJ', '2018-12-28 17:14:25', 'inactivo'),
+(8, '5c19b1d094f6e6.26249130', 'lhrhdLKos9', '2019-01-10 23:01:58', 'inactivo');
 
 -- --------------------------------------------------------
 
@@ -6893,6 +6943,8 @@ CREATE TABLE `servicios` (
   `SERVICIO_PAIS` varchar(255) DEFAULT NULL,
   `SERVICIO_ESTADO_DIR` varchar(255) DEFAULT NULL,
   `SERVICIO_MUNICIPIO` varchar(255) DEFAULT NULL,
+  `SERVICIO_ZONA_TRABAJO` text NOT NULL,
+  `SERVICIO_IMAGEN_FONDO` varchar(255) NOT NULL DEFAULT 'default.jpg',
   `SERVICIO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `SERVICIO_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `SERVICIO_FECHA_PUBLICACION` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -6905,9 +6957,9 @@ CREATE TABLE `servicios` (
 -- Volcado de datos para la tabla `servicios`
 --
 
-INSERT INTO `servicios` (`ID_SERVICIO`, `ID_USUARIO`, `USUARIO_NOMBRE`, `SERVICIO_NOMBRE`, `SERVICIO_DESCRIPCION`, `SERVICIO_DETALLES`, `SERVICIO_PAIS`, `SERVICIO_ESTADO_DIR`, `SERVICIO_MUNICIPIO`, `SERVICIO_FECHA_REGISTRO`, `SERVICIO_FECHA_ACTUALIZACION`, `SERVICIO_FECHA_PUBLICACION`, `SERVICIO_TIPO`, `SERVICIO_ESTADO`, `ORDEN`) VALUES
-(10, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Diseño Gráfico', 'Imágenes Digitales, e Impresos', '<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae commodo elit. Donec laoreet fringilla dui, suscipit ultricies nunc accumsan ut. Sed eget risus aliquam, suscipit arcu in, feugiat massa. Sed semper, libero et luctus viverra, nulla risus egestas mauris, fringilla elementum orci augue nec est. Proin sed odio ipsum. Fusce vitae dignissim mi. In dapibus eros tortor, sit amet tincidunt metus varius a. Etiam at laoreet dolor.</p>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Fusce dictum arcu ac elit varius varius. Nunc lacinia, eros nec consequat egestas, orci odio rutrum quam, suscipit posuere ex diam eget magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam convallis purus velit, vitae faucibus mi ultrices ut. Donec orci nisl, pretium vitae lacinia et, sagittis ac sapien. Proin euismod sollicitudin pharetra. Maecenas interdum eros euismod sollicitudin pulvinar. Suspendisse sagittis semper ligula nec facilisis. Nulla quis sodales mi. Nullam ut odio aliquet, accumsan justo vitae, lacinia felis. Nam est mauris, vulputate a turpis in, facilisis maximus urna.</p>', 'México', 'Ciudad de México', 'Gustavo A. Madero', '2018-12-26 22:32:10', '2018-12-26 22:32:10', '2018-12-26 22:32:10', 'profesional', 'activo', 1),
-(11, '5c25209703a210.25306180', 'casiopea ende', 'Redaccion y correccion de textos ', 'Redacto, reviso y corrijo textos científicos y filosóficos.', '<h2><strong>Con 25 a&ntilde;os de experiencia en redaccion y revision de textos cientificos y filosoficos puedo ofrecer un servicio de la mas alta calidad para aquellas personas interesadas en tener una segunda opinion en el fondo y la forma de sus escritos.&nbsp;</strong></h2>', 'México', 'Veracruz', 'Banderilla', '2018-12-27 19:07:14', '2018-12-27 19:09:13', '2018-12-27 19:07:14', 'profesional', 'activo', 1);
+INSERT INTO `servicios` (`ID_SERVICIO`, `ID_USUARIO`, `USUARIO_NOMBRE`, `SERVICIO_NOMBRE`, `SERVICIO_DESCRIPCION`, `SERVICIO_DETALLES`, `SERVICIO_PAIS`, `SERVICIO_ESTADO_DIR`, `SERVICIO_MUNICIPIO`, `SERVICIO_ZONA_TRABAJO`, `SERVICIO_IMAGEN_FONDO`, `SERVICIO_FECHA_REGISTRO`, `SERVICIO_FECHA_ACTUALIZACION`, `SERVICIO_FECHA_PUBLICACION`, `SERVICIO_TIPO`, `SERVICIO_ESTADO`, `ORDEN`) VALUES
+(10, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Diseño Gráfico', 'Imágenes Digitales, e Impresos', '<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae commodo elit. Donec laoreet fringilla dui, suscipit ultricies nunc accumsan ut. Sed eget risus aliquam, suscipit arcu in, feugiat massa. Sed semper, libero et luctus viverra, nulla risus egestas mauris, fringilla elementum orci augue nec est. Proin sed odio ipsum. Fusce vitae dignissim mi. In dapibus eros tortor, sit amet tincidunt metus varius a. Etiam at laoreet dolor.</p>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Fusce dictum arcu ac elit varius varius. Nunc lacinia, eros nec consequat egestas, orci odio rutrum quam, suscipit posuere ex diam eget magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam convallis purus velit, vitae faucibus mi ultrices ut. Donec orci nisl, pretium vitae lacinia et, sagittis ac sapien. Proin euismod sollicitudin pharetra. Maecenas interdum eros euismod sollicitudin pulvinar. Suspendisse sagittis semper ligula nec facilisis. Nulla quis sodales mi. Nullam ut odio aliquet, accumsan justo vitae, lacinia felis. Nam est mauris, vulputate a turpis in, facilisis maximus urna.</p>', 'México', 'Ciudad de México', 'Gustavo A. Madero', '', 'default.jpg', '2018-12-26 22:32:10', '2018-12-26 22:32:10', '2018-12-26 22:32:10', 'profesional', 'activo', 1),
+(11, '5c25209703a210.25306180', 'casiopea ende', 'Redaccion y correccion de textos ', 'Redacto, reviso y corrijo textos científicos y filosóficos.', '<h2><strong>Con 25 a&ntilde;os de experiencia en redaccion y revision de textos cientificos y filosoficos puedo ofrecer un servicio de la mas alta calidad para aquellas personas interesadas en tener una segunda opinion en el fondo y la forma de sus escritos.&nbsp;</strong></h2>', 'México', 'Veracruz', 'Banderilla', '', 'default.jpg', '2018-12-27 19:07:14', '2018-12-27 19:09:13', '2018-12-27 19:07:14', 'profesional', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -7192,7 +7244,7 @@ INSERT INTO `usuarios` (`ID_USUARIO`, `USUARIO_NOMBRE`, `USUARIO_APELLIDOS`, `US
 ('5c0864799aba54.31749554', 'TANIA', 'RODRIGUEZ', 'saenztania19@gmail.com', '(559) 194-5042', '0000-00-00', '$2y$10$cNIjKg5FVO8kZ.qWWMiEYu1ZYGEykVraUjMobNXCjENE/g1GUl6Vy', '2018-12-05 23:51:21', '2019-01-02 20:30:19', 'adm-6', 'si', 'activo'),
 ('5c08a9dc2cb096.56391251', 'JORGE', 'CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', '0000-00-00', '$2y$10$a0nvxJfzsdHyQp6A8GGKwOnqQW/YmRDOw3En0gtVPtzjQZlhC3nE6', '2018-12-06 04:47:24', '2019-01-02 20:30:24', 'adm-6', 'si', 'activo'),
 ('5c19944989f925.72741021', 'Martha', 'Martínez Ruíz', 'mm@gmail.com', ' 5533227755  ', '2000-12-01', '$2y$10$rzDk0zx7IzDD0jogaHrKKeNUfBrOj48LqoTtbNO3PGKteIrWxDJwS', '2018-12-19 00:43:53', '2018-12-19 01:07:37', 'usr-1', 'si', 'activo'),
-('5c19b1d094f6e6.26249130', 'Kimi', 'Luvi', 'kimi.luvi.tin.yee@gmail.com', NULL, '0000-00-00', '$2y$10$m8BAzr23tQqGWCX0sH0k5.zwPU0YpVtFlX2qFpfh8DjYSiW0YEO3q', '2018-12-19 02:49:52', '2018-12-19 02:58:15', 'usr-1', 'si', 'activo'),
+('5c19b1d094f6e6.26249130', 'Kimi', 'Luvi', 'kimi.luvi.tin.yee@gmail.com', NULL, '0000-00-00', '$2y$10$a2N.mtRTbLub/ZOp547a1O7got3YAIPdZmSwlc1Um1IFeVCE6XZfS', '2018-12-19 02:49:52', '2019-01-10 23:01:58', 'usr-1', 'si', 'activo'),
 ('5c251a08bf0109.40704946', 'Pancho', 'Villa', 'lapancha@hotmail.com', ' 55555555555', '0000-00-00', '$2y$10$yJwpkii8XRpiWITyeKohIerglVyEPvwq2Vn0Db.B6NDsi/XxzVRyy', '2018-12-27 18:29:28', '2018-12-27 18:34:44', 'usr-1', 'si', 'activo'),
 ('5c251a8521d321.20926810', 'Beatriz', 'Buendía', 'bb@gmail.com', NULL, '0000-00-00', '$2y$10$eiVFTY6iznQ9yBrV5Nvn5uS7IcWd0rIe82gEil5V1SePx93cSraEy', '2018-12-27 18:31:33', '2018-12-27 18:31:33', 'usr-1', 'si', 'activo'),
 ('5c25209703a210.25306180', 'casiopea', 'ende', 'casiopea76@hotmail.com', NULL, '0000-00-00', '$2y$10$z4Y71tC689Osp7F08TmfHuW1hrRSLAHGAsngHRifprTaSjdfIj10u', '2018-12-27 18:57:27', '2019-01-08 23:22:54', 'vnd-2', 'si', 'activo'),
@@ -7631,17 +7683,17 @@ ALTER TABLE `categorias_servicios`
 -- AUTO_INCREMENT de la tabla `conversaciones`
 --
 ALTER TABLE `conversaciones`
-  MODIFY `ID_CONVERSACION` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_CONVERSACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `conversaciones_mensajes`
 --
 ALTER TABLE `conversaciones_mensajes`
-  MODIFY `ID_MENSAJE` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_MENSAJE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `direcciones`
 --
 ALTER TABLE `direcciones`
-  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `divisas`
 --
@@ -7711,17 +7763,17 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_productos`
 --
 ALTER TABLE `pedidos_productos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_tiendas`
 --
 ALTER TABLE `pedidos_tiendas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT de la tabla `perfiles_servicios`
 --
@@ -7776,7 +7828,7 @@ ALTER TABLE `reportes`
 -- AUTO_INCREMENT de la tabla `rutas_abanico`
 --
 ALTER TABLE `rutas_abanico`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `saldo_movimientos`
 --
@@ -7791,7 +7843,7 @@ ALTER TABLE `saldo_usuarios`
 -- AUTO_INCREMENT de la tabla `seguridad_usuarios`
 --
 ALTER TABLE `seguridad_usuarios`
-  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `servicios`
 --
