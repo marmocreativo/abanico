@@ -574,3 +574,21 @@ html, body{
 #contProductos .table thead th {
     border-bottom-color: #a0acb7;
 }
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS VISTA TODAS LAS CATEGORIAS
+| -------------------------------------------------------------------------
+*/
+#tituloCategoria {
+  border-bottom: solid 1px;
+}
+#menuTodasCategorias{
+  border-radius: 0;
+}
+#menuTodasCategorias .card-header{
+  text-align: center;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #78909C;
+}
