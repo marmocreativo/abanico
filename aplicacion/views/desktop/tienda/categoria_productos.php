@@ -54,7 +54,7 @@
       <div class="col">
         <div class="card-deck">
           <?php foreach($productos as $producto){ ?>
-            <div class="col-xl-3 col-md-3 col-6 mb-3">
+            <div class="col-xl-3 col-md-4 col-sm-4 col-6 mb-3">
               <div class="cuadricula-productos">
                 <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
                 <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="enlace-principal">
