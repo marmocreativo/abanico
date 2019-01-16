@@ -211,6 +211,7 @@ Slider Productos
       buttons: false,
       width: '100%',
       fade: true,
+      autoHeight: true,
     });
  	});
 
