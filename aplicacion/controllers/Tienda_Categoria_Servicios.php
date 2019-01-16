@@ -13,7 +13,7 @@ class Tienda_Categoria_Servicios extends CI_Controller {
 		$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo']  = "desktop";
+			$this->data['dispositivo']  = "mobile";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}

@@ -68,7 +68,7 @@
       <div class="" >
         <div class="card card-body">
           <div class="row">
-            <div class="col-3">
+            <div class="col-12">
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link" href="<?php echo base_url('categoria/servicios'); ?>"> <i class="fa fa-boxes"></i> TODOS LOS SERVICIOS</a>
                 <?php $i=0; foreach($categorias as $categoria){ ?>
@@ -78,39 +78,9 @@
                 <?php $i++;  } ?>
               </div>
             </div>
-            <div class="col-9">
-              <div class="tab-content" id="v-pills-tabContent">
-                <?php $i=0; foreach($categorias as $categoria){ ?>
-                <div class="tab-pane fade <?php if($i==0){ echo 'active show';} ?>" id="cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tabpanel" aria-labelledby="v-pills-1-tab">
-                  <div class="row">
-                    <div class="col-9">
-                      <?php   $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
-                      <div class="row">
-                        <?php foreach($segundo_categorias as $segunda_categoria){ ?>
-                          <div class="col-4">
-                            <a href="<?php echo base_url('categoria/servicios?slug='.$segunda_categoria->CATEGORIA_URL); ?>"><h4><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h4></a>
-                            <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
-                            <ul class="list list-unstyled">
-                              <?php foreach($tercero_categorias as $tercera_categoria){ ?>
-                                <li> <a href="<?php echo base_url('categoria/servicios?slug='.$tercera_categoria->CATEGORIA_URL); ?>"><?php echo $tercera_categoria->CATEGORIA_NOMBRE;  ?></a></li>
-                              <?php } ?>
-                            </ul>
-                          </div>
-                        <?php } ?>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <img src="<?php echo base_url('assets/tienda/img/categorias/completo/'.$categoria->CATEGORIA_IMAGEN); ?>" class="img-fluid" alt="">
-                    </div>
-                  </div>
-                </div>
-              <?php $i++; } ?>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
+  </div>
 
     <!-- Termina Header -->
