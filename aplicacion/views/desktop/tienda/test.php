@@ -47,10 +47,22 @@
               		</div>
               	</div>
               </div>
+              <div class="cuadricula-productos">
+              <div class="product-content text-center">
+                  <h3 class="title text-primary">Nombre de Producto</h3>
+                    <div class="price-list"><small>$</small> 000 <small>MXN </small> </div>
+                  <div class="price"><small>$</small> 000 <small>MXN </small></div>
+                  <ul class="rating">
+                      <li class="fa fa-star text-primary"></li>
+                      <li class="far fa-star text-primary"></li>
+                    <li class="fa text-dark"></li>
+                  </ul>
+              </div>
+            </div>
             </div>
             <div class="col-4">
-              <h5>Información detallada del producto</h5>
-              <p>Maecenas ac dolor mattis mi commodo molestie ut eu arcu. Proin volutpat ipsum eu pellentesque tristique. Sed ultricies ex ut mauris pretium, et tincidunt lorem ultricies. Suspendisse non mauris orci. Suspendisse dignissim ante nec molestie dapibus. Aenean et nibh lectus. Fusce sit amet laoreet massa. Aenean vel lectus turpis. Etiam viverra erat id augue ornare, eget posuere justo pellentesque. Curabitur vel ultricies enim. Praesent vel metus et tellus ornare viverra in ac tellus. Quisque nulla orci, cursus a tincidunt sit amet, cursus et purus.</p>
+              <h5>Nombre del producto</h5>
+              <p>Descripción corta. Maecenas ac dolor mattis mi commodo molestie ut eu arcu. Proin volutpat ipsum eu pellentesque tristique. Sed ultricies ex ut mauris pretium, et tincidunt lorem ultricies. Suspendisse non mauris orci. Suspendisse dignissim ante nec molestie dapibus. Aenean et nibh lectus. Fusce sit amet laoreet massa.</p>
               <button type="button" class="btn btn-primary-18 btn-lg btn-block btn-contacto  mb-3">Comprar ahora</button>
               <div class="card-group">
                 <div class="card">
@@ -74,20 +86,171 @@
 
           <div class="row mb-5">
             <div class="col-12">
-              <div class="card card-desc-servicio">
-                <div class="card-body fila-gris">
-
-                    <h5 class="card-title">Información detallada del producto</h5>
-                  <div class="row">
-                    <div class="card-text col-6"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel sem at leo sagittis lacinia. Nulla in tincidunt risus. Quisque et nisl dolor. Integer urna ante, cursus at magna sit amet, maximus ultricies eros. Sed tincidunt laoreet metus eget pellentesque. Sed at velit lectus. Cras gravida turpis vel congue varius.</p>
-                      <p>Maecenas ac dolor mattis mi commodo molestie ut eu arcu. Proin volutpat ipsum eu pellentesque tristique. Sed ultricies ex ut mauris pretium, et tincidunt lorem ultricies. Suspendisse non mauris orci. Suspendisse dignissim ante nec molestie dapibus. Aenean et nibh lectus. Fusce sit amet laoreet massa. Aenean vel lectus turpis. Etiam viverra erat id augue ornare, eget posuere justo pellentesque. Curabitur vel ultricies enim. Praesent vel metus et tellus ornare viverra in ac tellus. Quisque nulla orci, cursus a tincidunt sit amet, cursus et purus.</p></div>
-                    <div class="col-6">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel sem at leo sagittis lacinia. Nulla in tincidunt risus. Quisque et nisl dolor. Integer urna ante, cursus at magna sit amet, maximus ultricies eros. Sed tincidunt laoreet metus eget pellentesque. Sed at velit lectus. Cras gravida turpis vel congue varius.</p>
-                        <p>Maecenas ac dolor mattis mi commodo molestie ut eu arcu. Proin volutpat ipsum eu pellentesque tristique. Sed ultricies ex ut mauris pretium, et tincidunt lorem ultricies. Suspendisse non mauris orci. Suspendisse dignissim ante nec molestie dapibus. Aenean et nibh lectus. Fusce sit amet laoreet massa. Aenean vel lectus turpis. Etiam viverra erat id augue ornare, eget posuere justo pellentesque. Curabitur vel ultricies enim. Praesent vel metus et tellus ornare viverra in ac tellus. Quisque nulla orci, cursus a tincidunt sit amet, cursus et purus.</p>
-                    </div>
+              <ul class="nav nav-tabs nav-fill fila-gris" id="tabProductos" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Detalles</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Características</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="preguntas-tab" data-toggle="tab" href="#preguntas" role="tab" aria-controls="preguntas" aria-selected="false">Preguntas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Acerca del Vendedor</a>
+                </li>
+              </ul>
+              <div class="tab-content fila-gris" id="contProductos">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="p-3">
+                    <h5>Información detallada del producto</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel sem at leo sagittis lacinia. Nulla in tincidunt risus. Quisque et nisl dolor. Integer urna ante, cursus at magna sit amet, maximus ultricies eros. Sed tincidunt laoreet metus eget pellentesque. Sed at velit lectus. Cras gravida turpis vel congue varius.</p>
+                    <p>Maecenas ac dolor mattis mi commodo molestie ut eu arcu. Proin volutpat ipsum eu pellentesque tristique. Sed ultricies ex ut mauris pretium, et tincidunt lorem ultricies. Suspendisse non mauris orci. Suspendisse dignissim ante nec molestie dapibus. Aenean et nibh lectus. Fusce sit amet laoreet massa. Aenean vel lectus turpis. Etiam viverra erat id augue ornare, eget posuere justo pellentesque. Curabitur vel ultricies enim. Praesent vel metus et tellus ornare viverra in ac tellus. Quisque nulla orci, cursus a tincidunt sit amet, cursus et purus.</p>
+                  </div>
                 </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="p-3">
+                    <div class="row">
+                      <div class="col">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th colspan="2">Modelo y Claves</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Modelo</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>Origen</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>SKU</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>UPC</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>EAN</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>JAN</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>ISBN</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>MPN</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>EAN</td>
+                              <td></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="col">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th colspan="2">Dimensiones y Peso</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Ancho</td>
+                              <td>00 <small>cm</small> </td>
+                            </tr>
+                            <tr>
+                              <td>Alto</td>
+                              <td>00 <small>cm</small> </td>
+                            </tr>
+                            <tr>
+                              <td>Profundo</td>
+                              <td>00 <small>cm</small> </td>
+                            </tr>
+                            <tr>
+                              <td>Peso</td>
+                              <td>00 <small>Kg</small> </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="preguntas" role="tabpanel" aria-labelledby="contact-tab">
+                  <div class="p-3">
+                    <form class="" action="" method="post">
+                      <input type="hidden" name="IdReceptor" value="">
+                      <input type="hidden" name="IdRemitente" value="">
+                      <input type="hidden" name="ProductoNombre" value="">
+                      <input type="hidden" name="IdProducto" value="">
+                      <div class="row">
+                        <table class="table">
+                          <tr>
+                            <td><strong>Remitente:</strong></td>
+                            <td></td>
+                          </tr>
+                        </table>
+                      </div>
+                      <p> <i class="fa fa-info-circle"></i> Tienes dudas sobre el producto?</p>
+                      <div class="form-group">
+                        <label for="MensajeTexto">Mensaje</label>
+                        <textarea class="form-control" name="MensajeTexto" rows="8" required></textarea>
+                      </div>
+                      <button class="btn float-right"> <span class="fa fa-envelope"></span> Contactar</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="tab-pane fade p-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                  <div class="row">
+                    <div class="col-3">
+                        <img src="" alt="" class="img-fluid img-thumbnail rounded-circle">
+                    </div>
+                    <div class="col-9">
+                      <table class="table table-sm table-borderless">
+                        <tr>
+                          <td><b>Nombre Público</b></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><b>Razón Social</b></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><b>R.F.C.</b></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><b>Teléfono</b></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><b>Registro</b><br></td>
+                          <td><b>Actualización</b><br></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row border-top pt-3">
+                    <div class="col">
+                      <h6>Dirección Fiscal</h6>
+                      <p></p>
+                    </div>
+                  </div>
                 </div>
               </div>
+
             </div>
           </div>
 

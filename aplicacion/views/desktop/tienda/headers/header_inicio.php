@@ -38,7 +38,7 @@
       <nav class="navbar navbar-expand">
         <div class="d-flex justify-content-arround align-items-center">
           <a class="navbar-brand mr-1" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
-          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias"><i class="fas fa-angle-down mr-2"></i>CATEGORÍAS</a>
+          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias"><i class="fas fa-angle-down mr-2"></i>PRODUCTOS</a>
           <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias"><i class="fas fa-angle-down mr-2"></i>SERVICIOS</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

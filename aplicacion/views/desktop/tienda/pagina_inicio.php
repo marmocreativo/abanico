@@ -23,7 +23,7 @@
     </a>
   </div>
 </div>
-<div class="post-menu py-4">
+<div class="post-menu col-8 py-4">
   <div class="container-fluid">
     <div class="row">
       <div class="col border-right">
