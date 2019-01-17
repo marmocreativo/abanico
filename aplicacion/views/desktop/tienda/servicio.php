@@ -122,9 +122,9 @@
                       <?php if(empty($mi_calificacion)){ ?>
                       <div class="card">
                           <div class="card-body">
-                            <form class="" action="<?php echo base_url('producto/calificar'); ?>" method="post">
-                              <input type="hidden" name="IdProducto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
-                              <input type="hidden" name="IdUsuario" value="<?php echo $producto['ID_USUARIO']; ?>">
+                            <form class="" action="<?php echo base_url('servicio/calificar'); ?>" method="post">
+                              <input type="hidden" name="IdServicio" value="<?php echo $servicio['ID_SERVICIO']; ?>">
+                              <input type="hidden" name="IdUsuario" value="<?php echo $servicio['ID_USUARIO']; ?>">
                               <input type="hidden" name="IdCalificador" value="<?php echo $_SESSION['usuario']['id'] ?>">
                               <label for="EstrellasCalificacion">Califica este producto</label>
                               <div class="estrellas"></div>
