@@ -63,6 +63,23 @@ class ConversacionesModel extends CI_Model {
     $query = $this->db->get('conversaciones');
     return $query->result();
   }
+  // Listado para administradores
+  function lista_administradores($tipo){
+    $this->db->select([
+      'usuarios.USUARIO_NOMBRE',
+      'usuarios.USUARIO_APELLIDOS',
+      'conversaciones.ID_CONVERSACION',
+      'conversaciones.ID_USUARIO_A',
+      'conversaciones.ID_USUARIO_B',
+      'conversaciones.CONVERSACION_TIPO',
+      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION'
+    ]);
+    $this->db->join('usuarios','conversaciones.ID_USUARIO_A = usuarios.ID_USUARIO');
+    $this->db->where('CONVERSACION_TIPO',$tipo);
+    $this->db->order_by('CONVERSACION_FECHA_ACTUALIZACION','DESC');
+    $query = $this->db->get('conversaciones');
+    return $query->result();
+  }
   /*
     * Obtengo todos los detalles de una sola entrada
  */

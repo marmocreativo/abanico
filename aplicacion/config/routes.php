@@ -42,6 +42,8 @@ $route['admin/puntos_registro'] = 'Admin_Puntos_Registro';
 $route['admin/puntos_registro/(:any)'] = 'Admin_Puntos_Registro/$1';
 $route['admin/tiendas'] = 'Admin_Tiendas';
 $route['admin/tiendas/(:any)'] = 'Admin_Tiendas/$1';
+$route['admin/servidores_mensajes'] = 'Admin_Conversaciones';
+$route['admin/servidores_mensajes/(:any)'] = 'Admin_Conversaciones/$1';
 $route['admin/perfiles_servicios'] = 'Admin_Perfiles_Servicios';
 $route['admin/perfiles_servicios/(:any)'] = 'Admin_Perfiles_Servicios/$1';
 $route['admin/categorias'] = 'Admin_Categorias';
@@ -104,7 +106,14 @@ $route['servicio'] = 'Tienda_Servicio';
 $route['servicio/(:any)'] = 'Tienda_Servicio/$1';
 
 // Proceso de Pago
+// Pago Invitado
+$route['invitado_pago_4'] = 'Proceso_Pago/invitado_paso4';
+$route['invitado_pago_3_banco'] = 'Proceso_Pago/invitado_paso3_banco';
+$route['invitado_pago_3'] = 'Proceso_Pago/invitado_paso3';
+$route['invitado_pago_2'] = 'Proceso_Pago/invitado_paso2';
+// Pago Normal
 $route['proceso_pago_4'] = 'Proceso_Pago/paso4';
+$route['proceso_pago_3_banco'] = 'Proceso_Pago/paso3_banco';
 $route['proceso_pago_3'] = 'Proceso_Pago/paso3';
 $route['proceso_pago_2'] = 'Proceso_Pago/paso2';
 $route['proceso_pago_1'] = 'Proceso_Pago/paso1';

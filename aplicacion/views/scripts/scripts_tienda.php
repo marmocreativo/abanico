@@ -7,6 +7,16 @@ Carrito
 // Cargo el carrito por defecto
 jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
 
+// Desactivo el boton de Comprar si no hay productos
+jQuery( document ).ready( function(){
+  var cantidad_productos = <?php echo count($_SESSION['carrito']['productos']); ?>;
+  if (cantidad_productos==0){
+    jQuery('#BotonComprarAhora').addClass('disabled');
+    jQuery('#BotonComprarAhora').attr('aria-disabled','true');
+  }
+} );
+
+
 // Cargo el carrito
 jQuery('#BotonComprar').on('click',function(e){
   // Leo las variables del botón
@@ -39,6 +49,8 @@ jQuery('#BotonComprar').on('click',function(e){
     success : function(texto)
      {
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+          jQuery('#BotonComprarAhora').removeClass('disabled');
+          jQuery('#BotonComprarAhora').attr('aria-disabled','false');
         jQuery('#ModalCarrito').modal();
      }
   });
@@ -61,6 +73,8 @@ jQuery('.CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
     success : function(texto)
      {
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('#BotonComprarAhora').removeClass('disabled');
+        jQuery('#BotonComprarAhora').attr('aria-disabled','false');
      }
   });
 });
@@ -140,6 +154,8 @@ jQuery('#BotonVaciar').on('click',function(e){
     success : function(texto)
      {
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        jQuery('#BotonComprarAhora').addClass('disabled');
+        jQuery('#BotonComprarAhora').attr('aria-disabled','true');
         jQuery('#ModalCarrito').modal();
      }
   });
@@ -166,7 +182,22 @@ jQuery('.CombinacionProducto').on('change',function(e){
   jQuery('#BotonComprar').data('detalles-producto',detalles);
 
 });
-
+/*
+-----------------
+Botones del MENU
+-----------------
+*/
+jQuery('#desplegar-menu-productos').click(function(){
+  if(jQuery( "#menu-categorias-servicios" ).hasClass( "show" )){
+    jQuery( "#menu-categorias-servicios" ).removeClass("show");
+  }
+});
+jQuery('#desplegar-menu-servicios').click(function(){
+  console.log('click en servicios');
+  if(jQuery( "#menu-categorias" ).hasClass( "show" )){
+    jQuery( "#menu-categorias" ).removeClass("show");
+  }
+});
 /*
 -----------------
 GALERIA

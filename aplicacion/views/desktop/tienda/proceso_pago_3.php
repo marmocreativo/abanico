@@ -132,7 +132,7 @@
                             $envio_pedido_total +=$envio_tienda['IMPORTE'];
 
                             if(empty($envio_tienda)){ ?>
-                              <td colspan="4" class="table-danger text-right">
+                              <td colspan="4" class="table-warning text-right">
                                 <p> Los productos Exceden el peso máximo o tu dirección no está disponible para envíos. Por favor contacta con nosotros para ofrecerte opciones.</p>
                               </td>
                             <?php }else{ ?>
@@ -226,29 +226,47 @@
                 </div>
               </div>
             </div><!-- Card Body -->
+            <?php
+            // Session del Pedido
+            // Creo el pedido en la sesión para no perderlo
+            $_SESSION['pedido']['Folio'] = folio_pedido();
+      			$_SESSION['pedido']['IdUsuario'] = $_SESSION['usuario']['id'];
+      			$_SESSION['pedido']['PedidoNombre'] = $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'];
+      			$_SESSION['pedido']['PedidoCorreo'] = $_SESSION['usuario']['correo'];
+      			$_SESSION['pedido']['PedidoTelefono'] = $usuario['USUARIO_TELEFONO'];
+      			$_SESSION['pedido']['IdDireccion'] = $detalles_direccion['ID_DIRECCION'];
+      			$_SESSION['pedido']['Direccion'] = $direccion;
+      			$_SESSION['pedido']['Divisa'] = $_SESSION['divisa']['iso'];
+      			$_SESSION['pedido']['Conversion'] = $_SESSION['divisa']['conversion'];
+      			$_SESSION['pedido']['ImporteProductosParcial'] = number_format($_SESSION['divisa']['conversion']*$importe_pedido_abanico,2,'.', '');
+      			$_SESSION['pedido']['ImporteProductosTotal'] = number_format($_SESSION['divisa']['conversion']*$importe_pedido_total,2,'.', '');
+      			$_SESSION['pedido']['ImporteEnvioParcial'] = number_format($_SESSION['divisa']['conversion']*$envio_pedido_abanico,2,'.', '');
+      			$_SESSION['pedido']['ImporteEnvioTotal'] = number_format($_SESSION['divisa']['conversion']*$envio_pedido_total,2,'.', '');
+      			$_SESSION['pedido']['PedidosTiendas'] = serialize($pedido_tienda);
+            $_SESSION['pedido']['ImporteTotal'] = number_format($_SESSION['divisa']['conversion']*$importe_total,2,'.', '');
+            $_SESSION['pedido']['IdTransportista'] = $envio_abanico['ID_TRANSPORTISTA'];
+            $_SESSION['pedido']['NombreTransportista'] = $envio_abanico['TRANSPORTISTA_NOMBRE'];
+            $_SESSION['pedido']['FormaPago'] = 'PayPal';
+            $_SESSION['pedido']['EstadoPago'] = 'Pagado';
+            $_SESSION['pedido']['EstadoPedido'] = 'Pagado';
+            ?>
             <div class="card-footer">
-              <form class="d-flex justify-content-between" action="<?php echo base_url('proceso_pago_4'); ?>" method="post">
-                <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id']; ?>">
-                <input type="hidden" name="PedidoNombre" value="<?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']; ?>">
-                <input type="hidden" name="PedidoCorreo" value="<?php echo $_SESSION['usuario']['correo']; ?>">
-                <input type="hidden" name="PedidoTelefono" value="<?php echo $usuario['USUARIO_TELEFONO']; ?>">
-                <input type="hidden" name="IdDireccion" value="<?php echo $detalles_direccion['ID_DIRECCION']; ?>">
-                <input type="hidden" name="Direccion" value="<?php echo $direccion; ?>">
-                <input type="hidden" name="Divisa" value="<?php echo $_SESSION['divisa']['iso']; ?>">
-                <input type="hidden" name="Conversion" value="<?php echo $_SESSION['divisa']['conversion']; ?>">
-                <input type="hidden" name="ImporteProductosParcial" value="<?php echo  number_format($_SESSION['divisa']['conversion']*$importe_pedido_abanico,2,'.', ''); ?>">
-                <input type="hidden" name="ImporteProductosTotal" value="<?php echo  number_format($_SESSION['divisa']['conversion']*$importe_pedido_total,2,'.', ''); ?>">
-                <input type="hidden" name="ImporteEnvioParcial" value="<?php echo  number_format($_SESSION['divisa']['conversion']*$envio_pedido_abanico,2,'.', ''); ?>">
-                <input type="hidden" name="ImporteEnvioTotal" value="<?php echo  number_format($_SESSION['divisa']['conversion']*$envio_pedido_total,2,'.', ''); ?>">
-                <input type="hidden" name="IdTransportista" value="<?php echo $envio_abanico['ID_TRANSPORTISTA']; ?>">
-                <input type="hidden" name="NombreTransportista" value="<?php echo $envio_abanico['TRANSPORTISTA_NOMBRE']; ?>">
-                <input type="hidden" name="ImporteTotal" value="<?php echo  number_format($_SESSION['divisa']['conversion']*$importe_total,2,'.', ''); ?>">
-                <input type="hidden" name="FormaPago" value="Transferencia Bancaria">
-                <input type="hidden" name="EstadoPago" value="Pendiente">
-                <input type="hidden" name="EstadoPedido" value="Espera Pago">
-                <input type="hidden" name="PedidosTiendas" value='<?php echo serialize($pedido_tienda); ?>'>
-                <a href="<?php echo base_url(); ?>" class="btn btn-outline-primary"> <i class="fa fa-chevron-left"></i> Volver a la tienda</a>
-                <button type="submit" class="btn btn-success"> Continuar <i class="fa fa-chevron-right"></i></button>
+              <div class="d-flex justify-content-end">
+                <a href="<?php echo base_url('proceso_pago_3_banco'); ?>" class="btn btn-success btn-lg"> Transferencia Bancaria <i class="fas fa-money-bill-alt"></i></a>
+              </div>
+              <hr>
+              <div class="alert-info">
+                <p>Nota del Desarrollador: El boton de PAYPAL <b>está funcionando</b> cuidado al probar</p>
+              </div>
+              <form class="d-flex justify-content-end" id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                  <input type="hidden" name="cmd" value="_xclick">
+                  <input type="hidden" name="business" value="marmocreativo@gmail.com">
+                  <input type="hidden" name="item_name" value="Pedido <?php echo $_SESSION['pedido']['Folio'];?>">
+                  <input type="hidden" name="item_number" value="<?php echo $_SESSION['pedido']['Folio'];?>">
+                  <input type="hidden" name="amount" value="<?php echo $_SESSION['pedido']['ImporteTotal']; ?>">
+                  <input type="hidden" name="currency_code" value="<?php echo $_SESSION['pedido']['Divisa']; ?>">
+                  <input type="hidden" name="return" value="<?php echo base_url('proceso_pago_4?pago=paypal'); ?>">
+                  <button type="submit" class="btn btn-primary btn-lg">Pagar con PayPal <span class="fab fa-paypal"></span></button>
               </form>
             </div>
           </div> <!-- Card -->

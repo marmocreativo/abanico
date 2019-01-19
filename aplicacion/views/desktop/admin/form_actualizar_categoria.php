@@ -80,8 +80,10 @@
                    </div>
                  </div>
                  <div class="col">
+                   <h6>Imagen Actual</h6>
+                   <img src="<?php echo base_url('contenido/img/categorias/completo/'.$categoria['CATEGORIA_IMAGEN']); ?>" alt="" width="300">
                    <div class="form-group">
-                     <label for="ImagenCategoria">Imagen Categoria</label>
+                     <label for="ImagenCategoria">Nueva Imagen Categoria</label>
                      <input type="file" class="form-control" id="ImagenCategoria" name="ImagenCategoria" placeholder="" value="<?php echo $categoria['CATEGORIA_DESCRIPCION']; ?>">
                    </div>
                  </div>

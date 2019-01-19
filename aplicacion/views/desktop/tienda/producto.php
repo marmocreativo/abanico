@@ -8,6 +8,7 @@
               <li class="breadcrumb-item active <?php echo 'text'.$primary; ?>" aria-current="page">Mis servicios</li>
             </ol>
           </nav>
+          <?php retro_alimentacion(); ?>
           <div class="row mb-5">
             <div class="col-8">
               <div class="slider-pro" id="my-slider">
@@ -331,6 +332,7 @@
                       </div>
                       <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> Contactar</button>
                     </form>
+                    <span class="clearfix"> </span>
                   <?php }else{ ?>
                     <div class="card">
                       <div class="card-body">

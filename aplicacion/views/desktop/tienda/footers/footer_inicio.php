@@ -28,7 +28,7 @@
       <div class="modal-footer">
         <button type="button" id="BotonVaciar" class="btn btn-outline-danger float-left">Vaciar Carrito</button>
         <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">Seguir Comprando</button>
-        <a href="<?php echo base_url('carrito'); ?>" class="btn btn-primary">Comprar Ahora</a>
+        <a href="<?php echo base_url('carrito'); ?>" id="BotonComprarAhora" class="btn btn-primary" aria-disabled="false">Comprar Ahora</a>
       </div>
     </div>
   </div>

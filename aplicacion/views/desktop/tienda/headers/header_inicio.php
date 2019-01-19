@@ -9,7 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/bootstrap.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/fonts/fontawesome/css/all.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/starrr/starrr.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/flexslider/flexslider.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/slider-pro-master/css/slider-pro.css" type="text/css" media="screen" />
@@ -38,8 +38,8 @@
       <nav class="navbar navbar-expand">
         <div class="d-flex justify-content-arround align-items-center">
           <a class="navbar-brand mr-1" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
-          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias"><i class="fas fa-angle-down mr-2"></i>PRODUCTOS</a>
-          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" data-toggle="collapse" href="#menu-categorias-servicios" role="button" aria-expanded="false" aria-controls="menu-categorias-servicios"><i class="fas fa-angle-down mr-2"></i>SERVICIOS</a>
+          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" id="desplegar-menu-productos" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias"><i class="fas fa-angle-down mr-2"></i>PRODUCTOS</a>
+          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" id="desplegar-menu-servicios" data-toggle="collapse" href="#menu-categorias-servicios" role="button" aria-expanded="false" aria-controls="menu-categorias-servicios"><i class="fas fa-angle-down mr-2"></i>SERVICIOS</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -113,7 +113,7 @@
                       </div>
                     </div>
                     <div class="col">
-                      <img src="<?php echo base_url('assets/tienda/img/categorias/completo/'.$categoria->CATEGORIA_IMAGEN); ?>" class="img-fluid" alt="">
+                      <img src="<?php echo base_url('contenido/img/categorias/completo/'.$categoria->CATEGORIA_IMAGEN); ?>" class="img-fluid" alt="">
                     </div>
                   </div>
                 </div>

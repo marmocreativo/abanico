@@ -47,21 +47,24 @@
                    <a class="nav-link" href="<?php echo base_url('usuario/registrar');?>"> <span class="fa fa-pen-square"></span> Registrarme</a>
                  </nav>
               </div>
-              <!--
               <div class="col border-left text-center">
                 <h6> <i class="fa fa-user"></i> Invitado</h6>
-                <form class="" action="<?php echo base_url('pago_invitado_paso_2');?>" method="post">
+                <form class="" action="<?php echo base_url('invitado_pago_2');?>" method="post">
                    <div class="form-group">
                      <label for="NombreUsuario">Nombre</label>
-                     <input type="text" class="form-control" id="NombreUsuario" name="NombreUsuario" placeholder="" value="<?=!form_error('NombreUsuario')?set_value('NombreUsuario'):''?>">
+                     <input type="text" class="form-control" name="NombreUsuario" placeholder="" required value="<?=!form_error('NombreUsuario')?set_value('NombreUsuario'):''?>">
                    </div>
                    <div class="form-group">
                      <label for="ApellidosUsuario">Apellidos</label>
-                     <input type="text" class="form-control" id="ApellidosUsuario" name="ApellidosUsuario" placeholder="" value="<?=!form_error('ApellidosUsuario')?set_value('ApellidosUsuario'):''?>">
+                     <input type="text" class="form-control" name="ApellidosUsuario" placeholder="" required value="<?=!form_error('ApellidosUsuario')?set_value('ApellidosUsuario'):''?>">
                    </div>
                    <div class="form-group">
                      <label for="CorreoUsuario">Correo Electrónico</label>
-                     <input type="email" class="form-control" id="CorreoUsuario" name="CorreoUsuario" placeholder="" value="<?=!form_error('CorreoUsuario')?set_value('CorreoUsuario'):''?>">
+                     <input type="email" class="form-control" name="CorreoUsuario" placeholder="" required value="<?=!form_error('CorreoUsuario')?set_value('CorreoUsuario'):''?>">
+                   </div>
+                   <div class="form-group">
+                     <label for="TelefonoUsuario">Teléfono</label>
+                     <input type="text" class="form-control" name="TelefonoUsuario" placeholder="" required value="<?=!form_error('TelefonoUsuario')?set_value('TelefonoUsuario'):''?>">
                    </div>
                    <div class="form-check">
                      <input type="checkbox" class="form-check-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
@@ -71,7 +74,6 @@
                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
                  </form>
               </div>
-            -->
             </div>
           </div>
         </div>
