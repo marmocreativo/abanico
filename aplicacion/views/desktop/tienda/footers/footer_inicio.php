@@ -28,7 +28,7 @@
       <div class="modal-footer">
         <button type="button" id="BotonVaciar" class="btn btn-outline-danger float-left">Vaciar Carrito</button>
         <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">Seguir Comprando</button>
-        <a href="<?php echo base_url('carrito'); ?>" class="btn btn-primary">Comprar Ahora</a>
+        <a href="<?php echo base_url('carrito'); ?>" id="BotonComprarAhora" class="btn btn-primary" aria-disabled="false">Comprar Ahora</a>
       </div>
     </div>
   </div>
@@ -40,6 +40,7 @@
     <script src="<?php echo base_url(); ?>assets/global/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/tienda/js/starrr/starrr.js"></script>
     <script defer src="<?php echo base_url(); ?>assets/tienda/js/flexslider/jquery.flexslider.js"></script>
+    <script defer src="<?php echo base_url(); ?>assets/tienda/js/slider-pro-master/js/jquery.sliderPro.js"></script>
     <script type="text/javascript">
        $(window).on('load',function(){
          $('.flexslider').flexslider({

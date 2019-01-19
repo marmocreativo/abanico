@@ -14,7 +14,7 @@ class Tienda_Inicio extends CI_Controller {
 		$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo']  = "desktop";
+			$this->data['dispositivo']  = "mobile";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
@@ -26,12 +26,18 @@ class Tienda_Inicio extends CI_Controller {
 		$this->load->model('GaleriasModel');
 		$this->load->model('CategoriasProductoModel');
 		$this->load->model('CalificacionesModel');
+		$this->load->model('ServiciosModel');
+		$this->load->model('CategoriasModel');
+		$this->load->model('GaleriasServiciosModel');
+		$this->load->model('CalificacionesServiciosModel');
   }
 
 	public function index()
 	{
 		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 		$this->data['productos'] = $this->ProductosModel->lista_activos('','','',10);
+		$this->data['servicios'] = $this->ServiciosModel->lista_activos('','','','');
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/pagina_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

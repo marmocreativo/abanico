@@ -49,15 +49,15 @@
                      <h6><span class="fa fa-file-invoice"></span> Datos Fiscales</h6>
                      <div class="form-group">
                        <label for="RazonSocialTienda">Razón Social</label>
-                       <input type="text" class="form-control" id="RazonSocialTienda" name="RazonSocialTienda" placeholder="" value="<?php echo set_value('RazonSocialTienda'); ?>">
+                       <input type="text" class="form-control" id="RazonSocialTienda" name="RazonSocialTienda" required placeholder="" value="<?php echo set_value('RazonSocialTienda'); ?>">
                      </div>
                      <div class="form-group">
                        <label for="RfcTienda">R.F.C.</label>
-                       <input type="text" class="form-control" id="RfcTienda" name="RfcTienda" placeholder="" value="<?php echo set_value('RfcTienda'); ?>">
+                       <input type="text" class="form-control" id="RfcTienda" name="RfcTienda" required placeholder="" value="<?php echo set_value('RfcTienda'); ?>">
                      </div>
                      <div class="form-group">
                        <label for="TelefonoTienda">Teléfono</label>
-                       <input type="text" class="form-control" id="TelefonoTienda" name="TelefonoTienda" placeholder="" value="<?php echo set_value('TelefonoTienda'); ?>">
+                       <input type="text" class="form-control" id="TelefonoTienda" name="TelefonoTienda" required placeholder="" value="<?php echo set_value('TelefonoTienda'); ?>">
                      </div>
                      <h6> <span class="fa fa-building"></span> Dirección Fiscal</h6>
                      <input type="hidden" name="TipoDireccion" value="fiscal">
@@ -67,7 +67,7 @@
                        <div class="col">
                          <div class="form-group">
                            <label for="PaisDireccion">País </label>
-                           <select class="form-control" name="PaisDireccion" id="PaisDireccion" required>
+                           <select class="form-control" name="PaisDireccion" id="PaisDireccion" data-valor-anterior="<?php echo set_value('PaisDireccion'); ?>" required>
                              <option value="">Selecciona un País</option>
                            </select>
                          </div>
@@ -75,7 +75,7 @@
                        <div class="col">
                          <div class="form-group">
                            <label for="EstadoDireccion">Estado </label>
-                           <select class="form-control" name="EstadoDireccion" id="EstadoDireccion" required>
+                           <select class="form-control" name="EstadoDireccion" id="EstadoDireccion" data-valor-anterior="<?php echo set_value('EstadoDireccion'); ?>" required>
                              <option value="">Selecciona tu estado</option>
                            </select>
                          </div>
@@ -83,7 +83,7 @@
                        <div class="col">
                          <div class="form-group">
                            <label for="MunicipioDireccion">Municipio / Alcaldía</label>
-                           <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" required>
+                           <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php echo set_value('MunicipioDireccion'); ?>" required>
                              <option value="">Selecciona tu Municipio / Alcaldía</option>
                            </select>
                          </div>
@@ -93,23 +93,23 @@
                        <div class="col">
                          <div class="form-group">
                            <label for="CiudadDireccion">Ciudad <small>(Opcional)</small> </label>
-                           <input type="text" name="CiudadDireccion" class="form-control">
+                           <input type="text" name="CiudadDireccion" class="form-control" value="<?php echo set_value('CiudadDireccion'); ?>">
                          </div>
                        </div>
                        <div class="col">
                          <div class="form-group">
                            <label for="CodigoPostalDireccion">Código Postal</label>
-                           <input type="text" name="CodigoPostalDireccion" class="form-control" required>
+                           <input type="text" name="CodigoPostalDireccion" class="form-control" required value="<?php echo set_value('CodigoPostalDireccion'); ?>">
                          </div>
                        </div>
                      </div>
                      <div class="form-group">
                        <label for="BarrioDireccion">Barrio / Colonia</label>
-                       <input type="text" name="BarrioDireccion" class="form-control" required>
+                       <input type="text" name="BarrioDireccion" class="form-control" required value="<?php echo set_value('BarrioDireccion'); ?>">
                      </div>
                      <div class="form-group">
                        <label for="CalleDireccion">Calle y Número</label>
-                       <textarea name="CalleDireccion" class="form-control" rows="3" required></textarea>
+                       <textarea name="CalleDireccion" class="form-control" rows="3" required><?php echo set_value('CalleDireccion'); ?></textarea>
                      </div>
                      <hr>
                      <div class="custom-control custom-checkbox">

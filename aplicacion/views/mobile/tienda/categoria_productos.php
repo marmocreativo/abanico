@@ -1,87 +1,166 @@
-<div class="fila p-5">
-  <div class="container-fluid">
+<?php
+  if(isset($categoria['CATEGORIA_NOMBRE'])){
+    $titulo_categoria = $categoria['CATEGORIA_NOMBRE'];
+  }else{
+    $titulo_categoria = 'Todos los productos';
+  }
+  if(isset($_GET['Busqueda'])){
+    $titulo_categoria = 'Resultados para tu Busqueda';
+  }
+
+?>
+<div class="fila fila-gris py-4 pb-5">
+  <div class="container">
     <div class="row">
-      <div class="col-12 col-md-3">
-        <div class="contenedor-filtros">
-          <h4>Marca</h4>
-          <hr>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-            <label class="form-check-label" for="exampleRadios1">
-              Apple
-            </label>
+
+      <div class="col-12">
+        <ol class="breadcrumb vistaMovil">
+          <li class="breadcrumb-item"><a href="http://localhost/abanico-master/">Inicio</a></li>
+          <li class="breadcrumb-item active text-primary " aria-current="page">Todos los productos</li>
+        </ol>
+      </div>
+
+      <div class="col-12 mb-3">
+        <div class="card">
+
+          <button class="btn btnFiltros btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fas fa-sliders-h mr-2"></i>Filtros
+          </button>
+          <div class="collapse" id="collapseExample">
+            <div class="p-3">
+              <select class="form-control form-control-sm">
+                <option selected="">Ordenar por</option>
+                <option value="1">Más caro primero</option>
+                <option value="2">Más barato primero</option>
+                <option value="3">Alfabético A-Z</option>
+                <option value="4">Alfabético Z-A</option>
+                <option value="5">Más nuevos</option>
+              </select>
+              <hr>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Mexicano</label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                <label class="custom-control-label" for="customCheck2">Nuevo</label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck3">
+                <label class="custom-control-label" for="customCheck3">Oferta</label>
+              </div>
+              <hr>
+              <label for="customRange1">Rango de Precio</label>
+              <input type="range" class="custom-range" min="0" max="5" id="customRange1">
+            </div>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option1" checked>
-            <label class="form-check-label" for="exampleRadios2">
-              Samsung
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option1" >
-            <label class="form-check-label" for="exampleRadios3">
-              LG
-            </label>
-          </div>
-          <h4>Capacidad</h4>
-          <hr>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios4" id="exampleRadios4" value="option1" >
-            <label class="form-check-label" for="exampleRadios4">
-              32Gb
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios5" id="exampleRadios5" value="option1" >
-            <label class="form-check-label" for="exampleRadios5">
-              64Gb
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios6" id="exampleRadios6" value="option1" >
-            <label class="form-check-label" for="exampleRadios6">
-              128Gb
-            </label>
-          </div>
-          <h4>Precio</h4>
-          <hr>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios7" id="exampleRadios7" value="option1" checked>
-            <label class="form-check-label" for="exampleRadios7">
-              $200-$500
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios8" id="exampleRadios8" value="option1" >
-            <label class="form-check-label" for="exampleRadios8">
-              $600-$800
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios9" id="exampleRadios9" value="option1">
-            <label class="form-check-label" for="exampleRadios9">
-              $900-$1000
-            </label>
-          </div>
+
         </div>
       </div>
-      <div class="col-12 col-md-9">
-        <div class="card-deck">
-          <?php for($i=0; $i<=30; $i++){ ?>
-          <div class="col-6 col-sm-4 col-md-3 mb-3 px-0">
-            <a href="producto">
-            <div class="card mx-1">
-              <img class="card-img-top" src="assets/frontend/img/default.jpg" class="img-fluid" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Nombre del Producto</h5>
-                <p class="card-text">$100.00</p>
-              </div>
-            </div>
-            </a>
-          </div>
-        <?php } ?>
+
+      <div class="col-12 mb-4">
+
+        <?php for($i=0; $i<=3; $i++){ ?>
+        <div class="card mb-2 vistaProductos">
+            <div class="bx">
+              <a href="http://localhost/abanico-master/producto?id=8">
+                <div class="imagen-producto">
+                  <img class="spanImg mr-1" src="https://picsum.photos/300/300/?random=<?php echo $i; ?>"></img>
+                  <div class="contenedorEtiquetas">
+                    <span class="etiqueta-1">Mex</span>
+                    <span class="etiqueta-2">Nuevo</span>
+                    <span class="etiqueta-3">Oferta</span>
+                  </div>
+                </div>
+                <div class="product-content text-left p-3">
+                  <ul class="rating mb-1">
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <!-- <li class="text-dark">(1 calif)</li> -->
+                  </ul>
+                  <h4 class="title text-primary">Nombre producto</h4>
+                  <div class="price-list"><small>$</small> 150.00 <small>MXN </small> </div>
+                  <div class="price"><small>$</small> 120.00 <small>MXN </small></div>
+                </div>
+              </a>
+              <a href="#" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+           </div>
         </div>
+        <?php } ?>
+
+      </div>
+    </div>
+
+    <div class="col-12 mb-4">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination pagination-sm justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+
+  <!-- slider productos relacionados -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="h4 text-center pb-3">Productos destacados</h2>
       </div>
     </div>
   </div>
+
+  <div class="sliderProductos">
+    <ul class="slides">
+
+      <?php for($i=0; $i<=5; $i++){ ?>
+      <li>
+        <div class="card">
+          <a href="#producto">
+            <div class="imagen-producto">
+              <img class="spanImg" src="https://picsum.photos/300/300/?random=<?php echo $i; ?>"></img>
+              <div class="contenedorEtiquetas">
+                <span class="etiqueta-1">Mex</span>
+                <span class="etiqueta-2">Nuevo</span>
+                <span class="etiqueta-3">Oferta</span>
+              </div>
+            </div>
+            <div class="product-content text-center py-3">
+              <ul class="rating">
+                <li class="far fa-star"></li>
+                <li class="far fa-star"></li>
+                <li class="far fa-star"></li>
+                <li class="far fa-star"></li>
+                <li class="far fa-star"></li>
+                <br>
+                <li class="text-dark">(1 calif)</li>
+              </ul>
+              <h4 class="title text-primary">Nombre producto</h4>
+              <div class="price"><small>$</small> 120.00 <small>MXN </small></div>
+            </div>
+          </a>
+          <a href="#favorito" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+        </div>
+      </li>
+      <?php } ?>
+
+    </ul>
+  </div>
+
 </div>

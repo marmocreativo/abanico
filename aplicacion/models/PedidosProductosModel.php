@@ -28,7 +28,7 @@ class PedidosProductosModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista_usuario($parametros,$id_usuario,$orden,$limite){
+  function lista_tienda($parametros,$id_usuario,$orden,$limite){
     if(!empty($parametros)){
       $this->db->or_like($parametros);
     }
@@ -43,6 +43,16 @@ class PedidosProductosModel extends CI_Model {
     }
     $query = $this->db->get('pedidos_productos');
     return $query->result();
+  }
+  /*
+  * Conteo
+  */
+  function conteo_productos_pedido($id_pedido){
+
+    $this->db->where('ID_PEDIDO',$id_pedido);
+    $this->db->select_sum('CANTIDAD');
+    $query = $this->db->get('pedidos_productos');
+    return $query->row();
   }
   /*
     * Obtengo todos los detalles de una sola entrada

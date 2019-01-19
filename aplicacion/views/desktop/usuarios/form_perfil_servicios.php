@@ -43,7 +43,7 @@
                   <div class="col-12 col-sm-9">
                      <div class="form-group">
                        <label for="NombrePerfil">Nombre Público</label>
-                       <input type="text" class="form-control" id="NombrePerfil" name="NombrePerfil" placeholder="" autocomplete="no" value="<?php if(form_error('NombrePerfil') != NULL){echo set_value('NombrePerfil');}else{ echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']; }?>">
+                       <input type="text" class="form-control" id="NombrePerfil" name="NombrePerfil" placeholder="" autocomplete="nope" value="<?php if(form_error('NombrePerfil') != NULL){echo set_value('NombrePerfil');}else{ echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']; }?>">
                      </div>
                      <hr>
                      <h6 class="mb-3"><span class="fa fa-file-invoice"></span> Datos Fiscales (Opcionales)</h6>
@@ -68,7 +68,7 @@
                        <div class="col">
                          <div class="form-group">
                            <label for="PaisDireccion">País </label>
-                           <select class="form-control" name="PaisDireccion" id="PaisDireccion" required>
+                           <select class="form-control" name="PaisDireccion" id="PaisDireccion" data-valor-anterior="<?php echo set_value('PaisDireccion'); ?>" required>
                              <option value="">Selecciona un País</option>
                            </select>
                          </div>
@@ -76,7 +76,7 @@
                        <div class="col">
                          <div class="form-group">
                            <label for="EstadoDireccion">Estado </label>
-                           <select class="form-control" name="EstadoDireccion" id="EstadoDireccion" required>
+                           <select class="form-control" name="EstadoDireccion" id="EstadoDireccion" data-valor-anterior="<?php echo set_value('EstadoDireccion'); ?>" required>
                              <option value="">Selecciona tu estado</option>
                            </select>
                          </div>
@@ -84,7 +84,7 @@
                        <div class="col">
                          <div class="form-group">
                            <label for="MunicipioDireccion">Municipio / Alcaldía</label>
-                           <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" required>
+                           <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php echo set_value('MunicipioDireccion'); ?>" required>
                              <option value="">Selecciona tu Municipio / Alcaldía</option>
                            </select>
                          </div>
@@ -94,23 +94,23 @@
                        <div class="col">
                          <div class="form-group">
                            <label for="CiudadDireccion">Ciudad (Opcional)</label>
-                           <input type="text" name="CiudadDireccion" class="form-control">
+                           <input type="text" name="CiudadDireccion" class="form-control" value="<?php echo set_value('CiudadDireccion'); ?>">
                          </div>
                        </div>
                        <div class="col">
                          <div class="form-group">
                            <label for="CodigoPostalDireccion">Código Postal</label>
-                           <input type="text" name="CodigoPostalDireccion" class="form-control" required>
+                           <input type="text" name="CodigoPostalDireccion" class="form-control" required value="<?php echo set_value('CodigoPostalDireccion'); ?>">
                          </div>
                        </div>
                      </div>
                      <div class="form-group">
                        <label for="BarrioDireccion">Barrio / Colonia</label>
-                       <input type="text" name="BarrioDireccion" class="form-control" required>
+                       <input type="text" name="BarrioDireccion" class="form-control" required value="<?php echo set_value('BarrioDireccion'); ?>">
                      </div>
                      <div class="form-group">
                        <label for="CalleDireccion">Calle y Número</label>
-                       <textarea name="CalleDireccion" class="form-control" rows="3" required></textarea>
+                       <textarea name="CalleDireccion" class="form-control" rows="3" required><?php echo set_value('CalleDireccion'); ?></textarea>
                      </div>
                      <hr>
                      <div class="custom-control custom-checkbox">

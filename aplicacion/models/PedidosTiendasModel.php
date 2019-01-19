@@ -30,27 +30,27 @@ class PedidosTiendasModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista_usuario($parametros,$id_usuario,$orden,$limite){
-    if(!empty($parametros)){
-      $this->db->or_like($parametros);
-    }
-    if(!empty($id_usuario)){
-      $this->db->where('ID_USUARIO',$id_usuario);
-    }
-    if(!empty($orden)){
-      $this->db->order_by($orden);
-    }
-    if(!empty($limite)){
-      $this->db->limit($limite);
-    }
+  function lista_tiendas($id_pedido){
+    $this->db->select('tiendas.*,pedidos_tiendas.*');
+    $this->db->join('tiendas','pedidos_tiendas.ID_TIENDA = tiendas.ID_TIENDA');
+    $this->db->where('ID_PEDIDO',$id_pedido);
+    $query = $this->db->get('pedidos_tiendas');
+    return $query->result();
+  }
+
+  function lista_pedidos_tienda($id_tienda){
+    $this->db->select('tiendas.*,pedidos.*,pedidos_tiendas.*');
+    $this->db->join('pedidos','pedidos_tiendas.ID_PEDIDO = pedidos.ID_PEDIDO');
+    $this->db->join('tiendas','pedidos_tiendas.ID_TIENDA = tiendas.ID_TIENDA');
+    $this->db->where('pedidos_tiendas.ID_TIENDA',$id_tienda);
     $query = $this->db->get('pedidos_tiendas');
     return $query->result();
   }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
-  function detalles($id){
-    return $this->db->get_where('pedidos_tiendas',array('ID_PEDIDO'=>$id))->row_array();
+  function detalles($id_pedido,$id_tienda){
+    return $this->db->get_where('pedidos_tiendas',array('ID_PEDIDO'=>$id_pedido,'ID_TIENDA'=>$id_tienda))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
@@ -65,7 +65,7 @@ class PedidosTiendasModel extends CI_Model {
     * $parametros son los campos actualizados
  */
   function actualizar($id,$parametros){
-    $this->db->where('ID_PEDIDO',$id);
+    $this->db->where('ID',$id);
     return $this->db->update('pedidos_tiendas',$parametros);
   }
   /*
@@ -74,7 +74,7 @@ class PedidosTiendasModel extends CI_Model {
     * $activo es el estado al que se quiere cambiar la entrada
  */
   function estado($id,$activo){
-    $this->db->where('ID_PEDIDO',$id);
+    $this->db->where('ID',$id);
     return $this->db->update('pedidos_tiendas',array('PAIS_ESTADO'=>$activo));
   }
 

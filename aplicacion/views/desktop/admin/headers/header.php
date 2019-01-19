@@ -39,8 +39,8 @@
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="./"><img src="<?php echo base_url(); ?>assets/administradores/images/logo.png" alt="Logo"></a>
-                    <a class="navbar-brand hidden" href="./"><img src="<?php echo base_url(); ?>assets/administradores/images/logo.png" alt="Logo"></a>
+                    <a class="navbar-brand" href="<?php echo base_url('admin'); ?>"><img src="<?php echo base_url(); ?>assets/administradores/images/logo.png" alt="Logo"></a>
+                    <a class="navbar-brand hidden" href="<?php echo base_url('admin'); ?>"><img src="<?php echo base_url(); ?>assets/administradores/images/logo.png" alt="Logo"></a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
@@ -70,6 +70,8 @@
                             </div>
                         </div>
                       -->
+                      <a href="<?php echo base_url(); ?>" class="btn btn-outline-primary btn-sm mt-2"><i class="fa fa-shopping-bag"></i> Volver a la tienda Principal</a>
+                      <a href="<?php echo base_url('usuario'); ?>" class="btn btn-outline-primary btn-sm mt-2"><i class="fa fa-user"></i> Panel de Control Usuario</a>
                     </div>
 
                     <div class="user-area dropdown float-right">

@@ -38,14 +38,20 @@ $route['admin/usuarios'] = 'Admin_Usuarios';
 $route['admin/usuarios/(:any)'] = 'Admin_Usuarios/$1';
 $route['admin/direcciones'] = 'Admin_Direcciones';
 $route['admin/direcciones/(:any)'] = 'Admin_Direcciones/$1';
+$route['admin/puntos_registro'] = 'Admin_Puntos_Registro';
+$route['admin/puntos_registro/(:any)'] = 'Admin_Puntos_Registro/$1';
 $route['admin/tiendas'] = 'Admin_Tiendas';
 $route['admin/tiendas/(:any)'] = 'Admin_Tiendas/$1';
+$route['admin/servidores_mensajes'] = 'Admin_Conversaciones';
+$route['admin/servidores_mensajes/(:any)'] = 'Admin_Conversaciones/$1';
 $route['admin/perfiles_servicios'] = 'Admin_Perfiles_Servicios';
 $route['admin/perfiles_servicios/(:any)'] = 'Admin_Perfiles_Servicios/$1';
 $route['admin/categorias'] = 'Admin_Categorias';
 $route['admin/categorias/(:any)'] = 'Admin_Categorias/$1';
 $route['admin/servicios'] = 'Admin_Servicios';
 $route['admin/servicios/(:any)'] = 'Admin_Servicios/$1';
+$route['admin/guias'] = 'Admin_Guias';
+$route['admin/guias/(:any)'] = 'Admin_Guias/$1';
 $route['admin/pedidos'] = 'Admin_Pedidos';
 $route['admin/pedidos/(:any)'] = 'Admin_Pedidos/$1';
 $route['admin/productos'] = 'Admin_Productos';
@@ -87,6 +93,7 @@ $route['login'] = 'Autenticacion';
 $route['login/(:any)'] = 'Autenticacion/$1';
 // Rutas de tienda}
 $route['test'] = 'Tienda_Test';
+$route['guia'] = 'Tienda_Guia';
 $route['divisas'] = 'Tienda_Divisas';
 $route['divisas/(:any)'] = 'Tienda_Divisas/$1';
 $route['categoria/servicios'] = 'Tienda_Categoria_Servicios';
@@ -99,7 +106,14 @@ $route['servicio'] = 'Tienda_Servicio';
 $route['servicio/(:any)'] = 'Tienda_Servicio/$1';
 
 // Proceso de Pago
+// Pago Invitado
+$route['invitado_pago_4'] = 'Proceso_Pago/invitado_paso4';
+$route['invitado_pago_3_banco'] = 'Proceso_Pago/invitado_paso3_banco';
+$route['invitado_pago_3'] = 'Proceso_Pago/invitado_paso3';
+$route['invitado_pago_2'] = 'Proceso_Pago/invitado_paso2';
+// Pago Normal
 $route['proceso_pago_4'] = 'Proceso_Pago/paso4';
+$route['proceso_pago_3_banco'] = 'Proceso_Pago/paso3_banco';
 $route['proceso_pago_3'] = 'Proceso_Pago/paso3';
 $route['proceso_pago_2'] = 'Proceso_Pago/paso2';
 $route['proceso_pago_1'] = 'Proceso_Pago/paso1';

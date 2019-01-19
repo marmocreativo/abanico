@@ -15,7 +15,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-8">
-
+                <?php retro_alimentacion(); ?>
                   <?php if(!empty(validation_errors())){ ?>
                     <div class="alert alert-danger">
                       <?php echo validation_errors(); ?>
@@ -47,6 +47,18 @@
                            <textarea class="form-control" name="DescripcionServicio" rows="3" cols="80" required><?php echo $servicio['SERVICIO_DESCRIPCION']; ?></textarea>
                          </div>
                          <hr>
+                         <div class="row">
+                           <div class="col">
+                             <div class="form-group">
+                               <label for="TipoServicio">Tipo de Servicio</label>
+                               <select class="form-control" name="TipoServicio">
+                                 <option value="profesional" <?php if($servicio['SERVICIO_TIPO']=='profesional'){ echo 'selected'; } ?>>Servicio Presencial</option>
+                                 <option value="digital" <?php if($servicio['SERVICIO_TIPO']=='digital'){ echo 'selected'; } ?>>Servicio a Distancia</option>
+                               </select>
+                             </div>
+                             <p class="text-muted"> <i class="fa fa-info-circle"></i> Los Servicios a distancia, son los que se pueden ejercer a traves de internet.</p>
+                           </div>
+                         </div>
                          <h6> <i class="fa fa-map-marker"></i> ¿En dónde ofreces tu servicio?</h6>
                          <div class="row">
                            <div class="col">
@@ -182,10 +194,47 @@
                     <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Actualizar Servicio</button>
               </div>
               <div class="col-4">
-                <div class="card border">
-                  <div class="card-body">
-                    <h6>Espacio reservado para anexos</h6>
-                  </div>
+                <div class="card-body">
+                  <h6> <i class="fa fa-file"></i> Archivos Anexos</h6>
+                  <p class="text-muted">Añade cartas de recomendación diplomas o cualquier archivo que consideres que puede acreditar tu capacidad.</p>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Archivo</th>
+                        <th>Controles</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach($adjuntos as $adjunto){ ?>
+                      <tr>
+                        <td>
+                          <h6><?php echo $adjunto->ADJUNTO_NOMBRE; ?></h6>
+                          <p><?php echo $adjunto->ADJUNTO_ARCHIVO; ?></p>
+                        </td>
+                        <td>
+                          <div class="btn-group float-right">
+                            <a href="<?php echo base_url('usuario/adjunto/descargar?id='.$adjunto->ID_ADJUNTO); ?>" class="btn btn-sm btn-success" title="Descargar Archivo"> <span class="fa fa-download"></span> </a>
+                            <button data-enlace='<?php echo base_url('usuario/adjunto/borrar?id='.$adjunto->ID_ADJUNTO); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Archivo"> <span class="fa fa-trash"></span> </button>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php } ?>
+                    </tbody>
+                  </table>
+                  <hr>
+                  <form class="" action="<?php echo base_url('usuario/servicios/subir_adjunto'); ?>" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="IdUsuario" value="<?php echo $servicio['ID_USUARIO']; ?>">
+                    <input type="hidden" name="IdObjeto" value="<?php echo $_GET['id'] ?>">
+                    <div class="form-group">
+                      <label for="NombreAdjunto">Nombre / Descripción Adjunto</label>
+                      <textarea name="NombreAdjunto" class="form-control" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="ArchivoAdjunto">Archivo <small>Tipos de Archivo Permitidos: PDF, JPG, PNG</small></label>
+                      <input type="file" class="form-control" name="ArchivoAdjunto" value="">
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-upload"></i> Subir Adjunto</button>
+                  </form>
                 </div>
               </div>
             </div>

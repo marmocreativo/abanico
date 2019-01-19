@@ -13,7 +13,7 @@ class Tienda_Categoria extends CI_Controller {
 		$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo']  = "desktop";
+			$this->data['dispositivo']  = "mobile";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
@@ -24,6 +24,10 @@ class Tienda_Categoria extends CI_Controller {
 		$this->load->model('GaleriasModel');
 		$this->load->model('CategoriasProductoModel');
 		$this->load->model('CalificacionesModel');
+		$this->load->model('ServiciosModel');
+		$this->load->model('CategoriasModel');
+		$this->load->model('GaleriasServiciosModel');
+		$this->load->model('CalificacionesServiciosModel');
 
 		// Variables comunes
   }
@@ -33,6 +37,7 @@ class Tienda_Categoria extends CI_Controller {
  	{
 		if(isset($_GET['slug'])&&!empty($_GET['slug'])){
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 			$this->data['categoria'] = $this->CategoriasModel->detalles_slug($_GET['slug']);
 			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos('',$this->data['categoria']['ID_CATEGORIA'],'','');
 			$this->data['primary'] = $this->data['categoria']['CATEGORIA_COLOR'];
@@ -41,6 +46,7 @@ class Tienda_Categoria extends CI_Controller {
 	 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 		}else{
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 			$this->data['productos'] = $this->ProductosModel->lista_activos('','','','');
 	 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);

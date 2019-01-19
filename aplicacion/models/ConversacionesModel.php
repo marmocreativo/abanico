@@ -12,9 +12,71 @@ class ConversacionesModel extends CI_Model {
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
   function lista($id_usuario){
+    $this->db->select([
+      'usuarios.USUARIO_NOMBRE',
+      'usuarios.USUARIO_APELLIDOS',
+      'conversaciones.ID_CONVERSACION',
+      'conversaciones.ID_USUARIO_A',
+      'conversaciones.ID_USUARIO_B',
+      'conversaciones.CONVERSACION_TIPO',
+      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION'
+    ]);
+    $this->db->join('usuarios','conversaciones.ID_USUARIO_A = usuarios.ID_USUARIO');
     $this->db->or_where('ID_USUARIO_A',$id_usuario);
     $this->db->or_where('ID_USUARIO_B',$id_usuario);
-    $this->db->order_by('CONVERSACION_FECHA_REGISTRO','DESC');
+    $this->db->order_by('CONVERSACION_FECHA_ACTUALIZACION','DESC');
+    $query = $this->db->get('conversaciones');
+    return $query->result();
+  }
+  // Listado por tipo
+  function lista_tipo($id_usuario,$tipo){
+    $this->db->select([
+      'usuarios.USUARIO_NOMBRE',
+      'usuarios.USUARIO_APELLIDOS',
+      'conversaciones.ID_CONVERSACION',
+      'conversaciones.ID_USUARIO_A',
+      'conversaciones.ID_USUARIO_B',
+      'conversaciones.CONVERSACION_TIPO',
+      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION'
+    ]);
+    $this->db->join('usuarios','conversaciones.ID_USUARIO_A = usuarios.ID_USUARIO');
+    $where = "CONVERSACION_TIPO='".$tipo."' AND (ID_USUARIO_A='".$id_usuario."' OR ID_USUARIO_B='".$id_usuario."')";
+    $this->db->where($where);
+    $this->db->order_by('CONVERSACION_FECHA_ACTUALIZACION','DESC');
+    $query = $this->db->get('conversaciones');
+    return $query->result();
+  }
+  // Listado por remitente
+  function lista_enviados($id_usuario){
+    $this->db->select([
+      'usuarios.USUARIO_NOMBRE',
+      'usuarios.USUARIO_APELLIDOS',
+      'conversaciones.ID_CONVERSACION',
+      'conversaciones.ID_USUARIO_A',
+      'conversaciones.ID_USUARIO_B',
+      'conversaciones.CONVERSACION_TIPO',
+      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION'
+    ]);
+    $this->db->join('usuarios','conversaciones.ID_USUARIO_A = usuarios.ID_USUARIO');
+    $this->db->or_where('ID_USUARIO_A',$id_usuario);
+    $this->db->order_by('CONVERSACION_FECHA_ACTUALIZACION','DESC');
+    $query = $this->db->get('conversaciones');
+    return $query->result();
+  }
+  // Listado para administradores
+  function lista_administradores($tipo){
+    $this->db->select([
+      'usuarios.USUARIO_NOMBRE',
+      'usuarios.USUARIO_APELLIDOS',
+      'conversaciones.ID_CONVERSACION',
+      'conversaciones.ID_USUARIO_A',
+      'conversaciones.ID_USUARIO_B',
+      'conversaciones.CONVERSACION_TIPO',
+      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION'
+    ]);
+    $this->db->join('usuarios','conversaciones.ID_USUARIO_A = usuarios.ID_USUARIO');
+    $this->db->where('CONVERSACION_TIPO',$tipo);
+    $this->db->order_by('CONVERSACION_FECHA_ACTUALIZACION','DESC');
     $query = $this->db->get('conversaciones');
     return $query->result();
   }
@@ -22,6 +84,17 @@ class ConversacionesModel extends CI_Model {
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
+    $this->db->select([
+      'usuarios.USUARIO_NOMBRE',
+      'usuarios.USUARIO_APELLIDOS',
+      'conversaciones.ID_CONVERSACION',
+      'conversaciones.ID_USUARIO_A',
+      'conversaciones.ID_USUARIO_B',
+      'conversaciones.CONVERSACION_TIPO',
+      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION'
+    ]);
+    $this->db->join('usuarios','conversaciones.ID_USUARIO_A = usuarios.ID_USUARIO');
+    $this->db->order_by('CONVERSACION_FECHA_ACTUALIZACION','DESC');
     return $this->db->get_where('conversaciones',array('ID_CONVERSACION'=>$id))->row_array();
   }
   /*

@@ -13,7 +13,7 @@ class Tienda_Servicio extends CI_Controller {
 		$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo']  = "desktop";
+			$this->data['dispositivo']  = "mobile";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
@@ -21,7 +21,7 @@ class Tienda_Servicio extends CI_Controller {
 		$this->load->model('ServiciosModel');
 		$this->load->model('GaleriasServiciosModel');
 		$this->load->model('CategoriasModel');
-		$this->load->model('CategoriasModel');
+		$this->load->model('CategoriasServiciosModel');
 		$this->load->model('TiendasModel');
 		$this->load->model('DireccionesModel');
 		$this->load->model('FavoritosModel');
@@ -29,6 +29,7 @@ class Tienda_Servicio extends CI_Controller {
 		$this->load->model('FavoritosModel');
 		$this->load->model('ConversacionesModel');
 		$this->load->model('ConversacionesMensajesModel');
+		$this->load->model('AdjuntosUsuariosModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-info";
@@ -39,10 +40,12 @@ class Tienda_Servicio extends CI_Controller {
 		$this->data['servicio'] = $this->ServiciosModel->detalles($_GET['id']);
 		$this->data['portada'] = $this->GaleriasServiciosModel->galeria_portada($_GET['id']);
 		$this->data['galerias'] = $this->GaleriasServiciosModel->galeria_servicio($_GET['id']);
+		$this->data['adjuntos'] = $this->AdjuntosUsuariosModel->lista_adjuntos_servicio($_GET['id'],'servicio');
 		$this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['servicio']['ID_USUARIO']);
 		$direccion_fiscal = $this->DireccionesModel->direccion_fiscal($this->data['servicio']['ID_USUARIO']);
 		$this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($direccion_fiscal['ID_DIRECCION']);
-		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 
 		// Calificaciones
 		$this->data['cantidad_calificaciones']= $this->CalificacionesServiciosModel->conteo_calificaciones_producto($_GET['id']);
@@ -64,7 +67,7 @@ class Tienda_Servicio extends CI_Controller {
 				$this->data['calificaciones'] = $this->CalificacionesServiciosModel->calificaciones_producto($_GET['id'],'');
 		}
 
- 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_servicios',$this->data);
+ 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/servicio',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 
@@ -139,25 +142,29 @@ public function favorito()
 		{
 			// Conversación
 			$parametros_conversacion = array(
-				'ID_REMITENTE'=>$this->input->post('IdRemitente'),
-				'ID_RECEPTOR'=>$this->input->post('IdReceptor'),
-				'CONVERSACION_FECHA_CREACION'=> date('Y-m-d H:i:s'),
+				'ID_USUARIO_A'=>$this->input->post('IdRemitente'),
+				'ID_USUARIO_B'=>$this->input->post('IdReceptor'),
+				'ID_OBJETO'=>$this->input->post('IdServicio'),
+				'CONVERSACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+				'CONVERSACION_FECHA_ACTUALIZACION'=> date('Y-m-d H:i:s'),
+				'CONVERSACION_TIPO'=>'mensaje servicio',
 				'CONVERSACION_ESTADO'=>'no leido'
 			);
 			$conversacion_id = $this->ConversacionesModel->crear($parametros_conversacion);
 			// Mensaje
-			$mensaje = '<p><b>Servicio:<b> '.$this->input->post('ServicioNombre').'</p>';
+			$mensaje = '<p><b>Servicio:</b> '.$this->input->post('ServicioNombre').'</p>';
 			$mensaje .= '<p>'.$this->input->post('MensajeTexto').'</p>';
 			$parametros_mensaje = array(
 				'ID_CONVERSACION'=>$conversacion_id,
 				'ID_REMITENTE'=>$this->input->post('IdRemitente'),
+				'MENSAJE_ASUNTO'=>'Solicitud de Servicio',
 				'MENSAJE_TEXTO'=>$mensaje,
 				'MENSAJE_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 				'MENSAJE_ESTADO'=>'no leido'
 			);
-			$conversacion_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
+			$mensaje_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
 			// Mensaje FeedBack
-			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado');
+			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado, recibirás la respuesta en tu <a href="'.base_url('usuario/mensajes').'">Bandeja de Entrada</a>');
 			// Redirecciono
 			redirect(base_url('servicio/contacto?id='.$this->input->post('IdServicio')));
 
@@ -166,9 +173,10 @@ public function favorito()
 		 $this->data['portada'] = $this->GaleriasServiciosModel->galeria_portada($_GET['id']);
 		 $this->data['galerias'] = $this->GaleriasServiciosModel->galeria_servicio($_GET['id']);
 		 $this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['servicio']['ID_USUARIO']);
-		 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+		 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+ 		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 
-		 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_servicios',$this->data);
+		 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		 $this->load->view($this->data['dispositivo'].'/tienda/servicio_form_contacto',$this->data);
 		 $this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 		}

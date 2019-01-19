@@ -30,12 +30,12 @@ html, body{
   font-size: 13px;
 }
 .menu-principal{
+  background: #ececef;
+  box-shadow: none;
 }
 .menu-principal .navbar{
   padding: 0.2rem 1rem;
-
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
-    z-index: 10;
+  z-index: 10;
 }
 .menu-principal .navbar .navbar-brand{
   padding: 0;
@@ -46,17 +46,40 @@ html, body{
   height: 100%;
   max-height: 80px;
 }
+.menu-principal .input-group{
+    box-shadow: 1px 1px 8px #c1c2c7;
+    border-radius: 13px;
+}
+.menu-principal input.form-control {
+    border-radius: 13px;
+    border: none;
+}
+.menu-principal select.form-control {
+    border-top: none;
+    border-bottom: none;
+    color: #778f9c
+}
+.menu-principal button.btn.btn-outline-primary {
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+    background: white;
+    border: none;
+    border-left: solid 1px lightgray;
+}
 .menu-inferior{
   position: absolute;
   width: 100%;
   top: 130px;
-  z-index: 10;
+  z-index: 999;
 }
 .post-menu{
   width: 100%;
-  min-height: 100px;
-  padding: 5px;
-  background-color: hsl(0, 0%, 98%);
+    min-height: 100px;
+    padding: 5px;
+    background-color: hsl(0, 0%, 98%);
+    margin: 15px auto;
+    box-shadow: 0px 3px 16px #00000045;
+    border-radius: 15px;
 }
 
 .car-icono{
@@ -175,6 +198,10 @@ html, body{
 | ESTILOS BODY INDEX
 | -------------------------------------------------------------------------
 */
+.imagen-producto {
+  border: 1px solid #ced4da;
+  border-bottom: none;
+}
 .cuadricula-productos{
   background-color: #fff;
   display: block;
@@ -192,7 +219,13 @@ html, body{
    background-position: center;
    background-repeat: no-repeat;
 }
-.cuadricula-productos .product-content{padding:12px;overflow:hidden;position:relative}
+.cuadricula-productos .product-content{
+  padding:12px;
+  overflow:hidden;
+  position:relative;
+  border: 1px solid #ced4da;
+  border-top: none;
+}
 .cuadricula-productos .contenedor-etiquetas{
   display: block;
   width: 30%;
@@ -284,6 +317,10 @@ html, body{
   background-color: transparent;
   border:none;
 }
+.flex-direction-nav a:before {
+    font-size: 30px;
+    line-height: 38px;
+}
 
 /*
 | -------------------------------------------------------------------------
@@ -365,6 +402,17 @@ html, body{
   color: #444;
   text-decoration: line-through;
 }
+.breadcrumb {
+  padding: 0;
+  background-color: transparent;
+}
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS de FILTROS
+| -------------------------------------------------------------------------
+*/
+
 
 /*
 | -------------------------------------------------------------------------
@@ -420,6 +468,10 @@ html, body{
       border-radius: 15px;
   }
 
+  .estrellas a{
+    color: #ffc107;
+  }
+
 /*
 | -------------------------------------------------------------------------
 | ESTILOS FOOTER
@@ -458,4 +510,94 @@ html, body{
 .creditos{
   min-height: 50px;
   background-color: #333;
+}
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS PERFIL SERVICIOS
+| -------------------------------------------------------------------------
+*/
+.serv-profile .jumbotron{
+  min-height: 250px;
+  background-size: cover;
+  background-image: url(https://images.pexels.com/photos/15964/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+}
+.image-profile
+{
+  position: absolute;
+  top: -50px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 8px hsl(0, 0%, 100%);
+}
+.card-desc-servicio {
+  border:none;
+}
+.card-desc-servicio .card-header {
+  background: transparent;
+}
+.btn-contacto {
+  border-radius: 0;
+}
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS VISTA PRODUCTOS
+| -------------------------------------------------------------------------
+*/
+.overlay-borde {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: transparent;
+  z-index: 997;
+  box-shadow: inset 0 0 0px 1px #e1e0e0, inset 0 0 0px 13px white;
+  pointer-events: none;
+}
+.slider-pro img.sp-image {
+  width: 80% !important;
+}
+.sp-thumbnails-container {
+  z-index: 998;
+}
+img.sp-thumbnail-image {
+    width: 100%;
+}
+.sp-thumbnail {
+    width: 100%;
+}
+#accordionPreguntas button {
+  white-space: normal;
+}
+#tabProductos.nav-tabs {
+  border-bottom: solid 1px #c6cad0;
+}
+#tabProductos .nav-item .nav-link.active {
+    background: #c6cad0;
+    border-radius: 0;
+    border: none;
+}
+#contProductos .table-striped {
+  background-color: #ffffff4a;
+}
+#contProductos .table thead th {
+    border-bottom-color: #a0acb7;
+}
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS VISTA TODAS LAS CATEGORIAS
+| -------------------------------------------------------------------------
+*/
+#tituloCategoria {
+  border-bottom: solid 1px;
+}
+#menuTodasCategorias{
+  border-radius: 0;
+}
+#menuTodasCategorias .card-header{
+  text-align: center;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #78909C;
 }

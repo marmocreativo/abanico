@@ -45,6 +45,36 @@ class Usuario_Productos extends CI_Controller {
 			redirect(base_url('usuario/tienda'));
 		}
 	}
+	public function busqueda()
+	{
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// reviso si el usuario tiene una tienda
+		$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
+		if(!empty($this->data['tienda'])){
+			if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
+				$parametros = array(
+					'PRODUCTO_NOMBRE'=>$_GET['Busqueda'],
+					'PRODUCTO_DESCRIPCION'=>$_GET['Busqueda'],
+					'PRODUCTO_MODELO'=>$_GET['Busqueda']
+				);
+				$this->data['productos'] = $this->ProductosModel->lista($parametros,$_SESSION['usuario']['id'],'PRODUCTO_FECHA_REGISTRO DESC','');
+				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+				$this->load->view($this->data['dispositivo'].'/usuarios/lista_productos',$this->data);
+				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+
+			}else{
+				redirect(base_url('admin/productos'));
+			}
+
+		}else{
+			// si ya existe una sesión activa redirijo con el siguiente mensaje
+			$this->session->set_flashdata('advertencia', 'No puedes entrar al administrador de productos si no has creado una tienda');
+			redirect(base_url('usuario/tienda'));
+		}
+	}
 	public function crear()
 	{
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
