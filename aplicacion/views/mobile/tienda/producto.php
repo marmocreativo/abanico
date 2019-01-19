@@ -2,8 +2,14 @@
   <div class="container">
     <div class="row">
 
-      <div class="bxProducto mb-4">
-
+      <div class="slideBxProducto mb-4">
+        <ul class="slides">
+          <?php for($i=0; $i<=3; $i++){ ?>
+          <li>
+            <img src="https://picsum.photos/300/300/?random=<?php echo $i; ?>" alt="">
+          </li>
+          <?php } ?>
+        </ul>
       </div>
 
       <div class="col-12 mb-4">
@@ -200,7 +206,7 @@
             Calificaciones (1)
           </h5>
           <div class="row">
-            <div class="col-4 ">
+            <div class="col-5">
               <ul class=" list-unstyled rating m-0">
                 <i class="fa fa-star" style="font-size:0.8em;"></i>
                 <i class="fa fa-star" style="font-size:0.8em;"></i>
@@ -209,7 +215,7 @@
                 <i class="fa fa-star" style="font-size:0.8em;"></i>
               </ul>
             </div>
-            <div class="col-8">
+            <div class="col-7">
               <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
@@ -217,7 +223,7 @@
           </div>
 
           <div class="row">
-            <div class="col-4 ">
+            <div class="col-5">
               <ul class=" list-unstyled rating m-0">
                 <i class="fa fa-star" style="font-size:0.8em;"></i>
                 <i class="fa fa-star" style="font-size:0.8em;"></i>
@@ -226,7 +232,7 @@
                 <i class="far fa-star" style="font-size:0.8em;"></i>
               </ul>
             </div>
-            <div class="col-8">
+            <div class="col-7">
               <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
@@ -234,7 +240,7 @@
           </div>
 
           <div class="row">
-            <div class="col-4 ">
+            <div class="col-5">
               <ul class=" list-unstyled rating m-0">
                 <i class="fa fa-star" style="font-size:0.8em;"></i>
                 <i class="fa fa-star" style="font-size:0.8em;"></i>
@@ -243,7 +249,7 @@
                 <i class="far fa-star" style="font-size:0.8em;"></i>
               </ul>
             </div>
-            <div class="col-8">
+            <div class="col-7">
               <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
@@ -251,7 +257,7 @@
           </div>
 
           <div class="row">
-            <div class="col-4 ">
+            <div class="col-5">
               <ul class=" list-unstyled rating m-0">
                 <i class="fa fa-star" style="font-size:0.8em;"></i>
                 <i class="fa fa-star" style="font-size:0.8em;"></i>
@@ -260,14 +266,14 @@
                 <i class="far fa-star" style="font-size:0.8em;"></i>
               </ul>
             </div>
-            <div class="col-8">
+            <div class="col-7">
               <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-4">
+            <div class="col-5">
               <ul class=" list-unstyled rating m-0">
                 <i class="fa fa-star" style="font-size:0.8em;"></i>
                 <i class="far fa-star" style="font-size:0.8em;"></i>
@@ -276,7 +282,7 @@
                 <i class="far fa-star" style="font-size:0.8em;"></i>
               </ul>
             </div>
-            <div class="col-8">
+            <div class="col-7">
               <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
               </div>

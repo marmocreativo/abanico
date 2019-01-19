@@ -20,33 +20,42 @@
         </ol>
       </div>
 
-      <div class="col-12 mb-4">
-        <!-- <div class="card p-3 mb-4"> -->
-          <select class="custom-select filtro-sel">
-            <option selected="">Ordenar por</option>
-            <option value="1">Más caro primero</option>
-            <option value="2">Más barato primero</option>
-            <option value="3">Alfabético A-Z</option>
-            <option value="4">Alfabético Z-A</option>
-            <option value="5">Más nuevos</option>
-          </select>
-          <hr>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1">Mexicano</label>
+      <div class="col-12 mb-3">
+        <div class="card">
+
+          <button class="btn btnFiltros btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fas fa-sliders-h mr-2"></i>Filtros
+          </button>
+          <div class="collapse" id="collapseExample">
+            <div class="p-3">
+              <select class="form-control form-control-sm">
+                <option selected="">Ordenar por</option>
+                <option value="1">Más caro primero</option>
+                <option value="2">Más barato primero</option>
+                <option value="3">Alfabético A-Z</option>
+                <option value="4">Alfabético Z-A</option>
+                <option value="5">Más nuevos</option>
+              </select>
+              <hr>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Mexicano</label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                <label class="custom-control-label" for="customCheck2">Nuevo</label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck3">
+                <label class="custom-control-label" for="customCheck3">Oferta</label>
+              </div>
+              <hr>
+              <label for="customRange1">Rango de Precio</label>
+              <input type="range" class="custom-range" min="0" max="5" id="customRange1">
+            </div>
           </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck2">
-            <label class="custom-control-label" for="customCheck2">Nuevo</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck3">
-            <label class="custom-control-label" for="customCheck3">Oferta</label>
-          </div>
-          <hr>
-          <label for="customRange1">Rango de Precio</label>
-          <input type="range" class="custom-range" min="0" max="5" id="customRange1">
-        <!-- </div> -->
+
+        </div>
       </div>
 
       <div class="col-12 mb-4">
@@ -54,29 +63,31 @@
         <?php for($i=0; $i<=3; $i++){ ?>
         <div class="card mb-2 vistaProductos">
             <div class="bx">
-              <div class="imagen-producto">
-                <a href="http://localhost/abanico-master/producto?id=8" class="spanImg m-1" style="background-image:"></a>
-                <div class="contenedorEtiquetas">
-                  <span class="etiqueta-1">Mex</span>
-                  <span class="etiqueta-2">Nuevo</span>
-                  <span class="etiqueta-3">Oferta</span>
+              <a href="http://localhost/abanico-master/producto?id=8">
+                <div class="imagen-producto">
+                  <img class="spanImg mr-1" src="https://picsum.photos/300/300/?random=<?php echo $i; ?>"></img>
+                  <div class="contenedorEtiquetas">
+                    <span class="etiqueta-1">Mex</span>
+                    <span class="etiqueta-2">Nuevo</span>
+                    <span class="etiqueta-3">Oferta</span>
+                  </div>
                 </div>
-              </div>
-              <div class="product-content text-left p-3">
-                <a href="#" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
-                <ul class="rating mb-1">
-                  <li class="far fa-star"></li>
-                  <li class="far fa-star"></li>
-                  <li class="far fa-star"></li>
-                  <li class="far fa-star"></li>
-                  <li class="far fa-star"></li>
-                  <!-- <li class="text-dark">(1 calif)</li> -->
-                </ul>
-                <h4 class="title text-primary">Nombre producto</h4>
-                <div class="price-list"><small>$</small> 150.00 <small>MXN </small> </div>
-                <div class="price"><small>$</small> 120.00 <small>MXN </small></div>
-              </div>
-            </div>
+                <div class="product-content text-left p-3">
+                  <ul class="rating mb-1">
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <!-- <li class="text-dark">(1 calif)</li> -->
+                  </ul>
+                  <h4 class="title text-primary">Nombre producto</h4>
+                  <div class="price-list"><small>$</small> 150.00 <small>MXN </small> </div>
+                  <div class="price"><small>$</small> 120.00 <small>MXN </small></div>
+                </div>
+              </a>
+              <a href="#" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+           </div>
         </div>
         <?php } ?>
 
@@ -117,30 +128,34 @@
 
   <div class="sliderProductos">
     <ul class="slides">
+
       <?php for($i=0; $i<=5; $i++){ ?>
       <li>
-        <div class="bx">
-          <div class="imagen-producto">
-            <a href="#" class="spanImg" style="background-image: "></a>
-            <div class="contenedorEtiquetas">
-              <span class="etiqueta-1">Mex</span>
-              <span class="etiqueta-2">Nuevo</span>
-              <span class="etiqueta-3">Oferta</span>
+        <div class="card">
+          <a href="#producto">
+            <div class="imagen-producto">
+              <img class="spanImg" src="https://picsum.photos/300/300/?random=<?php echo $i; ?>"></img>
+              <div class="contenedorEtiquetas">
+                <span class="etiqueta-1">Mex</span>
+                <span class="etiqueta-2">Nuevo</span>
+                <span class="etiqueta-3">Oferta</span>
+              </div>
             </div>
-            <a href="#" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
-          </div>
-          <div class="product-content text-center py-3">
-            <ul class="rating">
-              <li class="far fa-star"></li>
-              <li class="far fa-star"></li>
-              <li class="far fa-star"></li>
-              <li class="far fa-star"></li>
-              <li class="far fa-star"></li>
-              <li class="text-dark">(1 calif)</li>
-            </ul>
-            <h4 class="title text-primary">Nombre producto</h4>
-            <div class="price"><small>$</small> 120.00 <small>MXN </small></div>
-          </div>
+            <div class="product-content text-center py-3">
+              <ul class="rating">
+                <li class="far fa-star"></li>
+                <li class="far fa-star"></li>
+                <li class="far fa-star"></li>
+                <li class="far fa-star"></li>
+                <li class="far fa-star"></li>
+                <br>
+                <li class="text-dark">(1 calif)</li>
+              </ul>
+              <h4 class="title text-primary">Nombre producto</h4>
+              <div class="price"><small>$</small> 120.00 <small>MXN </small></div>
+            </div>
+          </a>
+          <a href="#favorito" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
         </div>
       </li>
       <?php } ?>

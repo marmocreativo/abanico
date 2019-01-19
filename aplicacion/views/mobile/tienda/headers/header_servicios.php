@@ -17,6 +17,7 @@
   </head>
   <body>
     <!-- Header -->
+    <div class="menu-superior bg<?php echo $primary; ?>"></div>
     <div class="menu-principal">
       <nav class="navbar navbar-expand">
         <a class="navbar-brand mr-2" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
@@ -25,7 +26,7 @@
           <div class="input-group input-group-sm">
             <input class="form-control" type="search" name="Busqueda" placeholder="Busca lo Mejor" aria-label="Search">
             <div class="input-group-append">
-              <button type="submit" class="btn <?php echo 'btn'.$primary; ?>" type="button"><i class="fa fa-search"></i></button>
+              <button type="submit" class="btn" type="button"><i class="fa fa-search"></i></button>
             </div>
           </div>
         </form>
@@ -44,6 +45,14 @@
           </li>
         </ul>
       </nav>
+
+      <div class="bandaMenu">
+        <div class="barra-color barra-azul"></div>
+        <div class="barra-color barra-rosa"></div>
+        <div class="barra-color barra-amarillo"></div>
+        <div class="barra-color barra-verde"></div>
+        <div class="barra-color barra-morado"></div>
+      </div>
     </div>
 
     <div class="menu-inferior collapse navbar-collapse" id="menu-categorias">

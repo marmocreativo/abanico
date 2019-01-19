@@ -20,19 +20,14 @@ html, body{
 */
 .menu-superior{
   min-height: 10px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  color: #fff;
-  font-size: 0.5em;
 }
 .menu-principal{
-  border-top: 10px solid #78909C;
+  z-index: 10;
+  background-color: #ececef;
 }
 .menu-principal .navbar{
   padding: 0.1rem 1rem;
   padding-right: .5rem;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
-  z-index: 10;
 }
 .menu-principal .navbar .navbar-brand{
   padding: 0;
@@ -43,14 +38,43 @@ html, body{
   height: 100%;
   max-height: 32px;
 }
-.menu-principal .btnSearch:focus{
-  box-shadow: none;
+.menu-principal .input-group{
+  box-shadow: 1px 1px 8px #c1c2c7;
+  border-radius: 13px;
+}
+.menu-principal .input-group .form-control{
+  border-radius: 13px 0px 0px 13px;
+  border: none;
+}
+.menu-principal .input-group .input-group-append .btn{
+  border-radius: 0px 13px 13px 0px;
+  background-color: white;
+}
+.menu-principal .input-group .input-group-append .btn i{
+  color: #78909C;
+}
+.bandaMenu{
+  position: relative;
+  display: block;
+  min-height: 10px;
+}
+.menu-principal .menuUsuario{
+  padding-top: 12.5px;
+  padding-bottom: 12.5px;
 }
 .menu-inferior{
+  /* visibility: hidden; */
   position: absolute;
   width: 100%;
-  top: 75px;
+  top: 0;
+  margin-top: 75px;
   z-index: 10;
+}
+/* .menu-inferior.collaps{
+  visibility: visible;
+} */
+.menu-inferior.submenu{
+  margin-top: 106px;
 }
 .menu-inferior:before{
   z-index: 10;
@@ -67,8 +91,14 @@ html, body{
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   border-left: 1px solid rgba(0, 0, 0, 0.125);
 }
+.menu-inferior.menuUsuarioBefore:before{
+  right: 19px;
+}
+.menu-inferior.submenu:before{
+  display: none;
+}
 .menu-inferior .nav-pills .nav-link{
-  /* font-size: 0.875rem; */
+  font-size: 0.875rem;
 }
 .menu-inferior .nav-pills .nav-link i{
   margin-right: 1rem;
@@ -78,6 +108,22 @@ html, body{
   height: 1px;
   display: block;
   background: rgba(0, 0, 0, 0.125);
+}
+.btnSubmenu{
+  flex-direction: row;
+  border: 0;
+  border-radius: 0;
+}
+.btnSubmenu .btn{
+  width: 50%;
+  color: white;
+  border-radius: 0;
+}
+.btnSubmenu .btn:focus{
+  box-shadow: none;
+}
+.btnSubmenu .btn+.btn{
+  border-left: 1px solid rgba(0,0,0,.1);
 }
 
 /*
@@ -90,6 +136,9 @@ html, body{
   position: relative;
   width: 40px;
   height: 35px;
+}
+.btnBx:focus{
+  box-shadow: none;
 }
 .hamburger-bottom-bread, .hamburger-patty, .hamburger-top-bread {
     height: 2px;
@@ -152,6 +201,11 @@ html, body{
 .slideInicio{
   position: relative;
   display: block;
+  overflow: hidden;
+}
+
+.slideInicio ul{
+  height: 220px;
 }
 
 .slideInicio li{
@@ -162,11 +216,10 @@ html, body{
   background-color: #ebebeb;
 }
 
-.slideInicio li span{
+.slideInicio li img{
   position: relative;
   display: block;
   width: 100%;
-  height: 220px;
 }
 
 .slideInicio .flex-control-nav{
@@ -199,12 +252,24 @@ html, body{
 }
 
 .sliderProductos .slides li{
-  box-sizing: border-box;
+  display: block;
+  position: relative;
   width: 270px !important;
   text-align: center;
   padding-left: 1rem;
-  /* padding-right: 1rem; */
 }
+
+.sliderProductos .slides li .card{
+  display: block;
+  position: relative;
+}
+
+.sliderProductos .slides li .card a{
+  text-decoration: none;
+}
+/* .sliderProductos.favoritos .card a{
+  text-decoration: none;
+} */
 
 .sliderProductos .imagen-producto{
   overflow: hidden;
@@ -215,6 +280,9 @@ html, body{
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   background-color: white;
 }
+/* .sliderProductos.favoritos .imagen-producto{
+  height: 140px;
+} */
 
 .sliderProductos .imagen-producto .spanImg{
   position: relative;
@@ -224,7 +292,7 @@ html, body{
   background-color: #ebebeb;
 }
 
-.sliderProductos .imagen-producto .btnFavorito{
+.sliderProductos .btnFavorito{
   position: absolute;
   top: 0;
   left: 0;
@@ -250,6 +318,20 @@ html, body{
   -webkit-clip-path:polygon(10% 0,100% 0,100% 100%,0 100%);
   clip-path:polygon(10% 0,100% 0,100% 100%,0 100%)
 }
+
+.sliderProductos.favoritos .contenedorEtiquetas .etiqueta-1,
+.sliderProductos.favoritos .contenedorEtiquetas .etiqueta-2,
+.sliderProductos.favoritos .contenedorEtiquetas .etiqueta-3{
+  display:block;
+  padding:.2rem .6rem .2rem .8rem;
+  text-align: right;
+  margin-bottom: .2rem;
+  font-size: 0.5rem;
+  color:#fff;
+  -webkit-clip-path:polygon(10% 0,100% 0,100% 100%,0 100%);
+  clip-path:polygon(10% 0,100% 0,100% 100%,0 100%)
+}
+
 .sliderProductos .contenedorEtiquetas .etiqueta-1{
   background-color: #28a745;
 }
@@ -273,6 +355,7 @@ html, body{
 }
 
 .sliderProductos .product-content .rating li{
+  display: inline-block;
   text-align: center;
   font-size: .875rem;
   color: #ffd200;
@@ -337,12 +420,62 @@ html, body{
 
 /**/
 
-.bxDetalle .bxProducto{
+.bxDetalle .slideBxProducto{
+  /* overflow: hidden; */
   display: block;
   position: relative;
   width: 100%;
   height: 250px;
   background-color: #ebebeb;
+}
+
+.bxDetalle .slideBxProducto ul{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 250px;
+}
+
+.bxDetalle .slideBxProducto li{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.bxDetalle .slideBxProducto img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.bxDetalle .slideBxProducto .flex-control-nav{
+  bottom: 0;
+}
+
+.bxDetalle .slideBxProducto .flex-control-nav li{
+  display: inline-block;
+  width: auto;
+}
+
+.bxDetalle .flex-control-nav li{
+  background-color: transparent;
+}
+
+.bxDetalle .flex-control-nav li a{
+  width: 6px;
+  height: 6px;
+  background-color: #78909C;
+}
+
+.bxDetalle .flex-control-nav li a.flex-active{
+  background-color: black;
 }
 
 /* .bxDetalle .nav-tabs li a{
@@ -351,7 +484,7 @@ html, body{
 
 /*
 | -------------------------------------------------------------------------
-| ESTILOS CATEGORIAS
+| ESTILOS PRODUCTOS
 | -------------------------------------------------------------------------
 */
 
@@ -363,15 +496,18 @@ html, body{
 .vistaProductos .imagen-producto{
   position: relative;
   float: left;
-  width: 140px;
-  height: 140px;
-  /* border: 1px solid #ccc; */
+  width: 45%;
+  max-width: 125px;
+  height: 125px;
   background-color: #ebebeb;
 }
 
 .vistaProductos .product-content{
+  overflow: hidden;
   float: left;
   padding-top: 0;
+  height: 125px;
+  width: 55%;
 }
 
 .vistaProductos .spanImg{
@@ -380,7 +516,7 @@ html, body{
   height: 100%;
 }
 
-.vistaProductos .product-content .btnFavorito{
+.vistaProductos .btnFavorito{
   position: absolute;
   top: 0;
   right: 0;
@@ -417,9 +553,8 @@ html, body{
   background-color: #dc3545;
 }
 
-
 .vistaProductos .product-content .title{
-  font-size: 1rem;
+  font-size: .875rem;
 }
 
 .vistaProductos .product-content .rating{
@@ -438,6 +573,11 @@ html, body{
   text-decoration: line-through;
 }
 
+/* filtros */
+
+.btnFiltros{
+  border-radius: 0.2rem,0.2rem,0,0 ;
+}
 
 /*
 | -------------------------------------------------------------------------
@@ -449,6 +589,92 @@ html, body{
   font-size: .8rem;
 }
 
+/*
+| -------------------------------------------------------------------------
+| ESTILOS FAVORITOS
+| -------------------------------------------------------------------------
+*/
+
+.datosFavoritos .bxImg{
+  overflow: hidden;
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+.datosFavoritos .bxImg img{
+  width: 100%;
+}
+.datosFavoritos a{
+  text-decoration: none;
+}
+.datosFavoritos h4{
+  margin-bottom: 0;
+}
+.datosFavoritos p{
+  margin-bottom: 0;
+}
+
+.datosFavoritos .btnFavorito{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS CARRITO DE COMPRAS
+| -------------------------------------------------------------------------
+*/
+
+.carritoCompras .bxImg{
+  display: block;
+  position: relative;
+}
+
+.carritoCompras .bxImg img{
+  width: 100%;
+}
+
+.carritoCompras p,
+.carritoCompras h6{
+  font-size: .875rem;
+}
+
+.carritoCompras p{
+  margin-bottom: 0;
+}
+
+.carritoCompras .btnEliminar{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35px;
+}
+
+.btnCarrito .btn{
+  width: 50%;
+}
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS PROCESO DE PAGOS
+| -------------------------------------------------------------------------
+*/
+
+.procesoPago3 hr{
+  margin: 0;
+}
+.procesoPago3 .bxImporte span{
+  font-size: .875rem;
+  line-height: 1em;
+}
+.procesoPago3 .bxInfo{
+  background-color: #bee5eb;
+}
+.procesoPago3 .bxCompra{
+  background-color: rgba(0, 0, 0, 0.05);
+}
 
 
 /*
@@ -675,7 +901,7 @@ html, body{
 | ESTILOS SERVICIOS
 | -------------------------------------------------------------------------
 */
-.enlace-principal-servicio{
+/* .enlace-principal-servicio{
   display: block;
   padding: 20px;
 }
@@ -689,7 +915,6 @@ html, body{
    background-position: center;
    background-repeat: no-repeat;
 }
-
 
 .store-body {
   display: flex;
@@ -749,7 +974,7 @@ html, body{
   font-weight: lighter;
   color: #444;
   text-decoration: line-through;
-}
+}*/
 .breadcrumb {
   padding: 0;
   background-color: transparent;
@@ -767,13 +992,25 @@ html, body{
 | ESTILOS de FORMULARIOS
 | -------------------------------------------------------------------------
 */
+
 .custom-file-input:lang(es) ~ .custom-file-label::after {
-  content: "Elegir"; }
-  /*
-  | -------------------------------------------------------------------------
-  | ESTILOS PAGO
-  | -------------------------------------------------------------------------
-  */
+  content: "Elegir";
+}
+
+.formMobile label{
+  font-size: 1rem;
+}
+
+/* .formMobile label.form-check-label{
+  font-size: .875rem;
+} */
+
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS PAGO
+| -------------------------------------------------------------------------
+*/
 
   .stepwizard-step p {
       margin-top: 10px;
