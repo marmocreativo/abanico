@@ -1,34 +1,30 @@
 <!-- Slider -->
 <div class="slideInicio">
   <ul class="slides">
+    <?php for($i=0; $i<=2; $i++){ ?>
     <li>
-      <span></span>
+      <img src="https://picsum.photos/320/220/?random=<?php echo $i; ?>" alt="">
     </li>
-    <li>
-      <span></span>
-    </li>
-    <li>
-      <span></span>
-    </li>
+    <?php } ?>
   </ul>
 </div>
 
 <div class="post-menu py-4">
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col border-right">
+      <div class="col-4">
         <a href="<?php echo base_url('categoria/servicios'); ?>" class="d-flex justify-content-center align-items-center">
           <div class="car-icono text-primary mr-2"> <span class="fa fa-tools"></span> </div>
           <div class="car-titulo">Servicios</div>
         </a>
       </div>
-      <div class="col">
+      <div class="col-4">
         <a href="<?php echo base_url('categoria'); ?>"  class="d-flex justify-content-center align-items-center">
           <div class="car-icono text-primary mr-2"> <span class="fa fa-box"></span> </div>
           <div class="car-titulo">Productos</div>
         </a>
       </div>
-      <div class="col border-left">
+      <div class="col-4">
         <a href="<?php echo base_url('usuario/registrar'); ?>" class="d-flex justify-content-center align-items-center">
           <div class="car-icono text-primary mr-2"> <span class="fa fa-handshake"></span> </div>
           <div class="car-titulo">Únete</div>
@@ -51,30 +47,34 @@
 
    <div class="sliderProductos">
      <ul class="slides">
+
        <?php for($i=0; $i<=5; $i++){ ?>
        <li>
-         <div class="bx">
-           <div class="imagen-producto">
-             <a href="#" class="spanImg" style="background-image: "></a>
-             <div class="contenedorEtiquetas">
-               <span class="etiqueta-1">Mex</span>
-               <span class="etiqueta-2">Nuevo</span>
-               <span class="etiqueta-3">Oferta</span>
+         <div class="card">
+           <a href="#producto">
+             <div class="imagen-producto">
+               <img class="spanImg" src="https://picsum.photos/300/300/?random=<?php echo $i; ?>"></img>
+               <div class="contenedorEtiquetas">
+                 <span class="etiqueta-1">Mex</span>
+                 <span class="etiqueta-2">Nuevo</span>
+                 <span class="etiqueta-3">Oferta</span>
+               </div>
              </div>
-             <a href="#" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
-           </div>
-           <div class="product-content text-center py-3">
-             <ul class="rating">
-               <li class="far fa-star"></li>
-               <li class="far fa-star"></li>
-               <li class="far fa-star"></li>
-               <li class="far fa-star"></li>
-               <li class="far fa-star"></li>
-               <li class="text-dark">(1 calif)</li>
-             </ul>
-             <h4 class="title text-primary">Nombre producto</h4>
-             <div class="price"><small>$</small> 120.00 <small>MXN </small></div>
-           </div>
+             <div class="product-content text-center py-3">
+               <ul class="rating">
+                 <li class="far fa-star"></li>
+                 <li class="far fa-star"></li>
+                 <li class="far fa-star"></li>
+                 <li class="far fa-star"></li>
+                 <li class="far fa-star"></li>
+                 <br>
+                 <li class="text-dark">(1 calif)</li>
+               </ul>
+               <h4 class="title text-primary">Nombre producto</h4>
+               <div class="price"><small>$</small> 120.00 <small>MXN </small></div>
+             </div>
+           </a>
+           <a href="#favorito" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
          </div>
        </li>
        <?php } ?>

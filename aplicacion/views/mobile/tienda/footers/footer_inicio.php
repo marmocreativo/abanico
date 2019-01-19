@@ -60,12 +60,44 @@
          directionNav: false,
        });
 
+       $('.slideBxProducto').flexslider({
+         animation: "slide",
+         animationLoop: false,
+         directionNav: false,
+         controlNav: true,
+         pausePlay: false,
+       });
      });
 
    </script>
-   <script type="text/javascript">
+
+   <script>
+      $(".btnFunction").click(function() {
+        // $(".btnFunction").toggleClass('collaps');
+        // $("#menu-categorias").toggleClass('collaps');
+
+        $("#menu-productos").removeClass('show');
+        $("#menu-servicios").removeClass('show');
+      });
+
+      $(".btnFunction2").click(function() {
+        // $("#menu-productos").toggleClass('show');
+
+        $("#menu-categorias").removeClass('show');
+        $("#menu-servicios").removeClass('show');
+      });
+
+      $(".btnFunction3").click(function() {
+        // $("#menu-servicios").toggleClass('show');
+
+        $("#menu-productos").removeClass('show');
+        $("#menu-categorias").removeClass('show');
+      });
    </script>
+
   <?php $this->load->view('scripts/scripts_tienda');  ?>
+
+
 
 </body>
 </html>
