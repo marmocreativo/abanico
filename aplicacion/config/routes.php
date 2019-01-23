@@ -104,6 +104,8 @@ $route['producto'] = 'Tienda_Producto';
 $route['producto/(:any)'] = 'Tienda_Producto/$1';
 $route['servicio'] = 'Tienda_Servicio';
 $route['servicio/(:any)'] = 'Tienda_Servicio/$1';
+$route['busqueda'] = 'Tienda_Busqueda';
+$route['busqueda/(:any)'] = 'Tienda_Busqueda/$1';
 
 // Proceso de Pago
 // Pago Invitado

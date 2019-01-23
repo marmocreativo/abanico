@@ -78,7 +78,7 @@
                     <div class="col text-center">
                         <strong>¿Deseas Vender?</strong><br>
                         <p>Registrate como Vendedor o como tienda y empieza a vender.</p>
-                        <a href="<?php echo base_url('usuario/tienda'); ?>" class="btn btn-outline-primary btn-block"> <i class="fa fa-pencil-alt"></i> Registrar tienda</a>
+                        <a href="<?php echo base_url('usuario/tienda'); ?>" class="btn btn-outline-primary btn-block"> <i class="fa fa-pencil-alt"></i> Registrarte para vender</a>
                     </div>
                 </div>
                 <!-- End Blurb -->

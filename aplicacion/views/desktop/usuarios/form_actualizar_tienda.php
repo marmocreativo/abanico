@@ -31,6 +31,13 @@
                   </div>
                   <div class="col-12 col-sm-9">
                     <h5> <span class="fa fa-store"></span> Datos de tu tienda</h5>
+                    <div class="form-group">
+                      <label for="TipoTienda">Tipo de Vendedor </label>
+                      <select class="form-control" name="TipoTienda">
+                        <option value="tienda" <?php if($tienda['TIENDA_TIPO']=='tienda'){ echo 'selected' ;} ?>>Tienda (Vendes una gran cantidad de Productos)</option>
+                        <option value="vendedor" <?php if($tienda['TIENDA_TIPO']=='vendedor'){ echo 'selected'; } ?>>Vendedor (Solo ofrecerás un par de productos a la ves) </option>
+                      </select>
+                    </div>
                      <div class="form-group">
                        <label for="NombreTienda">Nombre Público</label>
                        <input type="text" class="form-control" id="NombreTienda" name="NombreTienda" placeholder="" value="<?php echo $tienda['TIENDA_NOMBRE']; ?>">
@@ -50,7 +57,7 @@
                        <input type="text" class="form-control" id="TelefonoTienda" name="TelefonoTienda" placeholder="" value="<?php echo $tienda['TIENDA_TELEFONO']; ?>">
                      </div>
                      <hr>
-                     <h6> <span class="fa fa-building"></span> Dirección Fiscal</h6>
+                     <h6> <span class="fa fa-building"></span> Dirección de Contacto</h6>
                      <input type="hidden" name="IdentificadorDireccion" value="<?php echo $direccion_tienda['ID_DIRECCION'] ?>">
                      <input type="hidden" name="TipoDireccion" value="fiscal">
                      <input type="hidden" name="AliasDireccion" value="Direccion Tienda">

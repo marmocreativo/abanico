@@ -9,7 +9,7 @@
   }
 
 ?>
-<div class="fila p-3" style="background:#eee;">
+<div class="contenido_principal fila p-3" style="background:#eee;">
   <div class="container">
     <div class="row">
       <nav aria-label="breadcrumb">
@@ -24,31 +24,44 @@
     </div>
     <div class="row">
     <div class="col-2 d-none d-sm-block fila filtro-cont">
+      <form class="" action="<?php echo base_url('busqueda') ?>" method="get">
+        <input type="hidden" name="Busqueda" value="<?php if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){ echo filter_var ( $_GET['Busqueda'], FILTER_SANITIZE_STRING); } ?>">
+        <?php if(!isset($categoria['CATEGORIA_TIPO'])){ ?>
+        <input type="hidden" name="BuscarEn" value="<?php if(isset($_GET['BuscarEn'])){ echo $_GET['BuscarEn']; }else{ echo 'productos'; }; ?>">
+      <?php }else{ ?>
+        <input type="hidden" name="BuscarEn" value="<?php if(isset($_GET['BuscarEn'])){ echo $_GET['BuscarEn']; }else{ echo $categoria['CATEGORIA_TIPO']; }; ?>">
+      <?php } ?>
         <div class="contenedor-filtros">
-          <select class="custom-select filtro-sel">
+          <select class="custom-select filtro-sel" name="OrdenBusqueda">
             <option selected>Ordenar por</option>
-            <option value="1">Más caro primero</option>
-            <option value="2">Más barato primero</option>
-            <option value="3">Alfabético A-Z</option>
-            <option value="4">Alfabético Z-A</option>
-            <option value="5">Más nuevos</option>
+            <option value="precio_desc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='precio_desc'){ echo 'selected'; } ?>>Más caro primero</option>
+            <option value="precio_asc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='precio_asc'){ echo 'selected'; } ?>>Más barato primero</option>
+            <option value="alfabetico_asc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='alfabetico_asc'){ echo 'selected'; } ?>>Alfabético A-Z</option>
+            <option value="alfabetico_desc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='alfabetico_desc'){ echo 'selected'; } ?>>Alfabético Z-A</option>
+            <option value="fecha_desc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='fecha_desc'){ echo 'selected'; } ?>>Más nuevos</option>
+            <option value="fecha_asc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='fecha_asc'){ echo 'selected'; } ?>>Más viejos</option>
           </select>
           <hr>
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1">Mexicano</label>
+            <input type="checkbox" class="custom-control-input" name="OrigenBusqueda" id="OrigenBusqueda" <?php if(isset($_GET['OrigenBusqueda'])){ echo 'checked'; } ?>>
+            <label class="custom-control-label" for="OrigenBusqueda">Mexicano</label>
           </div>
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck2">
-            <label class="custom-control-label" for="customCheck2">Nuevo</label>
+            <input type="checkbox" class="custom-control-input" name="TiempoBusqueda" id="TiempoBusqueda" <?php if(isset($_GET['TiempoBusqueda'])){ echo 'checked'; } ?>>
+            <label class="custom-control-label" for="TiempoBusqueda">Nuevo</label>
           </div>
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck3">
-            <label class="custom-control-label" for="customCheck3">Oferta</label>
+            <input type="checkbox" class="custom-control-input" name="OfertaBusqueda" id="OfertaBusqueda" <?php if(isset($_GET['OfertaBusqueda'])){ echo 'checked'; } ?>>
+            <label class="custom-control-label" for="OfertaBusqueda">Oferta</label>
           </div>
+          <!--
           <hr>
           <label for="customRange1">Rango de Precio</label>
           <input type="range" class="custom-range" min="0" max="5" id="customRange1">
+        -->
+        <hr>
+        <button type="submit" class="btn btn<?php echo $primary; ?> btn-block" >Filtrar</button>
+        </form>
         </div>
       </div>
       <div class="col">
@@ -111,7 +124,7 @@
     </div>
   </div>
 
-
+<?php if(!isset($_GET['Busqueda'])){ ?>
   <!-- Slider productos relacionados -->
   <div class="row">
     <div class="fila fila-gris">
@@ -233,4 +246,5 @@
         </div>
       </div>
     </div>
+  <?php } ?>
 </div>
