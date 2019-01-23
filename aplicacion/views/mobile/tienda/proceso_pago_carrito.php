@@ -64,7 +64,7 @@
             </div>
           </div>
         </div>
-        <div class="card-footer text-center">
+        <div class="card-footer d-flex justify-content-between">
           <a href="" class="btn btn-sm btn-outline-primary"><i class="fa fa-chevron-left"></i> Volver a la tienda</a>
           <a href="" class="btn btn-sm btn-success">Continuar <i class="fa fa-chevron-right"></i></a>
         </div>
@@ -75,7 +75,6 @@
 </div>
 
 <!-- termina proceso pago responsivo -->
-
 <hr><hr><hr>
 
 <div class="contenido_principal pt-3">

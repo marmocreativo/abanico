@@ -677,6 +677,7 @@ html, body{
 }
 
 
+
 /*
 | -------------------------------------------------------------------------
 | ESTILOS BODY
@@ -1004,6 +1005,19 @@ html, body{
 /* .formMobile label.form-check-label{
   font-size: .875rem;
 } */
+
+ .custom-file.file-sm label{
+    font-size: .875rem;
+    height: 31px;
+    padding: 0.25rem 0.5rem;
+ }
+
+ .file-sm .custom-file-label::after {
+    font-size: .875rem;
+    height: 29px;
+    padding: 0.25rem 0.5rem;
+ }
+
 
 
 /*
