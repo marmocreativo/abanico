@@ -16,8 +16,8 @@
 <div class="modal fade" id="ModalCarrito" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-xl" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Carrito</h5>
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title"><span class="fa fa-shopping-cart"></span> Carrito de compras</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -26,9 +26,9 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" id="BotonVaciar" class="btn btn-outline-danger float-left">Vaciar Carrito</button>
-        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">Seguir Comprando</button>
-        <a href="<?php echo base_url('carrito'); ?>" id="BotonComprarAhora" class="btn btn-primary" aria-disabled="false">Comprar Ahora</a>
+        <button type="button" id="BotonVaciar" class="btn btn-link float-left"><i class="fas fa-trash text-primary-17"></i> Vaciar Carrito</button>
+        <button type="button" class="btn btn-link" data-dismiss="modal" aria-label="Close"><i class="fas fa-check-circle text-primary-17"></i> Seguir Comprando</button>
+        <a href="<?php echo base_url('carrito'); ?>" id="BotonComprarAhora" class="btn btn-primary-17 text-white" aria-disabled="false">Comprar Ahora</a>
       </div>
     </div>
   </div>
