@@ -41,6 +41,10 @@
                             <option value="Envio Parcial" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Envio Parcial'){ echo 'selected';} ?>>Envio Parcial</option>
                             <option value="Enviado" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Enviado'){ echo 'selected';} ?>>Enviado</option>
                             <option value="Entregado" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Entregado'){ echo 'selected';} ?>>Entregado</option>
+                            <option value="Cancelado" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Cancelado'){ echo 'selected';} ?>>Cancelado</option>
+                            <option value="Solicitud Devolucion" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Solicitud Devolucion'){ echo 'selected';} ?>>Solicitud Devolucion</option>
+                            <option value="Devolucion" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Devolucion'){ echo 'selected';} ?>>Devolucion</option>
+                            <option value="Devolucion Denegada" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Devolucion Denegada'){ echo 'selected';} ?>>Devolucion Denegada</option>
                           </select>
                       </div>
                       <div class="col-3">
@@ -256,5 +260,48 @@
             </div>
           </div>
         </div>
+
+          <?php
+            $devolucion = $this->DevolucionesModel->detalles($pedido['ID_PEDIDO']);
+            if(!empty($devolucion)){
+          ?>
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h6> <i class="fa fa-exclamation"></i> Devoluciones</h6>
+              </div>
+              <div class="card-body">
+                <div class="card-body">
+                    <h6>Solicitud de devolución</h6>
+                    <p> <b>Mensaje:</b> <?php echo $devolucion['DEVOLUCION_COMENTARIO'] ?></p>
+                    <a href="<?php echo base_url('contenido/adjuntos/pedidos/').$devolucion['DEVOLUCION_ARCHIVO']; ?>" class="btn btn-outline-primary" target="_blank"> <i class="fa fa-download"></i> Descargar Adjunto</a>
+                    <hr>
+                    <h6>Respuesta</h6>
+                    <?php if(!empty($devolucion['DEVOLUCION_RESPUESTA'])){ ?>
+                    <p><?php echo $devolucion['DEVOLUCION_RESPUESTA'] ?></p>
+                  <?php }else{ ?>
+                    <form class="" action="<?php echo base_url('admin/pedidos/responder_devolucion'); ?>" method="post">
+                      <input type="hidden" name="IdPedido" value="<?php echo $devolucion['ID_PEDIDO'] ?>">
+                      <input type="hidden" name="IdDevolucion" value="<?php echo $devolucion['ID_DEVOLUCION'] ?>">
+                      <div class="form-group">
+                        <textarea name="RespuestaDevolucion" class="form-control" rows="4"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="EstadoDevolucion">¿Aceptar Devolución?</label>
+                        <select class="form-control" name="EstadoDevolucion">
+                          <option value="Devolucion">Aceptar Devolución</option>
+                          <option value="Devolucion Denegada">Negar Devolución</option>
+                        </select>
+                      </div>
+                      <button type="submit" class="btn btn-primary float-right" name="button">Responder Solicitud</button>
+                    </form>
+                  <?php } ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php } ?>
     </div>
   </div>

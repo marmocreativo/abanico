@@ -85,7 +85,7 @@ class PedidosModel extends CI_Model {
  */
   function estado($id,$activo){
     $this->db->where('ID_PEDIDO',$id);
-    return $this->db->update('pedidos',array('PAIS_ESTADO'=>$activo));
+    return $this->db->update('pedidos',array('PEDIDO_ESTADO_PEDIDO'=>$activo));
   }
 
 }

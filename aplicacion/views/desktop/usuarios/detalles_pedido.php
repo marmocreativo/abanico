@@ -133,9 +133,19 @@
                   <h6><i class="fa fa-money-bill"></i> Pago: <?php echo $pedido['PEDIDO_FORMA_PAGO']; ?> <b><?php echo $pedido['PEDIDO_ESTADO_PAGO']; ?></b></h6>
                 </div>
                 <div class="card-body">
+                  <!--Permisos cancelados si el estado está Cancelado-->
+                  <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Cancelado' || $pedido['PEDIDO_ESTADO_PEDIDO']=='Solicitud Devolucion' || $pedido['PEDIDO_ESTADO_PEDIDO']=='Devolucion'){ ?>
+                    <div class="row">
+                      <div class="col">
+                        <h6>Tu pedido se encuentra en estado de <?php echo $pedido['PEDIDO_ESTADO_PEDIDO'] ?></h6>
+                        <p>Las funciones de control y datos de guías no son visibles, si crees que esto es un error por favor comunicate con nosotros.</p>
+                      </div>
+                    </div>
+                  <?php }else{ ?>
                   <div class="row">
+                    <!--Permisos para pagar y cancelar -->
                   <?php if($pedido['PEDIDO_ESTADO_PAGO']=='Pendiente' && $pedido['PEDIDO_FORMA_PAGO']=='Transferencia Bancaria'){ ?>
-                    <div class="col">
+                    <div class="col-12">
                       <form class="" action="<?php echo base_url('usuario/pedidos/subir_comprobante'); ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="IdPedido" value="<?php echo $pedido['ID_PEDIDO']; ?>">
                         <input type="hidden" name="FormaPago" value="Transferencia Bancaria">
@@ -151,6 +161,16 @@
                         </div>
                         <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-upload"></i> Subir Comprobante</button>
                       </form>
+                    </div>
+                    <div class="col-12 mt-3">
+                      <div class="card border-danger">
+                        <div class="card-body">
+                          <h6>Cancelar Pedido</h6>
+                          <button data-enlace='<?php echo base_url('usuario/pedidos/cambiar_estado?id='.$pedido['ID_PEDIDO'].'&estado=Cancelado'); ?>' class="btn btn-danger btn-block borrar_entrada" title="Cancelar Pedido">
+                            Cancelar Pedido
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   <?php }// Si el Pago está pendientes y es por transferencia Bancaria ?>
                   <?php foreach($pagos as $pago){ ?>
@@ -170,7 +190,9 @@
                       </p>
                     </div>
                   <?php } ?>
+                  <!--/Permisos para pagar y cancelar -->
                   </div>
+                <?php } ?>
                 </div>
               </div>
               <hr>
@@ -205,6 +227,49 @@
           <?php } // Bucle de tiendas ?>
             </div>
           </div>
+          <!--Permisos cancelados si el estado está Pagado-->
+          <?php if($pedido['PEDIDO_ESTADO_PAGO']=='Pagado' && $pedido['PEDIDO_ESTADO_PEDIDO']=='Entregado'){ ?>
+          <div class="row mt-3">
+            <div class="col">
+              <div class="card border-warning">
+                <div class="card-body">
+                    <h6> <i class="fa fa-exclamation"></i> Solicitar Devolución</h6>
+                    <p>Si ha ocurrido un problema con tu pedido, puedes solicitar la devolución por favor consulta nuestros terminos y condiciones para estar confirmar que seas candidato a una devolución</p>
+                    <form class="" action="<?php echo base_url('usuario/pedidos/devolucion') ?>" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="IdPedido" value="<?php echo $pedido['ID_PEDIDO']; ?>">
+                      <div class="form-group">
+                        <label for="ComentarioDevolucion">Razón de la Solicitud</label>
+                        <textarea name="ComentarioDevolucion" class="form-control" rows="8"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="ArchivoDevolucion">Adjuntar Imagen</label>
+                        <input type="file" class="form-control" name="ArchivoDevolucion" value="">
+                      </div>
+                      <button type="submit" class="btn btn-primary float-right" name="button">Enviar Solicitud</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php } ?>
+          <!--Permisos cancelados si el estado está Pagado-->
+          <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Solicitud Devolucion' || $pedido['PEDIDO_ESTADO_PEDIDO']=='Devolucion' || $pedido['PEDIDO_ESTADO_PEDIDO']=='Devolucion Denegada'){ ?>
+          <?php $devolucion = $this->DevolucionesModel->detalles($pedido['ID_PEDIDO']); ?>
+          <div class="row mt-3">
+            <div class="col">
+              <div class="card border-warning">
+                <div class="card-body">
+                    <h6>Solicitud de devolución</h6>
+                    <p> <b>Mensaje:</b> <?php echo $devolucion['DEVOLUCION_COMENTARIO'] ?></p>
+                    <a href="<?php echo base_url('contenido/adjuntos/pedidos/').$devolucion['DEVOLUCION_ARCHIVO']; ?>" class="btn btn-outline-primary" target="_blank"> <i class="fa fa-download"></i> Descargar Adjunto</a>
+                    <hr>
+                    <h6>Respuesta</h6>
+                    <p><?php echo $devolucion['DEVOLUCION_RESPUESTA'] ?></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php } ?>
         </div>
       </div>
     </div>

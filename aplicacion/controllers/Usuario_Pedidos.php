@@ -29,6 +29,7 @@ class Usuario_Pedidos extends CI_Controller {
 			$this->load->model('PedidosProductosModel');
 			$this->load->model('GuiasPedidosModel');
 			$this->load->model('PagosPedidosModel');
+			$this->load->model('DevolucionesModel');
   }
 
 	public function index()
@@ -71,8 +72,6 @@ class Usuario_Pedidos extends CI_Controller {
 			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
-			// Defino tipo de Servicio y tipo de Categoría
-			$tipo_categoria = 'servicios';
 
 			$this->form_validation->set_rules('FormaPago', 'Forma de Pago', 'required', array( 'required' => 'Debes designar la %s'));
 
@@ -117,7 +116,22 @@ class Usuario_Pedidos extends CI_Controller {
 				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
 			}
 }
-	public function conversacion()
+	/*
+	* Cancelar
+	*/
+	public function cambiar_estado()
+	{
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		$this->PedidosModel->estado($_GET['id'],$_GET['estado']);
+		redirect(base_url('usuario/pedidos/detalles?id_pedido='.$_GET['id']));
+	}
+	/*
+	* Devolucion
+	*/
+	public function devolucion()
 	{
 			// Debo redireccionar
 			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -125,11 +139,43 @@ class Usuario_Pedidos extends CI_Controller {
 				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 			}
 
-				// Obtengo los datos de mi tiendas
-				$this->data['conversacion'] = $this->PedidosModel->detalles($_GET['id']);
-				$this->data['mensajes'] = $this->ConversacionesMensajesModel->lista_mensajes_conversacion($_GET['id']);
-				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
-				$this->load->view($this->data['dispositivo'].'/usuarios/lista_mensajes',$this->data);
-				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->form_validation->set_rules('ComentarioDevolucion', 'Comentario', 'required', array( 'required' => 'Debes agregar tu comentario %s'));
+
+			if($this->form_validation->run())
+			{
+				// Subo el archivo
+				$nombre_archivo = 'devolucion-'.uniqid();
+				$config['upload_path']          = 'contenido/adjuntos/pedidos';
+				$config['allowed_types']        = 'pdf|jpg|png';
+				$config['file_name']						=	$nombre_archivo;
+
+				$this->load->library('upload', $config);
+
+				if ( ! $this->upload->do_upload('ArchivoDevolucion')){
+					$archivo = '';
+				}else{
+					$archivo = $this->upload->data('file_name');
+				}
+					// Parametros del Servicio
+					$parametros = array(
+						'ID_PEDIDO'=> $this->input->post('IdPedido'),
+						'DEVOLUCION_COMENTARIO'=>$this->input->post('ComentarioDevolucion'),
+						'DEVOLUCION_ARCHIVO'=>$archivo,
+						'DEVOLUCION_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+						'DEVOLUCION_ESTADO'=>'Solicitud'
+					);
+					$parametros_pedido = array(
+						'PEDIDO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+						'PEDIDO_ESTADO_PEDIDO'=> 'Solicitud Devolucion',
+					);
+				// Creo el Servicio
+				$adjunto_id = $this->DevolucionesModel->crear($parametros);
+				$adjunto_id = $this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros_pedido);
+				$this->session->set_flashdata('exito', 'Comprobante cargado correctamente');
+				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+			}else{
+				$this->session->set_flashdata('alerta', 'No se pudo subir el archivo');
+				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+			}
 	}
 }
