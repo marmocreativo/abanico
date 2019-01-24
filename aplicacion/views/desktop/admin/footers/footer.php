@@ -32,5 +32,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-iconpicker/1.10.0/js/bootstrap-iconpicker.bundle.min.js"></script>
 <?php $this->load->view('scripts/formularios_usuario');  ?>
 <?php $this->load->view('scripts/alertas_usuario');  ?>
+<?php $this->load->view('scripts/scripts_admin');  ?>
 </body>
 </html>

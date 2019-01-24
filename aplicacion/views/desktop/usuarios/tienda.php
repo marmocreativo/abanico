@@ -13,7 +13,15 @@
                   <?php retro_alimentacion(); ?>
                   <div class="card">
                     <div class="card-header">
-                      <h5> <i class="fa fa-store"></i> Mi Tienda</h5>
+                      <?php switch ($tienda['TIENDA_TIPO']) {
+                        case 'tienda':
+                           $texto_tipo_tienda = 'Mi Tienda';
+                          break;
+                        case 'vendedor':
+                           $texto_tipo_tienda = 'Perfil Vendedor';
+                          break;
+                      } ?>
+                      <h5> <i class="fa fa-store"></i> <?php echo $texto_tipo_tienda; ?></h5>
                     </div>
                     <div class="card-body">
                         <div class="row">

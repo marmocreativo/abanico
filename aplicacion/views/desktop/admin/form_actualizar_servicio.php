@@ -227,7 +227,7 @@
                     <input type="hidden" name="IdObjeto" value="<?php echo $_GET['id'] ?>">
                     <div class="form-group">
                       <label for="NombreAdjunto">Nombre / Descripción Adjunto</label>
-                      <textarea name="NombreAdjunto" class="form-control" rows="4"></textarea>
+                      <textarea name="NombreAdjunto" class="form-control" rows="4" required></textarea>
                     </div>
                     <div class="form-group">
                       <label for="ArchivoAdjunto">Archivo <small>Tipos de Archivo Permitidos: PDF, JPG, PNG</small></label>

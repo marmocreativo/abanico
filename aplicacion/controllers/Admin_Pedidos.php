@@ -27,6 +27,7 @@ class Admin_Pedidos extends CI_Controller {
 		$this->load->model('PedidosTiendasModel');
 		$this->load->model('GuiasPedidosModel');
 		$this->load->model('PagosPedidosModel');
+		$this->load->model('DevolucionesModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -127,5 +128,20 @@ class Admin_Pedidos extends CI_Controller {
 			$this->load->view($this->data['dispositivo'].'/admin/detalles_pedido',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
+	}
+	public function responder_devolucion()
+	{
+		$parametros_devolucion = array(
+			'DEVOLUCION_RESPUESTA'=>$this->input->post('RespuestaDevolucion'),
+			'DEVOLUCION_ESTADO'=>$this->input->post('EstadoDevolucion')
+		);
+			$parametros = array(
+				'PEDIDO_ESTADO_PEDIDO'=>$this->input->post('EstadoDevolucion'),
+				'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s')
+			);
+			$this->DevolucionesModel->actualizar($this->input->post('IdDevolucion'),$parametros_devolucion);
+			$this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros);
+			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
+      redirect(base_url('admin/pedidos/detalles?id_pedido=').$this->input->post('IdPedido'));
 	}
 }

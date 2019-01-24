@@ -99,6 +99,7 @@ class Admin_Tiendas extends CI_Controller {
 					'TIENDA_IMAGEN' => $imagen,
 					'TIENDA_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 					'TIENDA_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+					'TIENDA_TIPO' => $this->input->post('TipoTienda'),
 					'TIENDA_ESTADO' => 'activo'
 				);
 				// Registro la Tienda
@@ -206,6 +207,7 @@ class Admin_Tiendas extends CI_Controller {
 				 'DIRECCION_CODIGO_POSTAL' => $this->input->post('CodigoPostalDireccion'),
 				 'DIRECCION_REFERENCIAS' => $this->input->post('ReferenciasDireccion'),
 				 'DIRECCION_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+				 'TIENDA_TIPO' => $this->input->post('TipoTienda'),
 				 'DIRECCION_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s')
 			 );
 				// Reviso si la dirección está vacía

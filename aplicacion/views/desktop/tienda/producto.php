@@ -5,10 +5,9 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Inicio</a></li>
-              <li class="breadcrumb-item active <?php echo 'text'.$primary; ?>" aria-current="page">Mis servicios</li>
+              <li class="breadcrumb-item active <?php echo 'text'.$primary; ?>" aria-current="page">Producto</li>
             </ol>
           </nav>
-          <?php retro_alimentacion(); ?>
           <div class="row mb-5">
             <div class="col-8">
               <div class="slider-pro" id="my-slider">

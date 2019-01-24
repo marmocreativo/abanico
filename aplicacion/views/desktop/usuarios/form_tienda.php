@@ -14,7 +14,7 @@
             <div class="card-body">
               <div class="card card-info mb-3">
                 <div class="card-body">
-                  <h5>Hola, Bienvenido al creador de tiendas.</h5>
+                  <h5>Hola, Bienvenido al creador de perfil de ventas</h5>
                   <p>Debes registrar una tienda para tener la facultad de:</p>
                   <ul>
                     <li>Crear Productos y ofrecerlos a la venta</li>
@@ -40,26 +40,33 @@
                     </div>
                   </div>
                   <div class="col-12 col-sm-9">
-                    <h5> <span class="fa fa-store"></span> Datos de tu tienda</h5>
+                    <h5> <span class="fa fa-store"></span> Datos de Vendedor</h5>
+                    <div class="form-group">
+                      <label for="TipoTienda">Tipo de Vendedor </label>
+                      <select class="form-control" name="TipoTienda">
+                        <option value="tienda">Tienda (Vendes una gran cantidad de Productos)</option>
+                        <option value="vendedor">Vendedor (Solo ofrecerás un par de productos a la ves) </option>
+                      </select>
+                    </div>
                      <div class="form-group">
-                       <label for="NombreTienda">Nombre Público</label>
+                       <label for="NombreTienda">Nombre Público <small>El nombre que verán los compradores</small> </label>
                        <input type="text" class="form-control" id="NombreTienda" name="NombreTienda" placeholder="" value="<?php echo set_value('NombreTienda'); ?>">
                      </div>
                      <hr>
-                     <h6><span class="fa fa-file-invoice"></span> Datos Fiscales</h6>
+                     <h6><span class="fa fa-file-invoice"></span> Datos Fiscales (En caso de requerir Factura)</h6>
                      <div class="form-group">
                        <label for="RazonSocialTienda">Razón Social</label>
-                       <input type="text" class="form-control" id="RazonSocialTienda" name="RazonSocialTienda" required placeholder="" value="<?php echo set_value('RazonSocialTienda'); ?>">
+                       <input type="text" class="form-control" id="RazonSocialTienda" name="RazonSocialTienda" placeholder="" value="<?php echo set_value('RazonSocialTienda'); ?>">
                      </div>
                      <div class="form-group">
                        <label for="RfcTienda">R.F.C.</label>
-                       <input type="text" class="form-control" id="RfcTienda" name="RfcTienda" required placeholder="" value="<?php echo set_value('RfcTienda'); ?>">
+                       <input type="text" class="form-control" id="RfcTienda" name="RfcTienda" placeholder="" value="<?php echo set_value('RfcTienda'); ?>">
                      </div>
                      <div class="form-group">
                        <label for="TelefonoTienda">Teléfono</label>
                        <input type="text" class="form-control" id="TelefonoTienda" name="TelefonoTienda" required placeholder="" value="<?php echo set_value('TelefonoTienda'); ?>">
                      </div>
-                     <h6> <span class="fa fa-building"></span> Dirección Fiscal</h6>
+                     <h6> <span class="fa fa-building"></span> Dirección de Contacto</h6>
                      <input type="hidden" name="TipoDireccion" value="fiscal">
                      <input type="hidden" name="AliasDireccion" value="Direccion Tienda">
                       <input type="hidden" name="ReferenciasDireccion" value="-">
