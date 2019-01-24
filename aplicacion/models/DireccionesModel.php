@@ -56,6 +56,12 @@ class DireccionesModel extends CI_Model {
     return $this->db->get_where('direcciones',array('ID_USUARIO'=>$id,'DIRECCION_TIPO'=>'fiscal'))->row_array();
   }
   /*
+    * Obtengo tObtengo la dirección etiquetada como FISCAL
+ */
+  function direccion_perfil($id){
+    return $this->db->get_where('direcciones',array('ID_USUARIO'=>$id,'DIRECCION_TIPO'=>'perfil'))->row_array();
+  }
+  /*
     * Dirección en una sola línea
  */
   function direccion_formateada($id){

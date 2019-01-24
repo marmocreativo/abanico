@@ -9,6 +9,11 @@
   </div>
 </div>
 <div class="row">
+  <div class="col-12">
+    <div class="alert alert-info">
+      <p>Sección en desarrollo</p>
+    </div>
+  </div>
   <div class="col-6">
     <canvas id="myChart" width="100%"></canvas>
   </div>

@@ -243,7 +243,8 @@ class Usuario_Servicios extends CI_Controller {
 				$this->load->library('upload', $config);
 
 				if ( ! $this->upload->do_upload('ArchivoAdjunto')){
-					$this->session->set_flashdata('alerta', 'No se pudo subir el archivo');
+					$error = array('error' => $this->upload->display_errors());
+					$this->session->set_flashdata('alerta', 'No se pudo subir el archivo '.$error);
 					redirect(base_url('usuario/servicios/actualizar?id='.$this->input->post('IdObjeto').'&tab='.$tab));
 				}else{
 					$archivo = $this->upload->data('file_name');

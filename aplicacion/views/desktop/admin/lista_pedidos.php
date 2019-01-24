@@ -38,6 +38,7 @@
               <tr>
                 <th>orden</th>
                 <th>Folio</th>
+                <th>Registro</th>
                 <th>Cliente</th>
                 <th>Importe</th>
                 <th>Fecha</th>
@@ -51,6 +52,15 @@
               <tr>
                 <td><?php echo $pedido->ID_PEDIDO; ?></td>
                 <td><?php echo $pedido->PEDIDO_FOLIO; ?></td>
+                <td>
+                  <?php
+                  if($pedido->ID_USUARIO==0){
+                    echo 'Inv';
+                  }else{
+                    echo 'Reg';
+                  }
+                  ?>
+                </td>
                 <td><?php echo $pedido->PEDIDO_NOMBRE; ?></td>
                 <td>$<?php echo $pedido->PEDIDO_IMPORTE_TOTAL; ?></td>
                 <td>$<?php echo $pedido->PEDIDO_FECHA_REGISTRO; ?></td>

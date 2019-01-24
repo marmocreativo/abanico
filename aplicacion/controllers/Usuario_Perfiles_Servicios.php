@@ -45,7 +45,7 @@ class Usuario_Perfiles_Servicios extends CI_Controller {
 					$this->data['productos'] = $this->ProductosModel->lista('',$_SESSION['usuario']['id'],'','');
 				}
 
-				$direccion_fiscal = $this->DireccionesModel->direccion_fiscal($_SESSION['usuario']['id']);
+				$direccion_fiscal = $this->DireccionesModel->direccion_perfil($_SESSION['usuario']['id']);
 				$this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($direccion_fiscal['ID_DIRECCION']);
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/'.$vista_tienda,$this->data);

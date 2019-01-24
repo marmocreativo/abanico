@@ -138,7 +138,7 @@ class Admin_Productos extends CI_Controller {
 				'PRODUCTO_PROFUNDO'=> $this->input->post('ProfundoProducto'),
 				'PRODUCTO_PESO'=> $this->input->post('PesoProducto'),
 				'PRODUCTO_TIPO'=> $this->input->post('TipoProducto'),
-				'PRODUCTO_ESTADO'=> 'activo',
+				'PRODUCTO_ESTADO'=> $this->input->post('EstadoProducto'),
 				'ORDEN'=> '1'
 			);
 			// Creo el Producto
@@ -255,7 +255,7 @@ class Admin_Productos extends CI_Controller {
 				'PRODUCTO_PROFUNDO'=> $this->input->post('ProfundoProducto'),
 				'PRODUCTO_PESO'=> $this->input->post('PesoProducto'),
 				'PRODUCTO_TIPO'=> $this->input->post('TipoProducto'),
-				'PRODUCTO_ESTADO'=> 'activo',
+				'PRODUCTO_ESTADO'=> $this->input->post('EstadoProducto'),
 				'ORDEN'=> '1'
 			);
 			// Creo el Producto

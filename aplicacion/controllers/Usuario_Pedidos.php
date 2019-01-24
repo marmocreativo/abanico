@@ -103,7 +103,8 @@ class Usuario_Pedidos extends CI_Controller {
 					);
 					$parametros_pedido = array(
 						'PEDIDO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
-						'PEDIDO_ESTADO_PAGO'=> $this->input->post('EstadoPago'),
+						'PEDIDO_ESTADO_PAGO'=>'Pagado',
+						//'PEDIDO_ESTADO_PAGO'=> $this->input->post('EstadoPago'),
 					);
 				}
 				// Creo el Servicio
