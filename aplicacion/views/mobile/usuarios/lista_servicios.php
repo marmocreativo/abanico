@@ -16,12 +16,8 @@
 
       <div class="card mb-3">
         <div class="card-header d-flex justify-content-between">
-          <div class="titulo">
             <h2 class="h5 mb-0 pt-1"> <span class="fa fa-box"></span> Tus Servicios</h2>
-          </div>
-          <div class="opciones">
-              <a href="" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span></a>
-          </div>
+            <a href="" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span></a>
         </div>
         <div class="card-body">
           <h3 class="h6"><strong>Lorem ipsum dolor</strong></h3>

@@ -34,6 +34,28 @@
       </div>
     </div>
 
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body pb-2 pt-3 bg-primary text-white text-center">
+          <h2 class="h4"><i class="fa fa-box mr-2"></i>0 <small>Productos</small></h2>
+        </div>
+        <div class="card-footer text-center">
+          <a href="http://localhost/abanico-master/usuario/productos" class="text-dark">Lista de productos <i class="fa fa-arrow-right float" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body pb-2 pt-3 bg-primary text-white text-center">
+          <h2 class="h4"><i class="fa fa-tools mr-2"></i>1 <small>Servicios</small></h2>
+        </div>
+        <div class="card-footer text-center">
+          <a href="http://localhost/abanico-master/usuario/servicios" class="text-dark">Lista de servicios <i class="fa fa-arrow-right float" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+
     <div class="col-12 mb-3">
       <div class="col text-center">
         <i class="fa fa-store text-primary fa-2x mt-3 mb-2"></i>

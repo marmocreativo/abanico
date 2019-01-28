@@ -31,250 +31,269 @@
         </div>
       </div>
 
-      <div class="card mb-3">
-        <div class="card-body">
-            <img class="img-fluid img-thumbnail mx-auto mb-3 d-block rounded-circle" style="width:150px" src="http://localhost/abanico-master/contenido/img/servicios/completo/default.jpg" alt="" >
-            <div class="custom-file file-sm mb-3">
-              <input type="file" class="custom-file-input" id="ImagenServicio" name="ImagenServicio" placeholder="" value="">
-              <label class="custom-file-label" for="ImagenServicio">Fotografía</label>
-            </div>
-             <div class="form-group">
-               <label for="NombreUsuario">Nombre de la persona que Ofrece el servicio</label>
-               <input type="text" class="form-control form-control-sm" id="NombreUsuario" name="NombreUsuario" placeholder="" required="" value="antonio gutierrez">
-             </div>
-             <div class="form-group">
-               <label for="NombreServicio">¿Qué Servicio Ofreces?</label>
-               <input type="text" class="form-control form-control-sm" id="NombreServicio" name="NombreServicio" placeholder="" required="" value="">
-             </div>
-             <div class="form-group">
-               <label for="DescripcionServicio">Descripción Corta</label>
-               <textarea class="form-control form-control-sm" name="DescripcionServicio" rows="3" cols="80" required=""></textarea>
-             </div>
+      <form class="" action="" method="post" enctype="multipart/form-data">
 
-             <div class="form-group">
-               <label for="TipoServicio">Tipo de Servicio</label>
-               <select class="form-control form-control-sm" name="TipoServicio">
-                 <option value="profesional">Servicio Presencial</option>
-                 <option value="digital">Servicio a Distancia</option>
-               </select>
-             </div>
-             <p class="text-muted"> <i class="fa fa-info-circle"></i> Los Servicios a distancia, son los que se pueden ejercer a traves de internet.</p>
-
-             <h6> <i class="fa fa-map-marker"></i> ¿En dónde ofreces tu servicio?</h6>
-
-             <div class="form-group">
-               <label for="PaisDireccion">País </label>
-               <select class="form-control form-control-sm" name="PaisDireccion" id="PaisDireccion" required="">
-                 <option value="">Selecciona un País</option>
-               <option value="México" data-id="1">México</option><option value="Estados Unidos" data-id="2">Estados Unidos</option></select>
-             </div>
-
-             <div class="form-group">
-               <label for="EstadoDireccion">Estado </label>
-               <select class="form-control form-control-sm" name="EstadoDireccion" id="EstadoDireccion" required="">
-                 <option value="">Selecciona tu estado</option>
-               </select>
-             </div>
-             <div class="form-group">
-               <label for="MunicipioDireccion">Municipio / Alcaldía</label>
-               <select class="form-control form-control-sm" name="MunicipioDireccion" id="MunicipioDireccion" required="">
-                 <option value="">Selecciona tu Municipio / Alcaldía</option>
-               </select>
-             </div>
-          </div>
-        </div>
-
-        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active show" id="categori-tab" data-toggle="tab" href="#categori" role="tab" aria-controls="categori" aria-selected="true"> <span class="fa fa-list"></span> Categorias</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="dato-tab" data-toggle="tab" href="#dato" role="tab" aria-controls="dato" aria-selected="false"> <span class="fa fa-file-alt"></span> Descripción</a>
-          </li>
-        </ul>
-
-        <div class="card border-top-0 mb-3">
-          <div class="card-body tab-content">
-            <div class="tab-pane fade show active" id="categori" role="tabpanel">
-
-              <div class="">
-                <h6 class="pb-3">Ingeniería y Construcción</h6>
-                <div class="row">
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Eléctrica y Electrónica</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Ingeniería Civil</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Ingeniería Ambiental</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Computación</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Ingeniería Mecánica</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Ingeniería Industrial</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Instalaciones </label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Obras</label>
-                      </div>
-                  </div>
-                </div>
-              </div>
-
-              <hr>
-
-              <div class="">
-                <h6 class="pb-3">Ingeniería y Construcción</h6>
-                <div class="row">
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Eléctrico</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Plomería</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Cerrajería</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Albañilería</label>
-                      </div>
-                  </div>
-                </div>
-              </div>
-
-              <hr>
-
-              <div class="">
-                <h6 class="pb-3">Mecánicos y Automotrices</h6>
-              </div>
-
-              <hr>
-
-              <div class="">
-                <h6 class="pb-3">Administración</h6>
-              </div>
-
-              <hr>
-
-              <div class="">
-                <h6 class="pb-3">Arte y entretenimiento</h6>
-                <div class="row">
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Actores</label>
-                      </div>
-                  </div>
-                </div>
-              </div>
-
-              <hr>
-
-              <div class="">
-                <h6 class="pb-3">Salud</h6>
-                <div class="row">
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Pediatra</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Dermatología</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Psicología</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Ginecología</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Dentista</label>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="custom-control custom-radio">
-                        <input type="radio" id="" name="" class="custom-control-input" value="" required="">
-                        <label class="custom-control-label h6" for="">Ortopedista</label>
-                      </div>
-                  </div>
-                </div>
-              </div>
-
-            <!---->
-            </div>
-
-            <div class="tab-pane fade" id="dato" role="tabpanel">
-                <div class="form-group">
-                  <label for="DetallesServicio">Descripción Detallada</label>
-                  <textarea class="form-control Editor" name="" rows="5" cols="80"><?php echo set_value('DetallesServicio'); ?></textarea>
-                </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
+        <div class="card mb-3">
           <div class="card-body">
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-              <label class="custom-control-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones de los Servicios</label>
+              <img class="img-fluid img-thumbnail mx-auto mb-3 d-block rounded-circle" style="width:150px" src="http://localhost/abanico-master/contenido/img/servicios/completo/default.jpg" alt="" >
+              <div class="custom-file file-sm mb-3">
+                <input type="file" class="custom-file-input" id="ImagenServicio" name="ImagenServicio" placeholder="" value="">
+                <label class="custom-file-label" for="ImagenServicio">Fotografía</label>
+              </div>
+               <div class="form-group">
+                 <label for="NombreUsuario">Nombre de la persona que Ofrece el servicio</label>
+                 <input type="text" class="form-control form-control-sm" id="NombreUsuario" name="NombreUsuario" placeholder="" required="" value="antonio gutierrez">
+               </div>
+               <div class="form-group">
+                 <label for="NombreServicio">¿Qué Servicio Ofreces?</label>
+                 <input type="text" class="form-control form-control-sm" id="NombreServicio" name="NombreServicio" placeholder="" required="" value="">
+               </div>
+               <div class="form-group">
+                 <label for="DescripcionServicio">Descripción Corta</label>
+                 <textarea class="form-control form-control-sm" name="DescripcionServicio" rows="3" cols="80" required=""></textarea>
+               </div>
+
+               <div class="form-group">
+                 <label for="TipoServicio">Tipo de Servicio</label>
+                 <select class="form-control form-control-sm" name="TipoServicio">
+                   <option value="profesional">Servicio Presencial</option>
+                   <option value="digital">Servicio a Distancia</option>
+                 </select>
+               </div>
+               <p class="text-muted"> <i class="fa fa-info-circle"></i> Los Servicios a distancia, son los que se pueden ejercer a traves de internet.</p>
+
+               <h6> <i class="fa fa-map-marker"></i> ¿En dónde ofreces tu servicio?</h6>
+
+               <div class="form-group">
+                 <label for="PaisDireccion">País </label>
+                 <select class="form-control form-control-sm" name="PaisDireccion" id="PaisDireccion" required="">
+                   <option value="">Selecciona un País</option>
+                 <option value="México" data-id="1">México</option><option value="Estados Unidos" data-id="2">Estados Unidos</option></select>
+               </div>
+
+               <div class="form-group">
+                 <label for="EstadoDireccion">Estado </label>
+                 <select class="form-control form-control-sm" name="EstadoDireccion" id="EstadoDireccion" required="">
+                   <option value="">Selecciona tu estado</option>
+                 </select>
+               </div>
+               <div class="form-group">
+                 <label for="MunicipioDireccion">Municipio / Alcaldía</label>
+                 <select class="form-control form-control-sm" name="MunicipioDireccion" id="MunicipioDireccion" required="">
+                   <option value="">Selecciona tu Municipio / Alcaldía</option>
+                 </select>
+               </div>
             </div>
-            <hr>
-            <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-save"></i> Registrar Servicio</button>
           </div>
-        </div>
+
+
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <span class="fa fa-list"></span> Categorias
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+
+                  <div class="">
+                    <h6 class="pb-3">Ingeniería y Construcción</h6>
+                    <div class="row">
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Eléctrica y Electrónica</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Ingeniería Civil</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Ingeniería Ambiental</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Computación</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Ingeniería Mecánica</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Ingeniería Industrial</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Instalaciones </label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Obras</label>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <div class="">
+                    <h6 class="pb-3">Ingeniería y Construcción</h6>
+                    <div class="row">
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Eléctrico</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Plomería</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Cerrajería</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Albañilería</label>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <div class="">
+                    <h6 class="pb-3">Mecánicos y Automotrices</h6>
+                  </div>
+
+                  <hr>
+
+                  <div class="">
+                    <h6 class="pb-3">Administración</h6>
+                  </div>
+
+                  <hr>
+
+                  <div class="">
+                    <h6 class="pb-3">Arte y entretenimiento</h6>
+                    <div class="row">
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Actores</label>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <div class="">
+                    <h6 class="pb-3">Salud</h6>
+                    <div class="row">
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Pediatra</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Dermatología</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Psicología</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Ginecología</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Dentista</label>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="" name="" class="custom-control-input" value="" required="">
+                            <label class="custom-control-label h6" for="">Ortopedista</label>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="fa fa-file-alt"></span> Descripción
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+
+
+                  <div class="form-group">
+                    <label for="DetallesServicio">Descripción Detallada</label>
+                    <textarea class="form-control Editor" name="" rows="5" cols="80"><?php echo set_value('DetallesServicio'); ?></textarea>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-body">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
+                <label class="custom-control-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones de los Servicios</label>
+              </div>
+              <hr>
+              <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-save"></i> Registrar Servicio</button>
+            </div>
+          </div>
+
+        </form>
 
       </div>
 
