@@ -481,10 +481,18 @@ html, body{
 .pre-footer{
   min-height: 10px;
 }
+.linea-colores-delgada{
+  min-height: 5px;
+}
 .barra-color{
   width: 20%;
   min-height: 10px;
   background-color: #000;
+  float: left;
+}
+.linea-colores-delgada .barra-color{
+  width: 20%;
+  min-height: 5px;
   float: left;
 }
 
@@ -555,7 +563,7 @@ html, body{
   pointer-events: none;
 }
 .slider-pro img.sp-image {
-  width: 80% !important;
+  width: 80% !im;
 }
 .sp-thumbnails-container {
   z-index: 998;

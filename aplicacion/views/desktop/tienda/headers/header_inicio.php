@@ -46,13 +46,12 @@
         </div>
 
         <div class="collapse navbar-collapse">
-          <form class="form-inline my-2 my-lg-0 mr-auto w-75" action="<?php echo base_url('categoria/busqueda') ?>" method="get">
+          <form class="form-inline my-2 my-lg-0 mr-auto w-75" action="<?php echo base_url('busqueda') ?>" method="get">
             <div class="input-group w-100">
-              <input class="form-control w-50" type="search" name="Busqueda" placeholder="Busca lo Mejor" aria-label="Search">
-              <select class="form-control" aria-label="Example select with button addon">
-                <option value="todo">En Todo</option>
-                <option value="productos">En Productos</option>
-                <option value="servicios">En Servicios</option>
+              <input class="form-control w-50" type="search" name="Busqueda" placeholder="Busca lo Mejor" aria-label="Search" value="<?php if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){ echo filter_var ( $_GET['Busqueda'], FILTER_SANITIZE_STRING); } ?>">
+              <select class="form-control" name="BuscarEn">
+                <option value="productos" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='productos'){ echo 'selected'; } ?>>En Productos</option>
+                <option value="servicios" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='servicios'){ echo 'selected'; } ?>>En Servicios</option>
               </select>
               <div class="input-group-append">
                 <button type="submit" class="btn <?php echo 'btn-outline'.$primary; ?>" type="button"> <i class="fa fa-search"></i> </button>

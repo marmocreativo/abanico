@@ -33,6 +33,28 @@ class ProductosModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
+  function busqueda($parametros_or,$parametros_and,$orden,$limite){
+    if(!empty($parametros_or)){
+      $this->db->or_like($parametros_or);
+    }
+    if(!empty($parametros_and)){
+      $this->db->where($parametros_and);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $query = $this->db->get('productos');
+    return $query->result();
+  }
+  /*
+    * Enlisto todas las entradas
+    * $parametros Debe ser un array de Columnas y Valores, Busco usando la función LIKE
+    * $orden indicará la Columna y si es ascendente o descendente
+    * $limite Solo se usará si hay una cantidad limite de productos a mostrar
+ */
   function lista_activos($parametros,$id_usuario,$orden,$limite){
     if(!empty($parametros)){
       $this->db->or_like($parametros);

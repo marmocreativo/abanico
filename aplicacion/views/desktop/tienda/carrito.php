@@ -59,7 +59,7 @@
   <?php } ?>
   <?php }else{ ?>
     <tr>
-      <td colspan="5" class="text-center">Aún no tienes productos en tu carrito</td>
+      <td colspan="5" class="text-center border-0">Aún no tienes productos en tu carrito</td>
     </tr>
   <?php } ?>
 
@@ -74,3 +74,10 @@
     </tr>
   </tbody>
 </table>
+<div class="linea-colores-delgada">
+  <div class="barra-color barra-azul"></div>
+  <div class="barra-color barra-rosa"></div>
+  <div class="barra-color barra-amarillo"></div>
+  <div class="barra-color barra-verde"></div>
+  <div class="barra-color barra-morado"></div>
+</div>

@@ -58,7 +58,7 @@
               </div> <!-- form-group.// -->
             </div>
       	</div>
-          <button type="submit" class="btn btn-lg btn-primary-4 mt-2">Pagar</button>
+          <button type="submit" class="btn btn-lg btn-primary-17 mt-2">Pagar</button>
         </form>
       </div>
     </div>

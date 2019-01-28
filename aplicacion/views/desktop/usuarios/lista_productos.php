@@ -34,6 +34,7 @@
                     <th>SKU</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
+                    <th>Estado</th>
                     <th class="text-right">Controles</th>
                   </tr>
                 </thead>
@@ -44,6 +45,19 @@
                     <td><?php echo $producto->PRODUCTO_SKU; ?></td>
                     <td><?php echo $producto->PRODUCTO_CANTIDAD; ?></td>
                     <td>$<?php echo $producto->PRODUCTO_PRECIO; ?></td>
+
+                    <td>
+                      <?php
+                        switch ($producto->PRODUCTO_ESTADO) {
+                          case 'activo':
+                            echo '<p class="text-success">Publicado</p>';
+                            break;
+                          case 'inactivo':
+                            echo '<p class="text-danger">Borrador</p>';
+                            break;
+                        }
+                      ?>
+                    </td>
                     <td>
                       <div class="btn-group float-right">
                         <a href="<?php echo base_url('usuario/productos/actualizar?id='.$producto->ID_PRODUCTO); ?>" class="btn btn-sm btn-warning" title="Editar Producto"> <span class="fa fa-pencil-alt"></span> </a>

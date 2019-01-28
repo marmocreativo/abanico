@@ -25,7 +25,14 @@
                 </div>
               </div>
               <div class="col-12 col-sm-9">
-                <h5> <span class="fa fa-store"></span> Datos de tu tienda</h5>
+                <h5> <span class="fa fa-store"></span> Datos de Vendedor</h5>
+                <div class="form-group">
+                  <label for="TipoTienda">Tipo de Vendedor </label>
+                  <select class="form-control" name="TipoTienda">
+                    <option value="tienda">Tienda (Vendes una gran cantidad de Productos)</option>
+                    <option value="vendedor">Vendedor (Solo ofrecerás un par de productos a la ves) </option>
+                  </select>
+                </div>
                  <div class="form-group">
                    <label for="NombreTienda">Nombre Público</label>
                    <input type="text" class="form-control" id="NombreTienda" name="NombreTienda" placeholder="" value="<?php echo set_value('NombreTienda'); ?>">

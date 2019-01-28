@@ -62,8 +62,6 @@ class Usuario_Tiendas extends CI_Controller {
 			}
 				// Validaciones de Formulario
 				$this->form_validation->set_rules('NombreTienda', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
-				$this->form_validation->set_rules('RazonSocialTienda', 'Razón Social', 'required', array('required' => 'Debes escribir tu %s.'));
-				$this->form_validation->set_rules('RfcTienda', 'R.F.C.', 'required', array('required' => 'Debes escribir tu %s.'));
 				$this->form_validation->set_rules('TelefonoTienda', 'Teléfono', 'required', array('required' => 'Debes escribir tu %s.'));
 				$this->form_validation->set_rules('TerminosyCondiciones', 'Términos y condiciones', 'required', array('required' => 'Debes aceptar los %s.'));
 
@@ -90,6 +88,7 @@ class Usuario_Tiendas extends CI_Controller {
 							'TIENDA_IMAGEN' => $imagen,
 							'TIENDA_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 							'TIENDA_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+							'TIENDA_TIPO' => $this->input->post('TipoTienda'),
 							'TIENDA_ESTADO' => 'activo'
 			      );
 						// Registro la Tienda
@@ -159,8 +158,6 @@ class Usuario_Tiendas extends CI_Controller {
 		}
 			// Validaciones de Formulario
 			$this->form_validation->set_rules('NombreTienda', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
-			$this->form_validation->set_rules('RazonSocialTienda', 'Razón Social', 'required', array('required' => 'Debes escribir tu %s.'));
-			$this->form_validation->set_rules('RfcTienda', 'R.F.C.', 'required', array('required' => 'Debes escribir tu %s.'));
 			$this->form_validation->set_rules('TelefonoTienda', 'Teléfono', 'required', array('required' => 'Debes escribir tu %s.'));
 
 
@@ -186,6 +183,7 @@ class Usuario_Tiendas extends CI_Controller {
 						'TIENDA_TELEFONO' => $this->input->post('TelefonoTienda'),
 						'TIENDA_IMAGEN' => $imagen,
 						'TIENDA_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+						'TIENDA_TIPO' => $this->input->post('TipoTienda'),
 						'TIENDA_ESTADO' => 'activo'
 					);
 					// Actualizo la tienda
