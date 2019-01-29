@@ -20,7 +20,7 @@
                   <div class="card">
                     <div class="card-body">
                       <ul class="list-unstyled">
-                        <li class="media border-bottom mb-3">
+                        <li class="media border-bottom mb-3 <?php echo url_title($conversacion['CONVERSACION_TIPO']); ?>">
                           <a href="<?php echo base_url('usuario/mensajes/conversacion?id='.$conversacion['ID_CONVERSACION']); ?>">
                             <img class="mr-3" src="<?php echo base_url('assets/global/img/usuario_default.png'); ?>" width="30" alt="Generic placeholder image">
                             <div class="media-body">
@@ -41,7 +41,7 @@
                     <div class="card-body">
                     <ul class="list-unstyled">
                     <?php foreach ($mensajes as $mensaje) { ?>
-                      <li class="media border p-2 mb-3 rounded">
+                      <li class="media border p-2 mb-3 rounded <?php if($mensaje->ID_REMITENTE==$_SESSION['usuario']['id']){ echo 'mi-mensaje'; } ?>">
                           <div class="media-body">
                             <?php echo $mensaje->MENSAJE_TEXTO; ?>
                             <?php $remitente= $this->UsuariosModel->detalles($mensaje->ID_REMITENTE); ?>
