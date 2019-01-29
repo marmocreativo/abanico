@@ -7,8 +7,8 @@
         </div>
         <div class="col">
           <?php retro_alimentacion(); ?>
-              <div class="row">
-                <div class="col-2">
+              <div class="row no-gutters">
+                <div class="col-2 bg-primary-10 text-white" id="shelf">
                   <ul class="list-group">
                     <li class="list-group-item"><a href="<?php echo base_url('usuario/mensajes') ?>"> <i class="fa fa-inbox"></i> Recibidos </a></li>
                     <li class="list-group-item"><a href="<?php echo base_url('usuario/mensajes?tipo='.'mensaje servicio') ?>"> <i class="fa fa-inbox"></i> Mensajes de Servicios </a></li>

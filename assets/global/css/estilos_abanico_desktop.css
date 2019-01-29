@@ -609,3 +609,15 @@ img.sp-thumbnail-image {
   background-color: transparent;
   color: #78909C;
 }
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS MENSAJES
+| -------------------------------------------------------------------------
+*/
+#shelf .list-group-item {
+    background: transparent;
+}
+#shelf a {
+    color: #ececef;
+}
