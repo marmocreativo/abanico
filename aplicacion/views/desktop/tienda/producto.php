@@ -82,7 +82,7 @@
                   </div>
                 </div>
                 <div class="col-12">
-                  <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonComprar"
+                  <button class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block" id="BotonComprar"
                       data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
                       data-nombre-producto='<?php echo $producto['PRODUCTO_NOMBRE']; ?>'
                       data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
@@ -92,8 +92,24 @@
                       data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
                       data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
                       >
-                     <span class="fa fa-shopping-cart"></span> Comprar Ahora</button>
+                     <span class="fa fa-shopping-cart"></span> Añadir al Carrito</button>
                 </div>
+                <?php if(isset($_SESSION['usuario']['id'])){ ?>
+                  <div class="col-12">
+                    <hr>
+                    <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonCompraRapida"
+                        data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
+                        data-nombre-producto='<?php echo $producto['PRODUCTO_NOMBRE']; ?>'
+                        data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
+                        data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
+                        data-detalles-producto=''
+                        data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
+                        data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
+                        data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
+                        >
+                       <span class="fa fa-shopping-cart"></span> Comprar Ahora</button>
+                  </div>
+                <?php } ?>
               </div>
               <div class="card opiniones-serv">
                 <div class="card-body">
@@ -163,7 +179,7 @@
                   </div>
                 </div>
                   <div class="list-group">
-                    <?php if(!empty($mi_calificacion)){ ?>
+                  <?php if(!empty($mi_calificacion)){ ?>
                     <li class="media border border-info p-3">
                       <img class="mr-3 img-thumbnail rounded-circle" src="<?php echo base_url('assets/global/img/usuario_default.png') ?>" width="64" alt="">
                       <div class="media-body">
@@ -196,7 +212,7 @@
                           <small><?php echo $calificacion->CALIFICACION_FECHA_REGISTRO; ?></small>
                         </div>
                         <p class="mb-1"><?php echo $calificacion->CALIFICACION_COMENTARIO; ?></p>
-                        <small><?php echo $calificacion->USUARIO_NOMBRE.' '.$calificacion->USUARIO_APELLIDOS; ?></small>
+                        <small></small>
                       </a>
                     <?php } ?>
                   </div>

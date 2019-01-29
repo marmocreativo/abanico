@@ -48,33 +48,52 @@
    <div class="sliderProductos">
      <ul class="slides">
 
-       <?php for($i=0; $i<=5; $i++){ ?>
+       <?php foreach($productos as $producto){ ?>
        <li>
          <div class="card">
-           <a href="#producto">
+           <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
              <div class="imagen-producto">
-               <img class="spanImg" src="https://picsum.photos/300/300/?random=<?php echo $i; ?>"></img>
-               <div class="contenedorEtiquetas">
-                 <span class="etiqueta-1">Mex</span>
-                 <span class="etiqueta-2">Nuevo</span>
-                 <span class="etiqueta-3">Oferta</span>
+               <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+               <img class="spanImg" src="<?php echo base_url($ruta_portada); ?>"></img>
+               <div class="contenedor-etiquetas">
+                 <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
+                   <span class="etiqueta-1">Mex</span>
+                 <?php } ?>
+                 <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
+                   <span class="etiqueta-2 <?php echo 'bg'.$primary; ?>">Nuevo</span>
+                 <?php } ?>
+                 <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                   <span class="etiqueta-3">Oferta</span>
+                 <?php } ?>
                </div>
              </div>
              <div class="product-content text-center py-3">
+               <?php
+               $promedio = $this->CalificacionesModel->promedio_calificaciones_producto($producto->ID_PRODUCTO);
+               $cantidad = $this->CalificacionesModel->conteo_calificaciones_producto($producto->ID_PRODUCTO);
+               ?>
                <ul class="rating">
-                 <li class="far fa-star"></li>
-                 <li class="far fa-star"></li>
-                 <li class="far fa-star"></li>
-                 <li class="far fa-star"></li>
-                 <li class="far fa-star"></li>
-                 <br>
-                 <li class="text-dark">(1 calif)</li>
+                 <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
+                 <?php for($i = 1; $i<=$estrellas; $i++){ ?>
+                   <li class="fa fa-star"></li>
+                 <?php } ?>
+                 <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+                   <li class="far fa-star"></li>
+                 <?php } ?>
+                 <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
                </ul>
-               <h4 class="title text-primary">Nombre producto</h4>
-               <div class="price"><small>$</small> 120.00 <small>MXN </small></div>
+               <h4 class="title <?php echo 'text'.$primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h4>
+               <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                 <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
+               <?php } ?>
+               <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
              </div>
            </a>
-           <a href="#favorito" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+           <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+           <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+           <?php }else{ ?>
+             <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$producto->ID_PRODUCTO)); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+           <?php } ?>
          </div>
        </li>
        <?php } ?>

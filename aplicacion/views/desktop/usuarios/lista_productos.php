@@ -23,7 +23,7 @@
                 </form>
               </div>
               <div class="opciones">
-                  <a href="<?php echo base_url('usuario/productos/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Nuevo Producto </a>
+                  <a href="<?php echo base_url('usuario/productos/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Agregar Producto </a>
               </div>
             </div>
             <div class="card-body py-0">

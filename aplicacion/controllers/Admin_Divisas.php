@@ -111,7 +111,6 @@ class Admin_Divisas extends CI_Controller {
     }else{
 
 			$this->data['divisa'] = $this->DivisasModel->detalles($_GET['id']);
-
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_divisa',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);

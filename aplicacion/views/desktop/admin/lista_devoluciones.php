@@ -25,7 +25,7 @@
       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <div class="titulo">
-            <h1 class="h6"> <span class="fa fa-box"></span> Pedidos</h1>
+            <h1 class="h6"> <span class="fa fa-undo"></span> Devoluciones</h1>
           </div>
           <div class="formulario">
           </div>
@@ -47,18 +47,18 @@
               </tr>
             </thead>
             <tbody>
-              <?php foreach($pedidos as $pedido){ ?>
+              <?php foreach($devoluciones as $devolucion){ ?>
               <tr>
-                <td><?php echo $pedido->ID_PEDIDO; ?></td>
-                <td><?php echo $pedido->PEDIDO_FOLIO; ?></td>
-                <td><?php echo $pedido->PEDIDO_NOMBRE; ?></td>
-                <td>$<?php echo $pedido->PEDIDO_IMPORTE_TOTAL; ?></td>
-                <td><?php echo $pedido->PEDIDO_FECHA_REGISTRO; ?></td>
-                <td><?php echo $pedido->PEDIDO_ESTADO_PEDIDO; ?></td>
-                <td><?php echo $pedido->PEDIDO_ESTADO_PAGO; ?></td>
+                <td><?php echo $devolucion->ID_PEDIDO; ?></td>
+                <td><?php echo $devolucion->PEDIDO_FOLIO; ?></td>
+                <td><?php echo $devolucion->PEDIDO_NOMBRE; ?></td>
+                <td>$<?php echo $devolucion->PEDIDO_IMPORTE_TOTAL; ?></td>
+                <td><?php echo $devolucion->PEDIDO_FECHA_REGISTRO; ?></td>
+                <td><?php echo $devolucion->PEDIDO_ESTADO_PEDIDO; ?></td>
+                <td><?php echo $devolucion->PEDIDO_ESTADO_PAGO; ?></td>
                 <td>
                   <div class="btn-group float-right">
-                    <a href="<?php echo base_url('admin/pedidos/detalles?id_pedido='.$pedido->ID_PEDIDO); ?>" class="btn btn-sm btn-outline-success" title="Detalles del pedido"> <span class="fa fa-eye"></span> Detalles</a>
+                    <a href="<?php echo base_url('admin/pedidos/detalles?id_pedido='.$devolucion->ID_PEDIDO); ?>" class="btn btn-sm btn-outline-success" title="Detalles del pedido"> <span class="fa fa-eye"></span> Detalles</a>
                   </div>
                 </td>
               </tr>

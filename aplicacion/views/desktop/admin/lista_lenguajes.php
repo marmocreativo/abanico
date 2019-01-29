@@ -37,15 +37,15 @@
               <td class="text-center"><?php echo $lenguaje->LENGUAJE_ISO; ?></td>
               <td class="text-center">
                 <?php if($lenguaje->LENGUAJE_ESTADO=='activo'){ ?>
-                  <a href="<?php echo base_url('admin/lenguajes/activar')."?id=".$lenguaje->ID_LENGUAJE."&estado=".$lenguaje->LENGUAJE_ESTADO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
+                  <a href="<?php echo base_url('admin/lenguajes/activar')."?id=".$lenguaje->ID_LENGUAJE."&estado=".$lenguaje->LENGUAJE_ESTADO; ?>" class="btn btn-sm btn-outline-success" title="Desactivar Lenguaje"> <span class="fa fa-check-circle"></span> </a>
                 <?php }else{ ?>
-                  <a href="<?php echo base_url('admin/lenguajes/activar')."?id=".$lenguaje->ID_LENGUAJE."&estado=".$lenguaje->LENGUAJE_ESTADO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
+                  <a href="<?php echo base_url('admin/lenguajes/activar')."?id=".$lenguaje->ID_LENGUAJE."&estado=".$lenguaje->LENGUAJE_ESTADO; ?>" class="btn btn-sm btn-outline-danger" title="Activar Lenguaje"> <span class="fa fa-times-circle"></span> </a>
                 <?php } ?>
               </td>
               <td class="text-right">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <a href="<?php echo base_url('admin/lenguajes/actualizar')."?id=".$lenguaje->ID_LENGUAJE; ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
-                  <a href="<?php echo base_url('admin/lenguajes/borrar')."?id=".$lenguaje->ID_LENGUAJE; ?>" class="btn btn-sm btn-danger"><span class="fa fa-trash-alt"></span></a>
+                  <a href="<?php echo base_url('admin/lenguajes/actualizar')."?id=".$lenguaje->ID_LENGUAJE; ?>" class="btn btn-sm btn-warning" title="Editar Lenguaje"> <span class="fa fa-pencil-alt"></span> </a>
+                  <a href="<?php echo base_url('admin/lenguajes/borrar')."?id=".$lenguaje->ID_LENGUAJE; ?>" class="btn btn-sm btn-danger" title="Borrar Lenguaje"><span class="fa fa-trash-alt"></span></a>
                 </div>
               </td>
             </tr>

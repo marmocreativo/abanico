@@ -42,15 +42,15 @@
                 <td class="text-center"><?php echo $municpio->ESTADO_NOMBRE; ?></td>
                 <td class="text-center">
                   <?php if($municpio->MUNICIPIO_ESTADO=='activo'){ ?>
-                    <a href="<?php echo base_url('admin/municipios/activar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS."&estado=".$municpio->MUNICIPIO_ESTADO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
+                    <a href="<?php echo base_url('admin/municipios/activar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS."&estado=".$municpio->MUNICIPIO_ESTADO; ?>" class="btn btn-sm btn-outline-success" title="Desactivar Municipio"> <span class="fa fa-check-circle"></span> </a>
                   <?php }else{ ?>
-                    <a href="<?php echo base_url('admin/municipios/activar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS."&estado=".$municpio->MUNICIPIO_ESTADO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
+                    <a href="<?php echo base_url('admin/municipios/activar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS."&estado=".$municpio->MUNICIPIO_ESTADO; ?>" class="btn btn-sm btn-outline-danger" title="Activar Municipio"> <span class="fa fa-times-circle"></span> </a>
                   <?php } ?>
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="<?php echo base_url('admin/municipios/actualizar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS; ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
-                    <a href="<?php echo base_url('admin/municipios/borrar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS; ?>" class="btn btn-sm btn-danger"><span class="fa fa-trash-alt"></span></a>
+                    <a href="<?php echo base_url('admin/municipios/actualizar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS; ?>" class="btn btn-sm btn-warning" title="Editar Municipio"> <span class="fa fa-pencil-alt"></span> </a>
+                    <a href="<?php echo base_url('admin/municipios/borrar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS; ?>" class="btn btn-sm btn-danger" title="Borrar Municipio"><span class="fa fa-trash-alt"></span></a>
                   </div>
                 </td>
               </tr>

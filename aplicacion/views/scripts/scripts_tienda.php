@@ -95,6 +95,18 @@ jQuery('.CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
     },
     success : function(texto)
      {
+       jQuery.ajax({
+         method: "GET",
+         url: "<?php echo base_url('ajax/carrito/cantidad_productos_carrito'); ?>",
+         dataType: "text",
+         success : function(cantidad_productos_carrito)
+          {
+             if(cantidad_productos_carrito==0){
+               jQuery('#BotonComprarAhora').addClass('disabled');
+               jQuery('#BotonComprarAhora').attr('aria-disabled','true');
+             }
+          }
+       });
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
      }
   });
@@ -118,6 +130,18 @@ jQuery('.CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
     },
     success : function(texto)
      {
+       jQuery.ajax({
+         method: "GET",
+         url: "<?php echo base_url('ajax/carrito/cantidad_productos_carrito'); ?>",
+         dataType: "text",
+         success : function(cantidad_productos_carrito)
+          {
+             if(cantidad_productos_carrito==0){
+               jQuery('#BotonComprarAhora').addClass('disabled');
+               jQuery('#BotonComprarAhora').attr('aria-disabled','true');
+             }
+          }
+       });
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
         jQuery('#ModalCarrito').modal();
      }
@@ -139,6 +163,18 @@ jQuery('.CargarCarrito').on('click', '.boton-eliminar-carrito', function() {
     },
     success : function(texto)
      {
+       jQuery.ajax({
+         method: "GET",
+         url: "<?php echo base_url('ajax/carrito/cantidad_productos_carrito'); ?>",
+         dataType: "text",
+         success : function(cantidad_productos_carrito)
+          {
+             if(cantidad_productos_carrito==0){
+               jQuery('#BotonComprarAhora').addClass('disabled');
+               jQuery('#BotonComprarAhora').attr('aria-disabled','true');
+             }
+          }
+       });
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
         jQuery('#ModalCarrito').modal();
      }
@@ -220,13 +256,13 @@ GALERIA
   Calificación Estrellas
   -----------------
   */
- jQuery(function() {
+  jQuery(function() {
    jQuery('.estrellas').starrr({
      emptyClass: 'far fa-star',
     change: function(e, value){
       jQuery('#EstrellasCalificacion').val(value)
-   }
-});
+     }
+   });
   });
 
    // CARRITO
@@ -236,7 +272,7 @@ Slider Productos
  -----------------
  */
  	jQuery( document ).ready(function( $ ) {
- 		$( '#my-slider' ).sliderPro({
+ 		jQuery( '#my-slider' ).sliderPro({
       thumbnailsPosition: 'right',
       thumbnailPointer: true,
       buttons: false,

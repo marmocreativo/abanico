@@ -57,8 +57,7 @@ class Usuario_Productos extends CI_Controller {
 			if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
 				$parametros = array(
 					'PRODUCTO_NOMBRE'=>$_GET['Busqueda'],
-					'PRODUCTO_DESCRIPCION'=>$_GET['Busqueda'],
-					'PRODUCTO_MODELO'=>$_GET['Busqueda']
+					'PRODUCTO_SKU'=>$_GET['Busqueda']
 				);
 				$this->data['productos'] = $this->ProductosModel->lista($parametros,$_SESSION['usuario']['id'],'PRODUCTO_FECHA_REGISTRO DESC','');
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
@@ -144,6 +143,7 @@ class Usuario_Productos extends CI_Controller {
 					'PRODUCTO_PROFUNDO'=> $this->input->post('ProfundoProducto'),
 					'PRODUCTO_PESO'=> $this->input->post('PesoProducto'),
 					'PRODUCTO_TIPO'=> $this->input->post('TipoProducto'),
+					'PRODUCTO_CONDICION'=> $this->input->post('CondicionProducto'),
 					'PRODUCTO_ESTADO'=> $this->input->post('EstadoProducto'),
 					'ORDEN'=> '1'
 				);
@@ -269,6 +269,7 @@ class Usuario_Productos extends CI_Controller {
 						'PRODUCTO_PROFUNDO'=> $this->input->post('ProfundoProducto'),
 						'PRODUCTO_PESO'=> $this->input->post('PesoProducto'),
 						'PRODUCTO_TIPO'=> $this->input->post('TipoProducto'),
+						'PRODUCTO_CONDICION'=> $this->input->post('CondicionProducto'),
 						'PRODUCTO_ESTADO'=> $this->input->post('EstadoProducto'),
 						'ORDEN'=> '1'
 					);

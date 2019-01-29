@@ -40,6 +40,7 @@
   <script src="<?php echo base_url(); ?>assets/global/js/bootstrap.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/tienda/js/starrr/starrr.js"></script>
   <script defer src="<?php echo base_url(); ?>assets/tienda/js/flexslider/jquery.flexslider.js"></script>
+  <script defer src="<?php echo base_url(); ?>assets/global/js/jquery.sliderPro.min.js"></script>
   <script type="text/javascript">
      $(window).on('load',function(){
       $('.slideInicio').flexslider({

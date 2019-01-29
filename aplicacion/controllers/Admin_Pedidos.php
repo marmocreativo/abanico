@@ -55,6 +55,20 @@ class Admin_Pedidos extends CI_Controller {
 			$this->load->view($this->data['dispositivo'].'/admin/lista_pedidos',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
+	public function devoluciones()
+	{
+
+			// Reviso si hay id del usuario
+			if(isset($_GET['id_usuario'])){
+				$this->data['devoluciones'] = $this->DevolucionesModel->devoluciones_usuario($_GET['id_usuario'],'DEVOLUCION_FECHA_REGISTRO DESC');
+				$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
+			}else{
+				$this->data['devoluciones'] = $this->DevolucionesModel->todas_las_devoluciones('DEVOLUCION_FECHA_REGISTRO DESC');
+			}
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/lista_devoluciones',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+	}
 
 	public function busqueda()
 	{

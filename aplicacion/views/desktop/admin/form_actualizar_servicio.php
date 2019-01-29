@@ -14,14 +14,15 @@
           </div>
           <div class="card-body">
             <div class="row">
+
               <div class="col-8">
+                <form class="" action="<?php echo base_url('admin/servicios/actualizar');?>" method="post" enctype="multipart/form-data">
                 <?php retro_alimentacion(); ?>
                   <?php if(!empty(validation_errors())){ ?>
                     <div class="alert alert-danger">
                       <?php echo validation_errors(); ?>
                     </div>
                   <?php } ?>
-                  <form class="" action="<?php echo base_url('admin/servicios/actualizar');?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="IdUsuario" value="<?php echo $servicio['ID_USUARIO']; ?>">
                     <input type="hidden" name="Identificador" value="<?php echo $_GET['id'] ?>">
                     <div class="row">
@@ -85,6 +86,12 @@
                                </select>
                              </div>
                            </div>
+                           <div class="col-12">
+                             <div class="form-group">
+                               <label for="ZonaTrabajoServicio">Zona de Trabajo <small>Colonias o Barrios donde puedas ofrecer tus servicios</small></label>
+                               <textarea name="ZonaTrabajoServicio" class="form-control" rows="6"><?php echo $servicio['SERVICIO_ZONA_TRABAJO']; ?></textarea>
+                             </div>
+                           </div>
                          </div>
                       </div>
                     </div>
@@ -113,7 +120,16 @@
                                       <?php foreach($segundo_categorias as $segunda_categoria){ ?>
                                         <div class="col-4">
                                           <div class="border border-default p-3">
-                                          <h6 class="border-bottom pb-3"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h6>
+                                            <div class="custom-control custom-radio">
+                                              <input  type="radio"
+                                                      id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                                                      name="CategoriaServicio" class="custom-control-input"
+                                                      value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                                                      <?php if($relacion_categorias['ID_CATEGORIA']==$segunda_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
+
+                                                      >
+                                              <label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
+                                            </div>
                                           <?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                                           <ul class="list list-unstyled">
                                             <?php foreach($tercero_categorias as $tercera_categoria){ ?>
@@ -124,7 +140,7 @@
                                                         name="CategoriaServicio" class="custom-control-input"
                                                         value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                                                         <?php if($relacion_categorias['ID_CATEGORIA']==$tercera_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
-                                                        required
+
                                                         >
                                                 <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
                                               </div>
@@ -192,6 +208,7 @@
                     </div>
                     <hr>
                     <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Actualizar Servicio</button>
+                  </form>
               </div>
               <div class="col-4">
                 <div class="card-body">
@@ -238,8 +255,6 @@
                 </div>
               </div>
             </div>
-
-          </form>
           </div>
         </div>
       </div>

@@ -4,9 +4,10 @@
 
       <div class="slideBxProducto mb-4">
         <ul class="slides">
-          <?php for($i=0; $i<=3; $i++){ ?>
+          <?php foreach($galerias as $galeria){ ?>
           <li>
-            <img src="https://picsum.photos/300/300/?random=<?php echo $i; ?>" alt="">
+              <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
+            <img src="<?php echo base_url($ruta_galeria) ?>" alt="">
           </li>
           <?php } ?>
         </ul>
@@ -14,33 +15,76 @@
 
       <div class="col-12 mb-4">
         <p class="text-muted"><small>1 Disponibles</small></p>
-        <h4 class="product-title mb-2">JABON</h4>
+        <h4 class="product-title mb-2"><?php echo $producto['PRODUCTO_NOMBRE']; ?></h4>
         <hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</p>
+        <?php echo $producto['PRODUCTO_DESCRIPCION']; ?>
         <hr>
-        <h2 class="product-price display-6">
-          <small>$</small>
-          <span id="Precio_Producto">50.00</span>
-          <small>MXN </small>
+        <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
+        <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'],2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
+        <?php } ?>
+        <h2 class="product-price display-6" >
+          <small><?php echo $_SESSION['divisa']['signo']; ?></small>
+            <span id="Precio_Producto" ><?php echo number_format($_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO'],2); ?></span>
+          <small><?php echo $_SESSION['divisa']['iso']; ?> </small>
         </h2>
         <hr>
         <div class="row">
+          <?php if(!empty($combinaciones)){ ?>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="CombinacionProducto" class="sr-only">Opciones</label>
+              <select class="form-control CombinacionProducto" name="CombinacionProducto">
+              <?php foreach($combinaciones as $combinacion){?>
+                <option value="<?php echo  $combinacion->COMBINACION_OPCION; ?>"
+                  data-precio-producto='<?php echo $combinacion->COMBINACION_PRECIO; ?>'
+                  data-precio-visible-producto='<?php echo number_format($_SESSION['divisa']['conversion']*$combinacion->COMBINACION_PRECIO,2); ?>'
+                  data-detalles-producto='<?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?>'
+                  ><?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?></option>
+              <?php } ?>
+              </select>
+            </div>
+          </div>
+          <?php } ?>
           <div class="col">
             <div class="form-group">
               <label for="" class="sr-only">Cantidad</label>
-              <input type="number" class="form-control" name="CantidadProducto" id="CantidadProducto" min="1" max="1" value="1">
+              <input type="number" class="form-control" name="CantidadProducto" id="CantidadProducto" min="1" max="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>" value="<?php echo $producto['PRODUCTO_CANTIDAD_MINIMA']; ?>">
             </div>
           </div>
           <div class="col">
-            <button class="btn btn-primary-3 btn- btn-block" id="BotonComprar" data-id-producto="8" data-nombre-producto="JABON" data-imagen-producto="http://localhost/abanico-master/contenido/img/productos/completo/categoria-5c1a76bd5a6fd.jpg" data-peso-producto="20.00" data-detalles-producto="" data-precio-producto="50.00" data-id-tienda="1" data-nombre-tienda="Espejo Negro">
-              <span class="fa fa-shopping-cart"></span> Comprar Ahora
-            </button>
+            <button class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block" id="BotonComprar"
+                data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
+                data-nombre-producto='<?php echo $producto['PRODUCTO_NOMBRE']; ?>'
+                data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
+                data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
+                data-detalles-producto=''
+                data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
+                data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
+                data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
+                >
+               <span class="fa fa-shopping-cart"></span> Añadir al Carrito</button>
           </div>
+          <?php if(isset($_SESSION['usuario']['id'])){ ?>
+            <div class="col-12">
+              <hr>
+              <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonCompraRapida"
+                  data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
+                  data-nombre-producto='<?php echo $producto['PRODUCTO_NOMBRE']; ?>'
+                  data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
+                  data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
+                  data-detalles-producto=''
+                  data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
+                  data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
+                  data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
+                  >
+                 <span class="fa fa-shopping-cart"></span> Comprar Ahora</button>
+            </div>
+          <?php } ?>
         </div>
       </div>
 
       <div class="col-12 mb-4">
-          <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+          <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
             <li class="nav-item">
               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Detalles</a>
             </li>
@@ -57,7 +101,8 @@
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
               <div class="py-3">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <h5>Información detallada del producto</h5>
+                <?php echo $producto['PRODUCTO_DETALLES']; ?>
               </div>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -73,39 +118,39 @@
                       <tbody>
                         <tr>
                           <td>Modelo</td>
-                          <td>ROMA </td>
+                          <td><?php echo $producto['PRODUCTO_MODELO']; ?> </td>
                         </tr>
                         <tr>
                           <td>Origen</td>
-                          <td>México </td>
+                          <td><?php echo $producto['PRODUCTO_ORIGEN']; ?> </td>
                         </tr>
                         <tr>
                           <td>SKU</td>
-                          <td>ROM </td>
+                          <td><?php echo $producto['PRODUCTO_SKU']; ?> </td>
                         </tr>
                         <tr>
                           <td>UPC</td>
-                          <td>    </td>
+                          <td><?php echo $producto['PRODUCTO_UPC']; ?> </td>
                         </tr>
                         <tr>
                           <td>EAN</td>
-                          <td>    </td>
+                          <td><?php echo $producto['PRODUCTO_EAN']; ?> </td>
                         </tr>
                         <tr>
                           <td>JAN</td>
-                          <td>    </td>
+                          <td><?php echo $producto['PRODUCTO_JAN']; ?> </td>
                         </tr>
                         <tr>
                           <td>ISBN</td>
-                          <td>    </td>
+                          <td><?php echo $producto['PRODUCTO_ISBN']; ?> </td>
                         </tr>
                         <tr>
                           <td>MPN</td>
-                          <td>    </td>
+                          <td><?php echo $producto['PRODUCTO_MPN']; ?> </td>
                         </tr>
                         <tr>
                           <td>EAN</td>
-                          <td>    </td>
+                          <td><?php echo $producto['PRODUCTO_EAN']; ?> </td>
                         </tr>
                       </tbody>
                     </table>
@@ -120,19 +165,19 @@
                       <tbody>
                         <tr>
                           <td>Ancho</td>
-                          <td>30.00 <small>cm</small> </td>
+                          <td><?php echo number_format($producto['PRODUCTO_ANCHO'],2); ?> <small>cm</small> </td>
                         </tr>
                         <tr>
                           <td>Alto</td>
-                          <td>25.00 <small>cm</small> </td>
+                          <td><?php echo number_format($producto['PRODUCTO_ALTO'],2); ?> <small>cm</small> </td>
                         </tr>
                         <tr>
                           <td>Profundo</td>
-                          <td>15.00 <small>cm</small> </td>
+                          <td><?php echo number_format($producto['PRODUCTO_PROFUNDO'],2); ?> <small>cm</small> </td>
                         </tr>
                         <tr>
                           <td>Peso</td>
-                          <td>20.00 <small>Kg</small> </td>
+                          <td><?php echo number_format($producto['PRODUCTO_PESO'],2); ?> <small>Kg</small> </td>
                         </tr>
                       </tbody>
                     </table>
@@ -141,51 +186,60 @@
               </div>
             </div>
             <div class="tab-pane fade" id="preguntas" role="tabpanel" aria-labelledby="contact-tab">
-              <div class="py-3">
+              <div class="p-3">
+                <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+                <form class="" action="<?php echo base_url('producto/contacto'); ?>" method="post">
+                  <input type="hidden" name="IdReceptor" value="<?php echo $producto['ID_USUARIO']; ?>">
+                  <input type="hidden" name="IdRemitente" value="<?php echo $_SESSION['usuario']['id']; ?>">
+                  <input type="hidden" name="ProductoNombre" value="<?php echo $producto['PRODUCTO_NOMBRE']; ?>">
+                  <input type="hidden" name="IdProducto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
+                  <div class="row">
+                    <table class="table">
+                      <tr>
+                        <td><strong>Remitente:</strong></td>
+                        <td><?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']?></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <p> <i class="fa fa-info-circle"></i> Tienes dudas sobre el producto?</p>
+                  <div class="form-group">
+                    <label for="MensajeTexto">Mensaje</label>
+                    <textarea class="form-control" name="MensajeTexto" rows="8" required></textarea>
+                  </div>
+                  <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> Contactar</button>
+                </form>
+                <span class="clearfix"> </span>
+              <?php }else{ ?>
                 <div class="card">
                   <div class="card-body">
                     <p>Para preguntar debes Iniciar Sesión.</p>
-                    <a href="http://localhost/abanico-master/login?url_redirect=http://localhost/abanico-master/producto/?id=8" class="btn btn-outline-primary-3 btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
+                    <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
                   </div>
                 </div>
+              <?php } ?>
               </div>
             </div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
               <div class="py-3">
                 <div class="row">
                   <div class="col-3">
-                    <img src="http://localhost/abanico-master/contenido/img/tiendas/completo/tienda-5c1e6ac549a93.jpg" alt="" class="img-fluid img-thumbnail rounded-circle">
+                      <img src="<?php echo base_url('contenido/img/tiendas/completo/'.$tienda['TIENDA_IMAGEN']) ?>" alt="" class="img-fluid img-thumbnail rounded-circle">
                   </div>
                   <div class="col-9">
                     <table class="table table-sm table-borderless">
-                      <tbody><tr>
+                      <tr>
                         <td><b>Nombre Público</b></td>
-                        <td>Espejo Negro</td>
+                        <td><?php echo $tienda['TIENDA_NOMBRE']; ?></td>
                       </tr>
                       <tr>
                         <td><b>Razón Social</b></td>
-                        <td>Espejo Negro SA de CV</td>
+                        <td><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></td>
                       </tr>
                       <tr>
                         <td><b>R.F.C.</b></td>
-                        <td>ESNE34565677</td>
+                        <td><?php echo $tienda['TIENDA_RFC']; ?></td>
                       </tr>
-                      <tr>
-                        <td><b>Teléfono</b></td>
-                        <td>26032335</td>
-                      </tr>
-                      <tr>
-                        <td><b>Registro</b><br>2018-12-05 08:05:30</td>
-                        <td><b>Actualización</b><br>2019-01-06 16:02:39</td>
-                      </tr>
-                    </tbody></table>
-                  </div>
-                </div>
-                <hr>
-                <div class="row pt-3">
-                  <div class="col-12">
-                    <h6>Dirección Fiscal</h6>
-                    <p>Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México</p>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -197,135 +251,84 @@
       <div class="col-12 mb-4">
 
         <div class="mb-4">
+          <?php $promedio_calificaciones = $promedio_calificaciones['CALIFICACION_ESTRELLAS']; $estrellas_restan= 5-$promedio_calificaciones; ?>
           <h5 class="mb-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            Calificaciones (1)
+            <?php for($i = 1; $i<=$promedio_calificaciones; $i++){ ?>
+              <span class="fa fa-star <?php echo 'text'.$primary; ?>"></span>
+            <?php } ?>
+            <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+              <span class="far fa-star <?php echo 'text'.$primary; ?>"></span>
+            <?php } ?>
           </h5>
-          <div class="row">
-            <div class="col-5">
-              <ul class=" list-unstyled rating m-0">
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-              </ul>
-            </div>
-            <div class="col-7">
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
 
+          <?php $e = 5; foreach($estrellas as $estrella){ ?>
+        <?php $restan = 5-$e; ?>
+        <?php if($cantidad_calificaciones!=0){ $porcentaje = ($estrella*100)/$cantidad_calificaciones; }else{ $porcentaje=0; }?>
           <div class="row">
             <div class="col-5">
               <ul class=" list-unstyled rating m-0">
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="far fa-star" style="font-size:0.8em;"></i>
+                <?php for($i = 1; $i<=$e; $i++){ ?>
+                  <i class="fa fa-star" style="font-size:0.8em;"></i>
+                <?php } ?>
+                <?php for($i = 1; $i<=$restan; $i++){ ?>
+                  <i class="far fa-star" style="font-size:0.8em;"></i>
+                <?php } ?>
               </ul>
             </div>
             <div class="col-7">
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: <?php echo $porcentaje; ?>%" aria-valuenow="<?php echo $porcentaje; ?>" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
           </div>
+          <?php $e--; } ?>
 
-          <div class="row">
-            <div class="col-5">
-              <ul class=" list-unstyled rating m-0">
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="far fa-star" style="font-size:0.8em;"></i>
-                <i class="far fa-star" style="font-size:0.8em;"></i>
-              </ul>
-            </div>
-            <div class="col-7">
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-5">
-              <ul class=" list-unstyled rating m-0">
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="far fa-star" style="font-size:0.8em;"></i>
-                <i class="far fa-star" style="font-size:0.8em;"></i>
-                <i class="far fa-star" style="font-size:0.8em;"></i>
-              </ul>
-            </div>
-            <div class="col-7">
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-5">
-              <ul class=" list-unstyled rating m-0">
-                <i class="fa fa-star" style="font-size:0.8em;"></i>
-                <i class="far fa-star" style="font-size:0.8em;"></i>
-                <i class="far fa-star" style="font-size:0.8em;"></i>
-                <i class="far fa-star" style="font-size:0.8em;"></i>
-                <i class="far fa-star" style="font-size:0.8em;"></i>
-              </ul>
-            </div>
-            <div class="col-7">
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
         </div>
 
            <div class="card mb-4">
                 <div class="card-body">
                   <p>Para calificar este producto.</p>
-                  <a href="http://localhost/abanico-master/login?url_redirect=http://localhost/abanico-master/producto/?id=8" class="btn btn-outline-primary-3 btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
+                  <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
                 </div>
            </div>
 
           <ul class="list-unstyled">
+            <?php if(!empty($mi_calificacion)){ ?>
               <li class="media py-3">
                 <img class="mr-3 img-thumbnail rounded-circle" src="http://localhost/abanico-master/assets/global/img/usuario_default.png" alt="" width="64">
                 <div class="media-body">
-                  <h5 class="mt-0 mb-1">JORGE CARRASCO</h5>
+                  <h5 class="mt-0 mb-1"><?php echo $mi_calificacion['USUARIO_NOMBRE'].' '.$mi_calificacion['USUARIO_APELLIDOS']; ?></h5>
                   <div class="d-flex border-top border-bottom py-3">
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
-                       <i class="fa fa-star"></i>
+                    <?php $estrellas = $mi_calificacion['CALIFICACION_ESTRELLAS']; $estrellas_restan= 5-$estrellas; ?>
+                    <?php for($i = 1; $i<=$estrellas; $i++){ ?>
+                      <i class="fa fa-star"></i>
+                    <?php } ?>
+                    <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+                      <i class="far fa-star"></i>
+                    <?php } ?>
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                  <p><?php echo $mi_calificacion['CALIFICACION_COMENTARIO']; ?></p>
                 </div>
               </li>
+            <?php } ?>
+            <?php foreach($calificaciones as $calificacion){ ?>
               <li class="media py-3">
                 <img class="mr-3 img-thumbnail rounded-circle" src="http://localhost/abanico-master/assets/global/img/usuario_default.png" alt="" width="64">
                 <div class="media-body">
-                   <h5 class="mt-0 mb-1">Martha Martínez Ruíz</h5>
+                   <h5 class="mt-0 mb-1"><?php echo $calificacion->USUARIO_NOMBRE.' '.$calificacion->USUARIO_APELLIDOS; ?></h5>
                    <div class="d-flex border-top border-bottom py-3">
+                     <?php $estrellas = $calificacion->CALIFICACION_ESTRELLAS; $estrellas_restan= 5-$estrellas; ?>
+                     <?php for($i = 1; $i<=$estrellas; $i++){ ?>
                        <i class="fa fa-star"></i>
+                     <?php } ?>
+                     <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
                        <i class="far fa-star"></i>
-                       <i class="far fa-star"></i>
-                       <i class="far fa-star"></i>
-                       <i class="far fa-star"></i>
+                     <?php } ?>
                    </div>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      <p><?php echo $calificacion->CALIFICACION_COMENTARIO; ?></p>
                 </div>
              </li>
+             <?php } ?>
           </ul>
       </div>
 

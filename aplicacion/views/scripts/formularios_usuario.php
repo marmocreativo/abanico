@@ -99,4 +99,30 @@ jQuery('input[class*="hijo"]').on('change',function(e){
   var padre = jQuery(this).data('padre');
     jQuery('input[name='+padre+']').prop('indeterminate', true);
 });
+// Previsualizar Imagenes
+function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      jQuery('#PrevisualizarImagen').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+jQuery('#ImagenServicio').change(function() {
+  readURL(this);
+});
+// Prevenir enviar formulario dos veces.
+
+  jQuery('button[type="submit"]').click(function(){
+
+      jQuery(this).html("<i class='fa fa-spinner fa-pulse'></i> Por favor espere...");
+      jQuery(this).attr('disabled', 'disabled');
+      var formulario = jQuery(this).parents('form:first');
+      formulario.submit();
+  });
 </script>

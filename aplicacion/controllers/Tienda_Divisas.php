@@ -14,7 +14,7 @@ class Tienda_Divisas extends CI_Controller {
 		$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo']  = "desktop";
+			$this->data['dispositivo']  = "mobile";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
@@ -25,7 +25,7 @@ class Tienda_Divisas extends CI_Controller {
 
 	public function index()
 	{
-		$this->data['divisa'] = $this->DivisasModel->detalles($_GET['iso'],'','');
+		$this->data['divisa'] = $this->DivisasModel->detalles_iso($_GET['iso']);
 		if(!null== $this->data['divisa']){
 			$_SESSION['divisa']['id'] = $this->data['divisa']['ID_DIVISA'];
 			$_SESSION['divisa']['conversion'] = $this->data['divisa']['DIVISA_CONVERSION'];

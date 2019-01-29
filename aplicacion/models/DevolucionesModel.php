@@ -17,6 +17,31 @@ class DevolucionesModel extends CI_Model {
     return $query->result();
   }
   /*
+    * Enlisto todas las entradas
+    * $parametros Debe ser un array de Columnas y Valores, Busco usando la función LIKE
+    * $orden indicará la Columna y si es ascendente o descendente
+    * $limite Solo se usará si hay una cantidad limite de productos a mostrar
+ */
+  function todas_las_devoluciones($orden){
+    $this->db->join('pedidos', 'devoluciones.ID_PEDIDO = pedidos.ID_PEDIDO');
+    $this->db->order_by($orden);
+    $query = $this->db->get('devoluciones');
+    return $query->result();
+  }
+  /*
+    * Enlisto todas las entradas
+    * $parametros Debe ser un array de Columnas y Valores, Busco usando la función LIKE
+    * $orden indicará la Columna y si es ascendente o descendente
+    * $limite Solo se usará si hay una cantidad limite de productos a mostrar
+ */
+  function devoluciones_usuario($id_usuario,$orden){
+    $this->db->join('pedidos', 'devoluciones.ID_PEDIDO = pedidos.ID_PEDIDO');
+    $this->db->where('ID_USUARIO',$id_usuario);
+    $this->db->order_by($orden);
+    $query = $this->db->get('devoluciones');
+    return $query->result();
+  }
+  /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){

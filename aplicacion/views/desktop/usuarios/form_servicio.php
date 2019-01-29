@@ -32,7 +32,7 @@
                   <?php } ?>
                     <div class="row">
                       <div class="col-3">
-                        <img src="<?php echo base_url('contenido/img/servicios/completo/default.jpg') ?>" alt="" class="img-fluid img-thumbnail rounded-circle">
+                        <img src="<?php echo base_url('contenido/img/servicios/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
                         <hr>
                         <div class="custom-file">
                           <input type="file" class="custom-file-input" id="ImagenServicio" name="ImagenServicio" placeholder="" value="">
@@ -91,6 +91,12 @@
                                </select>
                              </div>
                            </div>
+                           <div class="col-12">
+                             <div class="form-group">
+                               <label for="ZonaTrabajoServicio">Zona de Trabajo <small>Colonias o Barrios donde puedas ofrecer tus servicios</small></label>
+                               <textarea name="ZonaTrabajoServicio" class="form-control" rows="6"></textarea>
+                             </div>
+                           </div>
                          </div>
                       </div>
                     </div>
@@ -121,7 +127,7 @@
                                                     id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
                                                     name="CategoriaServicio" class="custom-control-input"
                                                     value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
-                                                    required
+                                                    
                                                     >
                                             <label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
                                           </div>

@@ -186,7 +186,7 @@
                                             id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                                             name="CategoriaProducto" class="custom-control-input"
                                             value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                            required
+                                            
                                             >
                                     <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
                                   </div>
@@ -211,12 +211,21 @@
                   <textarea id="DetallesProducto" name="DetallesProducto" class="form-control Editor" rows="5"><?=!form_error('DetallesProducto')?set_value('DetallesProducto'):''?> </textarea>
                 </div>
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-6">
                     <div class="form-group">
                       <label for="OrigenProducto">Origen</label>
                       <select class="form-control form-control-sm" name="OrigenProducto" id="OrigenProducto">
                         <option value="México">México</option>
                         <option value="Otro">Otro</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="CondicionProducto">Condición</label>
+                      <select class="form-control form-control-sm" name="CondicionProducto" id="CondicionProducto">
+                        <option value="nuevo">Nuevo</option>
+                        <option value="usado">Usuado</option>
                       </select>
                     </div>
                   </div>

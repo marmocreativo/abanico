@@ -71,7 +71,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h5 class="card-title">Zona de Servicio</h5>
-                    <div class="alert alert-info">Pendiente</div>
+                    <?php echo $servicio['SERVICIO_ZONA_TRABAJO']; ?>
                   </div>
                 </div>
               </div>
@@ -143,8 +143,8 @@
                     <?php }else{ ?>
                       <div class="card">
                         <div class="card-body">
-                          <p>Para calificar este producto.</p>
-                          <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
+                          <p>Para calificar este servicio.</p>
+                          <a href="<?php echo base_url('login?url_redirect='.base_url('servicio/?id='.$servicio['ID_SERVICIO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
                         </div>
                       </div>
                     <?php } ?>

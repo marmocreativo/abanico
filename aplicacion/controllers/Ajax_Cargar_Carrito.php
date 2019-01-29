@@ -130,4 +130,13 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 		unset($_SESSION['carrito']['tiendas']);
 		$_SESSION['carrito']['tiendas']= array();
 	}
+	public function cantidad_productos_carrito()
+	{
+			// Conteo de los productos en el carrito
+			$i = 0;
+			foreach($_SESSION['carrito']['productos'] as $producto){
+				$i += $producto['cantidad_producto'];
+			}
+			echo $i;
+	}
 }
