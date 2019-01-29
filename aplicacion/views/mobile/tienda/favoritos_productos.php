@@ -10,7 +10,7 @@
   <div class="row">
 
     <div class="col-12 mb-3">
-     <h1 class="h5 text-center py-3 pt-4">Servicios favoritos</h1>
+     <h2 class="h5 text-center py-3 pt-4">Servicios favoritos</h2>
      <?php for($i=0; $i<=1; $i++){ ?>
       <div class="card datosFavoritos p-2 mb-2">
         <a href="#">
@@ -32,7 +32,7 @@
     </div>
 
     <div class="col-12 mb-3">
-     <h2 class="h4 text-center p-2 pb-3">Servicios productos</h2>
+     <h2 class="h5 text-center p-2 pb-3">Productos favoritos</h2>
      <?php for($i=0; $i<=2; $i++){ ?>
       <div class="card datosFavoritos p-2 mb-2">
         <a href="#">
@@ -56,10 +56,8 @@
   </div>
 </div>
 
-<hr><hr><hr>
-
-
 <!-- termina favoritos responsivo -->
+<hr><hr><hr>
 
 
 <div class="contenido_principal pt-3">

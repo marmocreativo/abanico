@@ -14,8 +14,8 @@
       </div>
 
       <div class="col-12 mb-4">
-        <p class="text-muted"><small>1 Disponibles</small></p>
-        <h4 class="product-title mb-2"><?php echo $producto['PRODUCTO_NOMBRE']; ?></h4>
+        <p class="text-muted"><small>1Disponibles</small></p>
+        <h4 class="product-title mb-2">JABON</h4>
         <hr>
         <?php echo $producto['PRODUCTO_DESCRIPCION']; ?>
         <hr>
@@ -83,169 +83,172 @@
         </div>
       </div>
 
-      <div class="col-12 mb-4">
-          <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Detalles</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Características</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="preguntas-tab" data-toggle="tab" href="#preguntas" role="tab" aria-controls="preguntas" aria-selected="false">Preguntas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Acerca del Vendedor</a>
-            </li>
-          </ul>
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-              <div class="py-3">
-                <h5>Información detallada del producto</h5>
-                <?php echo $producto['PRODUCTO_DETALLES']; ?>
-              </div>
+      <div class="col-12">
+        <div class="accordion mb-4" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Detalles
+                </button>
+              </h2>
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-              <div class="py-3">
-                <div class="row">
-                  <div class="col-12">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th colspan="2">Modelo y Claves</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Modelo</td>
-                          <td><?php echo $producto['PRODUCTO_MODELO']; ?> </td>
-                        </tr>
-                        <tr>
-                          <td>Origen</td>
-                          <td><?php echo $producto['PRODUCTO_ORIGEN']; ?> </td>
-                        </tr>
-                        <tr>
-                          <td>SKU</td>
-                          <td><?php echo $producto['PRODUCTO_SKU']; ?> </td>
-                        </tr>
-                        <tr>
-                          <td>UPC</td>
-                          <td><?php echo $producto['PRODUCTO_UPC']; ?> </td>
-                        </tr>
-                        <tr>
-                          <td>EAN</td>
-                          <td><?php echo $producto['PRODUCTO_EAN']; ?> </td>
-                        </tr>
-                        <tr>
-                          <td>JAN</td>
-                          <td><?php echo $producto['PRODUCTO_JAN']; ?> </td>
-                        </tr>
-                        <tr>
-                          <td>ISBN</td>
-                          <td><?php echo $producto['PRODUCTO_ISBN']; ?> </td>
-                        </tr>
-                        <tr>
-                          <td>MPN</td>
-                          <td><?php echo $producto['PRODUCTO_MPN']; ?> </td>
-                        </tr>
-                        <tr>
-                          <td>EAN</td>
-                          <td><?php echo $producto['PRODUCTO_EAN']; ?> </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="col-12">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th colspan="2">Dimensiones y Peso</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Ancho</td>
-                          <td><?php echo number_format($producto['PRODUCTO_ANCHO'],2); ?> <small>cm</small> </td>
-                        </tr>
-                        <tr>
-                          <td>Alto</td>
-                          <td><?php echo number_format($producto['PRODUCTO_ALTO'],2); ?> <small>cm</small> </td>
-                        </tr>
-                        <tr>
-                          <td>Profundo</td>
-                          <td><?php echo number_format($producto['PRODUCTO_PROFUNDO'],2); ?> <small>cm</small> </td>
-                        </tr>
-                        <tr>
-                          <td>Peso</td>
-                          <td><?php echo number_format($producto['PRODUCTO_PESO'],2); ?> <small>Kg</small> </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
               </div>
-            </div>
-            <div class="tab-pane fade" id="preguntas" role="tabpanel" aria-labelledby="contact-tab">
-              <div class="p-3">
-                <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
-                <form class="" action="<?php echo base_url('producto/contacto'); ?>" method="post">
-                  <input type="hidden" name="IdReceptor" value="<?php echo $producto['ID_USUARIO']; ?>">
-                  <input type="hidden" name="IdRemitente" value="<?php echo $_SESSION['usuario']['id']; ?>">
-                  <input type="hidden" name="ProductoNombre" value="<?php echo $producto['PRODUCTO_NOMBRE']; ?>">
-                  <input type="hidden" name="IdProducto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
-                  <div class="row">
-                    <table class="table">
-                      <tr>
-                        <td><strong>Remitente:</strong></td>
-                        <td><?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']?></td>
-                      </tr>
-                    </table>
-                  </div>
-                  <p> <i class="fa fa-info-circle"></i> Tienes dudas sobre el producto?</p>
-                  <div class="form-group">
-                    <label for="MensajeTexto">Mensaje</label>
-                    <textarea class="form-control" name="MensajeTexto" rows="8" required></textarea>
-                  </div>
-                  <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> Contactar</button>
-                </form>
-                <span class="clearfix"> </span>
-              <?php }else{ ?>
-                <div class="card">
-                  <div class="card-body">
-                    <p>Para preguntar debes Iniciar Sesión.</p>
-                    <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
-                  </div>
-                </div>
-              <?php } ?>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-              <div class="py-3">
-                <div class="row">
-                  <div class="col-3">
-                      <img src="<?php echo base_url('contenido/img/tiendas/completo/'.$tienda['TIENDA_IMAGEN']) ?>" alt="" class="img-fluid img-thumbnail rounded-circle">
-                  </div>
-                  <div class="col-9">
-                    <table class="table table-sm table-borderless">
-                      <tr>
-                        <td><b>Nombre Público</b></td>
-                        <td><?php echo $tienda['TIENDA_NOMBRE']; ?></td>
-                      </tr>
-                      <tr>
-                        <td><b>Razón Social</b></td>
-                        <td><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></td>
-                      </tr>
-                      <tr>
-                        <td><b>R.F.C.</b></td>
-                        <td><?php echo $tienda['TIENDA_RFC']; ?></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
+
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Características
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Modelo y Claves</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Modelo</td>
+                        <td>ROMA </td>
+                      </tr>
+                      <tr>
+                        <td>Origen</td>
+                        <td>México </td>
+                      </tr>
+                      <tr>
+                        <td>SKU</td>
+                        <td>ROM </td>
+                      </tr>
+                      <tr>
+                        <td>UPC</td>
+                        <td>    </td>
+                      </tr>
+                      <tr>
+                        <td>EAN</td>
+                        <td>    </td>
+                      </tr>
+                      <tr>
+                        <td>JAN</td>
+                        <td>    </td>
+                      </tr>
+                      <tr>
+                        <td>ISBN</td>
+                        <td>    </td>
+                      </tr>
+                      <tr>
+                        <td>MPN</td>
+                        <td>    </td>
+                      </tr>
+                      <tr>
+                        <td>EAN</td>
+                        <td>    </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-12">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th colspan="2">Dimensiones y Peso</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Ancho</td>
+                        <td>30.00 <small>cm</small> </td>
+                      </tr>
+                      <tr>
+                        <td>Alto</td>
+                        <td>25.00 <small>cm</small> </td>
+                      </tr>
+                      <tr>
+                        <td>Profundo</td>
+                        <td>15.00 <small>cm</small> </td>
+                      </tr>
+                      <tr>
+                        <td>Peso</td>
+                        <td>20.00 <small>Kg</small> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Preguntas
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+
+                <p>Para preguntar debes Iniciar Sesión.</p>
+                <a href="http://localhost/abanico-master/login?url_redirect=http://localhost/abanico-master/producto/?id=8" class="btn btn-sm btn-outline-primary-3 btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Acerca del Vendedor
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+              <div class="card-body">
+
+                <img src="http://localhost/abanico-master/contenido/img/tiendas/completo/tienda-5c1e6ac549a93.jpg" alt="" style="width:100px; height:100px" class="mb-3 m d-block img-thumbnail mx-auto rounded-circle">
+
+                <table class="table table-sm table-borderless">
+                  <tbody><tr>
+                    <td><b>Nombre Público</b></td>
+                    <td>Espejo Negro</td>
+                  </tr>
+                  <tr>
+                    <td><b>Razón Social</b></td>
+                    <td>Espejo Negro SA de CV</td>
+                  </tr>
+                  <tr>
+                    <td><b>R.F.C.</b></td>
+                    <td>ESNE34565677</td>
+                  </tr>
+                  <tr>
+                    <td><b>Teléfono</b></td>
+                    <td>26032335</td>
+                  </tr>
+                  <tr>
+                    <td><b>Registro</b><br>2018-12-05 08:05:30</td>
+                    <td><b>Actualización</b><br>2019-01-06 16:02:39</td>
+                  </tr>
+                </tbody></table>
+                <hr>
+                <h6>Dirección Fiscal</h6>
+                <p>Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="col-12 mb-4">
@@ -288,7 +291,7 @@
            <div class="card mb-4">
                 <div class="card-body">
                   <p>Para calificar este producto.</p>
-                  <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
+                  <a href="http://localhost/abanico-master/login?url_redirect=http://localhost/abanico-master/producto/?id=8" class="btn btn-sm btn-outline-primary-3 btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
                 </div>
            </div>
 

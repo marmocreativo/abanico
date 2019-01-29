@@ -48,7 +48,6 @@
 
           <hr>
 
-          <?php for($i=0; $i<=1; $i++){ ?>
           <div class="bg-gradient-primary">
             <div class="card-body bxCompra p-3 py-4 carritoCompras">
               <div class="row">
@@ -81,7 +80,6 @@
             </div>
           </div>
           <hr>
-          <?php } ?>
 
           <div class="card-body text-center">
             <p>Envio de productos de Espejo Negro</p>
@@ -125,16 +123,20 @@
           </div>
 
           <div class="card-footer text-right px-1">
-            <a href="http://localhost/abanico-master/invitado_pago_3_banco" class="btn mb-2 btn-sm btn-success btn-lg"> Transferencia Bancaria <i class="fas fa-money-bill-alt"></i></a>
+            <a href="http://localhost/abanico-master/proceso_pago_3_banco" class="btn mb-2 btn-sm btn-success btn-lg"> Transferencia Bancaria <i class="fas fa-money-bill-alt"></i></a>
             <br>
             <button type="submit" class="btn btn-sm btn-primary btn-lg">Pagar con PayPal <span class="fab fa-paypal"></span></button>
+            <!-- <button type="submit" class="btn btn-sm btn-success"> Continuar <i class="fa fa-chevron-right"></i></button> -->
           </div>
 
         </div>
+
+
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- termina proceso de pago3 responsivo -->
 <hr><hr><hr>
@@ -149,19 +151,15 @@
               <div class="stepwizard-row setup-panel">
                 <div class="stepwizard-step">
                   <a href="#step-1" class="btn btn-default btn-circle" disabled="disabled">1</a>
-                  <p>Identificación</p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-2" class="btn btn-default btn-circle"  disabled="disabled" >2</a>
-                  <p>Dirección</p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-3" class="btn btn-primary btn-circle">3</a>
-                  <p>Pago</p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-4" class="btn btn-default btn-circle" disabled="disabled">4</a>
-                  <p>Confirmación</p>
                 </div>
               </div>
             </div>
@@ -171,13 +169,13 @@
                 <div class="row">
                   <div class="col-xs-6 col-sm-6 col-md-6">
                       <address>
-                          <strong><?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'] ?></strong>
+                          <strong><?php echo $_SESSION['pedido']['PedidoNombre']; ?></strong>
                           <br>
-                          <?php echo $_SESSION['usuario']['correo']; ?>
+                          <?php echo $_SESSION['pedido']['PedidoCorreo']; ?>
                           <br>
                           <?php echo $direccion; ?>
                           <br>
-                          <?php echo $usuario['USUARIO_TELEFONO']; ?>
+                          <?php echo $_SESSION['pedido']['PedidoTelefono'];; ?>
                       </address>
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 text-right">
@@ -273,8 +271,8 @@
                             $envio_pedido_total +=$envio_tienda['IMPORTE'];
 
                             if(empty($envio_tienda)){ ?>
-                              <td colspan="4" class="table-danger text-right">
-                                <p> Los productos Exceden el peso máximo o tu dirección no está disponible para envíos. Por favor contacta con nosotros para ofrecerte opciones.</p>
+                              <td colspan="4" class="table-warning text-right">
+                                <p>Los Productos exceden los 20kg de peso máximo de cálculo automático de envios, es posible que el envío genere un importe extra.</p>
                               </td>
                             <?php }else{ ?>
                               <tr>
@@ -367,31 +365,44 @@
                 </div>
               </div>
             </div><!-- Card Body -->
+            <?php
+            // Session del Pedido
+            // Creo el pedido en la sesión para no perderlo
+            $_SESSION['pedido']['Folio'] = folio_pedido();
+      			$_SESSION['pedido']['IdDireccion'] = $detalles_direccion['ID_DIRECCION'];
+      			$_SESSION['pedido']['Direccion'] = $direccion;
+      			$_SESSION['pedido']['Divisa'] = $_SESSION['divisa']['iso'];
+      			$_SESSION['pedido']['Conversion'] = $_SESSION['divisa']['conversion'];
+      			$_SESSION['pedido']['ImporteProductosParcial'] = number_format($_SESSION['divisa']['conversion']*$importe_pedido_abanico,2,'.', '');
+      			$_SESSION['pedido']['ImporteProductosTotal'] = number_format($_SESSION['divisa']['conversion']*$importe_pedido_total,2,'.', '');
+      			$_SESSION['pedido']['ImporteEnvioParcial'] = number_format($_SESSION['divisa']['conversion']*$envio_pedido_abanico,2,'.', '');
+      			$_SESSION['pedido']['ImporteEnvioTotal'] = number_format($_SESSION['divisa']['conversion']*$envio_pedido_total,2,'.', '');
+      			$_SESSION['pedido']['PedidosTiendas'] = serialize($pedido_tienda);
+            $_SESSION['pedido']['ImporteTotal'] = number_format($_SESSION['divisa']['conversion']*$importe_total,2,'.', '');
+            $_SESSION['pedido']['IdTransportista'] = $envio_abanico['ID_TRANSPORTISTA'];
+            $_SESSION['pedido']['NombreTransportista'] = $envio_abanico['TRANSPORTISTA_NOMBRE'];
+            $_SESSION['pedido']['FormaPago'] = 'PayPal';
+            $_SESSION['pedido']['EstadoPago'] = 'Pagado';
+            $_SESSION['pedido']['EstadoPedido'] = 'Pagado';
+            //var_dump($_SESSION['pedido']);
+            ?>
             <div class="card-footer">
-              <form class="d-flex justify-content-between" action="<?php echo base_url('proceso_pago_4'); ?>" method="post">
-                <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id']; ?>">
-                <input type="hidden" name="PedidoNombre" value="<?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']; ?>">
-                <input type="hidden" name="PedidoCorreo" value="<?php echo $_SESSION['usuario']['correo']; ?>">
-                <input type="hidden" name="PedidoTelefono" value="<?php echo $usuario['USUARIO_TELEFONO']; ?>">
-                <input type="hidden" name="IdDireccion" value="<?php echo $detalles_direccion['ID_DIRECCION']; ?>">
-                <input type="hidden" name="Direccion" value="<?php echo $direccion; ?>">
-                <input type="hidden" name="Divisa" value="<?php echo $_SESSION['divisa']['iso']; ?>">
-                <input type="hidden" name="Conversion" value="<?php echo $_SESSION['divisa']['conversion']; ?>">
-                <input type="hidden" name="ImporteProductosParcial" value="<?php echo  number_format($_SESSION['divisa']['conversion']*$importe_pedido_abanico,2,'.', ''); ?>">
-                <input type="hidden" name="ImporteProductosTotal" value="<?php echo  number_format($_SESSION['divisa']['conversion']*$importe_pedido_total,2,'.', ''); ?>">
-                <input type="hidden" name="ImporteEnvioParcial" value="<?php echo  number_format($_SESSION['divisa']['conversion']*$envio_pedido_abanico,2,'.', ''); ?>">
-                <input type="hidden" name="ImporteEnvioTotal" value="<?php echo  number_format($_SESSION['divisa']['conversion']*$envio_pedido_total,2,'.', ''); ?>">
-                <input type="hidden" name="IdTransportista" value="<?php echo $envio_abanico['ID_TRANSPORTISTA']; ?>">
-                <input type="hidden" name="NombreTransportista" value="<?php echo $envio_abanico['TRANSPORTISTA_NOMBRE']; ?>">
-                <input type="hidden" name="ImporteTotal" value="<?php echo  number_format($_SESSION['divisa']['conversion']*$importe_total,2,'.', ''); ?>">
-                <input type="hidden" name="FormaPago" value="Transferencia Bancaria">
-                <input type="hidden" name="EstadoPago" value="Pendiente">
-                <input type="hidden" name="EstadoPedido" value="Espera Pago">
-                <input type="hidden" name="PedidosTiendas" value='<?php echo serialize($pedido_tienda); ?>'>
-                <div class="text-center">
-                  <a href="<?php echo base_url(); ?>" class="btn btn-sm btn-outline-primary"> <i class="fa fa-chevron-left"></i> Volver a la tienda</a>
-                  <button type="submit" class="btn btn-sm btn-success"> Continuar <i class="fa fa-chevron-right"></i></button>
-                </div>
+              <div class="d-flex justify-content-end">
+                <a href="<?php echo base_url('invitado_pago_3_banco'); ?>" class="btn btn-success btn-lg"> Transferencia Bancaria <i class="fas fa-money-bill-alt"></i></a>
+              </div>
+              <hr>
+              <div class="alert-info">
+                <p>Nota del Desarrollador: El boton de PAYPAL <b>está funcionando</b> cuidado al probar</p>
+              </div>
+              <form class="d-flex justify-content-end" id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                  <input type="hidden" name="cmd" value="_xclick">
+                  <input type="hidden" name="business" value="marmocreativo@gmail.com">
+                  <input type="hidden" name="item_name" value="Pedido <?php echo $_SESSION['pedido']['Folio'];?>">
+                  <input type="hidden" name="item_number" value="<?php echo $_SESSION['pedido']['Folio'];?>">
+                  <input type="hidden" name="amount" value="<?php echo $_SESSION['pedido']['ImporteTotal']; ?>">
+                  <input type="hidden" name="currency_code" value="<?php echo $_SESSION['pedido']['Divisa']; ?>">
+                  <input type="hidden" name="return" value="<?php echo base_url('invitado_pago_4?pago=paypal'); ?>">
+                  <button type="submit" class="btn btn-primary btn-lg">Pagar con PayPal <span class="fab fa-paypal"></span></button>
               </form>
             </div>
           </div> <!-- Card -->
