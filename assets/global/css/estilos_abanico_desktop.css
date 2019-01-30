@@ -615,51 +615,84 @@ img.sp-thumbnail-image {
 | ESTILOS MENSAJES
 | -------------------------------------------------------------------------
 */
+#shelf {
+    background: #e6e4e1;
+    border: none;
+    border-radius: 0;
+    height: 100%;
+}
 #shelf .list-group-item {
-    background: transparent;
+  background: transparent;
+  border-radius: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1px #d1cfcb;
+}
+#shelf .list-group-item:last-child {
+  border-bottom: none;
 }
 #shelf a {
-    color: #ececef;
+    color: #9c9c9a;
 }
 .speech-bubble {
 	position: relative;
-	background: #2c87eb;
-	border-radius: .4em;
-}
-
-.speech-bubble:after {
-	content: '';
-	position: absolute;
-	right: 0;
-	top: 50%;
-	width: 0;
-	height: 0;
-	border: 15px solid transparent;
-	border-left-color: #2c87eb;
-	border-right: 0;
-	margin-top: -15px;
-	margin-right: -15px;
+  border: solid 3px #e6e4e1;
+  border-right:solid 9px #6701ff;
+  border-radius: 9px;
+  background: #white;
 }
 .mi-mensaje {
-	background: #40d7c0;
-}
 
-.speech-bubble.mi-mensaje:after {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 50%;
-	width: 0;
-	height: 0;
-	border: 15px solid transparent;
-	border-right-color: #40d7c0;
-	border-left: 0;
-	margin-top: -15px;
-	margin-left: -15px;
+  border-right:solid 1px #d1cfcb;
+  border-left: solid 9px #40d7c0;
 }
 .mensaje-servicio, .pregunta-producto {
     padding: 9px;
 }
-.card-body.cont-conversaciones {
-    padding: 0;
+.cont-conversaciones {
+    background: #f3f2f0;
+    border-radius: 0;
+    border: none;
+    height: 100%;
+}
+.cont-conversaciones .media {
+    border: solid 3px #e6e4e1;
+    border-radius: 10px;
+    background: #f9f9f9;
+    -webkit-transition: background .5s, border-color .5s; /* Safari */
+    transition: background .5s, border-color .5s;
+}
+.cont-conversaciones .media.mensaje-servicio:hover {
+  background: white;
+  border-color: #ff9933;
+  -webkit-transition: background .5s, border-color .5s; /* Safari */
+  transition: background .5s, border-color .5s;
+}
+.cont-conversaciones .media.pregunta-producto:hover {
+  background: white;
+  border-color: #cc3298;
+  -webkit-transition: background .5s, border-color .5s; /* Safari */
+  transition: background .5s, border-color .5s;
+}
+#shelf .list-group-item.msjs-inbox.activo {
+    border-top: solid 2px #01cccc;
+    background: #f3f2f0;
+}
+#shelf .list-group-item.msjs-serv.activo {
+    border-top: solid 2px #ff9933;
+    background: #f3f2f0;
+}
+#shelf .list-group-item.msjs-preg.activo {
+    border-top: solid 2px #cc3298;
+    background: #f3f2f0;
+}
+#shelf .list-group-item.msjs-sent.activo {
+    border-top: solid 2px #3c0;
+    background: #f3f2f0;
+}
+.conversacion {
+    background: #f9f9f9;
+    border: none;
+    border-radius: 0;
 }
