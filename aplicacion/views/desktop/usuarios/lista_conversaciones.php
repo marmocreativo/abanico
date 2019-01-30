@@ -10,10 +10,10 @@
               <div class="row no-gutters">
                 <div class="col-2 bg-primary-10 text-white" id="shelf">
                   <ul class="list-group">
-                    <li class="list-group-item"><a href="<?php echo base_url('usuario/mensajes') ?>"> <i class="fa fa-inbox"></i> Recibidos </a></li>
-                    <li class="list-group-item"><a href="<?php echo base_url('usuario/mensajes?tipo='.'mensaje servicio') ?>"> <i class="fa fa-inbox"></i> Mensajes de Servicios </a></li>
-                    <li class="list-group-item"><a href="<?php echo base_url('usuario/mensajes?tipo='.'pregunta producto') ?>"> <i class="fa fa-inbox"></i> Preguntas en Productos </a></li>
-                    <li class="list-group-item"><a href="<?php echo base_url('usuario/mensajes/enviados') ?>"> <i class="fa fa-share-square"></i> Enviados </a></li>
+                    <li class="list-group-item <?php if(!isset($_GET['tipo'])){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes') ?>"> <i class="fa fa-inbox"></i> Recibidos </a></li>
+                    <li class="list-group-item <?php if(isset($_GET['tipo'])&&$_GET['tipo']=='mensaje servicio'){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes?tipo='.'mensaje servicio') ?>"> <i class="fa fa-inbox"></i> Mensajes de Servicios </a></li>
+                    <li class="list-group-item <?php if(isset($_GET['tipo'])&&$_GET['tipo']=='pregunta producto'){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes?tipo='.'pregunta producto') ?>"> <i class="fa fa-inbox"></i> Preguntas en Productos </a></li>
+                    <li class="list-group-item <?php if(base_url(uri_string())==base_url('usuario/mensajes/enviados')){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes/enviados') ?>"> <i class="fa fa-share-square "></i> Enviados </a></li>
                   </ul>
                 </div>
                 <div class="col-4">
