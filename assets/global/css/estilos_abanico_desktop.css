@@ -621,3 +621,45 @@ img.sp-thumbnail-image {
 #shelf a {
     color: #ececef;
 }
+.speech-bubble {
+	position: relative;
+	background: #2c87eb;
+	border-radius: .4em;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-left-color: #2c87eb;
+	border-right: 0;
+	margin-top: -15px;
+	margin-right: -15px;
+}
+.mi-mensaje {
+	background: #40d7c0;
+}
+
+.speech-bubble.mi-mensaje:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-right-color: #40d7c0;
+	border-left: 0;
+	margin-top: -15px;
+	margin-left: -15px;
+}
+.mensaje-servicio, .pregunta-producto {
+    padding: 9px;
+}
+.card-body.cont-conversaciones {
+    padding: 0;
+}

@@ -7,7 +7,7 @@
         </div>
         <div class="col">
           <?php retro_alimentacion(); ?>
-              <div class="row">
+              <div class="col-2 bg-primary-10 text-white" id="shelf">
                 <div class="col-2">
                   <ul class="list-group">
                     <li class="list-group-item"><a href="<?php echo base_url('usuario/mensajes') ?>"> <i class="fa fa-inbox"></i> Recibidos </a></li>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-4">
                   <div class="card">
-                    <div class="card-body">
+                    <div class="card-body cont-conversaciones">
                       <ul class="list-unstyled">
                         <li class="media border-bottom mb-3 <?php echo url_title($conversacion['CONVERSACION_TIPO']); ?>">
                           <a href="<?php echo base_url('usuario/mensajes/conversacion?id='.$conversacion['ID_CONVERSACION']); ?>">
@@ -41,7 +41,7 @@
                     <div class="card-body">
                     <ul class="list-unstyled">
                     <?php foreach ($mensajes as $mensaje) { ?>
-                      <li class="media border p-2 mb-3 rounded <?php if($mensaje->ID_REMITENTE==$_SESSION['usuario']['id']){ echo 'mi-mensaje'; } ?>">
+                      <li class="media border p-4 mb-3 speech-bubble <?php if($mensaje->ID_REMITENTE==$_SESSION['usuario']['id']){ echo 'mi-mensaje'; } ?>">
                           <div class="media-body">
                             <?php echo $mensaje->MENSAJE_TEXTO; ?>
                             <?php $remitente= $this->UsuariosModel->detalles($mensaje->ID_REMITENTE); ?>
