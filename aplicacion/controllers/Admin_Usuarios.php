@@ -26,6 +26,7 @@ class Admin_Usuarios extends CI_Controller {
 		$this->load->model('ProductosModel');
 		$this->load->model('ServiciosModel');
 		$this->load->model('DireccionesModel');
+		$this->load->model('EstadisticasModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){

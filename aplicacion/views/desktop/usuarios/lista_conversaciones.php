@@ -21,7 +21,6 @@
                     <div class="card-body p-0">
                       <ul class="list-unstyled">
                       <?php foreach ($conversaciones as $conversacion) { ?>
-
                         <a href="<?php echo base_url('usuario/mensajes/conversacion?id='.$conversacion->ID_CONVERSACION); ?>">
                           <li class="media mb-2 <?php echo url_title($conversacion->CONVERSACION_TIPO); ?>">
                             <img class="align-self-start mr-3" src="<?php echo base_url('assets/global/img/usuario_default.png'); ?>" width="30" alt="Generic placeholder image">

@@ -21,6 +21,7 @@ class Admin_Divisas extends CI_Controller {
 
 		// Cargo el modelo
 		$this->load->model('DivisasModel');
+		$this->load->model('EstadisticasModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){

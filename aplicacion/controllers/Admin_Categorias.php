@@ -21,6 +21,7 @@ class Admin_Categorias extends CI_Controller {
 
 		// Cargo el modelo
 		$this->load->model('CategoriasModel');
+		$this->load->model('EstadisticasModel');
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
