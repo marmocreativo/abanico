@@ -226,25 +226,7 @@ class ProductosModel extends CI_Model {
     $this->db->where('PRODUCTO_ESTADO',$id);
     return $this->db->update('productos',array('PRODUCTO_ESTADO'=>$activo));
   }
-  /*
-    * Creo el orden de los elementos
-    * $orden son los identificadores de las entradas en el orden en que quiero que aparezcan
- */
-  function ordenar($orden){
-  }
-
-  /*
-    * Funciones de Verificación
-  */
-  public function id_usuario_existe($id){
-    $this->db->where('ID_USUARIO',$id);
-    $query = $this->db->get('productos');
-    if ($query->num_rows() > 0){
-        return true;
-    }else{
-        return false;
-    }
-  }
+  
 
 }
 ?>

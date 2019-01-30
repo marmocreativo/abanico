@@ -38,6 +38,16 @@ class DireccionesModel extends CI_Model {
     return $query->result();
   }
   /*
+  * Una sola dirección la primera de la lista
+  */
+  function direccion_rapida($id_usuario){
+    $this->db->where('ID_USUARIO', $id_usuario);
+    $this->db->where('DIRECCION_TIPO !=', 'fiscal');
+    $this->db->where('DIRECCION_TIPO !=', 'perfil');
+    $query = $this->db->get('direcciones');
+    return $query->row_array();
+  }
+  /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){

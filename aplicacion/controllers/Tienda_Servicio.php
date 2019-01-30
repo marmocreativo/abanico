@@ -30,6 +30,7 @@ class Tienda_Servicio extends CI_Controller {
 		$this->load->model('ConversacionesModel');
 		$this->load->model('ConversacionesMensajesModel');
 		$this->load->model('AdjuntosUsuariosModel');
+		$this->load->model('EstadisticasModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-info";
@@ -66,7 +67,7 @@ class Tienda_Servicio extends CI_Controller {
 		}else{
 				$this->data['calificaciones'] = $this->CalificacionesServiciosModel->calificaciones_producto($_GET['id'],'');
 		}
-
+		$this->EstadisticasModel->objeto_visto('servicio',$this->data['servicio']['ID_SERVICIO']);
  		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/servicio',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

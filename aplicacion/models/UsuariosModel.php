@@ -96,10 +96,13 @@ class UsuariosModel extends CI_Model {
     return $this->db->update('usuarios',array('USUARIO_TIPO'=>$permiso));
   }
   /*
-    * Creo el orden de los elementos
-    * $orden son los identificadores de las entradas en el orden en que quiero que aparezcan
+    * Conteo por tipo Usuario
  */
-  function ordenar($orden){
+  function conteo_por_tipo($tipo){
+    $this->db->where('USUARIO_TIPO',$tipo);
+    $this->db->where('USUARIO_ESTADO','activo');
+    $query = $this->db->get('usuarios');
+    return $query->num_rows();
   }
 
   /*

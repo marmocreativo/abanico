@@ -31,6 +31,7 @@ class Tienda_Producto extends CI_Controller {
 		$this->load->model('ProductosCombinacionesModel');
 		$this->load->model('ConversacionesModel');
 		$this->load->model('ConversacionesMensajesModel');
+		$this->load->model('EstadisticasModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-primary";
@@ -71,7 +72,8 @@ class Tienda_Producto extends CI_Controller {
 		}else{
 				$this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($_GET['id'],'');
 		}
-
+		// Estadísticas de Producto
+		$this->EstadisticasModel->objeto_visto('producto',$this->data['producto']['ID_PRODUCTO']);
  		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/producto',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
