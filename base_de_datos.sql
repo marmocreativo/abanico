@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 23-01-2019 a las 16:13:11
+-- Tiempo de generación: 30-01-2019 a las 19:17:21
 -- Versión del servidor: 5.6.40-84.0-log
 -- Versión de PHP: 5.6.30
 
@@ -43,7 +43,9 @@ CREATE TABLE `adjuntos_usuarios` (
 --
 
 INSERT INTO `adjuntos_usuarios` (`ID_ADJUNTO`, `ID_USUARIO`, `ID_OBJETO`, `ADJUNTO_NOMBRE`, `ADJUNTO_ARCHIVO`, `ADJUNTO_TIPO`, `ADJUNTO_FECHA_REGISTRO`) VALUES
-(1, '5c0653d43d92e7.75019474', 10, 'Book, Portafolio de trabajos', 'archivo-5c3fb963d2b7b.pdf', 'servicio', '2019-01-16 23:08:19');
+(1, '5c0653d43d92e7.75019474', 10, 'Book, Portafolio de trabajos', 'archivo-5c3fb963d2b7b.pdf', 'servicio', '2019-01-16 23:08:19'),
+(3, '5c0653d43d92e7.75019474', 12, 'hghg', 'archivo-5c48f0d996255.pdf', 'servicio', '2019-01-23 22:55:21'),
+(4, '5c48f4e7ce0708.70141183', 18, 'Una muestra de mi trabajo', 'archivo-5c48f99915d54.jpg', 'servicio', '2019-01-23 23:32:41');
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,8 @@ CREATE TABLE `calificaciones_servicios` (
 INSERT INTO `calificaciones_servicios` (`ID_CALIFICACION`, `ID_SERVICIO`, `ID_USUARIO`, `ID_USUARIO_CALIFICADOR`, `CALIFICACION_ESTRELLAS`, `CALIFICACION_COMENTARIO`, `CALIFICACION_ESTADO`, `CALIFICACION_FECHA_REGISTRO`) VALUES
 (4, 11, '5c25209703a210.25306180', '5c0653d43d92e7.75019474', 3, 'hola', 'activo', '2019-01-03 23:08:18'),
 (5, 10, '5c0653d43d92e7.75019474', '5c0653d43d92e7.75019474', 3, 'Mas o menos', 'activo', '2019-01-16 23:30:34'),
-(6, 12, '5c0653d43d92e7.75019474', '5c0653d43d92e7.75019474', 4, 'calificando servicio', 'activo', '2019-01-18 23:54:15');
+(6, 12, '5c0653d43d92e7.75019474', '5c0653d43d92e7.75019474', 4, 'calificando servicio', 'activo', '2019-01-18 23:54:15'),
+(7, 18, '5c48f4e7ce0708.70141183', '5c0653d43d92e7.75019474', 5, 'Hola', 'activo', '2019-01-28 18:23:04');
 
 -- --------------------------------------------------------
 
@@ -360,12 +363,15 @@ INSERT INTO `categorias_productos` (`ID`, `ID_CATEGORIA`, `ID_PRODUCTO`) VALUES
 (21, 26, 8),
 (22, 24, 17),
 (24, 26, 19),
-(25, 26, 18),
 (26, 26, 20),
 (29, 42, 22),
 (30, 144, 23),
 (31, 46, 24),
-(32, 198, 25);
+(32, 198, 25),
+(33, 61, 26),
+(44, 193, 27),
+(45, 55, 18),
+(47, 42, 28);
 
 -- --------------------------------------------------------
 
@@ -399,10 +405,10 @@ INSERT INTO `categorias_servicios` (`ID`, `ID_CATEGORIA`, `ID_SERVICIO`) VALUES
 (8, 33, 10),
 (10, 33, 1),
 (11, 33, 11),
-(12, 234, 12),
 (14, 229, 14),
 (15, 229, 15),
-(17, 236, 17);
+(17, 236, 17),
+(18, 240, 18);
 
 -- --------------------------------------------------------
 
@@ -428,13 +434,14 @@ CREATE TABLE `conversaciones` (
 INSERT INTO `conversaciones` (`ID_CONVERSACION`, `ID_USUARIO_A`, `ID_USUARIO_B`, `ID_OBJETO`, `CONVERSACION_FECHA_REGISTRO`, `CONVERSACION_FECHA_ACTUALIZACION`, `CONVERSACION_TIPO`, `CONVERSACION_ESTADO`) VALUES
 (1, '5c0653d43d92e7.75019474', '5c25209703a210.25306180', 20, '2019-01-09 22:55:40', '2019-01-09 22:55:40', 'pregunta producto', 'no leido'),
 (2, '5c0653d43d92e7.75019474', '5c25209703a210.25306180', 11, '2019-01-09 22:59:09', '2019-01-09 22:59:09', 'mensaje servicio', 'no leido'),
-(3, '5c0653d43d92e7.75019474', '5c25209703a210.25306180', 20, '2019-01-18 23:38:00', '2019-01-18 23:38:00', 'pregunta producto', 'no leido'),
+(3, '5c0653d43d92e7.75019474', '5c25209703a210.25306180', 20, '2019-01-18 23:38:00', '2019-01-30 23:20:41', 'pregunta producto', 'respuesta'),
 (4, '5c0653d43d92e7.75019474', '5c25209703a210.25306180', 20, '2019-01-18 23:42:58', '2019-01-18 23:42:58', 'pregunta producto', 'no leido'),
 (5, '5c08a9dc2cb096.56391251', '5c08a9dc2cb096.56391251', 4, '2019-01-19 00:05:50', '2019-01-19 00:06:29', 'pregunta producto', 'respuesta'),
 (6, '5c08a9dc2cb096.56391251', '5c4631142f4944.13186972', 25, '2019-01-21 21:15:55', '2019-01-21 21:28:07', 'pregunta producto', 'respuesta'),
 (7, '5c08a9dc2cb096.56391251', '5c4631142f4944.13186972', 13, '2019-01-21 21:37:54', '2019-01-21 21:58:22', 'mensaje servicio', 'respuesta'),
 (8, '5c08a9dc2cb096.56391251', '5c48a2a2a43ed3.21261698', 16, '2019-01-23 17:53:06', '2019-01-23 17:55:06', 'mensaje servicio', 'respuesta'),
-(9, '5c4631142f4944.13186972', '5c08a9dc2cb096.56391251', 17, '2019-01-23 18:01:24', '2019-01-23 18:05:22', 'mensaje servicio', 'respuesta');
+(9, '5c4631142f4944.13186972', '5c08a9dc2cb096.56391251', 17, '2019-01-23 18:01:24', '2019-01-23 18:05:22', 'mensaje servicio', 'respuesta'),
+(10, '5c48f4e7ce0708.70141183', '5c48a2a2a43ed3.21261698', 16, '2019-01-23 23:38:24', '2019-01-23 23:38:24', 'mensaje servicio', 'no leido');
 
 -- --------------------------------------------------------
 
@@ -470,7 +477,9 @@ INSERT INTO `conversaciones_mensajes` (`ID_MENSAJE`, `ID_CONVERSACION`, `ID_REMI
 (11, 8, '5c08a9dc2cb096.56391251', 'Solicitud de Servicio', '<p><b>Servicio:</b> Asesorías para niños de secundaria</p><p>Saludos, quisiera saber si das clases de matematicas y fisicas para una niña de tercero de secundaria. En que horario las das y cual es el costo. Gracias. </p>', 'no leido', '2019-01-23 17:53:06'),
 (12, 8, '5c48a2a2a43ed3.21261698', '', 'Hola, si doy matematicas y fisica a todos los niveles, desde secundaria hasta universidad. El horario que manejo depende de si tu hija va a la escuela por la mañana o la tarde. El costo depende del número de horas que se asignen a la semana. Si te interesa, te dejo mi numero de cel para que platiquemos, 55555555', 'no leido', '2019-01-23 17:55:06'),
 (13, 9, '5c4631142f4944.13186972', 'Solicitud de Servicio', '<p><b>Servicio:</b> Instalacion de filtros de agua</p><p>Hola, me interesa comprar un filtro de osmosis inversa para instalarlo en la Ciudad de México, puedes indicarme el costo del producto con el envio incluido? Gracias. </p>', 'no leido', '2019-01-23 18:01:24'),
-(14, 9, '5c08a9dc2cb096.56391251', '', 'Hola, puedes indicarme el tipo de conexion que tienes en la cocina, y si te interesa que el filtro tenga una luz ultravioleta?', 'no leido', '2019-01-23 18:05:22');
+(14, 9, '5c08a9dc2cb096.56391251', '', 'Hola, puedes indicarme el tipo de conexion que tienes en la cocina, y si te interesa que el filtro tenga una luz ultravioleta?', 'no leido', '2019-01-23 18:05:22'),
+(15, 10, '5c48f4e7ce0708.70141183', 'Solicitud de Servicio', '<p><b>Servicio:</b> Asesorías para niños de secundaria</p><p>Quisiera saber cuanto cuestan?</p>', 'no leido', '2019-01-23 23:38:24'),
+(16, 3, '5c0653d43d92e7.75019474', '', 'hola', 'no leido', '2019-01-30 23:20:41');
 
 -- --------------------------------------------------------
 
@@ -487,6 +496,14 @@ CREATE TABLE `devoluciones` (
   `DEVOLUCION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DEVOLUCION_ESTADO` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `devoluciones`
+--
+
+INSERT INTO `devoluciones` (`ID_DEVOLUCION`, `ID_PEDIDO`, `DEVOLUCION_COMENTARIO`, `DEVOLUCION_ARCHIVO`, `DEVOLUCION_RESPUESTA`, `DEVOLUCION_FECHA_REGISTRO`, `DEVOLUCION_ESTADO`) VALUES
+(1, 25, 'La pizza llego muy fria', 'devolucion-5c48ec8b53667.png', 'No nos importa', '2019-01-23 22:36:59', 'Devolucion'),
+(2, 22, 'Siempre no me gustó', 'devolucion-5c490651b5c3d.jpg', 'Ok aceptamos la devolución te llegará el pago a tu cuenta.', '2019-01-24 00:26:57', 'Devolucion');
 
 -- --------------------------------------------------------
 
@@ -518,7 +535,7 @@ CREATE TABLE `direcciones` (
 
 INSERT INTO `direcciones` (`ID_DIRECCION`, `ID_USUARIO`, `ID_TIENDA`, `DIRECCION_TIPO`, `DIRECCION_ALIAS`, `DIRECCION_PAIS`, `DIRECCION_ESTADO`, `DIRECCION_CIUDAD`, `DIRECCION_MUNICIPIO`, `DIRECCION_BARRIO`, `DIRECCION_CALLE_Y_NUMERO`, `DIRECCION_CODIGO_POSTAL`, `DIRECCION_REFERENCIAS`, `DIRECCION_FECHA_REGISTRO`, `DIRECCION_FECHA_ACTUALIZACION`) VALUES
 (10, '5c0653d43d92e7.75019474', 0, 'envio', 'Casa', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', 'Cerca de Escuela Primaria No. 12 Ernesto Alconedo', '2018-12-22 16:40:33', '2018-12-22 16:40:33'),
-(11, '5c0653d43d92e7.75019474', 1, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '-', '2019-01-18 23:57:56', '2019-01-18 23:57:56'),
+(11, '5c0653d43d92e7.75019474', 1, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '-', '2019-01-28 20:04:50', '2019-01-28 20:04:50'),
 (13, '5c251a08bf0109.40704946', 7, 'fiscal', 'Direccion Tienda', 'México', 'Nuevo León', 'Nuevo Leon ', 'Ciénega de Flores', 'cienga', '598 interior 8', '11850', '-', '2018-12-27 18:53:23', '2018-12-27 18:53:23'),
 (14, '5c25209703a210.25306180', 8, 'fiscal', 'Direccion Tienda', 'México', 'Veracruz', 'Banderilla', 'Banderilla', 'a', 'San Juan de Letran 68', '11850', '-', '2019-01-08 23:22:54', '2019-01-08 23:22:54'),
 (15, '5c0653d43d92e7.75019474', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'Avenida 561 No. 148', 'Avenida 561 No. 148', '07969', '-', '2019-01-18 23:57:44', '2019-01-18 23:57:44'),
@@ -535,7 +552,13 @@ INSERT INTO `direcciones` (`ID_DIRECCION`, `ID_USUARIO`, `ID_TIENDA`, `DIRECCION
 (28, '5c489fa0131986.82562218', 0, 'envio', '', 'México', 'Ciudad de México', 'Mexico', 'Iztapalapa', 'banjidal', 'sur69 A 248', '9450', '', '2019-01-23 17:10:54', '2019-01-23 17:10:54'),
 (29, '5c48a2a2a43ed3.21261698', 11, 'fiscal', 'Direccion Tienda', 'México', 'Veracruz', '', 'Orizaba', 'agricola moctezuma', 'Avenida 5 Num. 28', '94333', '-', '2019-01-23 17:26:30', '2019-01-23 17:26:30'),
 (30, '5c48a2a2a43ed3.21261698', 0, 'perfil', 'Direccion Perfil', 'México', 'Veracruz', '', 'Orizaba', 'ALAOAAJJA', '14-5', '94333', '-', '2019-01-23 17:40:40', '2019-01-23 17:40:40'),
-(31, '5c08a9dc2cb096.56391251', 0, 'perfil', 'Direccion Perfil', 'Estados Unidos', 'New York', '', 'New York County', 'Brooklyn', '2801', '11226', '-', '2019-01-23 17:56:41', '2019-01-23 17:56:41');
+(31, '5c08a9dc2cb096.56391251', 0, 'perfil', 'Direccion Perfil', 'Estados Unidos', 'New York', '', 'New York County', 'Brooklyn', '2801', '11226', '-', '2019-01-23 17:56:41', '2019-01-23 17:56:41'),
+(32, '5c2e93b02a6ee1.32959007', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', 'CDMX', 'Cuauhtémoc', 'Tlatelolco', '380', '07900', '-', '2019-01-23 22:18:02', '2019-01-23 22:18:02'),
+(33, '5c0653d43d92e7.75019474', 0, 'envio', 'Otra casa', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '', '2019-01-23 23:10:19', '2019-01-23 23:11:00'),
+(34, '5c48f4e7ce0708.70141183', 12, 'fiscal', 'Direccion Tienda', 'México', 'Coahuila', '', 'Cuatro Ciénegas', 'Pueblo Mágico', 'Calle 5', '23232323', '-', '2019-01-23 23:16:34', '2019-01-23 23:16:34'),
+(35, '5c48f4e7ce0708.70141183', 0, 'perfil', 'Direccion Perfil', 'México', 'Coahuila', '', 'Frontera', 'asd', 'asd', '232323', '-', '2019-01-23 23:30:10', '2019-01-23 23:30:10'),
+(36, '0', 0, 'envio', 'Objeto', 'México', 'Ciudad de México', '', 'Gustavo A. Madero', 'llkjlkj', 'lkjlkj', '111111', 'lkjklj', '2019-01-23 23:57:34', '2019-01-23 23:57:34'),
+(37, '5c48f4e7ce0708.70141183', 0, 'envio', 'Avenida 561 No. 148', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'aasd', 'asdasd', '07969', 'asd', '2019-01-24 01:32:45', '2019-01-24 01:32:45');
 
 -- --------------------------------------------------------
 
@@ -558,8 +581,9 @@ CREATE TABLE `divisas` (
 
 INSERT INTO `divisas` (`ID_DIVISA`, `DIVISA_ISO`, `DIVISA_NOMBRE`, `DIVISA_SIGNO`, `DIVISA_CONVERSION`, `DIVISA_ESTADO`) VALUES
 (1, 'MXN', 'Pesos', '$', '1.000', 'activo'),
-(2, 'USD', 'Dollar', '$', '0.049', 'activo'),
-(3, 'EUR', 'EURO', '€', '0.043', 'activo');
+(2, 'USD', 'Dollar', '$', '0.053', 'activo'),
+(3, 'EUR', 'EURO', '€', '0.043', 'inactivo'),
+(4, 'CAN', 'Dollar Can', '$', '0.072', 'activo');
 
 -- --------------------------------------------------------
 
@@ -714,7 +738,10 @@ INSERT INTO `galeria_productos` (`ID_GALERIA`, `ID_PRODUCTO`, `GALERIA_ARCHIVO`,
 (23, 22, 'producto-5c2e9538ac8ee.jpg', 'si', 'activo', 1),
 (24, 23, 'producto-5c44c0d799167.jpg', 'si', 'activo', 1),
 (25, 24, 'producto-5c44c0e05303a.jpg', 'si', 'activo', 1),
-(26, 25, 'producto-5c4634944993f.jpg', 'si', 'activo', 1);
+(26, 25, 'producto-5c4634944993f.jpg', 'si', 'activo', 1),
+(27, 27, 'producto-5c48f6ea77434.jpg', 'si', 'activo', 1),
+(29, 27, 'producto-5c48f746d3385.jpg', 'no', 'activo', 1),
+(30, 28, 'producto-5c4f658c2e9c9.jpg', 'si', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -740,7 +767,10 @@ INSERT INTO `galeria_servicios` (`ID_GALERIA`, `ID_SERVICIO`, `GALERIA_ARCHIVO`,
 (9, 11, 'Servicio-5c252359ed7c5.jpg', 'si', 'activo', 1),
 (10, 12, 'Servicio-5c42650c71b10.jpg', 'si', 'activo', 1),
 (11, 13, 'Servicio-5c46379f495ea.jpg', 'si', 'activo', 1),
-(12, 16, 'Servicio-5c48a82d2ed78.jpg', 'si', 'activo', 1);
+(12, 16, 'Servicio-5c48a82d2ed78.jpg', 'si', 'activo', 1),
+(13, 12, 'Servicio-5c48eb149bae9.jpg', 'no', 'activo', 1),
+(14, 18, 'Servicio-5c48f97b8c704.jpg', 'si', 'activo', 1),
+(15, 19, 'Servicio-5c4f4cf5d739a.jpg', 'si', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -6549,7 +6579,8 @@ CREATE TABLE `pagos_pedidos` (
 --
 
 INSERT INTO `pagos_pedidos` (`ID`, `ID_PEDIDO`, `PAGO_FORMA`, `PAGO_FOLIO`, `PAGO_ARCHIVO`, `PAGO_DESCRIPCION`, `PAGO_IMPORTE`, `PAGO_FECHA_REGISTRO`, `PAGO_FECHA_ACTUALIZACION`, `PAGO_ESTADO`) VALUES
-(1, 25, 'Transferencia Bancaria', '', 'pago-5c3fba61b53e2.jpg', 'Comprobante de cliente', '0.00', '2019-01-16 23:12:33', '2019-01-16 23:12:33', 'Verificando');
+(1, 25, 'Transferencia Bancaria', '', 'pago-5c3fba61b53e2.jpg', 'Comprobante de cliente', '0.00', '2019-01-16 23:12:33', '2019-01-23 22:35:37', 'Pagado'),
+(2, 22, 'Transferencia Bancaria', '76567', 'pago-5c4905468fcdf.jpg', 'Comprobante de cliente', '0.00', '2019-01-24 00:22:30', '2019-01-24 00:22:30', 'Verificando');
 
 -- --------------------------------------------------------
 
@@ -6612,14 +6643,17 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`ID_PEDIDO`, `PEDIDO_FOLIO`, `ID_USUARIO`, `PEDIDO_NOMBRE`, `PEDIDO_CORREO`, `PEDIDO_TELEFONO`, `ID_DIRECCION`, `PEDIDO_DIRECCION`, `PEDIDO_DIVISA`, `PEDIDO_CONVERSION`, `PEDIDO_IMPORTE_PRODUCTOS_PARCIAL`, `PEDIDO_IMPORTE_PRODUCTOS_TOTAL`, `PEDIDO_IMPORTE_ENVIO_PARCIAL`, `PEDIDO_IMPORTE_ENVIO_TOTAL`, `PEDIDO_ID_TRANSPORTISTA`, `PEDIDO_NOMBRE_TRANSPORTISTA`, `PEDIDO_RECIBE`, `PEDIDO_COMENTARIOS`, `PEDIDO_IMPORTE_DESCUENTO`, `PEDIDO_DESCUENTO_DESCRIPCION`, `PEDIDO_IMPORTE_TOTAL`, `PEDIDO_FORMA_PAGO`, `PEDIDO_ESTADO_PAGO`, `PEDIDO_ESTADO_PEDIDO`, `PEDIDO_FECHA_REGISTRO`, `PEDIDO_FECHA_ACTUALIZACION`) VALUES
-(21, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '158.00', '158.00', '156.00', '156.00', 3, 'Abanico', NULL, NULL, NULL, NULL, '314.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:52', '2019-01-08 01:21:52'),
-(22, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 16, 'Medellín 101, Roma Norte, Benito Juárez, Ciudad de México, Ciudad de México, 06700 , México', 'USD', '0.049', '7.74', '13.62', '7.64', '15.29', 3, 'Abanico', NULL, NULL, NULL, NULL, '28.91', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:55', '2019-01-08 01:21:55'),
-(23, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '280.00', '430.00', '156.00', '312.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '742.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:21:58', '2019-01-08 01:21:58'),
+(21, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '158.00', '158.00', '156.00', '156.00', 3, 'Abanico', NULL, NULL, NULL, NULL, '314.00', 'Transferencia Bancaria', 'Pendiente', 'Cancelado', '2019-01-24 00:21:34', '2019-01-24 00:21:34'),
+(22, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 16, 'Medellín 101, Roma Norte, Benito Juárez, Ciudad de México, Ciudad de México, 06700 , México', 'USD', '0.049', '7.74', '13.62', '7.64', '15.29', 3, 'Abanico', NULL, NULL, NULL, NULL, '28.91', 'Transferencia Bancaria', 'Pagado', 'Devolucion', '2019-01-31 00:30:01', '2019-01-31 00:30:01'),
+(23, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '280.00', '430.00', '156.00', '312.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '742.00', 'Transferencia Bancaria', 'Pendiente', 'Cancelado', '2019-01-23 22:34:16', '2019-01-23 22:34:16'),
 (24, '', '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', 17, '35 6 , Chalmita, Milpa Alta, , Ciudad de México, 12410, México', 'MXN', '1.000', '500.00', '500.00', '156.00', '156.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '656.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:22:10', '2019-01-08 01:22:10'),
-(25, 'LPBYMC', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', 0, '', NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Verificando', 'Pagado', '2019-01-17 00:00:36', '2019-01-17 00:00:36'),
+(25, 'LPBYMC', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', 0, '', NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Pagado', 'Devolucion', '2019-01-23 22:37:20', '2019-01-23 22:37:20'),
 (26, 'ZE5CZ7', '5c19b1d094f6e6.26249130', 'Kimi Luvi', 'kimi.luvi.tin.yee@gmail.com', '', 19, 'Dr. Galvez 555, Doctores, Cuauhtémoc, , Ciudad de México, 65364, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', 0, '', NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-16 23:22:43', '2019-01-16 23:22:43'),
 (27, 'PLI5NK', '5c4631142f4944.13186972', 'Circe Rop', 'aurin_cs@hotmail.com', NULL, 25, 'Sn, Miguel h, Calakmul, , Campeche, 5678, México', 'MXN', '1.000', '70.00', '70.00', '156.00', '156.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '226.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-21 23:34:37', '2019-01-21 23:34:37'),
-(28, '10W0IP', '5c489fa0131986.82562218', 'susama patino', 'suspat53@hotmail.com', ' ', 28, 'sur69 A 248, banjidal, Iztapalapa, Mexico, Ciudad de México, 9450, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', NULL, NULL, NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-23 17:11:08', '2019-01-23 17:11:08');
+(28, '10W0IP', '5c489fa0131986.82562218', 'susama patino', 'suspat53@hotmail.com', ' ', 28, 'sur69 A 248, banjidal, Iztapalapa, Mexico, Ciudad de México, 9450, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', NULL, NULL, NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Pendiente', 'Cancelado', '2019-01-23 22:33:42', '2019-01-23 22:33:42'),
+(29, '4HDQDB', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', NULL, NULL, NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-23 22:41:48', '2019-01-23 22:41:48'),
+(30, 'APIXWL', '0', 'Andres Ruelas', 'pixelbiff@gmail.com', '12345678', 36, 'lkjlkj, llkjlkj, Gustavo A. Madero, , Ciudad de México, 111111, México', 'MXN', '1.000', '0.00', '1500.00', '0.00', '171.00', NULL, NULL, NULL, NULL, NULL, NULL, '1671.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-23 23:58:47', '2019-01-23 23:58:47'),
+(31, 'LENIF1', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335   ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '4.00', '4.00', '4.00', '4.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '8.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-30 23:18:45', '2019-01-30 23:18:45');
 
 -- --------------------------------------------------------
 
@@ -6654,7 +6688,10 @@ INSERT INTO `pedidos_productos` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `ID_PRODUCTO`, 
 (37, 25, 1, 22, 'Pizza', 'Tamaño-Familiar', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00'),
 (38, 26, 1, 22, 'Pizza', 'Tamaño-Familiar', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00'),
 (39, 27, 5, 12, 'PASTA DENTAL COLGATE', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/default.jpg', 1, '70.00', '70.00'),
-(40, 28, 1, 22, 'Pizza', 'Tamaño-Familiar', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00');
+(40, 28, 1, 22, 'Pizza', 'Tamaño-Familiar', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00'),
+(41, 29, 1, 22, 'Pizza', 'Tamaño-Familiar', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00'),
+(42, 30, 1, 24, 'Guitarra Electro Acustica Symphonic CG209CE', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c44c0e05303a.jpg', 1, '1500.00', '1500.00'),
+(43, 31, 3, 2, 'CAJA', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/default.jpg', 1, '4.00', '4.00');
 
 -- --------------------------------------------------------
 
@@ -6681,7 +6718,7 @@ CREATE TABLE `pedidos_tiendas` (
 
 INSERT INTO `pedidos_tiendas` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `PEDIDO_TIENDA_IMPORTE_PRODUCTOS`, `PEDIDO_TIENDA_IMPORTE_ENVIO`, `ID_TRANSPORTISTA`, `TRANSPORTISTA_NOMBRE`, `GUIA_PAQUETERIA`, `URL_RASTREO`, `PEDIDO_TIENDA_ESTADO`) VALUES
 (31, 21, 8, '158.00', '0.00', 0, '', NULL, '', 'Espera Pago'),
-(32, 22, 1, '120.00', '7.64', 3, 'Abanico', NULL, '', 'Espera Pago'),
+(32, 22, 1, '120.00', '7.64', 3, 'Abanico', 'asasdasd', 'asdadsad', 'Enviado'),
 (33, 22, 8, '158.00', '0.00', 0, '', NULL, '', 'Espera Pago'),
 (34, 23, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', 'Espera Pago'),
 (35, 23, 4, '280.00', '0.00', 0, '', NULL, '', 'Espera Pago'),
@@ -6689,7 +6726,10 @@ INSERT INTO `pedidos_tiendas` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `PEDIDO_TIENDA_IM
 (37, 25, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', 'Espera Pago'),
 (38, 26, 1, '150.00', '156.00', 3, 'Abanico México', '12345656', 'https://www.fedex.com/es-mx/home.html', 'Enviado'),
 (39, 27, 5, '70.00', '0.00', 0, '', NULL, '', NULL),
-(40, 28, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', NULL);
+(40, 28, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', NULL),
+(41, 29, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', NULL),
+(42, 30, 1, '1500.00', '171.00', 3, 'Abanico México', NULL, '', NULL),
+(43, 31, 3, '4.00', '0.00', 0, '', NULL, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -6721,7 +6761,9 @@ INSERT INTO `perfiles_servicios` (`ID_PERFIL`, `ID_USUARIO`, `PERFIL_NOMBRE`, `P
 (12, '5c4631142f4944.13186972', 'Circe Rop', 'Xxxxxxx', 'Cat', '2345432', 24, 'default.jpg', '2019-01-21 21:13:17', '2019-01-21 21:13:17', 'activo'),
 (13, '5c4753da68d4b7.48707257', 'Irving Omar  Téllez Vera', 'Irving Omar Téllez Vera', 'TEVI760326CU2', '9991441579', 27, 'perfil_servicios-5c47551baf741.jpg', '2019-01-22 17:38:35', '2019-01-22 17:38:35', 'activo'),
 (14, '5c48a2a2a43ed3.21261698', 'LILIA NAVARRETE', 'S.A. DE C.V.', '15874ROFJCJ', '555555555', 30, 'default.jpg', '2019-01-23 17:40:40', '2019-01-23 17:40:40', 'activo'),
-(15, '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'ssfsa', 'afasfaf', 'afasfaga', 31, 'default.jpg', '2019-01-23 17:56:41', '2019-01-23 17:56:41', 'activo');
+(15, '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'ssfsa', 'afasfaf', 'afasfaga', 31, 'default.jpg', '2019-01-23 17:56:41', '2019-01-23 17:56:41', 'activo'),
+(16, '5c2e93b02a6ee1.32959007', 'Andres Ruelas', 'Empresa', '12345678RUEA', '5512345678', 32, 'default.jpg', '2019-01-23 22:18:02', '2019-01-23 22:18:02', 'activo'),
+(17, '5c48f4e7ce0708.70141183', 'Lic Pruebas', '', '', '22222222', 35, 'perfil_servicios-5c48f9021c7cc.jpg', '2019-01-23 23:29:15', '2019-01-23 23:30:10', 'activo');
 
 -- --------------------------------------------------------
 
@@ -6776,6 +6818,7 @@ CREATE TABLE `productos` (
   `PRODUCTO_PROFUNDO` decimal(10,2) NOT NULL,
   `PRODUCTO_PESO` decimal(10,2) NOT NULL,
   `PRODUCTO_TIPO` varchar(255) NOT NULL DEFAULT 'normal',
+  `PRODUCTO_CONDICION` varchar(255) NOT NULL DEFAULT 'nuevo',
   `PRODUCTO_ESTADO` varchar(255) NOT NULL,
   `ORDEN` bigint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -6784,24 +6827,27 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOMBRE`, `PRODUCTO_URL`, `PRODUCTO_DESCRIPCION`, `PRODUCTO_DETALLES`, `PRODUCTO_MODELO`, `PRODUCTO_ORIGEN`, `PRODUCTO_SKU`, `PRODUCTO_UPC`, `PRODUCTO_EAN`, `PRODUCTO_JAN`, `PRODUCTO_ISBN`, `PRODUCTO_MPN`, `PRODUCTO_PRECIO`, `PRODUCTO_PRECIO_LISTA`, `PRODUCTO_CANTIDAD`, `PRODUCTO_CANTIDAD_MINIMA`, `PRODUCTO_INVENTARIO`, `PRODUCTO_MENSAJE_SIN_STOCK`, `PRODUCTO_FECHA_REGISTRO`, `PRODUCTO_FECHA_ACTUALIZACION`, `PRODUCTO_FECHA_PUBLICACION`, `PRODUCTO_ANCHO`, `PRODUCTO_ALTO`, `PRODUCTO_PROFUNDO`, `PRODUCTO_PESO`, `PRODUCTO_TIPO`, `PRODUCTO_ESTADO`, `ORDEN`) VALUES
-(2, '5c0864799aba54.31749554', '', 'CAJA', '', 'ES  UNA CAJA', '<p>ES UNA CAJA GRANDE DE MADERA</p>', '345', 'México', '55665', '', '', '', '', '', '4.00', '0.00', 8, 7, 1, 'No disponible para venta', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '12.00', '44.00', '23.00', '4.00', 'normal', 'activo', 1),
-(4, '5c08a9dc2cb096.56391251', '', 'Olla de 5 lts', '', 'Olla de 5 litros gabricada en acero inoxidable', '', 'OAI', 'México', '', '', '', '', '', '', '5000.00', '0.00', 10, 1, 1, 'No disponible para la venta', '2018-12-13 04:37:54', '2018-12-13 23:20:05', '2018-12-13 04:37:54', '52.00', '68.00', '15.00', '5.00', 'normal', 'activo', 1),
-(5, '5c08a9dc2cb096.56391251', '', 'cafetera italina', '', 'Cafetera en acero inoxidable para 5 tazas. ', '<p>&nbsp; Terminado mate</p>', 'grecko', 'México', '', '', '', '', '', '', '862.00', '0.00', 4, 1, 1, 'No disponible para la venta', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '15.00', '25.00', '12.00', '1.00', 'normal', 'activo', 1),
-(8, '5c0653d43d92e7.75019474', '', 'JABON', '', 'JGJJJJJJRTTTTTTTTTTTTTTT', '<p>GFFGFDGFGS</p>', 'ROMA', 'México', 'ROM', '   ', '   ', '   ', '   ', '   ', '50.00', '0.00', 1, 1, 1, 'No disponible para la venta', '2018-12-13 16:15:03', '2018-12-19 16:54:26', '2018-12-13 16:15:03', '30.00', '25.00', '15.00', '20.00', 'normal', 'activo', 1),
-(11, '5c19944989f925.72741021', '', 'PASTA DENTAL', '', 'PASTA DENTAL DE VIAJE DE 60 GRAMOS.', '<p>PASTA DENTAL PRESENTACI&Oacute;N DE VIAJE GRAMAJE DE 60 GRAMOS.</p>', 'DE VIAJE', 'México', '12345', '', '', '', '', '', '70.00', '0.00', 5, 1, 1, 'No disponible para venta', '2018-12-19 01:26:14', '2018-12-19 01:26:14', '2018-12-19 01:26:14', '5.00', '10.00', '5.00', '0.50', 'normal', 'activo', 1),
-(12, '5c19944989f925.72741021', '', 'PASTA DENTAL COLGATE', '', 'PASTA DENTAL DE VIAJE DE 60 GRAMOS.', '<p>PASTA DENTAL PRESENTACI&Oacute;N DE VIAJE GRAMAJE DE 60 GRAMOS.</p>', 'DE VIAJE', 'México', '12345', '', '', '', '', '', '70.00', '0.00', 5, 1, 1, 'No disponible para venta', '2018-12-19 01:30:12', '2018-12-19 01:30:12', '2018-12-19 01:30:12', '5.00', '10.00', '5.00', '0.50', 'normal', 'activo', 1),
-(14, '5c19944989f925.72741021', '', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:42:41', '2018-12-19 01:42:41', '2018-12-19 01:42:41', '25.00', '10.00', '4.00', '1.00', 'normal', 'activo', 1),
-(15, '5c19944989f925.72741021', '', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:44:52', '2018-12-19 01:44:52', '2018-12-19 01:44:52', '25.00', '10.00', '4.00', '1.00', 'normal', 'activo', 1),
-(16, '5c19944989f925.72741021', '', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:44:56', '2018-12-19 01:44:56', '2018-12-19 01:44:56', '25.00', '10.00', '4.00', '1.00', 'normal', 'activo', 1),
-(17, '5c08a9dc2cb096.56391251', '', 'taza medidora', '', 'Tazas medidoras en 4 diferentes tamanos', '<p>Practico set de medicion para cocina. Cuatro tama&ntilde;os, 1/4, 1/2, 3/4 y 1 taza. Acero inoxidable grado alimenticio. Excelente para el control preciso de las cantidades al momento de elaborar tus recetas favoritas.&nbsp;</p>', 'A001', 'Otro', '', '', '', '', '', '', '280.00', '0.00', 14, 1, 1, 'No disponible para la venta', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '15.00', '15.00', '15.00', '0.25', 'normal', 'activo', 1),
-(18, '5c0653d43d92e7.75019474', '', 'Librero', 'librero', 'Librero de Madera', '<p>Peque&ntilde;o Librero de Madera</p>', 'lb-135', 'México', 'lb-1234', '', '', '', '', '', '1300.00', '15000.00', 25, 1, 1, 'No disponible para la venta', '2018-12-26 22:50:03', '2018-12-26 22:50:03', '2018-12-26 22:50:03', '60.00', '120.00', '30.00', '10.00', 'normal', 'activo', 1),
-(19, '5c0653d43d92e7.75019474', '', 'Escritorio', '', '', '', 'esc-5567', 'México', 'esc-34556', '', '', '', '', '', '2500.00', '0.00', 10, 1, 1, 'No disponible para la venta', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '90.00', '60.00', '30.00', '30.00', 'normal', 'activo', 1),
-(20, '5c25209703a210.25306180', '', 'libretas hechas a mano', 'libretas-hechas-a-mano', 'Hermosas libretas hechas a mano ', '<p>kajiejfnaniovna inafiaf an ha ghao nakajaa&nbsp;</p>', 'Constelaciones', 'México', '', '', '', '', '', '', '158.00', '170.00', 15, 1, 1, 'No disponible para la venta', '2018-12-27 19:21:07', '2018-12-27 19:21:07', '2018-12-27 19:21:07', '15.00', '18.00', '5.00', '0.50', 'normal', 'activo', 1),
-(22, '5c0653d43d92e7.75019474', '1', 'Pizza', 'pizza', '', '', 'kjlkjlk', 'México', 'kjlkjlk', '', '', '', '', '', '120.00', '150.00', 50, 1, 1, 'No disponible para la venta', '2019-01-03 23:05:27', '2019-01-03 23:05:27', '2019-01-03 23:05:27', '30.00', '30.00', '3.00', '1.00', 'normal', 'activo', 1),
-(23, '5c08a9dc2cb096.56391251', '4', 'filtro de agua ', 'filtro-de-agua', '', '', 'IAu', 'México', '', '', '', '', '', '', '1600.00', '1400.00', 10, 1, 1, 'No disponible para la venta', '2019-01-20 18:41:27', '2019-01-20 18:41:27', '2019-01-20 18:41:27', '12.00', '36.00', '12.00', '1.50', 'normal', 'activo', 1),
-(24, '5c0653d43d92e7.75019474', '1', 'Guitarra Electro Acustica Symphonic CG209CE', 'guitarra-electro-acustica-symphonic-cg209ce', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem felis, vestibulum quis placerat ut, posuere at enim. Nam nec suscipit urna. Quisque pretium urna justo, quis venenatis elit lobortis ac. Maecenas faucibus malesuada justo. Aliquam at faucibus quam. Nunc non orci varius, convallis purus nec, rhoncus quam. Nunc volutpat neque non felis sagittis, eget commodo libero sollicitudin. Nullam ut euismod tortor. Vestibulum nec nibh dapibus, volutpat est id, posuere felis. Quisque ullamcorper urna ac vehicula mollis. Nam quis scelerisque elit, eu facilisis mi. Curabitur ligula mauris, varius id sapien facilisis, finibus interdum augue. Morbi sed libero nisl. Praesent euismod tempus mattis.', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem felis, vestibulum quis placerat ut, posuere at enim. Nam nec suscipit urna. Quisque pretium urna justo, quis venenatis elit lobortis ac. Maecenas faucibus malesuada justo. Aliquam at faucibus quam. Nunc non orci varius, convallis purus nec, rhoncus quam. Nunc volutpat neque non felis sagittis, eget commodo libero sollicitudin. Nullam ut euismod tortor. Vestibulum nec nibh dapibus, volutpat est id, posuere felis. Quisque ullamcorper urna ac vehicula mollis. Nam quis scelerisque elit, eu facilisis mi. Curabitur ligula mauris, varius id sapien facilisis, finibus interdum augue. Morbi sed libero nisl. Praesent euismod tempus mattis.</span></p>', 'CG209CE', 'México', 'CG209CE', '', '', '', '', '', '1500.00', '2000.00', 10, 1, 1, 'No disponible para la venta', '2019-01-20 18:41:36', '2019-01-20 18:41:36', '2019-01-20 18:41:36', '60.00', '90.00', '30.00', '3.00', 'normal', 'activo', 1),
-(25, '5c4631142f4944.13186972', '9', 'Bolsa chica', 'bolsa-chica', 'Prácticas bolsitas de lavado no se maltrata la ropa', '', '003', 'México', 'X', '', '', '', '', '', '50.00', '0.00', 80, 1, 1, 'No disponible para la venta', '2019-01-21 21:07:32', '2019-01-21 21:07:32', '2019-01-21 21:07:32', '20.00', '15.00', '50.00', '0.30', 'normal', 'activo', 1);
+INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOMBRE`, `PRODUCTO_URL`, `PRODUCTO_DESCRIPCION`, `PRODUCTO_DETALLES`, `PRODUCTO_MODELO`, `PRODUCTO_ORIGEN`, `PRODUCTO_SKU`, `PRODUCTO_UPC`, `PRODUCTO_EAN`, `PRODUCTO_JAN`, `PRODUCTO_ISBN`, `PRODUCTO_MPN`, `PRODUCTO_PRECIO`, `PRODUCTO_PRECIO_LISTA`, `PRODUCTO_CANTIDAD`, `PRODUCTO_CANTIDAD_MINIMA`, `PRODUCTO_INVENTARIO`, `PRODUCTO_MENSAJE_SIN_STOCK`, `PRODUCTO_FECHA_REGISTRO`, `PRODUCTO_FECHA_ACTUALIZACION`, `PRODUCTO_FECHA_PUBLICACION`, `PRODUCTO_ANCHO`, `PRODUCTO_ALTO`, `PRODUCTO_PROFUNDO`, `PRODUCTO_PESO`, `PRODUCTO_TIPO`, `PRODUCTO_CONDICION`, `PRODUCTO_ESTADO`, `ORDEN`) VALUES
+(2, '5c0864799aba54.31749554', '', 'CAJA', '', 'ES  UNA CAJA', '<p>ES UNA CAJA GRANDE DE MADERA</p>', '345', 'México', '55665', '', '', '', '', '', '4.00', '0.00', 8, 7, 1, 'No disponible para venta', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '12.00', '44.00', '23.00', '4.00', 'normal', 'nuevo', 'activo', 1),
+(4, '5c08a9dc2cb096.56391251', '', 'Olla de 5 lts', '', 'Olla de 5 litros gabricada en acero inoxidable', '', 'OAI', 'México', '', '', '', '', '', '', '5000.00', '0.00', 10, 1, 1, 'No disponible para la venta', '2018-12-13 04:37:54', '2018-12-13 23:20:05', '2018-12-13 04:37:54', '52.00', '68.00', '15.00', '5.00', 'normal', 'nuevo', 'activo', 1),
+(5, '5c08a9dc2cb096.56391251', '', 'cafetera italina', '', 'Cafetera en acero inoxidable para 5 tazas. ', '<p>&nbsp; Terminado mate</p>', 'grecko', 'México', '', '', '', '', '', '', '862.00', '0.00', 4, 1, 1, 'No disponible para la venta', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '15.00', '25.00', '12.00', '1.00', 'normal', 'nuevo', 'activo', 1),
+(8, '5c0653d43d92e7.75019474', '', 'JABON', '', 'JGJJJJJJRTTTTTTTTTTTTTTT', '<p>GFFGFDGFGS</p>', 'ROMA', 'México', 'ROM', '   ', '   ', '   ', '   ', '   ', '50.00', '0.00', 1, 1, 1, 'No disponible para la venta', '2018-12-13 16:15:03', '2018-12-19 16:54:26', '2018-12-13 16:15:03', '30.00', '25.00', '15.00', '20.00', 'normal', 'nuevo', 'activo', 1),
+(11, '5c19944989f925.72741021', '', 'PASTA DENTAL', '', 'PASTA DENTAL DE VIAJE DE 60 GRAMOS.', '<p>PASTA DENTAL PRESENTACI&Oacute;N DE VIAJE GRAMAJE DE 60 GRAMOS.</p>', 'DE VIAJE', 'México', '12345', '', '', '', '', '', '70.00', '0.00', 5, 1, 1, 'No disponible para venta', '2018-12-19 01:26:14', '2018-12-19 01:26:14', '2018-12-19 01:26:14', '5.00', '10.00', '5.00', '0.50', 'normal', 'nuevo', 'activo', 1),
+(12, '5c19944989f925.72741021', '', 'PASTA DENTAL COLGATE', '', 'PASTA DENTAL DE VIAJE DE 60 GRAMOS.', '<p>PASTA DENTAL PRESENTACI&Oacute;N DE VIAJE GRAMAJE DE 60 GRAMOS.</p>', 'DE VIAJE', 'México', '12345', '', '', '', '', '', '70.00', '0.00', 5, 1, 1, 'No disponible para venta', '2018-12-19 01:30:12', '2018-12-19 01:30:12', '2018-12-19 01:30:12', '5.00', '10.00', '5.00', '0.50', 'normal', 'nuevo', 'activo', 1),
+(14, '5c19944989f925.72741021', '', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:42:41', '2018-12-19 01:42:41', '2018-12-19 01:42:41', '25.00', '10.00', '4.00', '1.00', 'normal', 'nuevo', 'activo', 1),
+(15, '5c19944989f925.72741021', '', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:44:52', '2018-12-19 01:44:52', '2018-12-19 01:44:52', '25.00', '10.00', '4.00', '1.00', 'normal', 'nuevo', 'activo', 1),
+(16, '5c19944989f925.72741021', '', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:44:56', '2018-12-19 01:44:56', '2018-12-19 01:44:56', '25.00', '10.00', '4.00', '1.00', 'normal', 'nuevo', 'activo', 1),
+(17, '5c08a9dc2cb096.56391251', '', 'taza medidora', '', 'Tazas medidoras en 4 diferentes tamanos', '<p>Practico set de medicion para cocina. Cuatro tama&ntilde;os, 1/4, 1/2, 3/4 y 1 taza. Acero inoxidable grado alimenticio. Excelente para el control preciso de las cantidades al momento de elaborar tus recetas favoritas.&nbsp;</p>', 'A001', 'Otro', '', '', '', '', '', '', '280.00', '0.00', 14, 1, 1, 'No disponible para la venta', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '15.00', '15.00', '15.00', '0.25', 'normal', 'nuevo', 'activo', 1),
+(18, '5c0653d43d92e7.75019474', '1', 'Librero', 'librero', 'Librero de Madera', '<p>Peque&ntilde;o Librero de Madera</p>', 'lb-135', 'México', 'lb-1234', '', '', '', '', '', '1300.00', '15000.00', 25, 1, 1, 'No disponible para la venta', '2019-01-24 01:43:48', '2019-01-24 01:43:48', '2019-01-24 01:43:48', '60.00', '120.00', '30.00', '10.00', 'normal', 'nuevo', 'activo', 1),
+(19, '5c0653d43d92e7.75019474', '', 'Escritorio', '', '', '', 'esc-5567', 'México', 'esc-34556', '', '', '', '', '', '2500.00', '0.00', 10, 1, 1, 'No disponible para la venta', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '90.00', '60.00', '30.00', '30.00', 'normal', 'nuevo', 'activo', 1),
+(20, '5c25209703a210.25306180', '', 'libretas hechas a mano', 'libretas-hechas-a-mano', 'Hermosas libretas hechas a mano ', '<p>kajiejfnaniovna inafiaf an ha ghao nakajaa&nbsp;</p>', 'Constelaciones', 'México', '', '', '', '', '', '', '158.00', '170.00', 15, 1, 1, 'No disponible para la venta', '2018-12-27 19:21:07', '2018-12-27 19:21:07', '2018-12-27 19:21:07', '15.00', '18.00', '5.00', '0.50', 'normal', 'nuevo', 'activo', 1),
+(22, '5c0653d43d92e7.75019474', '1', 'Pizza', 'pizza', '', '', 'kjlkjlk', 'México', 'kjlkjlk', '', '', '', '', '', '120.00', '150.00', 50, 1, 1, 'No disponible para la venta', '2019-01-03 23:05:27', '2019-01-03 23:05:27', '2019-01-03 23:05:27', '30.00', '30.00', '3.00', '1.00', 'normal', 'nuevo', 'activo', 1),
+(23, '5c08a9dc2cb096.56391251', '4', 'filtro de agua ', 'filtro-de-agua', '', '', 'IAu', 'México', '', '', '', '', '', '', '1600.00', '1400.00', 10, 1, 1, 'No disponible para la venta', '2019-01-20 18:41:27', '2019-01-20 18:41:27', '2019-01-20 18:41:27', '12.00', '36.00', '12.00', '1.50', 'normal', 'nuevo', 'activo', 1),
+(24, '5c0653d43d92e7.75019474', '1', 'Guitarra Electro Acustica Symphonic CG209CE', 'guitarra-electro-acustica-symphonic-cg209ce', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem felis, vestibulum quis placerat ut, posuere at enim. Nam nec suscipit urna. Quisque pretium urna justo, quis venenatis elit lobortis ac. Maecenas faucibus malesuada justo. Aliquam at faucibus quam. Nunc non orci varius, convallis purus nec, rhoncus quam. Nunc volutpat neque non felis sagittis, eget commodo libero sollicitudin. Nullam ut euismod tortor. Vestibulum nec nibh dapibus, volutpat est id, posuere felis. Quisque ullamcorper urna ac vehicula mollis. Nam quis scelerisque elit, eu facilisis mi. Curabitur ligula mauris, varius id sapien facilisis, finibus interdum augue. Morbi sed libero nisl. Praesent euismod tempus mattis.', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem felis, vestibulum quis placerat ut, posuere at enim. Nam nec suscipit urna. Quisque pretium urna justo, quis venenatis elit lobortis ac. Maecenas faucibus malesuada justo. Aliquam at faucibus quam. Nunc non orci varius, convallis purus nec, rhoncus quam. Nunc volutpat neque non felis sagittis, eget commodo libero sollicitudin. Nullam ut euismod tortor. Vestibulum nec nibh dapibus, volutpat est id, posuere felis. Quisque ullamcorper urna ac vehicula mollis. Nam quis scelerisque elit, eu facilisis mi. Curabitur ligula mauris, varius id sapien facilisis, finibus interdum augue. Morbi sed libero nisl. Praesent euismod tempus mattis.</span></p>', 'CG209CE', 'México', 'CG209CE', '', '', '', '', '', '1500.00', '2000.00', 10, 1, 1, 'No disponible para la venta', '2019-01-20 18:41:36', '2019-01-20 18:41:36', '2019-01-20 18:41:36', '60.00', '90.00', '30.00', '3.00', 'normal', 'nuevo', 'activo', 1),
+(25, '5c4631142f4944.13186972', '9', 'Bolsa chica', 'bolsa-chica', 'Prácticas bolsitas de lavado no se maltrata la ropa', '', '003', 'México', 'X', '', '', '', '', '', '50.00', '0.00', 80, 1, 1, 'No disponible para la venta', '2019-01-21 21:07:32', '2019-01-21 21:07:32', '2019-01-21 21:07:32', '20.00', '15.00', '50.00', '0.30', 'normal', 'nuevo', 'activo', 1),
+(26, '5c0653d43d92e7.75019474', '1', 'Celular', 'celular', '', '', 'iPhone', 'México', '123', '', '', '', '', '', '2000.00', '2500.00', 1, 1, 1, 'No disponible para la venta', '2019-01-23 22:25:45', '2019-01-23 22:25:45', '2019-01-23 22:25:45', '8.00', '20.00', '0.50', '3.00', 'normal', 'nuevo', 'inactivo', 1),
+(27, '5c48f4e7ce0708.70141183', '12', 'Calcetines negros', 'calcetines-negros', '', '', 'klklklk', 'México', 'lklklklk', '', '', '', '', '', '100.00', '0.00', 5, 1, 1, 'No disponible para la venta', '2019-01-23 23:46:56', '2019-01-23 23:46:56', '2019-01-23 23:46:56', '5.00', '5.00', '5.00', '0.50', 'normal', 'nuevo', 'activo', 1),
+(28, '5c0653d43d92e7.75019474', '1', 'asdasd', 'asdasd', 'asdasd', '<p>asdasdsa</p>', 'kalkslkasklas', 'México', 'weewewe', '', '', '', '', '', '100.00', '150.00', 1, 1, 1, 'No disponible para la venta', '2019-01-28 20:27:06', '2019-01-28 20:27:06', '2019-01-28 20:27:06', '10.00', '4.00', '2.00', '0.30', 'normal', 'nuevo', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -7069,12 +7115,14 @@ CREATE TABLE `servicios` (
 INSERT INTO `servicios` (`ID_SERVICIO`, `ID_USUARIO`, `USUARIO_NOMBRE`, `SERVICIO_NOMBRE`, `SERVICIO_DESCRIPCION`, `SERVICIO_DETALLES`, `SERVICIO_PAIS`, `SERVICIO_ESTADO_DIR`, `SERVICIO_MUNICIPIO`, `SERVICIO_ZONA_TRABAJO`, `SERVICIO_IMAGEN_FONDO`, `SERVICIO_FECHA_REGISTRO`, `SERVICIO_FECHA_ACTUALIZACION`, `SERVICIO_FECHA_PUBLICACION`, `SERVICIO_TIPO`, `SERVICIO_ESTADO`, `ORDEN`) VALUES
 (10, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Diseño Gráfico', 'Imágenes Digitales, e Impresos', '<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae commodo elit. Donec laoreet fringilla dui, suscipit ultricies nunc accumsan ut. Sed eget risus aliquam, suscipit arcu in, feugiat massa. Sed semper, libero et luctus viverra, nulla risus egestas mauris, fringilla elementum orci augue nec est. Proin sed odio ipsum. Fusce vitae dignissim mi. In dapibus eros tortor, sit amet tincidunt metus varius a. Etiam at laoreet dolor.</p>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Fusce dictum arcu ac elit varius varius. Nunc lacinia, eros nec consequat egestas, orci odio rutrum quam, suscipit posuere ex diam eget magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam convallis purus velit, vitae faucibus mi ultrices ut. Donec orci nisl, pretium vitae lacinia et, sagittis ac sapien. Proin euismod sollicitudin pharetra. Maecenas interdum eros euismod sollicitudin pulvinar. Suspendisse sagittis semper ligula nec facilisis. Nulla quis sodales mi. Nullam ut odio aliquet, accumsan justo vitae, lacinia felis. Nam est mauris, vulputate a turpis in, facilisis maximus urna.</p>', 'México', 'Ciudad de México', 'Gustavo A. Madero', '', 'default.jpg', '2018-12-26 22:32:10', '2018-12-26 22:32:10', '2018-12-26 22:32:10', 'profesional', 'activo', 1),
 (11, '5c25209703a210.25306180', 'casiopea ende', 'Redaccion y correccion de textos ', 'Redacto, reviso y corrijo textos científicos y filosóficos.', '<h2><strong>Con 25 a&ntilde;os de experiencia en redaccion y revision de textos cientificos y filosoficos puedo ofrecer un servicio de la mas alta calidad para aquellas personas interesadas en tener una segunda opinion en el fondo y la forma de sus escritos.&nbsp;</strong></h2>', 'México', 'Veracruz', 'Banderilla', '', 'default.jpg', '2018-12-27 19:07:14', '2018-12-27 19:09:13', '2018-12-27 19:07:14', 'profesional', 'activo', 1),
-(12, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Construcción', 'Construyo casitas de palitos de madera', '<p>Palitos de madera de alta calidad, Nuevos no usados</p>', 'México', 'Guanajuato', 'Cortazar', '', 'default.jpg', '2019-01-18 23:45:16', '2019-01-18 23:45:16', '2019-01-18 23:45:16', 'profesional', 'activo', 1),
+(12, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Construcción', 'Construyo casitas de palitos de madera', '<p>Palitos de madera de alta calidad, Nuevos no usados</p>', 'México', 'Guanajuato', 'Cortazar', '', 'default.jpg', '2019-01-18 23:45:16', '2019-01-23 22:30:44', '2019-01-18 23:45:16', 'profesional', 'activo', 1),
 (13, '5c4631142f4944.13186972', 'Circe Rop', 'Plomeria', 'Plomeriaespecializada', '<p>El mejor plomero de la zona</p>', 'México', 'Chiapas', 'Amatán', '', 'default.jpg', '2019-01-21 21:20:31', '2019-01-21 21:20:49', '2019-01-21 21:20:31', 'profesional', 'activo', 1),
 (14, '5c4753da68d4b7.48707257', 'Irving Omar  Téllez Vera', 'Revisión de docuementos Técnicos científicos de acuerdo a NOM-MX', 'Se revisan y corrigen documentos Técnicos y científicos como Tesis, articulos, ensayos, reportajes y todo lo relacionado a la escritura y descripción de las areas cientificas. ', '', 'México', 'Veracruz', 'San Andrés Tuxtla', '', 'default.jpg', '2019-01-22 18:12:25', '2019-01-22 18:12:25', '2019-01-22 18:12:25', 'digital', 'activo', 1),
 (15, '5c4753da68d4b7.48707257', 'Irving Omar  Téllez Vera', 'Traducción español-inglés de documentos tecnicos cientificos y literarios', 'Se traducen documentos español- inglés, inglés español, de las areas cientificas y literarias ', '', 'México', 'Veracruz', 'San Andrés Tuxtla', '', 'default.jpg', '2019-01-22 18:16:26', '2019-01-22 18:16:26', '2019-01-22 18:16:26', 'digital', 'activo', 1),
 (16, '5c48a2a2a43ed3.21261698', 'LILIA NAVARRETE', 'Asesorías para niños de secundaria', 'Si tu hija o hijo tiene problemas en la escuela llamame, yo puedo ayudarle a entender mejor la información que le estan dando. ', '', 'México', 'Veracruz', 'Orizaba', '', 'default.jpg', '2019-01-23 17:45:17', '2019-01-23 17:47:41', '2019-01-23 17:45:17', 'profesional', 'activo', 1),
-(17, '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'Instalacion de filtros de agua', 'Se da mantenimiento y se realizan instalaciones de cualquier tipo de filtro de agua. ', '', 'Estados Unidos', 'New York', 'New York County', '', 'default.jpg', '2019-01-23 17:57:51', '2019-01-23 17:57:51', '2019-01-23 17:57:51', 'profesional', 'activo', 1);
+(17, '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'Instalacion de filtros de agua', 'Se da mantenimiento y se realizan instalaciones de cualquier tipo de filtro de agua. ', '', 'Estados Unidos', 'New York', 'New York County', '', 'default.jpg', '2019-01-23 17:57:51', '2019-01-23 17:57:51', '2019-01-23 17:57:51', 'profesional', 'activo', 1),
+(18, '5c48f4e7ce0708.70141183', 'Prueba 3 Prueba 3', 'Bordado de calcetines', 'Bordamos toda clase de calcetines', '', 'México', 'Ciudad de México', 'Gustavo A. Madero', '', 'default.jpg', '2019-01-23 23:32:11', '2019-01-23 23:32:11', '2019-01-23 23:32:11', 'profesional', 'activo', 1),
+(19, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Paseo Perritos', 'Paseo perritos en las tardes', '', 'México', 'Ciudad de México', 'Cuauhtémoc', 'En zona roma y condechi', 'default.jpg', '2019-01-28 18:41:57', '2019-01-28 18:41:57', '2019-01-28 18:41:57', 'profesional', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -7160,7 +7208,7 @@ CREATE TABLE `tiendas` (
 --
 
 INSERT INTO `tiendas` (`ID_TIENDA`, `ID_USUARIO`, `TIENDA_NOMBRE`, `TIENDA_RAZON_SOCIAL`, `TIENDA_RFC`, `TIENDA_TELEFONO`, `ID_DIRECCION`, `TIENDA_IMAGEN`, `TIENDA_ADMINISTRACION_PEDIDOS`, `TIENDA_FECHA_REGISTRO`, `TIENDA_FECHA_ACTUALIZACION`, `TIENDA_TIPO`, `TIENDA_ESTADO`) VALUES
-(1, '5c0653d43d92e7.75019474', 'Espejo Negro', 'Espejo Negro SA de CV', 'ESNE34565677', '26032335', 11, 'tienda-5c1e6ac549a93.jpg', 'propio', '2018-12-05 14:05:30', '2019-01-18 23:57:56', 'tienda', 'activo'),
+(1, '5c0653d43d92e7.75019474', 'Espejo Negro', 'Espejo Negro SA de CV', 'ESNE34565677', '26032335', 1, 'tienda-5c1e6ac549a93.jpg', 'propio', '2018-12-05 14:05:30', '2019-01-28 20:04:50', 'tienda', 'activo'),
 (2, '5c0839a2158e44.99631671', 'TIendota', 'klakjalkjalksj', 'lkjalksjalksj', '26032335', 18, 'default.jpg', 'abanico', '2018-12-05 20:50:15', '2019-01-08 22:41:23', 'tienda', 'activo'),
 (3, '5c0864799aba54.31749554', 'tania', 'tania saenz', 'SART880719368', '5555555555555', 0, 'default.jpg', 'abanico', '2018-12-05 23:52:48', '2018-12-22 16:43:41', 'tienda', 'activo'),
 (4, '5c08a9dc2cb096.56391251', 'Las mejores ollas', 'S.A. de C.V.', 'ROPC830134A33', '5555555555', 0, 'default.jpg', 'abanico', '2018-12-12 23:07:24', '2018-12-22 16:43:44', 'tienda', 'activo'),
@@ -7170,7 +7218,8 @@ INSERT INTO `tiendas` (`ID_TIENDA`, `ID_USUARIO`, `TIENDA_NOMBRE`, `TIENDA_RAZON
 (8, '5c25209703a210.25306180', 'Ende y ende ', 'S.R de LC', 'CAS080808', '12345678', 14, 'default.jpg', 'abanico', '2018-12-27 19:01:26', '2019-01-08 23:22:54', 'tienda', 'activo'),
 (9, '5c4631142f4944.13186972', 'Bolsitas', 'Circe', 'Ropc', '5539674339', 23, 'tienda-5c4632aa58a64.jpg', 'abanico', '2019-01-21 20:59:22', '2019-01-21 20:59:22', 'tienda', 'activo'),
 (10, '5c468c5b493f02.45278461', 'mumama', 'persona fisica', 'diac680204', '5556043338', 26, 'tienda-5c468fec336e0.jpg', 'abanico', '2019-01-22 03:37:16', '2019-01-22 03:37:16', 'tienda', 'activo'),
-(11, '5c48a2a2a43ed3.21261698', 'Orizaba', 'S.A. DE C.V.', 'ORIZ480815', '5555555555', 29, 'default.jpg', 'abanico', '2019-01-23 17:26:30', '2019-01-23 17:26:30', 'tienda', 'activo');
+(11, '5c48a2a2a43ed3.21261698', 'Orizaba', 'S.A. DE C.V.', 'ORIZ480815', '5555555555', 29, 'default.jpg', 'abanico', '2019-01-23 17:26:30', '2019-01-23 17:26:30', 'tienda', 'activo'),
+(12, '5c48f4e7ce0708.70141183', 'Libros Infantiles', '', '', '22222222', 34, 'default.jpg', 'abanico', '2019-01-23 23:16:07', '2019-01-23 23:16:34', 'vendedor', 'activo');
 
 -- --------------------------------------------------------
 
@@ -7193,7 +7242,8 @@ CREATE TABLE `transportistas` (
 --
 
 INSERT INTO `transportistas` (`ID_TRANSPORTISTA`, `TRANSPORTISTA_NOMBRE`, `TRANSPORTISTA_DESCRIPCION`, `TRANSPORTISTA_LOGO`, `TRANSPORTISTA_TIEMPO_ENTREGA`, `TRANSPORTISTA_URL_RASTREO`, `TRANSPORTISTA_ESTADO`) VALUES
-(3, 'Abanico México', 'Abanico en Área Metropolitana', 'transportista-5c327ca22c8ef.jpg', '1 a 2 días hábiles', '', 'activo');
+(3, 'Abanico México', 'Abanico en Área Metropolitana', 'transportista-5c327ca22c8ef.jpg', '1 a 2 días hábiles', '', 'activo'),
+(9, 'Fedex', 'Fedex', 'default.jpg', '1 a 2 días hábiles', '', 'activo');
 
 -- --------------------------------------------------------
 
@@ -7303,7 +7353,39 @@ INSERT INTO `transportistas_disponibilidad` (`ID_TRANSPORTISTA`, `TRANSPORTISTA_
 (3, 'México', 'Tlaxcala'),
 (3, 'México', 'Veracruz'),
 (3, 'México', 'Yucatán'),
-(3, 'México', 'Zacatecas');
+(3, 'México', 'Zacatecas'),
+(9, 'México', 'Aguascalientes'),
+(9, 'México', 'Baja California'),
+(9, 'México', 'Baja California Sur'),
+(9, 'México', 'Campeche'),
+(9, 'México', 'Chiapas'),
+(9, 'México', 'Chihuahua'),
+(9, 'México', 'Ciudad de México'),
+(9, 'México', 'Coahuila'),
+(9, 'México', 'Colima'),
+(9, 'México', 'Durango'),
+(9, 'México', 'Estado de México'),
+(9, 'México', 'Guanajuato'),
+(9, 'México', 'Guerrero'),
+(9, 'México', 'Hidalgo'),
+(9, 'México', 'Jalisco'),
+(9, 'México', 'Michoacán'),
+(9, 'México', 'Morelos'),
+(9, 'México', 'Nayarit'),
+(9, 'México', 'Nuevo León'),
+(9, 'México', 'Oaxaca'),
+(9, 'México', 'Puebla'),
+(9, 'México', 'Querétaro'),
+(9, 'México', 'Quintana Roo'),
+(9, 'México', 'San Luis Potosí'),
+(9, 'México', 'Sinaloa'),
+(9, 'México', 'Sonora'),
+(9, 'México', 'Tabasco'),
+(9, 'México', 'Tamaulipas'),
+(9, 'México', 'Tlaxcala'),
+(9, 'México', 'Veracruz'),
+(9, 'México', 'Yucatán'),
+(9, 'México', 'Zacatecas');
 
 -- --------------------------------------------------------
 
@@ -7324,13 +7406,14 @@ CREATE TABLE `transportistas_rangos` (
 --
 
 INSERT INTO `transportistas_rangos` (`ID`, `ID_TRANSPORTISTA`, `PESO_MAX`, `IMPORTE_MIN`, `IMPORTE`) VALUES
-(8, 3, '1.00', '1.00', '156.00'),
-(9, 3, '2.00', '1.00', '164.00'),
-(10, 3, '3.00', '1.00', '171.00'),
-(11, 3, '4.00', '1.00', '178.00'),
-(12, 3, '5.00', '1.00', '185.00'),
-(13, 3, '6.00', '1.00', '192.00'),
-(14, 3, '50.00', '1.00', '250.00');
+(8, 3, '1.00', '1.00', '1.00'),
+(9, 3, '2.00', '1.00', '2.00'),
+(10, 3, '3.00', '1.00', '3.00'),
+(11, 3, '4.00', '1.00', '4.00'),
+(12, 3, '5.00', '1.00', '5.00'),
+(13, 3, '6.00', '1.00', '6.00'),
+(14, 3, '50.00', '1.00', '7.00'),
+(16, 9, '1.00', '100.00', '100.00');
 
 -- --------------------------------------------------------
 
@@ -7358,7 +7441,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID_USUARIO`, `USUARIO_NOMBRE`, `USUARIO_APELLIDOS`, `USUARIO_CORREO`, `USUARIO_TELEFONO`, `USUARIO_FECHA_NACIMIENTO`, `USUARIO_PASSWORD`, `USUARIO_FECHA_REGISTRO`, `USUARIO_FECHA_ACTUALIZACION`, `USUARIO_TIPO`, `USUARIO_LISTA_DE_CORREO`, `USUARIO_ESTADO`) VALUES
-('5c0653d43d92e7.75019474', 'Manuel', 'Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', '1989-04-18', '$2y$10$LXIw8Tq1BsAT3xaK6AQJBuA0l9Dxw/3qzMAbsRuzi4OQLoFQip3WS', '2018-12-04 17:15:48', '2019-01-02 20:30:12', 'adm-6', 'si', 'activo'),
+('5c0653d43d92e7.75019474', 'Manuel', 'Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335   ', '1989-04-18', '$2y$10$LXIw8Tq1BsAT3xaK6AQJBuA0l9Dxw/3qzMAbsRuzi4OQLoFQip3WS', '2018-12-04 17:15:48', '2019-01-29 20:02:47', 'adm-6', 'si', 'activo'),
 ('5c0839a2158e44.99631671', 'Franco', 'Martínez', 'stmarmo@hotmail.com', '26032335  ', '0000-00-00', '$2y$10$8DAj92eWNoKP7RQ5y74Ds.A71kKPjCMk7tYBZXGlKayG/CnJkCpw2', '2018-12-06 03:48:34', '2019-01-08 22:41:23', 'vnd-2', 'si', 'activo'),
 ('5c0864799aba54.31749554', 'TANIA', 'RODRIGUEZ', 'saenztania19@gmail.com', '(559) 194-5042', '0000-00-00', '$2y$10$cNIjKg5FVO8kZ.qWWMiEYu1ZYGEykVraUjMobNXCjENE/g1GUl6Vy', '2018-12-05 23:51:21', '2019-01-02 20:30:19', 'adm-6', 'si', 'activo'),
 ('5c08a9dc2cb096.56391251', 'JORGE', 'CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', '0000-00-00', '$2y$10$a0nvxJfzsdHyQp6A8GGKwOnqQW/YmRDOw3En0gtVPtzjQZlhC3nE6', '2018-12-06 04:47:24', '2019-01-02 20:30:24', 'adm-6', 'si', 'activo'),
@@ -7368,13 +7451,15 @@ INSERT INTO `usuarios` (`ID_USUARIO`, `USUARIO_NOMBRE`, `USUARIO_APELLIDOS`, `US
 ('5c251a8521d321.20926810', 'Beatriz', 'Buendía', 'bb@gmail.com', NULL, '0000-00-00', '$2y$10$eiVFTY6iznQ9yBrV5Nvn5uS7IcWd0rIe82gEil5V1SePx93cSraEy', '2018-12-27 18:31:33', '2018-12-27 18:31:33', 'usr-1', 'si', 'activo'),
 ('5c25209703a210.25306180', 'casiopea', 'ende', 'casiopea76@hotmail.com', NULL, '0000-00-00', '$2y$10$z4Y71tC689Osp7F08TmfHuW1hrRSLAHGAsngHRifprTaSjdfIj10u', '2018-12-27 18:57:27', '2019-01-08 23:22:54', 'vnd-2', 'si', 'activo'),
 ('5c2669552891b4.61655757', 'pedrito', 'q', 'correo7@prueba.com', NULL, '0000-00-00', '$2y$10$UJ/I13bBDVdEE6o99CUvu.POCiJ8xPKEYeCRSgkpQduh0ZiKOSk0O', '2018-12-28 18:20:05', '2018-12-28 18:20:05', 'usr-1', 'si', 'activo'),
-('5c2e93b02a6ee1.32959007', 'Andres', 'Ruelas', 'pixelbiff@gmail.com', NULL, '0000-00-00', '$2y$10$mNOgUy/odIeAKFj2nStNPe1IpV0QwN6KvWuszild2WkJfT9wtePum', '2019-01-03 22:58:56', '2019-01-03 22:58:56', 'usr-1', 'si', 'activo'),
+('5c2e93b02a6ee1.32959007', 'Andres', 'Ruelas', 'pixelbiff@gmail.com', NULL, '0000-00-00', '$2y$10$mNOgUy/odIeAKFj2nStNPe1IpV0QwN6KvWuszild2WkJfT9wtePum', '2019-01-03 22:58:56', '2019-01-23 22:18:02', 'ser-3', 'si', 'activo'),
 ('5c426854e19458.20500628', 'José Antonio', 'Pérez Martínez', 'tonotono_539@hotmail.com', '44444444', '0000-00-00', '$2y$10$7bEO50JQtFTa8FgVlHy/1OnrlTaaeCULOoei4ivEzUHYT1rCLIIEy', '2019-01-18 23:59:16', '2019-01-18 23:59:16', 'adm-6', 'si', 'activo'),
 ('5c4631142f4944.13186972', 'Circe', 'Rop', 'aurin_cs@hotmail.com', NULL, '0000-00-00', '$2y$10$l4qCbMum89MG9Pp8X3cDgO9s8zoObg5Rw6u82pLnsIbocO0wlBYVi', '2019-01-21 20:52:36', '2019-01-21 21:59:58', 'vns-4', 'si', 'activo'),
 ('5c468c5b493f02.45278461', 'Citlali', 'Diaz Aguilar', 'mujeresdemanosmagicas@gmail.com', NULL, '0000-00-00', '$2y$10$bFnKn4BS3Raddnf5Ynx2Ne/Ir/EgArSbck2DlHwGdJkmA7VYCVfce', '2019-01-22 03:22:03', '2019-01-22 03:37:16', 'vnd-2', 'si', 'activo'),
 ('5c4753da68d4b7.48707257', 'Irving Omar ', 'Téllez Vera', 'irom_tv@hotmail.com', ' 9991441579  ', '0000-00-00', '$2y$10$77Hv3.ofhhGo28Y1casBpuhzIqSjkXrmWqyuMJElpcUAR6Ae1ukHy', '2019-01-22 17:33:14', '2019-01-22 18:01:30', 'ser-3', 'si', 'activo'),
 ('5c489fa0131986.82562218', 'susana', 'patino', 'suspat53@hotmail.com', ' ', '0000-00-00', '$2y$10$SrrncCXAv9FDVDSUUEnEZeYiNINiMTRXl3koCOuRDlC34gx2qoidi', '2019-01-23 17:08:48', '2019-01-23 17:09:32', 'usr-1', 'si', 'activo'),
-('5c48a2a2a43ed3.21261698', 'LILIA', 'NAVARRETE', 'peropli@gmail.com', NULL, '0000-00-00', '$2y$10$1GaZBSJuSd0QZI0uGLIbm.UNAITr5xKnevjf2puOiBqZ4YExzDUwO', '2019-01-23 17:21:38', '2019-01-23 17:40:40', 'vns-4', 'si', 'activo');
+('5c48a2a2a43ed3.21261698', 'LILIA', 'NAVARRETE', 'peropli@gmail.com', NULL, '0000-00-00', '$2y$10$1GaZBSJuSd0QZI0uGLIbm.UNAITr5xKnevjf2puOiBqZ4YExzDUwO', '2019-01-23 17:21:38', '2019-01-23 17:40:40', 'vns-4', 'si', 'activo'),
+('5c48f4e7ce0708.70141183', 'Prueba 3', 'Prueba 3', 'prueba3@correo.com', NULL, '0000-00-00', '$2y$10$KFZ2kvyUGXPKUxIve9nAeeRrh9vtv0qWY7bUC7bG8Vc8.0I/YAaRa', '2019-01-23 23:12:39', '2019-01-23 23:29:15', 'vns-4', 'si', 'activo'),
+('5c491702c81909.78092638', 'Administrador', 'Test', 'admintest@correo.com', '', '0000-00-00', '$2y$10$G6q4OpILWVbaDrgkpkxBKOk0WcFBo776sw.TzcgtYF79BkWZGVRxG', '2019-01-24 01:38:10', '2019-01-24 01:38:10', 'adm-6', 'si', 'activo');
 
 -- --------------------------------------------------------
 
@@ -7420,6 +7505,23 @@ CREATE TABLE `vistas_generales` (
   `VISTA_TIPO` varchar(255) DEFAULT NULL,
   `VISTA_FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `vistas_generales`
+--
+
+INSERT INTO `vistas_generales` (`ID_VISTA`, `VISTA_IP`, `VISTA_CANTIDAD`, `ID_OBJETO`, `VISTA_TIPO`, `VISTA_FECHA`) VALUES
+(1, '201.103.244.22', '1', 27, 'producto', '2019-01-30 23:13:48'),
+(2, '201.103.244.22', '1', 27, 'producto', '2019-01-30 23:13:55'),
+(3, '201.103.244.22', '1', 27, 'producto', '2019-01-30 23:14:02'),
+(4, '201.103.244.22', '1', 27, 'producto', '2019-01-30 23:15:15'),
+(5, '201.103.244.22', '1', 27, 'producto', '2019-01-30 23:17:08'),
+(6, '201.103.244.22', '1', 2, 'producto', '2019-01-30 23:17:26'),
+(7, '201.103.244.22', '1', 2, 'producto', '2019-01-30 23:17:36'),
+(8, '201.103.244.22', '1', 22, 'producto', '2019-01-30 23:26:13'),
+(9, '201.103.244.22', '1', 18, 'producto', '2019-01-31 00:11:40'),
+(10, '201.103.244.22', '1', 27, 'producto', '2019-01-31 00:11:47'),
+(11, '201.103.244.22', '1', 17, 'producto', '2019-01-31 00:11:51');
 
 -- --------------------------------------------------------
 
@@ -7785,7 +7887,7 @@ ALTER TABLE `vistas_usuarios`
 -- AUTO_INCREMENT de la tabla `adjuntos_usuarios`
 --
 ALTER TABLE `adjuntos_usuarios`
-  MODIFY `ID_ADJUNTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_ADJUNTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `calificaciones_productos`
 --
@@ -7795,7 +7897,7 @@ ALTER TABLE `calificaciones_productos`
 -- AUTO_INCREMENT de la tabla `calificaciones_servicios`
 --
 ALTER TABLE `calificaciones_servicios`
-  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
@@ -7805,7 +7907,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `categorias_productos`
 --
 ALTER TABLE `categorias_productos`
-  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT de la tabla `categorias_publicaciones`
 --
@@ -7815,32 +7917,32 @@ ALTER TABLE `categorias_publicaciones`
 -- AUTO_INCREMENT de la tabla `categorias_servicios`
 --
 ALTER TABLE `categorias_servicios`
-  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `conversaciones`
 --
 ALTER TABLE `conversaciones`
-  MODIFY `ID_CONVERSACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID_CONVERSACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `conversaciones_mensajes`
 --
 ALTER TABLE `conversaciones_mensajes`
-  MODIFY `ID_MENSAJE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID_MENSAJE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `devoluciones`
 --
 ALTER TABLE `devoluciones`
-  MODIFY `ID_DEVOLUCION` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_DEVOLUCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `direcciones`
 --
 ALTER TABLE `direcciones`
-  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT de la tabla `divisas`
 --
 ALTER TABLE `divisas`
-  MODIFY `ID_DIVISA` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_DIVISA` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `estados`
 --
@@ -7855,12 +7957,12 @@ ALTER TABLE `favoritos`
 -- AUTO_INCREMENT de la tabla `galeria_productos`
 --
 ALTER TABLE `galeria_productos`
-  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT de la tabla `galeria_servicios`
 --
 ALTER TABLE `galeria_servicios`
-  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `lenguajes`
 --
@@ -7900,7 +8002,7 @@ ALTER TABLE `opciones`
 -- AUTO_INCREMENT de la tabla `pagos_pedidos`
 --
 ALTER TABLE `pagos_pedidos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `paises`
 --
@@ -7910,22 +8012,22 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_productos`
 --
 ALTER TABLE `pedidos_productos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_tiendas`
 --
 ALTER TABLE `pedidos_tiendas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT de la tabla `perfiles_servicios`
 --
 ALTER TABLE `perfiles_servicios`
-  MODIFY `ID_PERFIL` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_PERFIL` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `preguntas_frecuentes`
 --
@@ -7935,7 +8037,7 @@ ALTER TABLE `preguntas_frecuentes`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `ID_PRODUCTO` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ID_PRODUCTO` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `productos_combinaciones`
 --
@@ -7965,7 +8067,7 @@ ALTER TABLE `publicaciones`
 -- AUTO_INCREMENT de la tabla `puntos_registro`
 --
 ALTER TABLE `puntos_registro`
-  MODIFY `ID_PUNTO` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_PUNTO` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `registro_sesiones`
 --
@@ -8000,7 +8102,7 @@ ALTER TABLE `seguridad_usuarios`
 -- AUTO_INCREMENT de la tabla `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `ID_SERVICIO` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID_SERVICIO` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `sliders`
 --
@@ -8020,17 +8122,17 @@ ALTER TABLE `solicitudes_pago`
 -- AUTO_INCREMENT de la tabla `tiendas`
 --
 ALTER TABLE `tiendas`
-  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `transportistas`
 --
 ALTER TABLE `transportistas`
-  MODIFY `ID_TRANSPORTISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_TRANSPORTISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `transportistas_rangos`
 --
 ALTER TABLE `transportistas_rangos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `variaciones_mayoreo`
 --
@@ -8045,7 +8147,7 @@ ALTER TABLE `variaciones_simples_productos`
 -- AUTO_INCREMENT de la tabla `vistas_generales`
 --
 ALTER TABLE `vistas_generales`
-  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `vistas_usuarios`
 --
