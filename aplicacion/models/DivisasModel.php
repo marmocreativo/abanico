@@ -28,7 +28,10 @@ class DivisasModel extends CI_Model {
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    return $this->db->get_where('divisas',array('DIVISA_ISO'=>$id))->row_array();
+    return $this->db->get_where('divisas',array('ID_DIVISA'=>$id))->row_array();
+  }
+  function detalles_iso($iso){
+    return $this->db->get_where('divisas',array('DIVISA_ISO'=>$iso))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros

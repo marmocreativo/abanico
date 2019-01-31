@@ -39,16 +39,16 @@
                 <td class="text-center"><?php echo $pais->PAIS_ISO; ?></td>
                 <td class="text-center">
                   <?php if($pais->PAIS_ESTADO=='activo'){ ?>
-                    <a href="<?php echo base_url('admin/paises/activar')."?id=".$pais->ID_PAIS."&estado=".$pais->PAIS_ESTADO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
+                    <a href="<?php echo base_url('admin/paises/activar')."?id=".$pais->ID_PAIS."&estado=".$pais->PAIS_ESTADO; ?>" class="btn btn-sm btn-outline-success" title="Desactivar Pais"> <span class="fa fa-check-circle"></span> </a>
                   <?php }else{ ?>
-                    <a href="<?php echo base_url('admin/paises/activar')."?id=".$pais->ID_PAIS."&estado=".$pais->PAIS_ESTADO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
+                    <a href="<?php echo base_url('admin/paises/activar')."?id=".$pais->ID_PAIS."&estado=".$pais->PAIS_ESTADO; ?>" class="btn btn-sm btn-outline-danger" title="Activar Pais"> <span class="fa fa-times-circle"></span> </a>
                   <?php } ?>
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="<?php echo base_url('admin/estados')."?pais=".$pais->ID_PAIS; ?>" class="btn btn-sm btn-success"> <span class="fa fa-globe-americas"></span> Estados</a>
-                    <a href="<?php echo base_url('admin/paises/actualizar')."?id=".$pais->ID_PAIS; ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
-                    <a href="<?php echo base_url('admin/paises/borrar')."?id=".$pais->ID_PAIS; ?>" class="btn btn-sm btn-danger"><span class="fa fa-trash-alt"></span></a>
+                    <a href="<?php echo base_url('admin/estados')."?pais=".$pais->ID_PAIS; ?>" class="btn btn-sm btn-success" title="Ver Estados"> <span class="fa fa-globe-americas"></span> Estados</a>
+                    <a href="<?php echo base_url('admin/paises/actualizar')."?id=".$pais->ID_PAIS; ?>" class="btn btn-sm btn-warning" title="Editar Pais"> <span class="fa fa-pencil-alt"></span> </a>
+                    <a href="<?php echo base_url('admin/paises/borrar')."?id=".$pais->ID_PAIS; ?>" class="btn btn-sm btn-danger" title="Borrar Pais"><span class="fa fa-trash-alt"></span></a>
                   </div>
                 </td>
               </tr>

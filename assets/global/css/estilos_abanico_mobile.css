@@ -276,7 +276,7 @@ html, body{
   position: relative;
   display: block;
   width: 100%;
-  height: 180px;
+  /*height: 180px;*/
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   background-color: white;
 }
@@ -513,7 +513,8 @@ html, body{
 .vistaProductos .spanImg{
   display: block;
   position: relative;
-  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .vistaProductos .btnFavorito{
@@ -677,6 +678,7 @@ html, body{
 }
 
 
+
 /*
 | -------------------------------------------------------------------------
 | ESTILOS BODY
@@ -769,192 +771,13 @@ html, body{
   font-weight: 200;
   color: orange;
 }
-/*
-| -------------------------------------------------------------------------
-| ESTILOS BODY INDEX
-| -------------------------------------------------------------------------
-*/
-/* .cuadricula-productos{
-  background-color: #fff;
-  display: block;
-  width: 100%;
-  bottom: 0;
-}
-.cuadricula-productos,
-.cuadricula-productos .imagen-producto{
-  position:relative
-}
-
-.cuadricula-productos .imagen-producto{
-  height: 180px;
-  display: block;
-}
-
-.cuadricula-productos .imagen-producto .spanImg{
-  height: 100%;
-}
-
-.cuadricula-productos .imagen-producto span{
-  display:block;
-  width:100%;
-  max-width: 600px;
-  background-color: #fff;
-   background-size: contain;
-   background-position: center;
-   background-repeat: no-repeat;
-}
-.cuadricula-productos .product-content{padding:12px;overflow:hidden;position:relative}
-.cuadricula-productos .contenedor-etiquetas{
-  display: block;
-  width: 30%;
-  position: absolute;
-  right: 0;
-  top: 10px;
-}
-.cuadricula-productos a .etiqueta-1, .cuadricula-productos a .etiqueta-2, .cuadricula-productos a .etiqueta-3{
-  display:block;padding:4px 15px 4px 20px;
-  text-align: right;
-  margin-bottom: 5px;
-  font-size: 0.8em;
-  color:#fff;
-  -webkit-clip-path:polygon(10% 0,100% 0,100% 100%,0 100%);
-  clip-path:polygon(10% 0,100% 0,100% 100%,0 100%)
-}
-.cuadricula-productos a .etiqueta-1{
-  background-color: #28a745;
-}
-.cuadricula-productos a .etiqueta-3{
-  background-color: #dc3545;
-}
-.cuadricula-productos .imagen-producto .overlay-producto{
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: red;
-  opacity: 0;
-  transition: all ease 500ms;
-}
-.cuadricula-productos .imagen-producto .overlay-producto .overlay-producto-in{
-  width: 80%;
-  height: 80%;
-  border: solid 1px white;
-  margin: 12.5% 9.8%;
-}
-.cuadricula-productos .imagen-producto:hover .overlay-producto{
-  opacity: 0.8;
-}
-.cuadricula-productos .imagen-producto .boton-ver{
-  display: block;
-  position: absolute;
-  top: 40%;
-  left: 25%;
-  padding:5px;
-  text-align: center;
-  font-size: 1.3em;
-  width: 50%;
-  height: 25%;
-  max-height: 50px;
-  opacity: 0;
-}
-.cuadricula-productos .imagen-producto:hover .boton-ver{
-  opacity: 1;
-}
-.cuadricula-productos .imagen-producto .boton-ver .botones-flotantes{
-  display: block;
-  float: left;
-  padding:1%;
-  margin:1%;
-  text-align: center;
-  font-size: 1.3em;
-  width: 48%;
-  height: 100%;
-  max-height: 50px;
-  background-color: transparent;
-  color:#fff;
-  padding-bottom: 5%;
-}
-.cuadricula-productos .imagen-producto .boton-ver .botones-flotantes span{
-  padding: 10%;
-  margin: 0;
-  background-color: transparent;
-}
-.product-content .rating{padding:0;margin:0 0 7px;list-style:none}
-.cuadricula-productos .rating li{font-size:12px;color:#ffd200;transition:all .3s ease 0s}
-.cuadricula-productos .rating li.disable{color:rgba(0,0,0,.2)}
-.cuadricula-productos .title{font-size:16px;font-weight:400;text-transform:capitalize;margin:0 0 3px;transition:all .3s ease 0s}
-.cuadricula-productos .title a{color:rgba(0,0,0,.5)}
-.cuadricula-productos .title a:hover{color:#c0392b}
-.cuadricula-productos .price{color:#6c757d;font-size:20px;font-weight: bold;margin:0;display:block;transition:all .5s ease 0s}
-.cuadricula-productos .price-list{color:#6c757d;font-size:14px; text-decoration: line-through; margin:0;display:block;transition:all .5s ease 0s}
-.cuadricula-productos .add-to-cart{display:block;color:#c0392b;font-weight:600;font-size:14px;opacity:0;position:absolute;left:10px;bottom:-20px;transition:all .5s ease 0s}
-.cuadricula-productos:hover .add-to-cart{opacity:1;bottom:0}
-@media only screen and (max-width:990px){ .cuadricula-productos{margin-bottom:30px} }
-
-.flexslider{
-  background-color: transparent;
-  border:none;
-} */
 
 /*
 | -------------------------------------------------------------------------
-| ESTILOS SERVICIOS
+| ESTILOS de breadcrumb
 | -------------------------------------------------------------------------
 */
-/* .enlace-principal-servicio{
-  display: block;
-  padding: 20px;
-}
-.portada-servicios {
-  display:block;
-  width:100%;
-  max-width: 600px;
-  background-color: red;
-   padding-top: 100%;
-   background-size: cover;
-   background-position: center;
-   background-repeat: no-repeat;
-}
-
-.store-body {
-  display: flex;
-  flex-direction: row;
-  padding: 0;
-}
-
-.store-body .product-info {
-  width: 60%;
-  border-right: 1px solid rgba(0,0,0,.125);
-}
-
-.store-body .product-payment-details {
-  width: 40%;
-  padding: 15px 15px 0 15px;
-}
-
-.product-info .product-gallery {
-  display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid rgba(0,0,0,.125);
-}
-
-.product-gallery-featured {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  cursor: zoom-in;
-}
-
-.product-gallery-thumbnails .thumbnails-list li {
-  margin-bottom: 5px;
-  cursor: pointer;
-  position: relative;
-  width: 70px;
-  height: 70px;
-}
-
+/*
 .thumbnails-list li img {
   display: block;
   width: 100%;
@@ -975,17 +798,13 @@ html, body{
   color: #444;
   text-decoration: line-through;
 }*/
+.product-price-descuento{
+  text-decoration: line-through;
+}
 .breadcrumb {
   padding: 0;
   background-color: transparent;
 }
-
-/*
-| -------------------------------------------------------------------------
-| ESTILOS de FILTROS
-| -------------------------------------------------------------------------
-*/
-
 
 /*
 | -------------------------------------------------------------------------
@@ -1004,6 +823,19 @@ html, body{
 /* .formMobile label.form-check-label{
   font-size: .875rem;
 } */
+
+ .custom-file.file-sm label{
+    font-size: .875rem;
+    height: 31px;
+    padding: 0.25rem 0.5rem;
+ }
+
+ .file-sm .custom-file-label::after {
+    font-size: .875rem;
+    height: 29px;
+    padding: 0.25rem 0.5rem;
+ }
+
 
 
 /*

@@ -59,7 +59,7 @@
           <div class="opciones d-flex">
             <div class="btn-group btn-sm">
               <?php if(isset($_GET['id_usuario'])){ ?>
-              <a href="<?php echo base_url('admin/productos/crear?id_usuario='.$_GET['id_usuario']); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span> Nuevo Producto </a>
+              <a href="<?php echo base_url('admin/productos/crear?id_usuario='.$_GET['id_usuario']); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span> Agregar Producto </a>
               <?php } ?>
             </div>
 

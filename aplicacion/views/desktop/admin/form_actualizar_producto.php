@@ -198,7 +198,7 @@
                                                   name="CategoriaProducto" class="custom-control-input"
                                                   value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                                                   <?php if($relacion_categorias['ID_CATEGORIA']==$tercera_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
-                                                  required
+                                                  
                                                   >
                                           <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
                                         </div>
@@ -223,12 +223,21 @@
                         <textarea id="DetallesProducto" name="DetallesProducto" class="form-control Editor" rows="5"><?php echo $producto['PRODUCTO_DETALLES']; ?></textarea>
                       </div>
                       <div class="row">
-                        <div class="col-4">
+                        <div class="col-6">
                           <div class="form-group">
                             <label for="OrigenProducto">Origen</label>
                             <select class="form-control form-control-sm" name="OrigenProducto" id="OrigenProducto">
                               <option value="México" <?php if($producto['PRODUCTO_ORIGEN']=='México'){ echo 'selected';} ?>>México</option>
                               <option value="Otro" <?php if($producto['PRODUCTO_ORIGEN']=='Otro'){ echo 'selected';} ?>>Otro</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label for="CondicionProducto">Condición</label>
+                            <select class="form-control form-control-sm" name="CondicionProducto" id="CondicionProducto">
+                              <option value="nuevo" <?php if($producto['PRODUCTO_CONDICION']=='nuevo'){ echo 'selected';} ?>>Nuevo</option>
+                              <option value="usado" <?php if($producto['PRODUCTO_CONDICION']=='usuado'){ echo 'selected';} ?>>Usuado</option>
                             </select>
                           </div>
                         </div>

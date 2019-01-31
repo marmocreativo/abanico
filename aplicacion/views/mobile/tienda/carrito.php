@@ -64,7 +64,7 @@
             </div>
           </div>
         </div>
-        <div class="card-footer px-1 text-center">
+        <div class="card-footer justify-content-between">
           <a href="" class="btn btn-sm btn-outline-primary"><i class="fa fa-chevron-left"></i> Volver a la tienda</a>
           <a href="" class="btn btn-sm btn-success">Continuar <i class="fa fa-chevron-right"></i></a>
         </div>

@@ -42,9 +42,9 @@
               <td class="text-center"><?php echo $divisa->DIVISA_CONVERSION; ?></td>
               <td class="text-center">
                 <?php if($divisa->DIVISA_ESTADO=='activo'){ ?>
-                  <a href="<?php echo base_url('admin/divisas/activar')."?id=".$divisa->ID_DIVISA."&estado=".$divisa->DIVISA_ESTADO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
+                  <a href="<?php echo base_url('admin/divisas/activar')."?id=".$divisa->ID_DIVISA."&estado=".$divisa->DIVISA_ESTADO; ?>" class="btn btn-sm btn-outline-success" title="Activar Divisa"> <span class="fa fa-check-circle"></span> </a>
                 <?php }else{ ?>
-                  <a href="<?php echo base_url('admin/divisas/activar')."?id=".$divisa->ID_DIVISA."&estado=".$divisa->DIVISA_ESTADO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
+                  <a href="<?php echo base_url('admin/divisas/activar')."?id=".$divisa->ID_DIVISA."&estado=".$divisa->DIVISA_ESTADO; ?>" class="btn btn-sm btn-outline-danger" title="Desactivar Divisa"> <span class="fa fa-times-circle"></span> </a>
                 <?php } ?>
               </td>
               <td class="text-right">

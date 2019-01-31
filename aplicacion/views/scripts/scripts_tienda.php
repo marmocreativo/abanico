@@ -55,6 +55,42 @@ jQuery('#BotonComprar').on('click',function(e){
      }
   });
 });
+// Compra rápida
+jQuery('#BotonCompraRapida').on('click',function(e){
+  // Leo las variables del botón
+  var id_producto = jQuery(this).data('id-producto');
+  var nombre_producto = jQuery(this).data('nombre-producto');
+  var imagen_producto = jQuery(this).data('imagen-producto');
+  var peso_producto = jQuery(this).data('peso-producto');
+  var detalles_producto = jQuery(this).data('detalles-producto');
+  var cantidad_producto = jQuery('#CantidadProducto').val();
+  var precio_producto = jQuery(this).data('precio-producto');
+  var id_tienda = jQuery(this).data('id-tienda');
+  var nombre_tienda = jQuery(this).data('nombre-tienda');
+
+  // Envio la información por ajax
+  jQuery.ajax({
+    method: "POST",
+    url: "<?php echo base_url('ajax/carrito/cargar'); ?>",
+    dataType: "text",
+    data: {
+      IdProducto: id_producto,
+      NombreProducto: nombre_producto,
+      ImagenProducto: imagen_producto,
+      PesoProducto: peso_producto,
+      DetallesProducto: detalles_producto,
+      CantidadProducto: cantidad_producto,
+      PrecioProducto: precio_producto,
+      IdTienda: id_tienda,
+      NombreTienda: nombre_tienda
+    },
+    success : function(texto)
+     {
+        jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+        window.location.href = "<?php echo base_url('compra_rapida'); ?>";
+     }
+  });
+});
 // Boton Incrementar
 jQuery('.CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
   // Leo las variables del botón
@@ -95,6 +131,18 @@ jQuery('.CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
     },
     success : function(texto)
      {
+       jQuery.ajax({
+         method: "GET",
+         url: "<?php echo base_url('ajax/carrito/cantidad_productos_carrito'); ?>",
+         dataType: "text",
+         success : function(cantidad_productos_carrito)
+          {
+             if(cantidad_productos_carrito==0){
+               jQuery('#BotonComprarAhora').addClass('disabled');
+               jQuery('#BotonComprarAhora').attr('aria-disabled','true');
+             }
+          }
+       });
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
      }
   });
@@ -118,6 +166,18 @@ jQuery('.CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
     },
     success : function(texto)
      {
+       jQuery.ajax({
+         method: "GET",
+         url: "<?php echo base_url('ajax/carrito/cantidad_productos_carrito'); ?>",
+         dataType: "text",
+         success : function(cantidad_productos_carrito)
+          {
+             if(cantidad_productos_carrito==0){
+               jQuery('#BotonComprarAhora').addClass('disabled');
+               jQuery('#BotonComprarAhora').attr('aria-disabled','true');
+             }
+          }
+       });
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
         jQuery('#ModalCarrito').modal();
      }
@@ -139,6 +199,18 @@ jQuery('.CargarCarrito').on('click', '.boton-eliminar-carrito', function() {
     },
     success : function(texto)
      {
+       jQuery.ajax({
+         method: "GET",
+         url: "<?php echo base_url('ajax/carrito/cantidad_productos_carrito'); ?>",
+         dataType: "text",
+         success : function(cantidad_productos_carrito)
+          {
+             if(cantidad_productos_carrito==0){
+               jQuery('#BotonComprarAhora').addClass('disabled');
+               jQuery('#BotonComprarAhora').attr('aria-disabled','true');
+             }
+          }
+       });
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
         jQuery('#ModalCarrito').modal();
      }
@@ -220,13 +292,13 @@ GALERIA
   Calificación Estrellas
   -----------------
   */
- jQuery(function() {
+  jQuery(function() {
    jQuery('.estrellas').starrr({
      emptyClass: 'far fa-star',
     change: function(e, value){
       jQuery('#EstrellasCalificacion').val(value)
-   }
-});
+     }
+   });
   });
 
    // CARRITO
@@ -236,7 +308,7 @@ Slider Productos
  -----------------
  */
  	jQuery( document ).ready(function( $ ) {
- 		$( '#my-slider' ).sliderPro({
+ 		jQuery( '#my-slider' ).sliderPro({
       thumbnailsPosition: 'right',
       thumbnailPointer: true,
       buttons: false,

@@ -37,7 +37,7 @@ class Tienda_Categoria_Servicios extends CI_Controller {
 	 public function index()
  	{
 		if(isset($_GET['slug'])&&!empty($_GET['slug'])){
-			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 			$this->data['categoria'] = $this->CategoriasModel->detalles_slug($_GET['slug']);
 			$this->data['servicios'] = $this->ServiciosModel->lista_categoria_activos('',$this->data['categoria']['ID_CATEGORIA'],'','');
@@ -46,7 +46,7 @@ class Tienda_Categoria_Servicios extends CI_Controller {
 	 		$this->load->view($this->data['dispositivo'].'/tienda/categoria_servicios',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 		}else{
-			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 			$this->data['servicios'] = $this->ServiciosModel->lista_activos('','','','');
 	 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);

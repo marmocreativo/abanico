@@ -12,7 +12,7 @@ class Usuario_Tiendas extends CI_Controller {
 			$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo']  = "desktop";
+			$this->data['dispositivo']  = "mobile";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
@@ -220,7 +220,7 @@ class Usuario_Tiendas extends CI_Controller {
 					$perfil = $this->PerfilServiciosModel->perfil_usuario($usuario['ID_USUARIO']);
 					$permiso = $usuario['USUARIO_TIPO'];
 
-					if($usuario['USUARIO_TIPO']!='tec-5'||$usuario['USUARIO_TIPO']!='adm-6'){
+					if($usuario['USUARIO_TIPO']!='tec-5'&&$usuario['USUARIO_TIPO']!='adm-6'){
 					 if(!null == $tienda){
 						 $permiso = 'vnd-2';
 					 }

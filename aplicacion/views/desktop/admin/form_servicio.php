@@ -53,6 +53,7 @@
                          <p class="text-muted"> <i class="fa fa-info-circle"></i> Los Servicios a distancia, son los que se pueden ejercer a traves de internet.</p>
                        </div>
                      </div>
+                     <hr>
                      <h6> <i class="fa fa-map-marker"></i> ¿En dónde ofreces tu servicio?</h6>
                      <div class="row">
                        <div class="col">
@@ -77,6 +78,12 @@
                            <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" required>
                              <option value="">Selecciona tu Municipio / Alcaldía</option>
                            </select>
+                         </div>
+                       </div>
+                       <div class="col-12">
+                         <div class="form-group">
+                           <label for="ZonaTrabajoServicio">Zona de Trabajo <small>Colonias o Barrios donde puedas ofrecer tus servicios</small></label>
+                           <textarea name="ZonaTrabajoServicio" class="form-control" rows="6"></textarea>
                          </div>
                        </div>
                      </div>
@@ -109,7 +116,7 @@
                                                 id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
                                                 name="CategoriaServicio" class="custom-control-input"
                                                 value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
-                                                required
+                                                
                                                 >
                                         <label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
                                       </div>
@@ -122,7 +129,7 @@
                                                     id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                                                     name="CategoriaServicio" class="custom-control-input"
                                                     value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                                    required
+                                                    
                                                     >
                                             <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
                                           </div>

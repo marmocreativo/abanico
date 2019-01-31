@@ -92,7 +92,7 @@
                        <textarea name="ReferenciasDireccion" class="form-control" rows="3"><?php echo $direccion['DIRECCION_REFERENCIAS']; ?></textarea>
                      </div>
                      <hr>
-                     <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Actualizar Direeción</button>
+                     <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Actualizar Dirección</button>
                   </div>
                 </div>
               </form>

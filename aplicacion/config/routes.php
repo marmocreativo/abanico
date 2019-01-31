@@ -114,6 +114,7 @@ $route['invitado_pago_3_banco'] = 'Proceso_Pago/invitado_paso3_banco';
 $route['invitado_pago_3'] = 'Proceso_Pago/invitado_paso3';
 $route['invitado_pago_2'] = 'Proceso_Pago/invitado_paso2';
 // Pago Normal
+$route['compra_rapida'] = 'Proceso_Pago/compra_rapida';
 $route['proceso_pago_4'] = 'Proceso_Pago/paso4';
 $route['proceso_pago_3_banco'] = 'Proceso_Pago/paso3_banco';
 $route['proceso_pago_3'] = 'Proceso_Pago/paso3';

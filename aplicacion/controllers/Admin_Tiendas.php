@@ -28,6 +28,7 @@ class Admin_Tiendas extends CI_Controller {
 		$this->load->model('TiendasModel');
 		$this->load->model('PerfilServiciosModel');
 		$this->load->model('DireccionesModel');
+		$this->load->model('EstadisticasModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){

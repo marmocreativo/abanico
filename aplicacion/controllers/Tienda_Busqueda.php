@@ -58,12 +58,6 @@ class Tienda_Busqueda extends CI_Controller {
 						case 'alfabetico_asc':
 					 		$orden = 'PRODUCTO_NOMBRE ASC';
 					 		break;
-						case 'fecha_desc':
-					 		$orden = 'PRODUCTO_FECHA_PUBLICACION DESC';
-					 		break;
-						case 'fecha_asc':
-					 		$orden = 'PRODUCTO_FECHA_PUBLICACION ASC';
-					 		break;
 					 	default:
 					 		$orden = 'PRODUCTO_NOMBRE ASC';
 					 		break;
@@ -71,26 +65,38 @@ class Tienda_Busqueda extends CI_Controller {
 				 }else{
 					 $orden = '';
 				 }
-				 // OrigenBusqueda
-				 if(isset($_GET['OrigenBusqueda'])){
-					 $parametros_and['PRODUCTO_ORIGEN'] = 'México';
+				 // Origen
+				 if(isset($_GET['OrigenBusqueda'])&&!empty($_GET['OrigenBusqueda'])){
+					 switch ($_GET['OrigenBusqueda']) {
+					 	case 'cualquiera':
+						// NO hago nada
+					 		break;
+						case 'nacionales':
+					 		$parametros_and['PRODUCTO_ORIGEN'] = 'México';
+					 		break;
+						case 'Importados':
+					 		$parametros_and['PRODUCTO_ORIGEN'] = 'Otro';
+					 		break;
+					 	default:
+					 		// NO hago nada
+					 		break;
+					 }
+				 }else{
+					 $orden = '';
 				 }
-				 // TiempoBusqueda
-				//if(isset($_GET['TiempoBusqueda'])){
-				//	$parametros_or['PRODUCTO_FECHA_PUBLICACION >='] = strtotime('-'.$op['dias_productos_nuevos'].' Days');
-				//}
 				// OfertaBusqueda
 			 if(isset($_GET['OfertaBusqueda'])){
-				 $parametros_and['PRODUCTO_PRECIO_LISTA !='] = '0.00';
+				 $parametros_and['PRODUCTO_PRECIO_LISTA >'] = 0;
 			 }
 
 
-			 	$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
- 				$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
-				 $this->data['productos'] = $this->ProductosModel->busqueda($parametros_or,$parametros_and,$orden,'');
-				 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
-				 $this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);
-				 $this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
+			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+			$this->data['productos'] = $this->ProductosModel->busqueda($parametros_or,$parametros_and,$orden,'');
+			$this->data['origen_formulario'] = 'busqueda';
+			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 
 	 		break;
 
@@ -100,31 +106,18 @@ class Tienda_Busqueda extends CI_Controller {
 				 $parametros_or = array(
 					 'SERVICIO_NOMBRE'=>$_GET['Busqueda'],
 				 );
-				 $parametros_or['PRODUCTO_NOMBRE'] = $_GET['Busqueda'];
-				 $parametros_or['PRODUCTO_MODELO'] = $_GET['Busqueda'];
+				 $parametros_or['SERVICIO_NOMBRE'] = $_GET['Busqueda'];
 				 // Orden
 				 if(isset($_GET['OrdenBusqueda'])&&!empty($_GET['OrdenBusqueda'])){
 					 switch ($_GET['OrdenBusqueda']) {
-					 	case 'precio_desc':
-					 		$orden = 'PRODUCTO_PRECIO DESC';
-					 		break;
-						case 'precio_asc':
-					 		$orden = 'PRODUCTO_PRECIO ASC';
-					 		break;
 						case 'alfabetico_desc':
-					 		$orden = 'PRODUCTO_NOMBRE DESC';
+					 		$orden = 'SERVICIO_NOMBRE DESC';
 					 		break;
 						case 'alfabetico_asc':
-					 		$orden = 'PRODUCTO_NOMBRE ASC';
-					 		break;
-						case 'fecha_desc':
-					 		$orden = 'PRODUCTO_FECHA_PUBLICACION DESC';
-					 		break;
-						case 'fecha_asc':
-					 		$orden = 'PRODUCTO_FECHA_PUBLICACION ASC';
+					 		$orden = 'SERVICIO_NOMBRE ASC';
 					 		break;
 					 	default:
-					 		$orden = 'PRODUCTO_NOMBRE ASC';
+					 		$orden = 'SERVICIO_NOMBRE ASC';
 					 		break;
 					 }
 				 }else{

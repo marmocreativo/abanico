@@ -86,6 +86,12 @@
                                  </select>
                                </div>
                              </div>
+                             <div class="col-12">
+                               <div class="form-group">
+                                 <label for="ZonaTrabajoServicio">Zona de Trabajo <small>Colonias o Barrios donde puedas ofrecer tus servicios</small></label>
+                                 <textarea name="ZonaTrabajoServicio" class="form-control" rows="6"><?php echo $servicio['SERVICIO_ZONA_TRABAJO']; ?></textarea>
+                               </div>
+                             </div>
                            </div>
                         </div>
                       </div>
@@ -125,7 +131,7 @@
                                                           name="CategoriaServicio" class="custom-control-input"
                                                           value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                                                           <?php if($relacion_categorias['ID_CATEGORIA']==$tercera_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
-                                                          required
+                                                          
                                                           >
                                                   <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
                                                 </div>

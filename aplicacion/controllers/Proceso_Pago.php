@@ -423,4 +423,26 @@ class Proceso_Pago extends CI_Controller {
 		$this->load->view($this->data['dispositivo'].'/tienda/invitado_pago_4',$this->data);
 		$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 	}
+	public function compra_rapida()
+	{
+		if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			if(empty($_SESSION['carrito']['productos'])){
+				redirect(base_url('carrito'));
+			}
+			// Limpio la sesión del pedido
+			$_SESSION['pedido'] = array();
+			// Continúo con la carga normal
+			$this->data['usuario'] = $this->UsuariosModel->detalles($_SESSION['usuario']['id']);
+			$direccion = $this->DireccionesModel->direccion_rapida($_SESSION['usuario']['id']);
+			$this->data['detalles_direccion'] = $this->DireccionesModel->detalles($direccion['ID_DIRECCION']);
+			$this->data['direccion'] = $this->DireccionesModel->direccion_formateada($direccion['ID_DIRECCION']);
+
+			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_3',$this->data);
+			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+
+		}else{
+			redirect(base_url('proceso_pago_1'));
+		}
+	}
 }

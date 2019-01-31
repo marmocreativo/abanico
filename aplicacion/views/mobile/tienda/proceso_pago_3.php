@@ -49,41 +49,52 @@
           <hr>
 
           <?php for($i=0; $i<=1; $i++){ ?>
-          <div class="card-body bxCompra p-3 py-4 carritoCompras">
-            <div class="row">
-               <div class="col-5">
-                 <div class="bxImg mb-2">
-                   <a href="#">
-                     <img class="spanImg" src="https://picsum.photos/100/100/?random"></img>
-                   </a>
-                 </div>
-                 <p><strong>Cantidad</strong></p>
-                 <p>1</p>
-               </div>
-               <div class="col">
-                 <div class="mb-3">
-                   <p><strong>Producto</strong></p>
-                   <p>Libro lorem ipsum</p>
-                   <p>Vendido por:<br><a href="" class="text-primary">TIENDA DE MARTHA</a></p>
-                   <p><small>1.00kg</small></p>
-                 </div>
-                 <div class="row">
-                   <div class="col">
-                     <p><strong>Precio</strong></p>
-                     <small>$</small>500.00 <small>MXN</small>
-                     <p><strong>Total</strong></p>
-                     <small>$</small>500.00 <small>MXN</small>
-                   </div>
-                 </div>
-               </div>
+          <div class="bg-gradient-primary">
+            <div class="card-body bxCompra p-3 py-4 carritoCompras">
+              <div class="row">
+                <div class="col-5">
+                  <div class="bxImg mb-2">
+                    <a href="#">
+                      <img class="spanImg" src="https://picsum.photos/100/100/?random"></img>
+                    </a>
+                  </div>
+                  <p><strong>Cantidad</strong></p>
+                  <p>1</p>
+                </div>
+                <div class="col">
+                  <div class="mb-3">
+                    <p><strong>Producto</strong></p>
+                    <p>Libro lorem ipsum</p>
+                    <p>Vendido por:<br><a href="" class="text-primary">TIENDA DE MARTHA</a></p>
+                    <p><small>1.00kg</small></p>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <p><strong>Precio</strong></p>
+                      <small>$</small>500.00 <small>MXN</small>
+                      <p><strong>Total</strong></p>
+                      <small>$</small>500.00 <small>MXN</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <hr>
           <?php } ?>
 
+          <div class="card-body text-center">
+            <p>Envio de productos de Espejo Negro</p>
+            <h6 class="tex-right"><small>$</small><strong>250.00</strong><small>MXN</small></h6>
+          </div>
+
           <div class="card-body bxInfo">
             <p>Productos enviados por Abanico, el costo de Envío aparecerá en la parte inferior.</p>
           </div>
+
+        </div>
+
+        <div class="card">
 
           <div class="card-body bxImporte">
              <div class="row">
@@ -113,9 +124,10 @@
              </div>
           </div>
 
-          <div class="card-footer text-center px-1">
-            <a href="<?php echo base_url(); ?>" class="btn btn-sm btn-outline-primary"> <i class="fa fa-chevron-left"></i> Volver a la tienda</a>
-            <button type="submit" class="btn btn-sm btn-success"> Continuar <i class="fa fa-chevron-right"></i></button>
+          <div class="card-footer text-right px-1">
+            <a href="http://localhost/abanico-master/invitado_pago_3_banco" class="btn mb-2 btn-sm btn-success btn-lg"> Transferencia Bancaria <i class="fas fa-money-bill-alt"></i></a>
+            <br>
+            <button type="submit" class="btn btn-sm btn-primary btn-lg">Pagar con PayPal <span class="fab fa-paypal"></span></button>
           </div>
 
         </div>
@@ -125,7 +137,6 @@
 </div>
 
 <!-- termina proceso de pago3 responsivo -->
-
 <hr><hr><hr>
 
 <div class="contenido_principal pt-3">

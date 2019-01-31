@@ -6,6 +6,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-shopping-bag"></i>Pedidos</a>
         <ul class="sub-menu children dropdown-menu">
           <li><i class="fa fa-shopping-bag"></i><a href="<?php echo base_url('admin/pedidos'); ?>">Pedidos</a></li>
+          <li><i class="fa fa-undo"></i><a href="<?php echo base_url('admin/pedidos/devoluciones'); ?>">Devoluciones</a></li>
         </ul>
     </li>
     <li class="menu-item-has-children dropdown">

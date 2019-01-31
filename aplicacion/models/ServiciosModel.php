@@ -13,7 +13,9 @@ class serviciosModel extends CI_Model {
  */
   function lista($parametros,$id_usuario,$orden,$limite){
     if(!empty($parametros)){
+      $this->db->group_start();
       $this->db->or_like($parametros);
+      $this->db->group_end();
     }
     if(!empty($id_usuario)){
       $this->db->where('ID_USUARIO', $id_usuario);

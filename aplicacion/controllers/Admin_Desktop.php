@@ -19,6 +19,14 @@ class Admin_Desktop extends CI_Controller {
 			$this->data['dispositivo']  = "desktop";
 		}
 
+		// Modelos
+		$this->load->model('UsuariosModel');
+		$this->load->model('PedidosModel');
+		$this->load->model('ProductosModel');
+		$this->load->model('ServiciosModel');
+		$this->load->model('EstadisticasModel');
+		$this->load->model('EstadisticasModel');
+
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
