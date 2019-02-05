@@ -170,10 +170,17 @@
                 <div class="tab-pane fade p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
                   <div class="row">
                       <?php foreach($categorias as $categoria){ ?>
-                          <div class="col-12 border border-default p-3">
-                            <h6 class="border-bottom pb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
-                            <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
-                            <div class="row">
+                        <div class="col-12 card"> <!-- Título y botón de categoría -->
+                          <div class="card-header" id="heading1">
+                            <h5 class="mb-0">
+                              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                <h6 class="border-bottom pb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
+                                <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
+                              </button>
+                            </h5>
+                          </div>
+
+                            <div class="row collapse" id="collapse1" aria-labelledby="heading1" data-parent="#accordionExample">
                             <?php foreach($segundo_categorias as $segunda_categoria){ ?>
                               <div class="col-4">
                                 <div class="border border-default p-3">
@@ -187,7 +194,7 @@
                                               id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                                               name="CategoriaProducto" class="custom-control-input"
                                               value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                              
+
                                               >
                                       <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
                                     </div>

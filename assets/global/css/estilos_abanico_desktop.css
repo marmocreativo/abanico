@@ -193,6 +193,22 @@ html, body{
   font-weight: 200;
   color: orange;
 }
+.form-group input {
+  margin: 0 .25rem;
+  border: 1px solid #eee;
+  border-left: 3px solid;
+  border-radius: 5px;
+  transition: border-color .5s ease-out;
+}
+.form-group input:optional {
+  border-left-color: #999;
+}
+.form-group input:required {
+  border-left-color:#FFCC00;
+}
+.form-group input:valid {
+  border-left-color: #33CC00:
+}
 /*
 | -------------------------------------------------------------------------
 | ESTILOS BODY INDEX
@@ -695,4 +711,15 @@ img.sp-thumbnail-image {
     background: #f9f9f9;
     border: none;
     border-radius: 0;
+}
+
+
+.foto-perfil-usuario {
+  height: 70px;
+  width: 70px;
+  margin-left: 15px;
+  position: relative;
+}
+#menu-usuario i{
+  font-size: 24px;
 }
