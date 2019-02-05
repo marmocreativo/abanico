@@ -26,14 +26,21 @@ class Tienda_Test extends CI_Controller {
 		$this->load->model('GaleriasModel');
 		$this->load->model('CategoriasProductoModel');
 		$this->load->model('CalificacionesModel');
+		$this->load->model('PedidosModel');
+		$this->load->model('PedidosProductosModel');
   }
 
 	public function index()
 	{
 		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 		$this->data['productos'] = $this->ProductosModel->lista_activos('','','',10);
+		/*
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/test',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
+		*/
+		$this->data['pedido'] = $this->PedidosModel->detalles(25);
+		$this->data['productos'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$this->data['pedido']['ID_PEDIDO']],'','');
+		$this->load->view('emails/pedido_usuario',$this->data);
 	}
 }

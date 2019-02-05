@@ -15,7 +15,7 @@
 
       <div class="col-12">
         <ol class="breadcrumb vistaMovil">
-          <li class="breadcrumb-item"><a href="http://localhost/abanico-master/">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Inicio</a></li>
           <li class="breadcrumb-item active text-primary " aria-current="page">Todos los productos</li>
         </ol>
       </div>

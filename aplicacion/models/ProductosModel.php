@@ -226,7 +226,7 @@ class ProductosModel extends CI_Model {
     $this->db->where('PRODUCTO_ESTADO',$id);
     return $this->db->update('productos',array('PRODUCTO_ESTADO'=>$activo));
   }
-  
+
 
 }
 ?>
