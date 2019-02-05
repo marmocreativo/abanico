@@ -181,7 +181,7 @@
                           </div>
 
                           <div class="row collapse show" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample">
-                          <?php foreach($segundo_categorias as $segunda_categoria){ ?>
+                          <?php $i = 1; foreach($segundo_categorias as $segunda_categoria){ ?>
                             <div class="col-4">
                               <div class="border border-default p-3">
                               <h6 class="border-bottom pb-3"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h6>
@@ -203,7 +203,7 @@
                               </ul>
                               </div>
                             </div>
-                          <?php } ?>
+                          <?php $i++; } ?>
                           </div>
                         </div>
                     <?php } ?>

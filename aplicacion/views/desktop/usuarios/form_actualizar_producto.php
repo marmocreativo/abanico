@@ -177,7 +177,7 @@
                       </div>
                       <div class="tab-pane fade <?php if($tab=='categoria'){ echo 'show active'; } ?> p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
                         <div class="row">
-                            <?php foreach($categorias as $categoria){ ?>
+                            <?php $i=1; foreach($categorias as $categoria){ ?>
                                 <div class="col-12 border border-default p-3">
                                   <h6 class="border-bottom pb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
                                   <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
@@ -196,7 +196,7 @@
                                                     name="CategoriaProducto" class="custom-control-input"
                                                     value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                                                     <?php if($relacion_categorias['ID_CATEGORIA']==$tercera_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
-                                                    
+
                                                     >
                                             <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
                                           </div>
@@ -208,7 +208,7 @@
                                   <?php } ?>
                                   </div>
                                 </div>
-                            <?php } ?>
+                            <?php $i++; } ?>
                         </div>
                       </div>
                       <div class="tab-pane fade <?php if($tab=='datos'){ echo 'show active'; } ?> p-3" id="datos" role="tabpanel" aria-labelledby="datos-tab">
