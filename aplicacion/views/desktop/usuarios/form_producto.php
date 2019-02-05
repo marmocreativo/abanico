@@ -169,7 +169,7 @@
                 </div>
                 <div class="tab-pane fade p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
                   <div class="row">
-                      <?php $i = 0; foreach($categorias as $categoria){ ?>
+                      <?php $i = 1; foreach($categorias as $categoria){ ?>
                         <div class="col-12 card"> <!-- Título y botón de categoría -->
                           <div class="card-header" id="heading<?php echo $i; ?>">
                             <h5 class="mb-0">

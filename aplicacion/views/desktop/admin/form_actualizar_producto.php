@@ -179,7 +179,7 @@
                     </div>
                     <div class="tab-pane fade <?php if($tab=='categoria'){ echo 'show active'; } ?> p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
                       <div class="row">
-                          <?php foreach($categorias as $categoria){ ?>
+                          <?php $i = 1; foreach($categorias as $categoria){ ?>
                               <div class="col-12 border border-default p-3">
                                 <div class="card-header" id="headingOne">
                                   <h5 class="mb-0">
@@ -217,7 +217,7 @@
                                 <?php } ?>
                                 </div>
                               </div>
-                          <?php } ?>
+                          <?php $i++; } ?>
                       </div>
                     </div>
                     <div class="tab-pane fade <?php if($tab=='datos'){ echo 'show active'; } ?> p-3" id="datos" role="tabpanel" aria-labelledby="datos-tab">
