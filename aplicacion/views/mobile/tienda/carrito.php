@@ -3,7 +3,6 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h4 class="h5 py-3 pt-4 text-center"><i class="fa fa-shopping-cart mr-2"></i>Carrito de cómpras </h4>
       <?php $suma_productos = 0;?>
       <?php if(!empty($_SESSION['carrito']['productos'] )){ ?>
         <?php foreach($_SESSION['carrito']['productos'] as $producto){ ?>
@@ -25,7 +24,7 @@
                      <button class="btn btn-outline-primary boton-incrementar-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'>+</button>
                    </div>
                  </div>
-                 <button type="button" class="btn mt-2 mr-2 btnEliminar btn-danger btn-sm boton-eliminar-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>' title="Eliminar del carrito"> <i class="fa fa-trash"></i> </button>
+                 <button type="button" class="btn mt-2 mr-2 btnEliminar btn-danger btn-sm btn-block boton-eliminar-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>' title="Eliminar del carrito"> <i class="fa fa-trash"></i> Eliminar </button>
                </div>
                <div class="col">
                  <div class="mb-3">

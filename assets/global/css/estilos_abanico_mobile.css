@@ -401,7 +401,11 @@ html, body{
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: red;
+  background-color: gray;
+  padding-top: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .bxInfoContent .servicios .rating{
@@ -567,7 +571,9 @@ html, body{
   font-size: 0.875rem;
   color: #ffd200;
 }
-
+.price-list{
+  text-decoration: line-through;
+}
 .vistaProductos .product-content .price-list{
   font-size: .8rem;
   color: #6c757d;
@@ -701,6 +707,7 @@ Lo comento por que cambié la posición del botón
   padding: 5px;
   color: #fff;
 }
+
 .servicio-circulo{
   width: 100px;
   height: 100px;

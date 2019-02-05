@@ -65,6 +65,7 @@ class Usuario_Favoritos extends CI_Controller {
 				}
 				// Categorías
 				$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+				$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 
 		 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		 		$this->load->view($this->data['dispositivo'].'/tienda/favoritos_productos',$this->data);

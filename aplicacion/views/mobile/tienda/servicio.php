@@ -1,16 +1,17 @@
 <div class="bxInfoContent bxDetalle pb-4">
   <div class="container">
     <div class="row">
-      <div class="bxProducto mb-4">
-
+      <div class="col mb-4 d-flex justify-content-center">
+        <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
+        <img src="<?php echo base_url($ruta_portada) ?>" class="img-thumbnail img-fluid" alt="Profile image example">
       </div>
       <div class="col-12 mb-4">
-        <h4 class="h4 product-title mb-2">Redaccion y correccion de textos </h4>
-        Redacto, reviso y corrijo textos científicos y filosóficos.
+        <h4 class="h4 product-title mb-2"><?php echo $servicio['SERVICIO_NOMBRE']; ?> </h4>
+        <?php echo $servicio['USUARIO_NOMBRE']; ?>
         <hr>
         <div class="row">
           <div class="col">
-            <a href="http://localhost/abanico-master/servicio/contacto?id=11" class="btn btn-info btn- btn-block"> <span class="fa fa-envelope"></span> Contactar</a>
+            <a href="<?php echo base_url('servicio/contacto?id='.$servicio['ID_SERVICIO']); ?>" class="btn btn-info btn- btn-block"> <span class="fa fa-envelope"></span> Contactar</a>
           </div>
         </div>
       </div>
@@ -28,47 +29,49 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="">
-              <h2 class="h6 py-3">
-                <strong>Con 25 años de experiencia en redaccion y revision de textos cientificos y filosoficos puedo ofrecer un servicio de la mas alta calidad para aquellas personas interesadas en tener una segunda opinion en el fondo y la forma de sus escritos.&nbsp;</strong>
-              </h2>
-            </div>
-          </div>
-
-          <div class="tab-pane fade py-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-            <div class="row">
-              <div class="col-3">
-                  <img src="http://localhost/abanico-master/contenido/img/tiendas/completo/default.jpg" alt="" class="img-fluid img-thumbnail rounded-circle">
-              </div>
-              <div class="col-9">
-                <table class="table table-sm table-borderless">
-                  <tbody><tr>
-                    <td><b>Nombre Público</b></td>
-                    <td>Ende y ende </td>
-                  </tr>
-                  <tr>
-                    <td><b>Razón Social</b></td>
-                    <td>S.R de LC</td>
-                  </tr>
-                  <tr>
-                    <td><b>R.F.C.</b></td>
-                    <td>CAS080808</td>
-                  </tr>
-                  <tr>
-                    <td><b>Teléfono</b></td>
-                    <td>12345678</td>
-                  </tr>
-                  <tr>
-                    <td><b>Registro</b><br>2018-12-27 13:01:26</td>
-                    <td><b>Actualización</b><br>2018-12-27 13:01:26</td>
-                  </tr>
-                </tbody></table>
-              </div>
-            </div>
-            <div class="row border-top pt-3">
-              <div class="col">
-                <h6>Dirección Fiscal</h6>
-                <p>San Juan de Letran 68, a, Banderilla, Banderilla, Veracruz, 11850, México</p>
-              </div>
+              <p class="h6 py-3">
+                <strong><?php echo $servicio['SERVICIO_DESCRIPCION']; ?></strong>
+              <p>
+                <div class="row">
+                  <div class="col">
+                    <div class="card-group">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Zona de Trabajo</h5>
+                          <p class="card-text">Pais: <?php echo $servicio['SERVICIO_PAIS']; ?></p>
+                          <p class="card-text">Estado: <?php echo $servicio['SERVICIO_ESTADO_DIR']; ?></p>
+                        </div>
+                        <!--
+                        <div class="card-footer">
+                          <small class="text-muted">Horario de trabajo: 10:00 a 18:00</small>
+                        </div>
+                      -->
+                      </div>
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Zona de Servicio</h5>
+                          <?php echo $servicio['SERVICIO_ZONA_TRABAJO']; ?>
+                        </div>
+                      </div>
+                      <?php if(!empty($adjuntos)){ ?>
+                        <div class="card border-primary">
+                          <h6 class="card-header bg-primary-15">Adjuntos</h6>
+                          <div class="card-body text-primary">
+                            <div class="list-group">
+                              <?php foreach($adjuntos as $adjunto){ ?>
+                              <a href="<?php echo base_url('contenido/adjuntos/servicios/'.$adjunto->ADJUNTO_ARCHIVO); ?>" class="list-group-item list-group-item-action" target="_blank">
+                                <i class="far fa-file-alt"></i>
+                                <span class="border-right mx-2"></span>
+                                <?php echo $adjunto->ADJUNTO_NOMBRE; ?>
+                              </a>
+                            <?php } ?>
+                            </div>
+                          </div>
+                        </div>
+                      <?php } ?>
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
 

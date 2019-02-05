@@ -438,7 +438,11 @@ class Proceso_Pago extends CI_Controller {
 			$this->data['direccion'] = $this->DireccionesModel->direccion_formateada($direccion['ID_DIRECCION']);
 
 			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
+			if(!empty($this->data['direccion'])){
 			$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_3',$this->data);
+		}else{
+				$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_2',$this->data);
+		}
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 
 		}else{
