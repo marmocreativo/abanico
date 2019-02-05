@@ -7,7 +7,7 @@ class Ajax_Cargar_Carrito extends CI_Controller {
     parent::__construct();
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo']  = "desktop";
+			$this->data['dispositivo']  = "mobile";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}

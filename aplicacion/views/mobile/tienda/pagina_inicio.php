@@ -1,9 +1,9 @@
 <!-- Slider -->
 <div class="slideInicio">
   <ul class="slides">
-    <?php for($i=0; $i<=2; $i++){ ?>
+    <?php for($i=1; $i<=2; $i++){ ?>
     <li>
-      <img src="https://picsum.photos/320/220/?random=<?php echo $i; ?>" alt="">
+      <img src="<?php echo base_url('contenido/img/slider/sli-mobile-'.$i.'.jpg'); ?>" alt="">
     </li>
     <?php } ?>
   </ul>
