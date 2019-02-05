@@ -7,7 +7,7 @@
         </div>
         <div class="col">
           <?php retro_alimentacion(); ?>
-          <div class="row">
+          <div class="row no-gutters" id="dash-1">
               <div class="col-12 justify-content-left cont-perfil ml-3">
                   <img src="<?php echo base_url('assets/global/img/usuario_default.png') ?>" class="img-thumbnail rounded-circle foto-perfil-usuario" alt="">
                   <h3><?php  echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']; ?></h3>
@@ -15,11 +15,11 @@
             <div class="col-6">
               <a href="<?php echo base_url('usuario/pedidos'); ?>" class="text-dark">
               <div class="card">
-                <div class="card-body bg-primary text-white">
+                <div class="card-body text-primary">
                   <div class="row">
                     <div class="col">
-                      <h4><i class="fa fa-shopping-bag" aria-hidden="true"></i> Historial de pedido </4>
-                      <h5 class="card-title"><?php echo $conteo_pedidos; ?> Compras</h5>
+                      <h6><i class="fa fa-shopping-bag text-primary-7" aria-hidden="true"></i> Historial de pedido </h6>
+                      <strong class="border-primary-7"><?php echo $conteo_pedidos; ?> Compras</strong>
                     </div>
                   </div>
                 </div>
@@ -29,11 +29,11 @@
             <div class="col-6">
               <a href="<?php echo base_url('usuario/mensajes'); ?>" class="text-dark">
               <div class="card">
-                <div class="card-body bg-primary text-white">
+                <div class="card-body text-primary">
                   <div class="row">
                     <div class="col">
-                      <h4><i class="fa fa-envelope" aria-hidden="true"></i> Bandeja de entrada</h4>
-                      <h5 class="card-title"><?php echo $conteo_mensajes; ?> Mensajes</h5>
+                      <h6><i class="fa fa-envelope" aria-hidden="true"></i> Bandeja de entrada</h6>
+                      <strong class="border-primary"><?php echo $conteo_mensajes; ?> Mensajes</strong>
                     </div>
                   </div>
                 </div>
@@ -41,7 +41,7 @@
               </a>
             </div>
           </div>
-          <div class="row">
+          <div class="row mt-3">
             <?php if(!empty($tienda)){ ?>
               <div class="col-6">
                 <div class="card">
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col text-center text-primary">
                         <strong>¿Deseas Vender?</strong><br>
                         <p>Registrate como Vendedor o como tienda y empieza a vender.</p>

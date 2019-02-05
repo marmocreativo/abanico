@@ -2,7 +2,7 @@
   <div class="fila">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 fila fila-gris">
+        <div class="col-sm-3 col-md-2 fila">
           <?php $this->load->view('desktop/usuarios/widgets/menu_control_usuario'); ?>
         </div>
         <div class="col">
@@ -168,13 +168,13 @@
                   </div>
                 </div>
                 <div class="tab-pane fade p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
-                  <div class="row">
+                  <div class="row no-gutters">
                       <?php $i = 1; foreach($categorias as $categoria){ ?>
                         <div class="col-12 card"> <!-- Título y botón de categoría -->
                           <div class="card-header" id="heading<?php echo $i; ?>">
                             <h5 class="mb-0">
                               <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse<?php echo $i; ?>">
-                                <h6 class="border-bottom pb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
+                                <h5><?php echo $categoria->CATEGORIA_NOMBRE; ?></h5>
                                 <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
                               </button>
                             </h5>
@@ -183,7 +183,7 @@
                             <div class="row collapse" id="collapse<?php echo $i; ?>" aria-labelledby="heading<?php echo $i; ?>" data-parent="#accordionExample">
                             <?php foreach($segundo_categorias as $segunda_categoria){ ?>
                               <div class="col-4">
-                                <div class="border border-default p-3">
+                                <div class="p-3">
                                 <h6 class="border-bottom pb-3"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h6>
                                 <?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                                 <ul class="list list-unstyled">
