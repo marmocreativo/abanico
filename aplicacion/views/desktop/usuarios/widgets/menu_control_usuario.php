@@ -1,17 +1,8 @@
-<div class="row justify-content-center">
-  <div class="col-8 col-md-6">
-      <img src="<?php echo base_url('assets/global/img/usuario_default.png') ?>" class="img-fluid img-thumbnail rounded-circle mx-auto" alt="">
-  </div>
-</div>
-<div class="row">
-  <div class="col text-center">
-    <h2 class="h6"><?php  echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']; ?></h2>
-  </div>
-</div>
-<div class="list-group">
-  <a href="<?php echo base_url('usuario/');?>" class="list-group-item list-group-item-action"> <span class="fa fa-tachometer-alt"></span> Escritorio</a>
-  <a href="<?php echo base_url('usuario/pedidos');?>" class="list-group-item list-group-item-action"> <span class="fa fa-shopping-bag"></span> Mis Pedidos</a>
-  <a href="<?php echo base_url('usuario/actualizar');?>" class="list-group-item list-group-item-action"> <span class="fa fa-id-card"></span> Mi Perfil</a>
-  <a href="<?php echo base_url('usuario/tienda');?>" class="list-group-item list-group-item-action"> <span class="fa fa-store"></span> Vendedor</a>
-  <a href="<?php echo base_url('usuario/perfil_servicios');?>" class="list-group-item list-group-item-action"> <span class="fa fa-user-tie"></span> Mis Servicios</a>
+
+<div class="list-group" id="menu-usuario">
+  <a href="<?php echo base_url('usuario/');?>" class="btn btn-outline-primary-12 btn-block"> <i class="fa fa-tachometer-alt"></i> <p class="mb-0">Escritorio</p></a>
+  <a href="<?php echo base_url('usuario/pedidos');?>" class="btn btn-outline-primary-7 btn-block"> <i class="fa fa-shopping-bag"></i> <p class="mb-0">Mis Pedidos</p></a>
+  <a href="<?php echo base_url('usuario/actualizar');?>" class="btn btn-outline-primary-8 btn-block"> <i class="fa fa-id-card"></i> <p class="mb-0">Mi Perfil</p></a>
+  <a href="<?php echo base_url('usuario/tienda');?>" class="btn btn-outline-primary-11 btn-block"> <i class="fa fa-store"></i> <p class="mb-0">Vendedor</p></a>
+  <a href="<?php echo base_url('usuario/perfil_servicios');?>" class="btn btn-outline-primary-3 btn-block"> <i class="fa fa-user-tie"></i> <p class="mb-0">Mis Servicios</p></a>
 </div>
