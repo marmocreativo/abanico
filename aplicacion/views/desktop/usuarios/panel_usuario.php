@@ -33,7 +33,8 @@
                   <div class="row">
                     <div class="col">
                       <h6><i class="fa fa-envelope" aria-hidden="true"></i> Bandeja de entrada</h6>
-                      <strong class="border-primary"><?php echo $conteo_mensajes; ?> Mensajes</strong>
+                      <strong class="border-primary"><?php echo $conteo_mensajes; ?> Conversaciones</strong>
+                      <strong class="border-warning"><?php echo $no_leidos; ?> Pendientes</strong>
                     </div>
                   </div>
                 </div>

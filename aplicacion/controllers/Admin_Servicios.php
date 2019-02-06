@@ -348,7 +348,7 @@ public function borrar_adjunto()
 	public function activar()
 	{
 		$this->ServiciosModel->activar($_GET['id'],$_GET['estado']);
-		redirect(base_url('admin/servicios/usuario?id_usuario='.$_GET['id_usuario']));
+		redirect(base_url('admin/servicios?id_usuario='.$_GET['id_usuario']));
 	}
 	public function estado()
 	{

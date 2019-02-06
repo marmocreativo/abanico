@@ -37,16 +37,16 @@
                 <td class="text-center"><?php echo $tienda->TIENDA_RFC; ?></td>
                 <td class="text-center">
                   <?php if($tienda->TIENDA_ESTADO=='activo'){ ?>
-                    <a href="<?php echo base_url('admin/usuarios/activar')."?id=".$tienda->ID_TIENDA."&estado=".$tienda->TIENDA_ESTADO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
+                    <a href="<?php echo base_url('admin/tiendas/activar')."?id=".$tienda->ID_TIENDA."&estado=".$tienda->TIENDA_ESTADO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
                   <?php }else{ ?>
-                    <a href="<?php echo base_url('admin/usuarios/activar')."?id=".$tienda->ID_TIENDA."&estado=".$tienda->TIENDA_ESTADO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
+                    <a href="<?php echo base_url('admin/tiendas/activar')."?id=".$tienda->ID_TIENDA."&estado=".$tienda->TIENDA_ESTADO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
                   <?php } ?>
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">
                     <a href="<?php echo base_url('admin/usuarios/perfil')."?id_usuario=".$tienda->ID_USUARIO; ?>" class="btn btn-sm btn-success" title="Usuario Propietario de la tienda"> <span class="fa fa-id-card"></span> Usuario</a>
                     <a href="<?php echo base_url('admin/productos')."?id_usuario=".$tienda->ID_USUARIO; ?>" class="btn btn-sm btn-info" title="Productos asociados a la tienda"> <span class="fa fa-box"></span> Productos</a>
-                    <a href="<?php echo base_url('admin/usuarios/actualizar')."?id=".$tienda->ID_TIENDA; ?>" class="btn btn-sm btn-warning" title="Editar Tienda"> <span class="fa fa-pencil-alt"></span> </a>
+                    <a href="<?php echo base_url('admin/tiendas/actualizar')."?id=".$tienda->ID_TIENDA; ?>" class="btn btn-sm btn-warning" title="Editar Tienda"> <span class="fa fa-pencil-alt"></span> </a>
                     <button data-enlace='<?php echo base_url('admin/tiendas/borrar')."?id=".$tienda->ID_TIENDA; ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Tienda"> <span class="fa fa-trash"></span> </button>
                   </div>
                 </td>
