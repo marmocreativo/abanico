@@ -28,6 +28,7 @@ class Tienda_Test extends CI_Controller {
 		$this->load->model('CalificacionesModel');
 		$this->load->model('PedidosModel');
 		$this->load->model('PedidosProductosModel');
+		$this->load->model('NotificacionesModel');
   }
 
 	public function index()

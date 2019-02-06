@@ -22,6 +22,7 @@ class Admin_Municipios extends CI_Controller {
 		// Cargo el modelo
 		$this->load->model('MunicipiosModel');
 		$this->load->model('EstadisticasModel');
+		$this->load->model('NotificacionesModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){

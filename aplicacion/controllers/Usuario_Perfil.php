@@ -30,6 +30,7 @@ class Usuario_Perfil extends CI_Controller {
 			$this->load->model('DireccionesModel');
 			$this->load->model('PedidosModel');
 			$this->load->model('ConversacionesModel');
+			$this->load->model('NotificacionesModel');
   }
 	public function index()
 	{

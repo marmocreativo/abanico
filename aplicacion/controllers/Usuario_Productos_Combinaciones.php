@@ -21,6 +21,7 @@ class Usuario_Productos_Combinaciones extends CI_Controller {
 			$this->load->model('UsuariosModel');
 			$this->load->model('TiendasModel');
 			$this->load->model('ProductosCombinacionesModel');
+			$this->load->model('NotificacionesModel');
   }
 
 	public function index()

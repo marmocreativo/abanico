@@ -29,6 +29,7 @@ class Admin_Servicios extends CI_Controller {
 		$this->load->model('CategoriasServiciosModel');
 		$this->load->model('AdjuntosUsuariosModel');
 		$this->load->model('EstadisticasModel');
+		$this->load->model('NotificacionesModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){

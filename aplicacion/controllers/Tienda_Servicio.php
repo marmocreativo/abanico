@@ -31,6 +31,8 @@ class Tienda_Servicio extends CI_Controller {
 		$this->load->model('ConversacionesMensajesModel');
 		$this->load->model('AdjuntosUsuariosModel');
 		$this->load->model('EstadisticasModel');
+		$this->load->model('NotificacionesModel');
+		$this->load->model('NotificacionesModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-info";
@@ -89,6 +91,17 @@ public function favorito()
 
 				$this->FavoritosModel->crear($parametros);
 			 }
+			 // Relleno Notificación
+			 $datos_servicio = $this->ServiciosModel->detalles($_GET['id']);
+			 $parametros_notificacion = array(
+				 'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
+				 'NOTIFICACION_CONTENIDO'=>'Alguien añadió tu servicio '.$datos_servicio['SERVICIO_NOMBRE'].' a Favoritos',
+				 'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+				 'NOTIFICACION_ESTADO'=>'no leido'
+			 );
+			 // Creo la notificación
+			 $id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
+			 // Redirecciono
 			 redirect(base_url('usuario/favoritos'));
 		}else{
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
@@ -125,6 +138,17 @@ public function favorito()
 			 'CALIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 		 );
 		 $this->CalificacionesServiciosModel->crear($parametros);
+		 // Relleno Notificación
+		 $datos_servicio = $this->ServiciosModel->detalles($_GET['id']);
+		 $parametros_notificacion = array(
+			 'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
+			 'NOTIFICACION_CONTENIDO'=>'Alguien calificí tu servicio '.$datos_servicio['SERVICIO_NOMBRE'].' con '.$this->input->post('EstrellasCalificacion').' Estrellas',
+			 'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+			 'NOTIFICACION_ESTADO'=>'no leido'
+		 );
+		 // Creo la notificación
+		 $id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
+		 // Redirecciono
 			 redirect(base_url('servicio?id='.$this->input->post('IdServicio')));
 		}else{
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
@@ -164,6 +188,17 @@ public function favorito()
 				'MENSAJE_ESTADO'=>'no leido'
 			);
 			$mensaje_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
+			// Relleno Notificación
+			$datos_servicio = $this->ServiciosModel->detalles($_GET['id']);
+			$parametros_notificacion = array(
+				'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
+				'NOTIFICACION_CONTENIDO'=>'Tienes un nuevo mensaje sobre tu servicio'.$datos_servicio['SERVICIO_NOMBRE'],
+				'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+				'NOTIFICACION_ESTADO'=>'no leido'
+			);
+			// Creo la notificación
+			$id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
+			// Redirecciono
 			// Mensaje FeedBack
 			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado, recibirás la respuesta en tu <a href="'.base_url('usuario/mensajes').'">Bandeja de Entrada</a>');
 			// Redirecciono

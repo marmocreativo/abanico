@@ -19,6 +19,7 @@ class Usuario_Direcciones extends CI_Controller {
 			// Cargo el modelo
 			$this->load->model('UsuariosModel');
 			$this->load->model('DireccionesModel');
+			$this->load->model('NotificacionesModel');
   }
 
 	public function index()

@@ -30,6 +30,7 @@ class Usuario_Pedidos extends CI_Controller {
 			$this->load->model('GuiasPedidosModel');
 			$this->load->model('PagosPedidosModel');
 			$this->load->model('DevolucionesModel');
+			$this->load->model('NotificacionesModel');
   }
 
 	public function index()

@@ -31,6 +31,7 @@ class Admin_Conversaciones extends CI_Controller {
 		$this->load->model('ConversacionesModel');
 		$this->load->model('ConversacionesMensajesModel');
 		$this->load->model('EstadisticasModel');
+		$this->load->model('NotificacionesModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
