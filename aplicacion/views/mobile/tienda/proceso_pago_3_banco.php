@@ -43,14 +43,14 @@
 
           <div class="card-body">
             <h5>Monto a Pagar</h5>
-            <h4>$822.00 <small>MXN</small> </h4>
+            <h4>$<?php echo $_SESSION['pedido']['ImporteTotal']; ?> <small><?php echo $_SESSION['pedido']['Divisa']; ?></small> </h4>
           </div>
 
           <hr>
 
           <div class="card-body">
             <h5>Referencia</h5>
-            <h4>H8TD6L</h4>
+            <h4><?php echo $_SESSION['pedido']['Folio']; ?></h4>
           </div>
 
           <div class="card-footer">
@@ -59,7 +59,12 @@
                 <button type="button" name="button" class="btn btn-sm btn-outline-success" onclick="window.print();"><i class="fa fa-print"></i> Imprimir</button>
               </div>
               <div class="col">
-                <form class="d-flex justify-content-end" action="http://localhost/abanico-master/proceso_pago_4" method="post">
+                <?php
+                $_SESSION['pedido']['FormaPago'] = 'Transferencia Bancaria';
+                $_SESSION['pedido']['EstadoPago'] = 'Pendiente';
+                $_SESSION['pedido']['EstadoPedido'] = 'Espera Pago';
+                ?>
+                <form class="d-flex justify-content-end" action="<?php echo base_url('proceso_pago_4'); ?>" method="post">
                   <button type="submit" class="btn btn-sm btn-success"> Terminar <i class="fa fa-chevron-right"></i></button>
                 </form>
               </div>
