@@ -37,8 +37,10 @@ class Tienda_Categoria extends CI_Controller {
  	{
 		$parametros_or = array();
 		$parametros_and = array();
-		$parametros_or['PRODUCTO_NOMBRE'] = $_GET['Busqueda'];
-		$parametros_or['PRODUCTO_MODELO'] = $_GET['Busqueda'];
+		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
+			$parametros_or['PRODUCTO_NOMBRE'] = $_GET['Busqueda'];
+			$parametros_or['PRODUCTO_MODELO'] = $_GET['Busqueda'];
+		}
 		// Orden
 		if(isset($_GET['OrdenBusqueda'])&&!empty($_GET['OrdenBusqueda'])){
 			switch ($_GET['OrdenBusqueda']) {
@@ -98,7 +100,7 @@ class Tienda_Categoria extends CI_Controller {
 		}else{
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
-			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,'',$this->data['categoria']['ID_CATEGORIA'],$orden,'');
+			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,'','',$orden,'');
 			$this->data['origen_formulario'] = '';
 	 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);

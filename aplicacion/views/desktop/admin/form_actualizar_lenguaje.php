@@ -15,7 +15,7 @@
             <hr>
           <?php } ?>
 
-          <form class="" action="<?php echo base_url('admin/paises/actualizar'); ?>" method="post">
+          <form class="" action="<?php echo base_url('admin/lenguajes/actualizar'); ?>" method="post">
             <input type="hidden" name="Identificador" value="<?php echo $lenguaje['ID_LENGUAJE']; ?>">
             <div class="form-group">
               <label for="IsoLenguaje">Código ISO</label>

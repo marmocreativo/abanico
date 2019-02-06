@@ -31,6 +31,7 @@ class Proceso_Pago extends CI_Controller {
 		$this->load->model('PedidosModel');
 		$this->load->model('PedidosProductosModel');
 		$this->load->model('PedidosTiendasModel');
+		$this->load->model('AutenticacionModel');
 
 		//var_dump($_SESSION['pedido']);
 	}
@@ -258,6 +259,51 @@ class Proceso_Pago extends CI_Controller {
 			if(empty($_SESSION['carrito']['productos'])){
 				redirect(base_url('carrito'));
 			}
+
+			$this->form_validation->set_rules('NombreUsuario', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
+			$this->form_validation->set_rules('ApellidosUsuario', 'Apellidos', 'required', array('required' => 'Debes escribir tus %s.'));
+			$this->form_validation->set_rules('CorreoUsuario', 'Correo Electrónico', 'required|valid_email|is_unique[usuarios.USUARIO_CORREO]', array(
+				'required' => 'Debes escribir tu %s.',
+				'valid_email' => 'Debes escribir una dirección de correo valida.',
+				'is_unique' => 'La dirección de correo ya está registrada'
+			));
+			$this->form_validation->set_rules('PassUsuario', 'Contraseña', 'required', array('required' => 'Debes escribir tu %s.'));
+
+			// Corro la validación
+			if($this->form_validation->run())
+			{
+				/*
+				+ Éxito de validación de formulario
+				*/
+				// Creo el identificador Único
+				$id_usuario = uniqid('', true);
+				if(!$this->UsuariosModel->id_usuario_existe($id_usuario)){
+					$id_usuario = uniqid('', true);
+				}
+				// Creo la contraseña
+
+				$pass = password_hash($this->input->post('PassUsuario'), PASSWORD_DEFAULT);
+				$parametros = array(
+					'ID_USUARIO' => $id_usuario,
+					'USUARIO_NOMBRE' => $this->input->post('NombreUsuario'),
+					'USUARIO_APELLIDOS' => $this->input->post('ApellidosUsuario'),
+					'USUARIO_CORREO' => $this->input->post('CorreoUsuario'),
+					'USUARIO_TELEFONO' => $this->input->post('TelefonoUsuario'),
+					'USUARIO_PASSWORD' => $pass,
+					'USUARIO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+					'USUARIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+					'USUARIO_TIPO' => 'usr-1'
+				);
+				$usuario_id = $this->UsuariosModel->crear($parametros);
+				$parametros = $this->AutenticacionModel->detalles($this->input->post('CorreoUsuario'));
+				iniciar_sesion($parametros);
+				redirect(base_url('proceso_pago_2'));
+
+			}else{
+				$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
+				$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_1',$this->data);
+				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			}
 			// Limpio la sesión del pedido
 			$_SESSION['pedido'] = array();
 			$_SESSION['pedido']['IdUsuario'] = '0';
@@ -265,9 +311,6 @@ class Proceso_Pago extends CI_Controller {
 			$_SESSION['pedido']['PedidoCorreo'] = $this->input->post('CorreoUsuario');
 			$_SESSION['pedido']['PedidoTelefono'] = $this->input->post('TelefonoUsuario');
 			// Continúo con la carga normal
-			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
-			$this->load->view($this->data['dispositivo'].'/tienda/invitado_pago_2',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 
 	}
 	/*

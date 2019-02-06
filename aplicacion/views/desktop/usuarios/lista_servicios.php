@@ -12,7 +12,7 @@
                 <h2 class="h5 mb-0"> <span class="fa fa-box"></span> Tus Servicios</h2>
               </div>
               <div class="opciones">
-                  <a href="<?php echo base_url('usuario/servicios/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Nuevo Servicio </a>
+                  <a href="<?php echo base_url('usuario/servicios/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Agregar Servicio </a>
               </div>
             </div>
             <div class="card-body py-0">
