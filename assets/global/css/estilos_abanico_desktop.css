@@ -671,12 +671,19 @@ img.sp-thumbnail-image {
 }
 .mensaje-servicio, .pregunta-producto {
     padding: 9px;
+    position: relative;
 }
-.cont-conversaciones {
-    background: #f3f2f0;
-    border-radius: 0;
-    border: none;
-    height: 100%;
+.mensaje-servicio .fa, .pregunta-producto .fa {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    padding: 5px;
+    background: white;
+    border: solid 2px #e6e4e1;
+    border-radius: 50%;
+}
+.mensaje-servicio .fa-envelope, .pregunta-producto .fa-envelope {
+  color:#ff5947;
 }
 .cont-conversaciones .media {
     border: solid 3px #e6e4e1;
