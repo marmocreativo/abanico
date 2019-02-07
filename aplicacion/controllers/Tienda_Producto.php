@@ -32,6 +32,7 @@ class Tienda_Producto extends CI_Controller {
 		$this->load->model('ConversacionesModel');
 		$this->load->model('ConversacionesMensajesModel');
 		$this->load->model('EstadisticasModel');
+		$this->load->model('NotificacionesModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-primary";
@@ -93,6 +94,16 @@ public function favorito()
 				 );
 
 				$this->FavoritosModel->crear($parametros);
+				// Relleno la notifiación
+				$datos_producto = $this->ProductosModel->detalles($_GET['id']);
+				$parametros_notificacion = array(
+					'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
+					'NOTIFICACION_CONTENIDO'=>'Alguien añadió tu producto '.$datos_producto['PRODUCTO_NOMBRE'].' a Favoritos',
+					'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+					'NOTIFICACION_ESTADO'=>'no leido'
+				);
+				// Creo la notificación
+				$id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
 			 }
 			 redirect(base_url('usuario/favoritos'));
 		}else{
@@ -130,6 +141,17 @@ public function favorito()
 			 'CALIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 		 );
 		 $this->CalificacionesModel->crear($parametros);
+		 // Relleno la notificación
+		 $datos_producto = $this->ProductosModel->detalles($this->input->post('IdProducto'));
+		 $parametros_notificacion = array(
+			 'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
+			 'NOTIFICACION_CONTENIDO'=>'Alguien calificó tu producto '.$datos_producto['PRODUCTO_NOMBRE'].' con '.$this->input->post('EstrellasCalificacion').' Estrellas',
+			 'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+			 'NOTIFICACION_ESTADO'=>'no leido'
+		 );
+		 // Creo la notificación
+		 $id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
+		 // Redirecciono
 			 redirect(base_url('producto?id='.$this->input->post('IdProducto')));
 		}else{
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
@@ -169,6 +191,18 @@ public function favorito()
 				'MENSAJE_ESTADO'=>'no leido'
 			);
 			$mensaje_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
+
+			// Relleno la notificación
+ 		 $datos_producto = $this->ProductosModel->detalles($this->input->post('IdProducto'));
+ 		 $parametros_notificacion = array(
+ 			 'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
+ 			 'NOTIFICACION_CONTENIDO'=>'Alguien ha hecho una pregunta sobre tu producto '.$datos_producto['PRODUCTO_NOMBRE'],
+ 			 'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+ 			 'NOTIFICACION_ESTADO'=>'no leido'
+ 		 );
+ 		 // Creo la notificación
+ 		 $id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
+
 			// Mensaje FeedBack
 			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado, recibirás la respuesta en tu <a href="'.base_url('usuario/mensajes').'">Bandeja de Entrada</a>');
 			// Redirecciono

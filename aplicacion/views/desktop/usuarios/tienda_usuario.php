@@ -11,7 +11,7 @@
   <div class="fila">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 fila fila-gris">
+        <div class="col-sm-3 col-md-2 fila">
           <?php $this->load->view('desktop/usuarios/widgets/menu_control_usuario'); ?>
         </div>
         <div class="col-sm-6 col-md-8">

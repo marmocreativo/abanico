@@ -11,6 +11,14 @@
           <div class="row mb-5">
             <div class="col-8">
               <div class="slider-pro" id="my-slider">
+                <div class="sp-thumbnails">
+                  <?php foreach($galerias as $galeria){ ?>
+                    <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
+                  <div class="sp-thumbnail">
+              			<img class="sp-thumbnail-image" src="<?php echo base_url($ruta_galeria) ?>"/>
+              		</div>
+                  <?php } ?>
+              	</div>
               	<div class="sp-slides">
                   <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
               		<!-- Slide 1 -->
@@ -21,29 +29,7 @@
               		</div>
                   <?php } ?>
               	</div>
-                <div class="sp-thumbnails">
-                  <?php foreach($galerias as $galeria){ ?>
-                    <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
-                  <div class="sp-thumbnail">
-              			<img class="sp-thumbnail-image" src="<?php echo base_url($ruta_galeria) ?>"/>
-              		</div>
-                  <?php } ?>
-              	</div>
               </div>
-              <div class="cuadricula-productos">
-                <!--
-              <div class="product-content text-center">
-                  <h3 class="title text-primary"><?php echo $producto['PRODUCTO_NOMBRE']; ?></h3>
-                    <div class="price-list"><small>$</small> 000 <small>MXN </small> </div>
-                  <div class="price"><small>$</small> 000 <small>MXN </small></div>
-                  <ul class="rating">
-                      <li class="fa fa-star text-primary"></li>
-                      <li class="far fa-star text-primary"></li>
-                    <li class="fa text-dark"></li>
-                  </ul>
-              </div>
-            -->
-            </div>
             </div>
             <div class="col-4">
               <h5><?php echo $producto['PRODUCTO_NOMBRE']; ?></h5>

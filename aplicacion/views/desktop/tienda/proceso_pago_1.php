@@ -44,11 +44,16 @@
                  <hr>
                  <nav class="nav justify-content-center nav-fill">
                    <a class="nav-link" href="<?php echo base_url('login/olvide');?>"> <span class="fa fa-question-circle"></span> Olvide mi contraseña</a>
-                   <a class="nav-link" href="<?php echo base_url('usuario/registrar');?>"> <span class="fa fa-pen-square"></span> Registrarme</a>
                  </nav>
               </div>
               <div class="col border-left text-center">
-                <h6> <i class="fa fa-user"></i> Invitado</h6>
+                <h6> <i class="fa fa-user"></i> Registro rápido</h6>
+                <?php if(!empty(validation_errors())){ ?>
+                  <div class="alert alert-danger">
+                    <?php echo validation_errors(); ?>
+                  </div>
+                  <hr>
+                <?php } ?>
                 <form class="" action="<?php echo base_url('invitado_pago_2');?>" method="post">
                    <div class="form-group">
                      <label for="NombreUsuario">Nombre</label>
@@ -61,6 +66,10 @@
                    <div class="form-group">
                      <label for="CorreoUsuario">Correo Electrónico</label>
                      <input type="email" class="form-control" name="CorreoUsuario" placeholder="" required value="<?=!form_error('CorreoUsuario')?set_value('CorreoUsuario'):''?>">
+                   </div>
+                   <div class="form-group">
+                     <label for="PassUsuario">Contraseña</label>
+                     <input type="password" class="form-control" name="PassUsuario" placeholder="" required value="<?=!form_error('PassUsuario')?set_value('PassUsuario'):''?>">
                    </div>
                    <div class="form-group">
                      <label for="TelefonoUsuario">Teléfono</label>

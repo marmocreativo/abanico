@@ -26,6 +26,7 @@ class Usuario_Mensajes extends CI_Controller {
 			$this->load->model('PerfilServiciosModel');
 			$this->load->model('ConversacionesModel');
 			$this->load->model('ConversacionesMensajesModel');
+			$this->load->model('NotificacionesModel');
   }
 
 	public function index()

@@ -29,6 +29,7 @@ class Tienda_Guia extends CI_Controller {
 		$this->load->model('GuiasPedidosModel');
 		$this->load->model('RutasGuiasModel');
 		$this->load->model('PuntosRegistroModel');
+		$this->load->model('NotificacionesModel');
   }
 
 	public function index()
@@ -39,7 +40,6 @@ class Tienda_Guia extends CI_Controller {
 			$guia = '';
 		}
 		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
-		$this->data['productos'] = $this->ProductosModel->lista_activos('','','',10);
 		$this->data['guia'] = $this->GuiasPedidosModel->detalles($guia);
 		$this->data['ubicaciones'] = $this->RutasGuiasModel->lista_rutas($this->data['guia']['GUIA_CODIGO']);
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);

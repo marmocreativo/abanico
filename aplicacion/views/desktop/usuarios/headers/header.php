@@ -23,6 +23,7 @@
           </div>
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
+              <?php $this->load->view('desktop/tienda/widgets/menu_notificaciones'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_divisa'); ?>
               <?php //$this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_usuario'); ?>
@@ -36,7 +37,6 @@
         <div class="d-flex justify-content-arround align-items-center">
           <a class="navbar-brand mr-1" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
         </div>
-
         <div class="collapse navbar-collapse d-flex justify-content-between">
           <div class="w-100 d-flex justify-content-end">
             <a class="nav-link" href="<?php echo base_url(); ?>"> <span class="fa fa-shopping-bag"></span> Volver a la tienda</a>

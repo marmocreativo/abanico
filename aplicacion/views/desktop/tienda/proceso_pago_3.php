@@ -35,6 +35,7 @@
                           <?php echo $_SESSION['usuario']['correo']; ?>
                           <br>
                           <?php echo $direccion; ?>
+                          <a href="<?php echo base_url('proceso_pago_2'); ?>"> <i class="fa fa-sync-alt"></i> Cambiar Dirección</a>
                           <br>
                           <?php echo $usuario['USUARIO_TELEFONO']; ?>
                       </address>

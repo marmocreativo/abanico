@@ -21,6 +21,7 @@ class Tienda_Divisas extends CI_Controller {
 
 		// Cargo el modelo
 		$this->load->model('DivisasModel');
+		$this->load->model('NotificacionesModel');
   }
 
 	public function index()

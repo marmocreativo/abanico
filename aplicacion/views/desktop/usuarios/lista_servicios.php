@@ -2,7 +2,7 @@
   <div class="fila">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 fila fila-gris">
+        <div class="col-sm-3 col-md-2 fila">
           <?php $this->load->view('desktop/usuarios/widgets/menu_control_usuario'); ?>
         </div>
         <div class="col">
@@ -12,7 +12,7 @@
                 <h2 class="h5 mb-0"> <span class="fa fa-box"></span> Tus Servicios</h2>
               </div>
               <div class="opciones">
-                  <a href="<?php echo base_url('usuario/servicios/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Nuevo Servicio </a>
+                  <a href="<?php echo base_url('usuario/servicios/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Agregar Servicio </a>
               </div>
             </div>
             <div class="card-body py-0">

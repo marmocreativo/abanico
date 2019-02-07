@@ -24,6 +24,7 @@ class Usuario_Productos extends CI_Controller {
 			$this->load->model('CategoriasProductoModel');
 			$this->load->model('TiendasModel');
 			$this->load->model('DireccionesModel');
+			$this->load->model('NotificacionesModel');
   }
 
 	public function index()

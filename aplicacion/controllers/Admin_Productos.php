@@ -27,6 +27,7 @@ class Admin_Productos extends CI_Controller {
 		$this->load->model('CategoriasModel');
 		$this->load->model('CategoriasProductoModel');
 		$this->load->model('EstadisticasModel');
+		$this->load->model('NotificacionesModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){

@@ -2,10 +2,11 @@
   <div class="fila">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 fila fila-gris">
+        <div class="col-sm-3 col-md-2 fila">
           <?php $this->load->view('desktop/usuarios/widgets/menu_control_usuario'); ?>
         </div>
         <div class="col">
+          <?php if($tienda['TIENDA_ESTADO']=='activo'){ ?>
           <div class="row">
             <div class="col-8">
               <div class="row">
@@ -70,7 +71,7 @@
             <div class="col-4">
               <div class="card <?php echo 'border'.$primary; ?> text-center  mb-4">
                 <div class="card-header <?php echo 'bg'.$primary; ?> text-white">
-                  <h4 class="h5"> <span class="fa fa-box"></span> Productos Minoristas</h4>
+                  <h4 class="h5"> <span class="fa fa-box"></span> Productos</h4>
                 </div>
                 <div class="card-body">
                   <a href="<?php echo base_url('usuario/productos');?>">Mi Catálogo de Productos</a>
@@ -86,6 +87,15 @@
               </div>
             </div>
           </div>
+        <?php }else{ ?>
+          <div class="row">
+            <div class="col">
+              <div class="alert alert-danger">
+                <h6>Tu tienda se encuentra inactiva, por favor comunícate con nosotros para conocer la razón.</h6>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
         </div>
       </div>
     </div>

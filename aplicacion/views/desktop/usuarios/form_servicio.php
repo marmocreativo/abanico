@@ -2,7 +2,7 @@
   <div class="fila">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 fila fila-gris">
+        <div class="col-sm-3 col-md-2 fila">
           <?php $this->load->view('desktop/usuarios/widgets/menu_control_usuario'); ?>
         </div>
         <div class="col">
@@ -127,7 +127,7 @@
                                                     id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
                                                     name="CategoriaServicio" class="custom-control-input"
                                                     value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
-                                                    
+
                                                     >
                                             <label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
                                           </div>

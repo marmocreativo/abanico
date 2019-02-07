@@ -22,6 +22,7 @@ class Admin_Municipios extends CI_Controller {
 		// Cargo el modelo
 		$this->load->model('MunicipiosModel');
 		$this->load->model('EstadisticasModel');
+		$this->load->model('NotificacionesModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -144,12 +145,11 @@ class Admin_Municipios extends CI_Controller {
 	}
 	public function activar()
 	{
-		if(isset($_GET['pais'])&&!empty($_GET['pais'])){
 			$pais = "?pais=".$_GET['pais'];
-		}else{ $pais = "?pais=1"; }
+			$estado = "&estado=".$_GET['estadoDir'];
 
 		$this->MunicipiosModel->activar($_GET['id'],$_GET['estado']);
-		redirect(base_url('admin/municipios').$pais);
+		redirect(base_url('admin/municipios').$pais.$estado);
 	}
 	public function estado()
 	{

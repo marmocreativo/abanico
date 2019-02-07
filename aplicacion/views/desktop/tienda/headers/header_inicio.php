@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/fonts/fontawesome/css/all.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/starrr/starrr.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/flexslider/flexslider.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/slider-pro-master/css/slider-pro.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/estilos_abanico_desktop.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/slider-pro-master/css/slider-pro.css?ver=<?php echo date('U'); ?>" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/estilos_abanico_desktop.css?ver=<?php echo date('U'); ?>">
     <title><?php echo $op['titulo_sitio']; ?></title>
   </head>
   <body>
@@ -26,6 +26,7 @@
           </div>
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
+              <?php $this->load->view('desktop/tienda/widgets/menu_notificaciones'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_divisa'); ?>
               <?php //$this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_usuario'); ?>

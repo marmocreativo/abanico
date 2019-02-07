@@ -30,6 +30,8 @@ class Usuario_Perfil extends CI_Controller {
 			$this->load->model('DireccionesModel');
 			$this->load->model('PedidosModel');
 			$this->load->model('ConversacionesModel');
+			$this->load->model('ConversacionesMensajesModel');
+			$this->load->model('NotificacionesModel');
   }
 	public function index()
 	{
@@ -48,6 +50,7 @@ class Usuario_Perfil extends CI_Controller {
 			$this->data['conteo_servicios'] = $this->ServiciosModel->conteo_servicios_usuario($_SESSION['usuario']['id']);
 			$this->data['conteo_pedidos'] = $this->PedidosModel->conteo_pedidos_usuario($_SESSION['usuario']['id']);
 			$this->data['conteo_mensajes'] = $this->ConversacionesModel->conteo_conversaciones_usuario($_SESSION['usuario']['id']);
+			$this->data['no_leidos'] = $this->ConversacionesModel->conteo_conversaciones_no_leidas_usuario($_SESSION['usuario']['id']);
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/panel_usuario',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
@@ -216,6 +219,8 @@ class Usuario_Perfil extends CI_Controller {
 		$this->load->model('ProductosModel');
 		$this->UsuariosModel->borrar($_SESSION['usuario']['id']);
 		$this->ProductosModel->desactivar_productos_usuario($_SESSION['usuario']['id']);
+		// cargo la retroalimentación
+		$this->session->set_flashdata('exito', 'Tu cuenta ha sido borrada correctamente');
 		redirect(base_url('login/cerrar'));
 	}
 }

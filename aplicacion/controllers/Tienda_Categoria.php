@@ -28,6 +28,7 @@ class Tienda_Categoria extends CI_Controller {
 		$this->load->model('CategoriasModel');
 		$this->load->model('GaleriasServiciosModel');
 		$this->load->model('CalificacionesServiciosModel');
+		$this->load->model('NotificacionesModel');
 
 		// Variables comunes
   }
@@ -37,6 +38,10 @@ class Tienda_Categoria extends CI_Controller {
  	{
 		$parametros_or = array();
 		$parametros_and = array();
+		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
+			$parametros_or['PRODUCTO_NOMBRE'] = $_GET['Busqueda'];
+			$parametros_or['PRODUCTO_MODELO'] = $_GET['Busqueda'];
+		}
 		// Orden
 		if(isset($_GET['OrdenBusqueda'])&&!empty($_GET['OrdenBusqueda'])){
 			switch ($_GET['OrdenBusqueda']) {
@@ -88,7 +93,7 @@ class Tienda_Categoria extends CI_Controller {
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 			$this->data['categoria'] = $this->CategoriasModel->detalles_slug($_GET['slug']);
 			$this->data['origen_formulario'] = 'categoria';
-			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$this->data['categoria']['ID_CATEGORIA'],'','');
+			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$this->data['categoria']['ID_CATEGORIA'],$orden,'');
 			$this->data['primary'] = $this->data['categoria']['CATEGORIA_COLOR'];
 	 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);
@@ -96,8 +101,8 @@ class Tienda_Categoria extends CI_Controller {
 		}else{
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
-			$this->data['productos'] = $this->ProductosModel->lista_activos('','','','');
-			$this->data['origen_formulario'] = '';
+			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,'','',$orden,'');
+			$this->data['origen_formulario'] = 'categoria';
 	 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

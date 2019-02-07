@@ -42,9 +42,9 @@
                 <td class="text-center"><?php echo $municpio->ESTADO_NOMBRE; ?></td>
                 <td class="text-center">
                   <?php if($municpio->MUNICIPIO_ESTADO=='activo'){ ?>
-                    <a href="<?php echo base_url('admin/municipios/activar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS."&estado=".$municpio->MUNICIPIO_ESTADO; ?>" class="btn btn-sm btn-outline-success" title="Desactivar Municipio"> <span class="fa fa-check-circle"></span> </a>
+                    <a href="<?php echo base_url('admin/municipios/activar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS."&estadoDir=".$municpio->ESTADO_NOMBRE."&estado=".$municpio->MUNICIPIO_ESTADO; ?>" class="btn btn-sm btn-outline-success" title="Desactivar Municipio"> <span class="fa fa-check-circle"></span> </a>
                   <?php }else{ ?>
-                    <a href="<?php echo base_url('admin/municipios/activar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS."&estado=".$municpio->MUNICIPIO_ESTADO; ?>" class="btn btn-sm btn-outline-danger" title="Activar Municipio"> <span class="fa fa-times-circle"></span> </a>
+                    <a href="<?php echo base_url('admin/municipios/activar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS."&estadoDir=".$municpio->ESTADO_NOMBRE."&estado=".$municpio->MUNICIPIO_ESTADO; ?>" class="btn btn-sm btn-outline-danger" title="Activar Municipio"> <span class="fa fa-times-circle"></span> </a>
                   <?php } ?>
                 </td>
                 <td class="text-right">

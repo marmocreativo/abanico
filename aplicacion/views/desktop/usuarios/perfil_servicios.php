@@ -2,10 +2,11 @@
   <div class="fila">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 fila fila-gris">
+        <div class="col-sm-3 col-md-2 fila">
           <?php $this->load->view('desktop/usuarios/widgets/menu_control_usuario'); ?>
         </div>
         <div class="col">
+          <?php if($perfil['PERFIL_ESTADO']=='activo'){ ?>
           <div class="row">
             <div class="col-8">
               <div class="row">
@@ -80,6 +81,15 @@
             -->
             </div>
           </div>
+        <?php }else{ ?>
+          <div class="row">
+            <div class="col">
+              <div class="alert alert-danger">
+                <h6>Tu perfil de servicios se encuentra inactivo, por favor comunícate con nosotros para conocer la razón.</h6>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
         </div>
       </div>
     </div>

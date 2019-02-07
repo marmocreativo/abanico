@@ -32,8 +32,9 @@
                       <?php echo $servicio['SERVICIO_DESCRIPCION']; ?>
                     </div>
                     <div class="col-6">
+                    <?php if(!empty($adjuntos)){ ?>
                       <div class="card border-primary">
-                        <h6 class="card-header bg-primary-15">Anexos</h6>
+                        <h6 class="card-header bg-primary-15">Adjuntos</h6>
                         <div class="card-body text-primary">
                           <div class="list-group">
                             <?php foreach($adjuntos as $adjunto){ ?>
@@ -46,6 +47,7 @@
                           </div>
                         </div>
                       </div>
+                    <?php } ?>
 
                     </div>
                 </div>

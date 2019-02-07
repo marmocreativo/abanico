@@ -23,26 +23,37 @@
       </div>
       <div class="col-12">
 
-        <?php for($i=0; $i<=1; $i++){ ?>
+        <?php foreach($servicios as $servicio){ ?>
         <div class="servicios">
-          <a class="portada" href="http://localhost/abanico-master/servicio?id=10" class="enlace-principal-servicio">
-            <div class="rounded-circle" style="background-image:url()"> </div>
+          <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio->ID_SERVICIO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+          <a class="portada" href="<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" class="enlace-principal-servicio">
+            <div class="rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>)"> </div>
           </a>
           <div class="product-content text-center">
+            <?php
+            $promedio = $this->CalificacionesServiciosModel->promedio_calificaciones_producto($servicio->ID_SERVICIO);
+            $cantidad = $this->CalificacionesServiciosModel->conteo_calificaciones_producto($servicio->ID_SERVICIO);
+            ?>
             <ul class="rating">
+              <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
+              <?php for($i = 1; $i<=$estrellas; $i++){ ?>
               <li class="fa fa-star"></li>
+            <?php } ?>
+            <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
               <li class="fa fa-star"></li>
-              <li class="fa fa-star"></li>
-              <li class="far fa-star"></li>
-              <li class="far fa-star"></li>
-              <li class="text-dark">(1 calif)</li>
+            <?php } ?>
+              <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
             </ul>
-            <h3 class="title text-primary">Redaccion y correccion de textos </h3>
+            <h3 class="title text-primary"><?php echo $servicio->SERVICIO_NOMBRE; ?> </h3>
             <div class="border-top mt-3 pt-3">
-              <p>Redacto, reviso y corrijo textos científicos y filosóficos</p>
+              <p><?php echo $servicio->SERVICIO_DESCRIPCION; ?></p>
             </div>
             <div class="">
-                <a href="#" class="btn btn-outline-primary" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+              <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+                <a href="<?php echo base_url('servicio/favorito?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-outline-primary" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+              <?php }else{ ?>
+                <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$servicio->ID_SERVICIO)); ?>" class="btn btn-outline-primary" title="Quitar de Favoritos"> <span class="fa fa-heart"></span> </a>
+              <?php } ?>
             </div>
           </div>
         </div>
