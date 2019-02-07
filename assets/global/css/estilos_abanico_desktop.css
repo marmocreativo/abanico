@@ -719,11 +719,17 @@ img.sp-thumbnail-image {
     border-radius: 0;
 }
 
-
+.cont-perfil {
+  background: #f1f1f1;
+  padding: 5px;
+  border-bottom: solid 1px lightgray;
+}
+.cont-perfil h3 {
+  display: inline;
+}
 .foto-perfil-usuario {
   height: 70px;
-  width: 70px;
-  margin-left: 15px;
+  width: 70px;*-
   position: relative;
 }
 #menu-usuario i{
@@ -755,6 +761,11 @@ img.sp-thumbnail-image {
 #dash-1 .col-6 .card:hover{
   background: #f1f6f7;
 }
-#dash-1 .col-6 a:hover{
+#dash-1 .col-6 a:hover, #dash-2 .col-6 a:hover{
+  text-decoration: none;
+}
+
+.card-p-usuario:hover {
+  background: #f1f1f1;
   text-decoration: none;
 }

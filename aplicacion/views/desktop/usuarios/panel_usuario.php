@@ -8,8 +8,8 @@
         <div class="col">
           <?php retro_alimentacion(); ?>
           <div class="row no-gutters" id="dash-1">
-              <div class="col-12 justify-content-left cont-perfil ml-3">
-                  <img src="<?php echo base_url('assets/global/img/usuario_default.png') ?>" class="img-thumbnail rounded-circle foto-perfil-usuario" alt="">
+              <div class="col-12 justify-content-left cont-perfil">
+                  <img src="<?php echo base_url('assets/global/img/usuario_default.png') ?>" class="img-thumbnail rounded-circle foto-perfil-usuario ml-2" alt="">
                   <h3><?php  echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']; ?></h3>
               </div>
             <div class="col-6">
@@ -42,7 +42,7 @@
               </a>
             </div>
           </div>
-          <div class="row mt-3">
+          <div class="row mt-3" id="dash-2">
             <?php if(!empty($tienda)){ ?>
               <div class="col-6">
                 <div class="card">
@@ -65,26 +65,31 @@
             <?php }else{ ?>
               <div class="col-6">
                 <!-- Start Blurb -->
-                <div class="row mb-2">
-                    <div class="col text-center">
+
+                <a href="<?php echo base_url('usuario/tienda'); ?>" class="">
+                  <div class="card border border-primary-11 card-p-usuario">
+                    <div class="card-body">
+                      <div class="row mb-2 no-gutters">
+                      <div class="col-4 text-center">
                         <div class="text-primary d-inline-block">
-                            <i class="fa fa-store fa-4x mt-3 mb-3 ml-3 mr-3 text-primary-11" aria-hidden="true"></i>
+                          <i class="fa fa-store fa-4x mt-3 mb-3 ml-3 mr-3 text-primary-11" aria-hidden="true"></i>
                         </div>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col text-center text-primary">
-                        <strong>¿Deseas Vender?</strong><br>
+                      </div>
+                      <div class="col-8 text-center text-primary">
+                        <h5>¿Deseas Vender?</h5>
                         <p>Registrate como Vendedor o como tienda y empieza a vender.</p>
-                        <a href="<?php echo base_url('usuario/tienda'); ?>" class="btn btn-lg btn-outline-primary-11 btn-block"> <i class="fa fa-pencil-alt"></i> Registrarte para vender</a>
+                        <button type="button" class="btn btn-primary btn-block"> Registrarte para vender</button>
+                      </div>
                     </div>
-                </div>
+                    </div>
+                  </div>
+                </a>
                 <!-- End Blurb -->
               </div>
             <?php } ?>
             <?php if(!empty($perfil)){ ?>
               <div class="col-6">
-                <div class="card">
+                <div class="card ">
                   <div class="card-body bg-primary text-white">
                     <div class="row">
                       <div class="col">
@@ -104,20 +109,24 @@
             <?php }else{ ?>
               <div class="col-6">
                 <!-- Start Blurb -->
-                <div class="row mb-2">
-                    <div class="col text-center">
+                <a href="<?php echo base_url('usuario/perfil_servicios'); ?>">
+                <div class="card border border-primary-3 card-p-usuario">
+                  <div class="card-body">
+                    <div class="row mb-2 no-gutters">
+                      <div class="col-4 text-center">
                         <div class="text-primary d-inline-block">
-                            <i class="fa fa-user-tie fa-4x mt-3 mb-3 ml-3 mr-3 text-primary-3" aria-hidden="true"></i>
+                          <i class="fa fa-user-tie fa-4x mt-3 mb-3 ml-3 mr-3 text-primary-3" aria-hidden="true"></i>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col text-center text-primary">
-                        <strong>¿Deseas ofrecer un Servicio?</strong><br>
+                      </div>
+                      <div class="col-8 text-center text-primary">
+                        <h5>¿Deseas ofrecer un Servicio?</h5>
                         <p>Crea un perfil y empieza a ofrecer tus trabajos.</p>
-                        <a href="<?php echo base_url('usuario/perfil_servicios'); ?>" class="btn btn-lg btn-outline-primary-3 btn-block"> <i class="fa fa-pencil-alt"></i> Crear perfil</a>
+                        <button type="button" class="btn btn-primary btn-block"> Crear perfil </button>
+                      </div>
                     </div>
+                  </div>
                 </div>
+                </a>
                 <!-- End Blurb -->
               </div>
             <?php } ?>
