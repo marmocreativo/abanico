@@ -22,6 +22,13 @@ class NotificacionesModel extends CI_Model {
     $query = $this->db->get('notificaciones');
     return $query->result();
   }
+  function conteo_no_leidas($id_usuario){
+
+    $this->db->where('ID_USUARIO',$id_usuario);
+    $this->db->where('NOTIFICACION_ESTADO','no leido');
+    $query = $this->db->count_all_results('notificaciones');
+    return $query;
+  }
   /*
     * Creo una nueva entrada usando los parámetros
  */
@@ -32,16 +39,10 @@ class NotificacionesModel extends CI_Model {
   /*
     * Creo una nueva entrada usando los parámetros
  */
-  function marcar_leido($id){
-    $this->db->where('ID_NOTIFICACION',$id);
-    $this->db->update('notificaciones',array('NOTIFICACION_ESTADO','leido'));
-    return $this->db->insert_id();
-  }
-  function marcar_no_leido($id){
-    $this->db->where('ID_NOTIFICACION',$id);
-    $this->db->update('notificaciones',array('NOTIFICACION_ESTADO','no leido'));
-    return $this->db->insert_id();
-  }
+ function marcar_todas_leidas($id_usuario){
+   $this->db->where('ID_USUARIO',$id_usuario);
+   return $this->db->update('notificaciones',['NOTIFICACION_ESTADO'=>'leido']);
+ }
   /*
     * Borro una entrada
     * $id es el identificador de la entrada

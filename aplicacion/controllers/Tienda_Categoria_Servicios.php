@@ -29,6 +29,7 @@ class Tienda_Categoria_Servicios extends CI_Controller {
 		$this->load->model('GaleriasServiciosModel');
 		$this->load->model('CategoriasServiciosModel');
 		$this->load->model('CalificacionesServiciosModel');
+		$this->load->model('NotificacionesModel');
 
 		// Variables comunes
   }

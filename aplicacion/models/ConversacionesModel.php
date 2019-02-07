@@ -19,7 +19,8 @@ class ConversacionesModel extends CI_Model {
       'conversaciones.ID_USUARIO_A',
       'conversaciones.ID_USUARIO_B',
       'conversaciones.CONVERSACION_TIPO',
-      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION'
+      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION',
+      'conversaciones.CONVERSACION_ESTADO'
     ]);
     $this->db->join('usuarios','conversaciones.ID_USUARIO_A = usuarios.ID_USUARIO');
     $this->db->or_where('ID_USUARIO_A',$id_usuario);
@@ -37,7 +38,8 @@ class ConversacionesModel extends CI_Model {
       'conversaciones.ID_USUARIO_A',
       'conversaciones.ID_USUARIO_B',
       'conversaciones.CONVERSACION_TIPO',
-      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION'
+      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION',
+      'conversaciones.CONVERSACION_ESTADO'
     ]);
     $this->db->join('usuarios','conversaciones.ID_USUARIO_A = usuarios.ID_USUARIO');
     $where = "CONVERSACION_TIPO='".$tipo."' AND (ID_USUARIO_A='".$id_usuario."' OR ID_USUARIO_B='".$id_usuario."')";
@@ -55,7 +57,8 @@ class ConversacionesModel extends CI_Model {
       'conversaciones.ID_USUARIO_A',
       'conversaciones.ID_USUARIO_B',
       'conversaciones.CONVERSACION_TIPO',
-      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION'
+      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION',
+      'conversaciones.CONVERSACION_ESTADO'
     ]);
     $this->db->join('usuarios','conversaciones.ID_USUARIO_A = usuarios.ID_USUARIO');
     $this->db->or_where('ID_USUARIO_A',$id_usuario);
@@ -72,7 +75,8 @@ class ConversacionesModel extends CI_Model {
       'conversaciones.ID_USUARIO_A',
       'conversaciones.ID_USUARIO_B',
       'conversaciones.CONVERSACION_TIPO',
-      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION'
+      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION',
+      'conversaciones.CONVERSACION_ESTADO'
     ]);
     $this->db->join('usuarios','conversaciones.ID_USUARIO_A = usuarios.ID_USUARIO');
     $this->db->where('CONVERSACION_TIPO',$tipo);
@@ -91,7 +95,8 @@ class ConversacionesModel extends CI_Model {
       'conversaciones.ID_USUARIO_A',
       'conversaciones.ID_USUARIO_B',
       'conversaciones.CONVERSACION_TIPO',
-      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION'
+      'conversaciones.CONVERSACION_FECHA_ACTUALIZACION',
+      'conversaciones.CONVERSACION_ESTADO'
     ]);
     $this->db->join('usuarios','conversaciones.ID_USUARIO_A = usuarios.ID_USUARIO');
     $this->db->order_by('CONVERSACION_FECHA_ACTUALIZACION','DESC');
@@ -104,6 +109,15 @@ class ConversacionesModel extends CI_Model {
 
     $this->db->or_where('ID_USUARIO_A',$id_usuario);
     $this->db->or_where('ID_USUARIO_B',$id_usuario);
+    $query = $this->db->count_all_results('conversaciones');
+    return $query;
+  }
+  function conteo_conversaciones_no_leidas_usuario($id_usuario){
+    $this->db->group_start();
+    $this->db->or_where('ID_USUARIO_A',$id_usuario);
+    $this->db->or_where('ID_USUARIO_B',$id_usuario);
+    $this->db->group_end();
+    $this->db->where('CONVERSACION_ESTADO','no leido');
     $query = $this->db->count_all_results('conversaciones');
     return $query;
   }

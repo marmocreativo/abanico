@@ -37,9 +37,9 @@
                 <td class="text-center"><?php echo $perfil->PERFIL_RFC; ?></td>
                 <td class="text-center">
                   <?php if($perfil->PERFIL_ESTADO=='activo'){ ?>
-                    <a href="<?php echo base_url('admin/usuarios/activar')."?id=".$perfil->ID_PERFIL."&estado=".$perfil->PERFIL_ESTADO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
+                    <a href="<?php echo base_url('admin/perfiles_servicios/activar')."?id=".$perfil->ID_PERFIL."&estado=".$perfil->PERFIL_ESTADO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
                   <?php }if($perfil->PERFIL_ESTADO=='inactivo'){ ?>
-                    <a href="<?php echo base_url('admin/usuarios/activar')."?id=".$perfil->ID_PERFIL."&estado=".$perfil->PERFIL_ESTADO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
+                    <a href="<?php echo base_url('admin/perfiles_servicios/activar')."?id=".$perfil->ID_PERFIL."&estado=".$perfil->PERFIL_ESTADO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
                   <?php }if($perfil->PERFIL_ESTADO=='pendiente'){ ?>
                     <button type="button" class="btn btn-warning" name="button">Pendiente</button>
                   <?php } ?>

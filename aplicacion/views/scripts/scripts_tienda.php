@@ -317,5 +317,27 @@ Slider Productos
       autoHeight: true,
     });
  	});
+  /*
+  -----------------
+ Notificaciones
+  -----------------
+  */
+  <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+  jQuery('#btnNotificaciones').on('click',function(e){
+    // Envio la información por ajax
+    jQuery.ajax({
+      method: "POST",
+      url: "<?php echo base_url('ajax/notificaciones/leidas'); ?>",
+      dataType: "text",
+      data: {
+        IdUsuario: '<?php echo $_SESSION['usuario']['id']; ?>',
+      },
+      success : function(texto)
+       {
+          console.log(texto);
+       }
+    });
+  });
+  <?php } ?>
 
 </script>

@@ -6,6 +6,7 @@
           <?php $this->load->view('desktop/usuarios/widgets/menu_control_usuario'); ?>
         </div>
         <div class="col">
+          <?php if($tienda['TIENDA_ESTADO']=='activo'){ ?>
           <div class="row">
             <div class="col-8">
               <div class="row">
@@ -86,6 +87,15 @@
               </div>
             </div>
           </div>
+        <?php }else{ ?>
+          <div class="row">
+            <div class="col">
+              <div class="alert alert-danger">
+                <h6>Tu tienda se encuentra inactiva, por favor comunícate con nosotros para conocer la razón.</h6>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
         </div>
       </div>
     </div>

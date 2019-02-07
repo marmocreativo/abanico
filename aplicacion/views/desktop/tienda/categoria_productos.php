@@ -25,7 +25,7 @@
     <div class="row">
     <div class="col-2 d-none d-sm-block fila filtro-cont">
       <form class="" action="<?php echo base_url($origen_formulario) ?>" method="get">
-        <?php if($origen_formulario=='categoria'){ ?>
+        <?php if($origen_formulario=='categoria'&&!empty($categoria)){ ?>
           <input type="hidden" name="slug" value="<?php echo $categoria['CATEGORIA_URL']; ?>">
         <?php } ?>
         <input type="hidden" name="Busqueda" value="<?php if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){ echo filter_var ( $_GET['Busqueda'], FILTER_SANITIZE_STRING); } ?>">
@@ -36,7 +36,7 @@
       <?php } ?>
         <div class="contenedor-filtros">
           <select class="custom-select filtro-sel" name="OrdenBusqueda">
-            <option selected>Ordenar por</option>
+            <option value="" selected>Ordenar por</option>
             <option value="precio_desc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='precio_desc'){ echo 'selected'; } ?>>Mayor Precio</option>
             <option value="precio_asc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='precio_asc'){ echo 'selected'; } ?>>Menor Precio</option>
             <option value="alfabetico_asc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='alfabetico_asc'){ echo 'selected'; } ?>>Alfabético A-Z</option>

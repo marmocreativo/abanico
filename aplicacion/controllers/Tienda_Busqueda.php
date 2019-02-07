@@ -28,6 +28,7 @@ class Tienda_Busqueda extends CI_Controller {
 		$this->load->model('CategoriasModel');
 		$this->load->model('GaleriasServiciosModel');
 		$this->load->model('CalificacionesServiciosModel');
+		$this->load->model('NotificacionesModel');
 
 		// Variables comunes
   }
@@ -102,7 +103,6 @@ class Tienda_Busqueda extends CI_Controller {
 
 			case 'servicios':
 			// Código de Busqueda
-				if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
 				 $parametros_or = array(
 					 'SERVICIO_NOMBRE'=>$_GET['Busqueda'],
 				 );
@@ -130,7 +130,6 @@ class Tienda_Busqueda extends CI_Controller {
 				 $this->load->view($this->data['dispositivo'].'/tienda/categoria_servicios',$this->data);
 				 $this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 
-			 }
 		 	break;
 	 }
 

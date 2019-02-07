@@ -213,7 +213,7 @@ class ProductosModel extends CI_Model {
   /*
     * Desactivar servicios de un Usuario
  */
-  function descativar_productos_usuario($id){
+  function desactivar_productos_usuario($id){
     $this->db->where('ID_USUARIO',$id);
     return $this->db->update('productos',array('PRODUCTO_ESTADO'=>'inactivo'));
   }

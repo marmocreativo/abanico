@@ -30,6 +30,7 @@ class Tienda_Inicio extends CI_Controller {
 		$this->load->model('CategoriasModel');
 		$this->load->model('GaleriasServiciosModel');
 		$this->load->model('CalificacionesServiciosModel');
+		$this->load->model('NotificacionesModel');
   }
 
 	public function index()

@@ -29,6 +29,7 @@ class Admin_Guias extends CI_Controller {
 		$this->load->model('RutasGuiasModel');
 		$this->load->model('PuntosRegistroModel');
 		$this->load->model('EstadisticasModel');
+		$this->load->model('NotificacionesModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){

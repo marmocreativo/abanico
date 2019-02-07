@@ -32,6 +32,8 @@ class Proceso_Pago extends CI_Controller {
 		$this->load->model('PedidosProductosModel');
 		$this->load->model('PedidosTiendasModel');
 		$this->load->model('AutenticacionModel');
+		$this->load->model('NotificacionesModel');
+		$this->load->model('NotificacionesModel');
 
 		//var_dump($_SESSION['pedido']);
 	}
@@ -206,6 +208,16 @@ class Proceso_Pago extends CI_Controller {
 				$this->data['vendedor'] = $this->UsuariosModel->detalles($this->data['tienda']['ID_USUARIO']);
 				$correos_tienda[] = $this->data['vendedor']['USUARIO_CORREO'];
 				$tienda_id = $this->PedidosTiendasModel->crear($parametros_tienda);
+				// Relleno Notificación
+				$parametros_notificacion = array(
+					'ID_USUARIO'=>$this->data['tienda']['ID_USUARIO'],
+					'NOTIFICACION_CONTENIDO'=>'Felicidades alguien te ha hecho una compra',
+					'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+					'NOTIFICACION_ESTADO'=>'no leido'
+				);
+				// Creo la notificación
+				$id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
+				// Redirecciono
 			}
 			// Bucle de Pedidos Productos
 			foreach($_SESSION['carrito']['productos'] as $producto){

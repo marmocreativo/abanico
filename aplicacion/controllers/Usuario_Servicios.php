@@ -25,6 +25,7 @@ class Usuario_Servicios extends CI_Controller {
 			$this->load->model('PerfilServiciosModel');
 			$this->load->model('DireccionesModel');
 			$this->load->model('AdjuntosUsuariosModel');
+			$this->load->model('NotificacionesModel');
   }
 
 	public function index()

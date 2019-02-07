@@ -29,6 +29,7 @@ class Usuario_Ventas extends CI_Controller {
 			$this->load->model('PedidosProductosModel');
 			$this->load->model('GuiasPedidosModel');
 			$this->load->model('PagosPedidosModel');
+			$this->load->model('NotificacionesModel');
   }
 
 	public function index()

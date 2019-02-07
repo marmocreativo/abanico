@@ -28,6 +28,7 @@ class Usuario_Favoritos extends CI_Controller {
 		$this->load->model('CalificacionesModel');
 		$this->load->model('CalificacionesServiciosModel');
 		$this->load->model('CategoriasProductoModel');
+		$this->load->model('NotificacionesModel');
 
 		// Variables comunes
   }

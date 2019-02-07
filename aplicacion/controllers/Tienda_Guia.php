@@ -29,6 +29,7 @@ class Tienda_Guia extends CI_Controller {
 		$this->load->model('GuiasPedidosModel');
 		$this->load->model('RutasGuiasModel');
 		$this->load->model('PuntosRegistroModel');
+		$this->load->model('NotificacionesModel');
   }
 
 	public function index()

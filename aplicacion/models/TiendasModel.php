@@ -33,7 +33,7 @@ class TiendasModel extends CI_Model {
   function detalles($id){
     return $this->db->get_where('tiendas',array('ID_TIENDA'=>$id))->row_array();
   }
-  
+
   public function tienda_usuario($id){
       return $this->db->get_where('tiendas',array('ID_USUARIO'=>$id),1)->row_array();
   }
@@ -79,7 +79,7 @@ class TiendasModel extends CI_Model {
       break;
     }
     $this->db->where('ID_TIENDA',$id);
-    return $this->db->update('tiendas',array('ID_TIENDA'=>$activo));
+    return $this->db->update('tiendas',array('TIENDA_ESTADO'=>$activo));
   }
   /*
     * Cambio el estado de la entrada, puede ser cualquier estado
