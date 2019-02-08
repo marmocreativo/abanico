@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-          <h1 class="h3">Registro de Usuarios</h1>
+          <h1 class="h3">REGISTRO DE USUARIO</h1>
         </div>
       </div>
     </div>

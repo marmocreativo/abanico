@@ -49,13 +49,13 @@
                       </select>
                     </div>
                      <div class="form-group">
-                       <label for="NombreTienda">Nombre Público <small>El nombre que verán los compradores</small> </label>
+                       <label for="NombreTienda">Nombre público <small>El nombre que verán los compradores</small> </label>
                        <input type="text" class="form-control" id="NombreTienda" name="NombreTienda" placeholder="" value="<?php echo set_value('NombreTienda'); ?>">
                      </div>
                      <hr>
                      <h6><span class="fa fa-file-invoice"></span> Datos Fiscales (En caso de requerir Factura)</h6>
                      <div class="form-group">
-                       <label for="RazonSocialTienda">Razón Social</label>
+                       <label for="RazonSocialTienda">Razón social</label>
                        <input type="text" class="form-control" id="RazonSocialTienda" name="RazonSocialTienda" placeholder="" value="<?php echo set_value('RazonSocialTienda'); ?>">
                      </div>
                      <div class="form-group">
@@ -121,7 +121,7 @@
                      <hr>
                      <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                        <label class="custom-control-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones de Vendedores</label>
+                        <label class="custom-control-label" for="TerminosyCondiciones">Acepto los términos y condiciones de Vendedores</label>
                       </div>
                      <hr>
                      <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Registrar Tienda</button>

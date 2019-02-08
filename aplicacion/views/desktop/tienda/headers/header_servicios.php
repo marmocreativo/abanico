@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col">
-            <a href="#" class="btn btn-link"> <span class="fa fa-phone"></span> Atención a Clientes <?php echo $op['telefono_sitio'] ?></a>
+            <a href="#" class="btn btn-link"> <span class="fa fa-phone"></span> Atención a clientes <?php echo $op['telefono_sitio'] ?></a>
           </div>
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
@@ -50,8 +50,8 @@
               <input class="form-control w-50" type="search" name="Busqueda" placeholder="Busca lo Mejor" aria-label="Search">
               <select class="form-control" aria-label="Example select with button addon">
                 <option value="todo">En Todo</option>
-                <option value="productos">En Productos</option>
-                <option value="servicios">En Servicios</option>
+                <option value="productos">En productos</option>
+                <option value="servicios">En servicios</option>
               </select>
               <div class="input-group-append">
                 <button type="submit" class="btn <?php echo 'btn'.$primary; ?>" type="button"> <i class="fa fa-search"></i> </button>

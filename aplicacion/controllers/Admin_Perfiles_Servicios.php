@@ -33,7 +33,7 @@ class Admin_Perfiles_Servicios extends CI_Controller {
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 		// Verifico Permiso

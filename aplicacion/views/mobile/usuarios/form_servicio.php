@@ -286,7 +286,7 @@
             <div class="card-body">
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                <label class="custom-control-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones de los Servicios</label>
+                <label class="custom-control-label" for="TerminosyCondiciones">Acepto los términos y condiciones de los Servicios</label>
               </div>
               <hr>
               <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-save"></i> Registrar Servicio</button>
@@ -468,7 +468,7 @@
                    <hr>
                     <div class="custom-control custom-checkbox">
                        <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                       <label class="custom-control-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones de los Servicios</label>
+                       <label class="custom-control-label" for="TerminosyCondiciones">Acepto los términos y condiciones de los Servicios</label>
                      </div>
                     <hr>
                     <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Registrar Servicio</button>

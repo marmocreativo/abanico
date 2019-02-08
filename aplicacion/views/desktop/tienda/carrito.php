@@ -59,7 +59,7 @@
   <?php } ?>
   <?php }else{ ?>
     <tr>
-      <td colspan="5" class="text-center border-0">Aún no tienes productos en tu carrito</td>
+      <td colspan="5" class="text-center border-0">Aún no tienes productos en tu carrito.</td>
     </tr>
   <?php } ?>
 

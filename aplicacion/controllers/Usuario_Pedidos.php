@@ -37,7 +37,7 @@ class Usuario_Pedidos extends CI_Controller {
 	{
 			// Debo redireccionar
 			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 			}
 
@@ -51,7 +51,7 @@ class Usuario_Pedidos extends CI_Controller {
 	{
 			// Debo redireccionar
 			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 			}
 
@@ -70,7 +70,7 @@ class Usuario_Pedidos extends CI_Controller {
 	public function subir_comprobante()
 	{
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 
@@ -124,7 +124,7 @@ class Usuario_Pedidos extends CI_Controller {
 	public function cambiar_estado()
 	{
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 		$this->PedidosModel->estado($_GET['id'],$_GET['estado']);
@@ -137,7 +137,7 @@ class Usuario_Pedidos extends CI_Controller {
 	{
 			// Debo redireccionar
 			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 			}
 

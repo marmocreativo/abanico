@@ -32,7 +32,7 @@ class Autenticacion extends CI_Controller {
 		}
 	}
 	/*
-	Método  de Inicio de Sesión
+	Método  de Inicio de sesión
 	*/
 	public function iniciar()
 	{
@@ -139,7 +139,7 @@ class Autenticacion extends CI_Controller {
 		}
 	}
 	/*
-	Método  de Inicio de Sesión
+	Método  de Inicio de sesión
 	*/
 	public function restaurar()
 	{

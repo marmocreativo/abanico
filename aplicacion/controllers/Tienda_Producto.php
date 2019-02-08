@@ -161,7 +161,7 @@ public function favorito()
 	public function contacto()
  {
 	 if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-		 $this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+		 $this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 		 redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 	 }
 	 $this->form_validation->set_rules('MensajeTexto', 'Mensaje', 'required', array( 'required' => 'Debes enviar un mensaje %s'));

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1 class="h5 text-center my-3">Inicio de Sesión</h1>
+          <h1 class="h5 text-center my-3">Inicio de sesión</h1>
         </div>
       </div>
     </div>
@@ -58,12 +58,12 @@
                      <input type="password" class="form-control form-control-sm" id="PassUsuarioConf" name="PassUsuarioConf" placeholder="Confirmar">
                    </div>
                    <hr>
-                   <button type="submit" class="btn btn-sm btn-primary btn-block">Iniciar Sesión</button>
+                   <button type="submit" class="btn btn-sm btn-primary btn-block">Iniciar sesión</button>
                  </form>
             </div>
             <div class="card-footer">
               <nav class="nav justify-content-center nav-fill">
-                <a class="nav-link" href="<?php echo base_url('login/olvide');?>"> <span class="fa fa-question-circle"></span> Olvide mi contraseña</a>
+                <a class="nav-link" href="<?php echo base_url('login/olvide');?>"> <span class="fa fa-question-circle"></span> Olvidé mi contraseña</a>
                 <a class="nav-link" href="<?php echo base_url('usuario/registrar');?>"> <span class="fa fa-pen-square"></span> Registrarme</a>
               </nav>
             </div>

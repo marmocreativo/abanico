@@ -35,13 +35,13 @@
             </div>
             <!-- <h6><span class="fa fa-store"></span> Datos de tu tienda</h5> -->
              <div class="form-group">
-               <label for="NombreTienda">Nombre Público</label>
+               <label for="NombreTienda">Nombre público</label>
                <input type="text" class="form-control form-control-sm" id="NombreTienda" name="NombreTienda" placeholder="" value="">
              </div>
              <hr>
              <h6><span class="fa fa-file-invoice"></span> Datos Fiscales</h6>
              <div class="form-group">
-               <label for="RazonSocialTienda">Razón Social</label>
+               <label for="RazonSocialTienda">Razón social</label>
                <input type="text" class="form-control form-control-sm" id="RazonSocialTienda" name="RazonSocialTienda" required="" placeholder="" value="">
              </div>
              <div class="form-group">
@@ -52,7 +52,7 @@
                <label for="TelefonoTienda">Teléfono</label>
                <input type="text" class="form-control form-control-sm" id="TelefonoTienda" name="TelefonoTienda" required="" placeholder="" value="">
              </div>
-             <h6> <span class="fa fa-building"></span> Dirección Fiscal</h6>
+             <h6> <span class="fa fa-building"></span> Dirección fiscal</h6>
              <input type="hidden" name="TipoDireccion" value="fiscal">
              <input type="hidden" name="AliasDireccion" value="Direccion Tienda">
              <input type="hidden" name="ReferenciasDireccion" value="-">
@@ -93,7 +93,7 @@
              <hr>
              <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="" name="" required="">
-                <label class="custom-control-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones de Vendedores</label>
+                <label class="custom-control-label" for="TerminosyCondiciones">Acepto los términos y condiciones de Vendedores</label>
               </div>
              <hr>
              <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-save"></i> Registrar Tienda</button>
@@ -153,13 +153,13 @@
                   <div class="col-12 col-sm-9">
                     <h5> <span class="fa fa-store"></span> Datos de tu tienda</h5>
                      <div class="form-group">
-                       <label for="NombreTienda">Nombre Público</label>
+                       <label for="NombreTienda">Nombre público</label>
                        <input type="text" class="form-control" id="NombreTienda" name="NombreTienda" placeholder="" value="<?php echo set_value('NombreTienda'); ?>">
                      </div>
                      <hr>
                      <h6><span class="fa fa-file-invoice"></span> Datos Fiscales</h6>
                      <div class="form-group">
-                       <label for="RazonSocialTienda">Razón Social</label>
+                       <label for="RazonSocialTienda">Razón social</label>
                        <input type="text" class="form-control" id="RazonSocialTienda" name="RazonSocialTienda" required placeholder="" value="<?php echo set_value('RazonSocialTienda'); ?>">
                      </div>
                      <div class="form-group">
@@ -170,7 +170,7 @@
                        <label for="TelefonoTienda">Teléfono</label>
                        <input type="text" class="form-control" id="TelefonoTienda" name="TelefonoTienda" required placeholder="" value="<?php echo set_value('TelefonoTienda'); ?>">
                      </div>
-                     <h6> <span class="fa fa-building"></span> Dirección Fiscal</h6>
+                     <h6> <span class="fa fa-building"></span> Dirección fiscal</h6>
                      <input type="hidden" name="TipoDireccion" value="fiscal">
                      <input type="hidden" name="AliasDireccion" value="Direccion Tienda">
                       <input type="hidden" name="ReferenciasDireccion" value="-">
@@ -225,7 +225,7 @@
                      <hr>
                      <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                        <label class="custom-control-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones de Vendedores</label>
+                        <label class="custom-control-label" for="TerminosyCondiciones">Acepto los términos y condiciones de Vendedores</label>
                       </div>
                      <hr>
                      <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Registrar Tienda</button>

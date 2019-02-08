@@ -2,7 +2,7 @@
   if(isset($categoria['CATEGORIA_NOMBRE'])){
     $titulo_categoria = $categoria['CATEGORIA_NOMBRE'];
   }else{
-    $titulo_categoria = 'Todos los Servicios';
+    $titulo_categoria = 'TODOS LOS SERVICIOS';
   }
   if(isset($_GET['Busqueda'])){
     $titulo_categoria = 'Resultados para tu Busqueda';

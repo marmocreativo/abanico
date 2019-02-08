@@ -121,7 +121,7 @@
                           </div>
                           <div class="col">
                             <div class="form-group">
-                              <label for="CantidadProducto">Cantidad Disponibles para venta</label>
+                              <label for="CantidadProducto">Cantidad disponibles para venta</label>
                               <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="1" value="<?php echo $producto['PRODUCTO_CANTIDAD'];  ?>">
                             </div>
                           </div>

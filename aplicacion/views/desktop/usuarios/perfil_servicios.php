@@ -24,11 +24,11 @@
                           <div class="col-9">
                             <table class="table table-sm table-borderless">
                               <tr>
-                                <td><b>Nombre Público</b></td>
+                                <td><b>Nombre público</b></td>
                                 <td><?php echo $perfil['PERFIL_NOMBRE']; ?></td>
                               </tr>
                               <tr>
-                                <td><b>Razón Social</b></td>
+                                <td><b>Razón social</b></td>
                                 <td><?php echo $perfil['PERFIL_RAZON_SOCIAL']; ?></td>
                               </tr>
                               <tr>

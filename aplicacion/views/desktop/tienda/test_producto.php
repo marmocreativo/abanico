@@ -97,7 +97,7 @@
                   <a class="nav-link" id="preguntas-tab" data-toggle="tab" href="#preguntas" role="tab" aria-controls="preguntas" aria-selected="false">Preguntas</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Acerca del Vendedor</a>
+                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Acerca del vendedor</a>
                 </li>
               </ul>
               <div class="tab-content fila-gris" id="contProductos">
@@ -115,7 +115,7 @@
                         <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th colspan="2">Modelo y Claves</th>
+                              <th colspan="2">Modelo y claves</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -162,7 +162,7 @@
                         <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th colspan="2">Dimensiones y Peso</th>
+                              <th colspan="2">Dimensiones y peso</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -220,11 +220,11 @@
                     <div class="col-9">
                       <table class="table table-sm table-borderless">
                         <tr>
-                          <td><b>Nombre Público</b></td>
+                          <td><b>Nombre público</b></td>
                           <td></td>
                         </tr>
                         <tr>
-                          <td><b>Razón Social</b></td>
+                          <td><b>Razón social</b></td>
                           <td></td>
                         </tr>
                         <tr>
@@ -244,7 +244,7 @@
                   </div>
                   <div class="row border-top pt-3">
                     <div class="col">
-                      <h6>Dirección Fiscal</h6>
+                      <h6>Dirección fiscal</h6>
                       <p></p>
                     </div>
                   </div>
@@ -272,7 +272,7 @@
                               <div class="imagen-producto">
                                 <div class="contenedor-etiquetas">
                                   <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
-                                    <span class="etiqueta-1">Mex</span>
+                                    <span class="etiqueta-1">Méx</span>
                                   <?php } ?>
                                   <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
                                     <span class="etiqueta-2">Nuevo</span>
@@ -330,7 +330,7 @@
                               <div class="imagen-producto">
                                 <div class="contenedor-etiquetas">
                                   <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
-                                    <span class="etiqueta-1">Mex</span>
+                                    <span class="etiqueta-1">Méx</span>
                                   <?php } ?>
                                   <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
                                     <span class="etiqueta-2">Nuevo</span>

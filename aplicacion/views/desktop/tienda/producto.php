@@ -157,7 +157,7 @@
                   <?php }else{ ?>
                     <div class="card">
                       <div class="card-body">
-                        <p>Para calificar este producto.</p>
+                        <p>Para calificar este producto</p>
                         <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
                       </div>
                     </div>
@@ -220,7 +220,7 @@
                   <a class="nav-link" id="preguntas-tab" data-toggle="tab" href="#preguntas" role="tab" aria-controls="preguntas" aria-selected="false">Preguntas</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Acerca del Vendedor</a>
+                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Acerca del vendedor</a>
                 </li>
               </ul>
               <div class="tab-content fila-gris" id="contProductos">
@@ -237,7 +237,7 @@
                         <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th colspan="2">Modelo y Claves</th>
+                              <th colspan="2">Modelo y claves</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -284,7 +284,7 @@
                         <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th colspan="2">Dimensiones y Peso</th>
+                              <th colspan="2">Dimensiones y peso</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -337,7 +337,7 @@
                   <?php }else{ ?>
                     <div class="card">
                       <div class="card-body">
-                        <p>Para preguntar debes Iniciar Sesión.</p>
+                        <p>Para preguntar debes iniciar sesión.</p>
                         <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
                       </div>
                     </div>
@@ -353,11 +353,11 @@
                     <div class="col-9">
                       <table class="table table-sm table-borderless">
                         <tr>
-                          <td><b>Nombre Público</b></td>
+                          <td><b>Nombre público</b></td>
                           <td><?php echo $tienda['TIENDA_NOMBRE']; ?></td>
                         </tr>
                         <tr>
-                          <td><b>Razón Social</b></td>
+                          <td><b>Razón social</b></td>
                           <td><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></td>
                         </tr>
                         <tr>
@@ -392,7 +392,7 @@
                               <div class="imagen-producto">
                                 <div class="contenedor-etiquetas">
                                   <?php if($producto_rel->PRODUCTO_ORIGEN=='México'){ ?>
-                                    <span class="etiqueta-1">Mex</span>
+                                    <span class="etiqueta-1">Méx</span>
                                   <?php } ?>
                                   <?php if(strtotime($producto_rel->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
                                     <span class="etiqueta-2">Nuevo</span>
@@ -532,7 +532,7 @@
             </div>
             <div class="col">
               <div class="product-payment-details">
-                <p class="last-sold text-muted"><small><?php echo $producto['PRODUCTO_CANTIDAD']; ?> Disponibles</small></p>
+                <p class="last-sold text-muted"><small><?php echo $producto['PRODUCTO_CANTIDAD']; ?> disponibles</small></p>
                 <h4 class="product-title mb-2"><?php echo $producto['PRODUCTO_NOMBRE']; ?></h4>
                 <hr>
 
@@ -559,7 +559,7 @@
                     <a class="nav-link" id="preguntas-tab" data-toggle="tab" href="#preguntas" role="tab" aria-controls="preguntas" aria-selected="false">Preguntas</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Acerca del Vendedor</a>
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Acerca del vendedor</a>
                   </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">

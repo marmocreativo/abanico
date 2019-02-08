@@ -54,7 +54,7 @@
       <?php }else{ ?>
         <div class="card mb-3">
           <div class="card-footer p-3 py-4">
-            <p class="text-center mb-1">Aún no tienes productos en tu carrito</p>
+            <p class="text-center mb-1">Aún no tienes productos en tu carrito.</p>
           </div>
         </div>
       <?php } ?>

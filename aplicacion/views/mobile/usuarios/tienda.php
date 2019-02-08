@@ -22,7 +22,7 @@
           <img class="img-fluid d-block mx-auto mb-3 img-thumbnail rounded-circle" style="width:150px" src="http://localhost/abanico-master/contenido/img/perfiles/completo/default.jpg" alt="">
           <h6><strong>Nombre público</strong></h6>
           <p>tienda abc</p>
-          <h6><strong>Razón Social</strong></h6>
+          <h6><strong>Razón social</strong></h6>
           <p>adsfafdasf</p>
           <h6><strong>R.F.C.</strong></h6>
           <p>asdfasdf</p>
@@ -96,11 +96,11 @@
                           <div class="col-9">
                             <table class="table table-sm table-borderless">
                               <tr>
-                                <td><b>Nombre Público</b></td>
+                                <td><b>Nombre público</b></td>
                                 <td><?php echo $tienda['TIENDA_NOMBRE']; ?></td>
                               </tr>
                               <tr>
-                                <td><b>Razón Social</b></td>
+                                <td><b>Razón social</b></td>
                                 <td><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></td>
                               </tr>
                               <tr>
@@ -120,7 +120,7 @@
                         </div>
                         <div class="row border-top pt-3">
                           <div class="col">
-                            <h6>Dirección Fiscal</h6>
+                            <h6>Dirección fiscal</h6>
                             <p><?php echo $direccion_formateada; ?></p>
                           </div>
                         </div>

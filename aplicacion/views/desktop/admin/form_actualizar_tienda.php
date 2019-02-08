@@ -37,13 +37,13 @@
                   </select>
                 </div>
                  <div class="form-group">
-                   <label for="NombreTienda">Nombre Público</label>
+                   <label for="NombreTienda">Nombre público</label>
                    <input type="text" class="form-control" id="NombreTienda" name="NombreTienda" placeholder="" value="<?php echo $tienda['TIENDA_NOMBRE']; ?>">
                  </div>
                  <hr>
                  <h5 class="mb-3"><span class="fa fa-file-invoice"></span> Datos Fiscales</h5>
                  <div class="form-group">
-                   <label for="RazonSocialTienda">Razón Social</label>
+                   <label for="RazonSocialTienda">Razón social</label>
                    <input type="text" class="form-control" id="RazonSocialTienda" name="RazonSocialTienda" placeholder="" value="<?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?>">
                  </div>
                  <div class="form-group">
@@ -55,7 +55,7 @@
                    <input type="text" class="form-control" id="TelefonoTienda" name="TelefonoTienda" placeholder="" value="<?php echo $tienda['TIENDA_TELEFONO']; ?>">
                  </div>
                  <hr>
-                 <h6 class="mb-3"> <span class="fa fa-building"></span> Dirección Fiscal</h6>
+                 <h6 class="mb-3"> <span class="fa fa-building"></span> Dirección fiscal</h6>
                  <input type="hidden" name="IdentificadorDireccion" value="<?php echo $direccion_tienda['ID_DIRECCION'] ?>">
                  <input type="hidden" name="TipoDireccion" value="fiscal">
                  <input type="hidden" name="AliasDireccion" value="Direccion Tienda">

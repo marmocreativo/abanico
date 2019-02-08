@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-          <h1 class="h3">Registro de Usuarios</h1>
+          <h1 class="h3">REGISTRO DE USUARIO</h1>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
                     </div>
                   </div>
                    <div class="form-group">
-                     <label for="CorreoUsuario">Correo Electrónico</label>
+                     <label for="CorreoUsuario">Correo electrónico</label>
                      <input type="email" class="form-control" id="CorreoUsuario" name="CorreoUsuario" placeholder="" value="<?=!form_error('CorreoUsuario')?set_value('CorreoUsuario'):''?>">
                    </div>
                    <div class="row">
@@ -51,14 +51,14 @@
                      </div>
                      <div class="col">
                        <div class="form-group">
-                         <label for="PassUsuario">Confirmar Contraseña</label>
+                         <label for="PassUsuario">Confirmar contraseña</label>
                          <input type="password" class="form-control" id="PassUsuarioConf" name="PassUsuarioConf" placeholder="">
                        </div>
                      </div>
                    </div>
                    <div class="form-check">
                      <input type="checkbox" class="form-check-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                     <label class="form-check-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones</label>
+                     <label class="form-check-label" for="TerminosyCondiciones">Acepto los términos y condiciones</label>
                    </div>
                    <hr>
                    <button type="submit" class="btn btn-primary btn-block">Registrarme</button>
@@ -66,7 +66,7 @@
             </div>
             <div class="card-footer">
               <nav class="nav justify-content-center nav-fill">
-                <a class="nav-link" href="<?php echo base_url('login');?>"> <span class="fa fa-pen-square"></span> Iniciar Sesión</a>
+                <a class="nav-link" href="<?php echo base_url('login');?>"> <span class="fa fa-pen-square"></span> Iniciar sesión</a>
               </nav>
             </div>
           </div>

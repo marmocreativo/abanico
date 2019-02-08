@@ -71,7 +71,7 @@
                     <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Este es el precio Tachado que aparecerá en la lista de productos</small>
                   </div>
                   <div class="form-group">
-                    <label for="CantidadProducto">Cantidad Disponibles</label>
+                    <label for="CantidadProducto">Cantidad disponibles</label>
                     <input type="number" class="form-control form-control-sm" id="" required="" name="" placeholder="" min="1" value="1">
                   </div>
                   <h6 class="border-bottom pb-2"> <i class="fa fa-clipboard-list"></i> Cantidades</h6>
@@ -506,7 +506,7 @@
                           </div>
                           <div class="col">
                             <div class="form-group">
-                              <label for="CantidadProducto">Cantidad Disponibles</label>
+                              <label for="CantidadProducto">Cantidad disponibles</label>
                               <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="1" value="1">
                             </div>
                           </div>

@@ -15,7 +15,7 @@
       </div>
 
       <div class="col-12 mb-4">
-        <p class="text-muted"><small><?php echo $producto['PRODUCTO_CANTIDAD']; ?> Disponibles</small></p>
+        <p class="text-muted"><small><?php echo $producto['PRODUCTO_CANTIDAD']; ?> disponibles</small></p>
         <h4 class="product-title mb-2"><?php echo $producto['PRODUCTO_NOMBRE']; ?></h4>
         <hr>
         <?php echo $producto['PRODUCTO_DESCRIPCION']; ?>
@@ -115,7 +115,7 @@
                   <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th colspan="2">Modelo y Claves</th>
+                        <th colspan="2">Modelo y claves</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -162,7 +162,7 @@
                   <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th colspan="2">Dimensiones y Peso</th>
+                        <th colspan="2">Dimensiones y peso</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -224,7 +224,7 @@
               <?php }else{ ?>
                 <div class="card">
                   <div class="card-body">
-                    <p>Para preguntar debes Iniciar Sesión.</p>
+                    <p>Para preguntar debes iniciar sesión.</p>
                     <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
                   </div>
                 </div>
@@ -237,7 +237,7 @@
             <div class="card-header" id="headingFour">
               <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                  Acerca del Vendedor
+                  Acerca del vendedor
                 </button>
               </h2>
             </div>
@@ -248,11 +248,11 @@
 
                 <table class="table table-sm table-borderless">
                   <tr>
-                    <td><b>Nombre Público</b></td>
+                    <td><b>Nombre público</b></td>
                     <td><?php echo $tienda['TIENDA_NOMBRE']; ?></td>
                   </tr>
                   <tr>
-                    <td><b>Razón Social</b></td>
+                    <td><b>Razón social</b></td>
                     <td><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></td>
                   </tr>
                   <tr>
@@ -331,7 +331,7 @@
                 <?php }else{ ?>
                   <div class="card">
                     <div class="card-body">
-                      <p>Para calificar este producto.</p>
+                      <p>Para calificar este producto</p>
                       <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
                     </div>
                   </div>

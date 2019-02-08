@@ -79,7 +79,7 @@
                           </div>
                           <div class="col">
                             <div class="form-group">
-                              <label for="CantidadProducto">Cantidad Disponibles</label>
+                              <label for="CantidadProducto">Cantidad disponibles</label>
                               <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="1" value="1">
                             </div>
                           </div>

@@ -23,7 +23,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col">
-            <a href="#" class="btn btn-link"> <span class="fa fa-phone"></span> Atención a Clientes <?php echo $op['telefono_sitio'] ?></a>
+            <a href="#" class="btn btn-link"> <span class="fa fa-phone"></span> Atención a clientes <?php echo $op['telefono_sitio'] ?></a>
           </div>
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
@@ -52,8 +52,8 @@
             <div class="input-group w-100">
               <input class="form-control w-50" type="search" name="Busqueda" placeholder="Busca lo Mejor" aria-label="Search" value="<?php if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){ echo filter_var ( $_GET['Busqueda'], FILTER_SANITIZE_STRING); } ?>">
               <select class="form-control" name="BuscarEn">
-                <option value="productos" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='productos'){ echo 'selected'; } ?>>En Productos</option>
-                <option value="servicios" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='servicios'){ echo 'selected'; } ?>>En Servicios</option>
+                <option value="productos" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='productos'){ echo 'selected'; } ?>>En productos</option>
+                <option value="servicios" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='servicios'){ echo 'selected'; } ?>>En servicios</option>
               </select>
               <div class="input-group-append">
                 <button type="submit" class="btn <?php echo 'btn-outline'.$primary; ?>" type="button"> <i class="fa fa-search"></i> </button>

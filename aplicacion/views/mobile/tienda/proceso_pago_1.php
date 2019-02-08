@@ -41,26 +41,26 @@
 
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="card-body text-center">
-                  <h6 class="mb-3"> <i class="fa fa-sign-in-alt"></i> Iniciar Sesión</h6>
+                  <h6 class="mb-3"> <i class="fa fa-sign-in-alt"></i> Iniciar sesión</h6>
                   <form class="" action="<?php echo base_url('login/iniciar');?>" method="post">
                     <input type="hidden" name="UrlRedirect" value="<?php echo base_url('proceso_pago_1'); ?>">
                      <div class="form-group">
                        <label for="CorreoUsuario">Correo</label>
-                       <input type="email" class="form-control form-control-sm" id="CorreoUsuario" name="CorreoUsuario" placeholder="Su correo electrónico">
+                       <input type="email" class="form-control form-control-sm" id="CorreoUsuario" name="CorreoUsuario" placeholder="Tu correo electrónico">
                      </div>
                      <div class="form-group">
                        <label for="PassUsuario">Contraseña</label>
                        <input type="password" class="form-control form-control-sm" id="PassUsuario" name="PassUsuario" placeholder="Contraseña">
                      </div>
                      <hr>
-                     <button type="submit" class="btn btn-sm btn-primary btn-block">Iniciar Sesión</button>
+                     <button type="submit" class="btn btn-sm btn-primary btn-block">Iniciar sesión</button>
                    </form>
                    <!-- <hr> -->
 
                 </div>
                 <div class="card-footer">
                   <nav class="nav justify-content-center nav-fill">
-                    <a class="nav-link" href="<?php echo base_url('login/olvide');?>"> <span class="fa fa-question-circle"></span> Olvide mi contraseña</a>
+                    <a class="nav-link" href="<?php echo base_url('login/olvide');?>"> <span class="fa fa-question-circle"></span> Olvidé mi contraseña</a>
                     <a class="nav-link" href="<?php echo base_url('usuario/registrar');?>"> <span class="fa fa-pen-square"></span> Registrarme</a>
                   </nav>
                 </div>
@@ -79,7 +79,7 @@
                        <input type="text" class="form-control form-control-sm" name="ApellidosUsuario" placeholder="" required value="<?=!form_error('ApellidosUsuario')?set_value('ApellidosUsuario'):''?>">
                      </div>
                      <div class="form-group">
-                       <label for="CorreoUsuario">Correo Electrónico</label>
+                       <label for="CorreoUsuario">Correo electrónico</label>
                        <input type="email" class="form-control form-control-sm" name="CorreoUsuario" placeholder="" required value="<?=!form_error('CorreoUsuario')?set_value('CorreoUsuario'):''?>">
                      </div>
                      <div class="form-group">
@@ -88,7 +88,7 @@
                      </div>
                      <div class="form-check">
                        <input type="checkbox" class="form-check-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                       <label class="form-check-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones</label>
+                       <label class="form-check-label" for="TerminosyCondiciones">Acepto los términos y condiciones</label>
                      </div>
                      <hr>
                      <button type="submit" class="btn btn-sm btn-primary btn-block">Comprar</button>

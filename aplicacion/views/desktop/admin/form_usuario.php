@@ -44,7 +44,7 @@
                        <input type="text" class="form-control" id="ApellidosUsuario" name="ApellidosUsuario" placeholder="" value="<?=!form_error('ApellidosUsuario')?set_value('ApellidosUsuario'):''?>">
                      </div>
                      <div class="form-group">
-                       <label for="CorreoUsuario">Correo Electrónico</label>
+                       <label for="CorreoUsuario">Correo electrónico</label>
                        <input type="email" class="form-control" id="CorreoUsuario" name="CorreoUsuario" placeholder="" value="<?=!form_error('CorreoUsuario')?set_value('CorreoUsuario'):''?>">
                        <small class="form-text text-muted">Este correo es el que usarás para iniciar sesión. y nuestro medio principal para contactarte</small>
                      </div>
@@ -53,7 +53,7 @@
                        <input type="password" class="form-control" id="PassUsuario" name="PassUsuario" placeholder="">
                      </div>
                      <div class="form-group">
-                       <label for="PassUsuario">Confirmar Contraseña</label>
+                       <label for="PassUsuario">Confirmar contraseña</label>
                        <input type="password" class="form-control" id="PassUsuarioConf" name="PassUsuarioConf" placeholder="">
                      </div>
                   </div>

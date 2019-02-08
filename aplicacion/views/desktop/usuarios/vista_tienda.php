@@ -35,7 +35,7 @@
                     <table class="table">
                       <tbody>
                         <tr>
-                          <td><strong>Razón Social: </strong></td>
+                          <td><strong>Razón social: </strong></td>
                           <td><?php echo $tienda->TIENDA_RAZON_SOCIAL; ?></td>
                         </tr>
                         <tr>

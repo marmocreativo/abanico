@@ -29,13 +29,13 @@
               </div>
               <div class="col-12 col-sm-9">
                  <div class="form-group">
-                   <label for="NombrePerfil">Nombre Público</label>
+                   <label for="NombrePerfil">Nombre público</label>
                    <input type="text" class="form-control" id="NombrePerfil" name="NombrePerfil" placeholder="" value="<?php echo $perfil['PERFIL_NOMBRE']; ?>">
                  </div>
                  <hr>
                  <h5 class="mb-3"><span class="fa fa-file-invoice"></span> Datos Fiscales (Opcionales)</h5>
                  <div class="form-group">
-                   <label for="RazonSocialPerfil">Razón Social</label>
+                   <label for="RazonSocialPerfil">Razón social</label>
                    <input type="text" class="form-control" id="RazonSocialPerfil" name="RazonSocialPerfil" placeholder="" value="<?php echo $perfil['PERFIL_RAZON_SOCIAL']; ?>">
                  </div>
                  <div class="form-group">

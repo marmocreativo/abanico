@@ -103,7 +103,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <h2 class="h3 text-center border-bottom pb-3 mb-3">Productos Destacados</h2>
+        <h2 class="h3 text-center border-bottom pb-3 mb-3">PRODUCTOS DESTACADOS</h2>
         <section class="slider">
         <div class="flexslider carousel">
           <ul class="slides">
@@ -115,7 +115,7 @@
                   <div class="imagen-producto">
                     <div class="contenedor-etiquetas">
                       <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
-                        <span class="etiqueta-1">Mex</span>
+                        <span class="etiqueta-1">Méx</span>
                       <?php } ?>
                       <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
                         <span class="etiqueta-2 <?php echo 'bg'.$primary; ?>">Nuevo</span>
@@ -173,7 +173,7 @@
                   <div class="imagen-producto">
                     <div class="contenedor-etiquetas">
                       <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
-                        <span class="etiqueta-1">Mex</span>
+                        <span class="etiqueta-1">Méx</span>
                       <?php } ?>
                       <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
                         <span class="etiqueta-2">Nuevo</span>

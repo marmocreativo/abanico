@@ -23,7 +23,7 @@
             <thead class="text-light bg<?php echo $primary; ?>">
               <tr>
                 <th class="text-center">Nombre</th>
-                <th class="text-center">Razón Social</th>
+                <th class="text-center">Razón social</th>
                 <th class="text-center">R.F.C.</th>
                 <th class="text-center">Estado</th>
                 <th class="text-right">Controles</th>

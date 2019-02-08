@@ -40,7 +40,7 @@ class Usuario_Perfil extends CI_Controller {
 		*/
 
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 
@@ -132,7 +132,7 @@ class Usuario_Perfil extends CI_Controller {
 		*/
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			// Creo el mensaje y redirecciono si la sesión no estpa activada
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 
@@ -175,7 +175,7 @@ class Usuario_Perfil extends CI_Controller {
 		*/
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			// si ya existe una sesión activa redirijo con el siguiente mensaje
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('usuario'));
 		}
 		// Obtengo los datos de usuario
@@ -213,7 +213,7 @@ class Usuario_Perfil extends CI_Controller {
 	public function borrar()
 	{
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 		$this->load->model('ProductosModel');

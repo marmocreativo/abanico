@@ -42,13 +42,13 @@
                   <div class="col-12 col-sm-9">
                     <h5> <span class="fa fa-store"></span> Datos de tu tienda</h5>
                      <div class="form-group">
-                       <label for="TiendaNombre">Nombre Público</label>
+                       <label for="TiendaNombre">Nombre público</label>
                        <input type="text" class="form-control" id="TiendaNombre" name="TiendaNombre" placeholder="" value="">
                      </div>
                      <hr>
                      <h5><span class="fa fa-file-invoice"></span> Datos Fiscales</h5>
                      <div class="form-group">
-                       <label for="TiendaRazonSocial">Razón Social</label>
+                       <label for="TiendaRazonSocial">Razón social</label>
                        <input type="text" class="form-control" id="TiendaRazonSocial" name="TiendaRazonSocial" placeholder="" value="">
                      </div>
                      <div class="form-group">
@@ -61,7 +61,7 @@
                      </div>
                      <div class="form-check">
                        <input type="checkbox" class="form-check-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                       <label class="form-check-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones de Vendedores</label>
+                       <label class="form-check-label" for="TerminosyCondiciones">Acepto los términos y condiciones de Vendedores</label>
                      </div>
                      <hr>
                      <button type="submit" class="btn btn-primary btn-block">Registrarme</button>

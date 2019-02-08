@@ -24,7 +24,7 @@
           <p>antonio gutierrez</p>
           <h6><strong>R.F.C.</strong></h6>
           <p>asdfasdf</p>
-          <h6><strong>Razón Social</strong></h6>
+          <h6><strong>Razón social</strong></h6>
           <p>adsfafdasf</p>
           <h6><strong>Teléfono</strong></h6>
           <p>32141</p>
@@ -86,11 +86,11 @@
                           <div class="col-9">
                             <table class="table table-sm table-borderless">
                               <tr>
-                                <td><b>Nombre Público</b></td>
+                                <td><b>Nombre público</b></td>
                                 <td><?php echo $perfil['PERFIL_NOMBRE']; ?></td>
                               </tr>
                               <tr>
-                                <td><b>Razón Social</b></td>
+                                <td><b>Razón social</b></td>
                                 <td><?php echo $perfil['PERFIL_RAZON_SOCIAL']; ?></td>
                               </tr>
                               <tr>

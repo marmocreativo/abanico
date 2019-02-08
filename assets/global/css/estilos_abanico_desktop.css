@@ -726,6 +726,11 @@ img.sp-thumbnail-image {
     border-radius: 0;
 }
 
+/*
+| -------------------------------------------------------------------------
+| ESTILOS PERFIL USUARIOS
+| -------------------------------------------------------------------------
+*/
 .cont-perfil {
   background: #f1f1f1;
   padding: 5px;
@@ -771,8 +776,15 @@ img.sp-thumbnail-image {
 #dash-1 .col-6 a:hover, #dash-2 .col-6 a:hover{
   text-decoration: none;
 }
-
 .card-p-usuario:hover {
   background: #f1f1f1;
   text-decoration: none;
+}
+
+.cont-notif h3 {
+  margin-left: 10px;
+}
+.notif {
+  padding: 20px;
+  border-bottom: solid 1px lightgrey;
 }

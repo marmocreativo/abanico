@@ -39,13 +39,13 @@
                       </select>
                     </div>
                      <div class="form-group">
-                       <label for="NombreTienda">Nombre Público</label>
+                       <label for="NombreTienda">Nombre público</label>
                        <input type="text" class="form-control" id="NombreTienda" name="NombreTienda" placeholder="" value="<?php echo $tienda['TIENDA_NOMBRE']; ?>">
                      </div>
                      <hr>
                      <h5><span class="fa fa-file-invoice"></span> Datos Fiscales</h5>
                      <div class="form-group">
-                       <label for="RazonSocialTienda">Razón Social</label>
+                       <label for="RazonSocialTienda">Razón social</label>
                        <input type="text" class="form-control" id="RazonSocialTienda" name="RazonSocialTienda" placeholder="" value="<?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?>">
                      </div>
                      <div class="form-group">
