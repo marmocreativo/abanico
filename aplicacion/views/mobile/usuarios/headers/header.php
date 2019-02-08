@@ -25,7 +25,7 @@
 
         <div class="collapse navbar-collapse d-flex justify-content-between">
           <div class="w-100 d-flex">
-            <a class="nav-link" href="<?php echo base_url(); ?>"> <span class="fa fa-shopping-bag"></span> Volver a la tienda</a>
+            <a class="nav-link" href="<?php echo base_url(); ?>"> <span class="fa fa-shopping-bag"></span> Abanico</a>
 
           <?php if(isset($_SESSION['usuario'])&&verificar_permiso(['tec-5','adm-6'])){ ?>
             <a class="nav-link" href="<?php echo base_url('admin'); ?>"> <span class="fa fa-tachometer-alt"></span> Administrador</a>
@@ -56,10 +56,7 @@
     <div class="menu-inferior menuUsuarioBefore collapse" id="menu-categorias">
       <div class="card py-3 px-2">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link" href="<?php echo base_url('usuario/registrar'); ?>"> <i class="fas fa-user-plus"></i> Registrarse</a>
-          <a class="nav-link" href="#"> <i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
-          <span class="separador mt-3 mb-3"></span>
-          <a class="nav-link" href="http://localhost/abanico-master/usuario/favoritos"> <i class="fas fa-heart"></i> Favoritos</a>
+          <?php $this->load->view('mobile/tienda/widgets/menu_usuario'); ?>
         </div>
       </div>
     </div>
