@@ -13,31 +13,31 @@
 <div class="container py-3 mb-3">
   <div class="row">
     <div class="col-12">
-
+      <?php retro_alimentacion(); ?>
       <div class="card mb-3">
         <div class="card-header">
           <h5 class="pt-2"><i class="fa fa-store"></i> Mi Tienda</h5>
         </div>
         <div class="card-body">
-          <img class="img-fluid d-block mx-auto mb-3 img-thumbnail rounded-circle" style="width:150px" src="http://localhost/abanico-master/contenido/img/perfiles/completo/default.jpg" alt="">
+          <img class="img-fluid d-block mx-auto mb-3 img-thumbnail rounded-circle" style="width:150px" src="<?php echo base_url('contenido/img/tiendas/completo/'.$tienda['TIENDA_IMAGEN']) ?>" alt="">
           <h6><strong>Nombre público</strong></h6>
-          <p>tienda abc</p>
-          <h6><strong>Razón social</strong></h6>
-          <p>adsfafdasf</p>
+          <p><?php echo $tienda['TIENDA_NOMBRE']; ?></p>
+          <h6><strong>Razón Social</strong></h6>
+          <p><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></p>
           <h6><strong>R.F.C.</strong></h6>
-          <p>asdfasdf</p>
+          <p><?php echo $tienda['TIENDA_RFC']; ?></p>
           <h6><strong>Teléfono</strong></h6>
-          <p>32141</p>
+          <p><?php echo $tienda['TIENDA_TELEFONO']; ?></p>
           <h6><strong>Registro</strong></h6>
-          <p>2019-01-23 21:50:24</p>
+          <p><?php echo $tienda['TIENDA_FECHA_REGISTRO']; ?></p>
           <h6><strong>Actualización</strong></h6>
-          <p>2019-01-23 15:50:24</p>
+          <p><?php echo $tienda['TIENDA_FECHA_ACTUALIZACION']; ?></p>
           <hr>
           <h6><strong>Dirección</strong></h6>
-          <p>asdf, adsf, Aguascalientes, , Aguascalientes, 1234, México</p>
+          <p><?php echo $direccion_formateada; ?></p>
         </div>
         <div class="card-footer">
-          <a href="http://localhost/abanico-master/usuario/tienda/actualizar" class="btn btn-link btn-block"> <i class="fa fa-pencil-alt"></i> Editar</a>
+          <a href="<?php echo base_url('usuario/tienda/actualizar'); ?>" class="btn btn-link btn-block"> <i class="fa fa-pencil-alt"></i> Editar</a>
         </div>
       </div>
 
@@ -46,10 +46,10 @@
     <div class="col-12 mb-3">
       <div class="card">
         <div class="card-body pb-2 pt-3 bg-primary text-white text-center">
-          <h4 class="h5"> <span class="fa fa-box"></span> Productos Minoristas</h4>
+          <h4 class="h5"> <span class="fa fa-box"></span> Productos</h4>
         </div>
         <div class="card-footer text-center">
-          <a href="http://localhost/abanico-master/usuario/productos">Mi Catálogo de Productos</a>
+          <a href="<?php echo base_url('usuario/productos');?>">Mi Catálogo de Productos</a>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@
           <h4 class="h5"> <span class="fa fa-file-invoice-dollar"></span> Ventas</h4>
         </div>
         <div class="card-footer text-center">
-          <a href="http://localhost/abanico-master/usuario/ventas">Mis Ventas</a>
+          <a href="<?php echo base_url('usuario/ventas');?>">Mis Ventas</a>
         </div>
       </div>
     </div>

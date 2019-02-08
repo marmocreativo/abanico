@@ -70,7 +70,7 @@
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <?php $this->load->view('mobile/tienda/widgets/menu_usuario'); ?>
         <span class="separador mt-3 mb-3"></span>
-        <a class="nav-link" href="http://localhost/abanico-master/usuario/favoritos"> <i class="fas fa-heart"></i> Favoritos</a>
+        <a class="nav-link" href="<?php echo base_url('usuarios/favoritos') ?>"> <i class="fas fa-heart"></i> Favoritos</a>
       </div>
     </div>
   </div>
