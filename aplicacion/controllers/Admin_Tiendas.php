@@ -244,9 +244,10 @@ class Admin_Tiendas extends CI_Controller {
 				$this->session->set_flashdata('exito', 'Tienda Actualizada');
 				redirect(base_url('admin/usuarios/perfil?id_usuario='.$this->input->post('IdUsuario')));
     }else{
-			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
-			$this->data['tienda'] = $this->TiendasModel->detalles($_GET['id_tienda']);
-			$this->data['direccion_tienda'] = $this->DireccionesModel->direccion_fiscal($_GET['id_usuario']);
+
+			$this->data['tienda'] = $this->TiendasModel->detalles($_GET['id']);
+			$this->data['usuario'] = $this->UsuariosModel->detalles($this->data['tienda']['ID_USUARIO']);
+			$this->data['direccion_tienda'] = $this->DireccionesModel->direccion_fiscal($this->data['tienda']['ID_USUARIO']);
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_tienda',$this->data);

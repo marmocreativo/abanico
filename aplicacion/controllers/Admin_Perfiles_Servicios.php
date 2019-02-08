@@ -251,12 +251,13 @@ class Admin_Perfiles_Servicios extends CI_Controller {
 
 	public function borrar()
 	{
-		$pais = $this->PerfilServiciosModel->detalles($_GET['id']);
+		$perfil = $this->PerfilServiciosModel->detalles($_GET['id']);
 
         // check if the institucione exists before trying to delete it
-        if(isset($pais['ID_PAIS']))
+        if(isset($perfil['ID_PERFIL']))
         {
             $this->PerfilServiciosModel->borrar($_GET['id']);
+						$this->session->set_flashdata('exito', 'Perfil Eliminado');
             redirect(base_url('admin/perfiles_servicios'));
         } else {
 

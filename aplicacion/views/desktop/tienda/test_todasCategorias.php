@@ -7,6 +7,7 @@
       </ol>
     </nav>
     <div class="row">
+      <!--
       <div class="col-3">
         <div class="card" id="menuTodasCategorias">
           <div class="card-header">
@@ -17,15 +18,24 @@
           </ul>
         </div>
       </div>
-      <div class="col-9">
+    -->
+      <div class="col">
         <div class="row">
-          <h5 class="col-12 text-primary pb-2" id="tituloCategoria"><i class="fas fa-laptop"></i> Tecnología, Computación y Gadgets</h5>
-          <div class="col-4">
-            <h6>Audio</h6>
-            <ul class="list list-unstyled">
-              <li><a href="http://localhost/abanico-master/categoria?slug=audifonos">Audifonos</a></li>
-            </ul>
-          </div>
+          <?php $i = 1; foreach($categorias as $categoria){ ?>
+          <h4 class="col-12 text-primary pb-2" id="tituloCategoria"><i class="fas fa-laptop"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?></h4>
+          <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
+            <?php foreach($segundo_categorias as $segunda_categoria){ ?>
+            <div class="col-4">
+              <h4><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h4>
+              <?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
+              <ul class="list list-unstyled">
+                <?php foreach($tercero_categorias as $tercera_categoria){ ?>
+                <li><?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></li>
+              <?php } // Termina tercera categoria ?>
+              </ul>
+            </div>
+          <?php } // Termina segunda categoria ?>
+        <?php } // Termina primer categoria ?>
         </div>
       </div>
     </div>

@@ -69,16 +69,6 @@
                   <a href="<?php echo base_url('usuario/servicios');?>">Mi Catálogo de Servicios</a>
                 </div>
               </div>
-              <!--
-              <div class="card <?php echo 'border'.$primary; ?> text-center  mb-4">
-                <div class="card-header <?php echo 'bg'.$primary; ?> text-white">
-                  <h4 class="h5"> <span class="fa fa-boxes"></span> Productos Mayoristas</h4>
-                </div>
-                <div class="card-body">
-                  <a href="<?php echo base_url('usuario/mayoreo');?>">Mi Catálogo de Mayoreo</a>
-                </div>
-              </div>
-            -->
             </div>
           </div>
         <?php }else{ ?>

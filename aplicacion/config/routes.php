@@ -94,6 +94,7 @@ $route['login'] = 'Autenticacion';
 $route['login/(:any)'] = 'Autenticacion/$1';
 // Rutas de tienda}
 $route['test'] = 'Tienda_Test';
+$route['test/(:any)'] = 'Tienda_Test/$1';
 $route['guia'] = 'Tienda_Guia';
 $route['divisas'] = 'Tienda_Divisas';
 $route['divisas/(:any)'] = 'Tienda_Divisas/$1';

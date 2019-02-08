@@ -358,7 +358,7 @@ class Admin_Productos extends CI_Controller {
 	public function activar()
 	{
 		$this->ProductosModel->activar($_GET['id'],$_GET['estado']);
-		redirect(base_url('admin/productos/usuario?id_usuario='.$_GET['id_usuario']));
+		redirect(base_url('admin/productos?id_usuario='.$_GET['id_usuario']));
 	}
 	public function estado()
 	{

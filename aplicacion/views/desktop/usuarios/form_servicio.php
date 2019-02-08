@@ -140,7 +140,7 @@
                                                         id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                                                         name="CategoriaServicio" class="custom-control-input"
                                                         value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                                        required
+                                                        
                                                         >
                                                 <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
                                               </div>
