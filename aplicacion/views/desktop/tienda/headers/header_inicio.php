@@ -65,7 +65,7 @@
               <a class="nav-link btn-sm" href="<?php echo base_url('usuario/favoritos'); ?>"><i class="far fa-heart text-primary-6"></i> Favoritos</a>
             </li>
             <li class="nav-item">
-              <button type="button" class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-primary" data-toggle="modal" data-target="#ModalCarrito" style="background:transparent;"> <span class="fa fa-shopping-cart text-primary-1"></span> Carrito</button>
+              <button type="button" class="btn btn-sm btn-carrito <?php echo 'btn-link'.$primary; ?> text-primary" data-toggle="modal" data-target="#ModalCarrito" style="background:transparent;"> <span class="fa fa-shopping-cart text-primary-1"></span> Carrito</button>
             </li>
           </ul>
         </div>
