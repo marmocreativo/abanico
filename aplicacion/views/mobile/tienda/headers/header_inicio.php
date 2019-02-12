@@ -18,7 +18,19 @@
   <body>
     <!-- Header -->
 
-  <div class="menu-superior bg<?php echo $primary; ?>"></div>
+  <div class="menu-superior bg<?php echo $primary; ?>">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <div class="btn-group float-right text-white" role="group" aria-label="Button group with nested dropdown">
+            <?php $this->load->view('desktop/tienda/widgets/menu_notificaciones'); ?>
+            <?php $this->load->view('mobile/tienda/widgets/menu_divisa'); ?>
+            <?php $this->load->view('mobile/tienda/widgets/menu_lenguaje'); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="menu-principal">
     <nav class="navbar navbar-expand">
       <a class="navbar-brand mr-2" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
