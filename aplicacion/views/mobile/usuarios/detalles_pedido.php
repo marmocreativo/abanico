@@ -72,7 +72,7 @@
                       <table class="table table-bordered">
                         <tbody>
                           <tr>
-                            <td class="text-right" style="width:75%"><b>Importe Productos:</b></td>
+                            <td class="text-right" style="width:75%"><b><?php echo $this->lang->line('usuario_detalles_pedido_importe_producto'); ?>:</b></td>
                             <td>
                               <h5>
                               <small><?php echo $_SESSION['divisa']['signo']; ?></small>
@@ -82,7 +82,7 @@
                             </td>
                           </tr>
                           <tr>
-                            <td class="text-right" style="width:75%"><b>Envio Abanico:</b><br> <span class="text-muted">Los envios de productos de tiendas afiliadas a Abanico se calculan en un solo paquete</span> </td>
+                            <td class="text-right" style="width:75%"><b><?php echo $this->lang->line('usuario_detalles_pedido_envio_abanico'); ?>:</b><br> <span class="text-muted"><?php echo $this->lang->line('usuario_detalles_pedido_envio_abanico_instrucciones'); ?></span> </td>
                             <td>
                               <h5>
                               <small><?php echo $_SESSION['divisa']['signo']; ?></small>
@@ -92,7 +92,7 @@
                             </td>
                           </tr>
                           <tr>
-                            <td class="text-right" style="width:75%"><b>Envio otras Tiendas:</b><br> <span class="text-muted">Los envios de productos de tiendas externas a Abanico se calculan por separado</span> </td>
+                            <td class="text-right" style="width:75%"><b><?php echo $this->lang->line('usuario_detalles_pedido_envio_otras_tiendas'); ?>:</b><br> <span class="text-muted"><?php echo $this->lang->line('usuario_detalles_pedido_envio_otras_tiendas_instrucciones'); ?></span> </td>
                             <td>
                               <h5>
                               <small><?php echo $_SESSION['divisa']['signo']; ?></small>
@@ -102,7 +102,7 @@
                             </td>
                           </tr>
                           <tr>
-                            <td class="text-right" style="width:75%"><b>Total:</b></td>
+                            <td class="text-right" style="width:75%"><b><?php echo $this->lang->line('usuario_detalles_pedido_total'); ?>:</b></td>
                             <td>
                               <h5>
                               <small><?php echo $_SESSION['divisa']['signo']; ?></small>
@@ -119,19 +119,19 @@
               </div>
             </div>
             <div class="col mt-3">
-              <h6>Estado del pedido:<b> <?php echo $pedido['PEDIDO_ESTADO_PEDIDO']; ?></b></h6>
+              <h6><?php echo $this->lang->line('usuario_detalles_estado_pedido'); ?>:<b> <?php echo $pedido['PEDIDO_ESTADO_PEDIDO']; ?></b></h6>
               <hr>
               <div class="card">
                 <div class="card-header">
-                  <h6><i class="fa fa-money-bill"></i> Pago: <?php echo $pedido['PEDIDO_FORMA_PAGO']; ?> <b><?php echo $pedido['PEDIDO_ESTADO_PAGO']; ?></b></h6>
+                  <h6><i class="fa fa-money-bill"></i> <?php echo $this->lang->line('usuario_detalles_forma_pago'); ?>: <?php echo $pedido['PEDIDO_FORMA_PAGO']; ?> <b><?php echo $pedido['PEDIDO_ESTADO_PAGO']; ?></b></h6>
                 </div>
                 <div class="card-body">
                   <!--Permisos cancelados si el estado está Cancelado-->
                   <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Cancelado' || $pedido['PEDIDO_ESTADO_PEDIDO']=='Solicitud Devolucion' || $pedido['PEDIDO_ESTADO_PEDIDO']=='Devolucion'){ ?>
                     <div class="row">
                       <div class="col">
-                        <h6>Tu pedido se encuentra en estado de <?php echo $pedido['PEDIDO_ESTADO_PEDIDO'] ?></h6>
-                        <p>Las funciones de control y datos de guías no son visibles, si crees que esto es un error por favor comunicate con nosotros.</p>
+                        <h6><?php echo $this->lang->line('usuario_detalles_estado_pedido_instrucciones'); ?> <?php echo $pedido['PEDIDO_ESTADO_PEDIDO'] ?></h6>
+                        <p><?php echo $this->lang->line('usuario_detalles_estado_pedido_desactivado'); ?>.</p>
                       </div>
                     </div>
                   <?php }else{ ?>
@@ -145,22 +145,22 @@
                         <input type="hidden" name="DescripcionPago" value="Comprobante de cliente">
                         <input type="hidden" name="EstadoPago" value="Verificando">
                         <div class="form-group">
-                          <label for="FolioPago">Folio o Número de transacción</label>
+                          <label for="FolioPago"><?php echo $this->lang->line('usuario_detalles_pago_folio'); ?></label>
                           <input type="text" class="form-control" name="FolioPago" value="">
                         </div>
                         <div class="form-group">
-                          <label for="ArchivoPago">Subir Archivo Comprobante</label>
+                          <label for="ArchivoPago"><?php echo $this->lang->line('usuario_detalles_pago_archivo'); ?></label>
                           <input type="file" class="form-control" name="ArchivoPago" value="" required>
                         </div>
-                        <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-upload"></i> Subir Comprobante</button>
+                        <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_detalles_pago_subir'); ?></button>
                       </form>
                     </div>
                     <div class="col-12 mt-3">
                       <div class="card border-danger">
                         <div class="card-body">
-                          <h6>Cancelar Pedido</h6>
+                          <h6><?php echo $this->lang->line('usuario_detalles_cancelar'); ?></h6>
                           <button data-enlace='<?php echo base_url('usuario/pedidos/cambiar_estado?id='.$pedido['ID_PEDIDO'].'&estado=Cancelado'); ?>' class="btn btn-danger btn-block borrar_entrada" title="Cancelar Pedido">
-                            Cancelar Pedido
+                          <?php echo $this->lang->line('usuario_detalles_cancelar_boton'); ?>
                           </button>
                         </div>
                       </div>
@@ -173,12 +173,12 @@
                       <a href="<?php echo base_url('contenido/adjuntos/pedidos/').$pago->PAGO_ARCHIVO; ?>" target="_blank" class="btn btn-outline-success btn-sm">Descargar</a>
                     </div>
                     <div class="col-4">
-                      <p>Folio:<br>
+                      <p><?php echo $this->lang->line('usuario_lista_pago_folio'); ?>:<br>
                         <b><?php echo $pago->PAGO_FOLIO; ?></b>
                       </p>
                     </div>
                     <div class="col-4">
-                      <p>Fecha:
+                      <p><?php echo $this->lang->line('usuario_lista_pago_fecha'); ?>:
                       <b><?php echo $pago->PAGO_FECHA_REGISTRO; ?></b>
                       </p>
                     </div>
@@ -189,14 +189,14 @@
                 </div>
               </div>
               <hr>
-              <h6> <i class="fa fa-truck"></i> Envio y Rastreo: </h6>
-              <p><b>Abanico</b></p>
+              <h6> <i class="fa fa-truck"></i> <?php echo $this->lang->line('usuario_detalles_envio_titulo'); ?>: </h6>
+              <p><b><?php echo $this->lang->line('usuario_detalles_envio_abanico'); ?></b></p>
               <?php foreach($guias_abanico as $guia){ ?>
               <table class="table table-sm">
                 <tr>
-                  <td>Guía:<br><b><?php echo $guia->GUIA_CODIGO; ?></b></td>
+                  <td><?php echo $this->lang->line('usuario_detalles_envio_guia'); ?>:<br><b><?php echo $guia->GUIA_CODIGO; ?></b></td>
                   <td>
-                    <a href="<?php echo base_url('guia?guia='.$guia->GUIA_CODIGO); ?>" class="btn btn-outline-primary btn-sm btn-block"> Rastrear</a>
+                    <a href="<?php echo base_url('guia?guia='.$guia->GUIA_CODIGO); ?>" class="btn btn-outline-primary btn-sm btn-block"> <?php echo $this->lang->line('usuario_detalles_envio_rastrear'); ?></a>
                   </td>
                 </tr>
               </table>
@@ -207,11 +207,11 @@
               <table class="table table-sm">
                 <?php if (empty($tienda->GUIA_PAQUETERIA)){ ?>
                   <tr>
-                    <td>Aún no hay un número de Guía asignado</td>
+                    <td><?php echo $this->lang->line('usuario_detalles_envio_no_hay_guia'); ?></td>
                   </tr>
                 <?php }else{ // Condicional Guia ?>
                     <tr>
-                      <td>Guía:<br><b><?php echo $tienda->GUIA_PAQUETERIA; ?></b></td>
+                      <td><?php echo $this->lang->line('usuario_detalles_envio_guia'); ?>:<br><b><?php echo $tienda->GUIA_PAQUETERIA; ?></b></td>
                       <td><a href="<?php echo $tienda->URL_RASTREO; ?>" target="_blank" class="btn btn-outline-primary btn-sm btn-block"> Rastrear</a></td>
                     </tr>
                 <?php } ?>
@@ -226,19 +226,19 @@
             <div class="col">
               <div class="card border-warning">
                 <div class="card-body">
-                    <h6> <i class="fa fa-exclamation"></i> Solicitar Devolución</h6>
-                    <p>Si ha ocurrido un problema con tu pedido, puedes solicitar la devolución por favor consulta nuestros terminos y condiciones para estar confirmar que seas candidato a una devolución</p>
+                    <h6> <i class="fa fa-exclamation"></i> <?php echo $this->lang->line('usuario_detalles_devolucion_solicitar'); ?></h6>
+                    <p><?php echo $this->lang->line('usuario_detalles_devolucion_instrucciones'); ?></p>
                     <form class="" action="<?php echo base_url('usuario/pedidos/devolucion') ?>" method="post" enctype="multipart/form-data">
                       <input type="hidden" name="IdPedido" value="<?php echo $pedido['ID_PEDIDO']; ?>">
                       <div class="form-group">
-                        <label for="ComentarioDevolucion">Razón de la Solicitud</label>
+                        <label for="ComentarioDevolucion"><?php echo $this->lang->line('usuario_detalles_devolucion_razon'); ?></label>
                         <textarea name="ComentarioDevolucion" class="form-control" rows="8"></textarea>
                       </div>
                       <div class="form-group">
-                        <label for="ArchivoDevolucion">Adjuntar Imagen</label>
+                        <label for="ArchivoDevolucion"><?php echo $this->lang->line('usuario_detalles_devolucion_imagen'); ?></label>
                         <input type="file" class="form-control" name="ArchivoDevolucion" value="">
                       </div>
-                      <button type="submit" class="btn btn-primary float-right" name="button">Enviar Solicitud</button>
+                      <button type="submit" class="btn btn-primary float-right" name="button"><?php echo $this->lang->line('usuario_detalles_devolucion_enviar'); ?></button>
                     </form>
                 </div>
               </div>
@@ -252,11 +252,11 @@
             <div class="col">
               <div class="card border-warning">
                 <div class="card-body">
-                    <h6>Solicitud de devolución</h6>
-                    <p> <b>Mensaje:</b> <?php echo $devolucion['DEVOLUCION_COMENTARIO'] ?></p>
+                      <h6><?php echo $this->lang->line('usuario_detalles_devolucion_solicitud'); ?></h6>
+                      <p> <b><?php echo $this->lang->line('usuario_detalles_devolucion_mensaje'); ?>:</b>  <?php echo $devolucion['DEVOLUCION_COMENTARIO'] ?></p>
                     <a href="<?php echo base_url('contenido/adjuntos/pedidos/').$devolucion['DEVOLUCION_ARCHIVO']; ?>" class="btn btn-outline-primary" target="_blank"> <i class="fa fa-download"></i> Descargar Adjunto</a>
                     <hr>
-                    <h6>Respuesta</h6>
+                    <h6><?php echo $this->lang->line('usuario_detalles_devolucion_respuesta'); ?></h6>
                     <p><?php echo $devolucion['DEVOLUCION_RESPUESTA'] ?></p>
                 </div>
               </div>
