@@ -97,6 +97,34 @@
       </div>
     </div>
   </div>
+  <!-- inician sliders -->
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-3">
+      <div class="slider-pro" id="my-slider">
+        <div class="sp-slides">
+          <!-- Slide 1 -->
+          <div class="sp-slide">
+            <img class="sp-image" src="path/to/image1.jpg"/>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="sp-slide">
+            <p>Lorem ipsum dolor sit amet</p>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="sp-slide">
+            <h3 class="sp-layer">Lorem ipsum dolor sit amet</h3>
+            <p class="sp-layer">consectetur adipisicing elit</p>
+          </div>
+        </div>
+</div>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-3"></div>
+    <div class="col-2"></div>
+  </div>
 </div>
 
 <div class="fila fila-gris">

@@ -6,8 +6,10 @@
         <div class="container">
           <div class="row mb-5">
             <div class="col-3">
-              <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
-              <img src="<?php echo base_url($ruta_portada) ?>" class="img-thumbnail image-profile float-left" width="180" alt="Profile image example">
+              <div class="cont-foto-servicio img-thumbnail align-center">
+                <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
+                <img src="<?php echo base_url($ruta_portada) ?>" class="image-profile" width="180" alt="Profile image example">
+              </div>
             </div>
             <div class="col-9">
                 <nav aria-label="breadcrumb">
