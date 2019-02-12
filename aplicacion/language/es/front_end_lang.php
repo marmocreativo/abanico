@@ -136,6 +136,69 @@ $lang['pagina_servicio_formulario_contacto_descripcion'] = 'Ofrece la informaci�
 $lang['pagina_servicio_formulario_contacto_mensaje'] = 'Mensaje';
 $lang['pagina_servicio_formulario_contacto_contactar'] = 'Contactar';
 
+/*
+* Carrito y Compra
+*/
+$lang['carrito_titulo'] = 'Carrito de compras';
+$lang['carrito_vaciar'] = 'Vaciar Carrito';
+$lang['carrito_seguir_compranod'] = 'Seguir Comprando';
+$lang['carrito_comprar_ahora'] = 'Comprar Ahora';
+$lang['carrito_comprar'] = 'Comprar';
+
+$lang['carrito_producto'] = 'Producto';
+$lang['carrito_cantidad'] = 'Cantidad';
+$lang['carrito_precio'] = 'Precio';
+$lang['carrito_total'] = 'Total';
+
+$lang['carrito_sin_productos'] = 'Aún no tienes productos en tu carrito.';
+$lang['carrito_sub_total'] = 'Subtotal';
+
+$lang['proceso_pago_carrito_titulo'] = 'Revisa los productos que comprarás';
+
+$lang['proceso_pago_1_identificacion'] = 'Identificación';
+$lang['proceso_pago_1_direccion'] = 'Dirección';
+$lang['proceso_pago_1_pago'] = 'Pago';
+$lang['proceso_pago_1_confirmacion'] = 'Confirmación';
+$lang['proceso_pago_1_registro_rapido'] = 'Registro rápido';
+
+$lang['proceso_pago_2_donde_enviaremos'] = '¿Dónde enviaremos tu pedido?';
+$lang['proceso_pago_2_volver_a_tienda'] = 'Volver a la tienda';
+$lang['proceso_pago_2_continuar'] = 'Continuar';
+
+$lang['proceso_pago_3_cambiar_direccion'] = 'Cambiar Dirección';
+$lang['proceso_pago_3_fecha'] = 'Fecha';
+$lang['proceso_pago_3_exeden_peso'] = 'Los productos Exceden el peso máximo o tu dirección no está disponible para envíos. Por favor contacta con nosotros para ofrecerte opciones.';
+$lang['proceso_pago_3_envio_de_productos_otro'] = 'Envio de productos de';
+$lang['proceso_pago_3_envio_de_abanico'] = 'Productos enviados por Abanico, el costo de Envío aparecerá en la parte inferior.';
+$lang['proceso_pago_3_importe_productos'] = 'Importe Productos';
+$lang['proceso_pago_3_envio_abanico'] = 'Envio Abanico';
+$lang['proceso_pago_3_envio_abanico_instrucciones'] = 'Los envios de productos de tiendas afiliadas a Abanico se calculan en un solo paquete';
+$lang['proceso_pago_3_envio_otras_tiendas'] = 'Envio otras Tiendas';
+$lang['proceso_pago_3_envio_otras_tiendas_instrucciones'] = 'Los envios de productos de tiendas externas a Abanico se calculan por separado';
+$lang['proceso_pago_3_total'] = 'Total';
+
+$lang['proceso_pago_3_transferencia'] = 'Transferencia Bancaria';
+$lang['proceso_pago_3_paypal'] = 'Pagar con PayPal';
+$lang['proceso_pago_3_transferencia_instrucciones'] = 'Depósito/Transferencia Bancaria';
+$lang['proceso_pago_3_numero_cuenta'] = 'No. Cuenta';
+$lang['proceso_pago_3_monto_a_pagar'] = 'Monto a Pagar';
+$lang['proceso_pago_3_referencia'] = 'Referencia';
+$lang['proceso_pago_3_imprimir'] = 'Imprimir';
+$lang['proceso_pago_3_terminar'] = 'Terminar';
+
+$lang['proceso_pago_4_pedido_completo'] = 'Pedido Completo';
+$lang['proceso_pago_4_agradecimiento'] = 'Gracias por comprar con nosotros';
+$lang['proceso_pago_4_agradecimiento_instrucciones'] = 'Te llegará una confirmación del pedido por correo.';
+$lang['proceso_pago_4_ir_al_perfil'] = 'Ir a tu perfil';
+
+/*
+* Menú de Usuario
+*/
+$lang['usuario_menu_escritorio'] = 'Escritorio';
+$lang['usuario_menu_pedidos'] = 'Mis Pedidos';
+$lang['usuario_menu_perfil'] = 'Mi Perfil';
+$lang['usuario_menu_vendedor'] = 'Vendedor';
+$lang['usuario_menu_servicios'] = 'Mis Servicios';
 
 /*
 * Formulario de Usuario
@@ -150,7 +213,7 @@ $lang['usuario_formulario_olvide_pass'] = 'Olvidé mi contraseña';
 $lang['usuario_formulario_registro'] = 'Registrarme';
 
 
-$lang['usuario_formulario_registro_titulo'] = 'REGISTRO DE USUARIO';
+$lang['usuario_formulario_registro_titulo'] = 'Registro de usuario';
 $lang['usuario_formulario_registro_instrucciones'] = 'Llena los siguientes datos';
 $lang['usuario_formulario_registro_nombre'] = 'Nombre';
 $lang['usuario_formulario_registro_apellidos'] = 'Apellidos';
@@ -378,7 +441,16 @@ $lang['usuario_vista_perfil_servicios_suspendido'] = 'Tu perfil de servicios se 
 /*
 * Formulario Perfil Servicios
 */
-$lang['usuario_form_tienda_titulo'] = 'Crea tu tienda';
+$lang['usuario_form_perfil_servicio_titulo'] = 'Nuevo Perfil';
+$lang['usuario_form_perfil_servicio_bienvenida'] = 'Hola, Bienvenido al creador de perfil';
+$lang['usuario_form_perfil_servicio_bienvenida_instrucciones'] = 'Debes registrar un Perfil de servicios para';
+$lang['usuario_form_perfil_servicio_beneficios_1'] = 'Ofrecer Servicios';
+$lang['usuario_form_perfil_servicio_beneficios_2'] = 'Recibir Mensajes y Ofertas de trabajo';
+
+$lang['usuario_form_perfil_servicio_fotografia_personal'] = 'Fotografía Personal';
+$lang['usuario_form_perfil_servicio_datos_contaco'] = 'Datos de Contacto (Obligatorios)';
+$lang['usuario_form_perfil_servicio_registrar'] = 'Registrat Perfil';
+$lang['usuario_form_perfil_servicio_actualizar'] = 'Actualizar Perfil';
 
 
 /*
@@ -508,3 +580,14 @@ $lang['usuario_lista_ventas_envio'] = 'Envio';
 $lang['usuario_lista_ventas_importe'] = 'Importe';
 $lang['usuario_lista_ventas_importe_total'] = 'Importe Total';
 $lang['usuario_lista_ventas_detalles'] = 'Detalles';
+
+/*
+* Carrito y Compra
+*/
+$lang['rastreo_guia_guia'] = 'Guía';
+$lang['rastreo_guia_destinatario'] = 'Destinatario';
+$lang['rastreo_guia_estado'] = 'Estado';
+$lang['rastreo_guia_rastreo_guia'] = 'Rastreo de Guía';
+$lang['rastreo_guia_ubicacion'] = 'Ubicación';
+$lang['rastreo_guia_direccion'] = 'Dirección';
+$lang['rastreo_guia_fecha'] = 'Fecha';

@@ -9,9 +9,9 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th style="width:20%">Guía</th>
-                      <th style="width:60%">Destinatario</th>
-                      <th style="width:10%">Estado</th>
+                      <th style="width:20%"><?php echo $this->lang->line('rastreo_guia_guia'); ?></th>
+                      <th style="width:60%"><?php echo $this->lang->line('rastreo_guia_destinatario'); ?></th>
+                      <th style="width:10%"><?php echo $this->lang->line('rastreo_guia_estado'); ?></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -35,15 +35,15 @@
             </div>
             <div class="card">
               <div class="card-header">
-                <h6> <i class="fa fa-recipt"></i> Rastreo de Guía <b><?php echo $guia['GUIA_CODIGO'] ?></b></h6>
+                <h6> <i class="fa fa-recipt"></i> <?php echo $this->lang->line('rastreo_guia_rastreo_guia'); ?> <b><?php echo $guia['GUIA_CODIGO'] ?></b></h6>
               </div>
               <div class="card-body">
                 <table class="table">
                   <thead>
                     <tr>
-                      <th >Ubicación</th>
-                      <th >Dirección</th>
-                      <th >Fecha</th>
+                      <th ><?php echo $this->lang->line('rastreo_guia_ubicacion'); ?></th>
+                      <th ><?php echo $this->lang->line('rastreo_guia_direccion'); ?></th>
+                      <th ><?php echo $this->lang->line('rastreo_guia_fecha'); ?></th>
                     </tr>
                   </thead>
                   <tbody>

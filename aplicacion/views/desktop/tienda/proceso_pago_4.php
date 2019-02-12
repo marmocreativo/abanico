@@ -8,29 +8,29 @@
               <div class="stepwizard-row setup-panel">
                 <div class="stepwizard-step">
                   <a href="#step-1" class="btn btn-default btn-circle" disabled="disabled">1</a>
-                  <p>Identificación</p>
+                  <p><?php echo $this->lang->line('proceso_pago_1_identificacion'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-2" class="btn btn-default btn-circle"  disabled="disabled" >2</a>
-                  <p>Dirección</p>
+                  <p><?php echo $this->lang->line('proceso_pago_1_direccion'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-3" class="btn btn-default btn-circle"  disabled="disabled">3</a>
-                  <p>Pago</p>
+                  <p><?php echo $this->lang->line('proceso_pago_1_pago'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-4" class="btn btn-primary btn-circle" disabled="disabled">4</a>
-                  <p>Confirmación</p>
+                  <p><?php echo $this->lang->line('proceso_pago_1_confirmacion'); ?></p>
                 </div>
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="col text-center">
-                <h5>Pedido Completo</h5>
-                <h5>Gracias por comprar con nosotros</h5>
-                <p>Te llegará una confirmación del pedido por correo.</p>
-                <a href="<?php echo base_url('usuario'); ?>" class="btn btn-outline-info btn-block">Ir a tu perfil.</a>
+                <h5><?php echo $this->lang->line('proceso_pago_4_pedido_completo'); ?></h5>
+                <h5><?php echo $this->lang->line('proceso_pago_4_agradecimiento'); ?></h5>
+                <p><?php echo $this->lang->line('proceso_pago_4_agradecimiento_instrucciones'); ?></p>
+                <a href="<?php echo base_url('usuario'); ?>" class="btn btn-outline-info btn-block"><?php echo $this->lang->line('proceso_pago_4_ir_al_perfil'); ?>.</a>
               </div>
             </div>
           </div>
