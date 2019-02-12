@@ -60,7 +60,7 @@
           </form>
           <div class="w-25 d-flex justify-content-end">
             <a class="btn <?php echo 'btn-outline'.$primary; ?>" href="<?php echo base_url('usuario/favoritos'); ?>"> <span class="fa fa-heart"></span> Favoritos</a>
-            <button class="btn <?php echo 'btn-outline'.$primary; ?>  ml-3" data-toggle="modal" data-target="#ModalCarrito"> <span class="fa fa-shopping-cart"></span> Carrito</button>
+            <button class="btn btn-carrito <?php echo 'btn-outline'.$primary; ?>  ml-3" data-toggle="modal" data-target="#ModalCarrito"> <span class="fa fa-shopping-cart"></span> Carrito</button>
           </div>
         </div>
       </nav>
