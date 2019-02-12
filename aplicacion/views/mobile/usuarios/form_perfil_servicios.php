@@ -35,7 +35,7 @@
                <label class="custom-file-label" for="ImagenPerfil">Fotografía Personal</label>
              </div>
              <div class="form-group">
-               <label for="NombrePerfil">Nombre Público</label>
+               <label for="NombrePerfil">Nombre público</label>
                <input type="text" class="form-control form-control-sm" id="NombrePerfil" name="NombrePerfil" placeholder="" autocomplete="nope" value="fernando gutierrez">
              </div>
 
@@ -43,7 +43,7 @@
 
              <h6 class="mb-3"><span class="fa fa-file-invoice"></span> Datos Fiscales (Opcionales)</h6>
              <div class="form-group">
-               <label for="RazonSocialPerfil">Razón Social</label>
+               <label for="RazonSocialPerfil">Razón social</label>
                <input type="text" class="form-control form-control-sm" id="RazonSocialPerfil" name="RazonSocialPerfil" placeholder="" value="">
              </div>
              <div class="form-group">
@@ -102,7 +102,7 @@
              </div>
              <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required="">
-                <label class="custom-control-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones de Servicio</label>
+                <label class="custom-control-label" for="TerminosyCondiciones">Acepto los términos y condiciones de Servicio</label>
              </div>
              <hr>
              <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-save"></i> Registrar Perfil</button>
@@ -162,13 +162,13 @@
                   </div>
                   <div class="col-12 col-sm-9">
                      <div class="form-group">
-                       <label for="NombrePerfil">Nombre Público</label>
+                       <label for="NombrePerfil">Nombre público</label>
                        <input type="text" class="form-control" id="NombrePerfil" name="NombrePerfil" placeholder="" autocomplete="nope" value="<?php if(form_error('NombrePerfil') != NULL){echo set_value('NombrePerfil');}else{ echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']; }?>">
                      </div>
                      <hr>
                      <h6 class="mb-3"><span class="fa fa-file-invoice"></span> Datos Fiscales (Opcionales)</h6>
                      <div class="form-group">
-                       <label for="RazonSocialPerfil">Razón Social</label>
+                       <label for="RazonSocialPerfil">Razón social</label>
                        <input type="text" class="form-control" id="RazonSocialPerfil" name="RazonSocialPerfil" placeholder="" value="<?php echo set_value('RazonSocialPerfil'); ?>">
                      </div>
                      <div class="form-group">
@@ -235,7 +235,7 @@
                      <hr>
                      <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                        <label class="custom-control-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones de Servicio</label>
+                        <label class="custom-control-label" for="TerminosyCondiciones">Acepto los términos y condiciones de Servicio</label>
                       </div>
                      <hr>
                      <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Registrar Perfil</button>

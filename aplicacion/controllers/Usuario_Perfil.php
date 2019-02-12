@@ -8,6 +8,8 @@ class Usuario_Perfil extends CI_Controller {
 		sesion_default($this->data['op']);
 		$this->data['lenguajes_activos'] = $this->lenguajes_activos->get_lenguajes_activos();
 		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
+// Cargo Lenguaje
+$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		// Variables defaults
 			$this->data['primary'] = "-primary";
 
@@ -40,7 +42,7 @@ class Usuario_Perfil extends CI_Controller {
 		*/
 
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 
@@ -132,7 +134,7 @@ class Usuario_Perfil extends CI_Controller {
 		*/
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			// Creo el mensaje y redirecciono si la sesión no estpa activada
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 
@@ -175,7 +177,7 @@ class Usuario_Perfil extends CI_Controller {
 		*/
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			// si ya existe una sesión activa redirijo con el siguiente mensaje
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('usuario'));
 		}
 		// Obtengo los datos de usuario
@@ -198,8 +200,10 @@ class Usuario_Perfil extends CI_Controller {
 					'USUARIO_PASSWORD' => $pass
 				);
 				$this->AutenticacionModel->restaurar_pass($id,$parametros);
+				$this->session->set_flashdata('exito', 'Contraseña Actualizada');
 				redirect(base_url('usuario/pass?mensaje=pass_actualizado'));
 			}else{
+				$this->session->set_flashdata('alerta', 'Tu contraseña actual es incorrecta');
 				redirect(base_url('usuario/pass?mensaje=pass_incorrecto'));
 			}
 			//$usuario_id = $this->UsuariosModel->actualizar($_SESSION['usuario']['id'],$parametros);
@@ -213,7 +217,7 @@ class Usuario_Perfil extends CI_Controller {
 	public function borrar()
 	{
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 		$this->load->model('ProductosModel');

@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-          <h1 class="h3">Inicio de Sesión</h1>
+          <h1 class="h3"><?php echo $this->lang->line('usuario_formulario_login_titulo'); ?></h1>
         </div>
       </div>
     </div>
@@ -14,34 +14,10 @@
         <div class="col-12 col-sm-5">
           <div class="card">
             <div class="card-header">
-              <h4>Restaura tu contraseña</h4>
+              <h4><?php echo $this->lang->line('usuario_formulario_restaurar_pass_instrucciones'); ?></h4>
             </div>
             <div class="card-body">
-              <?php if(isset($_GET['mensaje'])){
-                switch($_GET['mensaje']){
-                  case 'error_login':
-                    $alerta = 'alert-danger';
-                    $mensaje = 'Tu contraseña o correo electrónico son incorrectos';
-                  break;
-                  case 'error_activo':
-                    $alerta = 'alert-danger';
-                    $mensaje = 'Lo sentimos tu cuenta se encuentra Inactiva, por favor comunícate con nosotros para restaurarla.';
-                  break;
-                  case 'sesion_cerrada':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Sesión cerrada correctamente';
-                  break;
-                  case 'registro_correcto':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Usuario Creado correctamente, por favor inicia sesión';
-                  break;
-                }
-                ?>
-
-                <div class="alert <?php echo  $alerta; ?>">
-                  <p><?php echo  $mensaje; ?></p>
-                </div>
-              <?php }// Termina la condicionante ?>
+              <?php retro_alimentacion(); ?>
               <?php if(!empty(validation_errors())){ ?>
                 <div class="alert alert-danger">
                   <?php echo validation_errors(); ?>
@@ -50,21 +26,21 @@
               <?php } ?>
                 <form class="" action="<?php echo base_url('login/restaurar?id='.$_GET['id'].'&clave='.$_GET['clave']);?>" method="post">
                    <div class="form-group">
-                     <label for="PassUsuario">Nueva Contraseña</label>
+                     <label for="PassUsuario"><?php echo $this->lang->line('usuario_formulario_registro_nuevo_pass'); ?></label>
                      <input type="password" class="form-control" id="PassUsuario" name="PassUsuario" placeholder="Contraseña">
                    </div>
                    <div class="form-group">
-                     <label for="PassUsuario">Confirmar Nueva Contraseña</label>
+                     <label for="PassUsuario"><?php echo $this->lang->line('usuario_formulario_registro_nuevo_pass_confirmar'); ?></label>
                      <input type="password" class="form-control" id="PassUsuarioConf" name="PassUsuarioConf" placeholder="Confirmar">
                    </div>
                    <hr>
-                   <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                   <button type="submit" class="btn btn-primary btn-block"><?php echo $this->lang->line('usuario_formulario_registro_restaurar'); ?></button>
                  </form>
             </div>
             <div class="card-footer">
               <nav class="nav justify-content-center nav-fill">
-                <a class="nav-link" href="<?php echo base_url('login/olvide');?>"> <span class="fa fa-question-circle"></span> Olvide mi contraseña</a>
-                <a class="nav-link" href="<?php echo base_url('usuario/registrar');?>"> <span class="fa fa-pen-square"></span> Registrarme</a>
+                <a class="nav-link" href="<?php echo base_url('login/olvide');?>"> <span class="fa fa-question-circle"></span> <?php echo $this->lang->line('usuario_formulario_olvide_pass'); ?></a>
+                <a class="nav-link" href="<?php echo base_url('usuario/registrar');?>"> <span class="fa fa-pen-square"></span> <?php echo $this->lang->line('usuario_formulario_registro'); ?></a>
               </nav>
             </div>
           </div>

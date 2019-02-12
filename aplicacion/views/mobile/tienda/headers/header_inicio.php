@@ -27,8 +27,8 @@
         <div class="input-group input-group-sm">
           <input class="form-control" type="search" name="Busqueda" placeholder="Busca lo Mejor" aria-label="Search" value="<?php if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){ echo filter_var ( $_GET['Busqueda'], FILTER_SANITIZE_STRING); } ?>">
           <select class="form-control" name="BuscarEn">
-            <option value="productos" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='productos'){ echo 'selected'; } ?>>En Productos</option>
-            <option value="servicios" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='servicios'){ echo 'selected'; } ?>>En Servicios</option>
+            <option value="productos" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='productos'){ echo 'selected'; } ?>>En productos</option>
+            <option value="servicios" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='servicios'){ echo 'selected'; } ?>>En servicios</option>
           </select>
           <div class="input-group-append">
             <button type="submit" class="btn" type="button"><i class="fa fa-search"></i></button>
@@ -70,7 +70,7 @@
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <?php $this->load->view('mobile/tienda/widgets/menu_usuario'); ?>
         <span class="separador mt-3 mb-3"></span>
-        <a class="nav-link" href="http://localhost/abanico-master/usuario/favoritos"> <i class="fas fa-heart"></i> Favoritos</a>
+        <a class="nav-link" href="<?php echo base_url('usuarios/favoritos') ?>"> <i class="fas fa-heart"></i> Favoritos</a>
       </div>
     </div>
   </div>

@@ -8,6 +8,8 @@ class Usuario_Servicios extends CI_Controller {
 		sesion_default($this->data['op']);
 		$this->data['lenguajes_activos'] = $this->lenguajes_activos->get_lenguajes_activos();
 		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
+// Cargo Lenguaje
+$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		// Variables defaults
 			$this->data['primary'] = "-primary";
 
@@ -31,7 +33,7 @@ class Usuario_Servicios extends CI_Controller {
 	public function index()
 	{
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 		// reviso si el usuario tiene una tienda
@@ -50,7 +52,7 @@ class Usuario_Servicios extends CI_Controller {
 	public function crear()
 	{
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 			// Defino el tipo de Categoria
@@ -130,7 +132,7 @@ class Usuario_Servicios extends CI_Controller {
 		public function actualizar()
 		{
 			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 			}
 				// Defino tipo de Servicio y tipo de Categoría
@@ -226,7 +228,7 @@ class Usuario_Servicios extends CI_Controller {
 	public function subir_adjunto()
 	{
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 			// Defino tipo de Servicio y tipo de Categoría
@@ -273,7 +275,7 @@ class Usuario_Servicios extends CI_Controller {
 public function borrar_adjunto()
 {
 	if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-		$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+		$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 		redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 	}
 	$tab = 'categorias';
@@ -294,7 +296,7 @@ public function borrar_adjunto()
 		public function borrar()
 		{
 			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 			}
 
@@ -315,7 +317,7 @@ public function borrar_adjunto()
 		public function borrar_galeria()
 		{
 			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 			}
 			$tab = 'galeria';
@@ -333,7 +335,7 @@ public function borrar_adjunto()
 		public function portada()
 		{
 			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 			}
 			$tab = 'galeria';
@@ -343,7 +345,7 @@ public function borrar_adjunto()
 		public function activar()
 		{
 			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-				$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+				$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 			}
 			$this->ServiciosModel->activar($_GET['id'],$_GET['estado']);

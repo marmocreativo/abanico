@@ -9,6 +9,8 @@ class Admin_Productos extends CI_Controller {
 		sesion_default($this->data['op']);
 		$this->data['lenguajes_activos'] = $this->lenguajes_activos->get_lenguajes_activos();
 		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
+// Cargo Lenguaje
+$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		// Variables defaults
 		$this->data['primary'] = "-primary";
@@ -31,7 +33,7 @@ class Admin_Productos extends CI_Controller {
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 		// Verifico Permiso
@@ -358,7 +360,7 @@ class Admin_Productos extends CI_Controller {
 	public function activar()
 	{
 		$this->ProductosModel->activar($_GET['id'],$_GET['estado']);
-		redirect(base_url('admin/productos/usuario?id_usuario='.$_GET['id_usuario']));
+		redirect(base_url('admin/productos?id_usuario='.$_GET['id_usuario']));
 	}
 	public function estado()
 	{

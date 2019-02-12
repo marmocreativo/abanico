@@ -57,7 +57,7 @@
                   <div class="imagen-producto">
                     <div class="contenedor-etiquetas">
                       <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
-                        <span class="etiqueta-1">Mex</span>
+                        <span class="etiqueta-1">Méx</span>
                       <?php } ?>
                       <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
                         <span class="etiqueta-2">Nuevo</span>

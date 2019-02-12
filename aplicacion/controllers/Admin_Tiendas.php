@@ -9,6 +9,8 @@ class Admin_Tiendas extends CI_Controller {
 		sesion_default($this->data['op']);
 		$this->data['lenguajes_activos'] = $this->lenguajes_activos->get_lenguajes_activos();
 		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
+// Cargo Lenguaje
+$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		// Variables defaults
 		$this->data['primary'] = "-primary";
@@ -33,7 +35,7 @@ class Admin_Tiendas extends CI_Controller {
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-			$this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 		// Verifico Permiso
@@ -73,7 +75,7 @@ class Admin_Tiendas extends CI_Controller {
 	{
 		// Validaciones de Formulario
 		$this->form_validation->set_rules('NombreTienda', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
-		$this->form_validation->set_rules('RazonSocialTienda', 'Razón Social', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('RazonSocialTienda', 'Razón social', 'required', array('required' => 'Debes escribir tu %s.'));
 		$this->form_validation->set_rules('RfcTienda', 'R.F.C.', 'required', array('required' => 'Debes escribir tu %s.'));
 		$this->form_validation->set_rules('TelefonoTienda', 'Teléfono', 'required', array('required' => 'Debes escribir tu %s.'));
 		$this->form_validation->set_rules('TerminosyCondiciones', 'Términos y condiciones', 'required', array('required' => 'Debes aceptar los %s.'));
@@ -162,7 +164,7 @@ class Admin_Tiendas extends CI_Controller {
 	{
 		// Validaciones de Formulario
 		$this->form_validation->set_rules('NombreTienda', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
-		$this->form_validation->set_rules('RazonSocialTienda', 'Razón Social', 'required', array('required' => 'Debes escribir tu %s.'));
+		$this->form_validation->set_rules('RazonSocialTienda', 'Razón social', 'required', array('required' => 'Debes escribir tu %s.'));
 		$this->form_validation->set_rules('RfcTienda', 'R.F.C.', 'required', array('required' => 'Debes escribir tu %s.'));
 		$this->form_validation->set_rules('TelefonoTienda', 'Teléfono', 'required', array('required' => 'Debes escribir tu %s.'));
 
@@ -244,9 +246,10 @@ class Admin_Tiendas extends CI_Controller {
 				$this->session->set_flashdata('exito', 'Tienda Actualizada');
 				redirect(base_url('admin/usuarios/perfil?id_usuario='.$this->input->post('IdUsuario')));
     }else{
-			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
-			$this->data['tienda'] = $this->TiendasModel->detalles($_GET['id_tienda']);
-			$this->data['direccion_tienda'] = $this->DireccionesModel->direccion_fiscal($_GET['id_usuario']);
+
+			$this->data['tienda'] = $this->TiendasModel->detalles($_GET['id']);
+			$this->data['usuario'] = $this->UsuariosModel->detalles($this->data['tienda']['ID_USUARIO']);
+			$this->data['direccion_tienda'] = $this->DireccionesModel->direccion_fiscal($this->data['tienda']['ID_USUARIO']);
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_tienda',$this->data);

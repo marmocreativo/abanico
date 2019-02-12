@@ -1,6 +1,7 @@
 
   <div class="row">
     <div class="col">
+      <?php retro_alimentacion(); ?>
       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <div class="titulo">
@@ -23,7 +24,7 @@
             <thead class="text-light bg<?php echo $primary; ?>">
               <tr>
                 <th class="text-center">Nombre</th>
-                <th class="text-center">Razón Social</th>
+                <th class="text-center">Razón social</th>
                 <th class="text-center">R.F.C.</th>
                 <th class="text-center">Estado</th>
                 <th class="text-right">Controles</th>
@@ -49,7 +50,7 @@
                     <a href="<?php echo base_url('admin/usuarios/perfil')."?id_usuario=".$perfil->ID_USUARIO; ?>" class="btn btn-sm btn-success"> <span class="fa fa-id-card"></span> Usuario</a>
                     <a href="<?php echo base_url('admin/servicios')."?id_usuario=".$perfil->ID_USUARIO; ?>" class="btn btn-sm btn-info"> <span class="fa fa-tools"></span> Servicios</a>
                     <a href="<?php echo base_url('admin/perfiles_servicios/actualizar')."?id_usuario=".$perfil->ID_USUARIO."&id_perfil=".$perfil->ID_PERFIL; ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
-                    <a href="<?php echo base_url('admin/pperfiles_usuarios/borrar')."?id=".$perfil->ID_PERFIL; ?>" class="btn btn-sm btn-danger"><span class="fa fa-trash-alt"></span></a>
+                    <button data-enlace='<?php echo base_url('admin/perfiles_servicios/borrar')."?id=".$perfil->ID_PERFIL; ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Perfil de Servicios"> <span class="fa fa-trash"></span> </button>
                   </div>
                 </td>
               </tr>

@@ -76,7 +76,7 @@
                   <img class="spanImg mr-1" src="<?php echo base_url($ruta_portada); ?>"></img>
                   <div class="contenedorEtiquetas">
                     <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
-                      <span class="etiqueta-1">Mex</span>
+                      <span class="etiqueta-1">Méx</span>
                     <?php } ?>
                     <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
                       <span class="etiqueta-2 <?php echo 'bg'.$primary; ?>">Nuevo</span>
@@ -158,7 +158,7 @@
             <div class="imagen-producto">
               <img class="spanImg" src="https://picsum.photos/300/300/?random=<?php echo $i; ?>"></img>
               <div class="contenedorEtiquetas">
-                <span class="etiqueta-1">Mex</span>
+                <span class="etiqueta-1">Méx</span>
                 <span class="etiqueta-2">Nuevo</span>
                 <span class="etiqueta-3">Oferta</span>
               </div>

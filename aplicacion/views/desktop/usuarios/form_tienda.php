@@ -9,17 +9,17 @@
           <?php retro_alimentacion(); ?>
           <div class="card">
             <div class="card-header">
-              <h5> <i class="fa fa-store"></i> Crea tu tienda</h5>
+              <h5> <i class="fa fa-store"></i> <?php echo $this->lang->line('usuario_form_tienda_titulo'); ?></h5>
             </div>
             <div class="card-body">
               <div class="card card-info mb-3">
                 <div class="card-body">
-                  <h5>Hola, Bienvenido al creador de perfil de ventas</h5>
-                  <p>Debes registrar una tienda para tener la facultad de:</p>
+                  <h5><?php echo $this->lang->line('usuario_form_tienda_bienvenida'); ?></h5>
+                  <p><?php echo $this->lang->line('usuario_form_tienda_bienvenida_instrucciones'); ?></p>
                   <ul>
-                    <li>Crear Productos y ofrecerlos a la venta</li>
-                    <li>Recibir comentarios</li>
-                    <li>Recibir calificaciones en tus productos</li>
+                    <li><?php echo $this->lang->line('usuario_form_tienda_beneficios_1'); ?></li>
+                    <li><?php echo $this->lang->line('usuario_form_tienda_beneficios_2'); ?></li>
+                    <li><?php echo $this->lang->line('usuario_form_tienda_beneficios_3'); ?></li>
                   </ul>
                 </div>
               </div>
@@ -36,62 +36,62 @@
                     <hr>
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="ImagenTienda" name="ImagenTienda" placeholder="" value="">
-                      <label class="custom-file-label" for="ImagenTienda">Logotipo de tu Tienda</label>
+                      <label class="custom-file-label" for="ImagenTienda"><?php echo $this->lang->line('usuario_form_tienda_logotipo'); ?></label>
                     </div>
                   </div>
                   <div class="col-12 col-sm-9">
-                    <h5> <span class="fa fa-store"></span> Datos de Vendedor</h5>
+                    <h5> <span class="fa fa-store"></span> <?php echo $this->lang->line('usuario_form_tienda_datos_vendedor'); ?></h5>
                     <div class="form-group">
-                      <label for="TipoTienda">Tipo de Vendedor </label>
+                      <label for="TipoTienda"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor'); ?> </label>
                       <select class="form-control" name="TipoTienda">
-                        <option value="tienda">Tienda (Vendes una gran cantidad de Productos)</option>
-                        <option value="vendedor">Vendedor (Solo ofrecerás un par de productos a la ves) </option>
+                        <option value="tienda"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor_tienda'); ?></option>
+                        <option value="vendedor"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor_tienda'); ?> </option>
                       </select>
                     </div>
                      <div class="form-group">
-                       <label for="NombreTienda">Nombre Público <small>El nombre que verán los compradores</small> </label>
+                       <label for="NombreTienda"><?php echo $this->lang->line('usuario_vista_tienda_nombre'); ?> <small><?php echo $this->lang->line('usuario_vista_tienda_nombre_instrucciones'); ?></small> </label>
                        <input type="text" class="form-control" id="NombreTienda" name="NombreTienda" placeholder="" value="<?php echo set_value('NombreTienda'); ?>">
                      </div>
                      <hr>
-                     <h6><span class="fa fa-file-invoice"></span> Datos Fiscales (En caso de requerir Factura)</h6>
+                     <h6><span class="fa fa-file-invoice"></span> <?php echo $this->lang->line('usuario_form_tienda_datos_fiscales'); ?></h6>
                      <div class="form-group">
-                       <label for="RazonSocialTienda">Razón Social</label>
+                       <label for="RazonSocialTienda"><?php echo $this->lang->line('usuario_vista_tienda_razon'); ?></label>
                        <input type="text" class="form-control" id="RazonSocialTienda" name="RazonSocialTienda" placeholder="" value="<?php echo set_value('RazonSocialTienda'); ?>">
                      </div>
                      <div class="form-group">
-                       <label for="RfcTienda">R.F.C.</label>
+                       <label for="RfcTienda"><?php echo $this->lang->line('usuario_vista_tienda_rfc'); ?></label>
                        <input type="text" class="form-control" id="RfcTienda" name="RfcTienda" placeholder="" value="<?php echo set_value('RfcTienda'); ?>">
                      </div>
                      <div class="form-group">
-                       <label for="TelefonoTienda">Teléfono</label>
+                       <label for="TelefonoTienda"><?php echo $this->lang->line('usuario_vista_tienda_telefono'); ?></label>
                        <input type="text" class="form-control" id="TelefonoTienda" name="TelefonoTienda" required placeholder="" value="<?php echo set_value('TelefonoTienda'); ?>">
                      </div>
-                     <h6> <span class="fa fa-building"></span> Dirección de Contacto</h6>
+                     <h6> <span class="fa fa-building"></span> <?php echo $this->lang->line('usuario_vista_tienda_direccion_fiscal'); ?></h6>
                      <input type="hidden" name="TipoDireccion" value="fiscal">
                      <input type="hidden" name="AliasDireccion" value="Direccion Tienda">
                       <input type="hidden" name="ReferenciasDireccion" value="-">
                      <div class="row">
                        <div class="col">
                          <div class="form-group">
-                           <label for="PaisDireccion">País </label>
+                           <label for="PaisDireccion"><?php echo $this->lang->line('usuario_form_direcciones_pais'); ?> </label>
                            <select class="form-control" name="PaisDireccion" id="PaisDireccion" data-valor-anterior="<?php echo set_value('PaisDireccion'); ?>" required>
-                             <option value="">Selecciona un País</option>
+                             <option value=""><?php echo $this->lang->line('usuario_form_direcciones_pais_selecciona'); ?></option>
                            </select>
                          </div>
                        </div>
                        <div class="col">
                          <div class="form-group">
-                           <label for="EstadoDireccion">Estado </label>
+                           <label for="EstadoDireccion"><?php echo $this->lang->line('usuario_form_direcciones_estado'); ?> </label>
                            <select class="form-control" name="EstadoDireccion" id="EstadoDireccion" data-valor-anterior="<?php echo set_value('EstadoDireccion'); ?>" required>
-                             <option value="">Selecciona tu estado</option>
+                             <option value=""><?php echo $this->lang->line('usuario_form_direcciones_estado_selecciona'); ?></option>
                            </select>
                          </div>
                        </div>
                        <div class="col">
                          <div class="form-group">
-                           <label for="MunicipioDireccion">Municipio / Alcaldía</label>
+                           <label for="MunicipioDireccion"><?php echo $this->lang->line('usuario_form_direcciones_municipio'); ?></label>
                            <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php echo set_value('MunicipioDireccion'); ?>" required>
-                             <option value="">Selecciona tu Municipio / Alcaldía</option>
+                             <option value=""><?php echo $this->lang->line('usuario_form_direcciones_municipio_selecciona'); ?></option>
                            </select>
                          </div>
                        </div>
@@ -99,32 +99,32 @@
                      <div class="row">
                        <div class="col">
                          <div class="form-group">
-                           <label for="CiudadDireccion">Ciudad <small>(Opcional)</small> </label>
+                           <label for="CiudadDireccion"><?php echo $this->lang->line('usuario_form_direcciones_ciudad'); ?> <small><?php echo $this->lang->line('usuario_form_direcciones_ciudad_instrucciones'); ?></small> </label>
                            <input type="text" name="CiudadDireccion" class="form-control" value="<?php echo set_value('CiudadDireccion'); ?>">
                          </div>
                        </div>
                        <div class="col">
                          <div class="form-group">
-                           <label for="CodigoPostalDireccion">Código Postal</label>
+                           <label for="CodigoPostalDireccion"><?php echo $this->lang->line('usuario_form_direcciones_codigo_postal'); ?></label>
                            <input type="text" name="CodigoPostalDireccion" class="form-control" required value="<?php echo set_value('CodigoPostalDireccion'); ?>">
                          </div>
                        </div>
                      </div>
                      <div class="form-group">
-                       <label for="BarrioDireccion">Barrio / Colonia</label>
+                       <label for="BarrioDireccion"><?php echo $this->lang->line('usuario_form_direcciones_barrio_colonia'); ?></label>
                        <input type="text" name="BarrioDireccion" class="form-control" required value="<?php echo set_value('BarrioDireccion'); ?>">
                      </div>
                      <div class="form-group">
-                       <label for="CalleDireccion">Calle y Número</label>
+                       <label for="CalleDireccion"><?php echo $this->lang->line('usuario_form_direcciones_calle_numero'); ?></label>
                        <textarea name="CalleDireccion" class="form-control" rows="3" required><?php echo set_value('CalleDireccion'); ?></textarea>
                      </div>
                      <hr>
                      <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                        <label class="custom-control-label" for="TerminosyCondiciones">Acepto los Términos y Condiciones de Vendedores</label>
+                        <label class="custom-control-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_form_tienda_terminos_y_condiciones'); ?></label>
                       </div>
                      <hr>
-                     <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Registrar Tienda</button>
+                     <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> <?php echo $this->lang->line('usuario_form_tienda_registrar'); ?></button>
                   </div>
                 </div>
               </form>

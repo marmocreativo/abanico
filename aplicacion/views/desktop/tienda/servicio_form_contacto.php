@@ -12,7 +12,7 @@
             </div>
             <div class="col">
               <div class="product-payment-details">
-                <h4>Solicitar Servicio</h4>
+                <h4><?php echo $this->lang->line('pagina_servicio_formulario_contacto_solicitar'); ?></h4>
                 <h6 class="mb-2"><?php echo $servicio['SERVICIO_NOMBRE']; ?></h6>
                 <hr>
                 <div class="row">
@@ -25,21 +25,21 @@
                       <div class="row">
                         <table class="table">
                           <tr>
-                            <td><strong>Remitente:</strong></td>
+                            <td><strong><?php echo $this->lang->line('pagina_servicio_formulario_contacto_remitente'); ?>:</strong></td>
                             <td><?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']?></td>
                           </tr>
                           <tr>
-                            <td><strong>Receptor:</strong></td>
+                            <td><strong><?php echo $this->lang->line('pagina_servicio_formulario_contacto_receptor'); ?>:</strong></td>
                             <td><?php echo $servicio['USUARIO_NOMBRE']; ?></td>
                           </tr>
                         </table>
                       </div>
-                      <p> <i class="fa fa-info-circle"></i> Ofrece la información necesaria para que se te pueda presentar una cotización completa</p>
+                      <p> <i class="fa fa-info-circle"></i> <?php echo $this->lang->line('pagina_servicio_formulario_contacto_descripcion'); ?></p>
                       <div class="form-group">
-                        <label for="MensajeTexto">Mensaje</label>
+                        <label for="MensajeTexto"><?php echo $this->lang->line('pagina_servicio_formulario_contacto_mensaje'); ?></label>
                         <textarea class="form-control" name="MensajeTexto" rows="8" required></textarea>
                       </div>
-                      <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> Contactar</button>
+                      <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> <?php echo $this->lang->line('pagina_servicio_formulario_contacto_contactar'); ?></button>
                     </form>
                   </div>
                 </div>

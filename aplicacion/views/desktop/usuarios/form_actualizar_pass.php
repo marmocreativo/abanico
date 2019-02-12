@@ -8,31 +8,12 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <h2 class="h5"> <span class="fa fa-id-card"></span> Perfil y datos personales</h2>
+              <h2 class="h5"> <span class="fa fa-id-card"></span> <?php echo $this->lang->line('usuario_form_usuario_titulo'); ?></h2>
             </div>
             <div class="card-body">
 
-              <?php if(isset($_GET['mensaje'])){
-                switch($_GET['mensaje']){
-                  case 'actualizacion_correcta':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Tu información se actualizó correctamente';
-                  break;
-                  case 'pass_incorrecto':
-                    $alerta = 'alert-danger';
-                    $mensaje = 'Has escrito mal la contraseña Actual, por favor verifícala.';
-                  break;
-                  case 'pass_actualizado':
-                    $alerta = 'alert-success';
-                    $mensaje = 'Tu contraseña se ha actualizado con éxito';
-                  break;
-                }
-                ?>
+              <?php retro_alimentacion();?>
 
-                <div class="alert <?php echo  $alerta; ?>">
-                  <p><?php echo  $mensaje; ?></p>
-                </div>
-              <?php }// Termina la condicionante ?>
               <?php if(!empty(validation_errors())){ ?>
                 <div class="alert alert-danger">
                   <?php echo validation_errors(); ?>
@@ -41,19 +22,19 @@
               <?php } ?>
               <form class="" action="<?php echo base_url('usuario/pass');?>" method="post">
                 <div class="form-group">
-                  <label for="PassActualUsuario">Contraseña Actual</label>
+                  <label for="PassActualUsuario"><?php echo $this->lang->line('usuario_formulario_registro_nuevo_pass'); ?></label>
                   <input type="password" class="form-control" id="PassActualUsuario" name="PassActualUsuario" placeholder="Contraseña Actual">
                 </div>
                  <div class="form-group">
-                   <label for="PassUsuario">Nueva Contraseña</label>
+                   <label for="PassUsuario"><?php echo $this->lang->line('usuario_formulario_registro_pass_actual'); ?></label>
                    <input type="password" class="form-control" id="PassUsuario" name="PassUsuario" placeholder="Nueva Contraseña">
                  </div>
                  <div class="form-group">
-                   <label for="PassUsuario">Confirmar Nueva Contraseña</label>
-                   <input type="password" class="form-control" id="PassUsuarioConf" name="PassUsuarioConf" placeholder="Confirmar Contraseña">
+                   <label for="PassUsuario"><?php echo $this->lang->line('usuario_formulario_registro_nuevo_pass_confirmar'); ?></label>
+                   <input type="password" class="form-control" id="PassUsuarioConf" name="PassUsuarioConf" placeholder="Confirmar contraseña">
                  </div>
                  <hr>
-                 <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> Cambiar Contraseña</button>
+                 <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> <?php echo $this->lang->line('usuario_formulario_registro_cambiar'); ?></button>
                </form>
             </div>
           </div>
@@ -61,27 +42,18 @@
         <div class="col-sm-3 col-md-2">
           <div class="card border<?php echo $primary; ?> text-center mb-4">
             <div class="card-header bg<?php echo $primary; ?> text-white">
-              <h4 class="h5"> <span class="fa fa-map-marker-alt"></span> Direcciones</h4>
+              <h4 class="h5"> <span class="fa fa-map-marker-alt"></span> <?php echo $this->lang->line('usuario_form_usuario_direcciones_titulo'); ?></h4>
             </div>
             <div class="card-body">
-              <a href="<?php echo base_url('usuario/direcciones');?>">Ver mis direcciones registradas</a>
-            </div>
-          </div>
-          <div class="card border-warning text-center  mb-4">
-            <div class="card-header bg-warning text-white">
-              <h4 class="h5"> <span class="fa fa-user-lock"></span> Mi Contraseña</h4>
-            </div>
-            <div class="card-body">
-              <a href="<?php echo base_url('usuario/pass');?>">Cambiar mi contraseña</a>
+              <a href="<?php echo base_url('usuario/direcciones');?>"><?php echo $this->lang->line('usuario_form_usuario_direcciones_boton'); ?></a>
             </div>
           </div>
           <div class="card border-danger text-center  mb-4">
             <div class="card-header bg-danger text-white">
-              <h4 class="h5"> <span class="fa fa-trash"></span> Borrar mi cuenta</h4>
+              <h4 class="h5"> <span class="fa fa-trash"></span><?php echo $this->lang->line('usuario_form_usuario_borrar_cuenta'); ?></h4>
             </div>
             <div class="card-body">
-              <!--<a href="<?php echo base_url('usuario/borrar');?>">Borrar tu cuenta</a>-->
-              <button type="button" id="borrar_perfil" class="btn btn-link" data-enlace="<?php echo base_url('usuario/borrar');?>">Borrar tu cuenta</button>
+              <button type="button" id="borrar_perfil" class="btn btn-link borrar_entrada" data-enlace="<?php echo base_url('usuario/borrar');?>"><?php echo $this->lang->line('usuario_form_usuario_borrar_cuenta_boton'); ?></button>
             </div>
           </div>
         </div>

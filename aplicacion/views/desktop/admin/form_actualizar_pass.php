@@ -21,7 +21,7 @@
              </div>
              <div class="form-group">
                <label for="PassUsuario">Confirmar Nueva Contraseña</label>
-               <input type="password" class="form-control" id="PassUsuarioConf" name="PassUsuarioConf" placeholder="Confirmar Contraseña">
+               <input type="password" class="form-control" id="PassUsuarioConf" name="PassUsuarioConf" placeholder="Confirmar contraseña">
              </div>
              <hr>
              <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> Cambiar Contraseña</button>

@@ -18,8 +18,8 @@
                 <div class="card-body text-primary">
                   <div class="row">
                     <div class="col">
-                      <h6><i class="fa fa-shopping-bag text-primary-7" aria-hidden="true"></i> Historial de pedido </h6>
-                      <strong class="border-primary-7"><?php echo $conteo_pedidos; ?> Compras</strong>
+                      <h6><i class="fa fa-shopping-bag text-primary-7" aria-hidden="true"></i> <?php echo $this->lang->line('usuario_widgets_inicio_pedidos_titulo'); ?> </h6>
+                      <strong class="border-primary-7"><?php echo $conteo_pedidos; ?> <?php echo $this->lang->line('usuario_widgets_inicio_pedidos_boton'); ?></strong>
                     </div>
                   </div>
                 </div>
@@ -32,9 +32,9 @@
                 <div class="card-body text-primary">
                   <div class="row">
                     <div class="col">
-                      <h6><i class="fa fa-envelope" aria-hidden="true"></i> Bandeja de entrada</h6>
-                      <strong class="border-primary"><?php echo $conteo_mensajes; ?> Conversaciones</strong>
-                      <strong class="border-warning"><?php echo $no_leidos; ?> Pendientes</strong>
+                      <h6><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo $this->lang->line('usuario_widgets_inicio_bandeja_entrada'); ?></h6>
+                      <strong class="border-primary"><?php echo $conteo_mensajes; ?> <?php echo $this->lang->line('usuario_widgets_inicio_conversaciones'); ?></strong>
+                      <strong class="border-warning"><?php echo $no_leidos; ?> <?php echo $this->lang->line('usuario_widgets_inicio_pendientes'); ?></strong>
                     </div>
                   </div>
                 </div>
@@ -53,12 +53,12 @@
                       </div>
                       <div class="col">
                         <h2 class="card-title"><?php echo $conteo_productos; ?></h2>
-                          <h5>Productos</h5>
+                          <h5><?php echo $no_leidos; ?> <?php echo $this->lang->line('usuario_widgets_inicio_productos_titulo'); ?></h5>
                       </div>
                     </div>
                   </div>
                   <div class="card-footer">
-                    <a href="<?php echo base_url('usuario/productos'); ?>" class="text-dark">Lista de productos <i class="fa fa-arrow-right float" aria-hidden="true"></i></a>
+                    <a href="<?php echo base_url('usuario/productos'); ?>" class="text-dark"><?php echo $no_leidos; ?> <?php echo $this->lang->line('usuario_widgets_inicio_productos_boton'); ?> <i class="fa fa-arrow-right float" aria-hidden="true"></i></a>
                   </div>
                 </div>
               </div>
@@ -76,9 +76,9 @@
                         </div>
                       </div>
                       <div class="col-8 text-center text-primary">
-                        <h5>¿Deseas Vender?</h5>
-                        <p>Registrate como Vendedor o como tienda y empieza a vender.</p>
-                        <button type="button" class="btn btn-primary btn-block"> Registrarte para vender</button>
+                        <h5><?php echo $this->lang->line('usuario_widgets_inicio_registro_tienda_titulo'); ?></h5>
+                        <p><?php echo $this->lang->line('usuario_widgets_inicio_registro_tienda_instrucciones'); ?></p>
+                        <button type="button" class="btn btn-primary btn-block"> <?php echo $this->lang->line('usuario_widgets_inicio_registro_tienda_boton'); ?></button>
                       </div>
                     </div>
                     </div>
@@ -97,12 +97,12 @@
                       </div>
                       <div class="col">
                         <h2 class="card-title"><?php echo $conteo_servicios; ?></h2>
-                          <h5>Servicios</h5>
+                          <h5><?php echo $this->lang->line('usuario_widgets_inicio_servicios_titulo'); ?></h5>
                       </div>
                     </div>
                   </div>
                   <div class="card-footer">
-                    <a href="<?php echo base_url('usuario/servicios'); ?>" class="text-dark">Lista de servicios <i class="fa fa-arrow-right float" aria-hidden="true"></i></a>
+                    <a href="<?php echo base_url('usuario/servicios'); ?>" class="text-dark"><?php echo $this->lang->line('usuario_widgets_inicio_servicios_boton'); ?> <i class="fa fa-arrow-right float" aria-hidden="true"></i></a>
                   </div>
                 </div>
               </div>
@@ -119,9 +119,9 @@
                         </div>
                       </div>
                       <div class="col-8 text-center text-primary">
-                        <h5>¿Deseas ofrecer un Servicio?</h5>
-                        <p>Crea un perfil y empieza a ofrecer tus trabajos.</p>
-                        <button type="button" class="btn btn-primary btn-block"> Crear perfil </button>
+                        <h5><?php echo $this->lang->line('usuario_widgets_inicio_registro_perfil_servicio_titulo'); ?></h5>
+                        <p><?php echo $this->lang->line('usuario_widgets_inicio_registro_perfil_servicio_instrucciones'); ?></p>
+                        <button type="button" class="btn btn-primary btn-block"> <?php echo $this->lang->line('usuario_widgets_inicio_registro_perfil_servicio_boton'); ?> </button>
                       </div>
                     </div>
                   </div>

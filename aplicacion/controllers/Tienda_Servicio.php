@@ -8,6 +8,8 @@ class Tienda_Servicio extends CI_Controller {
 		sesion_default($this->data['op']);
 		$this->data['lenguajes_activos'] = $this->lenguajes_activos->get_lenguajes_activos();
 		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
+// Cargo Lenguaje
+$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		// Variables defaults
 		$this->data['primary'] = "-primary";
@@ -158,7 +160,7 @@ public function favorito()
 	public function contacto()
  {
 	 if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
-		 $this->session->set_flashdata('alerta', 'Debes Iniciar Sesión para continuar');
+		 $this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 		 redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 	 }
 	 $this->form_validation->set_rules('MensajeTexto', 'Mensaje', 'required', array( 'required' => 'Debes enviar un mensaje %s'));

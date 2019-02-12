@@ -103,6 +103,9 @@ html, body{
   font-size: 1.5em;
   font-weight: bold;
 }
+.btn-carrito {
+  padding: 7px 9px;
+}
 
 /*
 | -------------------------------------------------------------------------
@@ -671,12 +674,19 @@ img.sp-thumbnail-image {
 }
 .mensaje-servicio, .pregunta-producto {
     padding: 9px;
+    position: relative;
 }
-.cont-conversaciones {
-    background: #f3f2f0;
-    border-radius: 0;
-    border: none;
-    height: 100%;
+.mensaje-servicio .fa, .pregunta-producto .fa {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    padding: 5px;
+    background: white;
+    border: solid 2px #e6e4e1;
+    border-radius: 50%;
+}
+.mensaje-servicio .fa-envelope, .pregunta-producto .fa-envelope {
+  color:#ff5947;
 }
 .cont-conversaciones .media {
     border: solid 3px #e6e4e1;
@@ -719,6 +729,11 @@ img.sp-thumbnail-image {
     border-radius: 0;
 }
 
+/*
+| -------------------------------------------------------------------------
+| ESTILOS PERFIL USUARIOS
+| -------------------------------------------------------------------------
+*/
 .cont-perfil {
   background: #f1f1f1;
   padding: 5px;
@@ -764,8 +779,15 @@ img.sp-thumbnail-image {
 #dash-1 .col-6 a:hover, #dash-2 .col-6 a:hover{
   text-decoration: none;
 }
-
 .card-p-usuario:hover {
   background: #f1f1f1;
   text-decoration: none;
+}
+
+.cont-notif h3 {
+  margin-left: 10px;
+}
+.notif {
+  padding: 20px;
+  border-bottom: solid 1px lightgrey;
 }
