@@ -67,13 +67,13 @@
                   <div class="imagen-producto">
                     <div class="contenedor-etiquetas">
                       <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
-                        <span class="etiqueta-1">Méx</span>
+                        <span class="etiqueta-1"><?php echo $this->lang->line('etiquetas_productos_mexico'); ?></span>
                       <?php } ?>
                       <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
-                        <span class="etiqueta-2 <?php echo 'bg'.$primary; ?>">Nuevo</span>
+                        <span class="etiqueta-2 <?php echo 'bg'.$primary; ?>"><?php echo $this->lang->line('etiquetas_productos_nuevo'); ?></span>
                       <?php } ?>
                       <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
-                        <span class="etiqueta-3">Oferta</span>
+                        <span class="etiqueta-3"><?php echo $this->lang->line('etiquetas_productos_oferta'); ?></span>
                       <?php } ?>
                     </div>
                       <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>
