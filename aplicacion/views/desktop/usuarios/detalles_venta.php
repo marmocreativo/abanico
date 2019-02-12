@@ -12,7 +12,7 @@
               <div class="card">
                 <div class="card-header d-flex justify-content-between">
                   <div class="titulo">
-                    <h2 class="h5 mb-0"> <span class="fa fa-shoppping-bag"></span> Folio: <?php echo $pedido['PEDIDO_FOLIO'] ?></h2>
+                    <h2 class="h5 mb-0"> <span class="fa fa-shoppping-bag"></span> <?php echo $this->lang->line('usuario_lista_pedidos_folio'); ?>: <?php echo $pedido['PEDIDO_FOLIO'] ?></h2>
                   </div>
                 </div>
                 <div class="card-body py-2">
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                         <p>
-                          <em>Fecha: <?php echo $pedido['PEDIDO_FECHA_REGISTRO']; ?></em>
+                          <em><?php echo $this->lang->line('usuario_lista_pedidos_fecha'); ?>: <?php echo $pedido['PEDIDO_FECHA_REGISTRO']; ?></em>
                         </p>
                     </div>
                   </div>
@@ -39,10 +39,10 @@
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th style="width:50%">Producto</th>
-                            <th style="width:10%" class="text-center">Cantidad</th>
-                            <th style="width:20%" class="text-right">Precio</th>
-                            <th style="width:20%" class="text-right">Total</th>
+                            <th style="width:50%"><?php echo $this->lang->line('usuario_lista_pedidos_producto'); ?></th>
+                            <th style="width:10%" class="text-center"><?php echo $this->lang->line('usuario_lista_pedidos_cantidad'); ?></th>
+                            <th style="width:20%" class="text-right"><?php echo $this->lang->line('usuario_lista_pedidos_precio'); ?></th>
+                            <th style="width:20%" class="text-right"><?php echo $this->lang->line('usuario_lista_pedidos_total'); ?></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -79,7 +79,7 @@
                       <table class="table table-bordered">
                         <tbody>
                           <tr>
-                            <td class="text-right" style="width:75%"><b>Importe Productos:</b></td>
+                            <td class="text-right" style="width:75%"><b><?php echo $this->lang->line('usuario_detalles_pedido_importe_producto'); ?>:</b></td>
                             <td>
                               <h5>
                               <small><?php echo $_SESSION['divisa']['signo']; ?></small>
@@ -89,7 +89,7 @@
                             </td>
                           </tr>
                           <tr>
-                            <td class="text-right" style="width:75%"><b>Envio:</b></td>
+                            <td class="text-right" style="width:75%"><b><?php echo $this->lang->line('usuario_lista_ventas_envio'); ?>:</b></td>
                             <td>
                               <h5>
                               <small><?php echo $_SESSION['divisa']['signo']; ?></small>
@@ -106,11 +106,11 @@
               </div>
             </div>
             <div class="col-4">
-              <h6>Estado del pedido:<b> <?php echo $pedido['PEDIDO_ESTADO_PEDIDO']; ?></b></h6>
+              <h6><?php echo $this->lang->line('usuario_lista_ventas_estado_pedido'); ?>:<b> <?php echo $pedido['PEDIDO_ESTADO_PEDIDO']; ?></b></h6>
               <hr>
               <div class="card">
                 <div class="card-header">
-                  <h6><i class="fa fa-money-bill"></i> Pago: <?php echo $pedido['PEDIDO_FORMA_PAGO']; ?> <b><?php echo $pedido['PEDIDO_ESTADO_PAGO']; ?></b></h6>
+                  <h6><i class="fa fa-money-bill"></i> <?php echo $this->lang->line('usuario_detalles_forma_pago'); ?>: <?php echo $pedido['PEDIDO_FORMA_PAGO']; ?> <b><?php echo $pedido['PEDIDO_ESTADO_PAGO']; ?></b></h6>
                 </div>
                 <div class="card-body">
                   <div class="row">
@@ -118,15 +118,15 @@
                     <div class="col-4">
                       <img src="<?php echo base_url('contenido/adjuntos/pedidos/').$pago->PAGO_ARCHIVO; ?>" alt="" class="img-fluid">
                       <hr>
-                      <a href="<?php echo base_url('contenido/adjuntos/pedidos/').$pago->PAGO_ARCHIVO; ?>" target="_blank" class="btn btn-outline-success btn-sm">Descargar</a>
+                      <a href="<?php echo base_url('contenido/adjuntos/pedidos/').$pago->PAGO_ARCHIVO; ?>" target="_blank" class="btn btn-outline-success btn-sm"><?php echo $this->lang->line('usuario_lista_pago_descarga'); ?></a>
                     </div>
                     <div class="col-4">
-                      <p>Folio:<br>
+                      <p><?php echo $this->lang->line('usuario_lista_pago_folio'); ?>:<br>
                         <b><?php echo $pago->PAGO_FOLIO; ?></b>
                       </p>
                     </div>
                     <div class="col-4">
-                      <p>Fecha:
+                      <p><?php echo $this->lang->line('usuario_lista_pago_fecha'); ?>:
                       <b><?php echo $pago->PAGO_FECHA_REGISTRO; ?></b>
                       </p>
                     </div>
@@ -135,31 +135,31 @@
                 </div>
               </div>
               <hr>
-              <h6> <i class="fa fa-truck"></i> Envio y Rastreo: </h6>
+              <h6> <i class="fa fa-truck"></i> <?php echo $this->lang->line('usuario_detalles_envio_titulo'); ?>: </h6>
               <p> <i class="fa fa-store"></i> <b><?php echo $tienda['TIENDA_NOMBRE']; ?></b></p>
               <table class="table table-sm">
                 <tr>
-                  <td>Guía:<br><b><?php echo $pedido_tienda['GUIA_PAQUETERIA']; ?></b></td>
-                  <td><a href="<?php echo $pedido_tienda['URL_RASTREO']; ?>" target="_blank" class="btn btn-outline-primary btn-sm btn-block"> Rastrear</a></td>
+                  <td><?php echo $this->lang->line('usuario_detalles_envio_guia'); ?>:<br><b><?php echo $pedido_tienda['GUIA_PAQUETERIA']; ?></b></td>
+                  <td><a href="<?php echo $pedido_tienda['URL_RASTREO']; ?>" target="_blank" class="btn btn-outline-primary btn-sm btn-block"> <?php echo $this->lang->line('usuario_detalles_envio_rastrear'); ?></a></td>
                 </tr>
               </table>
                 <?php if (empty($pedido_tienda['GUIA_PAQUETERIA'])){ ?>
                     <div class="card border">
                       <div class="card-body">
-                        <h6> <i class="fa fa-receipt"></i> Cargar Número de Guía</h6>
+                        <h6> <i class="fa fa-receipt"></i> <?php echo $this->lang->line('usuario_detalles_crear_guia'); ?></h6>
                         <form class="" action="<?php echo base_url('usuario/ventas/guia'); ?>" method="post">
                           <input type="hidden" name="IdPedido" value="<?php echo $pedido['ID_PEDIDO'] ?>">
                           <input type="hidden" name="IdPedidoTienda" value="<?php echo $pedido_tienda['ID'] ?>">
                           <input type="hidden" name="IdTienda" value="<?php echo $tienda['ID_TIENDA'] ?>">
                           <div class="form-group">
-                            <label for="GuiaPaqueteria">Número de Guía</label>
+                            <label for="GuiaPaqueteria"><?php echo $this->lang->line('usuario_detalles_numero_guia'); ?></label>
                             <input type="text" class="form-control" name="GuiaPaqueteria" value="">
                           </div>
                           <div class="form-group">
-                            <label for="UrlRastreo">Url de Rastreo</label>
+                            <label for="UrlRastreo"><?php echo $this->lang->line('usuario_detalles_url_rastreo'); ?></label>
                             <input type="text" class="form-control" name="UrlRastreo" value="">
                           </div>
-                          <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-receipt"></i> Cargar Número de Guía</button>
+                          <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-receipt"></i> <?php echo $this->lang->line('usuario_detalles_cargar_numero_guia'); ?></button>
                         </form>
                       </div>
                     </div>

@@ -23,13 +23,13 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col">
-            <a href="#" class="btn btn-link"> <span class="fa fa-phone"></span> Atención a clientes <?php echo $op['telefono_sitio'] ?></a>
+            <a href="#" class="btn btn-link"> <span class="fa fa-phone"></span> <?php echo $this->lang->line('header_atencion_clientes'); ?> <?php echo $op['telefono_sitio'] ?></a>
           </div>
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
               <?php $this->load->view('desktop/tienda/widgets/menu_notificaciones'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_divisa'); ?>
-              <?php //$this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
+              <?php $this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_usuario'); ?>
             </div>
           </div>
@@ -40,8 +40,8 @@
       <nav class="navbar navbar-expand">
         <div class="d-flex justify-content-arround align-items-center">
           <a class="navbar-brand mr-1" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
-          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" id="desplegar-menu-productos" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias"><i class="fas fa-angle-down mr-2"></i>PRODUCTOS</a>
-          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" id="desplegar-menu-servicios" data-toggle="collapse" href="#menu-categorias-servicios" role="button" aria-expanded="false" aria-controls="menu-categorias-servicios"><i class="fas fa-angle-down mr-2"></i>SERVICIOS</a>
+          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" id="desplegar-menu-productos" data-toggle="collapse" href="#menu-categorias" role="button" aria-expanded="false" aria-controls="menu-categorias"><i class="fas fa-angle-down mr-2"></i><?php echo $this->lang->line('header_categorias_productos_boton'); ?></a>
+          <a class="btn <?php echo 'btn-link'.$primary; ?> mr-3" id="desplegar-menu-servicios" data-toggle="collapse" href="#menu-categorias-servicios" role="button" aria-expanded="false" aria-controls="menu-categorias-servicios"><i class="fas fa-angle-down mr-2"></i><?php echo $this->lang->line('header_categorias_servicios_boton'); ?></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -50,10 +50,10 @@
         <div class="collapse navbar-collapse">
           <form class="form-inline my-2 my-lg-0 mr-auto w-75" action="<?php echo base_url('busqueda') ?>" method="get">
             <div class="input-group w-100">
-              <input class="form-control w-50" type="search" name="Busqueda" placeholder="Busca lo Mejor" aria-label="Search" value="<?php if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){ echo filter_var ( $_GET['Busqueda'], FILTER_SANITIZE_STRING); } ?>">
+              <input class="form-control w-50" type="search" name="Busqueda" placeholder="<?php echo $this->lang->line('header_formulario_busqueda_buscar'); ?>" aria-label="Search" value="<?php if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){ echo filter_var ( $_GET['Busqueda'], FILTER_SANITIZE_STRING); } ?>">
               <select class="form-control" name="BuscarEn">
-                <option value="productos" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='productos'){ echo 'selected'; } ?>>En productos</option>
-                <option value="servicios" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='servicios'){ echo 'selected'; } ?>>En servicios</option>
+                <option value="productos" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='productos'){ echo 'selected'; } ?>><?php echo $this->lang->line('header_formulario_busqueda_en_productos'); ?></option>
+                <option value="servicios" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='servicios'){ echo 'selected'; } ?>><?php echo $this->lang->line('header_formulario_busqueda_en_servicios'); ?></option>
               </select>
               <div class="input-group-append">
                 <button type="submit" class="btn <?php echo 'btn-outline'.$primary; ?>" type="button"> <i class="fa fa-search"></i> </button>
@@ -62,10 +62,10 @@
           </form>
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link btn-sm" href="<?php echo base_url('usuario/favoritos'); ?>"><i class="far fa-heart text-primary-6"></i> Favoritos</a>
+              <a class="nav-link btn-sm" href="<?php echo base_url('usuario/favoritos'); ?>"><i class="far fa-heart text-primary-6"></i> <?php echo $this->lang->line('header_boton_favoritos'); ?></a>
             </li>
             <li class="nav-item">
-              <button type="button" class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-primary" data-toggle="modal" data-target="#ModalCarrito" style="background:transparent;"> <span class="fa fa-shopping-cart text-primary-1"></span> Carrito</button>
+              <button type="button" class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-primary" data-toggle="modal" data-target="#ModalCarrito" style="background:transparent;"> <span class="fa fa-shopping-cart text-primary-1"></span> <?php echo $this->lang->line('header_boton_carrito'); ?></button>
             </li>
           </ul>
         </div>
@@ -84,7 +84,7 @@
           <div class="row">
             <div class="col-3">
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link" href="<?php echo base_url('categoria'); ?>"> <i class="fa fa-boxes"></i> TODOS LOS PRODUCTOS</a>
+                <a class="nav-link" href="<?php echo base_url('categoria'); ?>"> <i class="fa fa-boxes"></i> <?php echo $this->lang->line('header_categorias_productos_todos'); ?></a>
                 <?php $i=0; foreach($categorias as $categoria){ ?>
                 <a class="nav-link <?php if($i==0){ echo 'active';} ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
                   <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
@@ -132,7 +132,7 @@
           <div class="row">
             <div class="col-3">
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link" href="<?php echo base_url('categoria/servicios'); ?>"> <i class="fa fa-boxes"></i> TODOS LOS SERVICIOS</a>
+                <a class="nav-link" href="<?php echo base_url('categoria/servicios'); ?>"> <i class="fa fa-boxes"></i> <?php echo $this->lang->line('header_categorias_servicios_todos'); ?></a>
                 <?php $i=0; foreach($categorias_servicios as $categoria){ ?>
                 <a class="nav-link <?php if($i==0){ echo 'active';} ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
                   <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?>

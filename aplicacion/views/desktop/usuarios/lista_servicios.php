@@ -9,19 +9,19 @@
           <div class="card">
             <div class="card-header d-flex justify-content-between">
               <div class="titulo">
-                <h2 class="h5 mb-0"> <span class="fa fa-box"></span> Tus Servicios</h2>
+                <h2 class="h5 mb-0"> <span class="fa fa-box"></span> <?php echo $this->lang->line('usuario_lista_servicios_titulo'); ?></h2>
               </div>
               <div class="opciones">
-                  <a href="<?php echo base_url('usuario/servicios/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Agregar Servicio </a>
+                  <a href="<?php echo base_url('usuario/servicios/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> <?php echo $this->lang->line('usuario_listas_generales_nuevo'); ?> <?php echo $this->lang->line('usuario_lista_servicios_singular'); ?> </a>
               </div>
             </div>
             <div class="card-body py-0">
               <table class="table table-sm">
                 <thead>
                   <tr>
-                    <th>Servicio</th>
-                    <th>Estado</th>
-                    <th class="text-right">Controles</th>
+                    <th><?php echo $this->lang->line('usuario_lista_servicios_nombre'); ?></th>
+                    <th><?php echo $this->lang->line('usuario_lista_servicios_estado'); ?></th>
+                    <th class="text-right"><?php echo $this->lang->line('usuario_listas_generales_controles'); ?></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -31,8 +31,8 @@
                     <td><?php echo $servicio->SERVICIO_ESTADO; ?></td>
                     <td>
                       <div class="btn-group float-right">
-                        <a href="<?php echo base_url('usuario/servicios/actualizar?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-sm btn-warning" title="Editar Servicio"> <span class="fa fa-pencil-alt"></span> </a>
-                        <button data-enlace='<?php echo base_url('usuario/servicios/borrar?id='.$servicio->ID_SERVICIO); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Servicio"> <span class="fa fa-trash"></span> </button>
+                        <a href="<?php echo base_url('usuario/servicios/actualizar?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-sm btn-warning" title="<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> <?php echo $this->lang->line('usuario_lista_servicios_singular'); ?>"> <span class="fa fa-pencil-alt"></span> </a>
+                        <button data-enlace='<?php echo base_url('usuario/servicios/borrar?id='.$servicio->ID_SERVICIO); ?>' class="btn btn-sm btn-danger borrar_entrada" title="<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> <?php echo $this->lang->line('usuario_lista_servicios_singular'); ?>"> <span class="fa fa-trash"></span> </button>
                       </div>
                     </td>
                   </tr>

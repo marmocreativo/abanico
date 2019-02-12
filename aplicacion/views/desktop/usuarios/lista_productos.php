@@ -10,7 +10,7 @@
           <div class="card">
             <div class="card-header d-flex justify-content-between">
               <div class="titulo">
-                <h2 class="h5 mb-0"> <span class="fa fa-box"></span> Tus Productos</h2>
+                <h2 class="h5 mb-0"> <span class="fa fa-box"></span> <?php echo $this->lang->line('usuario_lista_productos_titulo'); ?></h2>
               </div>
               <div class="formulario">
                 <form class="form-inline" action="<?php echo base_url('usuario/productos/busqueda');?>" method="get">
@@ -23,19 +23,19 @@
                 </form>
               </div>
               <div class="opciones">
-                  <a href="<?php echo base_url('usuario/productos/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Agregar Producto </a>
+                  <a href="<?php echo base_url('usuario/productos/crear'); ?>" class="btn btn-success"> <span class="fa fa-plus"></span> <?php echo $this->lang->line('usuario_listas_generales_nuevo'); ?> <?php echo $this->lang->line('usuario_lista_productos_singular'); ?> </a>
               </div>
             </div>
             <div class="card-body py-0">
               <table class="table table-sm">
                 <thead>
                   <tr>
-                    <th>Nombre</th>
-                    <th>SKU</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th>Estado</th>
-                    <th class="text-right">Controles</th>
+                    <th><?php echo $this->lang->line('usuario_lista_productos_nombre'); ?></th>
+                    <th><?php echo $this->lang->line('usuario_lista_productos_sku'); ?></th>
+                    <th><?php echo $this->lang->line('usuario_lista_productos_cantidad'); ?></th>
+                    <th><?php echo $this->lang->line('usuario_lista_productos_precio'); ?></th>
+                    <th><?php echo $this->lang->line('usuario_lista_productos_estado'); ?></th>
+                    <th class="text-right"><?php echo $this->lang->line('usuario_listas_generales_controles'); ?></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -60,8 +60,8 @@
                     </td>
                     <td>
                       <div class="btn-group float-right">
-                        <a href="<?php echo base_url('usuario/productos/actualizar?id='.$producto->ID_PRODUCTO); ?>" class="btn btn-sm btn-warning" title="Editar Producto"> <span class="fa fa-pencil-alt"></span> </a>
-                        <button data-enlace='<?php echo base_url('usuario/productos/borrar?id='.$producto->ID_PRODUCTO); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Producto"> <span class="fa fa-trash"></span> </button>
+                        <a href="<?php echo base_url('usuario/productos/actualizar?id='.$producto->ID_PRODUCTO); ?>" class="btn btn-sm btn-warning" title="<?php echo $this->lang->line('usuario_listas_generales_editar'); ?> <?php echo $this->lang->line('usuario_lista_productos_singular'); ?>"> <span class="fa fa-pencil-alt"></span> </a>
+                        <button data-enlace='<?php echo base_url('usuario/productos/borrar?id='.$producto->ID_PRODUCTO); ?>' class="btn btn-sm btn-danger borrar_entrada" title="<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> <?php echo $this->lang->line('usuario_lista_productos_singular'); ?>"> <span class="fa fa-trash"></span> </button>
                       </div>
                     </td>
                   </tr>
