@@ -14,8 +14,8 @@
             <div class="col-9">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Inicio</a></li>
-                    <li class="breadcrumb-item active <?php echo 'text'.$primary; ?>" aria-current="page">Mis servicios</li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><?php echo $this->lang->line('pagina_servicio_migas_inicio'); ?></a></li>
+                    <li class="breadcrumb-item active <?php echo 'text'.$primary; ?>" aria-current="page"><?php echo $this->lang->line('pagina_servicio_migas_servicio'); ?></li>
                   </ol>
                 </nav>
                 <h2><?php echo $servicio['SERVICIO_NOMBRE']; ?></h2>
@@ -26,7 +26,7 @@
             <div class="col-12">
               <div class="card card-desc-servicio">
                 <div class="card-header">
-                  <h5 class="card-title">Descripción</h5>
+                  <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_descripcion_titulo'); ?></h5>
                 </div>
                 <div class="card-body fila-gris">
                   <div class="row">
@@ -36,7 +36,7 @@
                     <div class="col-6">
                     <?php if(!empty($adjuntos)){ ?>
                       <div class="card border-primary">
-                        <h6 class="card-header bg-primary-15">Adjuntos</h6>
+                        <h6 class="card-header bg-primary-15"><?php echo $this->lang->line('pagina_servicio_adjuntos_titulo'); ?></h6>
                         <div class="card-body text-primary">
                           <div class="list-group">
                             <?php foreach($adjuntos as $adjunto){ ?>
@@ -62,9 +62,9 @@
               <div class="card-group">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Zona de Trabajo</h5>
-                    <p class="card-text">Pais: <?php echo $servicio['SERVICIO_PAIS']; ?></p>
-                    <p class="card-text">Estado: <?php echo $servicio['SERVICIO_ESTADO_DIR']; ?></p>
+                    <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_zona_trabajo'); ?></h5>
+                    <p class="card-text"><?php echo $this->lang->line('pagina_servicio_zona_trabajo_pais'); ?>: <?php echo $servicio['SERVICIO_PAIS']; ?></p>
+                    <p class="card-text"><?php echo $this->lang->line('pagina_servicio_zona_trabajo_estado'); ?>: <?php echo $servicio['SERVICIO_ESTADO_DIR']; ?></p>
                   </div>
                   <!--
                   <div class="card-footer">
@@ -74,14 +74,14 @@
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Zona de Servicio</h5>
+                    <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_zona_servicio'); ?></h5>
                     <?php echo $servicio['SERVICIO_ZONA_TRABAJO']; ?>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-4">
-              <a href="<?php echo base_url('servicio/contacto?id='.$servicio['ID_SERVICIO']); ?>" class="btn <?php echo 'btn'.$primary; ?> btn-lg btn-block btn-contacto"> <span class="fa fa-envelope"></span> Contactar</a>
+              <a href="<?php echo base_url('servicio/contacto?id='.$servicio['ID_SERVICIO']); ?>" class="btn <?php echo 'btn'.$primary; ?> btn-lg btn-block btn-contacto"> <span class="fa fa-envelope"></span> <?php echo $this->lang->line('pagina_servicio_boton_contactar'); ?></a>
             </div>
           </div>
           <div class="row mb-5">
@@ -90,7 +90,7 @@
                 <div class="card opiniones-serv">
                   <div class="card-body">
                     <?php $promedio_calificaciones = $promedio_calificaciones['CALIFICACION_ESTRELLAS']; $estrellas_restan= 5-$promedio_calificaciones; ?>
-                    <h5 class="card-title">Calificación promedio</h5>
+                    <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_calificaciones_promedio'); ?></h5>
                     <h1 style="display:inline;"><?php echo number_format($promedio_calificaciones,1); ?></h1>
                     <?php for($i = 1; $i<=$promedio_calificaciones; $i++){ ?>
                       <span class="fa fa-star <?php echo 'text'.$primary; ?>"></span>
@@ -119,7 +119,7 @@
                     </div>
                   </div>
                 <?php $e--; } ?>
-                    <h6 class="card-subtitle my-3 text-muted">Opiniones de los usuarios</h6>
+                    <h6 class="card-subtitle my-3 text-muted"><?php echo $this->lang->line('pagina_servicio_calificaciones_opiniones'); ?></h6>
                     <div class="row mt-3">
                     <div class="col">
                     <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
@@ -130,25 +130,25 @@
                               <input type="hidden" name="IdServicio" value="<?php echo $servicio['ID_SERVICIO']; ?>">
                               <input type="hidden" name="IdUsuario" value="<?php echo $servicio['ID_USUARIO']; ?>">
                               <input type="hidden" name="IdCalificador" value="<?php echo $_SESSION['usuario']['id'] ?>">
-                              <label for="EstrellasCalificacion">Califica este producto</label>
+                              <label for="EstrellasCalificacion"><?php echo $this->lang->line('pagina_servicio_formulario_calificaciones_invita'); ?></label>
                               <div class="estrellas"></div>
                               <input type="hidden" id="EstrellasCalificacion" name="EstrellasCalificacion" value="1">
                               <div class="form-group">
-                                <label for="ComentarioCalificacion">Comentario</label>
+                                <label for="ComentarioCalificacion"><?php echo $this->lang->line('pagina_servicio_formulario_calificaciones_comentario'); ?></label>
                                 <textarea class="form-control" name="ComentarioCalificacion" rows="2" cols="80"></textarea>
                               </div>
-                              <button type="submit" class="btn <?php echo 'btn'.$primary; ?> btn-sm float-right" name="button"> <i class="fa fa-star"></i> Calificar</button>
+                              <button type="submit" class="btn <?php echo 'btn'.$primary; ?> btn-sm float-right" name="button"> <i class="fa fa-star"></i> <?php echo $this->lang->line('pagina_servicio_formulario_calificaciones_calificar'); ?></button>
                             </form>
                           </div>
                       </div>
                     <?php }else{ ?>
-                      <h6>Gracias por tu Calificación</h6>
+                      <h6><?php echo $this->lang->line('pagina_servicio_formulario_calificaciones_gracias'); ?></h6>
                     <?php } ?>
                     <?php }else{ ?>
                       <div class="card">
                         <div class="card-body">
-                          <p>Para calificar este servicio</p>
-                          <a href="<?php echo base_url('login?url_redirect='.base_url('servicio/?id='.$servicio['ID_SERVICIO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
+                          <p><?php echo $this->lang->line('pagina_servicio_formulario_calificaciones_para_calificar'); ?></p>
+                          <a href="<?php echo base_url('login?url_redirect='.base_url('servicio/?id='.$servicio['ID_SERVICIO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> <?php echo $this->lang->line('pagina_servicio_formulario_calificaciones_iniciar_sesion'); ?></a>
                         </div>
                       </div>
                     <?php } ?>

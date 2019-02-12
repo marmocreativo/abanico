@@ -9,10 +9,10 @@
             <div class="card">
               <div class="card-header d-flex justify-content-between">
                 <div class="titulo">
-                  <h1 class="h5"> <span class="fa fa-box"></span> Actualizar Combinacion</h1>
+                  <h1 class="h5"> <span class="fa fa-box"></span> <?php echo $this->lang->line('usuario_listas_generales_actualizar'); ?> <?php echo $this->lang->line('usuario_lista_combinaciones_singular'); ?></h1>
                 </div>
                 <div class="herramientas">
-                    <a href="<?php echo base_url('usuario/productos'); ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-arrow-left"></span> Regresar a los productos</a>
+                    <a href="<?php echo base_url('usuario/productos'); ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-arrow-left"></span> <?php echo $this->lang->line('usuario_form_producto_regresar'); ?></a>
                 </div>
               </div>
               <div class="card-body">
@@ -34,23 +34,23 @@
                               <form class="" action="<?php echo base_url('usuario/productos_combinaciones/actualizar'); ?>" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="Identificador" value="<?php echo $_GET['id']; ?>">
                                 <input type="hidden" name="IdProducto" value="<?php echo $combinacion['ID_PRODUCTO']; ?>">
-                                <h6> <i class="fa fa-sitemap"></i> Editar Combinación</h6>
+                                <h6> <i class="fa fa-sitemap"></i> <?php echo $this->lang->line('usuario_form_producto_combinaciones_editar'); ?></h6>
                                 <div class="row">
                                   <div class="col">
                                     <div class="form-group">
-                                      <label for="GrupoCombinacion">Grupo <small>Ej. Talla</small> </label>
+                                      <label for="GrupoCombinacion"><?php echo $this->lang->line('usuario_form_producto_combinaciones_grupo'); ?> <small><?php echo $this->lang->line('usuario_form_producto_combinaciones_grupo_instrucciones'); ?></small> </label>
                                       <input type="text" class="form-control" id="GrupoCombinacion" name="GrupoCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_GRUPO']; ?>">
                                     </div>
                                   </div>
                                   <div class="col">
                                     <div class="form-group">
-                                      <label for="OpcionCombinacion">Opción <small>Ej. Chica</small> </label>
+                                      <label for="OpcionCombinacion"><?php echo $this->lang->line('usuario_form_producto_combinaciones_opcion'); ?> <small><?php echo $this->lang->line('usuario_form_producto_combinaciones_opcion_instrucciones'); ?></small> </label>
                                       <input type="text" class="form-control" id="OpcionCombinacion" name="OpcionCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_OPCION']; ?>">
                                     </div>
                                   </div>
                                   <div class="col">
                                     <div class="form-group">
-                                      <label for="PrecioCombinacion">Precio de Venta</label>
+                                      <label for="PrecioCombinacion"><?php echo $this->lang->line('usuario_form_producto_precio_venta'); ?></label>
                                       <div class="input-group mb-2">
                                         <div class="input-group-prepend">
                                           <div class="input-group-text">$</div>
@@ -63,7 +63,7 @@
                                 <div class="row">
                                   <div class="col">
                                     <div class="form-group">
-                                      <label for="AnchoCombinacion">Ancho</label>
+                                      <label for="AnchoCombinacion"><?php echo $this->lang->line('usuario_form_producto_ancho'); ?></label>
                                       <div class="input-group input-group-sm mb-2">
                                         <input type="text" class="form-control" id="AnchoCombinacion" name="AnchoCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_ANCHO']; ?>">
                                         <div class="input-group-append">
@@ -74,7 +74,7 @@
                                   </div>
                                   <div class="col">
                                     <div class="form-group">
-                                      <label for="AltoCombinacion">Alto</label>
+                                      <label for="AltoCombinacion"><?php echo $this->lang->line('usuario_form_producto_alto'); ?></label>
                                       <div class="input-group input-group-sm mb-2">
                                         <input type="text" class="form-control" id="AltoCombinacion" name="AltoCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_ALTO']; ?>">
                                         <div class="input-group-append">
@@ -85,7 +85,7 @@
                                   </div>
                                   <div class="col">
                                     <div class="form-group">
-                                      <label for="ProfundoCombinacion">Profundo</label>
+                                      <label for="ProfundoCombinacion"><?php echo $this->lang->line('usuario_form_producto_profundo'); ?></label>
                                       <div class="input-group input-group-sm mb-2">
                                       <input type="text" class="form-control" id="ProfundoCombinacion" name="ProfundoCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_PROFUNDO']; ?>">
                                         <div class="input-group-append">
@@ -96,7 +96,7 @@
                                   </div>
                                   <div class="col">
                                     <div class="form-group">
-                                      <label for="PesoCombinacion">Peso</label>
+                                      <label for="PesoCombinacion"><?php echo $this->lang->line('usuario_form_producto_peso'); ?></label>
                                       <div class="input-group input-group-sm mb-2">
                                       <input type="text" class="form-control" id="PesoCombinacion" name="PesoCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_PESO']; ?>">
                                         <div class="input-group-append">
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="row pt-3">
                                   <div class="col">
-                                    <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> Actualizar Combinación</button>
+                                    <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> <?php echo $this->lang->line('usuario_form_producto_combinaciones_actualizar'); ?></button>
                                   </div>
                                 </div>
                               </form>

@@ -25,16 +25,16 @@
             </div>
           </div>
 
-          <h6 class="text-center mb-4"><i class="far fa-credit-card"></i> Pago</h6>
+          <h6 class="text-center mb-4"><i class="far fa-credit-card"></i> <?php echo $this->lang->line('proceso_pago_1_pago'); ?></h6>
           <hr>
 
           <div class="card-body py-4">
             <div class="row">
               <div class="col-12">
                 <img class="img-fluid mx-auto d-block mb-4" style="width:50%" src="http://localhost/abanico-master/assets/global/img/banco.png" alt="Banco">
-                <h4 class="h5">Depósito/Transferencia Bancaria</h4>
+                <h4 class="h5"><?php echo $this->lang->line('proceso_pago_3_transferencia_instrucciones'); ?></h4>
                 <p>Scotiabank </p>
-                <p>No. Cuenta: 00106083517</p>
+                <p><?php echo $this->lang->line('proceso_pago_3_numero_cuenta'); ?>: 00106083517</p>
               </div>
             </div>
           </div>
@@ -42,21 +42,21 @@
           <hr>
 
           <div class="card-body">
-            <h5>Monto a Pagar</h5>
+            <h5><?php echo $this->lang->line('proceso_pago_3_monto_a_pagar'); ?></h5>
             <h4>$<?php echo $_SESSION['pedido']['ImporteTotal']; ?> <small><?php echo $_SESSION['pedido']['Divisa']; ?></small> </h4>
           </div>
 
           <hr>
 
           <div class="card-body">
-            <h5>Referencia</h5>
+            <h5><?php echo $this->lang->line('proceso_pago_3_referencia'); ?></h5>
             <h4><?php echo $_SESSION['pedido']['Folio']; ?></h4>
           </div>
 
           <div class="card-footer">
             <div class="row">
               <div class="col">
-                <button type="button" name="button" class="btn btn-sm btn-outline-success" onclick="window.print();"><i class="fa fa-print"></i> Imprimir</button>
+                <button type="button" name="button" class="btn btn-sm btn-outline-success" onclick="window.print();"><i class="fa fa-print"></i> <?php echo $this->lang->line('proceso_pago_3_imprimir'); ?></button>
               </div>
               <div class="col">
                 <?php
@@ -65,7 +65,7 @@
                 $_SESSION['pedido']['EstadoPedido'] = 'Espera Pago';
                 ?>
                 <form class="d-flex justify-content-end" action="<?php echo base_url('proceso_pago_4'); ?>" method="post">
-                  <button type="submit" class="btn btn-sm btn-success"> Terminar <i class="fa fa-chevron-right"></i></button>
+                  <button type="submit" class="btn btn-sm btn-success"> <?php echo $this->lang->line('proceso_pago_3_terminar'); ?> <i class="fa fa-chevron-right"></i></button>
                 </form>
               </div>
             </div>

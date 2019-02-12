@@ -8,6 +8,8 @@ class Usuario_Perfil extends CI_Controller {
 		sesion_default($this->data['op']);
 		$this->data['lenguajes_activos'] = $this->lenguajes_activos->get_lenguajes_activos();
 		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
+// Cargo Lenguaje
+$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		// Variables defaults
 			$this->data['primary'] = "-primary";
 
@@ -198,8 +200,10 @@ class Usuario_Perfil extends CI_Controller {
 					'USUARIO_PASSWORD' => $pass
 				);
 				$this->AutenticacionModel->restaurar_pass($id,$parametros);
+				$this->session->set_flashdata('exito', 'Contraseña Actualizada');
 				redirect(base_url('usuario/pass?mensaje=pass_actualizado'));
 			}else{
+				$this->session->set_flashdata('alerta', 'Tu contraseña actual es incorrecta');
 				redirect(base_url('usuario/pass?mensaje=pass_incorrecto'));
 			}
 			//$usuario_id = $this->UsuariosModel->actualizar($_SESSION['usuario']['id'],$parametros);

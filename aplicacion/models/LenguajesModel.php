@@ -30,6 +30,9 @@ class LenguajesModel extends CI_Model {
   function detalles($id){
     return $this->db->get_where('lenguajes',array('ID_LENGUAJE'=>$id))->row_array();
   }
+  function detalles_iso($iso){
+    return $this->db->get_where('lenguajes',array('LENGUAJE_ISO'=>$iso))->row_array();
+  }
   /*
     * Creo una nueva entrada usando los parámetros
  */

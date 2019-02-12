@@ -10,10 +10,18 @@
               <div class="row no-gutters h-100">
                 <div class="col-2" id="shelf">
                   <ul class="list-group">
-                    <li class="list-group-item msjs-inbox"><a href="<?php echo base_url('usuario/mensajes') ?>"> <i class="fa fa-inbox text-primary-7"></i> Bandeja de Entrada </a></li>
-                    <li class="list-group-item msjs-serv"><a href="<?php echo base_url('usuario/mensajes?tipo='.'mensaje servicio') ?>"> <i class="fas fa-briefcase text-primary-6"></i> Mensajes de Servicios </a></li>
-                    <li class="list-group-item msjs-preg"><a href="<?php echo base_url('usuario/mensajes?tipo='.'pregunta producto') ?>"> <i class="fas fa-question text-primary-3"></i> Preguntas en Productos </a></li>
-                    <li class="list-group-item msjs-sent"><a href="<?php echo base_url('usuario/mensajes/enviados') ?>"> <i class="fa fa-share-square text-primary-12"></i> Enviados </a></li>
+                    <li class="list-group-item msjs-inbox"><a href="<?php echo base_url('usuario/mensajes') ?>"> <i class="fa fa-inbox text-primary-7"></i>
+                      <?php echo $this->lang->line('usuario_lista_conversaciones_entrada'); ?>
+                    </a></li>
+                    <li class="list-group-item msjs-serv"><a href="<?php echo base_url('usuario/mensajes?tipo='.'mensaje servicio') ?>"> <i class="fas fa-briefcase text-primary-6"></i>
+                      <?php echo $this->lang->line('usuario_lista_conversaciones_servicios'); ?>
+                    </a></li>
+                    <li class="list-group-item msjs-preg"><a href="<?php echo base_url('usuario/mensajes?tipo='.'pregunta producto') ?>"> <i class="fas fa-question text-primary-3"></i>
+                      <?php echo $this->lang->line('usuario_lista_conversaciones_productos'); ?>
+                    </a></li>
+                    <li class="list-group-item msjs-sent"><a href="<?php echo base_url('usuario/mensajes/enviados') ?>"> <i class="fa fa-share-square text-primary-12"></i>
+                      <?php echo $this->lang->line('usuario_lista_conversaciones_enviados'); ?>
+                    </a></li>
                   </ul>
                 </div>
                 <div class="col-4">
@@ -56,7 +64,7 @@
                       <input type="hidden" name="Identificador" value="<?php echo $_GET['id']; ?>">
                       <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id']; ?>">
                       <textarea name="MensajeTexto" class="form-control" rows="4"></textarea>
-                      <button type="submit" class="btn btn-primary btn-sm float-right"> <i class="fa fa-paper-plane"></i> Responder</button>
+                      <button type="submit" class="btn btn-primary btn-sm float-right"> <i class="fa fa-paper-plane"></i> <?php echo $this->lang->line('usuario_lista_conversaciones_responder'); ?> </button>
                     </form>
                   </div>
                 </div>

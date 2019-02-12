@@ -10,10 +10,18 @@
               <div class="row no-gutters h-100">
                 <div class="col-2" id="shelf">
                   <ul class="list-group">
-                    <li class="list-group-item msjs-inbox <?php if(!isset($_GET['tipo'])&&base_url(uri_string())==base_url('usuario/mensajes')){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes') ?>"> <i class="fa fa-inbox text-primary-7"></i> Bandeja de Entrada </a></li>
-                    <li class="list-group-item msjs-serv <?php if(isset($_GET['tipo'])&&$_GET['tipo']=='mensaje servicio'){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes?tipo='.'mensaje servicio') ?>"> <i class="fas fa-briefcase text-primary-3"></i> Mensajes de Servicios </a></li>
-                    <li class="list-group-item msjs-preg <?php if(isset($_GET['tipo'])&&$_GET['tipo']=='pregunta producto'){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes?tipo='.'pregunta producto') ?>"> <i class="fas fa-question text-primary-6"></i> Preguntas en Productos </a></li>
-                    <li class="list-group-item msjs-sent <?php if(base_url(uri_string())==base_url('usuario/mensajes/enviados')){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes/enviados') ?>"> <i class="fa fa-share-square text-primary-12"></i> Enviados </a></li>
+                    <li class="list-group-item msjs-inbox <?php if(!isset($_GET['tipo'])&&base_url(uri_string())==base_url('usuario/mensajes')){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes') ?>"> <i class="fa fa-inbox text-primary-7"></i>
+                      <?php echo $this->lang->line('usuario_lista_conversaciones_entrada'); ?> 
+                    </a></li>
+                    <li class="list-group-item msjs-serv <?php if(isset($_GET['tipo'])&&$_GET['tipo']=='mensaje servicio'){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes?tipo='.'mensaje servicio') ?>"> <i class="fas fa-briefcase text-primary-3"></i>
+                      <?php echo $this->lang->line('usuario_lista_conversaciones_servicios'); ?> 
+                    </a></li>
+                    <li class="list-group-item msjs-preg <?php if(isset($_GET['tipo'])&&$_GET['tipo']=='pregunta producto'){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes?tipo='.'pregunta producto') ?>"> <i class="fas fa-question text-primary-6"></i>
+                      <?php echo $this->lang->line('usuario_lista_conversaciones_productos'); ?> 
+                    </a></li>
+                    <li class="list-group-item msjs-sent <?php if(base_url(uri_string())==base_url('usuario/mensajes/enviados')){ echo 'activo'; } ?>"><a href="<?php echo base_url('usuario/mensajes/enviados') ?>"> <i class="fa fa-share-square text-primary-12"></i>
+                      <?php echo $this->lang->line('usuario_lista_conversaciones_enviados'); ?> 
+                    </a></li>
                   </ul>
                 </div>
                 <div class="col-4">
@@ -28,7 +36,7 @@
                             <?php }else{ ?>
                               <i class="fa fa-envelope-open"></i>
                             <?php } ?>
-                            <img class="align-self-start mr-3" src="<?php echo base_url('assets/global/img/usuario_default.png'); ?>" width="30" alt="Generic placeholder image">
+                            <img class="align-self-start mr-3" src="<?php echo base_url('assets/global/img/usuario_default.png'); ?>" width="30" alt="">
                             <div class="media-body">
                               <h6 class="mt-0 mb-1"><small>De:</small> <?php echo $conversacion->USUARIO_NOMBRE.' '.$conversacion->USUARIO_APELLIDOS ?></h6>
                               <?php $remitente= $this->UsuariosModel->detalles($conversacion->ID_USUARIO_B); ?>

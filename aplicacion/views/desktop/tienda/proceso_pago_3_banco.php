@@ -8,19 +8,19 @@
               <div class="stepwizard-row setup-panel">
                 <div class="stepwizard-step">
                   <a href="#step-1" class="btn btn-default btn-circle" disabled="disabled">1</a>
-                  <p>Identificación</p>
+                  <p><?php echo $this->lang->line('proceso_pago_1_identificacion'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-2" class="btn btn-default btn-circle"  disabled="disabled" >2</a>
-                  <p>Dirección</p>
+                  <p><?php echo $this->lang->line('proceso_pago_1_direccion'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-3" class="btn btn-primary btn-circle">3</a>
-                  <p>Pago</p>
+                  <p><?php echo $this->lang->line('proceso_pago_1_pago'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-4" class="btn btn-default btn-circle" disabled="disabled">4</a>
-                  <p>Confirmación</p>
+                  <p><?php echo $this->lang->line('proceso_pago_1_confirmacion'); ?></p>
                 </div>
               </div>
             </div>
@@ -34,9 +34,9 @@
                         <img src="<?php echo base_url('assets/global/img/banco.png') ?>" alt="Banco" class="img-fluid">
                       </td>
                       <td style="width:80%">
-                        <h4>Depósito/Transferencia Bancaria</h4>
+                        <h4><?php echo $this->lang->line('proceso_pago_3_transferencia_instrucciones'); ?></h4>
                         <p>Scotiabank </p>
-                        <p>No. Cuenta: 00106083517</p>
+                        <p><?php echo $this->lang->line('proceso_pago_3_numero_cuenta'); ?>: 00106083517</p>
                       </td>
                     </tr>
                     <tr>
@@ -44,11 +44,11 @@
                         <table class="table">
                           <tr>
                             <td style="width:50%">
-                              <h5>Monto a Pagar</h5>
+                              <h5><?php echo $this->lang->line('proceso_pago_3_monto_a_pagar'); ?></h5>
                               <h4>$<?php echo $_SESSION['pedido']['ImporteTotal']; ?> <small><?php echo $_SESSION['pedido']['Divisa']; ?></small> </h4>
                             </td>
                             <td style="width:50%">
-                              <h5>Referencia</h5>
+                              <h5><?php echo $this->lang->line('proceso_pago_3_referencia'); ?></h5>
                               <h4><?php echo $_SESSION['pedido']['Folio']; ?></h4>
                             </td>
                           </tr>
@@ -61,7 +61,7 @@
               <div class="col-12">
                 <div class="row">
                   <div class="col">
-                    <button type="button" name="button" class="btn btn-outline-success" onclick="window.print();"><i class="fa fa-print"></i> Imprimir</button>
+                    <button type="button" name="button" class="btn btn-outline-success" onclick="window.print();"><i class="fa fa-print"></i> <?php echo $this->lang->line('proceso_pago_3_imprimir'); ?></button>
                   </div>
                   <div class="col">
                     <?php
@@ -70,7 +70,7 @@
                     $_SESSION['pedido']['EstadoPedido'] = 'Espera Pago';
                     ?>
                     <form class="d-flex justify-content-end" action="<?php echo base_url('proceso_pago_4'); ?>" method="post">
-                      <button type="submit" class="btn btn-success"> Terminar <i class="fa fa-chevron-right"></i></button>
+                      <button type="submit" class="btn btn-success"> <?php echo $this->lang->line('proceso_pago_3_terminar'); ?> <i class="fa fa-chevron-right"></i></button>
                     </form>
                   </div>
                 </div>

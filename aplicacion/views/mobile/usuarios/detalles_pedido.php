@@ -18,7 +18,7 @@
               <div class="card">
                 <div class="card-header d-flex justify-content-between">
                   <div class="titulo">
-                    <h2 class="h5 mb-0"> <span class="fa fa-shoppping-bag"></span> Folio: <?php echo $pedido['PEDIDO_FOLIO'] ?></h2>
+                    <h2 class="h5 mb-0"> <span class="fa fa-shoppping-bag"></span> <?php echo $this->lang->line('usuario_lista_pedidos_folio'); ?>: <?php echo $pedido['PEDIDO_FOLIO'] ?></h2>
                   </div>
                 </div>
                 <div class="card-body py-2">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                         <p>
-                          <em>Fecha: <?php echo $pedido['PEDIDO_FECHA_REGISTRO']; ?></em>
+                          <em><?php echo $this->lang->line('usuario_lista_pedidos_fecha'); ?>: <?php echo $pedido['PEDIDO_FECHA_REGISTRO']; ?></em>
                         </p>
                     </div>
                   </div>
@@ -45,8 +45,8 @@
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th style="width:50%">Producto</th>
-                            <th style="width:10%" class="text-center">Cantidad</th>
+                            <th style="width:50%"><?php echo $this->lang->line('usuario_lista_pedidos_producto'); ?></th>
+                            <th style="width:10%" class="text-center"><?php echo $this->lang->line('usuario_lista_pedidos_cantidad'); ?></th>
                           </tr>
                         </thead>
                         <tbody>

@@ -14,7 +14,7 @@
     <div class="row">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><?php echo $this->lang->line('categoria_productos_migas_inicio'); ?></a></li>
           <li class="breadcrumb-item active <?php echo 'text'.$primary; ?>" aria-current="page"><?php echo $titulo_categoria; ?></li>
         </ol>
       </nav>
@@ -36,22 +36,20 @@
       <?php } ?>
         <div class="contenedor-filtros">
           <select class="custom-select filtro-sel" name="OrdenBusqueda">
-            <option value="" selected>Ordenar por</option>
-            <option value="precio_desc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='precio_desc'){ echo 'selected'; } ?>>Mayor Precio</option>
-            <option value="precio_asc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='precio_asc'){ echo 'selected'; } ?>>Menor Precio</option>
-            <option value="alfabetico_asc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='alfabetico_asc'){ echo 'selected'; } ?>>Alfabético A-Z</option>
-            <option value="alfabetico_desc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='alfabetico_desc'){ echo 'selected'; } ?>>Alfabético Z-A</option>
+            <option value="" selected><?php echo $this->lang->line('filtro_categoria_productos_ordenar_por'); ?></option>
+            <option value="precio_desc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='precio_desc'){ echo 'selected'; } ?>><?php echo $this->lang->line('filtro_categoria_productos_mayor_precio'); ?></option>
+            <option value="precio_asc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='precio_asc'){ echo 'selected'; } ?>><?php echo $this->lang->line('filtro_categoria_productos_menor_precio'); ?></option>
           </select>
           <hr>
           <select class="custom-select filtro-sel" name="OrigenBusqueda">
-            <option value="cualquiera" <?php if(isset($_GET['OrigenBusqueda'])&&$_GET['OrigenBusqueda']=='cualquiera'){ echo 'selected'; } ?>>Origen</option>
-            <option value="nacionales" <?php if(isset($_GET['OrigenBusqueda'])&&$_GET['OrigenBusqueda']=='nacionales'){ echo 'selected'; } ?>>Nacionales</option>
-            <option value="Importados" <?php if(isset($_GET['OrigenBusqueda'])&&$_GET['OrigenBusqueda']=='Importados'){ echo 'selected'; } ?>>Importados</option>
+            <option value="cualquiera" <?php if(isset($_GET['OrigenBusqueda'])&&$_GET['OrigenBusqueda']=='cualquiera'){ echo 'selected'; } ?>><?php echo $this->lang->line('filtro_categoria_productos_origen'); ?></option>
+            <option value="nacionales" <?php if(isset($_GET['OrigenBusqueda'])&&$_GET['OrigenBusqueda']=='nacionales'){ echo 'selected'; } ?>><?php echo $this->lang->line('filtro_categoria_productos_nacionales'); ?></option>
+            <option value="Importados" <?php if(isset($_GET['OrigenBusqueda'])&&$_GET['OrigenBusqueda']=='Importados'){ echo 'selected'; } ?>><?php echo $this->lang->line('filtro_categoria_productos_importados'); ?></option>
           </select>
           <hr>
           <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="OfertaBusqueda" id="OfertaBusqueda" <?php if(isset($_GET['OfertaBusqueda'])){ echo 'checked'; } ?>>
-            <label class="custom-control-label" for="OfertaBusqueda">En Oferta</label>
+            <label class="custom-control-label" for="OfertaBusqueda"><?php echo $this->lang->line('filtro_categoria_productos_en_oferta'); ?></label>
           </div>
           <!--
           <hr>
@@ -59,7 +57,7 @@
           <input type="range" class="custom-range" min="0" max="5" id="customRange1">
         -->
         <hr>
-        <button type="submit" class="btn btn<?php echo $primary; ?> btn-block" >Filtrar</button>
+        <button type="submit" class="btn btn<?php echo $primary; ?> btn-block" ><?php echo $this->lang->line('filtro_categoria_productos_filtrar'); ?></button>
         </div>
         </form>
       </div>
@@ -73,13 +71,13 @@
                   <div class="imagen-producto">
                     <div class="contenedor-etiquetas">
                       <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
-                        <span class="etiqueta-1">Méx</span>
+                        <span class="etiqueta-1"><?php echo $this->lang->line('etiquetas_productos_mexico'); ?></span>
                       <?php } ?>
                       <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
-                        <span class="etiqueta-2 <?php echo 'bg'.$primary; ?>">Nuevo</span>
+                        <span class="etiqueta-2 <?php echo 'bg'.$primary; ?>"><?php echo $this->lang->line('etiquetas_productos_nuevo'); ?></span>
                       <?php } ?>
                       <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
-                        <span class="etiqueta-3">Oferta</span>
+                        <span class="etiqueta-3"><?php echo $this->lang->line('etiquetas_productos_oferta'); ?></span>
                       <?php } ?>
                     </div>
                       <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>

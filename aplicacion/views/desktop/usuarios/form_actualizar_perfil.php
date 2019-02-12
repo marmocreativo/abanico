@@ -9,7 +9,7 @@
           <div class="card">
             <div class="card-header d-flex justify-content-between">
               <div class="titulo">
-                <h1 class="h5"> <span class="fa fa-user-tie"></span> Actualizar <?php echo $perfil['PERFIL_NOMBRE']; ?></h1>
+                <h1 class="h5"> <span class="fa fa-user-tie"></span> <?php echo $this->lang->line('usuario_listas_generales_actualizar'); ?> <?php echo $perfil['PERFIL_NOMBRE']; ?></h1>
               </div>
             </div>
             <div class="card-body">
@@ -29,31 +29,31 @@
                     <hr>
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="ImagenPerfil" name="ImagenPerfil" placeholder="" value="">
-                      <label class="custom-file-label" for="ImagenPerfil">Logotipo de tu Perfil</label>
+                      <label class="custom-file-label" for="ImagenPerfil"><?php echo $this->lang->line('usuario_form_perfil_servicio_fotografia_personal'); ?></label>
                     </div>
                   </div>
                   <div class="col-12 col-sm-9">
                      <div class="form-group">
-                       <label for="NombrePerfil">Nombre público</label>
+                       <label for="NombrePerfil"><?php echo $this->lang->line('usuario_vista_tienda_nombre'); ?></label>
                        <input type="text" class="form-control" id="NombrePerfil" name="NombrePerfil" placeholder="" value="<?php echo $perfil['PERFIL_NOMBRE']; ?>">
                      </div>
                      <hr>
-                     <h5 class="mb-3"><span class="fa fa-file-invoice"></span> Datos Fiscales (Opcionales)</h5>
+                     <h5 class="mb-3"><span class="fa fa-file-invoice"></span> <?php echo $this->lang->line('usuario_form_tienda_datos_fiscales'); ?></h5>
                      <div class="form-group">
-                       <label for="RazonSocialPerfil">Razón social</label>
+                       <label for="RazonSocialPerfil"><?php echo $this->lang->line('usuario_vista_tienda_razon'); ?></label>
                        <input type="text" class="form-control" id="RazonSocialPerfil" name="RazonSocialPerfil" placeholder="" value="<?php echo $perfil['PERFIL_RAZON_SOCIAL']; ?>">
                      </div>
                      <div class="form-group">
-                       <label for="RfcPerfil">R.F.C.</label>
+                       <label for="RfcPerfil"><?php echo $this->lang->line('usuario_vista_tienda_rfc'); ?></label>
                        <input type="text" class="form-control" id="RfcPerfil" name="RfcPerfil" placeholder="" value="<?php echo $perfil['PERFIL_RFC']; ?>">
                      </div>
-                     <h6 class="mb-3"><span class="fa fa-file-invoice"></span> Datos de Contacto (Obligatorios)</h6>
+                     <h6 class="mb-3"><span class="fa fa-file-invoice"></span> <?php echo $this->lang->line('usuario_form_perfil_servicio_datos_contaco'); ?></h6>
                      <div class="form-group">
-                       <label for="TelefonoPerfil">Teléfono</label>
+                       <label for="TelefonoPerfil"><?php echo $this->lang->line('usuario_vista_tienda_telefono'); ?></label>
                        <input type="text" class="form-control" id="TelefonoPerfil" name="TelefonoPerfil" placeholder="" value="<?php echo $perfil['PERFIL_TELEFONO']; ?>">
                      </div>
                      <hr>
-                     <h6 class="mb-3"> <span class="fa fa-building"></span> Dirección</h6>
+                     <h6 class="mb-3"> <span class="fa fa-building"></span> <?php echo $this->lang->line('usuario_lista_direcciones_singular'); ?></h6>
                      <input type="hidden" name="IdentificadorDireccion" value="<?php echo $direccion_perfil_servicios['ID_DIRECCION'] ?>">
                      <input type="hidden" name="TipoDireccion" value="perfil">
                      <input type="hidden" name="AliasDireccion" value="Direccion Perfil">
@@ -61,25 +61,25 @@
                      <div class="row">
                        <div class="col">
                          <div class="form-group">
-                           <label for="PaisDireccion">País </label>
+                           <label for="PaisDireccion"><?php echo $this->lang->line('usuario_form_direcciones_pais'); ?> </label>
                            <select class="form-control" name="PaisDireccion" id="PaisDireccion" data-valor-anterior="<?php echo $direccion_perfil_servicios['DIRECCION_PAIS']; ?>" required>
-                             <option value="">Selecciona un País</option>
+                             <option value=""><?php echo $this->lang->line('usuario_form_direcciones_pais_selecciona'); ?></option>
                            </select>
                          </div>
                        </div>
                        <div class="col">
                          <div class="form-group">
-                           <label for="EstadoDireccion">Estado </label>
+                           <label for="EstadoDireccion"><?php echo $this->lang->line('usuario_form_direcciones_estado'); ?> </label>
                            <select class="form-control" name="EstadoDireccion" id="EstadoDireccion" data-valor-anterior="<?php echo $direccion_perfil_servicios['DIRECCION_ESTADO']; ?>" required>
-                             <option value="">Selecciona tu estado</option>
+                             <option value=""><?php echo $this->lang->line('usuario_form_direcciones_estado_selecciona'); ?></option>
                            </select>
                          </div>
                        </div>
                        <div class="col">
                          <div class="form-group">
-                           <label for="MunicipioDireccion">Municipio / Alcaldía</label>
+                           <label for="MunicipioDireccion"><?php echo $this->lang->line('usuario_form_direcciones_municipio'); ?></label>
                            <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php echo $direccion_perfil_servicios['DIRECCION_MUNICIPIO']; ?>" required>
-                             <option value="">Selecciona tu Municipio / Alcaldía</option>
+                             <option value=""><?php echo $this->lang->line('usuario_form_direcciones_municipio_selecciona'); ?></option>
                            </select>
                          </div>
                        </div>
@@ -87,26 +87,26 @@
                      <div class="row">
                        <div class="col">
                          <div class="form-group">
-                           <label for="CiudadPerfil">Ciudad (Opcional)</label>
+                           <label for="CiudadPerfil"><?php echo $this->lang->line('usuario_form_direcciones_ciudad'); ?> <?php echo $this->lang->line('usuario_form_direcciones_ciudad_instrucciones'); ?></label>
                            <input type="text" name="CiudadDireccion" class="form-control" value="<?php echo $direccion_perfil_servicios['DIRECCION_CIUDAD']; ?>">
                          </div>
                        </div>
                          <div class="col">
                            <div class="form-group">
-                             <label for="CodigoPostalDireccion">Código Postal</label>
+                             <label for="CodigoPostalDireccion"><?php echo $this->lang->line('usuario_form_direcciones_codigo_postal'); ?></label>
                              <input type="text" name="CodigoPostalDireccion" class="form-control" value="<?php echo $direccion_perfil_servicios['DIRECCION_CODIGO_POSTAL']; ?>">
                            </div>
                          </div>
                      </div>
                      <div class="form-group">
-                       <label for="BarrioDireccion">Barrio / Colonia</label>
+                       <label for="BarrioDireccion"><?php echo $this->lang->line('usuario_form_direcciones_barrio_colonia'); ?></label>
                        <input type="text" name="BarrioDireccion" class="form-control" value="<?php echo $direccion_perfil_servicios['DIRECCION_BARRIO']; ?>">
                      </div>
                      <div class="form-group">
-                       <label for="CalleDireccion">Calle y Número</label>
+                       <label for="CalleDireccion"><?php echo $this->lang->line('usuario_form_direcciones_calle_numero'); ?></label>
                        <textarea name="CalleDireccion" class="form-control" rows="3"><?php echo $direccion_perfil_servicios['DIRECCION_CALLE_Y_NUMERO']; ?></textarea>
                      </div>
-                     <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> Actualizar</button>
+                     <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> <?php echo $this->lang->line('usuario_form_perfil_servicio_actualizar'); ?></button>
                   </div>
                 </div>
               </form>

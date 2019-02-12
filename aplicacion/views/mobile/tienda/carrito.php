@@ -14,7 +14,7 @@
                      <img class="spanImg" src="<?php echo $producto['imagen_producto'];  ?>"></img>
                    </a>
                  </div>
-                 <p><strong>Cantidad</strong></p>
+                 <p><strong><?php echo $this->lang->line('carrito_cantidad'); ?></strong></p>
                  <div class="input-group input-group-sm">
                    <div class="input-group-prepend">
                      <button class="btn btn-outline-primary boton-disminuir-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'>-</button>
@@ -24,7 +24,8 @@
                      <button class="btn btn-outline-primary boton-incrementar-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'>+</button>
                    </div>
                  </div>
-                 <button type="button" class="btn mt-2 mr-2 btnEliminar btn-danger btn-sm btn-block boton-eliminar-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>' title="Eliminar del carrito"> <i class="fa fa-trash"></i> Eliminar </button>
+                 <button type="button" class="btn mt-2 mr-2 btnEliminar btn-danger btn-sm btn-block boton-eliminar-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'
+                   title="<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> <?php echo $this->lang->line('usuario_lista_productos_singular'); ?> "> <i class="fa fa-trash"></i> "<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> </button>
                </div>
                <div class="col">
                  <div class="mb-3">
@@ -36,11 +37,11 @@
                  <div class="row">
                    <div class="col">
 
-                     <p><strong>Precio</strong></p>
+                     <p><strong><?php echo $this->lang->line('carrito_precio'); ?></strong></p>
                      <small><?php echo $_SESSION['divisa']['signo']; ?></small>
                      <?php echo number_format($_SESSION['divisa']['conversion']*$producto['precio_producto'],2);  ?><br>
                      <small><?php echo $_SESSION['divisa']['iso']; ?></small>
-                     <p><strong>Total</strong></p>
+                     <p><strong><?php echo $this->lang->line('carrito_precio'); ?></strong></p>
                      <small><?php echo $_SESSION['divisa']['signo']; ?></small>
                        <?php $suma = $producto['cantidad_producto']*$producto['precio_producto']; echo number_format($_SESSION['divisa']['conversion']*$suma,2);  ?><br>
                      <small><?php echo $_SESSION['divisa']['iso']; ?></small>
@@ -54,7 +55,7 @@
       <?php }else{ ?>
         <div class="card mb-3">
           <div class="card-footer p-3 py-4">
-            <p class="text-center mb-1">Aún no tienes productos en tu carrito.</p>
+            <p class="text-center mb-1"><?php echo $this->lang->line('carrito_sin_productos'); ?>.</p>
           </div>
         </div>
       <?php } ?>
@@ -63,7 +64,7 @@
         <div class="card-body p-2 pt-3">
           <div class="row">
             <div class="col-5">
-              <h5>Subtotal</h5>
+              <h5><?php echo $this->lang->line('carrito_sub_total'); ?></h5>
             </div>
             <div class="col text-right">
               <h5><small><?php echo $_SESSION['divisa']['signo']; ?></small>

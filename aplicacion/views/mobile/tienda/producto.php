@@ -33,7 +33,7 @@
           <?php if(!empty($combinaciones)){ ?>
           <div class="col-12">
             <div class="form-group">
-              <label for="CombinacionProducto" class="sr-only">Opciones</label>
+              <label for="CombinacionProducto" class="sr-only"><?php echo $this->lang->line('pagina_producto_formulario_opciones'); ?></label>
               <select class="form-control CombinacionProducto" name="CombinacionProducto">
               <?php foreach($combinaciones as $combinacion){?>
                 <option value="<?php echo  $combinacion->COMBINACION_OPCION; ?>"
@@ -48,7 +48,7 @@
           <?php } ?>
           <div class="col">
             <div class="form-group">
-              <label for="" class="sr-only">Cantidad</label>
+              <label for="" class="sr-only"><?php echo $this->lang->line('pagina_producto_formulario_cantidad'); ?></label>
               <input type="number" class="form-control" name="CantidadProducto" id="CantidadProducto" min="1" max="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>" value="<?php echo $producto['PRODUCTO_CANTIDAD_MINIMA']; ?>">
             </div>
           </div>
@@ -63,7 +63,7 @@
                 data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
                 data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
                 >
-               <span class="fa fa-shopping-cart"></span> Añadir al Carrito</button>
+               <span class="fa fa-shopping-cart"></span> <?php echo $this->lang->line('pagina_producto_formulario_al_carrito'); ?></button>
           </div>
           <?php if(isset($_SESSION['usuario']['id'])){ ?>
             <div class="col-12">
@@ -78,7 +78,7 @@
                   data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
                   data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
                   >
-                 <span class="fa fa-shopping-cart"></span> Comprar Ahora</button>
+                 <span class="fa fa-shopping-cart"></span> <?php echo $this->lang->line('pagina_producto_formulario_comprar_ahora'); ?></button>
             </div>
           <?php } ?>
         </div>
@@ -90,7 +90,7 @@
             <div class="card-header" id="headingOne">
               <h2 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Detalles
+                  <?php echo $this->lang->line('pagina_producto_tabs_producto_detalles'); ?>
                 </button>
               </h2>
             </div>
@@ -105,7 +105,7 @@
             <div class="card-header" id="headingTwo">
               <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Características
+                  <?php echo $this->lang->line('pagina_producto_tabs_producto_caracteristicas'); ?>
                 </button>
               </h2>
             </div>
@@ -115,16 +115,16 @@
                   <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th colspan="2">Modelo y claves</th>
+                        <th colspan="2"><?php echo $this->lang->line('pagina_producto_tab_detalles_modelo_y_clave'); ?></th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Modelo</td>
+                        <td><?php echo $this->lang->line('pagina_producto_tab_detalles_modelo'); ?></td>
                         <td><?php echo $producto['PRODUCTO_MODELO']; ?> </td>
                       </tr>
                       <tr>
-                        <td>Origen</td>
+                        <td><?php echo $this->lang->line('pagina_producto_tab_detalles_origen'); ?></td>
                         <td><?php echo $producto['PRODUCTO_ORIGEN']; ?> </td>
                       </tr>
                       <tr>
@@ -162,24 +162,24 @@
                   <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th colspan="2">Dimensiones y peso</th>
+                        <th colspan="2"><?php echo $this->lang->line('pagina_producto_tab_detalles_dimensiones_y_peso'); ?></th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Ancho</td>
+                        <td><?php echo $this->lang->line('pagina_producto_tab_detalles_ancho'); ?></td>
                         <td><?php echo number_format($producto['PRODUCTO_ANCHO'],2); ?> <small>cm</small> </td>
                       </tr>
                       <tr>
-                        <td>Alto</td>
+                        <td><?php echo $this->lang->line('pagina_producto_tab_detalles_alto'); ?></td>
                         <td><?php echo number_format($producto['PRODUCTO_ALTO'],2); ?> <small>cm</small> </td>
                       </tr>
                       <tr>
-                        <td>Profundo</td>
+                        <td><?php echo $this->lang->line('pagina_producto_tab_detalles_profundo'); ?></td>
                         <td><?php echo number_format($producto['PRODUCTO_PROFUNDO'],2); ?> <small>cm</small> </td>
                       </tr>
                       <tr>
-                        <td>Peso</td>
+                        <td><?php echo $this->lang->line('pagina_producto_tab_detalles_peso'); ?></td>
                         <td><?php echo number_format($producto['PRODUCTO_PESO'],2); ?> <small>Kg</small> </td>
                       </tr>
                     </tbody>
@@ -193,7 +193,7 @@
             <div class="card-header" id="headingThree">
               <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Preguntas
+                  <?php echo $this->lang->line('pagina_producto_tabs_producto_preguntas'); ?>
                 </button>
               </h2>
             </div>
@@ -208,23 +208,23 @@
                   <div class="row">
                     <table class="table">
                       <tr>
-                        <td><strong>Remitente:</strong></td>
+                        <td><strong><?php echo $this->lang->line('pagina_producto_tab_preguntas_remitente'); ?>:</strong></td>
                         <td><?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']?></td>
                       </tr>
                     </table>
                   </div>
-                  <p> <i class="fa fa-info-circle"></i> Tienes dudas sobre el producto?</p>
+                  <p> <i class="fa fa-info-circle"></i> <?php echo $this->lang->line('pagina_producto_tab_preguntas_tienes_dudas'); ?></p>
                   <div class="form-group">
-                    <label for="MensajeTexto">Mensaje</label>
+                    <label for="MensajeTexto"><?php echo $this->lang->line('pagina_producto_tab_preguntas_mensaje'); ?></label>
                     <textarea class="form-control" name="MensajeTexto" rows="8" required></textarea>
                   </div>
-                  <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> Contactar</button>
+                  <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> <?php echo $this->lang->line('pagina_producto_tab_preguntas_contactar'); ?></button>
                 </form>
                 <span class="clearfix"> </span>
               <?php }else{ ?>
                 <div class="card">
                   <div class="card-body">
-                    <p>Para preguntar debes iniciar sesión.</p>
+                    <p><?php echo $this->lang->line('pagina_producto_tab_preguntas_para_preguntar'); ?>.</p>
                     <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
                   </div>
                 </div>
@@ -237,7 +237,7 @@
             <div class="card-header" id="headingFour">
               <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                  Acerca del vendedor
+                  <?php echo $this->lang->line('pagina_producto_tabs_producto_acerca_de'); ?>
                 </button>
               </h2>
             </div>
@@ -248,15 +248,15 @@
 
                 <table class="table table-sm table-borderless">
                   <tr>
-                    <td><b>Nombre público</b></td>
+                    <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_nombre'); ?></b></td>
                     <td><?php echo $tienda['TIENDA_NOMBRE']; ?></td>
                   </tr>
                   <tr>
-                    <td><b>Razón social</b></td>
+                    <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_razon_social'); ?></b></td>
                     <td><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></td>
                   </tr>
                   <tr>
-                    <td><b>R.F.C.</b></td>
+                    <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_rfc'); ?></b></td>
                     <td><?php echo $tienda['TIENDA_RFC']; ?></td>
                   </tr>
                 </table>
@@ -314,24 +314,24 @@
                           <input type="hidden" name="IdProducto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
                           <input type="hidden" name="IdUsuario" value="<?php echo $producto['ID_USUARIO']; ?>">
                           <input type="hidden" name="IdCalificador" value="<?php echo $_SESSION['usuario']['id'] ?>">
-                          <label for="EstrellasCalificacion">Califica este producto</label>
+                          <label for="EstrellasCalificacion"><?php echo $this->lang->line('pagina_producto_formulario_calificaciones_invita'); ?></label>
                           <div class="estrellas"></div>
                           <input type="hidden" id="EstrellasCalificacion" name="EstrellasCalificacion" value="1">
                           <div class="form-group">
-                            <label for="ComentarioCalificacion">Comentario</label>
+                            <label for="ComentarioCalificacion"><?php echo $this->lang->line('pagina_producto_formulario_calificaciones_comentario'); ?></label>
                             <textarea class="form-control" name="ComentarioCalificacion" rows="2" cols="80"></textarea>
                           </div>
-                          <button type="submit" class="btn <?php echo 'btn'.$primary; ?> btn-sm float-right" name="button"> <i class="fa fa-star"></i> Calificar</button>
+                          <button type="submit" class="btn <?php echo 'btn'.$primary; ?> btn-sm float-right" name="button"> <i class="fa fa-star"></i> <?php echo $this->lang->line('pagina_producto_formulario_calificaciones_calificar'); ?></button>
                         </form>
                       </div>
                   </div>
                 <?php }else{ ?>
-                  <h6>Gracias por tu Calificación</h6>
+                  <h6><?php echo $this->lang->line('pagina_producto_formulario_calificaciones_gracias'); ?></h6>
                 <?php } ?>
                 <?php }else{ ?>
                   <div class="card">
                     <div class="card-body">
-                      <p>Para calificar este producto</p>
+                      <p><?php echo $this->lang->line('pagina_producto_formulario_calificaciones_para_calificar'); ?></p>
                       <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> Inicia Sesión</a>
                     </div>
                   </div>

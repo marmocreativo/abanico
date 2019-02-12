@@ -42,7 +42,7 @@
                 </address>
               </div>
               <div class="col-12">
-                <p class="mb-0"><em>Fecha: <?php echo date('d / m / Y'); ?></em></p>
+                <p class="mb-0"><em><?php echo $this->lang->line('proceso_pago_3_fecha'); ?>: <?php echo date('d / m / Y'); ?></em></p>
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@
                       <img class="spanImg" src="<?php echo $producto['imagen_producto'];  ?>"></img>
                     </a>
                   </div>
-                  <p><strong>Cantidad</strong></p>
+                  <p><strong><?php echo $this->lang->line('carrito_cantidad'); ?></strong></p>
                   <p>1</p>
                 </div>
                 <div class="col">
@@ -98,11 +98,11 @@
                   </div>
                   <div class="row">
                     <div class="col">
-                      <p><strong>Precio</strong></p>
+                      <p><strong><?php echo $this->lang->line('carrito_precio'); ?></strong></p>
                       <small><?php echo $_SESSION['divisa']['signo']; ?></small>
                       <?php echo number_format($_SESSION['divisa']['conversion']*$producto['precio_producto'],2);  ?>
                       <small><?php echo $_SESSION['divisa']['iso']; ?></small>
-                      <p><strong>Total</strong></p>
+                      <p><strong><?php echo $this->lang->line('carrito_total'); ?></strong></p>
                       <small><?php echo $_SESSION['divisa']['signo']; ?></small>
                         <?php $suma = $producto['cantidad_producto']*$producto['precio_producto']; echo number_format($_SESSION['divisa']['conversion']*$suma,2);  ?>
                       <small><?php echo $_SESSION['divisa']['iso']; ?></small>
@@ -133,11 +133,11 @@
 
               if(empty($envio_tienda)){ ?>
                 <div class="alert alert-warning">
-                    <p> Los productos Exceden el peso máximo o tu dirección no está disponible para envíos. Por favor contacta con nosotros para ofrecerte opciones.</p>
+                    <p>  <?php echo $this->lang->line('proceso_pago_3_exeden_peso'); ?></p>
                 </div>
               <?php }else{ ?>
                 <div class="card-body text-center">
-                  <p>Envio de productos de <?php echo $tienda; ?></p>
+                  <p><?php echo $this->lang->line('proceso_pago_3_envio_de_productos_otro'); ?> <?php echo $tienda; ?></p>
                   <h6>
                     <small><?php echo $_SESSION['divisa']['signo']; ?></small>
                     <strong><?php echo number_format( $envio_tienda['IMPORTE'],2); ?></strong>
@@ -148,7 +148,7 @@
 
           <?php }else{   ?>
             <div class="card-body text-center">
-              <p> Productos enviados por Abanico, el costo de Envío aparecerá en la parte inferior.</p>
+              <p> <?php echo $this->lang->line('proceso_pago_3_envio_de_abanico'); ?></p>
             </div>
             <?php
               $pedido_tienda[$id_tienda]['ImporteEnvio']='0';
@@ -178,7 +178,7 @@
              <div class="row">
                <div class="col-12">
                  <div class="py-3">
-                   <h5 class="h6 font-weight-bold">Importe Productos:</h5>
+                   <h5 class="h6 font-weight-bold"><?php echo $this->lang->line('proceso_pago_3_importe_productos'); ?>:</h5>
                    <h5 class="h6 text-right mt-3">
                      <small><?php echo $_SESSION['divisa']['signo']; ?></small>
                      <?php  echo number_format($_SESSION['divisa']['conversion']*$importe_pedido_total,2); ?>
@@ -187,8 +187,8 @@
                  </div>
                  <hr>
                  <div class="py-3">
-                   <h5 class="h6 font-weight-bold">Envio Abanico:</h5>
-                   <span class="text-muted">Los envios de productos de tiendas afiliadas a Abanico se calculan en un solo paquete</span>
+                   <h5 class="h6 font-weight-bold"><?php echo $this->lang->line('proceso_pago_3_envio_abanico'); ?>:</h5>
+                   <span class="text-muted"><?php echo $this->lang->line('proceso_pago_3_envio_abanico_instrucciones'); ?></span>
                    <h5 class="h6 text-right mt-3">
                      <small><?php echo $_SESSION['divisa']['signo']; ?></small>
                      <?php  echo number_format($_SESSION['divisa']['conversion']*$envio_pedido_abanico,2); ?>
@@ -197,8 +197,8 @@
                  </div>
                  <hr>
                  <div class="py-3">
-                   <h5 class="h6 font-weight-bold">Envio otras Tiendas:</h5>
-                   <span class="text-muted">Los envios de productos de tiendas externas a Abanico se calculan por separado</span>
+                   <h5 class="h6 font-weight-bold"><?php echo $this->lang->line('proceso_pago_3_envio_otras_tiendas'); ?>:</h5>
+                   <span class="text-muted"><?php echo $this->lang->line('proceso_pago_3_envio_otras_tiendas_instrucciones'); ?></span>
                    <h5 class="h6 text-right mt-3">
                      <small><?php echo $_SESSION['divisa']['signo']; ?></small>
                      <?php  echo number_format($_SESSION['divisa']['conversion']*$envio_pedido_tiendas,2); ?>
@@ -208,7 +208,7 @@
                  <hr>
                  <div class="py-3">
                    <?php $importe_total = $importe_pedido_total+$envio_pedido_total; ?>
-                   <h5 class="h6 font-weight-bold">Total:</h5>
+                   <h5 class="h6 font-weight-bold"><?php echo $this->lang->line('proceso_pago_3_total'); ?>:</h5>
                    <h5 class="h6 text-right mt-3">
                      <small><?php echo $_SESSION['divisa']['signo']; ?></small>
                      <?php  echo number_format($_SESSION['divisa']['conversion']*$importe_total,2); ?>
@@ -243,7 +243,7 @@
           $_SESSION['pedido']['EstadoPedido'] = 'Pagado';
           ?>
           <div class="card-footer text-right px-1">
-              <a href="<?php echo base_url('proceso_pago_3_banco'); ?>" class="btn btn-success btn-sm"> Transferencia Bancaria <i class="fas fa-money-bill-alt"></i></a>
+              <a href="<?php echo base_url('proceso_pago_3_banco'); ?>" class="btn btn-success btn-sm"> <?php echo $this->lang->line('proceso_pago_3_transferencia'); ?> <i class="fas fa-money-bill-alt"></i></a>
             <div class="alert alert-info mt-2">
               <p>Nota del Desarrollador: El boton de PAYPAL <b>está funcionando</b> cuidado al probar</p>
             </div>
@@ -255,7 +255,7 @@
                 <input type="hidden" name="amount" value="<?php echo $_SESSION['pedido']['ImporteTotal']; ?>">
                 <input type="hidden" name="currency_code" value="<?php echo $_SESSION['pedido']['Divisa']; ?>">
                 <input type="hidden" name="return" value="<?php echo base_url('proceso_pago_4?pago=paypal'); ?>">
-                <button type="submit" class="btn btn-primary btn-sm">Pagar con PayPal <span class="fab fa-paypal"></span></button>
+                <button type="submit" class="btn btn-primary btn-sm"><?php echo $this->lang->line('proceso_pago_3_paypal'); ?> <span class="fab fa-paypal"></span></button>
             </form>
           </div>
 

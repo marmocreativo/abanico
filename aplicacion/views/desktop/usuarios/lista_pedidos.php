@@ -10,7 +10,7 @@
           <div class="card">
             <div class="card-header d-flex justify-content-between">
               <div class="titulo">
-                <h2 class="h5 mb-0"> <span class="fa fa-shopping-bag"></span> Tus Pedidos</h2>
+                <h2 class="h5 mb-0"> <span class="fa fa-shopping-bag"></span> <?php echo $this->lang->line('usuario_lista_pedidos_titulo'); ?></h2>
               </div>
             </div>
             <div class="card-body">
@@ -19,27 +19,27 @@
                 <div class="card-header">
                   <div class="row">
                     <div class="col">
-                      <p># Orden<br>
+                      <p># <?php echo $this->lang->line('usuario_lista_pedidos_orden'); ?><br>
                       <b><?php echo $pedido->ID_PEDIDO; ?></b></p>
                     </div>
                     <div class="col">
-                      <p>Folio<br>
+                      <p><?php echo $this->lang->line('usuario_lista_pedidos_folio'); ?><br>
                       <b><?php echo $pedido->PEDIDO_FOLIO; ?></b></p>
                     </div>
                     <div class="col">
-                      <p>Fecha de Compra<br>
+                      <p><?php echo $this->lang->line('usuario_lista_pedidos_fecha_compra'); ?><br>
                       <b><?php echo $pedido->PEDIDO_FECHA_REGISTRO; ?></b></p>
                     </div>
                     <div class="col">
-                      <p>Estado del Pedido<br>
+                      <p><?php echo $this->lang->line('usuario_lista_ventas_estado_pedido'); ?><br>
                       <b><?php echo $pedido->PEDIDO_ESTADO_PEDIDO; ?></b></p>
                     </div>
                     <div class="col">
-                      <p>Importe Total<br>
+                      <p><?php echo $this->lang->line('usuario_lista_pedidos_importe_total'); ?><br>
                       <b>$<?php echo $pedido->PEDIDO_IMPORTE_TOTAL.' '.$pedido->PEDIDO_DIVISA; ?></b></p>
                     </div>
                     <div class="col">
-                      <a href="<?php echo base_url('usuario/pedidos/detalles?id_pedido='.$pedido->ID_PEDIDO); ?>" class="btn btn-sm btn-block btn-outline-success" title="Detalles del pedido"> <span class="fa fa-eye"></span> Detalles</a>
+                      <a href="<?php echo base_url('usuario/pedidos/detalles?id_pedido='.$pedido->ID_PEDIDO); ?>" class="btn btn-sm btn-block btn-outline-success" title="Detalles del pedido"> <span class="fa fa-eye"></span> <?php echo $this->lang->line('usuario_lista_pedidos_detalles'); ?></a>
                     </div>
                   </div>
                 </div>
@@ -47,10 +47,10 @@
                   <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th style="width:50%">Producto</th>
-                        <th style="width:10%" class="text-center">Cantidad</th>
-                        <th style="width:20%" class="text-right">Precio</th>
-                        <th style="width:20%" class="text-right">Total</th>
+                        <th style="width:50%"><?php echo $this->lang->line('usuario_lista_pedidos_producto'); ?></th>
+                        <th style="width:10%" class="text-center"><?php echo $this->lang->line('usuario_lista_pedidos_cantidad'); ?></th>
+                        <th style="width:20%" class="text-right"><?php echo $this->lang->line('usuario_lista_pedidos_precio'); ?></th>
+                        <th style="width:20%" class="text-right"><?php echo $this->lang->line('usuario_lista_pedidos_total'); ?></th>
                       </tr>
                     </thead>
                     <tbody>

@@ -6,6 +6,10 @@ class Autenticacion extends CI_Controller {
     parent::__construct();
 		$this->data['op'] = opciones_default();
 		sesion_default($this->data['op']);
+		$this->data['lenguajes_activos'] = $this->lenguajes_activos->get_lenguajes_activos();
+		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
+// Cargo Lenguaje
+$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		// Variables defaults
 			$this->data['primary'] = "-primary";
 
@@ -127,7 +131,7 @@ class Autenticacion extends CI_Controller {
 			}else{
 					// Si no coinciden vuelvo a cargar el formulario
 					// Mensaje de feedback
-					$this->session->set_flashdata('alerta', 'El correo no parece estar registrado');
+					$this->session->set_flashdata('alerta', 'No encontramos ninguna cuenta con los datos que proporcionaste');
 					// redirección
 					redirect(base_url('login/olvide'));
 			}
@@ -167,7 +171,9 @@ class Autenticacion extends CI_Controller {
 			      );
 						$this->AutenticacionModel->restaurar_pass($id,$parametros);
 						$this->AutenticacionModel->desactivar_pin($id,$clave);
-						redirect(base_url('login?mensaje=pass_restaurado'));
+						// Mensaje de feedback
+						$this->session->set_flashdata('exito', 'Tu contraseña ha sido restaurada correctamente');
+						redirect(base_url('login'));
 					}else{
 						if($this->AutenticacionModel->verificar_pin($id,$clave)){
 								// Si el formulario no se verifica cargo de nuevo el Login
@@ -175,14 +181,17 @@ class Autenticacion extends CI_Controller {
 								$this->load->view($this->data['dispositivo'].'/usuarios/restaurar_form',$this->data);
 								$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 						}else{
+							// Mensaje de feedback
+							$this->session->set_flashdata('alerta', 'El enlace que utilizaste no es válido.');
 							// SI el PIN no es valido regreso y mando error
-							redirect(base_url('login?mensaje=error_enlace'));
+							redirect(base_url('login'));
 						}
 					}
 
 		}else{
 			// Si no tengo las variables definidas redirecciono directo al Login
-			redirect(base_url('login?mensaje=error_enlace'));
+			$this->session->set_flashdata('alerta', 'El enlace que utilizaste no es válido.');
+			redirect(base_url('login'));
 		}
 	}
 	/*
@@ -192,6 +201,7 @@ class Autenticacion extends CI_Controller {
 	{
 	// Login Form
 	session_destroy();
-	redirect(base_url('login?mensaje=sesion_cerrada'));
+	$this->session->set_flashdata('exito', 'Sesión cerrada correctamente');
+	redirect(base_url('login'));
 	}
 }
