@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 06-02-2019 a las 12:04:47
+-- Tiempo de generación: 13-02-2019 a las 10:24:27
 -- Versión del servidor: 5.6.40-84.0-log
 -- Versión de PHP: 5.6.30
 
@@ -38,15 +38,6 @@ CREATE TABLE `adjuntos_usuarios` (
   `ADJUNTO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `adjuntos_usuarios`
---
-
-INSERT INTO `adjuntos_usuarios` (`ID_ADJUNTO`, `ID_USUARIO`, `ID_OBJETO`, `ADJUNTO_NOMBRE`, `ADJUNTO_ARCHIVO`, `ADJUNTO_TIPO`, `ADJUNTO_FECHA_REGISTRO`) VALUES
-(1, '5c0653d43d92e7.75019474', 10, 'Book, Portafolio de trabajos', 'archivo-5c3fb963d2b7b.pdf', 'servicio', '2019-01-16 23:08:19'),
-(3, '5c0653d43d92e7.75019474', 12, 'hghg', 'archivo-5c48f0d996255.pdf', 'servicio', '2019-01-23 22:55:21'),
-(4, '5c48f4e7ce0708.70141183', 18, 'Una muestra de mi trabajo', 'archivo-5c48f99915d54.jpg', 'servicio', '2019-01-23 23:32:41');
-
 -- --------------------------------------------------------
 
 --
@@ -64,21 +55,6 @@ CREATE TABLE `calificaciones_productos` (
   `CALIFICACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `calificaciones_productos`
---
-
-INSERT INTO `calificaciones_productos` (`ID_CALIFICACION`, `ID_PRODUCTO`, `ID_USUARIO`, `ID_USUARIO_CALIFICADOR`, `CALIFICACION_ESTRELLAS`, `CALIFICACION_COMENTARIO`, `CALIFICACION_ESTADO`, `CALIFICACION_FECHA_REGISTRO`) VALUES
-(5, 8, '5c0653d43d92e7.75019474', '5c19944989f925.72741021', 1, 'adasdsdsd', 'activo', '2018-12-27 07:49:03'),
-(6, 18, '5c0653d43d92e7.75019474', '5c08a9dc2cb096.56391251', 1, '', 'activo', '2018-12-27 17:59:18'),
-(7, 19, '5c0653d43d92e7.75019474', '5c08a9dc2cb096.56391251', 1, 'Este librero esta muy feo', 'activo', '2018-12-27 18:07:28'),
-(8, 8, '5c0653d43d92e7.75019474', '5c08a9dc2cb096.56391251', 5, '', 'activo', '2018-12-27 18:17:55'),
-(9, 20, '5c25209703a210.25306180', '5c0653d43d92e7.75019474', 4, 'excelente ', 'activo', '2018-12-28 16:19:30'),
-(10, 22, '5c0653d43d92e7.75019474', '5c0653d43d92e7.75019474', 5, 'Deliciosa', 'activo', '2019-01-03 23:07:12'),
-(11, 17, '5c08a9dc2cb096.56391251', '5c25209703a210.25306180', 4, 'muy utilies y practicas', 'activo', '2019-01-08 23:16:51'),
-(12, 17, '5c08a9dc2cb096.56391251', '5c0653d43d92e7.75019474', 5, 'Que bonitas están', 'activo', '2019-01-18 23:52:13'),
-(13, 4, '5c08a9dc2cb096.56391251', '5c08a9dc2cb096.56391251', 3, 'Maravilloso producto', 'activo', '2019-01-19 00:04:55');
-
 -- --------------------------------------------------------
 
 --
@@ -95,16 +71,6 @@ CREATE TABLE `calificaciones_servicios` (
   `CALIFICACION_ESTADO` varchar(255) DEFAULT NULL,
   `CALIFICACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `calificaciones_servicios`
---
-
-INSERT INTO `calificaciones_servicios` (`ID_CALIFICACION`, `ID_SERVICIO`, `ID_USUARIO`, `ID_USUARIO_CALIFICADOR`, `CALIFICACION_ESTRELLAS`, `CALIFICACION_COMENTARIO`, `CALIFICACION_ESTADO`, `CALIFICACION_FECHA_REGISTRO`) VALUES
-(4, 11, '5c25209703a210.25306180', '5c0653d43d92e7.75019474', 3, 'hola', 'activo', '2019-01-03 23:08:18'),
-(5, 10, '5c0653d43d92e7.75019474', '5c0653d43d92e7.75019474', 3, 'Mas o menos', 'activo', '2019-01-16 23:30:34'),
-(6, 12, '5c0653d43d92e7.75019474', '5c0653d43d92e7.75019474', 4, 'calificando servicio', 'activo', '2019-01-18 23:54:15'),
-(7, 18, '5c48f4e7ce0708.70141183', '5c0653d43d92e7.75019474', 5, 'Hola', 'activo', '2019-01-28 18:23:04');
 
 -- --------------------------------------------------------
 
@@ -134,29 +100,26 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (24, 'Tecnología, Computación y Gadgets', 'tecnolog??a-computaci??n-y-gadgets', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 0, 0, 'productos', 'activo'),
 (25, 'Belleza y Cuidado Personal', 'belleza-y-cuidado-personal', '', '-primary-2', 'fas fa-spa', 'default.jpg', 0, 0, 'productos', 'activo'),
 (26, 'Deportes y Aire Libre', 'deportes-y-aire-libre', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 0, 0, 'productos', 'activo'),
-(27, 'Hogar y Electrodomésticos', 'hogar-y-electrodom??sticos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 0, 0, 'productos', 'activo'),
-(28, 'Herramientas e Industria', 'herramientas-e-industria', '', '-primary-5', 'fas fa-wrench', 'default.jpg', 0, 0, 'productos', 'activo'),
-(29, 'Juguetes y Bebés', 'juguetes-y-beb??s', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 0, 0, 'productos', 'activo'),
+(27, 'Hogar', 'hogar-y-electrodom??sticos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 0, 0, 'productos', 'activo'),
+(29, 'Bebés', 'juguetes-y-beb??s', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 0, 0, 'productos', 'activo'),
 (30, 'Libros', 'libros', '', '-primary-7', 'fas fa-book', 'default.jpg', 0, 0, 'productos', 'activo'),
 (31, 'Moda Joyas y Relojes', 'moda-joyas-y-relojes', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 0, 0, 'productos', 'activo'),
-(32, 'Muebles', 'muebles', '', '-primary-9', 'fas fa-couch', 'default.jpg', 0, 0, 'productos', 'activo'),
 (33, 'Vehículos y Accesorios', 'veh??culos-y-accesorios', '', '-primary-10', 'fas fa-car', 'default.jpg', 0, 0, 'productos', 'activo'),
 (34, 'Manualidades y Artesanías', 'manualidades-y-artesan??as', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 0, 0, 'productos', 'activo'),
-(35, 'El Super', 'el-super', '', '-primary-12', 'fas fa-apple-alt', 'categoria-5c426f73b7214.jpg', 0, 0, 'productos', 'activo'),
 (36, 'Audio', 'audio', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 24, 0, 'productos', 'activo'),
 (37, 'Televisores', 'televisores', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 24, 0, 'productos', 'activo'),
 (38, 'Fotografía y Video', 'fotograf??a-y-video', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 24, 0, 'productos', 'activo'),
 (39, 'Celulares', 'celulares', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 24, 0, 'productos', 'activo'),
 (40, 'Computación', 'computaci??n', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 24, 0, 'productos', 'activo'),
-(41, 'Video Juegos', 'video-juegos', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 24, 0, 'productos', 'activo'),
-(42, 'Audifonos', 'audifonos', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 36, 0, 'productos', 'activo'),
+(41, 'Videojuegos', 'video-juegos', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 24, 0, 'productos', 'activo'),
+(42, 'Audífonos', 'audifonos', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 36, 0, 'productos', 'activo'),
 (43, 'Bocinas', 'bocinas', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 36, 0, 'productos', 'activo'),
 (44, 'Micrófonos', 'micr??fonos', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 36, 0, 'productos', 'activo'),
 (45, 'Microcomponentes', 'microcomponentes', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 36, 0, 'productos', 'activo'),
 (46, 'Varios', 'varios', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 36, 0, 'productos', 'activo'),
 (47, 'Pantallas', 'pantallas', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
 (48, 'Barras de Sonido', 'barras-de-sonido', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
-(49, 'Bluray, DVD y Reproductores', 'bluray-dvd-y-reproductores', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
+(49, 'Blu-ray, DVD y Reproductores', 'bluray-dvd-y-reproductores', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
 (50, 'Accesorios', 'accesorios', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
 (51, 'Varios', 'varios-zu0', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
 (52, 'Cámaras', 'c??maras', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 38, 0, 'productos', 'activo'),
@@ -176,7 +139,7 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (66, 'Juegos', 'juegos', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 41, 0, 'productos', 'activo'),
 (67, 'Consolas', 'consolas', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 41, 0, 'productos', 'activo'),
 (68, 'Accesorios', 'accesorios-7te', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 41, 0, 'productos', 'activo'),
-(69, 'Perfumes', 'perfumes', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
+(69, 'Perfumería', 'perfumes', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
 (70, 'Maquillaje', 'maquillaje', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
 (71, 'Cuidado de la Piel', 'cuidado-de-la-piel', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
 (72, 'Depilación y Peluquería', 'depilaci??n-y-peluquer??a', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
@@ -192,10 +155,10 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (82, 'Cremas', 'cremas', '', '-primary-2', 'fas fa-spa', 'default.jpg', 71, 0, 'productos', 'activo'),
 (83, 'Varios', 'varios-itq', '', '-primary-2', 'fas fa-spa', 'default.jpg', 71, 0, 'productos', 'activo'),
 (84, 'Cremas Depiladoras', 'cremas-depiladoras', '', '-primary-2', 'fas fa-spa', 'default.jpg', 72, 0, 'productos', 'activo'),
-(85, 'Cera para depilar', 'cera-para-depilar', '', '-primary-2', 'fas fa-spa', 'default.jpg', 72, 0, 'productos', 'activo'),
-(86, 'Maquinas rasuradoras', 'maquinas-rasuradoras', '', '-primary-2', 'fas fa-spa', 'default.jpg', 72, 0, 'productos', 'activo'),
+(85, 'Cera para Depilar', 'cera-para-depilar', '', '-primary-2', 'fas fa-spa', 'default.jpg', 72, 0, 'productos', 'activo'),
+(86, 'Maquinas Rasuradoras y Depiladoras', 'maquinas-rasuradoras', '', '-primary-2', 'fas fa-spa', 'default.jpg', 72, 0, 'productos', 'activo'),
 (87, 'Varios', 'varios-3a8', '', '-primary-2', 'fas fa-spa', 'default.jpg', 72, 0, 'productos', 'activo'),
-(88, 'Shampoo', 'shampoo', '', '-primary-2', 'fas fa-spa', 'default.jpg', 73, 0, 'productos', 'activo'),
+(88, 'Champú', 'shampoo', '', '-primary-2', 'fas fa-spa', 'default.jpg', 73, 0, 'productos', 'activo'),
 (89, 'Acondicionadores', 'acondicionadores', '', '-primary-2', 'fas fa-spa', 'default.jpg', 73, 0, 'productos', 'activo'),
 (90, 'Tintes', 'tintes', '', '-primary-2', 'fas fa-spa', 'default.jpg', 73, 0, 'productos', 'activo'),
 (91, 'Cepillos y Accesorios', 'cepillos-y-accesorios', '', '-primary-2', 'fas fa-spa', 'default.jpg', 73, 0, 'productos', 'activo'),
@@ -209,66 +172,55 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (108, 'Arte y entretenimiento', 'arte-y-entretenimiento', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 0, 0, 'servicios', 'activo'),
 (109, 'Salud', 'm??dicos-y-enfermer??a', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 0, 0, 'servicios', 'activo'),
 (111, 'Bicicletas', 'bicicletas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
-(112, ' Fitness', 'entrenamiento-y-fitness', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
+(112, ' Fitnes', 'entrenamiento-y-fitness', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
 (113, 'Campismo', 'campismo', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
 (114, 'Montaña', 'montaña', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
-(115, 'Urbana', 'urbana', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
+(115, 'Urbanas', 'urbana', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
 (116, 'Plegables', 'plegables', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
-(117, 'Electricas', 'electricas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
-(118, 'Infantil', 'infantil', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
+(117, 'Eléctricas', 'electricas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
+(118, 'Infantiles', 'infantil', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
 (119, 'Accesorios', 'accesorios-chk', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
-(120, 'Barras y pesas', 'barras-y-pesas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
-(121, 'Caminadoras y equipo', 'caminadoras-y-equipo', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
-(122, 'Entrenamiento funcional', 'entrenamiento-funcional', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
-(123, 'Yoga', 'yoga', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
-(124, 'Casas de campaña', 'casas-de-campaña', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
-(125, 'Colchones inflables', 'colchones-inflables', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
+(120, 'Barras y Pesas', 'barras-y-pesas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
+(121, 'Caminadoras y Equipo', 'caminadoras-y-equipo', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
+(122, 'Entrenamiento Funcional', 'entrenamiento-funcional', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
+(123, 'Miscelaneas', 'yoga', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
+(124, 'Casas de Campaña', 'casas-de-campaña', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
+(125, 'Colchones Inflables', 'colchones-inflables', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
 (126, 'Hieleras', 'hieleras', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
 (127, 'Mochilas', 'mochilas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
-(128, 'Sillas y mesas', 'sillas-y-mesas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
+(128, 'Sillas y Mesas', 'sillas-y-mesas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
 (129, 'Muebles', 'muebles-4gk', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
 (130, 'Cocina', 'cocina', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
-(132, 'Colchones y almohadas', 'colchones-y-almohadas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
+(132, 'Recámara', 'colchones-y-almohadas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
 (133, 'Decoración', 'decoración', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
 (134, 'Iluminación', 'iluminación', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
-(135, 'Línea blanca', 'linea-blanca', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
-(136, 'Salas', 'salas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
-(137, 'Recámaras', 'recámaras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
+(135, 'Línea Blanca y Electrodomésticos', 'linea-blanca', '', '-primary-4', 'fas fa-blender', 'default.jpg', 27, 0, 'productos', 'activo'),
+(136, 'Sala', 'salas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
+(137, 'Recámara', 'recámaras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
 (138, 'Estudio', 'estudio', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
 (139, 'Baño', 'baño', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
 (140, 'Jardín', 'jardín', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
-(141, 'Cubiertos y cuchillos', 'cubiertos-y-cuchillos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
+(141, 'Cubiertos y Cuchillos', 'cubiertos-y-cuchillos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
 (142, 'Repostería', 'repostería', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
-(143, 'Ollas y sartenes', 'ollas-y-sartenes', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
-(144, 'Accesorios de cocina', 'accesorios-de-cocina', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
+(143, 'Ollas y Sartenes', 'ollas-y-sartenes', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
+(144, 'Accesorios de Cocina', 'accesorios-de-cocina', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
 (145, 'Colchones', 'colchones', '', '-primary-4', 'fas fa-blender', 'default.jpg', 132, 0, 'productos', 'activo'),
 (146, 'Almohadas', 'almohadas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 132, 0, 'productos', 'activo'),
-(147, 'Box', 'box', '', '-primary-4', 'fas fa-blender', 'default.jpg', 132, 0, 'productos', 'activo'),
+(147, 'Box Spring', 'box', '', '-primary-4', 'fas fa-blender', 'default.jpg', 132, 0, 'productos', 'activo'),
 (148, 'Refrigeradores', 'refrigeradores', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
 (149, 'Lavadoras', 'lavadoras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
 (150, 'Hornos', 'hornos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
 (151, 'Lavavajillas', 'lavavajillas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
-(152, 'Ropa infantil', 'ropa-infantil', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
-(153, 'Muebles infantiles', 'muebles-infantiles', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
+(152, 'Ropa y Accesorios', 'ropa-infantil', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
+(153, 'Muebles', 'muebles-infantiles', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
 (154, 'Bebés', 'bebés', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
-(155, 'Juguetes y juegos', 'juguetes-y-juegos', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
-(156, 'Drones', 'drones', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
-(157, 'Artículos escolares', 'artículos-escolares', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
 (158, 'Pañales', 'pañales', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
 (159, 'Carriolas', 'carriolas', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
 (160, 'Cunas', 'cunas', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
 (161, 'Seguridad y monitores', 'seguridad-y-monitores', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
 (162, 'Aseo e higiene', 'aseo-e-higiene', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
-(163, 'Juegos de mesa', 'juegos-de-mesa', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
-(164, 'Peluches', 'peluches', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
-(165, 'Figuras de acción', 'figuras-de-acción', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
-(166, 'Juguetes para niña', 'juguetes-para-niña', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
-(167, 'Juguetes electrónicos', 'juguetes-electrónicos', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
-(168, 'Juguetes de jardín', 'juguetes-de-jardín', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 155, 0, 'productos', 'activo'),
-(169, 'Libros en inglés', 'libros-en-inglés', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
-(170, 'Infantil y juvenil', 'infantil-y-juvenil', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
-(171, 'Literatura y ficción ', 'literatura-y-ficción', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
-(172, 'Profesional y técnico', 'profesional-y-técnico', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(171, 'Literatura Clásica', 'literatura-y-ficción', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(172, 'Profesionales y Técnicos', 'profesional-y-técnico', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (173, 'Romance', 'romance', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (174, 'eBooks Kindle', 'ebooks-kindle', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (175, 'Ciencia Ficción y Fantasía', 'ciencia-ficción-y-fantasía', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
@@ -299,13 +251,6 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (200, 'Botas', 'botas-pan', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
 (201, 'Casuales', 'casuales', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
 (202, 'Formales', 'formales', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
-(203, 'Camas', 'camas', '', '-primary-9', 'fas fa-couch', 'default.jpg', 32, 0, 'productos', 'activo'),
-(204, 'Sillones', 'sillones', '', '-primary-9', 'fas fa-couch', 'default.jpg', 32, 0, 'productos', 'activo'),
-(205, 'Mesas', 'mesas', '', '-primary-9', 'fas fa-couch', 'default.jpg', 32, 0, 'productos', 'activo'),
-(206, 'Muebles de jardín ', 'muebles-de-jardín', '', '-primary-9', 'fas fa-couch', 'default.jpg', 32, 0, 'productos', 'activo'),
-(207, 'Muebles de baño', 'muebles-de-baño', '', '-primary-9', 'fas fa-couch', 'default.jpg', 32, 0, 'productos', 'activo'),
-(208, 'Mesas', 'mesas-m9c', '', '-primary-9', 'fas fa-couch', 'default.jpg', 206, 0, 'productos', 'activo'),
-(209, 'Sombrillas', 'sombrillas', '', '-primary-9', 'fas fa-couch', 'default.jpg', 206, 0, 'productos', 'activo'),
 (210, 'Automóviles ', 'automóviles', '', '-primary-10', 'fas fa-car', 'default.jpg', 33, 0, 'productos', 'activo'),
 (211, 'Accesorios para auto', 'accesorios-para-auto', '', '-primary-10', 'fas fa-car', 'default.jpg', 33, 0, 'productos', 'activo'),
 (212, 'Motocicletas', 'motocicletas', '', '-primary-10', 'fas fa-car', 'default.jpg', 33, 0, 'productos', 'activo'),
@@ -317,12 +262,6 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (218, 'Aretes', 'aretes', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 214, 0, 'productos', 'activo'),
 (219, 'Anillos', 'anillos', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 214, 0, 'productos', 'activo'),
 (220, 'Pulceras', 'pulceras', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 214, 0, 'productos', 'activo'),
-(221, 'Carnes  y pescados', 'carnes-y-pescados', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
-(222, 'Congelados', 'congelados', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
-(223, 'Despensa', 'despensa', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
-(224, 'Frutas y verduras', 'frutas-y-verduras', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
-(225, 'Lácteos ', 'lácteos', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
-(226, 'Vinos y licores', 'vinos-y-licores', '', '-primary-12', 'fas fa-apple-alt', 'default.jpg', 35, 0, 'productos', 'activo'),
 (227, 'Eléctrica y Electrónica', 'eléctrica-y-electrónica', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
 (228, 'Ingeniería Civil', 'ingeniería-civil', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
 (229, 'Ingeniería Ambiental', 'ingeniería-ambiental', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
@@ -335,13 +274,148 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (236, 'Plomería', 'plomería', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
 (237, 'Cerrajería ', 'cerrajería', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
 (238, 'Albañilería', 'albañilería', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
-(239, 'Actores', 'actores', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
+(239, 'Actores y Mimos', 'actores', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
 (240, 'Pediatra', 'pediatra', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
 (241, 'Dermatología', 'dermatología', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
 (242, 'Psicología ', 'psicología', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
 (243, 'Ginecología', 'ginecología', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
 (244, 'Dentista', 'dentista', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
-(245, 'Ortopedista ', 'ortopedista', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo');
+(245, 'Ortopedista ', 'ortopedista', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(246, 'Jardineria', 'jardineria', '', '-success', 'fas fa-leaf', 'default.jpg', 0, 0, 'productos', 'activo'),
+(247, 'Muebles', 'muebles-swo', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
+(248, 'Iluminación', 'iluminación-64q', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
+(249, 'Herramientas', 'herramientas', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
+(250, 'Decoración', 'decoración-2ok', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
+(251, 'Plantas', 'plantas', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
+(252, 'Nutrientes para Plantas', 'nutrientes-para-plantas', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
+(253, 'Varios', 'varios-5n1', '', '-primary-2', 'fas fa-spa', 'default.jpg', 73, 0, 'productos', 'activo'),
+(254, 'Protectores', 'protectores', '', '-primary-2', 'fas fa-spa', 'default.jpg', 74, 0, 'productos', 'activo'),
+(255, 'Deportes', 'deportes', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
+(256, 'Basquetbol', 'basquetbol', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 255, 0, 'productos', 'activo'),
+(257, 'Futbol', 'futbol', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 255, 0, 'productos', 'activo'),
+(258, 'Voleibol', 'voleibol', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 255, 0, 'productos', 'activo'),
+(259, 'Carrera y Caminata', 'carrera-y-caminata', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 255, 0, 'productos', 'activo'),
+(260, 'Deportes Extremos', 'deportes-extremos', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
+(261, 'Paracaidismo', 'paracaidismo', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 260, 0, 'productos', 'activo'),
+(262, 'Deportes Acuáticos', 'deportes-acuáticos', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
+(263, 'Natación', 'natación', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 262, 0, 'productos', 'activo'),
+(264, 'Buceo', 'buceo', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 262, 0, 'productos', 'activo'),
+(265, 'Yoga', 'yoga-yyh', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
+(266, 'Yoga', 'yoga-5wr', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 265, 0, 'productos', 'activo'),
+(267, 'Cocina', 'cocina-h6g', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
+(268, 'Extensiones', 'extensiones', '', '-primary-4', 'fas fa-blender', 'default.jpg', 134, 0, 'productos', 'activo'),
+(269, 'Interrupciones', 'interrupciones', '', '-primary-4', 'fas fa-blender', 'default.jpg', 134, 0, 'productos', 'activo'),
+(270, 'Contactos', 'contactos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 134, 0, 'productos', 'activo'),
+(271, 'Timbres', 'timbres', '', '-primary-4', 'fas fa-blender', 'default.jpg', 134, 0, 'productos', 'activo'),
+(272, 'Alarmas y Sensores', 'alarmas-y-sensores', '', '-primary-4', 'fas fa-blender', 'default.jpg', 134, 0, 'productos', 'activo'),
+(273, 'Licuadoras', 'licuadoras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
+(274, 'Tostadoras', 'tostadoras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
+(275, 'Cafeteras', 'cafeteras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
+(276, 'Sandwicheras / Waffleras', 'sandwicheras-waffleras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
+(277, 'Arrozeras', 'arrozeras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
+(278, 'Pañaleras', 'pañaleras', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 152, 0, 'productos', 'activo'),
+(279, 'Cunas', 'cunas-pmb', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 153, 0, 'productos', 'activo'),
+(280, 'Camas', 'camas', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 153, 0, 'productos', 'activo'),
+(282, 'Niños y Juguetes', 'niños-y-juguetes', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 0, 0, 'productos', 'activo'),
+(283, 'Juguetes y Juegos', 'juguetes-y-juegos', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 282, 0, 'productos', 'activo'),
+(284, 'Juegos de Mesa', 'juegos-de-mesa', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
+(285, 'Peluches', 'peluches', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
+(286, 'Figuras de Acción', 'figuras-de-acción', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
+(287, 'Juguetes', 'juguetes', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
+(288, 'Juguetes Electrónicos', 'juguetes-electrónicos', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
+(289, 'Juguetes para Jardín', 'juguetes-para-jardín', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
+(290, 'Drones y Radio Control', 'drones-y-radio-control', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 282, 0, 'productos', 'activo'),
+(291, 'Montables', 'montables', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 290, 0, 'productos', 'activo'),
+(292, 'Sedán', 'sedán', '', '-primary-10', 'fas fa-car', 'default.jpg', 210, 0, 'productos', 'activo'),
+(293, 'Tapices', 'tapices', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(294, 'Posters', 'posters', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(295, 'Velas y Candelabros', 'velas-y-candelabros', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(296, 'Chimeneas', 'chimeneas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(297, 'Canastas', 'canastas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(298, 'Portarretratos', 'portarretratos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(299, 'Centros de Mesa', 'centros-de-mesa', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(300, 'Figuras Decorativas', 'figuras-decorativas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(301, 'Floreros y Jarrones', 'floreros-y-jarrones', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(302, 'Relojes de Pared', 'relojes-de-pared', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(303, 'Alfombras', 'alfombras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(304, 'Cuadros', 'cuadros', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(305, 'Espejos', 'espejos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 133, 0, 'productos', 'activo'),
+(306, 'Slowcooker', 'slowcooker', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
+(307, 'Ollas Express', 'ollas-express', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
+(308, 'Para Viajeros / Turismo', 'para-viajeros-turismo', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(309, 'Idiomas', 'idiomas', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(310, 'Escolares', 'escolares', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(311, 'Esoterismo', 'esoterismo', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(312, 'Gastronomía', 'gastronomía', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(313, 'Historia y Biografías', 'gastronomía-xew', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(314, 'Religión', 'religión', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(315, 'Salud Alternativa', 'salud-alternativa', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(316, 'Animales / Mascotas', 'animales-mascotas', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(317, 'Plantas y Agricultura', 'plantas-y-agricultura', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(318, 'Libros para Colorear', 'libros-para-colorear', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(319, 'Comics', 'comics', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(320, 'Audiolibros', 'audiolibros', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(321, 'Infantil y Juvenil', 'infantil-y-juvenil-64q', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(322, 'Físico - Matemáticos', 'físico-matemáticos', '', '-primary-7', 'fas fa-book', 'default.jpg', 172, 0, 'productos', 'activo'),
+(323, 'Ciencias Biológicas', 'ciencias-biológicas', '', '-primary-7', 'fas fa-book', 'default.jpg', 172, 0, 'productos', 'activo'),
+(324, 'Medicina', 'medicina', '', '-primary-7', 'fas fa-book', 'default.jpg', 172, 0, 'productos', 'activo'),
+(325, 'Arte y Arquitectura', 'arte-y-arquitectura', '', '-primary-7', 'fas fa-book', 'default.jpg', 172, 0, 'productos', 'activo'),
+(326, 'Humanidades', 'humanidades', '', '-primary-7', 'fas fa-book', 'default.jpg', 172, 0, 'productos', 'activo'),
+(327, 'Administración / Finanzas', 'administración-finanzas', '', '-primary-7', 'fas fa-book', 'default.jpg', 172, 0, 'productos', 'activo'),
+(328, 'Derecho', 'derecho', '', '-primary-7', 'fas fa-book', 'default.jpg', 172, 0, 'productos', 'activo'),
+(329, 'Alimentación y Lactancia', 'alimentación-y-lactancia', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
+(330, 'Mamilas', 'mamilas', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 329, 0, 'productos', 'activo'),
+(331, 'Saca Leche', 'saca-leche', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 329, 0, 'productos', 'activo'),
+(332, 'Chupones', 'chupones', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 329, 0, 'productos', 'activo'),
+(333, 'Cuerpo', 'cuerpo', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
+(334, 'Manos', 'manos', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
+(335, 'Jabones', 'jabones', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
+(336, 'Higiene Femenina', 'higiene-femenina', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
+(337, 'Pisos y Acabados', 'pisos-y-acabados', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(338, 'Herrería', 'herrería', '', '-primary-15', 'fas fa-home', 'default.jpg', 337, 0, 'servicios', 'activo'),
+(339, 'Jardineros', 'jardineros', '', '-primary-15', 'fas fa-home', 'default.jpg', 337, 0, 'servicios', 'activo'),
+(340, 'Limpieza', 'limpieza', '', '-primary-15', 'fas fa-home', 'default.jpg', 337, 0, 'servicios', 'activo'),
+(341, 'Ventanas y Canceles', 'ventanas-y-canceles', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(342, 'Reparación Electrodomésticos y Electrónica', 'reparación-electrodomésticos-y-electrónica', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(343, 'Pintores', 'pintores', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(344, 'Carpintería', 'carpintería', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(345, 'Restauración de Muebles', 'restauración-de-muebles', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(346, 'Músicos', 'músicos', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
+(347, 'Magos', 'magos', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
+(348, 'Payasos', 'payasos', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
+(349, 'Médicos', 'médicos', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(350, 'Nutrición', 'nutrición', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(351, 'Cardiología', 'cardiología', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(352, 'Contadores', 'contadores', '', '-primary-17', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
+(353, 'Administradores', 'administradores', '', '-primary-17', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
+(354, 'Abogados', 'abogados', '', '-primary-17', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
+(355, 'Otros', 'otros', '', '-primary-17', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
+(356, 'Mecánicos', 'mecánicos', '', '-primary-16', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
+(357, 'Hojalateros', 'hojalateros', '', '-primary-16', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
+(358, 'Pintura', 'pintura', '', '-primary-16', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
+(359, 'Restauradores', 'restauradores', '', '-primary-16', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
+(360, 'Pintores y Escultores', 'pintores-y-escultores', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
+(361, 'Educación', 'educación', '', '-primary-1', 'fas fa-chalkboard-teacher', 'default.jpg', 0, 0, 'servicios', 'activo'),
+(362, 'Idiomas', 'idiomas-g9f', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(363, 'Música', 'música', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(364, 'Manualidades', 'manualidades', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(365, 'Arte', 'arte', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(366, 'Regularizaciones', 'regularizaciones', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(367, 'Computación', 'computación-5wu', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(368, 'Fitnes y Nutrición', 'fitnes-y-nutrición', '', '-primary-2', 'fas fa-child', 'default.jpg', 0, 0, 'servicios', 'activo'),
+(369, 'Entrenadores', 'entrenadores', '', '-primary', 'fas fa-list', 'default.jpg', 368, 0, 'servicios', 'activo'),
+(370, 'Nutriólogos', 'nutriólogos', '', '-primary', 'fas fa-list', 'default.jpg', 368, 0, 'servicios', 'activo'),
+(371, 'Banquetes', 'banquetes', '', '-primary-3', 'fas fa-utensils', 'default.jpg', 0, 0, 'servicios', 'activo'),
+(372, 'Cattering', 'cattering', '', '-primary', 'fas fa-list', 'default.jpg', 371, 0, 'servicios', 'activo'),
+(373, 'Buffettes', 'buffettes', '', '-primary', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
+(374, 'Mesas y Sillas', 'mesas-y-sillas', '', '-primary', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
+(375, 'Meseros', 'meseros', '', '-primary-3', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
+(376, 'Cocineros / Chefs', 'cocineros', '', '-primary-3', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
+(377, 'Fiestas Infantiles', 'fiestas-infantiles', '', '-primary-4', 'fas fa-gift', 'default.jpg', 0, 0, 'servicios', 'activo'),
+(378, 'Shows', 'shows', '', '-primary-4', 'fas fa-gift', 'default.jpg', 377, 0, 'servicios', 'activo'),
+(379, 'Decoración', 'decoración-g3t', '', '-primary-4', 'fas fa-gift', 'default.jpg', 377, 0, 'servicios', 'activo'),
+(380, 'Muebles / Mobiliario', 'muebles-mobiliario', '', '-primary-4', 'fas fa-gift', 'default.jpg', 377, 0, 'servicios', 'activo'),
+(381, 'Inflables /Brincolines', 'inflables-brincolines', '', '-primary-4', 'fas fa-gift', 'default.jpg', 377, 0, 'servicios', 'activo');
 
 -- --------------------------------------------------------
 
@@ -364,14 +438,13 @@ INSERT INTO `categorias_productos` (`ID`, `ID_CATEGORIA`, `ID_PRODUCTO`) VALUES
 (22, 24, 17),
 (24, 26, 19),
 (26, 26, 20),
-(29, 42, 22),
 (30, 144, 23),
 (31, 46, 24),
 (32, 198, 25),
 (33, 61, 26),
 (44, 193, 27),
 (45, 55, 18),
-(47, 42, 28);
+(48, 42, 22);
 
 -- --------------------------------------------------------
 
@@ -427,22 +500,6 @@ CREATE TABLE `conversaciones` (
   `CONVERSACION_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `conversaciones`
---
-
-INSERT INTO `conversaciones` (`ID_CONVERSACION`, `ID_USUARIO_A`, `ID_USUARIO_B`, `ID_OBJETO`, `CONVERSACION_FECHA_REGISTRO`, `CONVERSACION_FECHA_ACTUALIZACION`, `CONVERSACION_TIPO`, `CONVERSACION_ESTADO`) VALUES
-(1, '5c0653d43d92e7.75019474', '5c25209703a210.25306180', 20, '2019-01-09 22:55:40', '2019-01-09 22:55:40', 'pregunta producto', 'no leido'),
-(2, '5c0653d43d92e7.75019474', '5c25209703a210.25306180', 11, '2019-01-09 22:59:09', '2019-01-09 22:59:09', 'mensaje servicio', 'no leido'),
-(3, '5c0653d43d92e7.75019474', '5c25209703a210.25306180', 20, '2019-01-18 23:38:00', '2019-01-30 23:20:41', 'pregunta producto', 'respuesta'),
-(4, '5c0653d43d92e7.75019474', '5c25209703a210.25306180', 20, '2019-01-18 23:42:58', '2019-01-18 23:42:58', 'pregunta producto', 'no leido'),
-(5, '5c08a9dc2cb096.56391251', '5c08a9dc2cb096.56391251', 4, '2019-01-19 00:05:50', '2019-01-19 00:06:29', 'pregunta producto', 'respuesta'),
-(6, '5c08a9dc2cb096.56391251', '5c4631142f4944.13186972', 25, '2019-01-21 21:15:55', '2019-01-21 21:28:07', 'pregunta producto', 'respuesta'),
-(7, '5c08a9dc2cb096.56391251', '5c4631142f4944.13186972', 13, '2019-01-21 21:37:54', '2019-01-21 21:58:22', 'mensaje servicio', 'respuesta'),
-(8, '5c08a9dc2cb096.56391251', '5c48a2a2a43ed3.21261698', 16, '2019-01-23 17:53:06', '2019-01-23 17:55:06', 'mensaje servicio', 'respuesta'),
-(9, '5c4631142f4944.13186972', '5c08a9dc2cb096.56391251', 17, '2019-01-23 18:01:24', '2019-01-23 18:05:22', 'mensaje servicio', 'respuesta'),
-(10, '5c48f4e7ce0708.70141183', '5c48a2a2a43ed3.21261698', 16, '2019-01-23 23:38:24', '2019-01-23 23:38:24', 'mensaje servicio', 'no leido');
-
 -- --------------------------------------------------------
 
 --
@@ -459,28 +516,6 @@ CREATE TABLE `conversaciones_mensajes` (
   `MENSAJE_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `conversaciones_mensajes`
---
-
-INSERT INTO `conversaciones_mensajes` (`ID_MENSAJE`, `ID_CONVERSACION`, `ID_REMITENTE`, `MENSAJE_ASUNTO`, `MENSAJE_TEXTO`, `MENSAJE_ESTADO`, `MENSAJE_FECHA_REGISTRO`) VALUES
-(1, 1, '5c0653d43d92e7.75019474', 'Pregunta sobre un Producto', '<p><b>Producto:</b> libretas hechas a mano</p><p>Quisiera saber si no son toxicos</p>', 'no leido', '2019-01-09 22:55:40'),
-(2, 2, '5c0653d43d92e7.75019474', 'Solicitud de Servicio', '<p><b>Servicio:</b> Redaccion y correccion de textos </p><p>Hola quisiera mas información.</p>', 'no leido', '2019-01-09 22:59:09'),
-(3, 3, '5c0653d43d92e7.75019474', 'Pregunta sobre un Producto', '<p><b>Producto:</b> libretas hechas a mano</p><p>Hola Esta es una pregunta de prueba.... </p>', 'no leido', '2019-01-18 23:38:00'),
-(4, 4, '5c0653d43d92e7.75019474', 'Pregunta sobre un Producto', '<p><b>Producto:</b> libretas hechas a mano</p><p>Segunda pregunta de prueba</p>', 'no leido', '2019-01-18 23:42:58'),
-(5, 5, '5c08a9dc2cb096.56391251', 'Pregunta sobre un Producto', '<p><b>Producto:</b> Olla de 5 lts</p><p>Quisiera saber cuantos años de garantia tiene el producto y si es para usarse en cualquier tipo de estufa. </p>', 'no leido', '2019-01-19 00:05:50'),
-(6, 5, '5c08a9dc2cb096.56391251', '', 'Saludos, la olla tiene 30 a►os de garantia directamente con nosotros. ', 'no leido', '2019-01-19 00:06:29'),
-(7, 6, '5c08a9dc2cb096.56391251', 'Pregunta sobre un Producto', '<p><b>Producto:</b> Bolsa chica</p><p>Hola, tienes la bolsa en diferentes tamanos? cual es el costo por tamano? </p>', 'no leido', '2019-01-21 21:15:55'),
-(8, 6, '5c4631142f4944.13186972', '', 'No es el único tamaño pero es muy util', 'no leido', '2019-01-21 21:28:07'),
-(9, 7, '5c08a9dc2cb096.56391251', 'Solicitud de Servicio', '<p><b>Servicio:</b> Plomeria</p><p>Saludos. Puede venir a realizar una instalación a la zona del valle de chalco? </p>', 'no leido', '2019-01-21 21:37:54'),
-(10, 7, '5c4631142f4944.13186972', '', 'Obvio no, vivo en Amatlán chiapas', 'no leido', '2019-01-21 21:58:22'),
-(11, 8, '5c08a9dc2cb096.56391251', 'Solicitud de Servicio', '<p><b>Servicio:</b> Asesorías para niños de secundaria</p><p>Saludos, quisiera saber si das clases de matematicas y fisicas para una niña de tercero de secundaria. En que horario las das y cual es el costo. Gracias. </p>', 'no leido', '2019-01-23 17:53:06'),
-(12, 8, '5c48a2a2a43ed3.21261698', '', 'Hola, si doy matematicas y fisica a todos los niveles, desde secundaria hasta universidad. El horario que manejo depende de si tu hija va a la escuela por la mañana o la tarde. El costo depende del número de horas que se asignen a la semana. Si te interesa, te dejo mi numero de cel para que platiquemos, 55555555', 'no leido', '2019-01-23 17:55:06'),
-(13, 9, '5c4631142f4944.13186972', 'Solicitud de Servicio', '<p><b>Servicio:</b> Instalacion de filtros de agua</p><p>Hola, me interesa comprar un filtro de osmosis inversa para instalarlo en la Ciudad de México, puedes indicarme el costo del producto con el envio incluido? Gracias. </p>', 'no leido', '2019-01-23 18:01:24'),
-(14, 9, '5c08a9dc2cb096.56391251', '', 'Hola, puedes indicarme el tipo de conexion que tienes en la cocina, y si te interesa que el filtro tenga una luz ultravioleta?', 'no leido', '2019-01-23 18:05:22'),
-(15, 10, '5c48f4e7ce0708.70141183', 'Solicitud de Servicio', '<p><b>Servicio:</b> Asesorías para niños de secundaria</p><p>Quisiera saber cuanto cuestan?</p>', 'no leido', '2019-01-23 23:38:24'),
-(16, 3, '5c0653d43d92e7.75019474', '', 'hola', 'no leido', '2019-01-30 23:20:41');
-
 -- --------------------------------------------------------
 
 --
@@ -496,14 +531,6 @@ CREATE TABLE `devoluciones` (
   `DEVOLUCION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DEVOLUCION_ESTADO` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `devoluciones`
---
-
-INSERT INTO `devoluciones` (`ID_DEVOLUCION`, `ID_PEDIDO`, `DEVOLUCION_COMENTARIO`, `DEVOLUCION_ARCHIVO`, `DEVOLUCION_RESPUESTA`, `DEVOLUCION_FECHA_REGISTRO`, `DEVOLUCION_ESTADO`) VALUES
-(1, 25, 'La pizza llego muy fria', 'devolucion-5c48ec8b53667.png', 'No nos importa', '2019-01-23 22:36:59', 'Devolucion'),
-(2, 22, 'Siempre no me gustó', 'devolucion-5c490651b5c3d.jpg', 'Ok aceptamos la devolución te llegará el pago a tu cuenta.', '2019-01-24 00:26:57', 'Devolucion');
 
 -- --------------------------------------------------------
 
@@ -528,38 +555,6 @@ CREATE TABLE `direcciones` (
   `DIRECCION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `DIRECCION_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `direcciones`
---
-
-INSERT INTO `direcciones` (`ID_DIRECCION`, `ID_USUARIO`, `ID_TIENDA`, `DIRECCION_TIPO`, `DIRECCION_ALIAS`, `DIRECCION_PAIS`, `DIRECCION_ESTADO`, `DIRECCION_CIUDAD`, `DIRECCION_MUNICIPIO`, `DIRECCION_BARRIO`, `DIRECCION_CALLE_Y_NUMERO`, `DIRECCION_CODIGO_POSTAL`, `DIRECCION_REFERENCIAS`, `DIRECCION_FECHA_REGISTRO`, `DIRECCION_FECHA_ACTUALIZACION`) VALUES
-(10, '5c0653d43d92e7.75019474', 0, 'envio', 'Casa', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', 'Cerca de Escuela Primaria No. 12 Ernesto Alconedo', '2018-12-22 16:40:33', '2018-12-22 16:40:33'),
-(11, '5c0653d43d92e7.75019474', 1, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '-', '2019-01-28 20:04:50', '2019-01-28 20:04:50'),
-(13, '5c251a08bf0109.40704946', 7, 'fiscal', 'Direccion Tienda', 'México', 'Nuevo León', 'Nuevo Leon ', 'Ciénega de Flores', 'cienga', '598 interior 8', '11850', '-', '2018-12-27 18:53:23', '2018-12-27 18:53:23'),
-(14, '5c25209703a210.25306180', 8, 'fiscal', 'Direccion Tienda', 'México', 'Veracruz', 'Banderilla', 'Banderilla', 'a', 'San Juan de Letran 68', '11850', '-', '2019-01-08 23:22:54', '2019-01-08 23:22:54'),
-(15, '5c0653d43d92e7.75019474', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'Avenida 561 No. 148', 'Avenida 561 No. 148', '07969', '-', '2019-01-18 23:57:44', '2019-01-18 23:57:44'),
-(16, '5c0653d43d92e7.75019474', 0, 'envio', 'Trabajo', 'México', 'Ciudad de México', 'Ciudad de México', 'Benito Juárez', 'Roma Norte', 'Medellín 101', '06700 ', '', '2019-01-06 22:06:35', '2019-01-06 22:06:35'),
-(17, '5c08a9dc2cb096.56391251', 0, 'envio', 'la ofi', 'México', 'Ciudad de México', '', 'Milpa Alta', 'Chalmita', '35 6 ', '12410', '', '2019-01-07 17:55:28', '2019-01-07 17:55:28'),
-(18, '5c0839a2158e44.99631671', 2, 'fiscal', 'Direccion Tienda', 'México', 'Chihuahua', '', 'Bocoyna', 'kjjj', 'hhhh', '5568', '-', '2019-01-08 22:41:23', '2019-01-08 22:41:23'),
-(19, '5c19b1d094f6e6.26249130', 0, 'envio', 'Trabajo', 'México', 'Ciudad de México', '', 'Cuauhtémoc', 'Doctores', 'Dr. Galvez 555', '65364', 'Entre Dr. Lucio y Dr. Tejeda', '2019-01-10 23:04:09', '2019-01-10 23:07:32'),
-(22, '5c426854e19458.20500628', 0, 'perfil', 'Direccion Perfil', 'México', 'Guerrero', 'asdasd', 'Atlixtac', 'asdasd', ' asdasdsd', 'asdasd', '-', '2019-01-19 00:09:53', '2019-01-19 00:09:53'),
-(23, '5c4631142f4944.13186972', 9, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', '', 'Benito Juárez', 'Miguel h', '5', '11850', '-', '2019-01-21 20:59:22', '2019-01-21 20:59:22'),
-(24, '5c4631142f4944.13186972', 0, 'perfil', 'Direccion Perfil', 'México', 'Chiapas', '', 'Arriaga', 'Col', 'Sin num', '333', '-', '2019-01-21 21:13:17', '2019-01-21 21:13:17'),
-(25, '5c4631142f4944.13186972', 0, 'envio', 'V', 'México', 'Campeche', '', 'Calakmul', 'Miguel h', 'Sn', '5678', '', '2019-01-21 23:32:20', '2019-01-21 23:32:20'),
-(26, '5c468c5b493f02.45278461', 10, 'fiscal', 'Direccion Tienda', 'México', '-', 'Ciudad de México y alrededores, México', '-', 'general anaya', 'cda paz montes de oca 19', '03340', '-', '2019-01-22 03:37:16', '2019-01-22 03:37:16'),
-(27, '5c4753da68d4b7.48707257', 0, 'perfil', 'Direccion Perfil', 'México', 'Veracruz', 'San Andrés Tuxtla', 'San Andrés Tuxtla', 'Centro', 'Av. Revolución # 17', '95700', '-', '2019-01-22 17:38:35', '2019-01-22 17:38:35'),
-(28, '5c489fa0131986.82562218', 0, 'envio', '', 'México', 'Ciudad de México', 'Mexico', 'Iztapalapa', 'banjidal', 'sur69 A 248', '9450', '', '2019-01-23 17:10:54', '2019-01-23 17:10:54'),
-(29, '5c48a2a2a43ed3.21261698', 11, 'fiscal', 'Direccion Tienda', 'México', 'Veracruz', '', 'Orizaba', 'agricola moctezuma', 'Avenida 5 Num. 28', '94333', '-', '2019-01-23 17:26:30', '2019-01-23 17:26:30'),
-(30, '5c48a2a2a43ed3.21261698', 0, 'perfil', 'Direccion Perfil', 'México', 'Veracruz', '', 'Orizaba', 'ALAOAAJJA', '14-5', '94333', '-', '2019-01-23 17:40:40', '2019-01-23 17:40:40'),
-(31, '5c08a9dc2cb096.56391251', 0, 'perfil', 'Direccion Perfil', 'Estados Unidos', 'New York', '', 'New York County', 'Brooklyn', '2801', '11226', '-', '2019-01-23 17:56:41', '2019-01-23 17:56:41'),
-(32, '5c2e93b02a6ee1.32959007', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', 'CDMX', 'Cuauhtémoc', 'Tlatelolco', '380', '07900', '-', '2019-01-23 22:18:02', '2019-01-23 22:18:02'),
-(33, '5c0653d43d92e7.75019474', 0, 'envio', 'Otra casa', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '', '2019-01-23 23:10:19', '2019-01-23 23:11:00'),
-(34, '5c48f4e7ce0708.70141183', 12, 'fiscal', 'Direccion Tienda', 'México', 'Coahuila', '', 'Cuatro Ciénegas', 'Pueblo Mágico', 'Calle 5', '23232323', '-', '2019-01-23 23:16:34', '2019-01-23 23:16:34'),
-(35, '5c48f4e7ce0708.70141183', 0, 'perfil', 'Direccion Perfil', 'México', 'Coahuila', '', 'Frontera', 'asd', 'asd', '232323', '-', '2019-01-23 23:30:10', '2019-01-23 23:30:10'),
-(36, '0', 0, 'envio', 'Objeto', 'México', 'Ciudad de México', '', 'Gustavo A. Madero', 'llkjlkj', 'lkjlkj', '111111', 'lkjklj', '2019-01-23 23:57:34', '2019-01-23 23:57:34'),
-(37, '5c48f4e7ce0708.70141183', 0, 'envio', 'Avenida 561 No. 148', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'aasd', 'asdasd', '07969', 'asd', '2019-01-24 01:32:45', '2019-01-24 01:32:45'),
-(38, '5c572b573e2bf2.33450061', 0, 'perfil', 'Direccion Perfil', 'Estados Unidos', 'New York', '', 'Clinton County', '', '612 west 151 street', '11456', '-', '2019-02-03 18:07:34', '2019-02-03 18:07:34');
 
 -- --------------------------------------------------------
 
@@ -716,14 +711,6 @@ CREATE TABLE `favoritos` (
   `FAVORITO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `favoritos`
---
-
-INSERT INTO `favoritos` (`ID_FAVORITO`, `ID_USUARIO`, `ID_OBJETO`, `FAVORITO_TIPO`, `FAVORITO_FECHA_REGISTRO`) VALUES
-(9, '5c0653d43d92e7.75019474', 20, 'producto', '2019-01-03 23:07:38'),
-(10, '5c0653d43d92e7.75019474', 11, 'servicio', '2019-01-03 23:07:50');
-
 -- --------------------------------------------------------
 
 --
@@ -739,24 +726,6 @@ CREATE TABLE `galeria_productos` (
   `ORDEN` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `galeria_productos`
---
-
-INSERT INTO `galeria_productos` (`ID_GALERIA`, `ID_PRODUCTO`, `GALERIA_ARCHIVO`, `GALERIA_PORTADA`, `GALERIA_ESTADO`, `ORDEN`) VALUES
-(18, 8, 'categoria-5c1a76bd5a6fd.jpg', 'si', 'activo', 1),
-(19, 17, 'categoria-5c1d350ce81b6.jpg', 'si', 'activo', 1),
-(20, 18, 'producto-5c1e6b0dee919.jpg', 'si', 'activo', 1),
-(21, 19, 'producto-5c1e6c4534aed.jpg', 'si', 'activo', 1),
-(22, 20, 'producto-5c2526234e278.jpg', 'si', 'activo', 1),
-(23, 22, 'producto-5c2e9538ac8ee.jpg', 'si', 'activo', 1),
-(24, 23, 'producto-5c44c0d799167.jpg', 'si', 'activo', 1),
-(25, 24, 'producto-5c44c0e05303a.jpg', 'si', 'activo', 1),
-(26, 25, 'producto-5c4634944993f.jpg', 'si', 'activo', 1),
-(27, 27, 'producto-5c48f6ea77434.jpg', 'si', 'activo', 1),
-(29, 27, 'producto-5c48f746d3385.jpg', 'no', 'activo', 1),
-(30, 28, 'producto-5c4f658c2e9c9.jpg', 'si', 'activo', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -771,20 +740,6 @@ CREATE TABLE `galeria_servicios` (
   `GALERIA_ESTADO` varchar(255) NOT NULL DEFAULT 'activo',
   `ORDEN` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `galeria_servicios`
---
-
-INSERT INTO `galeria_servicios` (`ID_GALERIA`, `ID_SERVICIO`, `GALERIA_ARCHIVO`, `GALERIA_PORTADA`, `GALERIA_ESTADO`, `ORDEN`) VALUES
-(8, 10, 'Servicio-5c24016ab1d69.jpg', 'si', 'activo', 1),
-(9, 11, 'Servicio-5c252359ed7c5.jpg', 'si', 'activo', 1),
-(10, 12, 'Servicio-5c42650c71b10.jpg', 'si', 'activo', 1),
-(11, 13, 'Servicio-5c46379f495ea.jpg', 'si', 'activo', 1),
-(12, 16, 'Servicio-5c48a82d2ed78.jpg', 'si', 'activo', 1),
-(13, 12, 'Servicio-5c48eb149bae9.jpg', 'no', 'activo', 1),
-(14, 18, 'Servicio-5c48f97b8c704.jpg', 'si', 'activo', 1),
-(15, 19, 'Servicio-5c4f4cf5d739a.jpg', 'si', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -803,13 +758,6 @@ CREATE TABLE `guias_abanico` (
   `GUIA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `GUIA_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `guias_abanico`
---
-
-INSERT INTO `guias_abanico` (`GUIA_CODIGO`, `ID_PEDIDO`, `GUIA_NOMBRE`, `GUIA_DIRECCION`, `GUIA_TELEFONO`, `GUIA_CORREO`, `GUIA_ESTADO`, `GUIA_FECHA_REGISTRO`, `GUIA_FECHA_ACTUALIZACION`) VALUES
-('RLHO5T-25', 25, 'Manuel Marmolejo Martínez', 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', ' 26032335  ', 'marmocreativo@gmail.com', 'Entregado', '2019-01-09 23:22:28', '2019-01-09 23:22:28');
 
 -- --------------------------------------------------------
 
@@ -9724,14 +9672,6 @@ CREATE TABLE `pagos_pedidos` (
   `PAGO_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `pagos_pedidos`
---
-
-INSERT INTO `pagos_pedidos` (`ID`, `ID_PEDIDO`, `PAGO_FORMA`, `PAGO_FOLIO`, `PAGO_ARCHIVO`, `PAGO_DESCRIPCION`, `PAGO_IMPORTE`, `PAGO_FECHA_REGISTRO`, `PAGO_FECHA_ACTUALIZACION`, `PAGO_ESTADO`) VALUES
-(1, 25, 'Transferencia Bancaria', '', 'pago-5c3fba61b53e2.jpg', 'Comprobante de cliente', '0.00', '2019-01-16 23:12:33', '2019-01-23 22:35:37', 'Pagado'),
-(2, 22, 'Transferencia Bancaria', '76567', 'pago-5c4905468fcdf.jpg', 'Comprobante de cliente', '0.00', '2019-01-24 00:22:30', '2019-01-24 00:22:30', 'Verificando');
-
 -- --------------------------------------------------------
 
 --
@@ -9789,23 +9729,6 @@ CREATE TABLE `pedidos` (
   `PEDIDO_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `pedidos`
---
-
-INSERT INTO `pedidos` (`ID_PEDIDO`, `PEDIDO_FOLIO`, `ID_USUARIO`, `PEDIDO_NOMBRE`, `PEDIDO_CORREO`, `PEDIDO_TELEFONO`, `ID_DIRECCION`, `PEDIDO_DIRECCION`, `PEDIDO_DIVISA`, `PEDIDO_CONVERSION`, `PEDIDO_IMPORTE_PRODUCTOS_PARCIAL`, `PEDIDO_IMPORTE_PRODUCTOS_TOTAL`, `PEDIDO_IMPORTE_ENVIO_PARCIAL`, `PEDIDO_IMPORTE_ENVIO_TOTAL`, `PEDIDO_ID_TRANSPORTISTA`, `PEDIDO_NOMBRE_TRANSPORTISTA`, `PEDIDO_RECIBE`, `PEDIDO_COMENTARIOS`, `PEDIDO_IMPORTE_DESCUENTO`, `PEDIDO_DESCUENTO_DESCRIPCION`, `PEDIDO_IMPORTE_TOTAL`, `PEDIDO_FORMA_PAGO`, `PEDIDO_ESTADO_PAGO`, `PEDIDO_ESTADO_PEDIDO`, `PEDIDO_FECHA_REGISTRO`, `PEDIDO_FECHA_ACTUALIZACION`) VALUES
-(21, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '158.00', '158.00', '156.00', '156.00', 3, 'Abanico', NULL, NULL, NULL, NULL, '314.00', 'Transferencia Bancaria', 'Pendiente', 'Cancelado', '2019-01-24 00:21:34', '2019-01-24 00:21:34'),
-(22, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 16, 'Medellín 101, Roma Norte, Benito Juárez, Ciudad de México, Ciudad de México, 06700 , México', 'USD', '0.049', '7.74', '13.62', '7.64', '15.29', 3, 'Abanico', NULL, NULL, NULL, NULL, '28.91', 'Transferencia Bancaria', 'Pagado', 'Devolucion', '2019-01-31 00:30:01', '2019-01-31 00:30:01'),
-(23, '', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '280.00', '430.00', '156.00', '312.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '742.00', 'Transferencia Bancaria', 'Pendiente', 'Cancelado', '2019-01-23 22:34:16', '2019-01-23 22:34:16'),
-(24, '', '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', 17, '35 6 , Chalmita, Milpa Alta, , Ciudad de México, 12410, México', 'MXN', '1.000', '500.00', '500.00', '156.00', '156.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '656.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-08 01:22:10', '2019-01-08 01:22:10'),
-(25, 'LPBYMC', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', 0, '', NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Pagado', 'Devolucion', '2019-01-23 22:37:20', '2019-01-23 22:37:20'),
-(26, 'ZE5CZ7', '5c19b1d094f6e6.26249130', 'Kimi Luvi', 'kimi.luvi.tin.yee@gmail.com', '', 19, 'Dr. Galvez 555, Doctores, Cuauhtémoc, , Ciudad de México, 65364, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', 0, '', NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-16 23:22:43', '2019-01-16 23:22:43'),
-(27, 'PLI5NK', '5c4631142f4944.13186972', 'Circe Rop', 'aurin_cs@hotmail.com', NULL, 25, 'Sn, Miguel h, Calakmul, , Campeche, 5678, México', 'MXN', '1.000', '70.00', '70.00', '156.00', '156.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '226.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-21 23:34:37', '2019-01-21 23:34:37'),
-(28, '10W0IP', '5c489fa0131986.82562218', 'susama patino', 'suspat53@hotmail.com', ' ', 28, 'sur69 A 248, banjidal, Iztapalapa, Mexico, Ciudad de México, 9450, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', NULL, NULL, NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Pendiente', 'Cancelado', '2019-01-23 22:33:42', '2019-01-23 22:33:42'),
-(29, '4HDQDB', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335  ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '0.00', '150.00', '0.00', '156.00', NULL, NULL, NULL, NULL, NULL, NULL, '306.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-23 22:41:48', '2019-01-23 22:41:48'),
-(30, 'APIXWL', '0', 'Andres Ruelas', 'pixelbiff@gmail.com', '12345678', 36, 'lkjlkj, llkjlkj, Gustavo A. Madero, , Ciudad de México, 111111, México', 'MXN', '1.000', '0.00', '1500.00', '0.00', '171.00', NULL, NULL, NULL, NULL, NULL, NULL, '1671.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-23 23:58:47', '2019-01-23 23:58:47'),
-(31, 'LENIF1', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335   ', 10, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', 'MXN', '1.000', '4.00', '4.00', '4.00', '4.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '8.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-01-30 23:18:45', '2019-01-30 23:18:45');
-
 -- --------------------------------------------------------
 
 --
@@ -9825,25 +9748,6 @@ CREATE TABLE `pedidos_productos` (
   `IMPORTE_TOTAL` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `pedidos_productos`
---
-
-INSERT INTO `pedidos_productos` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `ID_PRODUCTO`, `PRODUCTO_NOMBRE`, `PRODUCTO_DETALLES`, `PRODUCTO_IMAGEN`, `CANTIDAD`, `IMPORTE`, `IMPORTE_TOTAL`) VALUES
-(31, 21, 8, 20, 'libretas hechas a mano', '', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2526234e278.jpg', 1, '158.00', '158.00'),
-(32, 22, 1, 22, 'Pizza', 'Tamaño-individual', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '5.88', '5.88'),
-(33, 22, 8, 20, 'libretas hechas a mano', '', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2526234e278.jpg', 1, '7.74', '7.74'),
-(34, 23, 1, 22, 'Pizza', 'Tamaño-Familiar', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00'),
-(35, 23, 4, 17, 'taza medidora', '', 'http://abanicoytu.com/demo/contenido/img/productos/completo/categoria-5c1d350ce81b6.jpg', 1, '280.00', '280.00'),
-(36, 24, 5, 14, 'LIBRO', '', 'http://abanicoytu.com/demo/contenido/img/productos/completo/default.jpg', 1, '500.00', '500.00'),
-(37, 25, 1, 22, 'Pizza', 'Tamaño-Familiar', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00'),
-(38, 26, 1, 22, 'Pizza', 'Tamaño-Familiar', 'http://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00'),
-(39, 27, 5, 12, 'PASTA DENTAL COLGATE', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/default.jpg', 1, '70.00', '70.00'),
-(40, 28, 1, 22, 'Pizza', 'Tamaño-Familiar', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00'),
-(41, 29, 1, 22, 'Pizza', 'Tamaño-Familiar', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c2e9538ac8ee.jpg', 1, '150.00', '150.00'),
-(42, 30, 1, 24, 'Guitarra Electro Acustica Symphonic CG209CE', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c44c0e05303a.jpg', 1, '1500.00', '1500.00'),
-(43, 31, 3, 2, 'CAJA', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/default.jpg', 1, '4.00', '4.00');
-
 -- --------------------------------------------------------
 
 --
@@ -9862,25 +9766,6 @@ CREATE TABLE `pedidos_tiendas` (
   `URL_RASTREO` varchar(255) NOT NULL,
   `PEDIDO_TIENDA_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `pedidos_tiendas`
---
-
-INSERT INTO `pedidos_tiendas` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `PEDIDO_TIENDA_IMPORTE_PRODUCTOS`, `PEDIDO_TIENDA_IMPORTE_ENVIO`, `ID_TRANSPORTISTA`, `TRANSPORTISTA_NOMBRE`, `GUIA_PAQUETERIA`, `URL_RASTREO`, `PEDIDO_TIENDA_ESTADO`) VALUES
-(31, 21, 8, '158.00', '0.00', 0, '', NULL, '', 'Espera Pago'),
-(32, 22, 1, '120.00', '7.64', 3, 'Abanico', 'asasdasd', 'asdadsad', 'Enviado'),
-(33, 22, 8, '158.00', '0.00', 0, '', NULL, '', 'Espera Pago'),
-(34, 23, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', 'Espera Pago'),
-(35, 23, 4, '280.00', '0.00', 0, '', NULL, '', 'Espera Pago'),
-(36, 24, 5, '500.00', '0.00', 0, '', NULL, '', 'Espera Pago'),
-(37, 25, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', 'Espera Pago'),
-(38, 26, 1, '150.00', '156.00', 3, 'Abanico México', '12345656', 'https://www.fedex.com/es-mx/home.html', 'Enviado'),
-(39, 27, 5, '70.00', '0.00', 0, '', NULL, '', NULL),
-(40, 28, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', NULL),
-(41, 29, 1, '150.00', '156.00', 3, 'Abanico México', NULL, '', NULL),
-(42, 30, 1, '1500.00', '171.00', 3, 'Abanico México', NULL, '', NULL),
-(43, 31, 3, '4.00', '0.00', 0, '', NULL, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -9902,20 +9787,44 @@ CREATE TABLE `perfiles_servicios` (
   `PERFIL_ESTADO` varchar(255) NOT NULL DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `perfiles_servicios`
+-- Estructura de tabla para la tabla `planes`
 --
 
-INSERT INTO `perfiles_servicios` (`ID_PERFIL`, `ID_USUARIO`, `PERFIL_NOMBRE`, `PERFIL_RAZON_SOCIAL`, `PERFIL_RFC`, `PERFIL_TELEFONO`, `ID_DIRECCION`, `PERFIL_IMAGEN`, `PERFIL_FECHA_REGISTRO`, `PERFIL_FECHA_ACTUALIZACION`, `PERFIL_ESTADO`) VALUES
-(10, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', '', '', '55555', 15, 'default.jpg', '2019-01-03 23:36:42', '2019-01-18 23:57:44', 'activo'),
-(11, '5c426854e19458.20500628', 'José Antonio Pérez Martínez', 'asdasd', 'asdasd', 'asdasda', 22, 'default.jpg', '2019-01-19 00:09:53', '2019-01-19 00:09:53', 'activo'),
-(12, '5c4631142f4944.13186972', 'Circe Rop', 'Xxxxxxx', 'Cat', '2345432', 24, 'default.jpg', '2019-01-21 21:13:17', '2019-01-21 21:13:17', 'activo'),
-(13, '5c4753da68d4b7.48707257', 'Irving Omar  Téllez Vera', 'Irving Omar Téllez Vera', 'TEVI760326CU2', '9991441579', 27, 'perfil_servicios-5c47551baf741.jpg', '2019-01-22 17:38:35', '2019-01-22 17:38:35', 'activo'),
-(14, '5c48a2a2a43ed3.21261698', 'LILIA NAVARRETE', 'S.A. DE C.V.', '15874ROFJCJ', '555555555', 30, 'default.jpg', '2019-01-23 17:40:40', '2019-01-23 17:40:40', 'activo'),
-(15, '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'ssfsa', 'afasfaf', 'afasfaga', 31, 'default.jpg', '2019-01-23 17:56:41', '2019-01-23 17:56:41', 'activo'),
-(16, '5c2e93b02a6ee1.32959007', 'Andres Ruelas', 'Empresa', '12345678RUEA', '5512345678', 32, 'default.jpg', '2019-01-23 22:18:02', '2019-01-23 22:18:02', 'activo'),
-(17, '5c48f4e7ce0708.70141183', 'Lic Pruebas', '', '', '22222222', 35, 'perfil_servicios-5c48f9021c7cc.jpg', '2019-01-23 23:29:15', '2019-01-23 23:30:10', 'activo'),
-(18, '5c572b573e2bf2.33450061', 'pancracio chin', 'pccv', 'pipo2131', '5452514323', 38, 'default.jpg', '2019-02-03 18:07:34', '2019-02-03 18:07:34', 'activo');
+CREATE TABLE `planes` (
+  `ID_PLAN` int(11) NOT NULL,
+  `NOMBRE_PLAN` varchar(255) DEFAULT NULL,
+  `MENSUALIDAD_PLAN` decimal(10,2) DEFAULT NULL,
+  `ALMACENAMIENTO` decimal(10,2) DEFAULT NULL,
+  `IMPUESTOS` decimal(10,2) DEFAULT NULL,
+  `COMISION_VENTA` decimal(10,2) DEFAULT NULL,
+  `MANEJO_PRODUCTO` decimal(10,2) DEFAULT NULL,
+  `ENVIO_PRODUCTO` decimal(10,2) DEFAULT NULL,
+  `VISTA_MAYOR` decimal(10,2) DEFAULT NULL,
+  `VISTA_PREMIUM` decimal(10,2) DEFAULT NULL,
+  `TIPO_PLAN` varchar(255) DEFAULT NULL,
+  `VIGENCIA_BASE` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `planes_usuario`
+--
+
+CREATE TABLE `planes_usuario` (
+  `ID_RELACION` int(11) NOT NULL,
+  `ID_PLAN` int(11) DEFAULT NULL,
+  `ID_USUARIO` varchar(255) DEFAULT NULL,
+  `FECHA_INICIO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `FECHA_FINAL` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ESTADO` varchar(255) DEFAULT NULL,
+  `CANTIDAD_PAGOS` int(11) DEFAULT NULL,
+  `PAGOS_REALIZADOS` int(11) DEFAULT NULL,
+  `FECHA_ULTIMO_PAGO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -9971,35 +9880,11 @@ CREATE TABLE `productos` (
   `PRODUCTO_PESO` decimal(10,2) NOT NULL,
   `PRODUCTO_TIPO` varchar(255) NOT NULL DEFAULT 'normal',
   `PRODUCTO_CONDICION` varchar(255) NOT NULL DEFAULT 'nuevo',
+  `CANTIDAD_VENTAS` int(11) NOT NULL,
+  `CALIFICACION` decimal(10,2) NOT NULL,
   `PRODUCTO_ESTADO` varchar(255) NOT NULL,
   `ORDEN` bigint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `productos`
---
-
-INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOMBRE`, `PRODUCTO_URL`, `PRODUCTO_DESCRIPCION`, `PRODUCTO_DETALLES`, `PRODUCTO_MODELO`, `PRODUCTO_ORIGEN`, `PRODUCTO_SKU`, `PRODUCTO_UPC`, `PRODUCTO_EAN`, `PRODUCTO_JAN`, `PRODUCTO_ISBN`, `PRODUCTO_MPN`, `PRODUCTO_PRECIO`, `PRODUCTO_PRECIO_LISTA`, `PRODUCTO_CANTIDAD`, `PRODUCTO_CANTIDAD_MINIMA`, `PRODUCTO_INVENTARIO`, `PRODUCTO_MENSAJE_SIN_STOCK`, `PRODUCTO_FECHA_REGISTRO`, `PRODUCTO_FECHA_ACTUALIZACION`, `PRODUCTO_FECHA_PUBLICACION`, `PRODUCTO_ANCHO`, `PRODUCTO_ALTO`, `PRODUCTO_PROFUNDO`, `PRODUCTO_PESO`, `PRODUCTO_TIPO`, `PRODUCTO_CONDICION`, `PRODUCTO_ESTADO`, `ORDEN`) VALUES
-(2, '5c0864799aba54.31749554', '', 'CAJA', '', 'ES  UNA CAJA', '<p>ES UNA CAJA GRANDE DE MADERA</p>', '345', 'México', '55665', '', '', '', '', '', '4.00', '0.00', 8, 7, 1, 'No disponible para venta', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '2018-12-05 23:53:41', '12.00', '44.00', '23.00', '4.00', 'normal', 'nuevo', 'activo', 1),
-(4, '5c08a9dc2cb096.56391251', '', 'Olla de 5 lts', '', 'Olla de 5 litros gabricada en acero inoxidable', '', 'OAI', 'México', '', '', '', '', '', '', '5000.00', '0.00', 10, 1, 1, 'No disponible para la venta', '2018-12-13 04:37:54', '2018-12-13 23:20:05', '2018-12-13 04:37:54', '52.00', '68.00', '15.00', '5.00', 'normal', 'nuevo', 'activo', 1),
-(5, '5c08a9dc2cb096.56391251', '', 'cafetera italina', '', 'Cafetera en acero inoxidable para 5 tazas. ', '<p>&nbsp; Terminado mate</p>', 'grecko', 'México', '', '', '', '', '', '', '862.00', '0.00', 4, 1, 1, 'No disponible para la venta', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '2018-12-13 04:39:26', '15.00', '25.00', '12.00', '1.00', 'normal', 'nuevo', 'activo', 1),
-(8, '5c0653d43d92e7.75019474', '', 'JABON', '', 'JGJJJJJJRTTTTTTTTTTTTTTT', '<p>GFFGFDGFGS</p>', 'ROMA', 'México', 'ROM', '   ', '   ', '   ', '   ', '   ', '50.00', '0.00', 1, 1, 1, 'No disponible para la venta', '2018-12-13 16:15:03', '2018-12-19 16:54:26', '2018-12-13 16:15:03', '30.00', '25.00', '15.00', '20.00', 'normal', 'nuevo', 'activo', 1),
-(11, '5c19944989f925.72741021', '', 'PASTA DENTAL', '', 'PASTA DENTAL DE VIAJE DE 60 GRAMOS.', '<p>PASTA DENTAL PRESENTACI&Oacute;N DE VIAJE GRAMAJE DE 60 GRAMOS.</p>', 'DE VIAJE', 'México', '12345', '', '', '', '', '', '70.00', '0.00', 5, 1, 1, 'No disponible para venta', '2018-12-19 01:26:14', '2018-12-19 01:26:14', '2018-12-19 01:26:14', '5.00', '10.00', '5.00', '0.50', 'normal', 'nuevo', 'activo', 1),
-(12, '5c19944989f925.72741021', '', 'PASTA DENTAL COLGATE', '', 'PASTA DENTAL DE VIAJE DE 60 GRAMOS.', '<p>PASTA DENTAL PRESENTACI&Oacute;N DE VIAJE GRAMAJE DE 60 GRAMOS.</p>', 'DE VIAJE', 'México', '12345', '', '', '', '', '', '70.00', '0.00', 5, 1, 1, 'No disponible para venta', '2018-12-19 01:30:12', '2018-12-19 01:30:12', '2018-12-19 01:30:12', '5.00', '10.00', '5.00', '0.50', 'normal', 'nuevo', 'activo', 1),
-(14, '5c19944989f925.72741021', '', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:42:41', '2018-12-19 01:42:41', '2018-12-19 01:42:41', '25.00', '10.00', '4.00', '1.00', 'normal', 'nuevo', 'activo', 1),
-(15, '5c19944989f925.72741021', '', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:44:52', '2018-12-19 01:44:52', '2018-12-19 01:44:52', '25.00', '10.00', '4.00', '1.00', 'normal', 'nuevo', 'activo', 1),
-(16, '5c19944989f925.72741021', '', 'LIBRO', '', 'LIBRO PASTA GRUESA', '<p>LIBRO</p>\r\n<p>PASTA GRUESA</p>\r\n<p>250 P&Aacute;GINAS</p>', 'PASTA GRUESA', 'México', '1435445', '', '', '', '', '', '500.00', '0.00', 20, 1, 1, 'No disponible para venta', '2018-12-19 01:44:56', '2018-12-19 01:44:56', '2018-12-19 01:44:56', '25.00', '10.00', '4.00', '1.00', 'normal', 'nuevo', 'activo', 1),
-(17, '5c08a9dc2cb096.56391251', '', 'taza medidora', '', 'Tazas medidoras en 4 diferentes tamanos', '<p>Practico set de medicion para cocina. Cuatro tama&ntilde;os, 1/4, 1/2, 3/4 y 1 taza. Acero inoxidable grado alimenticio. Excelente para el control preciso de las cantidades al momento de elaborar tus recetas favoritas.&nbsp;</p>', 'A001', 'Otro', '', '', '', '', '', '', '280.00', '0.00', 14, 1, 1, 'No disponible para la venta', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '2018-12-21 18:46:36', '15.00', '15.00', '15.00', '0.25', 'normal', 'nuevo', 'activo', 1),
-(18, '5c0653d43d92e7.75019474', '1', 'Librero', 'librero', 'Librero de Madera', '<p>Peque&ntilde;o Librero de Madera</p>', 'lb-135', 'México', 'lb-1234', '', '', '', '', '', '1300.00', '15000.00', 25, 1, 1, 'No disponible para la venta', '2019-01-24 01:43:48', '2019-01-24 01:43:48', '2019-01-24 01:43:48', '60.00', '120.00', '30.00', '10.00', 'normal', 'nuevo', 'activo', 1),
-(19, '5c0653d43d92e7.75019474', '', 'Escritorio', '', '', '', 'esc-5567', 'México', 'esc-34556', '', '', '', '', '', '2500.00', '0.00', 10, 1, 1, 'No disponible para la venta', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '2018-12-22 16:54:29', '90.00', '60.00', '30.00', '30.00', 'normal', 'nuevo', 'activo', 1),
-(20, '5c25209703a210.25306180', '', 'libretas hechas a mano', 'libretas-hechas-a-mano', 'Hermosas libretas hechas a mano ', '<p>kajiejfnaniovna inafiaf an ha ghao nakajaa&nbsp;</p>', 'Constelaciones', 'México', '', '', '', '', '', '', '158.00', '170.00', 15, 1, 1, 'No disponible para la venta', '2018-12-27 19:21:07', '2018-12-27 19:21:07', '2018-12-27 19:21:07', '15.00', '18.00', '5.00', '0.50', 'normal', 'nuevo', 'activo', 1),
-(22, '5c0653d43d92e7.75019474', '1', 'Pizza', 'pizza', '', '', 'kjlkjlk', 'México', 'kjlkjlk', '', '', '', '', '', '120.00', '150.00', 50, 1, 1, 'No disponible para la venta', '2019-01-03 23:05:27', '2019-01-03 23:05:27', '2019-01-03 23:05:27', '30.00', '30.00', '3.00', '1.00', 'normal', 'nuevo', 'activo', 1),
-(23, '5c08a9dc2cb096.56391251', '4', 'filtro de agua ', 'filtro-de-agua', '', '', 'IAu', 'México', '', '', '', '', '', '', '1600.00', '1400.00', 10, 1, 1, 'No disponible para la venta', '2019-01-20 18:41:27', '2019-01-20 18:41:27', '2019-01-20 18:41:27', '12.00', '36.00', '12.00', '1.50', 'normal', 'nuevo', 'activo', 1),
-(24, '5c0653d43d92e7.75019474', '1', 'Guitarra Electro Acustica Symphonic CG209CE', 'guitarra-electro-acustica-symphonic-cg209ce', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem felis, vestibulum quis placerat ut, posuere at enim. Nam nec suscipit urna. Quisque pretium urna justo, quis venenatis elit lobortis ac. Maecenas faucibus malesuada justo. Aliquam at faucibus quam. Nunc non orci varius, convallis purus nec, rhoncus quam. Nunc volutpat neque non felis sagittis, eget commodo libero sollicitudin. Nullam ut euismod tortor. Vestibulum nec nibh dapibus, volutpat est id, posuere felis. Quisque ullamcorper urna ac vehicula mollis. Nam quis scelerisque elit, eu facilisis mi. Curabitur ligula mauris, varius id sapien facilisis, finibus interdum augue. Morbi sed libero nisl. Praesent euismod tempus mattis.', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem felis, vestibulum quis placerat ut, posuere at enim. Nam nec suscipit urna. Quisque pretium urna justo, quis venenatis elit lobortis ac. Maecenas faucibus malesuada justo. Aliquam at faucibus quam. Nunc non orci varius, convallis purus nec, rhoncus quam. Nunc volutpat neque non felis sagittis, eget commodo libero sollicitudin. Nullam ut euismod tortor. Vestibulum nec nibh dapibus, volutpat est id, posuere felis. Quisque ullamcorper urna ac vehicula mollis. Nam quis scelerisque elit, eu facilisis mi. Curabitur ligula mauris, varius id sapien facilisis, finibus interdum augue. Morbi sed libero nisl. Praesent euismod tempus mattis.</span></p>', 'CG209CE', 'México', 'CG209CE', '', '', '', '', '', '1500.00', '2000.00', 10, 1, 1, 'No disponible para la venta', '2019-01-20 18:41:36', '2019-01-20 18:41:36', '2019-01-20 18:41:36', '60.00', '90.00', '30.00', '3.00', 'normal', 'nuevo', 'activo', 1),
-(25, '5c4631142f4944.13186972', '9', 'Bolsa chica', 'bolsa-chica', 'Prácticas bolsitas de lavado no se maltrata la ropa', '', '003', 'México', 'X', '', '', '', '', '', '50.00', '0.00', 80, 1, 1, 'No disponible para la venta', '2019-01-21 21:07:32', '2019-01-21 21:07:32', '2019-01-21 21:07:32', '20.00', '15.00', '50.00', '0.30', 'normal', 'nuevo', 'activo', 1),
-(26, '5c0653d43d92e7.75019474', '1', 'Celular', 'celular', '', '', 'iPhone', 'México', '123', '', '', '', '', '', '2000.00', '2500.00', 1, 1, 1, 'No disponible para la venta', '2019-01-23 22:25:45', '2019-01-23 22:25:45', '2019-01-23 22:25:45', '8.00', '20.00', '0.50', '3.00', 'normal', 'nuevo', 'inactivo', 1),
-(27, '5c48f4e7ce0708.70141183', '12', 'Calcetines negros', 'calcetines-negros', '', '', 'klklklk', 'México', 'lklklklk', '', '', '', '', '', '100.00', '0.00', 5, 1, 1, 'No disponible para la venta', '2019-01-23 23:46:56', '2019-01-23 23:46:56', '2019-01-23 23:46:56', '5.00', '5.00', '5.00', '0.50', 'normal', 'nuevo', 'activo', 1),
-(28, '5c0653d43d92e7.75019474', '1', 'asdasd', 'asdasd', 'asdasd', '<p>asdasdsa</p>', 'kalkslkasklas', 'México', 'weewewe', '', '', '', '', '', '100.00', '150.00', 1, 1, 1, 'No disponible para la venta', '2019-01-28 20:27:06', '2019-01-28 20:27:06', '2019-01-28 20:27:06', '10.00', '4.00', '2.00', '0.30', 'normal', 'nuevo', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -10018,17 +9903,6 @@ CREATE TABLE `productos_combinaciones` (
   `COMBINACION_PROFUNDO` decimal(10,2) DEFAULT NULL,
   `COMBINACION_PESO` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `productos_combinaciones`
---
-
-INSERT INTO `productos_combinaciones` (`ID_COMBINACION`, `ID_PRODUCTO`, `COMBINACION_GRUPO`, `COMBINACION_OPCION`, `COMBINACION_PRECIO`, `COMBINACION_ANCHO`, `COMBINACION_ALTO`, `COMBINACION_PROFUNDO`, `COMBINACION_PESO`) VALUES
-(1, '22', 'Tamaño', 'Familiar', '150.00', '30.00', '30.00', '3.00', '1.00'),
-(2, '22', 'Tamaño', 'individual', '120.00', '30.00', '30.00', '3.00', '1.00'),
-(3, '20', 'tamano carta', 'blanca', '148.00', '15.00', '18.00', '5.00', '0.50'),
-(4, '20', 'tamano oficio', 'blanca', '158.00', '12.00', '18.00', '5.00', '0.50'),
-(5, '20', 'Tamano bolsillo', 'azul', '128.00', '15.00', '18.00', '5.00', '0.50');
 
 -- --------------------------------------------------------
 
@@ -10222,18 +10096,6 @@ CREATE TABLE `seguridad_usuarios` (
   `ESTADO` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `seguridad_usuarios`
---
-
-INSERT INTO `seguridad_usuarios` (`ID`, `ID_USUARIO`, `CLAVE`, `FECHA_REGISTRO`, `ESTADO`) VALUES
-(3, '5c0653d43d92e7.75019474', '2eHqLccQQh', '2018-12-15 18:52:49', 'inactivo'),
-(4, '5c0653d43d92e7.75019474', 'IjUMTXgysC', '2018-12-16 02:06:14', 'inactivo'),
-(5, '5c08a9dc2cb096.56391251', 'NT380VwLj3', '2018-12-16 02:49:23', 'inactivo'),
-(6, '5c19b1d094f6e6.26249130', 'xjCwbIXwbu', '2018-12-19 02:58:15', 'inactivo'),
-(7, '5c0839a2158e44.99631671', '5V8TEIUnUJ', '2018-12-28 17:14:25', 'inactivo'),
-(8, '5c19b1d094f6e6.26249130', 'lhrhdLKos9', '2019-01-10 23:01:58', 'inactivo');
-
 -- --------------------------------------------------------
 
 --
@@ -10251,7 +10113,10 @@ CREATE TABLE `servicios` (
   `SERVICIO_ESTADO_DIR` varchar(255) DEFAULT NULL,
   `SERVICIO_MUNICIPIO` varchar(255) DEFAULT NULL,
   `SERVICIO_ZONA_TRABAJO` text NOT NULL,
+  `SERVICIO_IMAGEN` varchar(255) NOT NULL DEFAULT 'default.jpg',
   `SERVICIO_IMAGEN_FONDO` varchar(255) NOT NULL DEFAULT 'default.jpg',
+  `CANTIDAD_CONVERSACIONES` int(11) NOT NULL,
+  `CALIFICACION` decimal(10,2) NOT NULL,
   `SERVICIO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `SERVICIO_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `SERVICIO_FECHA_PUBLICACION` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -10259,24 +10124,6 @@ CREATE TABLE `servicios` (
   `SERVICIO_ESTADO` varchar(255) NOT NULL DEFAULT 'activo',
   `ORDEN` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `servicios`
---
-
-INSERT INTO `servicios` (`ID_SERVICIO`, `ID_USUARIO`, `USUARIO_NOMBRE`, `SERVICIO_NOMBRE`, `SERVICIO_DESCRIPCION`, `SERVICIO_DETALLES`, `SERVICIO_PAIS`, `SERVICIO_ESTADO_DIR`, `SERVICIO_MUNICIPIO`, `SERVICIO_ZONA_TRABAJO`, `SERVICIO_IMAGEN_FONDO`, `SERVICIO_FECHA_REGISTRO`, `SERVICIO_FECHA_ACTUALIZACION`, `SERVICIO_FECHA_PUBLICACION`, `SERVICIO_TIPO`, `SERVICIO_ESTADO`, `ORDEN`) VALUES
-(10, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Diseño Gráfico', 'Imágenes Digitales, e Impresos', '<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae commodo elit. Donec laoreet fringilla dui, suscipit ultricies nunc accumsan ut. Sed eget risus aliquam, suscipit arcu in, feugiat massa. Sed semper, libero et luctus viverra, nulla risus egestas mauris, fringilla elementum orci augue nec est. Proin sed odio ipsum. Fusce vitae dignissim mi. In dapibus eros tortor, sit amet tincidunt metus varius a. Etiam at laoreet dolor.</p>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Fusce dictum arcu ac elit varius varius. Nunc lacinia, eros nec consequat egestas, orci odio rutrum quam, suscipit posuere ex diam eget magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam convallis purus velit, vitae faucibus mi ultrices ut. Donec orci nisl, pretium vitae lacinia et, sagittis ac sapien. Proin euismod sollicitudin pharetra. Maecenas interdum eros euismod sollicitudin pulvinar. Suspendisse sagittis semper ligula nec facilisis. Nulla quis sodales mi. Nullam ut odio aliquet, accumsan justo vitae, lacinia felis. Nam est mauris, vulputate a turpis in, facilisis maximus urna.</p>', 'México', 'Ciudad de México', 'Gustavo A. Madero', 'assad', 'default.jpg', '2018-12-26 22:32:10', '2019-02-03 18:58:46', '2018-12-26 22:32:10', 'profesional', 'activo', 1),
-(11, '5c25209703a210.25306180', 'casiopea ende', 'Redaccion y correccion de textos ', 'Redacto, reviso y corrijo textos científicos y filosóficos.', '<h2><strong>Con 25 a&ntilde;os de experiencia en redaccion y revision de textos cientificos y filosoficos puedo ofrecer un servicio de la mas alta calidad para aquellas personas interesadas en tener una segunda opinion en el fondo y la forma de sus escritos.&nbsp;</strong></h2>', 'México', 'Veracruz', 'Banderilla', '', 'default.jpg', '2018-12-27 19:07:14', '2018-12-27 19:09:13', '2018-12-27 19:07:14', 'profesional', 'activo', 1),
-(12, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Construcción', 'Construyo casitas de palitos de madera', '<p>Palitos de madera de alta calidad, Nuevos no usados</p>', 'México', 'Guanajuato', 'Cortazar', '', 'default.jpg', '2019-01-18 23:45:16', '2019-01-23 22:30:44', '2019-01-18 23:45:16', 'profesional', 'activo', 1),
-(13, '5c4631142f4944.13186972', 'Circe Rop', 'Plomeria', 'Plomeriaespecializada', '<p>El mejor plomero de la zona</p>', 'México', 'Chiapas', 'Amatán', '', 'default.jpg', '2019-01-21 21:20:31', '2019-01-21 21:20:49', '2019-01-21 21:20:31', 'profesional', 'activo', 1),
-(14, '5c4753da68d4b7.48707257', 'Irving Omar  Téllez Vera', 'Revisión de docuementos Técnicos científicos de acuerdo a NOM-MX', 'Se revisan y corrigen documentos Técnicos y científicos como Tesis, articulos, ensayos, reportajes y todo lo relacionado a la escritura y descripción de las areas cientificas. ', '', 'México', 'Veracruz', 'San Andrés Tuxtla', '', 'default.jpg', '2019-01-22 18:12:25', '2019-01-22 18:12:25', '2019-01-22 18:12:25', 'digital', 'activo', 1),
-(15, '5c4753da68d4b7.48707257', 'Irving Omar  Téllez Vera', 'Traducción español-inglés de documentos tecnicos cientificos y literarios', 'Se traducen documentos español- inglés, inglés español, de las areas cientificas y literarias ', '', 'México', 'Veracruz', 'San Andrés Tuxtla', '', 'default.jpg', '2019-01-22 18:16:26', '2019-01-22 18:16:26', '2019-01-22 18:16:26', 'digital', 'activo', 1),
-(16, '5c48a2a2a43ed3.21261698', 'LILIA NAVARRETE', 'Asesorías para niños de secundaria', 'Si tu hija o hijo tiene problemas en la escuela llamame, yo puedo ayudarle a entender mejor la información que le estan dando. ', '', 'México', 'Veracruz', 'Orizaba', '', 'default.jpg', '2019-01-23 17:45:17', '2019-01-23 17:47:41', '2019-01-23 17:45:17', 'profesional', 'activo', 1),
-(17, '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'Instalacion de filtros de agua', 'Se da mantenimiento y se realizan instalaciones de cualquier tipo de filtro de agua. ', '', 'Estados Unidos', 'New York', 'New York County', '', 'default.jpg', '2019-01-23 17:57:51', '2019-01-23 17:57:51', '2019-01-23 17:57:51', 'profesional', 'activo', 1),
-(18, '5c48f4e7ce0708.70141183', 'Prueba 3 Prueba 3', 'Bordado de calcetines', 'Bordamos toda clase de calcetines', '', 'México', 'Ciudad de México', 'Gustavo A. Madero', '', 'default.jpg', '2019-01-23 23:32:11', '2019-01-23 23:32:11', '2019-01-23 23:32:11', 'profesional', 'activo', 1),
-(19, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Paseo Perritos', 'Paseo perritos en las tardes', '', 'México', 'Ciudad de México', 'Cuauhtémoc', 'En zona roma y condechi', 'default.jpg', '2019-01-28 18:41:57', '2019-01-28 18:41:57', '2019-01-28 18:41:57', 'profesional', 'activo', 1),
-(20, '5c572b573e2bf2.33450061', 'pancracio chin', 'payaso para minions', 'diversion maxima y entretenida', '', 'Estados Unidos', 'New York', 'Columbia County', '', 'default.jpg', '2019-02-03 18:16:46', '2019-02-03 18:16:46', '2019-02-03 18:16:46', 'profesional', 'activo', 1),
-(21, '5c572b573e2bf2.33450061', 'pancracio chin', 'payaso', 'diversion maxima y entretenimiento', '', 'Estados Unidos', 'New York', 'New York County', '', 'default.jpg', '2019-02-03 18:33:27', '2019-02-03 18:41:08', '2019-02-03 18:33:27', 'profesional', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -10357,24 +10204,21 @@ CREATE TABLE `tiendas` (
   `TIENDA_ESTADO` varchar(255) NOT NULL DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `tiendas`
+-- Estructura de tabla para la tabla `traducciones`
 --
 
-INSERT INTO `tiendas` (`ID_TIENDA`, `ID_USUARIO`, `TIENDA_NOMBRE`, `TIENDA_RAZON_SOCIAL`, `TIENDA_RFC`, `TIENDA_TELEFONO`, `ID_DIRECCION`, `TIENDA_IMAGEN`, `TIENDA_ADMINISTRACION_PEDIDOS`, `TIENDA_FECHA_REGISTRO`, `TIENDA_FECHA_ACTUALIZACION`, `TIENDA_TIPO`, `TIENDA_ESTADO`) VALUES
-(1, '5c0653d43d92e7.75019474', 'Espejo Negro', 'Espejo Negro SA de CV', 'ESNE34565677', '26032335', 1, 'tienda-5c1e6ac549a93.jpg', 'propio', '2018-12-05 14:05:30', '2019-01-28 20:04:50', 'tienda', 'activo'),
-(2, '5c0839a2158e44.99631671', 'TIendota', 'klakjalkjalksj', 'lkjalksjalksj', '26032335', 18, 'default.jpg', 'abanico', '2018-12-05 20:50:15', '2019-01-08 22:41:23', 'tienda', 'activo'),
-(3, '5c0864799aba54.31749554', 'tania', 'tania saenz', 'SART880719368', '5555555555555', 0, 'default.jpg', 'abanico', '2018-12-05 23:52:48', '2018-12-22 16:43:41', 'tienda', 'activo'),
-(4, '5c08a9dc2cb096.56391251', 'Las mejores ollas', 'S.A. de C.V.', 'ROPC830134A33', '5555555555', 0, 'default.jpg', 'abanico', '2018-12-12 23:07:24', '2018-12-22 16:43:44', 'tienda', 'activo'),
-(5, '5c19944989f925.72741021', 'TIENDA DE MARTHA', 'TIENDA DE MARTHA SA DE CV', 'MAR456789R01', '5530003000', 0, 'default.jpg', 'abanico', '2018-12-19 01:22:24', '2018-12-22 16:43:46', 'tienda', 'activo'),
-(6, '5c19a694185cc1.36196879', 'TEINDA DE CARLOS', 'TIENDA DE CARLOS SA DE CV', 'CAR2343843TR25', '534545435', 0, 'default.jpg', 'abanico', '2018-12-19 02:03:05', '2018-12-22 16:43:49', 'tienda', 'activo'),
-(7, '5c251a08bf0109.40704946', 'PanchoVilla y asociados', 'S.R de LC', 'VPA601852', '222888666', 0, 'tienda-5c251fa34b3ed.jpg', 'abanico', '2018-12-27 18:53:23', '2018-12-27 18:53:23', 'tienda', 'activo'),
-(8, '5c25209703a210.25306180', 'Ende y ende ', 'S.R de LC', 'CAS080808', '12345678', 14, 'default.jpg', 'abanico', '2018-12-27 19:01:26', '2019-01-08 23:22:54', 'tienda', 'activo'),
-(9, '5c4631142f4944.13186972', 'Bolsitas', 'Circe', 'Ropc', '5539674339', 23, 'tienda-5c4632aa58a64.jpg', 'abanico', '2019-01-21 20:59:22', '2019-01-21 20:59:22', 'tienda', 'activo'),
-(10, '5c468c5b493f02.45278461', 'mumama', 'persona fisica', 'diac680204', '5556043338', 26, 'tienda-5c468fec336e0.jpg', 'abanico', '2019-01-22 03:37:16', '2019-01-22 03:37:16', 'tienda', 'activo'),
-(11, '5c48a2a2a43ed3.21261698', 'Orizaba', 'S.A. DE C.V.', 'ORIZ480815', '5555555555', 29, 'default.jpg', 'abanico', '2019-01-23 17:26:30', '2019-01-23 17:26:30', 'tienda', 'activo'),
-(12, '5c48f4e7ce0708.70141183', 'Libros Infantiles', '', '', '22222222', 34, 'default.jpg', 'abanico', '2019-01-23 23:16:07', '2019-01-23 23:16:34', 'vendedor', 'activo'),
-(13, '5c572b573e2bf2.33450061', 'zzztop', 'cs32', '54p0p', '3426667654', 0, 'default.jpg', 'abanico', '2019-02-03 18:28:46', '2019-02-03 18:44:56', 'tienda', 'activo');
+CREATE TABLE `traducciones` (
+  `ID_TRADUCCION` int(11) NOT NULL,
+  `ID_OBJETO` int(11) DEFAULT NULL,
+  `TIPO_OBJETO` varchar(255) DEFAULT NULL,
+  `TITULO` varchar(255) DEFAULT NULL,
+  `DESCRIPCION_CORTA` text,
+  `DESCRIPCION_LARGA` text,
+  `LENGUAJE` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -10596,26 +10440,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID_USUARIO`, `USUARIO_NOMBRE`, `USUARIO_APELLIDOS`, `USUARIO_CORREO`, `USUARIO_TELEFONO`, `USUARIO_FECHA_NACIMIENTO`, `USUARIO_PASSWORD`, `USUARIO_FECHA_REGISTRO`, `USUARIO_FECHA_ACTUALIZACION`, `USUARIO_TIPO`, `USUARIO_LISTA_DE_CORREO`, `USUARIO_ESTADO`) VALUES
-('5c0653d43d92e7.75019474', 'Manuel', 'Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335   ', '1989-04-18', '$2y$10$LXIw8Tq1BsAT3xaK6AQJBuA0l9Dxw/3qzMAbsRuzi4OQLoFQip3WS', '2018-12-04 17:15:48', '2019-01-29 20:02:47', 'adm-6', 'si', 'activo'),
-('5c0839a2158e44.99631671', 'Franco', 'Martínez', 'stmarmo@hotmail.com', '26032335  ', '0000-00-00', '$2y$10$8DAj92eWNoKP7RQ5y74Ds.A71kKPjCMk7tYBZXGlKayG/CnJkCpw2', '2018-12-06 03:48:34', '2019-01-08 22:41:23', 'vnd-2', 'si', 'activo'),
+('5c0653d43d92e7.75019474', 'Manuel', 'Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335    ', '1989-04-18', '$2y$10$LXIw8Tq1BsAT3xaK6AQJBuA0l9Dxw/3qzMAbsRuzi4OQLoFQip3WS', '2018-12-04 17:15:48', '2019-02-09 18:39:09', 'adm-6', 'si', 'activo'),
 ('5c0864799aba54.31749554', 'TANIA', 'RODRIGUEZ', 'saenztania19@gmail.com', '(559) 194-5042', '0000-00-00', '$2y$10$cNIjKg5FVO8kZ.qWWMiEYu1ZYGEykVraUjMobNXCjENE/g1GUl6Vy', '2018-12-05 23:51:21', '2019-01-02 20:30:19', 'adm-6', 'si', 'activo'),
-('5c08a9dc2cb096.56391251', 'JORGE', 'CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', '0000-00-00', '$2y$10$a0nvxJfzsdHyQp6A8GGKwOnqQW/YmRDOw3En0gtVPtzjQZlhC3nE6', '2018-12-06 04:47:24', '2019-01-02 20:30:24', 'adm-6', 'si', 'activo'),
-('5c19944989f925.72741021', 'Martha', 'Martínez Ruíz', 'mm@gmail.com', ' 5533227755  ', '2000-12-01', '$2y$10$rzDk0zx7IzDD0jogaHrKKeNUfBrOj48LqoTtbNO3PGKteIrWxDJwS', '2018-12-19 00:43:53', '2018-12-19 01:07:37', 'usr-1', 'si', 'activo'),
-('5c19b1d094f6e6.26249130', 'Kimi', 'Luvi', 'kimi.luvi.tin.yee@gmail.com', NULL, '0000-00-00', '$2y$10$a2N.mtRTbLub/ZOp547a1O7got3YAIPdZmSwlc1Um1IFeVCE6XZfS', '2018-12-19 02:49:52', '2019-01-10 23:01:58', 'usr-1', 'si', 'activo'),
-('5c251a08bf0109.40704946', 'Pancho', 'Villa', 'lapancha@hotmail.com', ' 55555555555', '0000-00-00', '$2y$10$yJwpkii8XRpiWITyeKohIerglVyEPvwq2Vn0Db.B6NDsi/XxzVRyy', '2018-12-27 18:29:28', '2018-12-27 18:34:44', 'usr-1', 'si', 'activo'),
-('5c251a8521d321.20926810', 'Beatriz', 'Buendía', 'bb@gmail.com', NULL, '0000-00-00', '$2y$10$eiVFTY6iznQ9yBrV5Nvn5uS7IcWd0rIe82gEil5V1SePx93cSraEy', '2018-12-27 18:31:33', '2018-12-27 18:31:33', 'usr-1', 'si', 'activo'),
-('5c25209703a210.25306180', 'casiopea', 'ende', 'casiopea76@hotmail.com', NULL, '0000-00-00', '$2y$10$z4Y71tC689Osp7F08TmfHuW1hrRSLAHGAsngHRifprTaSjdfIj10u', '2018-12-27 18:57:27', '2019-01-08 23:22:54', 'vnd-2', 'si', 'activo'),
-('5c2669552891b4.61655757', 'pedrito', 'q', 'correo7@prueba.com', NULL, '0000-00-00', '$2y$10$UJ/I13bBDVdEE6o99CUvu.POCiJ8xPKEYeCRSgkpQduh0ZiKOSk0O', '2018-12-28 18:20:05', '2018-12-28 18:20:05', 'usr-1', 'si', 'activo'),
-('5c2e93b02a6ee1.32959007', 'Andres', 'Ruelas', 'pixelbiff@gmail.com', NULL, '0000-00-00', '$2y$10$mNOgUy/odIeAKFj2nStNPe1IpV0QwN6KvWuszild2WkJfT9wtePum', '2019-01-03 22:58:56', '2019-01-23 22:18:02', 'ser-3', 'si', 'activo'),
-('5c426854e19458.20500628', 'José Antonio', 'Pérez Martínez', 'tonotono_539@hotmail.com', '44444444', '0000-00-00', '$2y$10$7bEO50JQtFTa8FgVlHy/1OnrlTaaeCULOoei4ivEzUHYT1rCLIIEy', '2019-01-18 23:59:16', '2019-01-18 23:59:16', 'adm-6', 'si', 'activo'),
-('5c4631142f4944.13186972', 'Circe', 'Rop', 'aurin_cs@hotmail.com', NULL, '0000-00-00', '$2y$10$l4qCbMum89MG9Pp8X3cDgO9s8zoObg5Rw6u82pLnsIbocO0wlBYVi', '2019-01-21 20:52:36', '2019-01-21 21:59:58', 'vns-4', 'si', 'activo'),
-('5c468c5b493f02.45278461', 'Citlali', 'Diaz Aguilar', 'mujeresdemanosmagicas@gmail.com', NULL, '0000-00-00', '$2y$10$bFnKn4BS3Raddnf5Ynx2Ne/Ir/EgArSbck2DlHwGdJkmA7VYCVfce', '2019-01-22 03:22:03', '2019-01-22 03:37:16', 'vnd-2', 'si', 'activo'),
-('5c4753da68d4b7.48707257', 'Irving Omar ', 'Téllez Vera', 'irom_tv@hotmail.com', ' 9991441579  ', '0000-00-00', '$2y$10$77Hv3.ofhhGo28Y1casBpuhzIqSjkXrmWqyuMJElpcUAR6Ae1ukHy', '2019-01-22 17:33:14', '2019-01-22 18:01:30', 'ser-3', 'si', 'activo'),
-('5c489fa0131986.82562218', 'susana', 'patino', 'suspat53@hotmail.com', ' ', '0000-00-00', '$2y$10$SrrncCXAv9FDVDSUUEnEZeYiNINiMTRXl3koCOuRDlC34gx2qoidi', '2019-01-23 17:08:48', '2019-01-23 17:09:32', 'usr-1', 'si', 'activo'),
-('5c48a2a2a43ed3.21261698', 'LILIA', 'NAVARRETE', 'peropli@gmail.com', NULL, '0000-00-00', '$2y$10$1GaZBSJuSd0QZI0uGLIbm.UNAITr5xKnevjf2puOiBqZ4YExzDUwO', '2019-01-23 17:21:38', '2019-01-23 17:40:40', 'vns-4', 'si', 'activo'),
-('5c48f4e7ce0708.70141183', 'Prueba 3', 'Prueba 3', 'prueba3@correo.com', NULL, '0000-00-00', '$2y$10$KFZ2kvyUGXPKUxIve9nAeeRrh9vtv0qWY7bUC7bG8Vc8.0I/YAaRa', '2019-01-23 23:12:39', '2019-01-23 23:29:15', 'vns-4', 'si', 'activo'),
-('5c491702c81909.78092638', 'Administrador', 'Test', 'admintest@correo.com', '', '0000-00-00', '$2y$10$G6q4OpILWVbaDrgkpkxBKOk0WcFBo776sw.TzcgtYF79BkWZGVRxG', '2019-01-24 01:38:10', '2019-01-24 01:38:10', 'adm-6', 'si', 'activo'),
-('5c572b573e2bf2.33450061', 'pancracio', 'chin', 'pc32@hotmail.com', NULL, '0000-00-00', '$2y$10$4Syu5cClNP/B2DnNXMM/ReXRlCnwEMf4tsHnwD9pLbRGwpuS4LAqO', '2019-02-03 17:56:39', '2019-02-03 18:07:34', 'ser-3', 'si', 'activo');
+('5c08a9dc2cb096.56391251', 'JORGE', 'CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', '0000-00-00', '$2y$10$a0nvxJfzsdHyQp6A8GGKwOnqQW/YmRDOw3En0gtVPtzjQZlhC3nE6', '2018-12-06 04:47:24', '2019-01-02 20:30:24', 'adm-6', 'si', 'activo');
 
 -- --------------------------------------------------------
 
@@ -10661,61 +10488,6 @@ CREATE TABLE `vistas_generales` (
   `VISTA_TIPO` varchar(255) DEFAULT NULL,
   `VISTA_FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `vistas_generales`
---
-
-INSERT INTO `vistas_generales` (`ID_VISTA`, `VISTA_IP`, `VISTA_CANTIDAD`, `ID_OBJETO`, `VISTA_TIPO`, `VISTA_FECHA`) VALUES
-(1, '201.103.244.22', '1', 27, 'producto', '2019-01-30 23:13:48'),
-(2, '201.103.244.22', '1', 27, 'producto', '2019-01-30 23:13:55'),
-(3, '201.103.244.22', '1', 27, 'producto', '2019-01-30 23:14:02'),
-(4, '201.103.244.22', '1', 27, 'producto', '2019-01-30 23:15:15'),
-(5, '201.103.244.22', '1', 27, 'producto', '2019-01-30 23:17:08'),
-(6, '201.103.244.22', '1', 2, 'producto', '2019-01-30 23:17:26'),
-(7, '201.103.244.22', '1', 2, 'producto', '2019-01-30 23:17:36'),
-(8, '201.103.244.22', '1', 22, 'producto', '2019-01-30 23:26:13'),
-(9, '201.103.244.22', '1', 18, 'producto', '2019-01-31 00:11:40'),
-(10, '201.103.244.22', '1', 27, 'producto', '2019-01-31 00:11:47'),
-(11, '201.103.244.22', '1', 17, 'producto', '2019-01-31 00:11:51'),
-(12, '68.197.233.217', '1', 11, 'servicio', '2019-02-01 17:20:57'),
-(13, '68.197.233.217', '1', 12, 'servicio', '2019-02-01 17:22:56'),
-(14, '68.197.233.217', '1', 12, 'servicio', '2019-02-01 17:24:44'),
-(15, '68.197.233.217', '1', 12, 'servicio', '2019-02-01 17:26:02'),
-(16, '68.197.233.217', '1', 25, 'producto', '2019-02-01 17:26:47'),
-(17, '68.197.233.217', '1', 14, 'servicio', '2019-02-01 17:37:37'),
-(18, '68.197.233.217', '1', 13, 'servicio', '2019-02-01 17:39:46'),
-(19, '68.197.233.217', '1', 4, 'producto', '2019-02-03 17:35:05'),
-(20, '68.197.233.217', '1', 27, 'producto', '2019-02-03 17:36:28'),
-(21, '68.197.233.217', '1', 24, 'producto', '2019-02-03 17:45:30'),
-(22, '68.197.233.217', '1', 23, 'producto', '2019-02-03 17:48:47'),
-(23, '68.197.233.217', '1', 17, 'producto', '2019-02-03 17:50:38'),
-(24, '68.197.233.217', '1', 27, 'producto', '2019-02-03 17:51:09'),
-(25, '68.197.233.217', '1', 27, 'producto', '2019-02-03 17:51:09'),
-(26, '68.197.233.217', '1', 27, 'producto', '2019-02-03 17:51:09'),
-(27, '68.197.233.217', '1', 22, 'producto', '2019-02-03 17:52:28'),
-(28, '68.197.233.217', '1', 22, 'producto', '2019-02-03 17:52:28'),
-(29, '187.190.156.190', '1', 28, 'producto', '2019-02-05 14:33:19'),
-(30, '187.190.156.190', '1', 2, 'producto', '2019-02-05 17:22:05'),
-(31, '187.190.156.190', '1', 20, 'producto', '2019-02-05 17:22:11'),
-(32, '187.190.156.190', '1', 19, 'producto', '2019-02-05 17:22:31'),
-(33, '201.103.244.22', '1', 19, 'producto', '2019-02-05 19:45:14'),
-(34, '201.103.244.22', '1', 19, 'producto', '2019-02-05 19:45:17'),
-(35, '201.103.251.95', '1', 14, 'producto', '2019-02-06 01:07:48'),
-(36, '201.103.251.95', '1', 27, 'producto', '2019-02-06 01:08:22'),
-(37, '201.103.251.95', '1', 18, 'producto', '2019-02-06 01:09:07'),
-(38, '201.166.189.98', '1', 20, 'producto', '2019-02-06 01:09:12'),
-(39, '201.103.251.95', '1', 8, 'producto', '2019-02-06 01:16:04'),
-(40, '201.103.251.95', '1', 23, 'producto', '2019-02-06 01:16:43'),
-(41, '201.103.251.95', '1', 22, 'producto', '2019-02-06 01:17:56'),
-(42, '201.103.251.95', '1', 28, 'producto', '2019-02-06 01:18:22'),
-(43, '201.103.251.95', '1', 22, 'producto', '2019-02-06 01:18:40'),
-(44, '201.103.251.95', '1', 13, 'servicio', '2019-02-06 01:19:27'),
-(45, '201.103.251.95', '1', 12, 'servicio', '2019-02-06 01:19:46'),
-(46, '201.103.251.95', '1', 12, 'servicio', '2019-02-06 01:20:05'),
-(47, '187.190.156.190', '1', 18, 'servicio', '2019-02-06 15:12:29'),
-(48, '187.190.156.190', '1', 22, 'producto', '2019-02-06 15:12:36'),
-(49, '187.190.156.190', '1', 22, 'producto', '2019-02-06 15:24:51');
 
 -- --------------------------------------------------------
 
@@ -10917,6 +10689,18 @@ ALTER TABLE `perfiles_servicios`
   ADD PRIMARY KEY (`ID_PERFIL`);
 
 --
+-- Indices de la tabla `planes`
+--
+ALTER TABLE `planes`
+  ADD PRIMARY KEY (`ID_PLAN`);
+
+--
+-- Indices de la tabla `planes_usuario`
+--
+ALTER TABLE `planes_usuario`
+  ADD PRIMARY KEY (`ID_RELACION`);
+
+--
 -- Indices de la tabla `preguntas_frecuentes`
 --
 ALTER TABLE `preguntas_frecuentes`
@@ -11031,6 +10815,12 @@ ALTER TABLE `tiendas`
   ADD PRIMARY KEY (`ID_TIENDA`);
 
 --
+-- Indices de la tabla `traducciones`
+--
+ALTER TABLE `traducciones`
+  ADD PRIMARY KEY (`ID_TRADUCCION`);
+
+--
 -- Indices de la tabla `transportistas`
 --
 ALTER TABLE `transportistas`
@@ -11081,27 +10871,27 @@ ALTER TABLE `vistas_usuarios`
 -- AUTO_INCREMENT de la tabla `adjuntos_usuarios`
 --
 ALTER TABLE `adjuntos_usuarios`
-  MODIFY `ID_ADJUNTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_ADJUNTO` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `calificaciones_productos`
 --
 ALTER TABLE `calificaciones_productos`
-  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `calificaciones_servicios`
 --
 ALTER TABLE `calificaciones_servicios`
-  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
+  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=382;
 --
 -- AUTO_INCREMENT de la tabla `categorias_productos`
 --
 ALTER TABLE `categorias_productos`
-  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT de la tabla `categorias_publicaciones`
 --
@@ -11111,27 +10901,27 @@ ALTER TABLE `categorias_publicaciones`
 -- AUTO_INCREMENT de la tabla `categorias_servicios`
 --
 ALTER TABLE `categorias_servicios`
-  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `conversaciones`
 --
 ALTER TABLE `conversaciones`
-  MODIFY `ID_CONVERSACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_CONVERSACION` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `conversaciones_mensajes`
 --
 ALTER TABLE `conversaciones_mensajes`
-  MODIFY `ID_MENSAJE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID_MENSAJE` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `devoluciones`
 --
 ALTER TABLE `devoluciones`
-  MODIFY `ID_DEVOLUCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_DEVOLUCION` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `direcciones`
 --
 ALTER TABLE `direcciones`
-  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `divisas`
 --
@@ -11141,27 +10931,27 @@ ALTER TABLE `divisas`
 -- AUTO_INCREMENT de la tabla `estados`
 --
 ALTER TABLE `estados`
-  MODIFY `ID_ESTADO` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `ID_ESTADO` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 --
 -- AUTO_INCREMENT de la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `ID_FAVORITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID_FAVORITO` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `galeria_productos`
 --
 ALTER TABLE `galeria_productos`
-  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `galeria_servicios`
 --
 ALTER TABLE `galeria_servicios`
-  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `lenguajes`
 --
 ALTER TABLE `lenguajes`
-  MODIFY `ID_LENGUAJE` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_LENGUAJE` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `lista_blanca`
 --
@@ -11181,7 +10971,7 @@ ALTER TABLE `mensajes_pedidos`
 -- AUTO_INCREMENT de la tabla `municipios`
 --
 ALTER TABLE `municipios`
-  MODIFY `ID_MUNICIPIO` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11333;
+  MODIFY `ID_MUNICIPIO` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10371;
 --
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
@@ -11196,7 +10986,7 @@ ALTER TABLE `opciones`
 -- AUTO_INCREMENT de la tabla `pagos_pedidos`
 --
 ALTER TABLE `pagos_pedidos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `paises`
 --
@@ -11206,22 +10996,32 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_productos`
 --
 ALTER TABLE `pedidos_productos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_tiendas`
 --
 ALTER TABLE `pedidos_tiendas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `perfiles_servicios`
 --
 ALTER TABLE `perfiles_servicios`
-  MODIFY `ID_PERFIL` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID_PERFIL` bigint(6) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `planes`
+--
+ALTER TABLE `planes`
+  MODIFY `ID_PLAN` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `planes_usuario`
+--
+ALTER TABLE `planes_usuario`
+  MODIFY `ID_RELACION` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `preguntas_frecuentes`
 --
@@ -11231,12 +11031,12 @@ ALTER TABLE `preguntas_frecuentes`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `ID_PRODUCTO` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID_PRODUCTO` bigint(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `productos_combinaciones`
 --
 ALTER TABLE `productos_combinaciones`
-  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `productos_preguntas`
 --
@@ -11261,7 +11061,7 @@ ALTER TABLE `publicaciones`
 -- AUTO_INCREMENT de la tabla `puntos_registro`
 --
 ALTER TABLE `puntos_registro`
-  MODIFY `ID_PUNTO` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_PUNTO` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `registro_sesiones`
 --
@@ -11291,12 +11091,12 @@ ALTER TABLE `saldo_usuarios`
 -- AUTO_INCREMENT de la tabla `seguridad_usuarios`
 --
 ALTER TABLE `seguridad_usuarios`
-  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `ID_SERVICIO` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID_SERVICIO` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `sliders`
 --
@@ -11316,7 +11116,12 @@ ALTER TABLE `solicitudes_pago`
 -- AUTO_INCREMENT de la tabla `tiendas`
 --
 ALTER TABLE `tiendas`
-  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `traducciones`
+--
+ALTER TABLE `traducciones`
+  MODIFY `ID_TRADUCCION` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `transportistas`
 --
@@ -11341,7 +11146,7 @@ ALTER TABLE `variaciones_simples_productos`
 -- AUTO_INCREMENT de la tabla `vistas_generales`
 --
 ALTER TABLE `vistas_generales`
-  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `vistas_usuarios`
 --
