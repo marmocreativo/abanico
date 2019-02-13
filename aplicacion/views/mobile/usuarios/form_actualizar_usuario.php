@@ -16,7 +16,7 @@
 
       <div class="card mb-3">
         <div class="card-header">
-          <h2 class="h5 pt-2"><span class="fa fa-id-card"></span> Perfil y datos personales</h2>
+          <h2 class="h5 pt-2"><span class="fa fa-id-card"></span> <?php echo $this->lang->line('usuario_form_usuario_titulo'); ?></h2>
         </div>
 
         <div class="card-body">
@@ -31,43 +31,43 @@
               <input type="hidden" name="TipoUsuario" value="<?php echo $usuario['USUARIO_TIPO']; ?>">
               <div class="row">
                 <div class="col">
-                  <h3 class="h5">Datos Requeridos</h3>
+                  <h3 class="h5"><?php echo $this->lang->line('usuario_form_usuario_datos_requeridos'); ?></h3>
                    <div class="form-group">
-                     <label for="NombreUsuario">Nombre</label>
+                     <label for="NombreUsuario"><?php echo $this->lang->line('usuario_form_usuario_nombre'); ?></label>
                      <input type="text" class="form-control" id="NombreUsuario" name="NombreUsuario" placeholder="" value="<?php if(empty(form_error('NombreUsuario'))){ echo $usuario['USUARIO_NOMBRE']; } else { set_value('NombreUsuario'); } ?>">
                    </div>
                    <div class="form-group">
-                     <label for="ApellidosUsuario">Apellidos</label>
+                     <label for="ApellidosUsuario"><?php echo $this->lang->line('usuario_form_usuario_apellidos'); ?></label>
                      <input type="text" class="form-control" id="ApellidosUsuario" name="ApellidosUsuario" placeholder="" value="<?php if(empty(form_error('ApellidosUsuario'))){ echo $usuario['USUARIO_APELLIDOS']; } else { set_value('ApellidosUsuario'); } ?>">
                    </div>
                    <div class="form-group">
-                     <label for="CorreoUsuario">Correo electrónico</label>
+                     <label for="CorreoUsuario"><?php echo $this->lang->line('usuario_form_usuario_correo'); ?></label>
                      <input type="email" class="form-control" id="CorreoUsuario" name="CorreoUsuario" placeholder="" value="<?php if(empty(form_error('CorreoUsuario'))){ echo $usuario['USUARIO_CORREO']; } else { set_value('CorreoUsuario'); } ?>">
-                     <small class="form-text text-muted">Este correo es el que usarás para iniciar sesión. y nuestro medio principal para contactarte</small>
+                     <small class="form-text text-muted"><?php echo $this->lang->line('usuario_form_usuario_correo_instrucciones'); ?></small>
                    </div>
                 </div>
                 <div class="col">
                   <div class="border p-2">
-                    <h4 class="h5">Datos Opcionales</h4>
+                    <h4 class="h5"><?php echo $this->lang->line('usuario_form_usuario_datos_opcionales'); ?></h4>
                     <div class="form-group">
-                      <label for="TelefonoUsuario">Teléfono</label>
+                      <label for="TelefonoUsuario"><?php echo $this->lang->line('usuario_form_usuario_telefono'); ?></label>
                       <input type="text" class="form-control" id="TelefonoUsuario" name="TelefonoUsuario" placeholder="" value="<?php if(empty(form_error('TelefonoUsuario'))){ echo $usuario['USUARIO_TELEFONO']; } else { set_value('TelefonoUsuario'); } ?> ">
-                      <small class="form-text text-muted">Ayúdanos a contactarte rápidamente proporcionando un número de teléfono fijo o celular</small>
+                      <small class="form-text text-muted"><?php echo $this->lang->line('usuario_form_usuario_telefono_instrucciones'); ?></small>
                     </div>
                     <div class="form-group">
-                      <label for="FechaNacimientoUsuario">Fecha Nacimiento</label>
+                      <label for="FechaNacimientoUsuario"><?php echo $this->lang->line('usuario_form_usuario_fecha_nacimiento'); ?></label>
                       <input type="date" class="form-control" id="FechaNacimientoUsuario" name="FechaNacimientoUsuario" placeholder="" value="<?php echo $usuario['USUARIO_FECHA_NACIMIENTO']; ?>">
                     </div>
                     <hr>
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                       <input type="checkbox" class="custom-control-input" id="ListaDeCorreoUsuario" name="ListaDeCorreoUsuario" <?php if($usuario['USUARIO_LISTA_DE_CORREO']=='si'){ echo 'checked'; } ?>>
-                      <label class="custom-control-label" for="ListaDeCorreoUsuario">Deseo Recibir ofertas por correo electrónico</label>
+                      <label class="custom-control-label" for="ListaDeCorreoUsuario"><?php echo $this->lang->line('usuario_form_usuario_recibir_ofertas'); ?></label>
                     </div>
                   </div>
                 </div>
               </div>
             <hr>
-            <button type="submit" class="btn btn<?php echo $primary; ?> float-right" name="button"> <span class="fa fa-save"></span> Guardar</button>
+            <button type="submit" class="btn btn<?php echo $primary; ?> float-right" name="button"> <span class="fa fa-save"></span> <?php echo $this->lang->line('usuario_form_usuario_guardar'); ?></button>
           </form>
         </div>
       </div>

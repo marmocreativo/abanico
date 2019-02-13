@@ -39,13 +39,13 @@
                       </select>
                     </div>
                      <div class="form-group">
-                       <label for="NombreTienda"<?php echo $this->lang->line('usuario_vista_tienda_nombre'); ?></label>
+                       <label for="NombreTienda"><?php echo $this->lang->line('usuario_vista_tienda_nombre'); ?></label>
                        <input type="text" class="form-control" id="NombreTienda" name="NombreTienda" placeholder="" value="<?php echo $tienda['TIENDA_NOMBRE']; ?>">
                      </div>
                      <hr>
                      <h5><span class="fa fa-file-invoice"></span> <?php echo $this->lang->line('usuario_form_tienda_datos_fiscales'); ?></h5>
                      <div class="form-group">
-                       <label for="RazonSocialTienda"<?php echo $this->lang->line('usuario_vista_tienda_razon'); ?></label>
+                       <label for="RazonSocialTienda"><?php echo $this->lang->line('usuario_vista_tienda_razon'); ?></label>
                        <input type="text" class="form-control" id="RazonSocialTienda" name="RazonSocialTienda" placeholder="" value="<?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?>">
                      </div>
                      <div class="form-group">
@@ -65,7 +65,7 @@
                      <div class="row">
                        <div class="col">
                          <div class="form-group">
-                           <<label for="PaisDireccion"><?php echo $this->lang->line('usuario_form_direcciones_pais'); ?> </label>
+                           <label for="PaisDireccion"><?php echo $this->lang->line('usuario_form_direcciones_pais'); ?> </label>
                            <select class="form-control" name="PaisDireccion" id="PaisDireccion" data-valor-anterior="<?php echo $direccion_tienda['DIRECCION_PAIS']; ?>" required>
                              <<option value=""><?php echo $this->lang->line('usuario_form_direcciones_pais_selecciona'); ?></option>
                            </select>
