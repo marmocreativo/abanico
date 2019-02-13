@@ -16,11 +16,11 @@
 
       <div class="card card-info mb-3">
         <div class="card-body">
-          <h5>Reglas de Servicios Personales</h5>
-          <ul class="pl-3">
-            <li>Los servicios están sometidos a un tiempo de revisión antes de que se vean publicados en el sitio.</li>
-            <li>Aunque el servicio se le puede asignar un Nombre específico son responsabilidad del usuario que los da de alta.</li>
-            <li>Por favor manten tu información personal siempre actualizada</li>
+          <h5><?php echo $this->lang->line('usuario_form_servicio_reglas'); ?></h5>
+          <ul>
+            <li><?php echo $this->lang->line('usuario_form_servicio_regla_1'); ?></li>
+            <li><?php echo $this->lang->line('usuario_form_servicio_regla_2'); ?></li>
+            <li><?php echo $this->lang->line('usuario_form_servicio_regla_3'); ?></li>
           </ul>
         </div>
       </div>
@@ -40,50 +40,54 @@
               <img class="img-fluid img-thumbnail mx-auto mb-3 d-block rounded-circle" id="PrevisualizarImagen" style="width:150px" src="<?php echo base_url('contenido/img/servicios/completo/default.jpg') ?>" alt="" >
               <div class="custom-file file-sm mb-3">
                 <input type="file" class="custom-file-input" id="ImagenServicio" name="ImagenServicio" placeholder="" value="">
-                <label class="custom-file-label" for="ImagenServicio">Fotografía</label>
+                <label class="custom-file-label" for="ImagenServicio"><?php echo $this->lang->line('usuario_form_servicio_fotografia'); ?></label>
               </div>
                <div class="form-group">
-                 <label for="NombreUsuario">Nombre de la persona que Ofrece el servicio</label>
+                 <label for="NombreUsuario"><?php echo $this->lang->line('usuario_form_servicio_nombre_persona'); ?></label>
                  <input type="text" class="form-control" id="NombreUsuario" name="NombreUsuario" placeholder="" required value="<?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']; ?>">
                </div>
                <div class="form-group">
-                 <label for="NombreServicio">¿Qué Servicio Ofreces?</label>
+                 <label for="NombreServicio"><?php echo $this->lang->line('usuario_form_servicio_nombre_servicio'); ?></label>
                  <input type="text" class="form-control" id="NombreServicio" name="NombreServicio" placeholder="" required value="<?php echo set_value('NombreServicio'); ?>">
                </div>
                <div class="form-group">
-                 <label for="DescripcionServicio">Descripción Corta</label>
+                 <label for="DescripcionServicio"><?php echo $this->lang->line('usuario_form_servicio_descripcion_corta'); ?></label>
                  <textarea class="form-control" name="DescripcionServicio" rows="3" cols="80" required><?php echo set_value('DescripcionServicio'); ?></textarea>
                </div>
 
                <div class="form-group">
-                 <label for="TipoServicio">Tipo de Servicio</label>
+                 <label for="TipoServicio"><?php echo $this->lang->line('usuario_form_servicio_tipo'); ?></label>
                  <select class="form-control" name="TipoServicio">
-                   <option value="profesional">Servicio Presencial</option>
-                   <option value="digital">Servicio a Distancia</option>
+                   <option value="profesional"><?php echo $this->lang->line('usuario_form_servicio_tipo_presencial'); ?></option>
+                   <option value="digital"><?php echo $this->lang->line('usuario_form_servicio_tipo_distancia'); ?></option>
                  </select>
                </div>
-               <p class="text-muted"> <i class="fa fa-info-circle"></i> Los Servicios a distancia, son los que se pueden ejercer a traves de internet.</p>
+               <p class="text-muted"> <i class="fa fa-info-circle"></i><?php echo $this->lang->line('usuario_form_servicio_tipo_distancia_instrucciones'); ?></p>
 
-               <h6> <i class="fa fa-map-marker"></i> ¿En dónde ofreces tu servicio?</h6>
+               <h6> <i class="fa fa-map-marker"></i> <?php echo $this->lang->line('usuario_form_servicio_zona_instrucciones'); ?></h6>
 
                <div class="form-group">
-                 <label for="PaisDireccion">País </label>
+                 <label for="PaisDireccion"><?php echo $this->lang->line('usuario_form_direcciones_pais'); ?> </label>
                  <select class="form-control" name="PaisDireccion" id="PaisDireccion" required>
-                   <option value="">Selecciona un País</option>
+                   <option value=""><?php echo $this->lang->line('usuario_form_direcciones_pais_selecciona'); ?></option>
                  </select>
                </div>
 
                <div class="form-group">
-                 <label for="EstadoDireccion">Estado </label>
+                 <label for="EstadoDireccion"><?php echo $this->lang->line('usuario_form_direcciones_estado'); ?> </label>
                  <select class="form-control" name="EstadoDireccion" id="EstadoDireccion" required>
-                   <option value="">Selecciona tu estado</option>
+                   <option value=""><?php echo $this->lang->line('usuario_form_direcciones_estado_selecciona'); ?></option>
                  </select>
                </div>
                <div class="form-group">
-                 <label for="MunicipioDireccion">Municipio / Alcaldía</label>
+                 <label for="MunicipioDireccion"><?php echo $this->lang->line('usuario_form_direcciones_municipio'); ?></label>
                  <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" required>
-                   <option value="">Selecciona tu Municipio / Alcaldía</option>
+                   <option value=""><?php echo $this->lang->line('usuario_form_direcciones_municipio_selecciona'); ?></option>
                  </select>
+               </div>
+               <div class="form-group">
+                 <label for="ZonaTrabajoServicio"><?php echo $this->lang->line('usuario_form_servicio_zona'); ?> <small><?php echo $this->lang->line('usuario_form_servicio_zona_descripcion'); ?></small></label>
+                 <textarea name="ZonaTrabajoServicio" class="form-control" rows="6"></textarea>
                </div>
             </div>
           </div>
@@ -153,7 +157,7 @@
 
 
                   <div class="form-group">
-                    <label for="DetallesServicio">Descripción Detallada</label>
+                    <<label for="DetallesServicio"><?php echo $this->lang->line('usuario_form_servicio_descripcion_detallada'); ?></label>
                     <textarea class="form-control Editor" name="DetallesServicio" rows="5" cols="80"><?php echo set_value('DetallesServicio'); ?></textarea>
                   </div>
 
@@ -167,17 +171,17 @@
             <div class="card-body">
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                <label class="custom-control-label" for="TerminosyCondiciones">Acepto los términos y condiciones de los Servicios</label>
+                 <label class="custom-control-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
               </div>
               <hr>
-              <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-save"></i> Registrar Servicio</button>
+              <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-save"></i><?php echo $this->lang->line('usuario_form_servicio_crear_servicio'); ?></button>
             </div>
           </div>
 
         </form>
         <div class="card mb-3">
           <div class="card-body">
-            <h6> <i class="fa fa-exclamation"></i> Primero debes guardar tu servicio para poder Adjuntar Archivos</h6>
+            <h6> <i class="fa fa-exclamation"></i> <?php echo $this->lang->line('usuario_form_servicio_anexos_antes'); ?></h6>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <div class="btn-group" role="group">
-  <button id="btnMenuDivisa" type="button" class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button id="btnMenuDivisa" type="button" class="btn btn-link btn-sm dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <?php echo $_SESSION['divisa']['iso']; ?>
   </button>
   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnMenuDivisa">

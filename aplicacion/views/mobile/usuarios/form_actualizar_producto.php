@@ -19,7 +19,7 @@
           <h5 class="pt-2"> <span class="fa fa-box"></span> Actualizar Producto</h5>
         </div> -->
         <div class="card-header d-flex justify-content-between">
-           <h5 class="h6 pt-1"> <span class="fa fa-box"></span> Actualizar <small> <?php echo $producto['PRODUCTO_NOMBRE']; ?></small></h5>
+           <h5 class="h6 pt-1"> <span class="fa fa-box"></span> <?php echo $this->lang->line('usuario_listas_generales_actualizar'); ?> <small> <?php echo $producto['PRODUCTO_NOMBRE']; ?></small></h5>
            <a href="<?php echo base_url('usuario/productos'); ?>" class="btn mt-1 btn-sm btn-outline-success"> <span class="fa fa-arrow-left"></span></a>
         </div>
       </div>
@@ -43,7 +43,7 @@
                 <div class="card-header" id="headingOne">
                   <h2 class="mb-0">
                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                       <span class="fa fa-list"></span> Datos Básicos
+                       <span class="fa fa-list"></span> <?php echo $this->lang->line('usuario_form_producto_datos'); ?>
                     </button>
                   </h2>
                 </div>
@@ -52,23 +52,23 @@
                   <div class="card-body">
 
                     <div class="form-group">
-                      <label for="EstadoProducto">Estado del Producto</label>
-                      <select class="form-control" id="" name="" placeholder="">
-                        <option value="activo" <?php if($producto['PRODUCTO_ESTADO']=='activo'){ echo 'selected';} ?>>Publicado</option>
-                        <option value="inactivo" <?php if($producto['PRODUCTO_ESTADO']=='inactivo'){ echo 'selected';} ?>>Borrador</option>
+                      <label for="EstadoProducto"><?php echo $this->lang->line('usuario_form_producto_estado'); ?></label>
+                      <select class="form-control" id="EstadoProducto" name="EstadoProducto" placeholder="">
+                        <option value="activo" <?php if($producto['PRODUCTO_ESTADO']=='activo'){ echo 'selected';} ?> ><?php echo $this->lang->line('usuario_form_producto_estado_publicado'); ?></option>
+                        <option value="inactivo" <?php if($producto['PRODUCTO_ESTADO']=='inactivo'){ echo 'selected';} ?>><?php echo $this->lang->line('usuario_form_producto_estado_borrador'); ?></option>
                       </select>
                     </div>
 
                     <hr>
 
                     <div class="border border-primary p-2">
-                      <h6 class="border-bottom pb-2"> <i class="fa fa-tag"></i> Información Básica Obligatoria</h6>
+                      <h6 class="border-bottom pb-2"> <i class="fa fa-tag"></i> <?php echo $this->lang->line('usuario_form_producto_info_basica_titulo'); ?></h6>
                       <div class="form-group">
-                        <label for="NombreProducto">Nombre del producto</label>
+                        <label for="NombreProducto"><?php echo $this->lang->line('usuario_form_producto_nombre'); ?></label>
                         <input type="text" class="form-control" id="NombreProducto" name="NombreProducto" placeholder="" value="<?php echo $producto['PRODUCTO_NOMBRE']; ?>">
                       </div>
                       <div class="form-group">
-                        <label for="PrecioProducto">Precio de Venta</label>
+                        <label for="PrecioProducto"><?php echo $this->lang->line('usuario_form_producto_precio_venta'); ?></label>
                         <div class="input-group input-group-sm mb-2">
                           <div class="input-group-prepend">
                             <div class="input-group-text">$</div>
@@ -77,35 +77,35 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="PrecioListaProducto">Precio de Lista</label>
+                        <label for="PrecioListaProducto"><?php echo $this->lang->line('usuario_form_producto_precio_lista'); ?></label>
                         <div class="input-group input-group-sm mb-2">
                           <div class="input-group-prepend">
                             <div class="input-group-text">$</div>
                           </div>
                         <input type="text" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO_LISTA']; ?>">
                         </div>
-                        <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Este es el precio Tachado que aparecerá en la lista de productos</small>
+                        <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> <?php echo $this->lang->line('usuario_form_producto_precio_lista_instrucciones'); ?></small>
                       </div>
                       <div class="form-group">
-                        <label for="CantidadProducto">Cantidad disponibles</label>
+                        <label for="CantidadProducto"><?php echo $this->lang->line('usuario_form_producto_cantidad'); ?></label>
                         <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="1" value="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>">
                       </div>
-                      <h6 class="border-bottom pb-2"> <i class="fa fa-clipboard-list"></i> Cantidades</h6>
+                      <h6 class="border-bottom pb-2"> <i class="fa fa-clipboard-list"></i> <?php echo $this->lang->line('usuario_form_producto_cantidades_titulo'); ?></h6>
                       <div class="form-group">
-                        <label for="ModeloProducto">Modelo</label>
+                        <label for="ModeloProducto"><?php echo $this->lang->line('usuario_form_producto_modelo'); ?></label>
                         <input type="text" class="form-control" id="ModeloProducto" name="ModeloProducto" placeholder="" value="<?php echo $producto['PRODUCTO_MODELO']; ?>">
                       </div>
                       <div class="form-group">
-                        <label for="SkuProducto">SKU (Clave de Inventario)</label>
+                        <label for="SkuProducto"><?php echo $this->lang->line('usuario_form_producto_sku'); ?> <?php echo $this->lang->line('usuario_form_producto_sku_instrucciones'); ?></label>
                         <input type="text" class="form-control" id="SkuProducto" name="SkuProducto" placeholder="" value="<?php echo $producto['PRODUCTO_SKU']; ?>">
                       </div>
                       <div class="form-group">
-                        <label for="CantidadMinimaProducto">Venta mínima</label>
+                        <label for="CantidadMinimaProducto"><?php echo $this->lang->line('usuario_form_producto_venta_minima'); ?></label>
                         <input type="number" class="form-control" id="CantidadMinimaProducto" required name="CantidadMinimaProducto" placeholder="" min="1" value="<?php echo $producto['PRODUCTO_CANTIDAD_MINIMA']; ?>">
                       </div>
-                      <h6 class="border-bottom pb-2"> <i class="fa fa-cube"></i> Dimensiones</h6>
+                      <h6 class="border-bottom pb-2"> <i class="fa fa-cube"></i> <?php echo $this->lang->line('usuario_form_producto_dimensiones_titulo'); ?></h6>
                       <div class="form-group">
-                        <label for="AnchoProducto">Ancho</label>
+                        <label for="AnchoProducto"><?php echo $this->lang->line('usuario_form_producto_ancho'); ?></label>
                         <div class="input-group input-group-sm mb-2">
                           <input type="text" class="form-control" id="AnchoProducto" name="AnchoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_ANCHO']; ?>">
                           <div class="input-group-append">
@@ -114,7 +114,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="AltoProducto">Alto</label>
+                        <label for="AltoProducto"><?php echo $this->lang->line('usuario_form_producto_alto'); ?></label>
                         <div class="input-group input-group-sm mb-2">
                           <input type="text" class="form-control" id="AltoProducto" name="AltoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_ALTO']; ?>">
                           <div class="input-group-append">
@@ -123,7 +123,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="ProfundoProducto">Profundo</label>
+                        <label for="ProfundoProducto"><?php echo $this->lang->line('usuario_form_producto_profundo'); ?></label>
                         <div class="input-group input-group-sm mb-2">
                         <input type="text" class="form-control" id="ProfundoProducto" name="ProfundoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PROFUNDO']; ?>">
                           <div class="input-group-append">
@@ -132,7 +132,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="PesoProducto">Peso</label>
+                        <label for="PesoProducto"><?php echo $this->lang->line('usuario_form_producto_peso'); ?></label>
                         <div class="input-group input-group-sm mb-2">
                         <input type="text" class="form-control" id="PesoProducto" name="PesoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PESO']; ?>">
                           <div class="input-group-append">
@@ -196,19 +196,19 @@
                   <div class="card-body">
 
                     <div class="form-group">
-                      <label for="DescripcionProducto">Descripción corta</label>
+                      <label for="DescripcionProducto"><?php echo $this->lang->line('usuario_form_producto_descripcion_corta'); ?></label>
                       <textarea id="DescripcionProducto" name="DescripcionProducto" class="form-control" rows="3"><?php echo $producto['PRODUCTO_DESCRIPCION']; ?></textarea>
                     </div>
                     <div class="form-group">
-                      <label for="DetallesProducto">Detalles del producto</label>
+                      <label for="DetallesProducto"><?php echo $this->lang->line('usuario_form_producto_detalles'); ?></label>
                       <textarea id="DetallesProducto" name="DetallesProducto" class="form-control Editor" rows="5"><?php echo $producto['PRODUCTO_DETALLES']; ?></textarea>
                     </div>
 
                     <div class="form-group">
-                      <label for="">Origen</label>
-                      <select class="form-control form-control-sm" name="OrigenProducto" id="OrigenProducto">
-                        <option value="México" <?php if($producto['PRODUCTO_ORIGEN']=='México'){ echo 'selected';} ?>>México</option>
-                        <option value="Otro" <?php if($producto['PRODUCTO_ORIGEN']=='Otro'){ echo 'selected';} ?>>Otro</option>
+                      <label for="CondicionProducto"><?php echo $this->lang->line('usuario_form_producto_condicion'); ?></label>
+                      <select class="form-control form-control-sm" name="CondicionProducto" id="CondicionProducto">
+                        <option value="nuevo" <?php if($producto['PRODUCTO_CONDICION']=='nuevo'){ echo 'selected';} ?>><?php echo $this->lang->line('usuario_form_producto_condicion_nuevo'); ?></option>
+                        <option value="usado" <?php if($producto['PRODUCTO_CONDICION']=='usuado'){ echo 'selected';} ?>><?php echo $this->lang->line('usuario_form_producto_condicion_usuado'); ?></option>
                       </select>
                     </div>
 
@@ -253,7 +253,7 @@
 
                     <div class="custom-file file-sm mb-3">
                       <input type="file" class="custom-file-input" id="" name="" placeholder="" value="">
-                      <label class="custom-file-label" for="">Añadir Imagen</label>
+                      <label class="custom-file-label" for=""><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
                     </div>
                     <?php foreach($galerias as $galeria){ ?>
                     <div class="mb-2">
@@ -279,10 +279,10 @@
               </div>
 
             </div>
-            <button type="submit" class="btn btn-sm mt-3 btn-primary float-right"> <span class="fa fa-save"></span> Actualizar Producto</button>
+            <button type="submit" class="btn btn-sm mt-3 btn-primary float-right"> <span class="fa fa-save"></span> <?php echo $this->lang->line('usuario_form_producto_actualizar_producto'); ?></button>
           </form>
           <hr>
-          <a href="<?php echo base_url('usuario/productos_combinaciones?id='.$_GET['id']); ?>" class="btn btn-sm mt-3 btn-primary"><span class="fa fa-sitemap"></span> Combinaciones</a>
+          <a href="<?php echo base_url('usuario/productos_combinaciones?id='.$_GET['id']); ?>" class="btn btn-sm mt-3 btn-primary"><span class="fa fa-sitemap"></span> <?php echo $this->lang->line('usuario_form_producto_combinaciones'); ?></a>
 
       </div>
 
