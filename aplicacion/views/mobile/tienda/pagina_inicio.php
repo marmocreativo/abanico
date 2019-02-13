@@ -15,19 +15,19 @@
       <div class="col-4">
         <a href="<?php echo base_url('categoria/servicios'); ?>" class="d-flex justify-content-center align-items-center">
           <div class="car-icono text-primary mr-2"> <span class="fa fa-tools"></span> </div>
-          <div class="car-titulo">Servicios</div>
+          <div class="car-titulo"><?php echo $this->lang->line('inicio_menu_destacados_servicios'); ?></div>
         </a>
       </div>
       <div class="col-4">
         <a href="<?php echo base_url('categoria'); ?>"  class="d-flex justify-content-center align-items-center">
           <div class="car-icono text-primary mr-2"> <span class="fa fa-box"></span> </div>
-          <div class="car-titulo">Productos</div>
+          <div class="car-titulo"><?php echo $this->lang->line('inicio_menu_destacados_productos'); ?></div>
         </a>
       </div>
       <div class="col-4">
         <a href="<?php echo base_url('usuario/registrar'); ?>" class="d-flex justify-content-center align-items-center">
           <div class="car-icono text-primary mr-2"> <span class="fa fa-handshake"></span> </div>
-          <div class="car-titulo">Únete</div>
+          <div class="car-titulo"><?php echo $this->lang->line('inicio_menu_destacados_unete'); ?></div>
         </a>
       </div>
     </div>
@@ -40,7 +40,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h2 class="h4 text-center pb-3">Productos destacados</h2>
+        <h2 class="h4 text-center pb-3"><?php echo $this->lang->line('inicio_productos_destacados_titulo'); ?></h2>
       </div>
     </div>
   </div>

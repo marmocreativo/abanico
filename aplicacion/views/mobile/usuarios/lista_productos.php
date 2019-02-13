@@ -16,7 +16,7 @@
 
       <div class="card mb-3">
         <div class="card-header d-flex justify-content-between">
-          <h2 class="h5 mb-0 pt-1"> <span class="fa fa-box"></span> Tus Productos</h2>
+          <h2 class="h5 mb-0 pt-1"> <span class="fa fa-box"></span> <?php echo $this->lang->line('usuario_lista_productos_titulo'); ?></h2>
           <a href="<?php echo base_url('usuario/productos/crear'); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span></a>
         </div>
         <div class="card-body pb-1">
@@ -33,10 +33,10 @@
         <?php foreach($productos as $producto){ ?>
         <div class="card">
           <div class="card-body">
-            <h3 class="h6"><strong>Nombre:</strong> <?php echo $producto->PRODUCTO_NOMBRE; ?></h3>
-            <h3 class="h6"><strong>SKU:</strong> <?php echo $producto->PRODUCTO_SKU; ?></h3>
-            <h3 class="h6"><strong>Cantidad:</strong> <?php echo $producto->PRODUCTO_CANTIDAD; ?></h3>
-            <h3 class="h6"><strong>Precio:</strong> $<?php echo $producto->PRODUCTO_PRECIO; ?></h3>
+            <h3 class="h6"><strong><?php echo $this->lang->line('usuario_lista_productos_nombre'); ?>:</strong> <?php echo $producto->PRODUCTO_NOMBRE; ?></h3>
+            <h3 class="h6"><strong><?php echo $this->lang->line('usuario_lista_productos_sku'); ?>:</strong> <?php echo $producto->PRODUCTO_SKU; ?></h3>
+            <h3 class="h6"><strong><?php echo $this->lang->line('usuario_lista_productos_cantidad'); ?>:</strong> <?php echo $producto->PRODUCTO_CANTIDAD; ?></h3>
+            <h3 class="h6"><strong><?php echo $this->lang->line('usuario_lista_productos_precio'); ?>:</strong> $<?php echo $producto->PRODUCTO_PRECIO; ?></h3>
             <?php
               switch ($producto->PRODUCTO_ESTADO) {
                 case 'activo':
@@ -48,8 +48,8 @@
               }
             ?>
             <div class="btn-group float-right">
-              <a href="<?php echo base_url('usuario/productos/actualizar?id='.$producto->ID_PRODUCTO); ?>" class="btn btn-sm btn-warning" title="Editar Producto"> <span class="fa fa-pencil-alt"></span> </a>
-              <button data-enlace='<?php echo base_url('usuario/productos/borrar?id='.$producto->ID_PRODUCTO); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Dirección"> <span class="fa fa-trash"></span> </button>
+              <a href="<?php echo base_url('usuario/productos/actualizar?id='.$producto->ID_PRODUCTO); ?>" class="btn btn-sm btn-warning" title="<?php echo $this->lang->line('usuario_listas_generales_editar'); ?> <?php echo $this->lang->line('usuario_lista_productos_singular'); ?>"> <span class="fa fa-pencil-alt"></span> </a>
+              <button data-enlace='<?php echo base_url('usuario/productos/borrar?id='.$producto->ID_PRODUCTO); ?>' class="btn btn-sm btn-danger borrar_entrada" title="<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> <?php echo $this->lang->line('usuario_lista_productos_singular'); ?>"> <span class="fa fa-trash"></span> </button>
             </div>
           </div>
         </div>

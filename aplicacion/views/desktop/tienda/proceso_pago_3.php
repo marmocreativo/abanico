@@ -43,7 +43,7 @@
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                       <p>
-                          <em><?php echo $this->lang->line('proceso_pago_3_fecha<?php echo $this->lang->line('usuario_menu_escritorio'); ?>'); ?>: <?php echo date('d / m / Y'); ?></em>
+                          <em><?php echo $this->lang->line('proceso_pago_3_fecha'); ?>: <?php echo date('d / m / Y'); ?></em>
                       </p>
                   </div>
                 </div>

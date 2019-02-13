@@ -17,7 +17,7 @@
   <div class="modal-dialog modal-lg modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><i class="fa fa-shopping-cart mr-2"></i>Carrito de compras</h5>
+        <h5 class="modal-title"><i class="fa fa-shopping-cart mr-2"></i> <?php echo $this->lang->line('carrito_titulo'); ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -26,9 +26,9 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" id="BotonVaciar" class="btn btn-outline-danger float-left"> <i class="fa fa-trash"></i> Vaciar</button>
-        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i> Volver</button>
-        <a href="<?php echo base_url('carrito'); ?>" id="BotonComprarAhora" class="btn btn-primary"><i class="fa fa-money-bill"></i> Pagar</a>
+        <button type="button" id="BotonVaciar" class="btn btn-sm btn-outline-danger float-left"> <i class="fa fa-trash"></i> <?php echo $this->lang->line('carrito_vaciar'); ?></button>
+        <button type="button" class="btn btn-sm btn-outline-primary" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i> <?php echo $this->lang->line('carrito_seguir_compranod'); ?></button>
+        <a href="<?php echo base_url('carrito'); ?>" id="BotonComprarAhora" class="btn btn-sm btn-primary"><i class="fa fa-money-bill"></i> <?php echo $this->lang->line('carrito_comprar_ahora'); ?></a>
       </div>
     </div>
   </div>

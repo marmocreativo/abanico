@@ -25,11 +25,11 @@
                 <div class="card-header">
                   <div class="row">
                     <div class="col">
-                      <p># Orden<br>
+                      <p># <?php echo $this->lang->line('usuario_lista_pedidos_orden'); ?><br>
                       <b><?php echo $pedido->ID_PEDIDO; ?></b></p>
                     </div>
                     <div class="col">
-                      <p>Folio<br>
+                      <p><?php echo $this->lang->line('usuario_lista_pedidos_folio'); ?><br>
                       <b><?php echo $pedido->PEDIDO_FOLIO; ?></b></p>
                     </div>
                     <div class="col">
@@ -41,8 +41,8 @@
                   <table class="table table-striped table-responsive">
                     <thead>
                       <tr>
-                        <th style="width:50%">Producto</th>
-                        <th style="width:10%" class="text-center">Cantidad</th>
+                        <th style="width:50%"><?php echo $this->lang->line('usuario_lista_pedidos_producto'); ?></th>
+                        <th style="width:10%" class="text-center"><?php echo $this->lang->line('usuario_lista_pedidos_cantidad'); ?></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -73,15 +73,15 @@
                   <div class="row">
 
                     <div class="col">
-                      <p>Fecha de Compra<br>
+                      <p><?php echo $this->lang->line('usuario_lista_pedidos_fecha_compra'); ?><br>
                       <b><?php echo $pedido->PEDIDO_FECHA_REGISTRO; ?></b></p>
                     </div>
                     <div class="col">
-                      <p>Estado del Pedido<br>
+                      <p><?php echo $this->lang->line('usuario_lista_ventas_estado_pedido'); ?><br>
                       <b><?php echo $pedido->PEDIDO_ESTADO_PEDIDO; ?></b></p>
                     </div>
                     <div class="col-12 text-center">
-                      <p>Importe Total<br>
+                      <p><?php echo $this->lang->line('usuario_lista_pedidos_importe_total'); ?><br>
                       <b>$<?php echo $pedido->PEDIDO_IMPORTE_TOTAL.' '.$pedido->PEDIDO_DIVISA; ?></b></p>
                     </div>
                   </div>

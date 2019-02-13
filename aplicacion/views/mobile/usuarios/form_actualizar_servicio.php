@@ -28,47 +28,51 @@
               <span class="portada-servicios img-thumbnail rounded-circle" style="background-image:url('<?php echo base_url($ruta_portada); ?>');"> </span>
               <hr>
                <div class="form-group">
-                 <label for="NombreUsuario">Nombre de la persona que Ofrece el servicio</label>
+                 <label for="NombreUsuario"><?php echo $this->lang->line('usuario_form_servicio_nombre_persona'); ?></label>
                  <input type="text" class="form-control" id="NombreUsuario" name="NombreUsuario" placeholder="" required value="<?php echo $servicio['USUARIO_NOMBRE']; ?>">
                </div>
                <div class="form-group">
-                 <label for="NombreServicio">¿Qué Servicio Ofreces?</label>
+                 <label for="NombreServicio"><?php echo $this->lang->line('usuario_form_servicio_nombre_servicio'); ?></label>
                  <input type="text" class="form-control" id="NombreServicio" name="NombreServicio" placeholder="" required value="<?php echo $servicio['SERVICIO_NOMBRE']; ?>">
                </div>
                <div class="form-group">
-                 <label for="DescripcionServicio">Descripción Corta</label>
+                 <label for="DescripcionServicio"><?php echo $this->lang->line('usuario_form_servicio_descripcion_corta'); ?></label>
                   <textarea class="form-control" name="DescripcionServicio" rows="3" cols="80" required><?php echo $servicio['SERVICIO_DESCRIPCION']; ?></textarea>
                </div>
 
                <div class="form-group">
-                 <label for="TipoServicio">Tipo de Servicio</label>
+                 <label for="TipoServicio"><?php echo $this->lang->line('usuario_form_servicio_tipo'); ?></label>
                  <select class="form-control" name="TipoServicio">
-                   <option value="profesional" <?php if($servicio['SERVICIO_TIPO']=='normal'){ echo 'selected'; } ?>>Servicio Presencial</option>
-                   <option value="digital" <?php if($servicio['SERVICIO_TIPO']=='digital'){ echo 'selected'; } ?>>Servicio a Distancia</option>
+                   <option value="profesional" <?php if($servicio['SERVICIO_TIPO']=='normal'){ echo 'selected'; } ?>><?php echo $this->lang->line('usuario_form_servicio_tipo_presencial'); ?></option>
+                   <option value="digital" <?php if($servicio['SERVICIO_TIPO']=='digital'){ echo 'selected'; } ?>><?php echo $this->lang->line('usuario_form_servicio_tipo_distancia'); ?></option>
                  </select>
                </div>
-               <p class="text-muted"> <i class="fa fa-info-circle"></i> Los Servicios a distancia, son los que se pueden ejercer a traves de internet.</p>
+               <p class="text-muted"> <i class="fa fa-info-circle"></i> <?php echo $this->lang->line('usuario_form_servicio_tipo_distancia_instrucciones'); ?></p>
 
-               <h6> <i class="fa fa-map-marker"></i> ¿En dónde ofreces tu servicio?</h6>
+               <h6> <i class="fa fa-map-marker"></i> <?php echo $this->lang->line('usuario_form_servicio_zona_instrucciones'); ?></h6>
 
                <div class="form-group">
-                 <label for="PaisDireccion">País </label>
+                 <label for="PaisDireccion"><?php echo $this->lang->line('usuario_form_direcciones_pais'); ?> </label>
                  <select class="form-control" name="PaisDireccion" id="PaisDireccion" data-valor-anterior="<?php echo $servicio['SERVICIO_PAIS']; ?>" required>
-                   <option value="">Selecciona un País</option>
+                   <option value=""><?php echo $this->lang->line('usuario_form_direcciones_pais_selecciona'); ?></option>
                  </select>
                </div>
 
                <div class="form-group">
-                 <label for="EstadoDireccion">Estado </label>
+                 <label for="EstadoDireccion"><?php echo $this->lang->line('usuario_form_direcciones_estado'); ?> </label>
                  <select class="form-control" name="EstadoDireccion" id="EstadoDireccion" data-valor-anterior="<?php echo $servicio['SERVICIO_ESTADO_DIR']; ?>" required>
-                   <option value="">Selecciona tu estado</option>
+                   <option value=""><?php echo $this->lang->line('usuario_form_direcciones_estado_selecciona'); ?></option>
                  </select>
                </div>
                <div class="form-group">
-                 <label for="MunicipioDireccion">Municipio / Alcaldía</label>
+                 <label for="MunicipioDireccion"><?php echo $this->lang->line('usuario_form_direcciones_municipio'); ?></label>
                  <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php echo $servicio['SERVICIO_MUNICIPIO']; ?>" required>
-                   <option value="">Selecciona tu Municipio / Alcaldía</option>
+                   <option value=""><?php echo $this->lang->line('usuario_form_direcciones_municipio_selecciona'); ?></option>
                  </select>
+               </div>
+               <div class="form-group">
+                 <label for="ZonaTrabajoServicio"><?php echo $this->lang->line('usuario_form_servicio_zona'); ?> <small><?php echo $this->lang->line('usuario_form_servicio_zona_descripcion'); ?></small></label>
+                 <textarea name="ZonaTrabajoServicio" class="form-control" rows="6"><?php echo $servicio['SERVICIO_ZONA_TRABAJO']; ?></textarea>
                </div>
             </div>
           </div>
@@ -79,7 +83,7 @@
               <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
                   <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <span class="fa fa-list"></span> Categorias
+                    <span class="fa fa-list"></span> <?php echo $this->lang->line('usuario_form_servicio_categorias'); ?>
                   </button>
                 </h2>
               </div>
@@ -130,7 +134,7 @@
               <div class="card-header" id="headingTwo">
                 <h2 class="mb-0">
                   <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <span class="fa fa-file-alt"></span> Descripción
+                    <span class="fa fa-file-alt"></span> <?php echo $this->lang->line('usuario_form_servicio_descripcion'); ?>
                   </button>
                 </h2>
               </div>
@@ -139,7 +143,7 @@
 
 
                   <div class="form-group">
-                    <label for="DetallesServicio">Descripción Detallada</label>
+                    <label for="DetallesServicio"><?php echo $this->lang->line('usuario_form_servicio_descripcion_detallada'); ?></label>
                     <textarea class="form-control Editor" name="DetallesServicio" rows="5" cols="80"><?php echo $servicio['SERVICIO_DETALLES']; ?></textarea>
                   </div>
 
@@ -147,28 +151,27 @@
                 </div>
               </div>
             </div>
-            // Galeria
             <div class="card">
               <div class="card-header" id="headingTwo">
                 <h2 class="mb-0">
                   <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <span class="fa fa-file-alt"></span> Galería
+                    <span class="fa fa-file-alt"></span> <?php echo $this->lang->line('usuario_form_servicio_galeria'); ?>
                   </button>
                 </h2>
               </div>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="ImagenServicio">Añadir Imagen</label>
+                    <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
                     <input type="file" class="form-control" id="ImagenServicio" name="ImagenServicio">
                   </div>
                   <table class="table table-bordered table-sm table-responsive">
                     <thead>
                       <tr>
-                        <th class="text-center">id</th>
-                        <th class="text-center">Imagen</th>
-                        <th class="text-center">Portada</th>
-                        <th class="text-right">Controles</th>
+                        <th class="text-center"><?php echo $this->lang->line('usuario_form_producto_lista_imagen_id'); ?></th>
+                        <th class="text-center"><?php echo $this->lang->line('usuario_form_producto_lista_imagen'); ?></th>
+                        <th class="text-center"><?php echo $this->lang->line('usuario_form_producto_lista_imagen_portada'); ?></th>
+                        <th class="text-right"><?php echo $this->lang->line('usuario_listas_generales_controles'); ?></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -202,21 +205,21 @@
 
           <div class="card mt-3">
             <div class="card-body">
-              <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-save"></i> Registrar Servicio</button>
+              <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-save"></i>  <?php echo $this->lang->line('usuario_form_servicio_actualizar_servicio'); ?></button>
             </div>
           </div>
 
         </form>
         <div class="card mb-3">
           <div class="card-body">
-            <h6> <i class="fa fa-file"></i> Archivos Anexos</h6>
-            <p class="text-muted">Añade cartas de recomendación diplomas o cualquier archivo que consideres que puede acreditar tu capacidad.</p>
+            <h6> <i class="fa fa-file"></i> <?php echo $this->lang->line('usuario_form_servicio_anexos_titulo'); ?></h6>
+            <p class="text-muted"><?php echo $this->lang->line('usuario_form_servicio_anexos_instrucciones'); ?></p>
             <hr>
             <table class="table table-sm table-responsive">
               <thead>
                 <tr>
-                  <th>Archivo</th>
-                  <th>Controles</th>
+                  <th><?php echo $this->lang->line('usuario_form_servicio_anexos_archivo'); ?></th>
+                  <th><th class="text-right"><?php echo $this->lang->line('usuario_listas_generales_controles'); ?></th></th>
                 </tr>
               </thead>
               <tbody>
@@ -241,14 +244,14 @@
               <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id'] ?>">
               <input type="hidden" name="IdObjeto" value="<?php echo $_GET['id'] ?>">
               <div class="form-group">
-                <label for="NombreAdjunto">Nombre / Descripción Adjunto</label>
+                <label for="NombreAdjunto"><?php echo $this->lang->line('usuario_form_servicio_anexos_nombre_descripcion'); ?></label>
                 <textarea name="NombreAdjunto" class="form-control" rows="4" required></textarea>
               </div>
               <div class="form-group">
-                <label for="ArchivoAdjunto">Archivo <small>Tipos de Archivo Permitidos: PDF, JPG, PNG</small></label>
+                <label for="ArchivoAdjunto"><?php echo $this->lang->line('usuario_form_servicio_anexos_archivo'); ?> <small><?php echo $this->lang->line('usuario_form_servicio_anexos_archivo_instrucciones'); ?></small></label>
                 <input type="file" class="form-control" name="ArchivoAdjunto" value="">
               </div>
-              <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-upload"></i> Subir Adjunto</button>
+              <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_form_servicio_anexos_archivo_subir'); ?></button>
             </form>
           </div>
         </div>

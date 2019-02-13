@@ -16,7 +16,7 @@
 
       <div class="card mb-3">
         <div class="card-header d-flex justify-content-between">
-            <h2 class="h5 mb-0 pt-1"> <span class="fa fa-box"></span> Tus Servicios</h2>
+            <h2 class="h5 mb-0 pt-1"> <span class="fa fa-box"></span> <?php echo $this->lang->line('usuario_lista_servicios_titulo'); ?></h2>
             <a href="<?php echo base_url('usuario/servicios/crear'); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span></a>
         </div>
         <div class="card-body">

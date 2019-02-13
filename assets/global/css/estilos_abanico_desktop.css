@@ -360,8 +360,16 @@ html, body{
    background-position: center;
    background-repeat: no-repeat;
 }
-
-
+.cont-foto-servicio {
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    top: -50px;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 0 0 5px hsl(0, 0%, 100%);
+}
 .store-body {
   display: flex;
   flex-direction: row;
@@ -548,14 +556,6 @@ html, body{
   min-height: 250px;
   background-size: cover;
   background-image: url(https://images.pexels.com/photos/15964/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-}
-.image-profile
-{
-  position: absolute;
-  top: -50px;
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 8px hsl(0, 0%, 100%);
 }
 .card-desc-servicio {
   border:none;

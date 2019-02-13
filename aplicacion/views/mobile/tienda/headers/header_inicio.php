@@ -18,17 +18,29 @@
   <body>
     <!-- Header -->
 
-  <div class="menu-superior bg<?php echo $primary; ?>"></div>
+  <div class="menu-superior bg<?php echo $primary; ?>">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <div class="btn-group float-right text-white" role="group" aria-label="Button group with nested dropdown">
+            <?php $this->load->view('desktop/tienda/widgets/menu_notificaciones'); ?>
+            <?php $this->load->view('mobile/tienda/widgets/menu_divisa'); ?>
+            <?php $this->load->view('mobile/tienda/widgets/menu_lenguaje'); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="menu-principal">
     <nav class="navbar navbar-expand">
       <a class="navbar-brand mr-2" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
 
       <form class="form-inline my-3 mr-2 w-75" action="<?php echo base_url('busqueda') ?>" method="get">
         <div class="input-group input-group-sm">
-          <input class="form-control" type="search" name="Busqueda" placeholder="Busca lo Mejor" aria-label="Search" value="<?php if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){ echo filter_var ( $_GET['Busqueda'], FILTER_SANITIZE_STRING); } ?>">
+          <input class="form-control" type="search" name="Busqueda" placeholder="<?php echo $this->lang->line('header_formulario_busqueda_buscar'); ?>" aria-label="Search" value="<?php if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){ echo filter_var ( $_GET['Busqueda'], FILTER_SANITIZE_STRING); } ?>">
           <select class="form-control" name="BuscarEn">
-            <option value="productos" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='productos'){ echo 'selected'; } ?>>En productos</option>
-            <option value="servicios" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='servicios'){ echo 'selected'; } ?>>En servicios</option>
+            <option value="productos" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='productos'){ echo 'selected'; } ?>><?php echo $this->lang->line('header_formulario_busqueda_en_productos'); ?></option>
+            <option value="servicios" <?php if(isset($_GET['BuscarEn'])&&$_GET['BuscarEn']=='servicios'){ echo 'selected'; } ?>><?php echo $this->lang->line('header_formulario_busqueda_en_servicios'); ?></option>
           </select>
           <div class="input-group-append">
             <button type="submit" class="btn" type="button"><i class="fa fa-search"></i></button>
@@ -52,8 +64,8 @@
     </nav>
 
     <div class="card btnSubmenu">
-      <button type="button" class="btn btn-sm btnFunction2 bg<?php echo $primary; ?>" data-toggle="collapse" href="#menu-productos" role="button" aria-expanded="false" aria-controls="menu-productos">Productos</button>
-      <button type="button" class="btn btn-sm btnFunction3 bg<?php echo $primary; ?>" data-toggle="collapse" href="#menu-servicios" role="button" aria-expanded="false" aria-controls="menu-servicios">Servicios</button>
+      <button type="button" class="btn btn-sm btnFunction2 bg<?php echo $primary; ?>" data-toggle="collapse" href="#menu-productos" role="button" aria-expanded="false" aria-controls="menu-productos"><?php echo $this->lang->line('header_categorias_productos_boton'); ?></button>
+      <button type="button" class="btn btn-sm btnFunction3 bg<?php echo $primary; ?>" data-toggle="collapse" href="#menu-servicios" role="button" aria-expanded="false" aria-controls="menu-servicios"><?php echo $this->lang->line('header_categorias_servicios_boton'); ?></button>
     </div>
 
     <div class="bandaMenu">
@@ -70,7 +82,7 @@
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <?php $this->load->view('mobile/tienda/widgets/menu_usuario'); ?>
         <span class="separador mt-3 mb-3"></span>
-        <a class="nav-link" href="<?php echo base_url('usuarios/favoritos') ?>"> <i class="fas fa-heart"></i> Favoritos</a>
+        <a class="nav-link" href="<?php echo base_url('usuarios/favoritos') ?>"> <i class="fas fa-heart"></i> <?php echo $this->lang->line('header_boton_favoritos'); ?></a>
       </div>
     </div>
   </div>
@@ -79,7 +91,7 @@
     <div class="card py-3 px-2">
 
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link" href="<?php echo base_url('categoria'); ?>"> <i class="fa fa-boxes"></i> TODOS LOS PRODUCTOS</a>
+          <a class="nav-link" href="<?php echo base_url('categoria'); ?>"> <i class="fa fa-boxes"></i> <?php echo $this->lang->line('header_categorias_productos_todos'); ?></a>
           <?php $i=0; foreach($categorias as $categoria){ ?>
           <a class="nav-link" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" href="<?php echo base_url('categoria?slug='.$categoria->CATEGORIA_URL); ?>">
             <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
@@ -94,7 +106,7 @@
     <div class="card py-3 px-2">
 
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-link" href="<?php echo base_url('categoria/servicios'); ?>"> <i class="fa fa-boxes"></i> TODOS LOS SERVICIOS</a>
+        <a class="nav-link" href="<?php echo base_url('categoria/servicios'); ?>"> <i class="fa fa-boxes"></i>  <?php echo $this->lang->line('header_categorias_servicios_todos'); ?></a>
         <?php $i=0; foreach($categorias_servicios as $categoria){ ?>
         <a class="nav-link" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" href="<?php echo base_url('categoria/servicios?slug='.$categoria->CATEGORIA_URL); ?>">
           <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
