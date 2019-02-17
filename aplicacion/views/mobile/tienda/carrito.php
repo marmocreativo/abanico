@@ -25,7 +25,7 @@
                    </div>
                  </div>
                  <button type="button" class="btn mt-2 mr-2 btnEliminar btn-danger btn-sm btn-block boton-eliminar-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'
-                   title="<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> <?php echo $this->lang->line('usuario_lista_productos_singular'); ?> "> <i class="fa fa-trash"></i> "<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> </button>
+                   title="<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> <?php echo $this->lang->line('usuario_lista_productos_singular'); ?> "> <i class="fa fa-trash"></i> <?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> </button>
                </div>
                <div class="col">
                  <div class="mb-3">
