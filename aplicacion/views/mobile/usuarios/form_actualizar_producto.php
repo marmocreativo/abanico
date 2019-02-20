@@ -252,8 +252,8 @@
                   <div class="card-body">
 
                     <div class="custom-file file-sm mb-3">
-                      <input type="file" class="custom-file-input" id="" name="" placeholder="" value="">
-                      <label class="custom-file-label" for=""><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
+                      <input type="file" class="form-control" id="ImagenProducto" name="ImagenProducto" placeholder="" value="">
+                      <label class="" for=""><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
                     </div>
                     <?php foreach($galerias as $galeria){ ?>
                     <div class="mb-2">

@@ -65,10 +65,9 @@
                             <div class="border p-3 mb-3">
                               <form class="" action="<?php echo base_url('usuario/productos_traducciones/lenguaje_default'); ?>" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="IdProducto" value="<?php echo $_GET['id']; ?>">
-                                <h6> <i class="fa fa-language"></i> Lenguaje por defecto del producto</h6>
                                 <div class="row pt-3">
-                                  <div class="col">
-                                      <label for="ProductoLenguaje">Lenguaje por Defecto</label>
+                                  <div class="col-6">
+                                      <label for="ProductoLenguaje">Idioma en el que escribiste la descripción de tu producto</label>
                                   </div>
                                   <div class="col">
                                     <div class="form-group">
@@ -80,21 +79,13 @@
                                     </div>
                                   </div>
                                   <div class="col">
-                                    <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> Guardar Lenguaje por defecto</button>
+                                    <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> Guardar</button>
                                   </div>
                                 </div>
                               </form>
                             </div>
-                            <h5> <i class="fa fa-language"></i> Traducciones</h5>
+                            <h5> <i class="fa fa-language"></i> Escribe la descripción de tu producto en otro idioma</h5>
                             <table class="table table-sm table-bordered">
-                              <thead>
-                                <tr>
-                                  <th width="15%">Traducción</th>
-                                  <th>
-                                    Formulario
-                                  </th>
-                                </tr>
-                              </thead>
                               <tbody>
                                 <?php foreach($lenguajes as $lenguaje){ ?>
                                   <?php if($producto['LENGUAJE']!=$lenguaje->LENGUAJE_ISO){ ?>
