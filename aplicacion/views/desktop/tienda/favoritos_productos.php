@@ -10,6 +10,22 @@
         <h5> <i class="fa fa-heart"></i> Servicios Favoritos</h5>
         <div class="card-deck">
           <?php foreach($servicios as $servicio){ ?>
+            <?php
+              // Variables de Traducción
+              if($_SESSION['lenguaje']['iso']==$servicio->LENGUAJE){
+                $titulo = $servicio->SERVICIO_NOMBRE;
+                $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
+              }else{
+                $traduccion = $this->TraduccionesModel->lista($servicio->ID_SERVICIO,'servicio',$_SESSION['lenguaje']['iso']);
+                if(!empty($traduccion)){
+                  $titulo = $traduccion['TITULO'];
+                  $descripcion_corta = $traduccion['DESCRIPCION_CORTA'];
+                }else{
+                  $titulo = $servicio->SERVICIO_NOMBRE;
+                  $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
+                }
+              }
+            ?>
             <div class="col-xl-3 col-md-3 col-6 mb-3">
               <div class="cuadricula-productos">
                 <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio->ID_SERVICIO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
@@ -31,9 +47,9 @@
                         <?php } ?>
                         <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
                       </ul>
-                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $servicio->SERVICIO_NOMBRE; ?></h3>
+                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
                       <div class="border-top mt-3 pt-3">
-                        <?php echo $servicio->SERVICIO_DESCRIPCION; ?>
+                        <?php echo $descripcion_corta; ?>
                       </div>
                       <div class="">
                           <a href="<?php echo base_url('servicio/quitar_favorito?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-outline-primary" title="Quitar de Favoritos"> <span class="fa fa-heart-broken"></span> </a>
@@ -50,6 +66,19 @@
         <h5> <i class="fa fa-heart"></i> Productos Favoritos</h5>
         <div class="card-deck">
           <?php foreach($productos as $producto){ ?>
+            <?php
+            // Variables de Traducción
+            if($_SESSION['lenguaje']['iso']==$producto->LENGUAJE){
+              $titulo = $producto->PRODUCTO_NOMBRE;
+            }else{
+              $traduccion = $this->TraduccionesModel->lista($producto->ID_PRODUCTO,'producto',$_SESSION['lenguaje']['iso']);
+              if(!empty($traduccion)){
+                $titulo = $traduccion['TITULO'];
+              }else{
+                $titulo = $producto->PRODUCTO_NOMBRE;
+              }
+            }
+            ?>
             <div class="col-xl- col-md-3 col-6 mb-3">
               <div class="cuadricula-productos">
                 <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
@@ -89,7 +118,7 @@
                         <?php } ?>
                         <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
                       </ul>
-                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h3>
+                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
                       <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)){ ?>
                         <div class="price-list"> $<?php echo $producto->PRODUCTO_PRECIO_LISTA; ?></div>
                       <?php } ?>

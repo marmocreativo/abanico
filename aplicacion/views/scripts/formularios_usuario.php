@@ -116,17 +116,34 @@ function readURL(input) {
 jQuery('#ImagenServicio').change(function() {
   readURL(this);
 });
+
 // Prevenir enviar formulario dos veces.
 
-/*
-    jQuery('button[type="submit"]').click(function(){
+jQuery.validator.setDefaults({
+    errorElement: 'span',
+    errorPlacement: function (error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+    }
+});
 
-      jQuery(this).html("<i class='fa fa-spinner fa-pulse'></i> Por favor espere...");
-      jQuery(this).attr('disabled', 'disabled');
-      var formulario = jQuery(this).parents('form:first');
-      $(formulario).preventDoubleSubmission();
-      //formulario.submit();
+  jQuery('button[type="submit"]').click(function(){
+    var boton = jQuery(this);
+    var formulario = jQuery(this).parents('form:first');
+
+    formulario.validate({
+      submitHandler: function(form) {
+        boton.html("<i class='fa fa-spinner fa-pulse'></i> Por favor espere...");
+        form.submit();
+      }
+    });
   });
-  */
+
 
 </script>

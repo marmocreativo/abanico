@@ -9,10 +9,7 @@
             <div class="card">
               <div class="card-header d-flex justify-content-between">
                 <div class="titulo">
-                  <h1 class="h5"> <span class="fa fa-box"></span> <?php echo $this->lang->line('usuario_listas_generales_actualizar'); ?> <?php echo $producto['PRODUCTO_NOMBRE']; ?></h1>
-                </div>
-                <div class="herramientas">
-                    <a href="<?php echo base_url('usuario/productos'); ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-arrow-left"></span> <?php echo $this->lang->line('usuario_form_producto_regresar'); ?></a>
+                  <h1 class="h5"> <span class="fa fa-box"></span> <?php echo $this->lang->line('usuario_listas_generales_actualizar'); ?> <?php echo $servicio['SERVICIO_NOMBRE']; ?></h1>
                 </div>
               </div>
               <div class="card-body">
@@ -28,28 +25,8 @@
                   <div class="col">
                     <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                       <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('usuario/productos/actualizar?id='.$_GET['id'].'&tab='); ?>"> <span class="fa fa-list"></span>
-                          <?php echo $this->lang->line('usuario_form_producto_datos'); ?>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('usuario/productos/actualizar?id='.$_GET['id'].'&tab=categoria'); ?>"> <span class="fa fa-list"></span>
-                          <?php echo $this->lang->line('usuario_form_producto_categorias'); ?>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('usuario/productos/actualizar?id='.$_GET['id'].'&tab=datos'); ?>"> <span class="fa fa-file-alt"></span>
-                          <?php echo $this->lang->line('usuario_form_producto_descripcion'); ?>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('usuario/productos/actualizar?id='.$_GET['id'].'&tab=galeria'); ?>"> <span class="fa fa-image"></span>
-                          <?php echo $this->lang->line('usuario_form_producto_galeria'); ?>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('usuario/productos/actualizar?id='.$_GET['id']); ?>" > <span class="fa fa-sitemap"></span>
-                          <?php echo $this->lang->line('usuario_form_producto_combinaciones'); ?>
+                        <a class="nav-link" href="<?php echo base_url('usuario/servicios/actualizar?id='.$_GET['id'].'&tab='); ?>"> <span class="fa fa-tools"></span>
+                          Datos del Servicio
                         </a>
                       </li>
                       <li class="nav-item">
@@ -63,18 +40,18 @@
                         <div class="row">
                           <div class="col">
                             <div class="border p-3 mb-3">
-                              <form class="" action="<?php echo base_url('usuario/productos_traducciones/lenguaje_default'); ?>" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="IdProducto" value="<?php echo $_GET['id']; ?>">
+                              <form class="" action="<?php echo base_url('usuario/servicios_traducciones/lenguaje_default'); ?>" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="IdServicio" value="<?php echo $_GET['id']; ?>">
                                 <h6> <i class="fa fa-language"></i> Lenguaje por defecto del producto</h6>
                                 <div class="row pt-3">
                                   <div class="col">
-                                      <label for="ProductoLenguaje">Lenguaje por Defecto</label>
+                                      <label for="ServicioLenguaje">Lenguaje por Defecto</label>
                                   </div>
                                   <div class="col">
                                     <div class="form-group">
-                                      <select class="form-control" name="ProductoLenguaje">
+                                      <select class="form-control" name="ServicioLenguaje">
                                         <?php foreach($lenguajes as $lenguaje){ ?>
-                                        <option value="<?php echo $lenguaje->LENGUAJE_ISO; ?>" <?php if($producto['LENGUAJE']==$lenguaje->LENGUAJE_ISO){ echo 'selected'; } ?>><?php echo $lenguaje->LENGUAJE_NOMBRE; ?></option>
+                                        <option value="<?php echo $lenguaje->LENGUAJE_ISO; ?>" <?php if($servicio['LENGUAJE']==$lenguaje->LENGUAJE_ISO){ echo 'selected'; } ?>><?php echo $lenguaje->LENGUAJE_NOMBRE; ?></option>
                                       <?php } ?>
                                       </select>
                                     </div>
@@ -89,23 +66,23 @@
                             <table class="table table-sm table-bordered">
                               <thead>
                                 <tr>
-                                  <th width="15%">Traducción</th>
+                                  <th width="15%">Lenguaje</th>
                                   <th>
-                                    Formulario
+                                    Traducción
                                   </th>
                                 </tr>
                               </thead>
                               <tbody>
                                 <?php foreach($lenguajes as $lenguaje){ ?>
-                                  <?php if($producto['LENGUAJE']!=$lenguaje->LENGUAJE_ISO){ ?>
+                                  <?php if($servicio['LENGUAJE']!=$lenguaje->LENGUAJE_ISO){ ?>
                                 <tr>
                                   <td> <h3> <?php echo $lenguaje->LENGUAJE_NOMBRE; ?> </h3></td>
                                   <td>
-                                    <?php $traduccion = $this->TraduccionesModel->lista($producto['ID_PRODUCTO'],'producto',$lenguaje->LENGUAJE_ISO); ?>
+                                    <?php $traduccion = $this->TraduccionesModel->lista($servicio['ID_SERVICIO'],'servicio',$lenguaje->LENGUAJE_ISO); ?>
                                     <?php if(empty($traduccion)){ ?>
-                                    <form class="" action="<?php echo base_url('usuario/productos_traducciones/crear'); ?>" method="post">
-                                      <input type="hidden" name="IdObjeto" value="<?php echo $producto['ID_PRODUCTO'] ?>">
-                                      <input type="hidden" name="TipoObjeto" value="producto">
+                                    <form class="" action="<?php echo base_url('usuario/servicios_traducciones/crear'); ?>" method="post">
+                                      <input type="hidden" name="IdObjeto" value="<?php echo $servicio['ID_SERVICIO'] ?>">
+                                      <input type="hidden" name="TipoObjeto" value="servicio">
                                       <input type="hidden" name="Lenguaje" value="<?php echo $lenguaje->LENGUAJE_ISO; ?>">
                                       <div class="form-group">
                                         <label for="TraduccionTitulo">Título</label>
@@ -123,7 +100,7 @@
                                       <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-save"></i> Crear Traducción</button>
                                     </form>
                                   <?php }else{ ?>
-                                    <form class="" action="<?php echo base_url('usuario/productos_traducciones/actualizar'); ?>" method="post">
+                                    <form class="" action="<?php echo base_url('usuario/servicios_traducciones/actualizar'); ?>" method="post">
                                       <input type="hidden" name="IdTraduccion" value="<?php echo $traduccion['ID_TRADUCCION'] ?>">
                                       <input type="hidden" name="IdObjeto" value="<?php echo $traduccion['ID_OBJETO'] ?>">
                                       <input type="hidden" name="TipoObjeto" value="<?php echo $traduccion['TIPO_OBJETO'] ?>">

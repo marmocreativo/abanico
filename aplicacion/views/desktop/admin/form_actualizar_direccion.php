@@ -52,19 +52,20 @@
                    </div>
 
                    <div class="col">
+
                      <div class="form-group">
-                       <label for="MunicipioDireccion">Municipio / Alcaldía</label>
-                       <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php echo $direccion['DIRECCION_MUNICIPIO']; ?>" required>
-                         <option value="">Selecciona tu Municipio / Alcaldía</option>
-                       </select>
+                       <label for="CiudadDireccion">Ciudad (Opcional)</label>
+                       <input type="text" name="CiudadDireccion" class="form-control"  value="<?php echo $direccion['DIRECCION_CIUDAD']; ?>">
                      </div>
                    </div>
                  </div>
                  <div class="row">
                    <div class="col">
                      <div class="form-group">
-                       <label for="CiudadDireccion">Ciudad (Opcional)</label>
-                       <input type="text" name="CiudadDireccion" class="form-control"  value="<?php echo $direccion['DIRECCION_CIUDAD']; ?>">
+                       <label for="MunicipioDireccion">Municipio / Alcaldía</label>
+                       <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php echo $direccion['DIRECCION_MUNICIPIO']; ?>" required>
+                         <option value="">Selecciona tu Municipio / Alcaldía</option>
+                       </select>
                      </div>
                    </div>
                    <div class="col">

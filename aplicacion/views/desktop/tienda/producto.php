@@ -1,3 +1,23 @@
+<?php
+  // Variables de Traducción
+  if($_SESSION['lenguaje']['iso']==$producto['LENGUAJE']){
+    $titulo = $producto['PRODUCTO_NOMBRE'];
+    $descripcion_corta = $producto['PRODUCTO_DESCRIPCION'];
+    $descripcion_larga = $producto['PRODUCTO_DETALLES'];
+  }else{
+    $traduccion = $this->TraduccionesModel->lista($producto['ID_PRODUCTO'],'producto',$_SESSION['lenguaje']['iso']);
+    if(!empty($traduccion)){
+      $titulo = $traduccion['TITULO'];
+      $descripcion_corta = $traduccion['DESCRIPCION_CORTA'];
+      $descripcion_larga = $traduccion['DESCRIPCION_LARGA'];
+    }else{
+      $titulo = $producto['PRODUCTO_NOMBRE'];
+      $descripcion_corta = $producto['PRODUCTO_DESCRIPCION'];
+      $descripcion_larga = $producto['PRODUCTO_DETALLES'];
+    }
+  }
+?>
+
 <div class="contenido_principal">
   <div class="main">
       <div class="serv-profile">
@@ -9,32 +29,22 @@
             </ol>
           </nav>
           <div class="row mb-5">
-            <div class="col-8">
-              <div class="slider-pro" id="my-slider">
-                <div class="sp-thumbnails">
-                  <?php foreach($galerias as $galeria){ ?>
-                    <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
-                  <div class="sp-thumbnail">
-              			<img class="sp-thumbnail-image" src="<?php echo base_url($ruta_galeria) ?>"/>
-              		</div>
-                  <?php } ?>
-              	</div>
-              	<div class="sp-slides">
-                  <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
-              		<!-- Slide 1 -->
-                  <?php foreach($galerias as $galeria){ ?>
-                    <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
-              		<div class="sp-slide">
-              			<img class="sp-image" src="<?php echo base_url($ruta_galeria) ?>"/>
-              		</div>
-                  <?php } ?>
-              	</div>
+            <div class="col-7">
+              <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
+              <img src="<?php echo base_url($ruta_portada) ?>" class="img-fluid visor-galeria-producto" style="max-height:500px" alt="">
+              <div class="card-deck">
+                <?php foreach($galerias as $galeria){ ?>
+                  <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
+                <div class="card col-2">
+                  <img class="card-img-top imagen-galeria-producto" src="<?php echo base_url($ruta_galeria) ?>">
+                </div>
+                <?php } ?>
               </div>
             </div>
-            <div class="col-4">
-              <h5><?php echo $producto['PRODUCTO_NOMBRE']; ?></h5>
+            <div class="col-5">
+              <h5><?php echo $titulo; ?></h5>
               <hr>
-              <?php echo $producto['PRODUCTO_DESCRIPCION']; ?>
+              <?php echo $descripcion_corta; ?>
               <hr>
               <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
               <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'],2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
@@ -70,7 +80,7 @@
                 <div class="col-12">
                   <button class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block" id="BotonComprar"
                       data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
-                      data-nombre-producto='<?php echo $producto['PRODUCTO_NOMBRE']; ?>'
+                      data-nombre-producto='<?php echo $titulo; ?>'
                       data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
                       data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
                       data-detalles-producto=''
@@ -85,7 +95,7 @@
                     <hr>
                     <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonCompraRapida"
                         data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
-                        data-nombre-producto='<?php echo $producto['PRODUCTO_NOMBRE']; ?>'
+                        data-nombre-producto='<?php echo $titulo; ?>'
                         data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
                         data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
                         data-detalles-producto=''
@@ -227,7 +237,7 @@
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div class="p-3">
                     <h5><?php echo $this->lang->line('pagina_producto_tab_detalles_titulo'); ?></h5>
-                    <?php echo $producto['PRODUCTO_DETALLES']; ?>
+                    <?php echo $descripcion_larga; ?>
                   </div>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -316,7 +326,7 @@
                     <form class="" action="<?php echo base_url('producto/contacto'); ?>" method="post">
                       <input type="hidden" name="IdReceptor" value="<?php echo $producto['ID_USUARIO']; ?>">
                       <input type="hidden" name="IdRemitente" value="<?php echo $_SESSION['usuario']['id']; ?>">
-                      <input type="hidden" name="ProductoNombre" value="<?php echo $producto['PRODUCTO_NOMBRE']; ?>">
+                      <input type="hidden" name="ProductoNombre" value="<?php echo $titulo; ?>">
                       <input type="hidden" name="IdProducto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
                       <div class="row">
                         <table class="table">
@@ -375,7 +385,6 @@
 
           <!-- Slider productos relacionados -->
           <div class="row">
-            <div class="fila">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col">
@@ -384,7 +393,21 @@
                     <div class="flexslider carousel">
                       <ul class="slides">
                         <?php $productos_relacionados = $this->ProductosModel->lista(['ID_USUARIO'=>$producto['ID_USUARIO']],'','','10'); ?>
+
                         <?php foreach($productos_relacionados as $producto_rel){ ?>
+                          <?php
+                          // Variables de Traducción
+                          if($_SESSION['lenguaje']['iso']==$producto_rel->LENGUAJE){
+                            $titulo = $producto_rel->PRODUCTO_NOMBRE;
+                          }else{
+                            $traduccion = $this->TraduccionesModel->lista($producto_rel->ID_PRODUCTO,'producto',$_SESSION['lenguaje']['iso']);
+                            if(!empty($traduccion)){
+                              $titulo = $traduccion['TITULO'];
+                            }else{
+                              $titulo = $producto_rel->PRODUCTO_NOMBRE;
+                            }
+                          }
+                          ?>
                         <li>
                           <div class="cuadricula-productos">
                             <?php $galeria = $this->GaleriasModel->galeria_portada($producto_rel->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
@@ -394,7 +417,7 @@
                                   <?php if($producto_rel->PRODUCTO_ORIGEN=='México'){ ?>
                                     <span class="etiqueta-1"><?php echo $this->lang->line('etiquetas_productos_mexico'); ?></span>
                                   <?php } ?>
-                                  <?php if(strtotime($producto_rel->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
+                                  <?php if($producto_rel->PRODUCTO_CONDICION=='nuevo'){ ?>
                                     <span class="etiqueta-2"><?php echo $this->lang->line('etiquetas_productos_nuevo'); ?></span>
                                   <?php } ?>
                                   <?php if(!empty($producto_rel->PRODUCTO_PRECIO_LISTA)&&$producto_rel->PRODUCTO_PRECIO<$producto_rel->PRODUCTO_PRECIO_LISTA){ ?>
@@ -418,7 +441,7 @@
                                 $promedio = $this->CalificacionesModel->promedio_calificaciones_producto($producto_rel->ID_PRODUCTO);
                                 $cantidad = $this->CalificacionesModel->conteo_calificaciones_producto($producto_rel->ID_PRODUCTO);
                                 ?>
-                                  <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $producto_rel->PRODUCTO_NOMBRE; ?></h3>
+                                  <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
                                   <?php if(!empty($producto_rel->PRODUCTO_PRECIO_LISTA)&&$producto_rel->PRODUCTO_PRECIO<$producto_rel->PRODUCTO_PRECIO_LISTA){ ?>
                                     <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto_rel->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
                                   <?php } ?>
@@ -443,13 +466,7 @@
                   </div>
                 </div>
                 </div>
-              </div>
             </div>
-
-          <div class="row mb-5">
-              <div class="col-5">
-              </div>
-          </div>
         </div>
       </div>
   </div> <!-- /container -->

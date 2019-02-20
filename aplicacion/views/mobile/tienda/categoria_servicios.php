@@ -24,6 +24,22 @@
       <div class="col-12">
 
         <?php foreach($servicios as $servicio){ ?>
+          <?php
+            // Variables de Traducción
+            if($_SESSION['lenguaje']['iso']==$servicio->LENGUAJE){
+              $titulo = $servicio->SERVICIO_NOMBRE;
+              $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
+            }else{
+              $traduccion = $this->TraduccionesModel->lista($servicio->ID_SERVICIO,'servicio',$_SESSION['lenguaje']['iso']);
+              if(!empty($traduccion)){
+                $titulo = $traduccion['TITULO'];
+                $descripcion_corta = $traduccion['DESCRIPCION_CORTA'];
+              }else{
+                $titulo = $servicio->SERVICIO_NOMBRE;
+                $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
+              }
+            }
+          ?>
         <div class="servicios">
           <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio->ID_SERVICIO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
           <a class="portada" href="<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" class="enlace-principal-servicio">
@@ -44,9 +60,9 @@
             <?php } ?>
               <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
             </ul>
-            <h3 class="title text-primary"><?php echo $servicio->SERVICIO_NOMBRE; ?> </h3>
+            <h3 class="title text-primary"><?php echo $titulo; ?> </h3>
             <div class="border-top mt-3 pt-3">
-              <p><?php echo $servicio->SERVICIO_DESCRIPCION; ?></p>
+              <p><?php echo $descripcion_corta; ?></p>
             </div>
             <div class="">
               <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>

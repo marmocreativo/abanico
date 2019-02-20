@@ -60,6 +60,19 @@
         <div class="flexslider carousel">
           <ul class="slides">
             <?php foreach($productos as $producto){ ?>
+              <?php
+              // Variables de Traducción
+              if($_SESSION['lenguaje']['iso']==$producto->LENGUAJE){
+                $titulo = $producto->PRODUCTO_NOMBRE;
+              }else{
+                $traduccion = $this->TraduccionesModel->lista($producto->ID_PRODUCTO,'producto',$_SESSION['lenguaje']['iso']);
+                if(!empty($traduccion)){
+                  $titulo = $traduccion['TITULO'];
+                }else{
+                  $titulo = $producto->PRODUCTO_NOMBRE;
+                }
+              }
+              ?>
             <li>
               <div class="cuadricula-productos">
                 <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
@@ -103,7 +116,7 @@
                         <?php } ?>
                         <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
                       </ul>
-                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h3>
+                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
                       <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                         <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
                       <?php } ?>

@@ -275,31 +275,25 @@ jQuery('#desplegar-menu-servicios').click(function(){
 GALERIA
 -----------------
 */
-// select all thumbnails
-  const galleryThumbnail = document.querySelectorAll(".thumbnails-list li");
-  // select featured
-  const galleryFeatured = document.querySelector(".product-gallery-featured img");
-
-  // loop all items
-  galleryThumbnail.forEach((item) => {
-    item.addEventListener("mouseover", function () {
-      let image = item.children[0].src;
-      galleryFeatured.src = image;
-    });
+jQuery(function(){
+  jQuery('.imagen-galeria-producto').mouseover(function(){
+    var nuevaImagen = jQuery(this).attr('src');
+      jQuery('.visor-galeria-producto').attr('src',nuevaImagen);
   });
-  /*
-  -----------------
-  Calificación Estrellas
-  -----------------
-  */
-  jQuery(function() {
-   jQuery('.estrellas').starrr({
-     emptyClass: 'far fa-star',
-    change: function(e, value){
-      jQuery('#EstrellasCalificacion').val(value)
-     }
-   });
-  });
+});
+/*
+-----------------
+Calificación Estrellas
+-----------------
+*/
+jQuery(function() {
+ jQuery('.estrellas').starrr({
+   emptyClass: 'far fa-star',
+  change: function(e, value){
+    jQuery('#EstrellasCalificacion').val(value)
+   }
+ });
+});
 
    // CARRITO
  /*

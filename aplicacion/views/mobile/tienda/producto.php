@@ -1,3 +1,22 @@
+<?php
+  // Variables de Traducción
+  if($_SESSION['lenguaje']['iso']==$producto['LENGUAJE']){
+    $titulo = $producto['PRODUCTO_NOMBRE'];
+    $descripcion_corta = $producto['PRODUCTO_DESCRIPCION'];
+    $descripcion_larga = $producto['PRODUCTO_DETALLES'];
+  }else{
+    $traduccion = $this->TraduccionesModel->lista($producto['ID_PRODUCTO'],'producto',$_SESSION['lenguaje']['iso']);
+    if(!empty($traduccion)){
+      $titulo = $traduccion['TITULO'];
+      $descripcion_corta = $traduccion['DESCRIPCION_CORTA'];
+      $descripcion_larga = $traduccion['DESCRIPCION_LARGA'];
+    }else{
+      $titulo = $producto['PRODUCTO_NOMBRE'];
+      $descripcion_corta = $producto['PRODUCTO_DESCRIPCION'];
+      $descripcion_larga = $producto['PRODUCTO_DETALLES'];
+    }
+  }
+?>
 <div class="bxInfoContent bxDetalle pb-4">
   <div class="container">
     <div class="row">
@@ -16,9 +35,9 @@
 
       <div class="col-12 mb-4">
         <p class="text-muted"><small><?php echo $producto['PRODUCTO_CANTIDAD']; ?> disponibles</small></p>
-        <h4 class="product-title mb-2"><?php echo $producto['PRODUCTO_NOMBRE']; ?></h4>
+        <h4 class="product-title mb-2"><?php echo $titulo; ?></h4>
         <hr>
-        <?php echo $producto['PRODUCTO_DESCRIPCION']; ?>
+        <?php echo $descripcion_corta; ?>
         <hr>
         <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
         <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'],2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
@@ -55,7 +74,7 @@
           <div class="col">
             <button class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block" id="BotonComprar"
                 data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
-                data-nombre-producto='<?php echo $producto['PRODUCTO_NOMBRE']; ?>'
+                data-nombre-producto='<?php echo $titulo; ?>'
                 data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
                 data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
                 data-detalles-producto=''
@@ -70,7 +89,7 @@
               <hr>
               <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonCompraRapida"
                   data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
-                  data-nombre-producto='<?php echo $producto['PRODUCTO_NOMBRE']; ?>'
+                  data-nombre-producto='<?php echo $titulo; ?>'
                   data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
                   data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
                   data-detalles-producto=''
@@ -96,7 +115,7 @@
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body">
-                <?php echo $producto['PRODUCTO_DETALLES']; ?>
+                <?php echo $descripcion_larga; ?>
               </div>
             </div>
           </div>
@@ -203,7 +222,7 @@
                 <form class="" action="<?php echo base_url('producto/contacto'); ?>" method="post">
                   <input type="hidden" name="IdReceptor" value="<?php echo $producto['ID_USUARIO']; ?>">
                   <input type="hidden" name="IdRemitente" value="<?php echo $_SESSION['usuario']['id']; ?>">
-                  <input type="hidden" name="ProductoNombre" value="<?php echo $producto['PRODUCTO_NOMBRE']; ?>">
+                  <input type="hidden" name="ProductoNombre" value="<?php echo $titulo; ?>">
                   <input type="hidden" name="IdProducto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
                   <div class="row">
                     <table class="table">

@@ -1,3 +1,22 @@
+<?php
+  // Variables de Traducción
+  if($_SESSION['lenguaje']['iso']==$servicio['LENGUAJE']){
+    $titulo = $servicio['SERVICIO_NOMBRE'];
+    $descripcion_corta = $servicio['SERVICIO_DESCRIPCION'];
+    $descripcion_larga = $servicio['SERVICIO_DETALLES'];
+  }else{
+    $traduccion = $this->TraduccionesModel->lista($servicio['ID_SERVICIO'],'servicio',$_SESSION['lenguaje']['iso']);
+    if(!empty($traduccion)){
+      $titulo = $traduccion['TITULO'];
+      $descripcion_corta = $traduccion['DESCRIPCION_CORTA'];
+      $descripcion_larga = $traduccion['DESCRIPCION_LARGA'];
+    }else{
+      $titulo = $servicio['SERVICIO_NOMBRE'];
+      $descripcion_corta = $servicio['SERVICIO_DESCRIPCION'];
+      $descripcion_larga = $servicio['SERVICIO_DETALLES'];
+    }
+  }
+?>
 <div class="bxInfoContent bxDetalle pb-4">
   <div class="container">
     <div class="row">
@@ -6,7 +25,7 @@
         <img src="<?php echo base_url($ruta_portada) ?>" class="img-thumbnail img-fluid" alt="Profile image example">
       </div>
       <div class="col-12 mb-4">
-        <h4 class="h4 product-title mb-2"><?php echo $servicio['SERVICIO_NOMBRE']; ?> </h4>
+        <h4 class="h4 product-title mb-2"><?php echo $titulo; ?> </h4>
         <?php echo $servicio['USUARIO_NOMBRE']; ?>
         <hr>
         <div class="row">
@@ -30,7 +49,7 @@
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="">
               <p class="h6 py-3">
-                <strong><?php echo $servicio['SERVICIO_DESCRIPCION']; ?></strong>
+                <strong><?php echo $descripcion_corta; ?></strong>
               <p>
                 <div class="row">
                   <div class="col">

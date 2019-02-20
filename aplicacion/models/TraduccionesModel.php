@@ -20,9 +20,6 @@ class TraduccionesModel extends CI_Model {
     return $query->row_array();
   }
 
-  function detalles($id){
-    return $this->db->get_where('traducciones',array('ID_TRADUCCION'=>$id))->row_array();
-  }
 
 
   function crear($parametros){
@@ -31,7 +28,7 @@ class TraduccionesModel extends CI_Model {
   }
 
   function actualizar($id,$parametros){
-    $this->db->where('ID_PRODUCTO',$id);
+    $this->db->where('ID_TRADUCCION',$id);
     return $this->db->update('traducciones',$parametros);
   }
 

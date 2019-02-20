@@ -9,11 +9,11 @@
     </button>
     <div class="collapse" id="collapseExample">
       <div class="list-group">
-        <a href="<?php echo base_url('usuario/');?>" class="list-group-item list-group-item-action"> <span class="fa fa-tachometer-alt"></span> Escritorio</a>
-        <a href="<?php echo base_url('usuario/pedidos');?>" class="list-group-item list-group-item-action"> <span class="fa fa-shopping-bag"></span> Mis Pedidos</a>
-        <a href="<?php echo base_url('usuario/actualizar');?>" class="list-group-item list-group-item-action"> <span class="fa fa-id-card"></span> Mi Perfil</a>
-        <a href="<?php echo base_url('usuario/perfil_servicios');?>" class="list-group-item list-group-item-action"> <span class="fa fa-user-tie"></span> Mis Servicios</a>
-        <a href="<?php echo base_url('usuario/tienda');?>" class="list-group-item list-group-item-action"> <span class="fa fa-store"></span> Mi Tienda</a>
+        <a href="<?php echo base_url('usuario/');?>" class="list-group-item list-group-item-action"> <span class="fa fa-tachometer-alt"></span> <?php echo $this->lang->line('usuario_menu_escritorio'); ?></a>
+        <a href="<?php echo base_url('usuario/pedidos');?>" class="list-group-item list-group-item-action"> <span class="fa fa-shopping-bag"></span> <?php echo $this->lang->line('usuario_menu_pedidos'); ?></a>
+        <a href="<?php echo base_url('usuario/actualizar');?>" class="list-group-item list-group-item-action"> <span class="fa fa-id-card"></span> <?php echo $this->lang->line('usuario_menu_perfil'); ?></a>
+        <a href="<?php echo base_url('usuario/perfil_servicios');?>" class="list-group-item list-group-item-action"> <span class="fa fa-user-tie"></span> <?php echo $this->lang->line('usuario_menu_servicios'); ?></a>
+        <a href="<?php echo base_url('usuario/tienda');?>" class="list-group-item list-group-item-action"> <span class="fa fa-store"></span> <?php echo $this->lang->line('usuario_menu_vendedor'); ?></a>
       </div>
     </div>
   </div>
