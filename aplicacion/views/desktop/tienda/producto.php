@@ -417,9 +417,6 @@
                                   <?php if($producto_rel->PRODUCTO_ORIGEN=='México'){ ?>
                                     <span class="etiqueta-1"><?php echo $this->lang->line('etiquetas_productos_mexico'); ?></span>
                                   <?php } ?>
-                                  <?php if($producto_rel->PRODUCTO_CONDICION=='nuevo'){ ?>
-                                    <span class="etiqueta-2"><?php echo $this->lang->line('etiquetas_productos_nuevo'); ?></span>
-                                  <?php } ?>
                                   <?php if(!empty($producto_rel->PRODUCTO_PRECIO_LISTA)&&$producto_rel->PRODUCTO_PRECIO<$producto_rel->PRODUCTO_PRECIO_LISTA){ ?>
                                     <span class="etiqueta-3"><?php echo $this->lang->line('etiquetas_productos_oferta'); ?></span>
                                   <?php } ?>

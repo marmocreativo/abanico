@@ -72,9 +72,6 @@
                  <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
                    <span class="etiqueta-1">Méx</span>
                  <?php } ?>
-                 <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
-                   <span class="etiqueta-2 <?php echo 'bg'.$primary; ?>">Nuevo</span>
-                 <?php } ?>
                  <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                    <span class="etiqueta-3">Oferta</span>
                  <?php } ?>
