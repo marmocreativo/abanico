@@ -34,6 +34,7 @@
 
 
       <form class="" action="<?php echo base_url('usuario/servicios/crear');?>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id'] ?>">
 
         <div class="card mb-3">
           <div class="card-body">
@@ -171,7 +172,7 @@
             <div class="card-body">
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                 <label class="custom-control-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
+                 <label class="custom-control-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_formulario_registro_terminos_y_condiciones'); ?></label>
               </div>
               <hr>
               <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-save"></i><?php echo $this->lang->line('usuario_form_servicio_crear_servicio'); ?></button>

@@ -45,7 +45,7 @@
                       <label for="TipoTienda"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor'); ?> </label>
                       <select class="form-control" name="TipoTienda">
                         <option value="tienda"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor_tienda'); ?></option>
-                        <option value="vendedor"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor_tienda'); ?> </option>
+                        <option value="vendedor"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor_casual'); ?> </option>
                       </select>
                     </div>
                      <div class="form-group">

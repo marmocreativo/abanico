@@ -118,11 +118,15 @@ jQuery('#ImagenServicio').change(function() {
 });
 // Prevenir enviar formulario dos veces.
 
-  jQuery('button[type="submit"]').click(function(){
+/*
+    jQuery('button[type="submit"]').click(function(){
 
       jQuery(this).html("<i class='fa fa-spinner fa-pulse'></i> Por favor espere...");
       jQuery(this).attr('disabled', 'disabled');
       var formulario = jQuery(this).parents('form:first');
-      formulario.submit();
+      $(formulario).preventDoubleSubmission();
+      //formulario.submit();
   });
+  */
+
 </script>

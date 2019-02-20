@@ -58,6 +58,11 @@
                           <?php echo $this->lang->line('usuario_form_producto_combinaciones'); ?>
                         </a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('usuario/productos_traducciones?id='.$_GET['id']); ?>" > <span class="fa fa-language"></span>
+                          Traducciones
+                        </a>
+                      </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade <?php if($tab==''){ echo 'show active'; } ?> p-3" id="basicos" role="tabpanel" aria-labelledby="basicos-tab">
