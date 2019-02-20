@@ -369,35 +369,36 @@
                       <table cellpadding="2" cellspacing="0" style="width:96%; margin:2%;">
                         <thead>
                           <tr style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px; color: #495057;">
-                            <th style="width:50%; border-bottom: 1px solid lightgrey; padding:5px 0;">Producto</th>
+                            <th style="width:10%; border-bottom: 1px solid lightgrey; padding:5px 0;"></th>
+                            <th style="width:40%; border-bottom: 1px solid lightgrey; padding:5px 0;">Producto</th>
                             <th style="width:10%; border-bottom: 1px solid lightgrey; padding:5px 0;">Cantidad</th>
                             <th style="width:20%; border-bottom: 1px solid lightgrey; padding:5px 0;">Precio Unit.</th>
                             <th style="width:20%; border-bottom: 1px solid lightgrey; padding:5px 0;">Importe</th>
                           </tr>
                         </thead>
                         <tbody>
-                        	<?php foreach($productos as $producto){ ?>
                             <tr>
-                              <td style="vertical-align:middle">
-                                <img src="<?php echo $producto->PRODUCTO_IMAGEN;  ?>" style="float:left;" width="70" alt="">
-                                <h5><?php echo $producto->PRODUCTO_NOMBRE;  ?></h5>
-                                <p style="font-size:0.8em;" style="margin-bottom:10px;"><?php echo $producto->PRODUCTO_DETALLES;  ?></p>
+                              <td style="vertical-align:middle; font-size:16px;">
+                                  <img src="<?php echo base_url('assets/global/img/destacado-1.jpg'); ?>" style="float:left; margin-right:15px;" width="70" alt="">
                               </td>
-                              <td style="vertical-align:middle; text-align:center;">
-                                <?php echo $producto->CANTIDAD;  ?>
+                              <td style="vertical-align:middle; font-size:16px;">
+                                <h5>Nombre de Producto</h5>
+                                <p style="font-size:0.8em;" style="margin-bottom:10px;">Vendido por Mi Tiendita</p>
                               </td>
-                              <td style="vertical-align:middle" class="text-right">
+                              <td style="vertical-align:middle; text-align:center; font-size:16px;">
+                                1
+                              </td>
+                              <td style="vertical-align:middle; text-align:center; font-size:16px;">
                                 <small>$</small>
-                                <?php echo number_format($producto->IMPORTE,2);  ?>
-                                <small><?php echo $pedido['PEDIDO_DIVISA']; ?></small>
+                                10,000.00
+                                <small>MXN</small>
                               </td>
-                              <td style="vertical-align:middle" class="text-right">
+                              <td style="vertical-align:middle; text-align:center; font-size:16px;">
                                 <small>$</small>
-                                  <?php echo number_format($producto->IMPORTE_TOTAL,2);  ?>
-                                <small><?php echo $pedido['PEDIDO_DIVISA']; ?></small>
+                                  10,000.00
+                                <small>MXN</small>
                               </td>
                             </tr>
-                          <?php } ?>
                           <tr>
                             <table border="0" cellpadding="2" cellspacing="0" align="right" style="width:96%; margin:2%; border-top: 1px solid lightgray;margin-top: 20px;color: #495057;">
                                   <tr>
