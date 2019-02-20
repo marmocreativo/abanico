@@ -383,7 +383,7 @@
                               </td>
                               <td style="vertical-align:middle; font-size:16px;">
                                 <h5>Nombre de Producto</h5>
-                                <p style="font-size:0.8em;" style="margin-bottom:10px;">Vendido por Mi Tiendita</p>
+                                <p>Vendido por Mi Tiendita</p>
                               </td>
                               <td style="vertical-align:middle; text-align:center; font-size:16px;">
                                 1
