@@ -290,9 +290,16 @@
                       <div class="tab-pane fade <?php if($tab=='galeria'){ echo 'show active'; } ?> p-3" id="galeria" role="tabpanel" aria-labelledby="extras-tab">
                         <div class="row">
                           <div class="col">
-                            <div class="form-group">
-                              <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
-                              <input type="file" class="form-control" id="ImagenProducto" name="ImagenProducto">
+                            <div class="row">
+                              <div class="col-3">
+                                <img src="<?php echo base_url('contenido/img/productos/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
+                                  <input type="file" class="form-control" id="ImagenProducto" name="ImagenProducto">
+                                </div>
+                              </div>
                             </div>
                             <table class="table table-bordered table-sm">
                               <thead>

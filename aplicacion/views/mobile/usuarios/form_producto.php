@@ -253,9 +253,9 @@
             </div>
             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
               <div class="card-body">
-
+                <img src="<?php echo base_url('contenido/img/productos/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
                 <div class="custom-file file-sm mb-3">
-                  <input type="file" class="custom-file-input" id="ImagenProducto" name="ImagenProducto" placeholder="" value="">
+                  <input type="file" class="form-control" id="ImagenProducto" name="ImagenProducto" placeholder="" value="">
                   <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
                 </div>
 

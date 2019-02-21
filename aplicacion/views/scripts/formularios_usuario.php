@@ -116,6 +116,9 @@ function readURL(input) {
 jQuery('#ImagenServicio').change(function() {
   readURL(this);
 });
+jQuery('#ImagenProducto').change(function() {
+  readURL(this);
+});
 
 // Prevenir enviar formulario dos veces.
 

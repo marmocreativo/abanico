@@ -280,7 +280,7 @@
                 </div>
                 <div class="tab-pane fade p-3" id="galeria" role="tabpanel" aria-labelledby="extras-tab">
                   <div class="row">
-                    <div class="col-4">
+                    <div class="col-3">
                       <img src="<?php echo base_url('contenido/img/productos/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
                     </div>
                     <div class="col">
