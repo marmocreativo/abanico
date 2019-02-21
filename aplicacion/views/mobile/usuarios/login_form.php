@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 my-2 mt-4">
-        <h1 class="h5 text-center"><?php echo $this->lang->line('usuario_formulario_login_titulo'); ?</h1>
+        <h1 class="h5 text-center"><?php echo $this->lang->line('usuario_formulario_login_titulo'); ?></h1>
       </div>
     </div>
   </div>

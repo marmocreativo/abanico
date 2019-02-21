@@ -1,3 +1,22 @@
+<?php
+  // Variables de Traducción
+  if($_SESSION['lenguaje']['iso']==$servicio['LENGUAJE']){
+    $titulo = $servicio['SERVICIO_NOMBRE'];
+    $descripcion_corta = $servicio['SERVICIO_DESCRIPCION'];
+    $descripcion_larga = $servicio['SERVICIO_DETALLES'];
+  }else{
+    $traduccion = $this->TraduccionesModel->lista($servicio['ID_SERVICIO'],'servicio',$_SESSION['lenguaje']['iso']);
+    if(!empty($traduccion)){
+      $titulo = $traduccion['TITULO'];
+      $descripcion_corta = $traduccion['DESCRIPCION_CORTA'];
+      $descripcion_larga = $traduccion['DESCRIPCION_LARGA'];
+    }else{
+      $titulo = $servicio['SERVICIO_NOMBRE'];
+      $descripcion_corta = $servicio['SERVICIO_DESCRIPCION'];
+      $descripcion_larga = $servicio['SERVICIO_DETALLES'];
+    }
+  }
+?>
 <div class="contenido_principal">
   <div class="main">
       <div class="serv-profile">
@@ -18,7 +37,7 @@
                     <li class="breadcrumb-item active <?php echo 'text'.$primary; ?>" aria-current="page"><?php echo $this->lang->line('pagina_servicio_migas_servicio'); ?></li>
                   </ol>
                 </nav>
-                <h2><?php echo $servicio['SERVICIO_NOMBRE']; ?></h2>
+                <h2><?php echo $titulo; ?></h2>
                 <h6><?php echo $servicio['USUARIO_NOMBRE']; ?></h6>
             </div>
           </div>
@@ -31,7 +50,7 @@
                 <div class="card-body fila-gris">
                   <div class="row">
                     <div class="card-text col-6">
-                      <?php echo $servicio['SERVICIO_DESCRIPCION']; ?>
+                      <?php echo $descripcion_corta; ?>
                     </div>
                     <div class="col-6">
                     <?php if(!empty($adjuntos)){ ?>

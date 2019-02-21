@@ -184,7 +184,15 @@
                             <?php foreach($segundo_categorias as $segunda_categoria){ ?>
                               <div class="col-4">
                                 <div class="p-3">
-                                <h6 class="border-bottom pb-3"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h6>
+                                  <div class="custom-control custom-radio">
+                                    <input  type="radio"
+                                            id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                                            name="CategoriaProducto" class="custom-control-input"
+                                            value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+
+                                            >
+                                    <label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
+                                  </div>
                                 <?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                                 <ul class="list list-unstyled">
                                   <?php foreach($tercero_categorias as $tercera_categoria){ ?>
@@ -272,6 +280,9 @@
                 </div>
                 <div class="tab-pane fade p-3" id="galeria" role="tabpanel" aria-labelledby="extras-tab">
                   <div class="row">
+                    <div class="col-3">
+                      <img src="<?php echo base_url('contenido/img/productos/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
+                    </div>
                     <div class="col">
                       <div class="form-group">
                         <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>

@@ -56,18 +56,18 @@
                        </div>
                        <div class="col">
                          <div class="form-group">
-                           <label for="MunicipioDireccion"><?php echo $this->lang->line('usuario_form_direcciones_municipio'); ?></label>
-                           <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" required>
-                             <option value=""><?php echo $this->lang->line('usuario_form_direcciones_municipio_selecciona'); ?></option>
-                           </select>
+                           <label for="CiudadDireccion"><?php echo $this->lang->line('usuario_form_direcciones_ciudad'); ?> <?php echo $this->lang->line('usuario_form_direcciones_ciudad_instrucciones'); ?></label>
+                           <input type="text" name="CiudadDireccion" class="form-control">
                          </div>
                        </div>
                      </div>
                      <div class="row">
                        <div class="col">
                          <div class="form-group">
-                           <label for="CiudadDireccion"><?php echo $this->lang->line('usuario_form_direcciones_ciudad'); ?> <?php echo $this->lang->line('usuario_form_direcciones_ciudad_instrucciones'); ?></label>
-                           <input type="text" name="CiudadDireccion" class="form-control">
+                           <label for="MunicipioDireccion"><?php echo $this->lang->line('usuario_form_direcciones_municipio'); ?></label>
+                           <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" required>
+                             <option value=""><?php echo $this->lang->line('usuario_form_direcciones_municipio_selecciona'); ?></option>
+                           </select>
                          </div>
                        </div>
                        <div class="col">

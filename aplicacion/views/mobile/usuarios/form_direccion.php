@@ -49,14 +49,14 @@
                 </select>
               </div>
               <div class="form-group">
+                <label for="CiudadDireccion"><?php echo $this->lang->line('usuario_form_direcciones_ciudad'); ?> <?php echo $this->lang->line('usuario_form_direcciones_ciudad_instrucciones'); ?></label>
+                <input type="text" name="CiudadDireccion" class="form-control">
+              </div>
+              <div class="form-group">
                 <label for="MunicipioDireccion"><?php echo $this->lang->line('usuario_form_direcciones_municipio'); ?></label>
                 <select class="form-control" name="MunicipioDireccion" id="MunicipioDireccion" required>
                   <option value=""><?php echo $this->lang->line('usuario_form_direcciones_municipio_selecciona'); ?></option>
                 </select>
-              </div>
-              <div class="form-group">
-                <label for="CiudadDireccion"><?php echo $this->lang->line('usuario_form_direcciones_ciudad'); ?> <?php echo $this->lang->line('usuario_form_direcciones_ciudad_instrucciones'); ?></label>
-                <input type="text" name="CiudadDireccion" class="form-control">
               </div>
               <div class="form-group">
                 <label for="CodigoPostalDireccion"><?php echo $this->lang->line('usuario_form_direcciones_codigo_postal'); ?></label>

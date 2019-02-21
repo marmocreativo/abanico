@@ -20,7 +20,7 @@
             <h2 class="h5 mb-0 pt-1"> <span class="fa fa-map-marker-alt"></span> <?php echo $this->lang->line('usuario_lista_direcciones_titulo'); ?></h2>
           </div>
           <div class="opciones">
-                <a href="<?php echo base_url('usuario/direcciones/crear'); ?><?php echo $this->lang->line('usuario_lista_direcciones_alias'); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span></a>
+                <a href="<?php echo base_url('usuario/direcciones/crear'); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span></a>
           </div>
         </div>
         <?php foreach($direcciones as $direccion){ ?>

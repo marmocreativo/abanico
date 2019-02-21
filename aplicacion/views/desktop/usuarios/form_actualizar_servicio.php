@@ -108,6 +108,9 @@
                             <li class="nav-item">
                               <a class="nav-link" id="galeria-tab" data-toggle="tab" href="#galeria" role="tab" aria-controls="galeria" aria-selected="true"> <span class="fa fa-images"></span> <?php echo $this->lang->line('usuario_form_servicio_galeria'); ?></a>
                             </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="<?php echo base_url('usuario/servicios_traducciones?id='.$_GET['id']); ?>" > <span class="fa fa-language"></span> Traducciones</a>
+                            </li>
                           </ul>
                           <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active  p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
@@ -219,7 +222,7 @@
                         <thead>
                           <tr>
                             <th><?php echo $this->lang->line('usuario_form_servicio_anexos_archivo'); ?></th>
-                            <th><th class="text-right"><?php echo $this->lang->line('usuario_listas_generales_controles'); ?></th></th>
+                            <th class="text-right"><?php echo $this->lang->line('usuario_listas_generales_controles'); ?></th>
                           </tr>
                         </thead>
                         <tbody>

@@ -25,6 +25,22 @@
       <div class="col">
         <div class="card-deck">
           <?php foreach($servicios as $servicio){ ?>
+            <?php
+              // Variables de Traducción
+              if($_SESSION['lenguaje']['iso']==$servicio->LENGUAJE){
+                $titulo = $servicio->SERVICIO_NOMBRE;
+                $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
+              }else{
+                $traduccion = $this->TraduccionesModel->lista($servicio->ID_SERVICIO,'servicio',$_SESSION['lenguaje']['iso']);
+                if(!empty($traduccion)){
+                  $titulo = $traduccion['TITULO'];
+                  $descripcion_corta = $traduccion['DESCRIPCION_CORTA'];
+                }else{
+                  $titulo = $servicio->SERVICIO_NOMBRE;
+                  $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
+                }
+              }
+            ?>
             <div class="col-xl-4 col-md-3 col-6 mb-3">
               <div class="cuadricula-productos">
                 <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio->ID_SERVICIO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
@@ -46,9 +62,9 @@
                         <?php } ?>
                         <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
                       </ul>
-                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $servicio->SERVICIO_NOMBRE; ?></h3>
+                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
                       <div class="border-top mt-3 pt-3">
-                        <?php echo $servicio->SERVICIO_DESCRIPCION; ?>
+                        <?php echo $descripcion_corta; ?>
                       </div>
                       <div class="">
                         <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>

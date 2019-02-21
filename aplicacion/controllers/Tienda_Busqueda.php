@@ -31,6 +31,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('GaleriasServiciosModel');
 		$this->load->model('CalificacionesServiciosModel');
 		$this->load->model('NotificacionesModel');
+		$this->load->model('TraduccionesModel');
 
 		// Variables comunes
   }
@@ -40,7 +41,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
  {
 	 $parametros_or = array();
 	 $parametros_and = array();
-	 switch ($_GET['BuscarEn']) {
+	 if(isset($_GET['BuscarEn'])){
+		 $buscar_en = $_GET['BuscarEn'];
+	 }else{
+		 $buscar_en = '';
+	 }
+	 switch ($buscar_en) {
 	 	case 'productos':
 		case '':
 		// Código de Busqueda

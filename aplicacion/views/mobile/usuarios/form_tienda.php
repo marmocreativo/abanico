@@ -13,12 +13,13 @@
 <div class="container py-3 mb-3">
   <div class="row">
     <div class="col-12">
-
+      <?php retro_alimentacion(); ?>
       <div class="card">
         <div class="card-header">
           <h5> <i class="fa fa-store"></i> <?php echo $this->lang->line('usuario_form_tienda_titulo'); ?></h5>
         </div>
         <div class="card-body">
+
           <h5><?php echo $this->lang->line('usuario_form_tienda_bienvenida'); ?></h5>
           <p><?php echo $this->lang->line('usuario_form_tienda_bienvenida_instrucciones'); ?></p>
           <ul>
@@ -26,8 +27,13 @@
             <li><?php echo $this->lang->line('usuario_form_tienda_beneficios_2'); ?></li>
             <li><?php echo $this->lang->line('usuario_form_tienda_beneficios_3'); ?></li>
           </ul>
+          <?php if(!empty(validation_errors())){ ?>
+            <div class="alert alert-danger">
+              <?php echo validation_errors(); ?>
+            </div>
+          <?php } ?>
           <form class="" action="<?php echo base_url('usuario/tienda/crear');?>" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="IdUsuario" value="">
+            <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id'] ?>">
             <img class="img-fluid img-thumbnail rounded-circle d-block mx-auto mb-3" style="width:150px" src="http://localhost/abanico-master/contenido/img/tiendas/completo/default.jpg" alt="" >
             <div class="custom-file file-sm mb-3">
               <input type="file" class="custom-file-input" id="ImagenTienda" name="ImagenTienda" placeholder="" value="">
@@ -38,7 +44,7 @@
               <label for="TipoTienda"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor'); ?> </label>
               <select class="form-control" name="TipoTienda">
                 <option value="tienda"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor_tienda'); ?></option>
-                <option value="vendedor"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor_tienda'); ?> </option>
+                <option value="vendedor"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor_casual'); ?> </option>
               </select>
             </div>
              <div class="form-group">
@@ -99,7 +105,7 @@
              </div>
              <hr>
              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="" name="" required="">
+                <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
                 <label class="custom-control-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_form_tienda_terminos_y_condiciones'); ?></label>
               </div>
              <hr>

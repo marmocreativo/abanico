@@ -49,6 +49,19 @@
      <ul class="slides">
 
        <?php foreach($productos as $producto){ ?>
+         <?php
+         // Variables de Traducción
+         if($_SESSION['lenguaje']['iso']==$producto->LENGUAJE){
+           $titulo = $producto->PRODUCTO_NOMBRE;
+         }else{
+           $traduccion = $this->TraduccionesModel->lista($producto->ID_PRODUCTO,'producto',$_SESSION['lenguaje']['iso']);
+           if(!empty($traduccion)){
+             $titulo = $traduccion['TITULO'];
+           }else{
+             $titulo = $producto->PRODUCTO_NOMBRE;
+           }
+         }
+         ?>
        <li>
          <div class="card">
            <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
@@ -58,9 +71,6 @@
                <div class="contenedor-etiquetas">
                  <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
                    <span class="etiqueta-1">Méx</span>
-                 <?php } ?>
-                 <?php if(strtotime($producto->PRODUCTO_FECHA_PUBLICACION) > strtotime('-'.$op['dias_productos_nuevos'].' Days')){ ?>
-                   <span class="etiqueta-2 <?php echo 'bg'.$primary; ?>">Nuevo</span>
                  <?php } ?>
                  <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                    <span class="etiqueta-3">Oferta</span>
@@ -82,7 +92,7 @@
                  <?php } ?>
                  <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
                </ul>
-               <h4 class="title <?php echo 'text'.$primary; ?>"><?php echo $producto->PRODUCTO_NOMBRE; ?></h4>
+               <h4 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h4>
                <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                  <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
                <?php } ?>

@@ -58,6 +58,11 @@
                           <?php echo $this->lang->line('usuario_form_producto_combinaciones'); ?>
                         </a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('usuario/productos_traducciones?id='.$_GET['id']); ?>" > <span class="fa fa-language"></span>
+                          Traducciones
+                        </a>
+                      </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade <?php if($tab==''){ echo 'show active'; } ?> p-3" id="basicos" role="tabpanel" aria-labelledby="basicos-tab">
@@ -285,9 +290,16 @@
                       <div class="tab-pane fade <?php if($tab=='galeria'){ echo 'show active'; } ?> p-3" id="galeria" role="tabpanel" aria-labelledby="extras-tab">
                         <div class="row">
                           <div class="col">
-                            <div class="form-group">
-                              <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
-                              <input type="file" class="form-control" id="ImagenProducto" name="ImagenProducto">
+                            <div class="row">
+                              <div class="col-3">
+                                <img src="<?php echo base_url('contenido/img/productos/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
+                                  <input type="file" class="form-control" id="ImagenProducto" name="ImagenProducto">
+                                </div>
+                              </div>
                             </div>
                             <table class="table table-bordered table-sm">
                               <thead>

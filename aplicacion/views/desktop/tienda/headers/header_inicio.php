@@ -102,7 +102,7 @@
                       <div class="row">
                         <?php foreach($segundo_categorias as $segunda_categoria){ ?>
                           <div class="col-4">
-                            <h4><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h4>
+                            <h4><a href="<?php echo base_url('categoria?slug='.$segunda_categoria->CATEGORIA_URL); ?>"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></a></h4>
                             <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                             <ul class="list list-unstyled">
                               <?php foreach($tercero_categorias as $tercera_categoria){ ?>

@@ -79,7 +79,7 @@
                     <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> <?php echo $this->lang->line('usuario_form_producto_precio_lista_instrucciones'); ?></small>
                   </div>
                   <div class="form-group">
-                    <<label for="CantidadProducto"><?php echo $this->lang->line('usuario_form_producto_cantidad'); ?></label>
+                    <label for="CantidadProducto"><?php echo $this->lang->line('usuario_form_producto_cantidad'); ?></label>
                     <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="1" value="1">
                   </div>
                   <h6 class="border-bottom pb-2"> <i class="fa fa-clipboard-list"></i> <?php echo $this->lang->line('usuario_form_producto_cantidades_titulo'); ?></h6>
@@ -152,7 +152,13 @@
               <h6 class="mb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
               <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
               <?php foreach($segundo_categorias as $segunda_categoria){ ?>
-              <h6 class="border-bottom pb-3"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h6>
+                <input  type="radio"
+                        id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                        name="CategoriaProducto" class=""
+                        value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+
+                        >
+                <label class="h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
                 <?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                 <ul class="list list-unstyled">
                   <?php foreach($tercero_categorias as $tercera_categoria){ ?>
@@ -160,10 +166,10 @@
                     <div class="custom-control custom-radio">
                       <input  type="radio"
                               id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                              name="CategoriaProducto" class="custom-control-input"
+                              name="CategoriaProducto" class=""
                               value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                               >
-                      <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
+                      <label class="" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
                     </div>
                   </li>
                 <?php }// Termina el bucle tercera categoria ?>
@@ -196,7 +202,14 @@
 
                 <div class="form-group">
                   <label for="OrigenProducto"><?php echo $this->lang->line('usuario_form_producto_origen'); ?></label>
-                  <select class="form-control form-control-sm" name="" id="">
+                  <select class="form-control form-control-sm" name="OrigenProducto" id="OrigenProducto">
+                    <option value="México"><?php echo $this->lang->line('usuario_form_producto_origen_mexico'); ?></option>
+                    <option value="Otro"><?php echo $this->lang->line('usuario_form_producto_origen_otro'); ?></option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="CondicionProducto"><?php echo $this->lang->line('usuario_form_producto_condicion'); ?></label>
+                  <select class="form-control form-control-sm" name="CondicionProducto" id="CondicionProducto">
                     <option value="nuevo"><?php echo $this->lang->line('usuario_form_producto_condicion_nuevo'); ?></option>
                     <option value="usado"><?php echo $this->lang->line('usuario_form_producto_condicion_usuado'); ?></option>
                   </select>
@@ -240,9 +253,9 @@
             </div>
             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
               <div class="card-body">
-
+                <img src="<?php echo base_url('contenido/img/productos/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
                 <div class="custom-file file-sm mb-3">
-                  <input type="file" class="custom-file-input" id="ImagenProducto" name="ImagenProducto" placeholder="" value="">
+                  <input type="file" class="form-control" id="ImagenProducto" name="ImagenProducto" placeholder="" value="">
                   <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
                 </div>
 

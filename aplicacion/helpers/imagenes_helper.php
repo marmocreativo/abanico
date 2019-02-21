@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $imagen = $nombre.'.jpg';
       try {
         $CI->simpleimage->fromFile($archivo)
+        ->autoOrient()
         ->bestFit($ancho, $alto)
         ->toFile($destino.$nombre.'.jpg', 'image/jpeg', $calidad);
       } catch(Exception $err) {
@@ -39,6 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $imagen = $nombre.'.jpg';
       try {
         $CI->simpleimage->fromFile($archivo)
+        ->autoOrient()
         ->thumbnail($ancho, $alto)
         ->toFile($destino.$nombre.'.jpg', 'image/jpeg', $calidad);
       } catch(Exception $err) {

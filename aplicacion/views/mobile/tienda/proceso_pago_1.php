@@ -72,6 +72,7 @@
                     <div class="alert alert-danger">
                       <?php echo validation_errors(); ?>
                     </div>
+                  <?php } ?>
                     <hr>
                     <form class="" action="<?php echo base_url('invitado_pago_2');?>" method="post">
                        <div class="form-group">
