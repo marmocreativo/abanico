@@ -90,7 +90,7 @@
                                 <?php foreach($lenguajes as $lenguaje){ ?>
                                   <?php if($producto['LENGUAJE']!=$lenguaje->LENGUAJE_ISO){ ?>
                                 <tr>
-                                  <td> <h3> <?php echo $lenguaje->LENGUAJE_NOMBRE; ?> </h3></td>
+                                  <td width="15%"> <h4 class="text-center"> <?php echo $lenguaje->LENGUAJE_NOMBRE; ?> </h4></td>
                                   <td>
                                     <?php $traduccion = $this->TraduccionesModel->lista($producto['ID_PRODUCTO'],'producto',$lenguaje->LENGUAJE_ISO); ?>
                                     <?php if(empty($traduccion)){ ?>
@@ -111,7 +111,7 @@
                                         <textarea name="TraduccionDescripcionLarga" class="form-control" rows="5"></textarea>
                                       </div>
                                       <hr>
-                                      <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-save"></i> Crear Traducción</button>
+                                      <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-save"></i> Guardar</button>
                                     </form>
                                   <?php }else{ ?>
                                     <form class="" action="<?php echo base_url('usuario/productos_traducciones/actualizar'); ?>" method="post">
@@ -132,7 +132,7 @@
                                         <textarea name="TraduccionDescripcionLarga" class="form-control" rows="5"><?php echo $traduccion['DESCRIPCION_LARGA'] ?></textarea>
                                       </div>
                                       <hr>
-                                      <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-save"></i> Actualizar Traducción</button>
+                                      <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-save"></i> Guardar</button>
                                     </form>
                                   <?php } ?>
                                   </td>

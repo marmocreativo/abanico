@@ -83,8 +83,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				 // NO hago nada
 				 break;
 			}
-		}else{
-			$orden = '';
 		}
 	 // OfertaBusqueda
 	if(isset($_GET['OfertaBusqueda'])){
@@ -104,7 +102,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}else{
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
-			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,'','',$orden,'');
+			$this->data['productos'] = $this->ProductosModel->lista_activos('','',$orden,'');
 			$this->data['origen_formulario'] = 'categoria';
 	 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);

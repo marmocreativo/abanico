@@ -50,8 +50,10 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	 	case 'productos':
 		case '':
 		// Código de Busqueda
+		if(!empty($_GET['Busqueda'])){
 				 $parametros_or['PRODUCTO_NOMBRE'] = $_GET['Busqueda'];
 				 $parametros_or['PRODUCTO_MODELO'] = $_GET['Busqueda'];
+			 }
 				 // Orden
 				 if(isset($_GET['OrdenBusqueda'])&&!empty($_GET['OrdenBusqueda'])){
 					 switch ($_GET['OrdenBusqueda']) {
@@ -90,14 +92,11 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					 		// NO hago nada
 					 		break;
 					 }
-				 }else{
-					 $orden = '';
 				 }
 				// OfertaBusqueda
 			 if(isset($_GET['OfertaBusqueda'])){
 				 $parametros_and['PRODUCTO_PRECIO_LISTA >'] = 0;
 			 }
-
 
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
