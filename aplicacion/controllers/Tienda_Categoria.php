@@ -84,6 +84,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				 break;
 			}
 		}
+		// Condición
 		if(isset($_GET['CondicionBusqueda'])&&!empty($_GET['CondicionBusqueda'])){
 			switch ($_GET['CondicionBusqueda']) {
 			 case 'cualquiera':
@@ -104,7 +105,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	if(isset($_GET['OfertaBusqueda'])){
 		$parametros_and['PRODUCTO_PRECIO_LISTA >'] = 0;
 	}
-	// OfertaBusqueda
+	// Artesanales
  if(isset($_GET['ArtesanalBusqueda'])){
 	 $parametros_and['PRODUCTO_ARTESANAL'] = 'si';
  }
@@ -122,7 +123,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}else{
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
-			var_dump($parametros_and);
 			$this->data['productos'] = $this->ProductosModel->lista_activos($parametros_or,$parametros_and,'',$orden,'');
 			$this->data['origen_formulario'] = 'categoria';
 	 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
