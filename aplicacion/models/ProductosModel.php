@@ -64,14 +64,25 @@ class ProductosModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista_activos($parametros,$id_usuario,$orden,$limite){
-    if(!empty($parametros)){
-      $this->db->or_like($parametros);
+  function lista_activos($parametros_or,$parametros_and,$id_usuario,$orden,$limite){
+    if(!empty($parametros_or)){
+      $this->db->group_start();
+      $this->db->or_like($parametros_or);
+      $this->db->group_end();
+    }
+    if(!empty($parametros_and)){
+      $this->db->group_start();
+      $this->db->where($parametros_and);
+      $this->db->group_end();
     }
     if(!empty($id_usuario)){
       $this->db->where('ID_USUARIO', $id_usuario);
     }
-    $this->db->order_by('ID_PRODUCTO','RANDOM');
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }else{
+      $this->db->order_by('ID_PRODUCTO','RANDOM');
+    }
     if(!empty($limite)){
       $this->db->limit($limite);
     }

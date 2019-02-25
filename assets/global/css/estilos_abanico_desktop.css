@@ -236,12 +236,7 @@ html, body{
   background-position: center;
   background-repeat: no-repeat;
 }
-.cuadricula-productos .imagen-producto span:before {
-  content: "";
-  position: absolute;
-  top: 110%;
-  right: -2px;
-}
+
 .cuadricula-productos .product-content{
   padding:12px;
   overflow:hidden;

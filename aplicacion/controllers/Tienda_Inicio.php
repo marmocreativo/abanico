@@ -40,7 +40,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
-		$this->data['productos'] = $this->ProductosModel->lista_activos('','','',10);
+		$this->data['productos'] = $this->ProductosModel->lista_activos('','','','',10);
 		$this->data['servicios'] = $this->ServiciosModel->lista_activos('','','','');
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/pagina_inicio',$this->data);

@@ -236,7 +236,7 @@
                           <textarea id="DetallesProducto" name="DetallesProducto" class="form-control Editor" rows="5"><?php echo $producto['PRODUCTO_DETALLES']; ?></textarea>
                         </div>
                         <div class="row">
-                          <div class="col-6">
+                          <div class="col-4">
                             <div class="form-group">
                               <label for="OrigenProducto"><?php echo $this->lang->line('usuario_form_producto_origen'); ?></label>
                               <select class="form-control form-control-sm" name="OrigenProducto" id="OrigenProducto">
@@ -245,12 +245,21 @@
                               </select>
                             </div>
                           </div>
-                          <div class="col-6">
+                          <div class="col-4">
                             <div class="form-group">
                               <label for="CondicionProducto"><?php echo $this->lang->line('usuario_form_producto_condicion'); ?></label>
                               <select class="form-control form-control-sm" name="CondicionProducto" id="CondicionProducto">
                                 <option value="nuevo" <?php if($producto['PRODUCTO_CONDICION']=='nuevo'){ echo 'selected';} ?>><?php echo $this->lang->line('usuario_form_producto_condicion_nuevo'); ?></option>
                                 <option value="usado" <?php if($producto['PRODUCTO_CONDICION']=='usuado'){ echo 'selected';} ?>><?php echo $this->lang->line('usuario_form_producto_condicion_usuado'); ?></option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <div class="form-group">
+                              <label for="ArtesanalProducto">¿Es un producto Artesanal?</label>
+                              <select class="form-control form-control-sm" name="ArtesanalProducto" id="ArtesanalProducto">
+                                <option value="no" <?php if($producto['PRODUCTO_ARTESANAL']=='no'){ echo 'selected';} ?>>No</option>
+                                <option value="si" <?php if($producto['PRODUCTO_ARTESANAL']=='si'){ echo 'selected';} ?>>Si</option>
                               </select>
                             </div>
                           </div>
