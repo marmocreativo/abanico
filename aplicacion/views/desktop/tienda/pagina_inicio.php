@@ -44,6 +44,12 @@
           <div class="car-titulo"><?php echo $this->lang->line('inicio_menu_destacados_unete'); ?></div>
         </a>
       </div>
+      <div class="col border-left">
+        <a href="<?php echo base_url('usuario/registrar'); ?>" class="d-flex justify-content-center align-items-center">
+          <div class="car-icono text-primary"> <span class="fa fa-gift"></span> </div>
+          <div class="car-titulo">Concurso</div>
+        </a>
+      </div>
     </div>
   </div>
 </div>
