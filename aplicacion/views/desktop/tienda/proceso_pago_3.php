@@ -256,6 +256,9 @@
               <div class="d-flex justify-content-end">
                 <a href="<?php echo base_url('proceso_pago_3_banco'); ?>" class="btn btn-success btn-lg"> <?php echo $this->lang->line('proceso_pago_3_transferencia'); ?> <i class="fas fa-money-bill-alt"></i></a>
               </div>
+              <div class="d-flex justify-content-end mt-3">
+              <a href="<?php echo base_url('proceso_pago_3_oxxo'); ?>" class="btn btn-danger btn-lg"> OXXO <i class="fas fa-cash-register"></i></a>
+              </div>
               <hr>
               <div class="alert-info">
                 <p>Nota del Desarrollador: El boton de PAYPAL <b>está funcionando</b> cuidado al probar</p>

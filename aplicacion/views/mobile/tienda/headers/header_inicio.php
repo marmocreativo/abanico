@@ -93,8 +93,21 @@
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <a class="nav-link" href="<?php echo base_url('categoria'); ?>"> <i class="fa fa-boxes"></i> <?php echo $this->lang->line('header_categorias_productos_todos'); ?></a>
           <?php $i=0; foreach($categorias as $categoria){ ?>
+            <?php
+              // Variables de traducción
+              if($_SESSION['lenguaje']['iso']=='es'){
+                $titulo = $categoria->CATEGORIA_NOMBRE;
+              }else{
+                $traduccion = $this->TraduccionesModel->lista($categoria->ID_CATEGORIA,'categoria',$_SESSION['lenguaje']['iso']);
+                if(!empty($traduccion['TITULO'])){
+                  $titulo = $traduccion['TITULO'];
+                }else{
+                  $titulo = $categoria->CATEGORIA_NOMBRE;
+                }
+              }
+            ?>
           <a class="nav-link" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" href="<?php echo base_url('categoria?slug='.$categoria->CATEGORIA_URL); ?>">
-            <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
+            <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $titulo; ?>
           </a>
           <?php $i++;  } ?>
        </div>
@@ -108,8 +121,21 @@
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link" href="<?php echo base_url('categoria/servicios'); ?>"> <i class="fa fa-boxes"></i>  <?php echo $this->lang->line('header_categorias_servicios_todos'); ?></a>
         <?php $i=0; foreach($categorias_servicios as $categoria){ ?>
+          <?php
+            // Variables de traducción
+            if($_SESSION['lenguaje']['iso']=='es'){
+              $titulo = $categoria->CATEGORIA_NOMBRE;
+            }else{
+              $traduccion = $this->TraduccionesModel->lista($categoria->ID_CATEGORIA,'categoria',$_SESSION['lenguaje']['iso']);
+              if(!empty($traduccion['TITULO'])){
+                $titulo = $traduccion['TITULO'];
+              }else{
+                $titulo = $categoria->CATEGORIA_NOMBRE;
+              }
+            }
+          ?>
         <a class="nav-link" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" href="<?php echo base_url('categoria/servicios?slug='.$categoria->CATEGORIA_URL); ?>">
-          <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
+          <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $titulo; ?>
         </a>
         <?php $i++;  } ?>
       </div>

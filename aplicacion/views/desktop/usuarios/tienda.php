@@ -61,9 +61,11 @@
                           </div>
                         </div>
                     </div>
+                    <!--
                     <div class="card-footer">
                       <a href="<?php echo base_url('usuario/tienda/actualizar'); ?>" class="btn btn-link btn-block"> <i class="fa fa-pencil-alt"></i> <?php echo $this->lang->line('usuario_listas_generales_editar'); ?></a>
                     </div>
+                  -->
                   </div>
                 </div>
               </div>

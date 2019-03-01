@@ -199,6 +199,62 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}
+	public function crear_traduccion()
+	{
+			// Defino el tipo de Categoria
+			$this->form_validation->set_rules('TraduccionTitulo', 'Título', 'required', array( 'required' => 'Se requiere que escribas el título %s'));
+
+			if($this->form_validation->run())
+			{
+				// Parametros del producto
+				$parametros = array(
+					'ID_OBJETO'=> $this->input->post('IdObjeto'),
+					'TIPO_OBJETO'=> $this->input->post('TipoObjeto'),
+					'TITULO'=> $this->input->post('TraduccionTitulo'),
+					'LENGUAJE'=> $this->input->post('Lenguaje'),
+				);
+				// Creo el Producto
+				$producto_id = $this->TraduccionesModel->crear($parametros);
+
+				// Mensaje Feedback
+					$this->session->set_flashdata('exito', 'Traducción creada');
+				// Redirecciono
+				redirect(base_url('admin/categorias?tipo_categoria='.$this->input->post('TipoCategoria').'&tab=collapse'.$this->input->post('Tab')));
+			}else{
+				// Mensaje Feedback
+					$this->session->set_flashdata('alerta', 'Error al traducir');
+				// Redirecciono
+				redirect(base_url('admin/categorias/actualizar?id='.$this->input->post('IdObjeto')));
+			}
+	}
+	public function actualizar_traduccion()
+	{
+			// Defino el tipo de Categoria
+			$this->form_validation->set_rules('TraduccionTitulo', 'Título', 'required', array( 'required' => 'Se requiere que escribas el título %s'));
+
+			if($this->form_validation->run())
+			{
+				// Parametros del producto
+				$parametros = array(
+					'ID_OBJETO'=> $this->input->post('IdObjeto'),
+					'TIPO_OBJETO'=> $this->input->post('TipoObjeto'),
+					'TITULO'=> $this->input->post('TraduccionTitulo'),
+					'LENGUAJE'=> $this->input->post('Lenguaje'),
+				);
+				// Creo el Producto
+				$producto_id = $this->TraduccionesModel->actualizar($this->input->post('IdTraduccion'),$parametros);
+
+				// Mensaje Feedback
+					$this->session->set_flashdata('exito', 'Traducción Actualizada');
+				// Redirecciono
+				redirect(base_url('admin/categorias?tipo_categoria='.$this->input->post('TipoCategoria').'&tab=collapse'.$this->input->post('Tab')));
+			}else{
+				// Mensaje Feedback
+					$this->session->set_flashdata('alerta', 'Error al traducir');
+				// Redirecciono
+				redirect(base_url('admin/categorias/actualizar?id='.$this->input->post('IdObjeto')));
+			}
+	}
 
 	public function borrar()
 	{
