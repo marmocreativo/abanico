@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         // si ha pasado mucho tiempo:
         // Madno un mensaje, destruyo la sesión y retorno falso
         $CI->session->set_flashdata('mensaje', 'Tu sesión se ha cerrado por falta de actividad');
-        if(!empty($_SESSION)){ session_destroy(); }
+        if(!empty($_SESSION)){ unset($_SESSION['usuario']); }
         return FALSE;
       }else{
         // de lo contrario
