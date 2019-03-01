@@ -282,7 +282,7 @@
                         </div>
                         <div class="col">
                           <div class="btn-group float-right mb-3">
-                            <button data-enlace="<?php echo base_url('usuario/productos/borrar_galeria')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-danger borrar_entrada" title="Eliminar"> <span class="fa fa-trash"></span> </button>
+                            <button type="button" data-enlace="<?php echo base_url('usuario/productos/borrar_galeria?id='.$galeria->ID_GALERIA.'&id_producto='.$galeria->ID_PRODUCTO); ?>" class="btn btn-sm btn-danger borrar_entrada" title="Eliminar"> <span class="fa fa-trash"></span> </button>
                           </div>
                         </div>
                       </div>

@@ -1,7 +1,6 @@
 <script>
 jQuery(window).on('load',function(){
   jQuery('.borrar_entrada').click(function (){
-
     Swal({
       title: '¿Estas seguro?',
       text: "Esta acción no se puede deshacer.",

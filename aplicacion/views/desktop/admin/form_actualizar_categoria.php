@@ -91,6 +91,63 @@
                <hr>
                <button type="submit" class="btn btn-primary float-right">Guardar</button>
              </form>
+
+             <table class="table table-sm table-bordered">
+               <tbody>
+                 <?php foreach($lenguajes as $lenguaje){ ?>
+                   <?php if($lenguaje->LENGUAJE_ISO!='es'){ ?>
+                 <tr>
+                   <td width="15%"> <h4 class="text-center"> <?php echo $lenguaje->LENGUAJE_NOMBRE; ?> </h4></td>
+                   <td>
+                     <?php $traduccion = $this->TraduccionesModel->lista($categoria['ID_CATEGORIA'],'producto',$lenguaje->LENGUAJE_ISO); ?>
+                     <?php if(empty($traduccion)){ ?>
+                     <form class="" action="<?php echo base_url('usuario/productos_traducciones/crear'); ?>" method="post">
+                       <input type="hidden" name="IdObjeto" value="<?php echo $categoria['ID_CATEGORIA'] ?>">
+                       <input type="hidden" name="TipoObjeto" value="producto">
+                       <input type="hidden" name="Lenguaje" value="<?php echo $lenguaje->LENGUAJE_ISO; ?>">
+                       <div class="form-group">
+                         <label for="TraduccionTitulo">Título</label>
+                         <input type="text" class="form-control" name="TraduccionTitulo" value="" required>
+                       </div>
+                       <div class="form_group">
+                         <label for="TraduccionDescripcionCorta">Descripción corta</label>
+                         <textarea name="TraduccionDescripcionCorta" class="form-control" rows="5"></textarea>
+                       </div>
+                       <div class="form_group">
+                         <label for="TraduccionDescripcionLarga">Descripción Detallada</label>
+                         <textarea name="TraduccionDescripcionLarga" class="form-control" rows="5"></textarea>
+                       </div>
+                       <hr>
+                       <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-save"></i> Guardar</button>
+                     </form>
+                   <?php }else{ ?>
+                     <form class="" action="<?php echo base_url('usuario/productos_traducciones/actualizar'); ?>" method="post">
+                       <input type="hidden" name="IdTraduccion" value="<?php echo $traduccion['ID_TRADUCCION'] ?>">
+                       <input type="hidden" name="IdObjeto" value="<?php echo $traduccion['ID_OBJETO'] ?>">
+                       <input type="hidden" name="TipoObjeto" value="<?php echo $traduccion['TIPO_OBJETO'] ?>">
+                       <input type="hidden" name="Lenguaje" value="<?php echo $traduccion['LENGUAJE'] ?>">
+                       <div class="form-group">
+                         <label for="TraduccionTitulo">Título</label>
+                         <input type="text" class="form-control" name="TraduccionTitulo" value="<?php echo $traduccion['TITULO'] ?>" required>
+                       </div>
+                       <div class="form_group">
+                         <label for="TraduccionDescripcionCorta">Descripción corta</label>
+                         <textarea name="TraduccionDescripcionCorta" class="form-control" rows="5"><?php echo $traduccion['DESCRIPCION_CORTA'] ?></textarea>
+                       </div>
+                       <div class="form_group">
+                         <label for="TraduccionDescripcionLarga">Descripción Detallada</label>
+                         <textarea name="TraduccionDescripcionLarga" class="form-control" rows="5"><?php echo $traduccion['DESCRIPCION_LARGA'] ?></textarea>
+                       </div>
+                       <hr>
+                       <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-save"></i> Guardar</button>
+                     </form>
+                   <?php } ?>
+                   </td>
+                 </tr>
+               <?php } ?>
+               <?php } ?>
+               </tbody>
+             </table>
         </div>
       </div>
     </div>
