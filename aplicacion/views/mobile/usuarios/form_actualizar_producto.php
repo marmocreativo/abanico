@@ -1,5 +1,5 @@
+<?php if(isset($_GET['tab'])){ $tab = $_GET['tab']; } else { $tab=''; } ?>
 <!-- empieza panel usuario resposivo -->
-
 <div class="fila-gris">
   <div class="container">
     <div class="row">
@@ -48,7 +48,7 @@
                   </h2>
                 </div>
 
-                <div id="collapseOne" class="" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div id="collapseOne" class="<?php if($tab!=''){ echo 'collapse'; } ?>" aria-labelledby="headingOne" data-parent="#accordionExample">
                   <div class="card-body">
 
                     <div class="form-group">
@@ -154,7 +154,7 @@
                   </h2>
                 </div>
 
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div id="collapseTwo" class="<?php if($tab!='categoria'){ echo 'collapse'; } ?>" aria-labelledby="headingTwo" data-parent="#accordionExample">
                   <div class="card-body">
                     <?php $i=1; foreach($categorias as $categoria){ ?>
                   <h6 class="mb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
@@ -192,7 +192,7 @@
                     </button>
                   </h2>
                 </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div id="collapseThree" class="<?php if($tab!='datos'){ echo 'collapse'; } ?>" aria-labelledby="headingThree" data-parent="#accordionExample">
                   <div class="card-body">
 
                     <div class="form-group">
@@ -261,7 +261,7 @@
                     </button>
                   </h2>
                 </div>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div id="collapseFour" class="<?php if($tab!='galeria'){ echo 'collapse'; } ?>" aria-labelledby="headingFour" data-parent="#accordionExample">
                   <div class="card-body">
                     <hr>
                     <img src="<?php echo base_url('contenido/img/productos/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
@@ -282,7 +282,7 @@
                         </div>
                         <div class="col">
                           <div class="btn-group float-right mb-3">
-                            <button data-enlace="<?php echo base_url('usuario/productos/borrar_galeria')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-danger borrar_entrada" title="Eliminar"> <span class="fa fa-trash"></span> </button>
+                            <button type="button" data-enlace="<?php echo base_url('usuario/productos/borrar_galeria?id='.$galeria->ID_GALERIA.'&id_producto='.$galeria->ID_PRODUCTO); ?>" class="btn btn-sm btn-danger borrar_entrada" title="Eliminar"> <span class="fa fa-trash"></span> </button>
                           </div>
                         </div>
                       </div>

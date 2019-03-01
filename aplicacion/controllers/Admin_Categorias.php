@@ -24,6 +24,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		// Cargo el modelo
 		$this->load->model('CategoriasModel');
 		$this->load->model('EstadisticasModel');
+		$this->load->model('LenguajesModel');
+		$this->load->model('TraduccionesModel');
 		$this->load->model('NotificacionesModel');
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -42,6 +44,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			// Tipo de Categoria por defecto
 			if(!isset($_GET['tipo_categoria'])||empty($_GET['tipo_categoria'])){ $this->data['tipo_categoria']='productos'; }else{ $this->data['tipo_categoria']=$_GET['tipo_categoria']; }
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$this->data['tipo_categoria'],'','');
+			$this->data['lenguajes'] = $this->LenguajesModel->lista(['LENGUAJE_ESTADO'=>'activo'],'','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_categorias',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
@@ -53,6 +56,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'CATEGORIA_NOMBRE'=>$_GET['Busqueda']
 			);
 			$this->data['categorias'] = $this->CategoriasModel->lista($parametros,'','');
+			$this->data['lenguajes'] = $this->LenguajesModel->lista(['LENGUAJE_ESTADO'=>'activo'],'','');
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_categorias',$this->data);
@@ -188,6 +192,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
     }else{
 
 			$this->data['categoria'] = $this->CategoriasModel->detalles($_GET['id']);
+			$this->data['lenguajes'] = $this->LenguajesModel->lista(['LENGUAJE_ESTADO'=>'activo'],'','');
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_categoria',$this->data);
