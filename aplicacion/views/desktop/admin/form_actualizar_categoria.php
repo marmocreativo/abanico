@@ -89,9 +89,13 @@
                  </div>
                </div>
                <hr>
-               <button type="submit" class="btn btn-primary float-right">Guardar</button>
+               <div class="col-12">
+
+                 <button type="submit" class="btn btn-primary float-right">Guardar</button>
+               </div>
              </form>
              <hr>
+
              <h4> <i class="fa fa-language"></i> Traducciones</h4>
              <table class="table table-sm table-bordered">
                <tbody>
@@ -111,7 +115,7 @@
                          <input type="text" class="form-control" name="TraduccionTitulo" value="" required>
                        </div>
                        <hr>
-                       <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-save"></i> Guardar</button>
+                       <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-save"></i> Guardar Traducción</button>
                      </form>
                    <?php }else{ ?>
                      <form class="" action="<?php echo base_url('admin/categorias/actualizar_traduccion'); ?>" method="post">
@@ -124,7 +128,7 @@
                          <input type="text" class="form-control" name="TraduccionTitulo" value="<?php echo $traduccion['TITULO'] ?>" required>
                        </div>
                        <hr>
-                       <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-save"></i> Guardar</button>
+                       <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-save"></i> Guardar Traducción</button>
                      </form>
                    <?php } ?>
                    </td>
