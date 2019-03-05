@@ -86,7 +86,7 @@
                                         <button data-enlace='<?php echo base_url('admin/categorias/borrar?id='.$tercera_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>' class="btn btn-outline-danger btn-sm borrar_entrada" title="Eliminar Categoría"> <span class="fa fa-trash"></span> </button>
                                         <?php foreach($lenguajes as $lenguaje){ ?>
                                           <?php if($lenguaje->LENGUAJE_ISO!='es'){ ?>
-                                            <?php $traduccion = $this->TraduccionesModel->lista($segunda_categoria->ID_CATEGORIA,'categoria',$lenguaje->LENGUAJE_ISO); ?>
+                                            <?php $traduccion = $this->TraduccionesModel->lista($tercera_categoria->ID_CATEGORIA,'categoria',$lenguaje->LENGUAJE_ISO); ?>
                                             <br><b><?php echo $lenguaje->LENGUAJE_ISO ?></b> <small><?php echo $traduccion['TITULO']; ?></small>
                                           <?php }// reviso que no sea Español ?>
                                         <?php }// Bucle de todos los mensajes ?>
