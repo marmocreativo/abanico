@@ -19,7 +19,7 @@ html, body{
 | -------------------------------------------------------------------------
 */
 .menu-superior{
-  min-height: 10px;
+  min-height: 31px;
 }
 .menu-principal{
   z-index: 10;
@@ -67,14 +67,14 @@ html, body{
   position: absolute;
   width: 100%;
   top: 0;
-  margin-top: 75px;
+  margin-top: 97px;
   z-index: 10;
 }
 /* .menu-inferior.collaps{
   visibility: visible;
 } */
 .menu-inferior.submenu{
-  margin-top: 106px;
+  margin-top: 128px;
 }
 .menu-inferior:before{
   z-index: 10;
@@ -153,7 +153,7 @@ html, body{
     border-radius: 0;
     -webkit-transition: all .1s ease-out;
     transition: all .1s ease-out;
-    left: 12.5px;
+    left: 8.5px;
 }
 .btnBx.collapsed .hamburger-top-bread {
     margin-top: -8px;
