@@ -64,6 +64,8 @@ $route['admin'] = 'Admin_Desktop';
 // Rutas de Usuario
 $route['usuario/datos_curiosos'] = 'Usuario_Datos_Curiosos';
 $route['usuario/datos_curiosos/(:any)'] = 'Usuario_Datos_Curiosos/$1';
+$route['usuario/planes'] = 'Usuario_Planes';
+$route['usuario/planes/(:any)'] = 'Usuario_Planes/$1';
 $route['usuario/favoritos'] = 'Usuario_Favoritos';
 $route['usuario/favoritos'] = 'Usuario_Favoritos';
 $route['usuario/direcciones'] = 'Usuario_Direcciones';

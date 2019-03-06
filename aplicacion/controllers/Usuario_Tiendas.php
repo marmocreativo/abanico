@@ -25,8 +25,10 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->model('CategoriasModel');
 			$this->load->model('CategoriasProductoModel');
 			$this->load->model('TiendasModel');
+			$this->load->model('PlanesModel');
 			$this->load->model('PerfilServiciosModel');
 			$this->load->model('DireccionesModel');
+			$this->load->model('PlanesModel');
 			$this->load->model('NotificacionesModel');
   }
 
@@ -50,6 +52,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 				$direccion_fiscal = $this->DireccionesModel->direccion_fiscal($_SESSION['usuario']['id']);
 				$this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($this->data['tienda']['ID_DIRECCION']);
+				$this->data['plan'] = $this->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'productos');
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/'.$vista_tienda,$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);

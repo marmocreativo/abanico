@@ -119,6 +119,12 @@ jQuery('#ImagenServicio').change(function() {
 jQuery('#ImagenProducto').change(function() {
   readURL(this);
 });
+jQuery('#ImagenTienda').change(function() {
+  readURL(this);
+});
+jQuery('#ImagenPerfil').change(function() {
+  readURL(this);
+});
 
 // Prevenir enviar formulario dos veces.
 
