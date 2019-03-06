@@ -24,7 +24,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-store"></i>Tiendas</a>
         <ul class="sub-menu children dropdown-menu">
           <li><i class="fa fa-store"></i><a href="<?php echo base_url('admin/tiendas'); ?>"> Tiendas</a></li>
-          <li><a href="<?php echo base_url('admin/productos?tipo=normal'); ?>"><i class="menu-icon fa fa-box"></i> Productos</a></li>
+          <li><i class="menu-icon fa fa-box"></i><a href="<?php echo base_url('admin/productos?tipo=normal'); ?>">Productos</a></li>
           <!--<li><a href="<?php echo base_url('admin/productos?tipo=mayorista'); ?>"><i class="menu-icon fa fa-boxes"></i> Productos Mayoristas</a></li>-->
         </ul>
     </li>
@@ -43,13 +43,18 @@
           <li><i class="fa fa-tools"></i><a href="<?php echo base_url('admin/categorias?tipo_categoria=servicios'); ?>">Categorias Servicios</a></li>
         </ul>
     </li>
-
+    <li class="menu-item-has-children dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file-signature"></i>Planes</a>
+        <ul class="sub-menu children dropdown-menu">
+          <li><i class="fa fa-file-signature"></i><a href="<?php echo base_url('admin/planes'); ?>"> Planes Generales</a></li>
+        </ul>
+    </li>
     <li class="menu-item-has-children dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-truck"></i>Envios y Transporte</a>
         <ul class="sub-menu children dropdown-menu">
           <li><i class="fa fa-truck"></i><a href="<?php echo base_url('admin/transportistas'); ?>">Transportistas</a></li>
           <li><i class="fa fa-map-marker"></i><a href="<?php echo base_url('admin/puntos_registro'); ?>">Puntos de Registro</a></li>
-          <li><i class="fa fa-recipt"></i><a href="<?php echo base_url('admin/guias'); ?>">Guías Abanico</a></li>
+          <li><i class="fa fa-file"></i><a href="<?php echo base_url('admin/guias'); ?>">Guías Abanico</a></li>
         </ul>
     </li>
     <li class="menu-item-has-children dropdown">

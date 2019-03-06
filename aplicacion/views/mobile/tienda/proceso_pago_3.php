@@ -121,7 +121,7 @@
           ?>
           <?php }// Termina la condición que revisa si un producto es de una tienda o de otra ?>
           <?php }// Termina el bucle de productos  ?>
-          <?php /* SI LA TIENDA NO LA ADMINISTRA ABANICO*/ if($datos_tienda['TIENDA_ADMINISTRACION_PEDIDOS']!='abanico'){
+          <?php /* SI LA TIENDA NO LA ADMINISTRA ABANICO  if($datos_tienda['TIENDA_ADMINISTRACION_PEDIDOS']!='abanico') */ $default = false; if($default){
 
               $envio_tienda = $this->TransportistasRangosModel->mejor_precio($suma_peso,$suma_productos,$detalles_direccion['DIRECCION_PAIS'],$detalles_direccion['DIRECCION_ESTADO']);
               //var_dump($envio_tienda);

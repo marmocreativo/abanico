@@ -379,7 +379,7 @@ $lang['usuario_form_producto_descripcion'] = 'Descripción';
 $lang['usuario_form_producto_galeria'] = 'Galeria';
 $lang['usuario_form_producto_combinaciones'] = 'Combinaciones';
 
-$lang['usuario_form_producto_info_basica_titulo'] = 'Información Básica Obligatoria';
+$lang['usuario_form_producto_info_basica_titulo'] = 'Información básica obligatoria';
 $lang['usuario_form_producto_nombre'] = 'Nombre del producto';
 $lang['usuario_form_producto_precio_venta'] = 'Precio de Venta';
 $lang['usuario_form_producto_precio_lista'] = 'Precio de Lista';
