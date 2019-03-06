@@ -107,7 +107,7 @@ class ConversacionesMensajesModel extends CI_Model {
     foreach($orden as $orden){
       $this->db->where('ID_MENSAJE',$orden);
       return $this->db->update('conversaciones_mensajes',array('ORDEN'=>$i));
-      $i++;
+      ++$i;
     }
   }
 

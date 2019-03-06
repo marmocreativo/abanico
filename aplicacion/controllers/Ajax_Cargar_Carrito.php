@@ -31,7 +31,7 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 					$_SESSION['carrito']['productos'][$i]['cantidad_producto'] += $_POST['CantidadProducto'];
 					$existe = true;
 				}
-				$i++;
+				++$i;
 			}
 			// Si no existe lo creo
 			if(!$existe){
@@ -72,7 +72,7 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 						$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $cantidad_nueva;
 					}
 				}
-				$i++;
+				++$i;
 			}
 		}
 	}
@@ -87,7 +87,7 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 					$cantidad_anterior = $_SESSION['carrito']['productos'][$i]['cantidad_producto'];
 					$_SESSION['carrito']['productos'][$i]['cantidad_producto'] += 1;
 				}
-				$i++;
+				++$i;
 			}
 		}
 	}
@@ -101,7 +101,7 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 				if($producto['id_producto']==$_POST['IdProducto']){
 					if($_POST['CantidadProducto']<=0){ unset( $_SESSION['carrito']['productos'][$i]); }else{$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $_POST['CantidadProducto'];  }
 				}
-				$i++;
+				++$i;
 			}
 		}
 	}
@@ -117,7 +117,7 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 					unset( $_SESSION['carrito']['productos'][$i]);
 					$_SESSION['carrito']['productos'] = array_values($_SESSION['carrito']['productos']);
 				}
-				$i++;
+				++$i;
 			}
 			$_SESSION['carrito']['productos']	= array_values($_SESSION['carrito']['productos']);
 		}

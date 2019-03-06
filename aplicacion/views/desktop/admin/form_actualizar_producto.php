@@ -217,7 +217,7 @@
                                 <?php } ?>
                                 </div>
                               </div>
-                          <?php $i++; } ?>
+                          <?php ++$i; } ?>
                       </div>
                     </div>
                     <div class="tab-pane fade <?php if($tab=='datos'){ echo 'show active'; } ?> p-3" id="datos" role="tabpanel" aria-labelledby="datos-tab">
