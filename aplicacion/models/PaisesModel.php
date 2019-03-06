@@ -99,7 +99,7 @@ class PaisesModel extends CI_Model {
     foreach($orden as $orden){
       $this->db->where('ID_PAIS',$orden);
       return $this->db->update('paises',array('ORDEN'=>$i));
-      $i++;
+      ++$i;
     }
   }
 

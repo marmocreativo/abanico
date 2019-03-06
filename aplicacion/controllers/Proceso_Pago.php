@@ -158,6 +158,20 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			redirect(base_url('proceso_pago_1'));
 		}
 	}
+	public function paso3_oxxo()
+	{
+		if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			if(empty($_SESSION['carrito']['productos'])){
+				redirect(base_url('carrito'));
+			}
+			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_3_oxxo',$this->data);
+			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+
+		}else{
+			redirect(base_url('proceso_pago_1'));
+		}
+	}
 
 
 	public function paso4()

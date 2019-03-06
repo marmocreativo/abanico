@@ -14,15 +14,15 @@
   <div class="row">
     <div class="col-12">
 
-      <div class="card mb-3">
+      <div class="card">
         <div class="card-header d-flex justify-content-between">
             <h2 class="h5 mb-0 pt-1"> <span class="fa fa-box"></span> <?php echo $this->lang->line('usuario_lista_servicios_titulo'); ?></h2>
             <a href="<?php echo base_url('usuario/servicios/crear'); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span></a>
         </div>
-        <div class="card-body">
+        <div class="card-body p-0">
           <?php foreach($servicios as $servicio){ ?>
-          <div class="card mb-2">
-            <div class="card-body">
+          <div class="card mb-0 border-0">
+            <div class="card-body border-bottom">
               <h3 class="h6"><strong><?php echo $servicio->SERVICIO_NOMBRE; ?></strong></h3>
               <p><?php echo $servicio->SERVICIO_ESTADO; ?></p>
               <div class="btn-group float-right">

@@ -13,7 +13,7 @@ class DevolucionesModel extends CI_Model {
  */
   function lista($id_pedido){
     $this->db->where('ID_PEDIDO',$id_pedido);
-    $query = $this->db->get('devoluciones');
+    $query = $this->db->get('pedidos_devoluciones');
     return $query->result();
   }
   /*
@@ -25,7 +25,7 @@ class DevolucionesModel extends CI_Model {
   function todas_las_devoluciones($orden){
     $this->db->join('pedidos', 'devoluciones.ID_PEDIDO = pedidos.ID_PEDIDO');
     $this->db->order_by($orden);
-    $query = $this->db->get('devoluciones');
+    $query = $this->db->get('pedidos_devoluciones');
     return $query->result();
   }
   /*
@@ -38,20 +38,20 @@ class DevolucionesModel extends CI_Model {
     $this->db->join('pedidos', 'devoluciones.ID_PEDIDO = pedidos.ID_PEDIDO');
     $this->db->where('ID_USUARIO',$id_usuario);
     $this->db->order_by($orden);
-    $query = $this->db->get('devoluciones');
+    $query = $this->db->get('pedidos_devoluciones');
     return $query->result();
   }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    return $this->db->get_where('devoluciones',array('ID_PEDIDO'=>$id))->row_array();
+    return $this->db->get_where('pedidos_devoluciones',array('ID_PEDIDO'=>$id))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
-    $this->db->insert('devoluciones',$parametros);
+    $this->db->insert('pedidos_devoluciones',$parametros);
     return $this->db->insert_id();
   }
   /*
@@ -61,14 +61,14 @@ class DevolucionesModel extends CI_Model {
  */
   function actualizar($id,$parametros){
     $this->db->where('ID_DEVOLUCION',$id);
-    return $this->db->update('devoluciones',$parametros);
+    return $this->db->update('pedidos_devoluciones',$parametros);
   }
   /*
     * Borro una entrada
     * $id es el identificador de la entrada
  */
   function borrar($id){
-    return $this->db->delete('devoluciones',array('ID_DEVOLUCION'=>$id));
+    return $this->db->delete('pedidos_devoluciones',array('ID_DEVOLUCION'=>$id));
   }
 
 }

@@ -195,7 +195,7 @@
                     <p>Importe Productos: <b>$<?php echo $tienda->PEDIDO_TIENDA_IMPORTE_PRODUCTOS; ?></b></p>
                   </div>
                   <div class="col-3">
-                    <p>Importe Envío: <b>$<?php echo $tienda->PEDIDO_TIENDA_IMPORTE_ENVIO; ?></b><br><small>Envios Por: <b><?php echo $tienda->TIENDA_ADMINISTRACION_PEDIDOS; ?></b></small></p>
+                    <p>Importe Envío: <b>$<?php echo $tienda->PEDIDO_TIENDA_IMPORTE_ENVIO; ?></b></p>
                   </div>
                   <div class="col-3">
                       <p>Transportista: <b><?php if(empty($tienda->TRANSPORTISTA_NOMBRE)) { echo'Envio Completo con Abanico'; }else{ echo $tienda->TRANSPORTISTA_NOMBRE; } ?></b></p>

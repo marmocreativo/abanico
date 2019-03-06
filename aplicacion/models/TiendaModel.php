@@ -91,7 +91,7 @@ class TiendaModel extends CI_Model{
       foreach($orden as $orden){
         $this->db->where('ID_TIENDA',$orden);
         return $this->db->update('tiendas',array('ORDEN'=>$i));
-        $i++;
+        ++$i;
       }
     }
 }

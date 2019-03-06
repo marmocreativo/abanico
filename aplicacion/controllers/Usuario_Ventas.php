@@ -14,7 +14,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['primary'] = "-primary";
 
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo']  = "desktop";
+			$this->data['dispositivo']  = "mobile";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}

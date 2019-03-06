@@ -123,7 +123,7 @@
                             ?>
                           <?php }// Termina la condición que revisa si un producto es de una tienda o de otra ?>
                         <?php } // Termina el bucle de productos ?>
-                        <?php /* SI LA TIENDA NO LA ADMINISTRA ABANICO*/ if($datos_tienda['TIENDA_ADMINISTRACION_PEDIDOS']!='abanico'){
+                        <?php /* SI LA TIENDA NO LA ADMINISTRA ABANICO if($datos_tienda['TIENDA_ADMINISTRACION_PEDIDOS']!='abanico')*/ $default = false; if($default){
 
                             $envio_tienda = $this->TransportistasRangosModel->mejor_precio($suma_peso,$suma_productos,$detalles_direccion['DIRECCION_PAIS'],$detalles_direccion['DIRECCION_ESTADO']);
                             //var_dump($envio_tienda);
@@ -255,6 +255,9 @@
             <div class="card-footer">
               <div class="d-flex justify-content-end">
                 <a href="<?php echo base_url('proceso_pago_3_banco'); ?>" class="btn btn-success btn-lg"> <?php echo $this->lang->line('proceso_pago_3_transferencia'); ?> <i class="fas fa-money-bill-alt"></i></a>
+              </div>
+              <div class="d-flex justify-content-end mt-3">
+              <a href="<?php echo base_url('proceso_pago_3_oxxo'); ?>" class="btn btn-danger btn-lg"> OXXO <i class="fas fa-cash-register"></i></a>
               </div>
               <hr>
               <div class="alert-info">

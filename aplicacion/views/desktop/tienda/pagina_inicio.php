@@ -4,7 +4,6 @@
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -42,6 +41,12 @@
         <a href="<?php echo base_url('usuario/registrar'); ?>" class="d-flex justify-content-center align-items-center">
           <div class="car-icono text-primary"> <span class="fa fa-handshake"></span> </div>
           <div class="car-titulo"><?php echo $this->lang->line('inicio_menu_destacados_unete'); ?></div>
+        </a>
+      </div>
+      <div class="col border-left">
+        <a href="<?php echo base_url('usuario/registrar'); ?>" class="d-flex justify-content-center align-items-center">
+          <div class="car-icono text-primary"> <span class="fa fa-gift"></span> </div>
+          <div class="car-titulo">Concurso</div>
         </a>
       </div>
     </div>
@@ -84,6 +89,9 @@
                       <?php } ?>
                       <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                         <span class="etiqueta-3"><?php echo $this->lang->line('etiquetas_productos_oferta'); ?></span>
+                      <?php } ?>
+                      <?php if($producto->PRODUCTO_ARTESANAL=='si'){ ?>
+                        <span class="etiqueta-artesanal"><img src="<?php echo base_url('assets/global/img/artesanal.png'); ?>"></span>
                       <?php } ?>
                     </div>
                       <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>

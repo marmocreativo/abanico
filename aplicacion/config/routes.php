@@ -18,6 +18,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Rutas de Administrador
 
+$route['admin/planes'] = 'Admin_Planes';
+$route['admin/planes/(:any)'] = 'Admin_Planes/$1';
 $route['admin/divisas'] = 'Admin_Divisas';
 $route['admin/divisas/(:any)'] = 'Admin_Divisas/$1';
 $route['admin/paises'] = 'Admin_Paises';
@@ -60,7 +62,11 @@ $route['admin/productos_combinaciones'] = 'Admin_Productos_Combinaciones';
 $route['admin/productos_combinaciones/(:any)'] = 'Admin_Productos_Combinaciones/$1';
 $route['admin'] = 'Admin_Desktop';
 // Rutas de Usuario
-
+$route['usuario/datos_curiosos'] = 'Usuario_Datos_Curiosos';
+$route['usuario/datos_curiosos/(:any)'] = 'Usuario_Datos_Curiosos/$1';
+$route['usuario/planes'] = 'Usuario_Planes';
+$route['usuario/planes/(:any)'] = 'Usuario_Planes/$1';
+$route['usuario/favoritos'] = 'Usuario_Favoritos';
 $route['usuario/favoritos'] = 'Usuario_Favoritos';
 $route['usuario/direcciones'] = 'Usuario_Direcciones';
 $route['usuario/direcciones/(:any)'] = 'Usuario_Direcciones/$1';
@@ -93,10 +99,14 @@ $route['ajax/estados'] = 'Ajax_Estados';
 $route['ajax/paises'] = 'Ajax_Paises';
 $route['ajax/carrito'] = 'Ajax_Cargar_Carrito';
 $route['ajax/carrito/(:any)'] = 'Ajax_Cargar_Carrito/$1';
+
 // Rutas de Autenticacion
 $route['login'] = 'Autenticacion';
 $route['login/(:any)'] = 'Autenticacion/$1';
-// Rutas de tienda}
+
+// Rutas de tienda
+$route['datos_curiosos'] = 'Tienda_Datos_Curiosos';
+$route['datos_curiosos/(:any)'] = 'Tienda_Datos_Curiosos/$1';
 $route['test'] = 'Tienda_Test';
 $route['test/(:any)'] = 'Tienda_Test/$1';
 $route['guia'] = 'Tienda_Guia';
@@ -116,15 +126,10 @@ $route['busqueda'] = 'Tienda_Busqueda';
 $route['busqueda/(:any)'] = 'Tienda_Busqueda/$1';
 
 // Proceso de Pago
-// Pago Invitado
-$route['invitado_pago_4'] = 'Proceso_Pago/invitado_paso4';
-$route['invitado_pago_3_banco'] = 'Proceso_Pago/invitado_paso3_banco';
-$route['invitado_pago_3'] = 'Proceso_Pago/invitado_paso3';
-$route['invitado_pago_2'] = 'Proceso_Pago/invitado_paso2';
-// Pago Normal
 $route['compra_rapida'] = 'Proceso_Pago/compra_rapida';
 $route['proceso_pago_4'] = 'Proceso_Pago/paso4';
 $route['proceso_pago_3_banco'] = 'Proceso_Pago/paso3_banco';
+$route['proceso_pago_3_oxxo'] = 'Proceso_Pago/paso3_oxxo';
 $route['proceso_pago_3'] = 'Proceso_Pago/paso3';
 $route['proceso_pago_2'] = 'Proceso_Pago/paso2';
 $route['proceso_pago_1'] = 'Proceso_Pago/paso1';

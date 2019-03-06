@@ -53,12 +53,12 @@
                       </div>
                       <div class="col">
                         <h2 class="card-title"><?php echo $conteo_productos; ?></h2>
-                          <h5><?php echo $no_leidos; ?> <?php echo $this->lang->line('usuario_widgets_inicio_productos_titulo'); ?></h5>
+                          <h5> <?php echo $this->lang->line('usuario_widgets_inicio_productos_titulo'); ?></h5>
                       </div>
                     </div>
                   </div>
                   <div class="card-footer">
-                    <a href="<?php echo base_url('usuario/productos'); ?>" class="text-dark"><?php echo $no_leidos; ?> <?php echo $this->lang->line('usuario_widgets_inicio_productos_boton'); ?> <i class="fa fa-arrow-right float" aria-hidden="true"></i></a>
+                    <a href="<?php echo base_url('usuario/productos'); ?>" class="text-dark"><?php echo $this->lang->line('usuario_widgets_inicio_productos_boton'); ?> <i class="fa fa-arrow-right float" aria-hidden="true"></i></a>
                   </div>
                 </div>
               </div>

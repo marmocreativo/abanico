@@ -103,7 +103,7 @@ class MunicipiosModel extends CI_Model {
     foreach($orden as $orden){
       $this->db->where('ID_MUNICIPIO',$orden);
       return $this->db->update('municipios',array('ORDEN'=>$i));
-      $i++;
+      ++$i;
     }
   }
 

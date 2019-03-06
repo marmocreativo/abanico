@@ -12,7 +12,10 @@ html, body{
 | ESTILOS BOOTSTRAP
 | -------------------------------------------------------------------------
 */
-
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #d9d9d9;
+}
 /*
 | -------------------------------------------------------------------------
 | ESTILOS HEADER
@@ -231,13 +234,12 @@ html, body{
 .cuadricula-productos .imagen-producto span{
   display:block;
   width:100%;
-  max-width: 600px;
-  background-color: #fff;
-   padding-top: 130%;
-   background-size: contain;
-   background-position: center;
-   background-repeat: no-repeat;
+  padding-top: 130%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 .cuadricula-productos .product-content{
   padding:12px;
   overflow:hidden;
@@ -247,25 +249,61 @@ html, body{
 }
 .cuadricula-productos .contenedor-etiquetas{
   display: block;
-  width: 30%;
+  width: 100%;
   position: absolute;
-  right: 0;
   top: 10px;
+  z-index: 9;
 }
 .cuadricula-productos a .etiqueta-1, .cuadricula-productos a .etiqueta-2, .cuadricula-productos a .etiqueta-3{
-  display:block;padding:4px 15px 4px 20px;
+  display: block;
+  width: 60px;
   text-align: right;
-  margin-bottom: 5px;
+  padding: 2px 15px 2px 20px;
+  margin-bottom: 8px;
+  margin-left: 75%;
   font-size: 0.8em;
-  color:#fff;
-  -webkit-clip-path:polygon(10% 0,100% 0,100% 100%,0 100%);
-  clip-path:polygon(10% 0,100% 0,100% 100%,0 100%)
+  color: #fff;
+  float: right;
+  position: relative;
+  right: -10px;
+  border-radius: 3px 0 0 3px;
 }
 .cuadricula-productos a .etiqueta-1{
   background-color: #28a745;
+  -webkit-box-shadow: 0px 0px 0px 2px #28a745;
+  -moz-box-shadow: 0px 0px 0px 2px #28a745;
+  box-shadow: 0px 0px 0px 2px #28a745;
+  border: 1px dashed rgb(57, 126, 62);
+  border-right:none;
+}
+.cuadricula-productos a .etiqueta-1:before{
+  border-bottom: solid 8px transparent;
+  border-left: solid 10px #23883a;
 }
 .cuadricula-productos a .etiqueta-3{
   background-color: #dc3545;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(220,53,69,1);
+  -moz-box-shadow: 0px 0px 0px 2px rgba(220,53,69,1);
+  box-shadow: 0px 0px 0px 2px rgba(220,53,69,1);
+  border: 1px dashed darkred;
+  border-right:none;
+}
+.cuadricula-productos a .etiqueta-3:before{
+  border-bottom: solid 8px transparent;
+  border-left: solid 10px #b62b38;
+}
+.imagen-producto span.etiqueta-artesanal {
+    padding-top: 0;
+    margin: 0;
+    position: absolute;
+    left: -13px;
+    top: -21px;
+    background: transparent;
+    width: 65px;
+    height: 65px;
+}
+.imagen-producto span.etiqueta-artesanal img{
+    width: 100%
 }
 .cuadricula-productos .imagen-producto .overlay-producto{
   position: absolute;

@@ -25,7 +25,9 @@
         <div class="card mb-3">
           <div class="card-body">
               <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio['ID_SERVICIO']); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-              <span class="portada-servicios img-thumbnail rounded-circle" style="background-image:url('<?php echo base_url($ruta_portada); ?>');"> </span>
+              <div class="text-center">
+                <span style="width: 50px" class="portada-servicios img-fluid img-thumbnail rounded-circle" style="background-image:url('<?php echo base_url($ruta_portada); ?>');"> </span>
+              </div>
               <hr>
                <div class="form-group">
                  <label for="NombreUsuario"><?php echo $this->lang->line('usuario_form_servicio_nombre_persona'); ?></label>
@@ -90,7 +92,7 @@
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
                   <?php foreach($categorias as $categoria){ ?>
-                  <div class="">
+                  <div class="mb-3 pb-2">
                     <h6 class="pb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
                     <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
                     <div class="row">
@@ -203,7 +205,7 @@
             </div>
           </div>
 
-          <div class="card mt-3">
+          <div class="card mt-3 mb-3">
             <div class="card-body">
               <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-save"></i>  <?php echo $this->lang->line('usuario_form_servicio_actualizar_servicio'); ?></button>
             </div>
@@ -245,13 +247,13 @@
               <input type="hidden" name="IdObjeto" value="<?php echo $_GET['id'] ?>">
               <div class="form-group">
                 <label for="NombreAdjunto"><?php echo $this->lang->line('usuario_form_servicio_anexos_nombre_descripcion'); ?></label>
-                <textarea name="NombreAdjunto" class="form-control" rows="4" required></textarea>
+                <textarea name="NombreAdjunto" class="form-control form-control-sm" rows="4" required></textarea>
               </div>
               <div class="form-group">
                 <label for="ArchivoAdjunto"><?php echo $this->lang->line('usuario_form_servicio_anexos_archivo'); ?> <small><?php echo $this->lang->line('usuario_form_servicio_anexos_archivo_instrucciones'); ?></small></label>
-                <input type="file" class="form-control" name="ArchivoAdjunto" value="">
+                <input type="file" class="form-control form-control-sm" name="ArchivoAdjunto" value="">
               </div>
-              <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_form_servicio_anexos_archivo_subir'); ?></button>
+              <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_form_servicio_anexos_archivo_subir'); ?></button>
             </form>
           </div>
         </div>

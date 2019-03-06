@@ -105,7 +105,7 @@ class GaleriasModel extends CI_Model {
     foreach($orden as $orden){
       $this->db->where('ID_GALERIA',$orden);
       return $this->db->update('galeria_productos',array('ORDEN'=>$i));
-      $i++;
+      ++$i;
     }
   }
 

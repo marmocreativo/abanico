@@ -214,7 +214,13 @@
                     <option value="usado"><?php echo $this->lang->line('usuario_form_producto_condicion_usuado'); ?></option>
                   </select>
                 </div>
-
+                <div class="form-group">
+                  <label for="ArtesanalProducto">¿Es un producto Artesanal?</label>
+                  <select class="form-control form-control-sm" name="ArtesanalProducto" id="ArtesanalProducto">
+                    <option value="no">No</option>
+                    <option value="si">Si</option>
+                  </select>
+                </div>
                 <div class="form-group">
                   <label for="">UPC</label>
                   <input type="text" class="form-control form-control-sm" id="UpcProducto" name="UpcProducto" placeholder="" value="">

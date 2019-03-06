@@ -203,7 +203,7 @@
                               </ul>
                               </div>
                             </div>
-                          <?php $i++; } ?>
+                          <?php ++$i; } ?>
                           </div>
                         </div>
                     <?php } ?>
@@ -220,7 +220,7 @@
                   <textarea id="DetallesProducto" name="DetallesProducto" class="form-control Editor" rows="5"><?=!form_error('DetallesProducto')?set_value('DetallesProducto'):''?> </textarea>
                 </div>
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-4">
                     <div class="form-group">
                       <label for="OrigenProducto">Origen</label>
                       <select class="form-control form-control-sm" name="OrigenProducto" id="OrigenProducto">
@@ -229,12 +229,21 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-4">
                     <div class="form-group">
                       <label for="CondicionProducto">Condición</label>
                       <select class="form-control form-control-sm" name="CondicionProducto" id="CondicionProducto">
                         <option value="nuevo">Nuevo</option>
                         <option value="usado">Usuado</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-group">
+                      <label for="ArtesanalProducto">¿Es un producto Artesanal?</label>
+                      <select class="form-control form-control-sm" name="ArtesanalProducto" id="ArtesanalProducto">
+                        <option value="no">No</option>
+                        <option value="si">Si</option>
                       </select>
                     </div>
                   </div>

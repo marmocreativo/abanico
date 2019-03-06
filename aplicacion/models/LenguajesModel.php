@@ -95,7 +95,7 @@ class LenguajesModel extends CI_Model {
     foreach($orden as $orden){
       $this->db->where('ID_LENGUAJE',$orden);
       return $this->db->update('lenguajes',array('ORDEN'=>$i));
-      $i++;
+      ++$i;
     }
   }
 

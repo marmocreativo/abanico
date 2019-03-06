@@ -34,9 +34,15 @@
                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $categoria->ID_CATEGORIA; ?>" aria-expanded="true" aria-controls="collapseOne">
                           <span class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></span> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
                         </button>
+                        <?php foreach($lenguajes as $lenguaje){ ?>
+                          <?php if($lenguaje->LENGUAJE_ISO!='es'){ ?>
+                            <?php $traduccion = $this->TraduccionesModel->lista($categoria->ID_CATEGORIA,'categoria',$lenguaje->LENGUAJE_ISO); ?>
+                            <br><b><?php echo $lenguaje->LENGUAJE_ISO ?></b> <small><?php echo $traduccion['TITULO']; ?></small>
+                          <?php }// reviso que no sea Español ?>
+                        <?php }// Bucle de todos los mensajes ?>
                       </h5>
                     </div>
-                    <div class="opciones d-flex">
+                    <div class="opciones">
                       <div class="btn-group btn-sm">
                         <a href="<?php echo base_url('admin/categorias/actualizar?id='.$categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>" class="btn btn-sm btn-warning" title="Editar Categoría"> <span class="fa fa-pencil-alt"></span> Editar</a>
                         <button data-enlace='<?php echo base_url('admin/categorias/borrar?id='.$categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>' class="btn btn-danger btn-sm borrar_entrada" title="Eliminar Categoría"> <span class="fa fa-trash"></span> Borrar</button>
@@ -61,6 +67,12 @@
                                     <?php echo $segunda_categoria->CATEGORIA_NOMBRE  ?>
                                     <a href="<?php echo base_url('admin/categorias/actualizar?id='.$segunda_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>" class="btn btn-outline-warning btn-sm" title="Editar Categoría"> <span class="fa fa-pencil-alt"></span> </a>
                                     <button data-enlace='<?php echo base_url('admin/categorias/borrar?id='.$segunda_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>' class="btn btn-outline-danger btn-sm borrar_entrada" title="Eliminar Categoría"> <span class="fa fa-trash"></span> </button>
+                                    <?php foreach($lenguajes as $lenguaje){ ?>
+                                      <?php if($lenguaje->LENGUAJE_ISO!='es'){ ?>
+                                        <?php $traduccion = $this->TraduccionesModel->lista($segunda_categoria->ID_CATEGORIA,'categoria',$lenguaje->LENGUAJE_ISO); ?>
+                                        <br><b><?php echo $lenguaje->LENGUAJE_ISO ?></b> <small><?php echo $traduccion['TITULO']; ?></small>
+                                      <?php }// reviso que no sea Español ?>
+                                    <?php }// Bucle de todos los mensajes ?>
                                   </p>
                                     <ul class="list-group mb-3">
                                     <?php
@@ -72,6 +84,12 @@
                                         <?php echo $tercera_categoria->CATEGORIA_NOMBRE ?>
                                         <a href="<?php echo base_url('admin/categorias/actualizar?id='.$tercera_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>" class="btn btn-outline-warning btn-sm"> <span class="fa fa-pencil-alt"></span> </a>
                                         <button data-enlace='<?php echo base_url('admin/categorias/borrar?id='.$tercera_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>' class="btn btn-outline-danger btn-sm borrar_entrada" title="Eliminar Categoría"> <span class="fa fa-trash"></span> </button>
+                                        <?php foreach($lenguajes as $lenguaje){ ?>
+                                          <?php if($lenguaje->LENGUAJE_ISO!='es'){ ?>
+                                            <?php $traduccion = $this->TraduccionesModel->lista($tercera_categoria->ID_CATEGORIA,'categoria',$lenguaje->LENGUAJE_ISO); ?>
+                                            <br><b><?php echo $lenguaje->LENGUAJE_ISO ?></b> <small><?php echo $traduccion['TITULO']; ?></small>
+                                          <?php }// reviso que no sea Español ?>
+                                        <?php }// Bucle de todos los mensajes ?>
                                       </li>
                                     <?php } ?>
                                     </ul>

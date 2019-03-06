@@ -13,20 +13,20 @@ class PagosPedidosModel extends CI_Model {
  */
   function lista($id_pedido){
     $this->db->where('ID_PEDIDO',$id_pedido);
-    $query = $this->db->get('pagos_pedidos');
+    $query = $this->db->get('pedidos_pagos');
     return $query->result();
   }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    return $this->db->get_where('pagos_pedidos',array('ID'=>$id))->row_array();
+    return $this->db->get_where('pedidos_pagos',array('ID'=>$id))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
-    $this->db->insert('pagos_pedidos',$parametros);
+    $this->db->insert('pedidos_pagos',$parametros);
     return $this->db->insert_id();
   }
   /*
@@ -34,7 +34,7 @@ class PagosPedidosModel extends CI_Model {
     * $id es el identificador de la entrada
  */
   function borrar($id){
-    return $this->db->delete('pagos_pedidos',array('ID_SLIDER'=>$id));
+    return $this->db->delete('pedidos_pagos',array('ID_SLIDER'=>$id));
   }
 
 }

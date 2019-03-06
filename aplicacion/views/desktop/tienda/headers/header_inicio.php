@@ -86,10 +86,23 @@
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link" href="<?php echo base_url('categoria'); ?>"> <i class="fa fa-boxes"></i> <?php echo $this->lang->line('header_categorias_productos_todos'); ?></a>
                 <?php $i=0; foreach($categorias as $categoria){ ?>
-                <a class="nav-link <?php if($i==0){ echo 'active';} ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
-                  <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
+                  <?php
+                    // Variables de traducción
+                    if($_SESSION['lenguaje']['iso']=='es'){
+                      $titulo = $categoria->CATEGORIA_NOMBRE;
+                    }else{
+                      $traduccion = $this->TraduccionesModel->lista($categoria->ID_CATEGORIA,'categoria',$_SESSION['lenguaje']['iso']);
+                      if(!empty($traduccion['TITULO'])){
+                        $titulo = $traduccion['TITULO'];
+                      }else{
+                        $titulo = $categoria->CATEGORIA_NOMBRE;
+                      }
+                    }
+                  ?>
+                <a class="nav-link <?php if($i==0){ echo 'active';} ?> text<?php echo $categoria->CATEGORIA_COLOR; ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
+                  <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $titulo; ?>
                 </a>
-                <?php $i++;  } ?>
+                <?php ++$i;  } ?>
               </div>
             </div>
             <div class="col-9">
@@ -101,12 +114,42 @@
                       <?php   $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
                       <div class="row">
                         <?php foreach($segundo_categorias as $segunda_categoria){ ?>
+                          <?php
+                            // Variables de traducción
+                            if($_SESSION['lenguaje']['iso']=='es'){
+                              $titulo_segundo = $segunda_categoria->CATEGORIA_NOMBRE;
+                            }else{
+                              $traduccion = $this->TraduccionesModel->lista($segunda_categoria->ID_CATEGORIA,'categoria',$_SESSION['lenguaje']['iso']);
+                              if(!empty($traduccion['TITULO'])){
+                                $titulo_segundo = $traduccion['TITULO'];
+                              }else{
+                                $titulo_segundo = $segunda_categoria->CATEGORIA_NOMBRE;
+                              }
+                            }
+                          ?>
                           <div class="col-4">
-                            <h4><a href="<?php echo base_url('categoria?slug='.$segunda_categoria->CATEGORIA_URL); ?>"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></a></h4>
+                            <h4><a href="<?php echo base_url('categoria?slug='.$segunda_categoria->CATEGORIA_URL); ?>" class="text<?php echo $segunda_categoria->CATEGORIA_COLOR; ?>">
+                              <?php echo $titulo_segundo; ?>
+                            </a></h4>
                             <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                             <ul class="list list-unstyled">
                               <?php foreach($tercero_categorias as $tercera_categoria){ ?>
-                                <li> <a href="<?php echo base_url('categoria?slug='.$tercera_categoria->CATEGORIA_URL); ?>"><?php echo $tercera_categoria->CATEGORIA_NOMBRE;  ?></a></li>
+                                <?php
+                                  // Variables de traducción
+                                  if($_SESSION['lenguaje']['iso']=='es'){
+                                    $titulo_tercero = $tercera_categoria->CATEGORIA_NOMBRE;
+                                  }else{
+                                    $traduccion = $this->TraduccionesModel->lista($tercera_categoria->ID_CATEGORIA,'categoria',$_SESSION['lenguaje']['iso']);
+                                    if(!empty($traduccion['TITULO'])){
+                                      $titulo_tercero = $traduccion['TITULO'];
+                                    }else{
+                                      $titulo_tercero = $tercera_categoria->CATEGORIA_NOMBRE;
+                                    }
+                                  }
+                                ?>
+                                <li> <a href="<?php echo base_url('categoria?slug='.$tercera_categoria->CATEGORIA_URL); ?>">
+                                  <?php echo $titulo_tercero;  ?>
+                                </a></li>
                               <?php } ?>
                             </ul>
                           </div>
@@ -118,7 +161,7 @@
                     </div>
                   </div>
                 </div>
-              <?php $i++; } ?>
+              <?php ++$i; } ?>
               </div>
             </div>
           </div>
@@ -134,10 +177,23 @@
               <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link" href="<?php echo base_url('categoria/servicios'); ?>"> <i class="fa fa-boxes"></i> <?php echo $this->lang->line('header_categorias_servicios_todos'); ?></a>
                 <?php $i=0; foreach($categorias_servicios as $categoria){ ?>
-                <a class="nav-link <?php if($i==0){ echo 'active';} ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
-                  <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
+                  <?php
+                    // Variables de traducción
+                    if($_SESSION['lenguaje']['iso']=='es'){
+                      $titulo = $categoria->CATEGORIA_NOMBRE;
+                    }else{
+                      $traduccion = $this->TraduccionesModel->lista($categoria->ID_CATEGORIA,'categoria',$_SESSION['lenguaje']['iso']);
+                      if(!empty($traduccion['TITULO'])){
+                        $titulo = $traduccion['TITULO'];
+                      }else{
+                        $titulo = $categoria->CATEGORIA_NOMBRE;
+                      }
+                    }
+                  ?>
+                <a class="nav-link <?php if($i==0){ echo 'active';} ?> text<?php echo $categoria->CATEGORIA_COLOR; ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
+                  <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $titulo; ?>
                 </a>
-                <?php $i++;  } ?>
+                <?php ++$i;  } ?>
               </div>
             </div>
             <div class="col-9">
@@ -149,12 +205,40 @@
                       <?php   $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
                       <div class="row">
                         <?php foreach($segundo_categorias as $segunda_categoria){ ?>
+                          <?php
+                            // Variables de traducción
+                            if($_SESSION['lenguaje']['iso']=='es'){
+                              $titulo_segundo = $segunda_categoria->CATEGORIA_NOMBRE;
+                            }else{
+                              $traduccion = $this->TraduccionesModel->lista($segunda_categoria->ID_CATEGORIA,'categoria',$_SESSION['lenguaje']['iso']);
+                              if(!empty($traduccion['TITULO'])){
+                                $titulo_segundo = $traduccion['TITULO'];
+                              }else{
+                                $titulo_segundo = $segunda_categoria->CATEGORIA_NOMBRE;
+                              }
+                            }
+                          ?>
                           <div class="col-4">
-                            <h4><a href="<?php echo base_url('categoria/servicios?slug='.$segunda_categoria->CATEGORIA_URL); ?>"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></a></h4>
+                            <h4><a href="<?php echo base_url('categoria/servicios?slug='.$segunda_categoria->CATEGORIA_URL); ?>" class="text<?php echo $segunda_categoria->CATEGORIA_COLOR; ?>">
+                              <?php echo $titulo_segundo; ?>
+                            </a></h4>
                             <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                             <ul class="list list-unstyled">
                               <?php foreach($tercero_categorias as $tercera_categoria){ ?>
-                                <li> <a href="<?php echo base_url('categoria?slug='.$tercera_categoria->CATEGORIA_URL); ?>"><?php echo $tercera_categoria->CATEGORIA_NOMBRE;  ?></a></li>
+                                <?php
+                                  // Variables de traducción
+                                  if($_SESSION['lenguaje']['iso']=='es'){
+                                    $titulo_tercero = $tercera_categoria->CATEGORIA_NOMBRE;
+                                  }else{
+                                    $traduccion = $this->TraduccionesModel->lista($tercera_categoria->ID_CATEGORIA,'categoria',$_SESSION['lenguaje']['iso']);
+                                    if(!empty($traduccion['TITULO'])){
+                                      $titulo_tercero = $traduccion['TITULO'];
+                                    }else{
+                                      $titulo_tercero = $tercera_categoria->CATEGORIA_NOMBRE;
+                                    }
+                                  }
+                                ?>
+                                <li> <a href="<?php echo base_url('categoria?slug='.$tercera_categoria->CATEGORIA_URL); ?>"><?php echo $titulo_tercero;  ?></a></li>
                               <?php } ?>
                             </ul>
                           </div>
@@ -166,7 +250,7 @@
                     </div>
                   </div>
                 </div>
-              <?php $i++; } ?>
+              <?php ++$i; } ?>
               </div>
             </div>
           </div>

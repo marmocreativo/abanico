@@ -130,7 +130,7 @@
         font-size: 14px;
         font-weight: normal;
         margin: 0;
-        margin-bottom: 15px;
+        /* margin-bottom: 15px; */
       }
         p li,
         ul li,
@@ -330,63 +330,22 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="head2" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; text-align: center; border-top: 1px solid lightgray;background-image: url('<?php echo base_url('assets/global/img/pleca_mail_2.png'); ?>')">
-                                  <h2 style="margin:0;color:#495057;"><strong>Esta es tu ficha de pago</strong></h2>
-                                  <h3 style="margin:0;color:#495057;">Mensaje de prueba, lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nibh purus, dapibus nec ullamcorper non, bibendum id felis.</strong></h3>
+                                <td class="head2" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; text-align: center; border-top: 1px solid lightgray;background-position:top center;background-image: url('<?php echo base_url('assets/global/img/pleca_mail_3.png'); ?>')">
+                                  <h2 style="margin:0;color:#495057;"><strong>Mensaje desde Abanico</strong></h2>
                                 </td>
                             </tr>
                           </tbody>
                         </table>
-                      <table cellpadding="2" cellspacing="0" style="width:96%; margin:2%;">
-                        <thead>
-                          <tr style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px; color: #495057;">
-                            <th style="width:10%; border-bottom: 1px solid lightgrey; padding:5px 0;"></th>
-                            <th style="width:40%; border-bottom: 1px solid lightgrey; padding:5px 0;">Producto</th>
-                            <th style="width:10%; border-bottom: 1px solid lightgrey; padding:5px 0;">Cantidad</th>
-                            <th style="width:20%; border-bottom: 1px solid lightgrey; padding:5px 0;">Precio Unit.</th>
-                            <th style="width:20%; border-bottom: 1px solid lightgrey; padding:5px 0;">Importe</th>
-                          </tr>
-                        </thead>
+                      <table cellpadding="20" cellspacing="0" style="color: #495057; text-align:center; margin-bottom:20px;">
                         <tbody>
-                            <tr>
-                              <td style="vertical-align:middle; font-size:16px;">
-                                  <img src="<?php echo base_url('assets/global/img/destacado-1.jpg'); ?>" style="float:left; margin-right:15px;" width="70" alt="">
-                              </td>
-                              <td style="vertical-align:middle; font-size:16px;">
-                                <h5>Nombre de Producto</h5>
-                                <p>Vendido por Mi Tiendita</p>
-                              </td>
-                              <td style="vertical-align:middle; text-align:center; font-size:16px;">
-                                1
-                              </td>
-                              <td style="vertical-align:middle; text-align:center; font-size:16px;">
-                                <small>$</small>
-                                10,000.00
-                                <small>MXN</small>
-                              </td>
-                              <td style="vertical-align:middle; text-align:center; font-size:16px;">
-                                <small>$</small>
-                                  10,000.00
-                                <small>MXN</small>
-                              </td>
-                            </tr>
                           <tr>
-                            <table border="0" cellpadding="2" cellspacing="0" align="right" style="width:96%; margin:2%; border-top: 1px solid lightgray;margin-top: 20px;color: #495057;">
-                                  <tr>
-                                    <td style="width:20%; text-align:right;"></td>
-                                    <td style="width:20%; text-align:right;"></td>
-                                    <td style="width:20%; text-align:right;"></td>
-                                      <td style="width:20%; text-align:right;"><h5>Referencia:</h5></td>
-                                      <td style="width:20%; text-align:right;"><h5>YBK6P8</h5></td>
-                                  </tr>
-                                  <tr>
-                                    <td style="width:20%; text-align:right;"></td>
-                                    <td style="width:20%; text-align:right;"><h5></h5></td>
-                                    <td style="width:20%; text-align:right;"><h5></h5></td>
-                                      <td style="width:20%; text-align:right;"><h5>Monto a Pagar:</h5></td>
-                                      <td style="width:20%; text-align:right;"><h5>$<strong><?php echo number_format($pedido ['PEDIDO_IMPORTE_TOTAL'],2); ?></strong><?php echo $pedido['PEDIDO_DIVISA']; ?></h5></td>
-                                  </tr>
-                              </table>
+                            <td colspan="1" style="vertical-align:middle; font-size:16px;">
+                            <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="1" style="vertical-align:middle; font-size:16px;">
+                            <a href="#" target="_blank" style="width: 60%;height: 50px;background: #6fc8c9;color: white;padding: 20px;margin-bottom: 10px;text-decoration: none;"> <strong>Este es un Enlace</strong></a>
                             </td>
                           </tr>
                         </tbody>

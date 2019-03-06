@@ -121,7 +121,7 @@
           ?>
           <?php }// Termina la condición que revisa si un producto es de una tienda o de otra ?>
           <?php }// Termina el bucle de productos  ?>
-          <?php /* SI LA TIENDA NO LA ADMINISTRA ABANICO*/ if($datos_tienda['TIENDA_ADMINISTRACION_PEDIDOS']!='abanico'){
+          <?php /* SI LA TIENDA NO LA ADMINISTRA ABANICO  if($datos_tienda['TIENDA_ADMINISTRACION_PEDIDOS']!='abanico') */ $default = false; if($default){
 
               $envio_tienda = $this->TransportistasRangosModel->mejor_precio($suma_peso,$suma_productos,$detalles_direccion['DIRECCION_PAIS'],$detalles_direccion['DIRECCION_ESTADO']);
               //var_dump($envio_tienda);
@@ -243,7 +243,8 @@
           $_SESSION['pedido']['EstadoPedido'] = 'Pagado';
           ?>
           <div class="card-footer text-right px-1">
-              <a href="<?php echo base_url('proceso_pago_3_banco'); ?>" class="btn btn-success btn-sm"> <?php echo $this->lang->line('proceso_pago_3_transferencia'); ?> <i class="fas fa-money-bill-alt"></i></a>
+              <a href="<?php echo base_url('proceso_pago_3_banco'); ?>" class="btn btn-success btn-sm btn-block"> <?php echo $this->lang->line('proceso_pago_3_transferencia'); ?> <i class="fas fa-money-bill-alt"></i></a>
+              <a href="<?php echo base_url('proceso_pago_3_oxxo'); ?>" class="btn btn-danger btn-sm btn-block"> OXXO <i class="fas fa-cash-register"></i></a>
             <div class="alert alert-info mt-2">
               <p>Nota del Desarrollador: El boton de PAYPAL <b>está funcionando</b> cuidado al probar</p>
             </div>
@@ -255,7 +256,7 @@
                 <input type="hidden" name="amount" value="<?php echo $_SESSION['pedido']['ImporteTotal']; ?>">
                 <input type="hidden" name="currency_code" value="<?php echo $_SESSION['pedido']['Divisa']; ?>">
                 <input type="hidden" name="return" value="<?php echo base_url('proceso_pago_4?pago=paypal'); ?>">
-                <button type="submit" class="btn btn-primary btn-sm"><?php echo $this->lang->line('proceso_pago_3_paypal'); ?> <span class="fab fa-paypal"></span></button>
+                <button type="submit" class="btn btn-primary btn-sm btn-block"><?php echo $this->lang->line('proceso_pago_3_paypal'); ?> <span class="fab fa-paypal"></span></button>
             </form>
           </div>
 
