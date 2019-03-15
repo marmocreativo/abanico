@@ -1,5 +1,5 @@
 <?php
-class SlidesModel extends CI_Model {
+class PremiosModel extends CI_Model {
   function __construct()
   {
       parent::__construct();
@@ -21,27 +21,43 @@ class SlidesModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
-    $query = $this->db->get('slides');
+    //$this->db->join('usuarios', 'usuarios.ID_USUARIO = premios.PREMIO_GANADOR');
+    $query = $this->db->get('premios');
     return $query->result();
   }
   /*
     * Verificar URI
  */
- function verificar_uri($url){
-   $publicacion = $this->db->get_where('slides',array('SLIDE_URL'=>$url))->row_array();
+ function verificar_ganador(){
+   $this->db->order_by('PREMIO_FECHA_DISPONIBLE', 'DESC');
+   $publicacion = $this->db->get_where('premios',array(
+     'PREMIO_FECHA_DISPONIBLE <='=>date('Y-m-d'),
+     'PREMIO_GANADOR !='=>0,
+   ))->row_array();
    if(!empty($publicacion)){ return TRUE; }else{ return FALSE; }
+ }
+
+ /*
+   * Obtengo todos los detalles de una sola entrada
+*/
+ function ultimo_ganador(){
+   $this->db->order_by('PREMIO_FECHA_DISPONIBLE', 'DESC');
+   return $this->db->get_where('premios',array(
+     'PREMIO_FECHA_DISPONIBLE <='=>date('Y-m-d'),
+     'PREMIO_GANADOR !='=>0,
+   ))->row_array();
  }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    return $this->db->get_where('slides',array('ID_SLIDE'=>$id))->row_array();
+    return $this->db->get_where('premios',array('ID_PREMIO'=>$id))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
-    $this->db->insert('slides',$parametros);
+    $this->db->insert('premios',$parametros);
     return $this->db->insert_id();
   }
   /*
@@ -50,15 +66,24 @@ class SlidesModel extends CI_Model {
     * $parametros son los campos actualizados
  */
   function actualizar($id,$parametros){
-    $this->db->where('ID_SLIDE',$id);
-    return $this->db->update('slides',$parametros);
+    $this->db->where('ID_PREMIO',$id);
+    return $this->db->update('premios',$parametros);
+  }
+  /*
+    * Actualizo una entrada
+    * $id es el identificador de la entrada
+    * $parametros son los campos actualizados
+ */
+  function guardar_ganador($id,$id_ganador){
+    $this->db->where('ID_PREMIO',$id);
+    return $this->db->update('premios',['PREMIO_GANADOR'=>$id_ganador]);
   }
   /*
     * Borro una entrada
     * $id es el identificador de la entrada
  */
   function borrar($id){
-    return $this->db->delete('slides',array('ID_SLIDE'=>$id));
+    return $this->db->delete('premios',array('ID_PREMIO'=>$id));
   }
   /*
     * Interruptor cambia el estado de una entrada de activo a inactivo
@@ -68,18 +93,18 @@ class SlidesModel extends CI_Model {
   function activar($id,$activo){
 
     switch($activo){
-      case "activo":
-        $activo = "inactivo";
+      case "pendiente":
+        $activo = "entregado";
       break;
-      case "inactivo":
-        $activo = "activo";
+      case "entregado":
+        $activo = "pendiente";
       break;
       default:
-        $activo = "activo";
+        $activo = "pendiente";
       break;
     }
-    $this->db->where('ID_SLIDE',$id);
-    return $this->db->update('slides',array('SLIDE_ESTADO'=>$activo));
+    $this->db->where('ID_PREMIO',$id);
+    return $this->db->update('premios',array('PREMIO_ESTADO'=>$activo));
   }
 
   /*
@@ -89,8 +114,8 @@ class SlidesModel extends CI_Model {
   function ordenar($orden){
     $i = 0;
     foreach($orden as $orden){
-      $this->db->where('ID_SLIDE',$orden);
-      return $this->db->update('slides',array('ORDEN'=>$i));
+      $this->db->where('ID_PREMIO',$orden);
+      return $this->db->update('premios',array('ORDEN'=>$i));
       ++$i;
     }
   }

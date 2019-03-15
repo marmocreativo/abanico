@@ -112,12 +112,36 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+function readURLMovil(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      jQuery('#PrevisualizarImagenMovil').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 
 jQuery('#ImagenServicio').change(function() {
   readURL(this);
 });
 jQuery('#ImagenProducto').change(function() {
   readURL(this);
+});
+jQuery('#ImagenPublicacion').change(function() {
+  readURL(this);
+});
+jQuery('#ImagenSlide').change(function() {
+  readURL(this);
+});
+jQuery('#ImagenPremio').change(function() {
+  readURL(this);
+});
+jQuery('#ImagenSlideMovil').change(function() {
+  readURLMovil(this);
 });
 jQuery('#ImagenTienda').change(function() {
   readURL(this);

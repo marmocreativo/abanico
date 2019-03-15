@@ -18,6 +18,14 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Rutas de Administrador
 
+$route['admin/premios'] = 'Admin_Premios';
+$route['admin/premios/(:any)'] = 'Admin_Premios/$1';
+$route['admin/slides'] = 'Admin_Slides';
+$route['admin/slides/(:any)'] = 'Admin_Slides/$1';
+$route['admin/sliders'] = 'Admin_Sliders';
+$route['admin/sliders/(:any)'] = 'Admin_Sliders/$1';
+$route['admin/publicaciones'] = 'Admin_Publicaciones';
+$route['admin/publicaciones/(:any)'] = 'Admin_Publicaciones/$1';
 $route['admin/planes'] = 'Admin_Planes';
 $route['admin/planes/(:any)'] = 'Admin_Planes/$1';
 $route['admin/divisas'] = 'Admin_Divisas';
@@ -105,6 +113,10 @@ $route['login'] = 'Autenticacion';
 $route['login/(:any)'] = 'Autenticacion/$1';
 
 // Rutas de tienda
+$route['premios'] = 'Tienda_Premios';
+$route['premios/(:any)'] = 'Tienda_Premios/$1';
+$route['concursos'] = 'Tienda_Concursos';
+$route['concursos/(:any)'] = 'Tienda_Concursos/$1';
 $route['datos_curiosos'] = 'Tienda_Datos_Curiosos';
 $route['datos_curiosos/(:any)'] = 'Tienda_Datos_Curiosos/$1';
 $route['test'] = 'Tienda_Test';

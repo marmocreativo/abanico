@@ -1,11 +1,11 @@
 <!-- Slider -->
 <div class="slideInicio">
   <ul class="slides">
-    <?php for($i=1; $i<=2; $i++){ ?>
+    <?php $i = 0; foreach($slides as $slide){ ?>
     <li>
-      <img src="<?php echo base_url('contenido/img/slider/sli-mobile-'.$i.'.jpg'); ?>" alt="">
+      <img src="contenido/img/slider/<?php echo $slide->SLIDE_IMAGEN_MOVIL; ?>">
     </li>
-    <?php } ?>
+    <?php ++$i; }  ?>
   </ul>
 </div>
 

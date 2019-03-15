@@ -29,6 +29,13 @@
         </ul>
     </li>
     <li class="menu-item-has-children dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file"></i>Publicaciones</a>
+        <ul class="sub-menu children dropdown-menu">
+          <li><i class="fa fa-info-circle"></i><a href="<?php echo base_url('admin/publicaciones'); ?>">Información</a></li>
+          <li><i class="fa fa-map-marker"></i><a href="<?php echo base_url('admin/publicaciones'); ?>">Blog</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-has-children dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tools"></i>Servicios</a>
         <ul class="sub-menu children dropdown-menu">
           <li><i class="fa fa-user-tie"></i><a href="<?php echo base_url('admin/perfiles_servicios'); ?>"> Perfiles</a></li>
@@ -65,12 +72,15 @@
           <li><i class="fa fa-language"></i><a href="<?php echo base_url('admin/lenguajes'); ?>">Lenguajes</a></li>
         </ul>
     </li>
-    <!--
+
     <li class="menu-item-has-children dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-list"></i>Sliders</a>
         <ul class="sub-menu children dropdown-menu">
           <li><a href="<?php echo base_url('admin/sliders'); ?>">Sliders</a></li>
         </ul>
     </li>
-  -->
+    <li>
+        <a href="<?php echo base_url('admin/premios'); ?>"><i class="menu-icon fa fa-gift"></i>Premios </a>
+    </li>
+
 </ul>

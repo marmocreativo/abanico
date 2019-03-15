@@ -1,5 +1,5 @@
 <?php
-class SlidesModel extends CI_Model {
+class PublicacionesModel extends CI_Model {
   function __construct()
   {
       parent::__construct();
@@ -21,27 +21,27 @@ class SlidesModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
-    $query = $this->db->get('slides');
+    $query = $this->db->get('publicaciones');
     return $query->result();
   }
   /*
     * Verificar URI
  */
  function verificar_uri($url){
-   $publicacion = $this->db->get_where('slides',array('SLIDE_URL'=>$url))->row_array();
+   $publicacion = $this->db->get_where('publicaciones',array('PUBLICACION_URL'=>$url))->row_array();
    if(!empty($publicacion)){ return TRUE; }else{ return FALSE; }
  }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
   function detalles($id){
-    return $this->db->get_where('slides',array('ID_SLIDE'=>$id))->row_array();
+    return $this->db->get_where('publicaciones',array('ID_PUBLICACION'=>$id))->row_array();
   }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
-    $this->db->insert('slides',$parametros);
+    $this->db->insert('publicaciones',$parametros);
     return $this->db->insert_id();
   }
   /*
@@ -50,15 +50,15 @@ class SlidesModel extends CI_Model {
     * $parametros son los campos actualizados
  */
   function actualizar($id,$parametros){
-    $this->db->where('ID_SLIDE',$id);
-    return $this->db->update('slides',$parametros);
+    $this->db->where('ID_PUBLICACION',$id);
+    return $this->db->update('publicaciones',$parametros);
   }
   /*
     * Borro una entrada
     * $id es el identificador de la entrada
  */
   function borrar($id){
-    return $this->db->delete('slides',array('ID_SLIDE'=>$id));
+    return $this->db->delete('publicaciones',array('ID_PUBLICACION'=>$id));
   }
   /*
     * Interruptor cambia el estado de una entrada de activo a inactivo
@@ -78,8 +78,8 @@ class SlidesModel extends CI_Model {
         $activo = "activo";
       break;
     }
-    $this->db->where('ID_SLIDE',$id);
-    return $this->db->update('slides',array('SLIDE_ESTADO'=>$activo));
+    $this->db->where('ID_PUBLICACION',$id);
+    return $this->db->update('publicaciones',array('PUBLICACION_ESTADO'=>$activo));
   }
 
   /*
@@ -89,8 +89,8 @@ class SlidesModel extends CI_Model {
   function ordenar($orden){
     $i = 0;
     foreach($orden as $orden){
-      $this->db->where('ID_SLIDE',$orden);
-      return $this->db->update('slides',array('ORDEN'=>$i));
+      $this->db->where('ID_PUBLICACION',$orden);
+      return $this->db->update('publicaciones',array('ORDEN'=>$i));
       ++$i;
     }
   }
