@@ -44,7 +44,7 @@
             <div class="col-xl-3 col-md-3 col-6 mb-3">
               <div class="cuadricula-productos">
                 <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio->ID_SERVICIO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-                <a href="#""<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" class="enlace-principal-servicio"  data-toggle="modal" data-target="#modal<?php echo $servicio->ID_SERVICIO; ?>">
+                <a href="#" "<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" class="enlace-principal-servicio"  data-toggle="modal" data-target="#modal<?php echo $servicio->ID_SERVICIO; ?>">
                   <div class="portada-servicios img-thumbnail rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>)"> </div>
                 </a>
                   <div class="product-content text-center">
@@ -84,6 +84,19 @@
                           </div>
                           <div class="col">
                             <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
+                            <?php
+                              switch ($servicio->SERVICIO_TIPO) {
+                                case 'profesional':
+                                  echo $this->lang->line('usuario_form_servicio_tipo_presencial');
+                                  break;
+                                case 'digital':
+                                  echo $this->lang->line('usuario_form_servicio_tipo_distancia');
+                                  break;
+                                default:
+                                  // code...
+                                  break;
+                              }
+                            ?>
                             <div class="border-top mt-3 pt-3">
                               <?php echo $descripcion_corta; ?>
                             </div>

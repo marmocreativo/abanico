@@ -31,8 +31,10 @@
     <li class="menu-item-has-children dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file"></i>Publicaciones</a>
         <ul class="sub-menu children dropdown-menu">
-          <li><i class="fa fa-info-circle"></i><a href="<?php echo base_url('admin/publicaciones'); ?>">Información</a></li>
-          <li><i class="fa fa-map-marker"></i><a href="<?php echo base_url('admin/publicaciones'); ?>">Blog</a></li>
+          <li><i class="fa fa-info-circle"></i><a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=acerca'); ?>">Acerca de Abanico</a></li>
+          <li><i class="fa fa-map-marker"></i><a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=legales'); ?>">Legales</a></li>
+          <li><i class="fa fa-map-marker"></i><a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=concursos'); ?>">Concursos</a></li>
+          <li><i class="fa fa-map-marker"></i><a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=ayuda'); ?>">Ayuda</a></li>
         </ul>
     </li>
     <li class="menu-item-has-children dropdown">

@@ -73,11 +73,13 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		if($this->form_validation->run())
 		{
 			// URI
-			$url = url_title($this->input->post('TituloPublicacion'),'-',TRUE);
+			// Quito los acentos
+			$titulo = convert_accented_characters($this->input->post('TituloPublicacion'));
+			$url = url_title($titulo,'-',TRUE);
 			if($this->PublicacionesModel->verificar_uri($url)){
-				$url = url_title($this->input->post('TituloPublicacion'),'-',TRUE).'-'.uniq_slug(3);
+				$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
 				if($this->PublicacionesModel->verificar_uri($url)){
-					$url = url_title($this->input->post('TituloPublicacion'),'-',TRUE).'-'.uniq_slug(3);
+					$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
 				}
 			}
 
@@ -112,8 +114,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PUBLICACION_FECHA_PUBLICACION' => date('Y-m-d H:i:s'),
 				'PUBLICACION_ESTADO' => $this->input->post('EstadoPublicacion')
 			);
-
-			$direccion_id = $this->PublicacionesModel->crear($parametros);
+			//var_dump($parametros);
+			$publicacion_id = $this->PublicacionesModel->crear($parametros);
 			$this->session->set_flashdata('exito', 'Publicación creada correctamente');
       redirect(base_url('admin/publicaciones?tipo_publicacion=').$this->input->post('TipoPublicacion'));
     }else{
@@ -161,7 +163,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PUBLICACION_ESTADO' => $this->input->post('EstadoPublicacion')
 			);
 
-			$usuario_id = $this->PublicacionesModel->actualizar( $this->input->post('Identificador'),$parametros);
+			$publicacion_id = $this->PublicacionesModel->actualizar( $this->input->post('Identificador'),$parametros);
 			$this->session->set_flashdata('exito', 'Publicación actualizada');
       redirect(base_url('admin/publicaciones?id_usuario='.$this->input->post('IdUsuario')));
     }else{

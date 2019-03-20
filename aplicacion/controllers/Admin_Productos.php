@@ -105,11 +105,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		if($this->form_validation->run())
     {
 			// Verifico URL
-			$url = url_title($this->input->post('NombreProducto'),'-',TRUE);
+			$titulo = convert_accented_characters($this->input->post('NombreProducto'));
+			$url = url_title($titulo,'-',TRUE);
 			if($this->ProductosModel->verificar_uri($url)){
-				$url = url_title($this->input->post('NombreProducto'),'-',TRUE).'-'.uniq_slug(3);
+				$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
 				if($this->ProductosModel->verificar_uri($url)){
-					$url = url_title($this->input->post('NombreProducto'),'-',TRUE).'-'.uniq_slug(3);
+					$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
 				}
 			}
 			// Parametros del producto

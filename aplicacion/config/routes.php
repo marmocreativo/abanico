@@ -115,6 +115,8 @@ $route['login/(:any)'] = 'Autenticacion/$1';
 // Rutas de tienda
 $route['premios'] = 'Tienda_Premios';
 $route['premios/(:any)'] = 'Tienda_Premios/$1';
+$route['publicacion'] = 'Tienda_Publicaciones';
+$route['publicacion/(:any)'] = 'Tienda_Publicaciones/index/$1';
 $route['concursos'] = 'Tienda_Concursos';
 $route['concursos/(:any)'] = 'Tienda_Concursos/$1';
 $route['datos_curiosos'] = 'Tienda_Datos_Curiosos';

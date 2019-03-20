@@ -6,7 +6,44 @@
     <div class="barra-color barra-morado"></div>
   </div>
   <div class="footer">
-
+    <div class="row p-3">
+      <div class="col-3">
+        <h5>Acerca de Abanico</h5>
+        <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'acerca'],'','');?>
+        <ul class="list-unstyled">
+        <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+        <?php } ?>
+        </ul>
+      </div>
+      <div class="col-3">
+        <h5>Legales</h5>
+        <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'legales'],'','');?>
+        <ul class="list-unstyled">
+        <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+        <?php } ?>
+        </ul>
+      </div>
+      <div class="col-3">
+        <h5>Concursos</h5>
+        <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'concursos'],'','');?>
+        <ul class="list-unstyled">
+        <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+        <?php } ?>
+        </ul>
+      </div>
+      <div class="col-3">
+        <h5>Ayuda</h5>
+        <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'ayuda'],'','');?>
+        <ul class="list-unstyled">
+        <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+        <?php } ?>
+        </ul>
+      </div>
+    </div>
   </div>
   <div class="creditos">
 

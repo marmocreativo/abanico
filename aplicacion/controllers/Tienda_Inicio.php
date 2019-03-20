@@ -39,6 +39,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('PremiosModel');
 		$this->load->model('UsuariosModel');
 		$this->load->model('PedidosModel');
+		$this->load->model('PublicacionesModel');
   }
 
 	public function index()

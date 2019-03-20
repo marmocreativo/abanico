@@ -44,7 +44,7 @@
         </a>
       </div>
       <div class="col border-left">
-        <a href="<?php echo base_url('usuario/registrar'); ?>" class="d-flex justify-content-center align-items-center">
+        <a href="#Concursos" class="d-flex justify-content-center align-items-center">
           <div class="car-icono text-primary"> <span class="fa fa-gift"></span> </div>
           <div class="car-titulo">Concurso</div>
         </a>
@@ -138,19 +138,12 @@
   </div>
 </div>
 
-<div class="fila">
+<div class="fila" id="Concursos">
   <div class="container-fluid px-5">
     <div class="row">
       <div class="col">
-        <div class="row">
-          <div class="col-4">
-            <h4>Datos Curiosos</h4>
-          </div>
-          <div class="col-8">
-            <a href="https://twitter.com/intent/tweet?button_hashtag=AbanicoSiempreLoMejor&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #AbanicoSiempreLoMejor</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            <a class="twitter-timeline" href="https://twitter.com/stMaRmO/timelines/1106610018290417664?ref_src=twsrc%5Etfw">AbanicoDatosCuriosos - Curated tweets by stMaRmO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
-        </div>
+          <a href="https://twitter.com/intent/tweet?button_hashtag=AbanicoSiempreLoMejor&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #AbanicoSiempreLoMejor</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a class="twitter-timeline" href="https://twitter.com/stMaRmO/timelines/1106610018290417664?ref_src=twsrc%5Etfw">AbanicoDatosCuriosos - Curated tweets by stMaRmO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
       <div class="col">
         <?php if($this->PremiosModel->verificar_ganador()){ $premio = $this->PremiosModel->ultimo_ganador(); ?>

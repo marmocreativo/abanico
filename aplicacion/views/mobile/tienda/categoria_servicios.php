@@ -42,7 +42,7 @@
           ?>
         <div class="servicios">
           <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio->ID_SERVICIO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-          <a class="portada" href="<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" class="enlace-principal-servicio">
+          <a class="portada" href="#" "<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" class="enlace-principal-servicio" data-toggle="modal" data-target="#modal<?php echo $servicio->ID_SERVICIO; ?>">
             <div class="rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>)"> </div>
           </a>
           <div class="product-content text-center">
@@ -70,6 +70,46 @@
               <?php }else{ ?>
                 <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$servicio->ID_SERVICIO)); ?>" class="btn btn-outline-primary" title="Quitar de Favoritos"> <span class="fa fa-heart"></span> </a>
               <?php } ?>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modal<?php echo $servicio->ID_SERVICIO; ?>" tabindex="-1" role="dialog" aria-labelledby="modal<?php echo $servicio->ID_SERVICIO; ?>" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="portada-servicios img-thumbnail rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>); height:250px;"> </div>
+                  </div>
+                  <div class="col">
+                    <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
+                    <?php
+                      switch ($servicio->SERVICIO_TIPO) {
+                        case 'profesional':
+                          echo $this->lang->line('usuario_form_servicio_tipo_presencial');
+                          break;
+                        case 'digital':
+                          echo $this->lang->line('usuario_form_servicio_tipo_distancia');
+                          break;
+                        default:
+                          // code...
+                          break;
+                      }
+                    ?>
+                    <div class="border-top mt-3 pt-3">
+                      <?php echo $descripcion_corta; ?>
+                    </div>
+                    <hr>
+                    <a href="<?php echo base_url('servicio/contacto?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-primary btn-block"> <i class="fa fa-paper-plane"></i> Contactar</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

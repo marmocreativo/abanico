@@ -38,6 +38,12 @@ class PublicacionesModel extends CI_Model {
     return $this->db->get_where('publicaciones',array('ID_PUBLICACION'=>$id))->row_array();
   }
   /*
+    * Obtengo todos los detalles de una sola entrada
+ */
+  function detalles_urk($url){
+    return $this->db->get_where('publicaciones',array('PUBLICACION_URL'=>$url))->row_array();
+  }
+  /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){

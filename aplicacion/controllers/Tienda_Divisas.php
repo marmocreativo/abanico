@@ -24,6 +24,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		// Cargo el modelo
 		$this->load->model('DivisasModel');
 		$this->load->model('NotificacionesModel');
+		$this->load->model('PublicacionesModel');
   }
 
 	public function index()
