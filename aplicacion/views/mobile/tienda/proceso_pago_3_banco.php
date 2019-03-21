@@ -31,6 +31,17 @@
           <div class="card-body py-4">
             <div class="row">
               <div class="col-12">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="head2" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; text-align: center; border-top: 1px solid lightgray;
+                      background-image: url('<?php echo base_url('assets/global/img/pleca_mail_2.png'); ?>');
+                       background-repeat:no-repeat;  background-size:contain; background-position: top center;">
+                        <h3 style="margin:0;color:#495057;"><strong>Esta es tu ficha de pago</strong></h3>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
                 <img class="img-fluid mx-auto d-block mb-4" style="width:50%" src="http://localhost/abanico-master/assets/global/img/banco.png" alt="Banco">
                 <h4 class="h5"><?php echo $this->lang->line('proceso_pago_3_transferencia_instrucciones'); ?></h4>
                 <p>Scotiabank </p>

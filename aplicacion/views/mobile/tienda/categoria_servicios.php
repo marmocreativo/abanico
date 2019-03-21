@@ -85,7 +85,7 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="col-12">
-                    <div class="portada-servicios img-thumbnail rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>); height:250px;"> </div>
+                    <div class="portada-servicios img-thumbnail rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>); background-size: cover; background-repeat: no-repeat; height:250px;"> </div>
                   </div>
                   <div class="col">
                     <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>

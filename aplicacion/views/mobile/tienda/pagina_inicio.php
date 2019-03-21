@@ -12,22 +12,28 @@
 <div class="post-menu py-4">
   <div class="container">
     <div class="row">
-      <div class="col-4">
+      <div class="col-6">
         <a href="<?php echo base_url('categoria/servicios'); ?>" class="d-flex justify-content-center align-items-center">
           <div class="car-icono text-primary mr-2"> <span class="fa fa-tools"></span> </div>
           <div class="car-titulo"><?php echo $this->lang->line('inicio_menu_destacados_servicios'); ?></div>
         </a>
       </div>
-      <div class="col-4">
+      <div class="col-6">
         <a href="<?php echo base_url('categoria'); ?>"  class="d-flex justify-content-center align-items-center">
           <div class="car-icono text-primary mr-2"> <span class="fa fa-box"></span> </div>
           <div class="car-titulo"><?php echo $this->lang->line('inicio_menu_destacados_productos'); ?></div>
         </a>
       </div>
-      <div class="col-4">
+      <div class="col-6 mt-3">
         <a href="<?php echo base_url('usuario/registrar'); ?>" class="d-flex justify-content-center align-items-center">
           <div class="car-icono text-primary mr-2"> <span class="fa fa-handshake"></span> </div>
           <div class="car-titulo"><?php echo $this->lang->line('inicio_menu_destacados_unete'); ?></div>
+        </a>
+      </div>
+      <div class="col-6 mt-3">
+        <a href="#Concursos" class="d-flex justify-content-center align-items-center">
+          <div class="car-icono text-primary"> <span class="fa fa-gift"></span> </div>
+          <div class="car-titulo">Concurso</div>
         </a>
       </div>
     </div>
@@ -115,58 +121,98 @@
 
 <!--datos Curiosos-->
 
-<div class="fila py-4">
+<div class="fila py-4" id="Concursos">
   <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="row">
-          <div class="col-12">
-            <h4 class="pb-3">Datos Curiosos</h4>
-          </div>
-          <div class="col-2">
-            <img src="assets/global/img/curioso.jpg" class="imagen-curioso mt-4" alt="">
-          </div>
-          <div class="col-10">
-            <div class="dato-curioso dato-ganador mb-3">
-              <h5>Autor</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinci dunt ut laoreet dolore magna aliquam erat</p>
-            </div>
-          </div>
-          <div class="col-12">
-            <?php for($i=0; $i<=2; $i++){ ?>
-              <div class="dato-curioso">
-                <h5>Autor</h5>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tinci dunt ut laoreet dolore magna aliquam erat</p>
+          <div class="col">
+            <?php if($this->PremiosModel->verificar_ganador()){ $premio = $this->PremiosModel->ultimo_ganador(); ?>
+            <div class="row">
+              <div class="col">
+                <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid" alt="">
               </div>
-            <?php } ?>
+              <div class="col">
+                <div class="contenedor-ganador">
+
+                  <div class="fecha-ganador">
+                    <span><?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?></span> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
+                  </div>
+                  <div class="titulo-ganador">
+                    Nuestro Ganador Mensual
+                  </div>
+                  <div class="nombre-ganador">
+                    <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
+                    Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b>
+                  </div>
+                  <div class="premio-ganador">
+                    Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php }else{ ?>
+            <?php
+              $pedido_ganador = $this->PedidosModel->pedido_ganador(date('Y-m-d'));
+              if(!empty($pedido_ganador)){
+                $premios = $this->PremiosModel->lista(['PREMIO_GANADOR'=>0],'PREMIO_FECHA_DISPONIBLE DESC',1);
+                foreach($premios as $premio){
+                   $this->PremiosModel->guardar_ganador($premio->ID_PREMIO,$pedido_ganador['ID_USUARIO']);
+                }
+              ?>
+              <?php $premio = $this->PremiosModel->ultimo_ganador(); ?>
+                <div class="row">
+                  <div class="col">
+                    <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid" alt="">
+                  </div>
+                  <div class="col">
+                    <div class="contenedor-ganador">
+
+                      <div class="fecha-ganador">
+                        <span><?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?></span> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
+                      </div>
+                      <div class="titulo-ganador">
+                        Nuestro Ganador Mensual
+                      </div>
+                      <div class="nombre-ganador">
+                        <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
+                        Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b>
+                      </div>
+                      <div class="premio-ganador">
+                        Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php }else{ $premios = $this->PremiosModel->lista(['PREMIO_GANADOR'=>0],'PREMIO_FECHA_DISPONIBLE DESC',1);
+              foreach($premios as $premio){
+              ?>
+                <div class="row">
+                  <div class="col">
+                    <img src="contenido/img/publicaciones/<?php echo $premio->PREMIO_IMAGEN; ?>" class="img-fluid" alt="">
+                  </div>
+                  <div class="col">
+                    <div class="contenedor-ganador">
+                      <p> <small>Aún no Hay Ganador: Próximo concurso</small> </p>
+                      <div class="fecha-ganador">
+                        <span><?php echo date('d', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?></span> <?php echo date('M', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?> <?php echo date('Y', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?>
+                      </div>
+                      <div class="titulo-ganador">
+                        Compra y Gana un  <?php echo $premio->PREMIO_TITULO; ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php } ?>
+            <?php  } // termina condicional de pedido ganador  ?>
+          <?php } ?>
           </div>
         </div>
       </div>
 
-      <div class="col-12">
-        <div class="row">
-          <div class="col-6">
-            <div class="bxImg">
-              <img src="assets/global/img/ganador.jpg" class="img-fluid" alt="">
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="contenedor-ganador">
-              <div class="fecha-ganador">
-                <span>18</span> Noviembre 2018
-              </div>
-              <div class="titulo-ganador">
-                Nuestro Ganador Mensual
-              </div>
-              <div class="nombre-ganador">
-                Felicidades Penélope Carrasco
-              </div>
-              <div class="premio-ganador">
-                Ganador de un Refractario
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-12 mt-4">
+        <a href="https://twitter.com/intent/tweet?button_hashtag=AbanicoSiempreLoMejor&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #AbanicoSiempreLoMejor</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" href="https://twitter.com/stMaRmO/timelines/1106610018290417664?ref_src=twsrc%5Etfw">AbanicoDatosCuriosos - Curated tweets by stMaRmO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
 
     </div>
