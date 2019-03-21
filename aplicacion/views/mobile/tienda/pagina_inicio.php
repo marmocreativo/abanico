@@ -127,6 +127,7 @@
       <div class="col-12">
         <div class="row">
           <div class="col">
+            <h3>Sorteo Mensual</h3>
             <?php if($this->PremiosModel->verificar_ganador()){ $premio = $this->PremiosModel->ultimo_ganador(); ?>
             <div class="row">
               <div class="col">
@@ -210,7 +211,8 @@
         </div>
       </div>
 
-      <div class="col-12 mt-4">
+      <div class="col-12 mt-3 pt-3 border-top">
+        <h3>Datos Curiosos</h3>
         <a href="https://twitter.com/intent/tweet?button_hashtag=AbanicoSiempreLoMejor&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #AbanicoSiempreLoMejor</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <a class="twitter-timeline" href="https://twitter.com/stMaRmO/timelines/1106610018290417664?ref_src=twsrc%5Etfw">AbanicoDatosCuriosos - Curated tweets by stMaRmO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
