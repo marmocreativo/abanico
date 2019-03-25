@@ -842,3 +842,12 @@ img.sp-thumbnail-image {
 .tabla-planes H4 {
     margin: 0;
 }
+#servicios_plan_1 {
+    border-top: solid 9px #97038e;
+}
+#servicios_plan_2 {
+    border-top: solid 9px #f27100;
+}
+#servicios_plan_3 {
+    border-top: solid 9px #1cc6a2;
+}
