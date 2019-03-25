@@ -11,17 +11,17 @@
                   <?php echo validation_errors(); ?>
                 </div>
               <?php } ?>
-              <div class="row justify-content-center">
+              <div class="row justify-content-center no-gutters">
                 <?php foreach($planes as $plan){ ?>
-                  <div class="col">
-                    <div class="card mb-3">
-                      <div class="card-header text-center">
+                  <div class="col tabla-planes">
+                    <div class="card mb-3 rounded-0">
+                      <div class="card-header text-left">
                         <img src="<?php echo base_url('assets/global/img/logo.png'); ?>" alt="">
-                        <h5 class="card-title"> <?php echo $plan->PLAN_NOMBRE; ?></h5>
-                        <p class="card-text">$<?php echo $plan->PLAN_MENSUALIDAD; ?> / Al mes</p>
+                        <h4 class="card-title"> <?php echo $plan->PLAN_NOMBRE; ?></h4>
+                        <p class="card-text text-primary">$<?php echo $plan->PLAN_MENSUALIDAD; ?> / Al mes</p>
                       </div>
-                        <div class="card-body p-1">
-                          <table class="table table-striped table-bordered">
+                        <div class="card-body p-0">
+                          <table class="table m-0">
                             <tr>
                               <td>Mensualidad</td>
                               <td>$<?php echo $plan->PLAN_MENSUALIDAD; ?></td>
@@ -80,8 +80,8 @@
                             <?php } ?>
                           </table>
                         </div>
-                        <div class="card-body">
-                            <a href="<?php echo base_url('usuario/planes/activar?id='.$plan->ID_PLAN); ?>" class="btn btn-primary btn-block">Activar Plan</a>
+                        <div class="card-body p-0">
+                            <a href="<?php echo base_url('usuario/planes/activar?id='.$plan->ID_PLAN); ?>" class="btn btn-primary btn-block rounded-0">Activar Plan</a>
                         </div>
                     </div>
                 </div>

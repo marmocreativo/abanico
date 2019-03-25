@@ -153,7 +153,7 @@ html, body{
   border-bottom: solid 1px #ddd;
 }
 .fila-gris{
-  background-color: #ddd;
+  background-color: #d5dee2;
 }
 .fila-dark{
   background-color: #333;
@@ -828,4 +828,17 @@ img.sp-thumbnail-image {
 .notif {
   padding: 20px;
   border-bottom: solid 1px lightgrey;
+}
+
+/*
+| -------------------------------------------------------------------------
+| ESTILOS TABLA DE PLANES
+| -------------------------------------------------------------------------
+*/
+.tabla-planes img {
+    width: 120px;
+    margin: 30px 0 10px 0;
+}
+.tabla-planes H4 {
+    margin: 0;
 }
