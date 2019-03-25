@@ -844,10 +844,18 @@ img.sp-thumbnail-image {
   margin: 0;
 }
 .tabla-planes .card-header{
-  min-height: 220px;
+  min-height: 205px;
 }
 .tabla-planes .card {
   border-left: none;
+}
+.tabla-planes .card .card-body p.text-center {
+    background: #e4e7e8;
+    padding: 5px 0;
+    margin: 0;
+}
+.tabla-planes table.table.m-0 {
+    line-height: 18px;
 }
 #servicios_plan_1 .card, #productos_plan_1 .card {
   border-left: solid 1px lightgray;
