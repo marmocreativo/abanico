@@ -30,6 +30,12 @@
                               <td>Comisión por venta</td>
                               <td><?php echo $plan->PLAN_COMISION; ?>%</td>
                             </tr>
+                            <?php if($plan->PLAN_NIVEL>=4){ ?>
+                              <tr>
+                                <td>Costo de Almacenamiento</td>
+                                <td>$<?php echo $plan->PLAN_ALMACENAMIENTO; ?> x M<sup>3</sup></td>
+                              </tr>
+                            <?php } ?>
                             <tr>
                               <td>Envios Administrados por</td>
                               <td><?php echo $plan->PLAN_ENVIO; ?></td>

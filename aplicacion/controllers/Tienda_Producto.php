@@ -8,8 +8,8 @@ class Tienda_Producto extends CI_Controller {
 		sesion_default($this->data['op']);
 		$this->data['lenguajes_activos'] = $this->lenguajes_activos->get_lenguajes_activos();
 		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
-// Cargo Lenguaje
-$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
+	// Cargo Lenguaje
+	$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		// Variables defaults
 		$this->data['primary'] = "-primary";
@@ -37,6 +37,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('NotificacionesModel');
 		$this->load->model('TraduccionesModel');
 		$this->load->model('PublicacionesModel');
+		$this->load->model('PlanesModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-primary";

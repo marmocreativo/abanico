@@ -16,6 +16,8 @@
       $descripcion_larga = $producto['PRODUCTO_DETALLES'];
     }
   }
+  // Variables de paquete
+  $paquete = $this->PlanesModel->plan_activo_usuario($producto['ID_USUARIO'],'productos');
 ?>
 
 <div class="contenido_principal">
@@ -47,11 +49,21 @@
               <?php echo $descripcion_corta; ?>
               <hr>
               <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
-              <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'],2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
+                <?php
+                  // variables de precio
+                  if($producto['PRODUCTO_DIVISA_DEFAULT']!=$_SESSION['divisa']['iso']){
+                    $precio_lista = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'];
+                    $precio_venta = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO'];
+                  }else{
+                    $precio_lista = $producto['PRODUCTO_PRECIO_LISTA'];
+                    $precio_venta = $producto['PRODUCTO_PRECIO'];
+                  }
+                 ?>
+              <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista ,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
               <?php } ?>
               <h2 class="product-price display-6" >
                 <small><?php echo $_SESSION['divisa']['signo']; ?></small>
-                  <span id="Precio_Producto" ><?php echo number_format($_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO'],2); ?></span>
+                  <span id="Precio_Producto" ><?php echo number_format( $precio_venta,2); ?></span>
                 <small><?php echo $_SESSION['divisa']['iso']; ?> </small>
               </h2>
               <div class="row my-3">
@@ -81,6 +93,10 @@
                   <button class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block" id="BotonComprar"
                       data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
                       data-nombre-producto='<?php echo $titulo; ?>'
+                      data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
+                      data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'
+                      data-divisa-default='<?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?>'
+                      data-contra-entrega='<?php echo $producto['PRODUCTO_CONTRA_ENTREGA']; ?>'
                       data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
                       data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
                       data-detalles-producto=''
@@ -96,6 +112,10 @@
                     <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonCompraRapida"
                         data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
                         data-nombre-producto='<?php echo $titulo; ?>'
+                        data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
+                        data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'
+                        data-divisa-default='<?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?>'
+                        data-contra-entrega='<?php echo $producto['PRODUCTO_CONTRA_ENTREGA']; ?>'
                         data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
                         data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
                         data-detalles-producto=''

@@ -5,5 +5,4 @@
   <a href="<?php echo base_url('usuario/actualizar');?>" class="btn btn-outline-primary-8 btn-block"> <i class="fa fa-id-card"></i> <p class="mb-0"><?php echo $this->lang->line('usuario_menu_perfil'); ?></p></a>
   <a href="<?php echo base_url('usuario/tienda');?>" class="btn btn-outline-primary-11 btn-block"> <i class="fa fa-store"></i> <p class="mb-0"><?php echo $this->lang->line('usuario_menu_vendedor'); ?></p></a>
   <a href="<?php echo base_url('usuario/perfil_servicios');?>" class="btn btn-outline-primary-3 btn-block"> <i class="fa fa-user-tie"></i> <p class="mb-0"><?php echo $this->lang->line('usuario_menu_servicios'); ?></p></a>
-  <a href="<?php echo base_url('usuario/datos_curiosos');?>" class="btn btn-outline-primary-4 btn-block"> <i class="fa fa-question"></i> <p class="mb-0">Datos Curiosos</p></a>
 </div>
