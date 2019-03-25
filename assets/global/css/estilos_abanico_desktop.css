@@ -836,18 +836,34 @@ img.sp-thumbnail-image {
 | -------------------------------------------------------------------------
 */
 .tabla-planes img {
-    width: 120px;
-    margin: 30px 0 10px 0;
+  width: 120px;
+  margin: 30px 0 10px 0;
 }
-.tabla-planes H4 {
-    margin: 0;
+.tabla-planes H5 {
+  font-weight: 600;
+  margin: 0;
 }
-#servicios_plan_1 {
-    border-top: solid 9px #97038e;
+.tabla-planes .card-header{
+  min-height: 220px;
 }
-#servicios_plan_2 {
-    border-top: solid 9px #f27100;
+.tabla-planes .card {
+  border-left: none;
 }
-#servicios_plan_3 {
-    border-top: solid 9px #1cc6a2;
+#servicios_plan_1 .card, #productos_plan_1 .card {
+  border-left: solid 1px lightgray;
+}
+#servicios_plan_1, #productos_plan_1 {
+  border-top: solid 9px #97038e;
+}
+#servicios_plan_2, #productos_plan_3 {
+  border-top: solid 9px #f27100;
+}
+#servicios_plan_3, #productos_plan_5 {
+  border-top: solid 9px #1cc6a2;
+}
+#productos_plan_2 {
+border-top: solid 9px #980500;
+}
+#productos_plan_4 {
+  border-top: solid 9px #0e2bff;
 }

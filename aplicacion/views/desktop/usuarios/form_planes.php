@@ -17,7 +17,7 @@
                     <div class="card mb-3 rounded-0">
                       <div class="card-header text-left">
                         <img src="<?php echo base_url('assets/global/img/'.$plan->PLAN_TIPO.'_plan_'.$plan->PLAN_NIVEL.'_mono.png'); ?>" alt="">
-                        <h4 class="card-title"> <?php echo $plan->PLAN_NOMBRE; ?></h4>
+                        <h5 class="card-title"> <?php echo $plan->PLAN_NOMBRE; ?></h5>
                         <p class="card-text text-primary">$<?php echo $plan->PLAN_MENSUALIDAD; ?> / Al mes</p>
                       </div>
                         <div class="card-body p-0">
