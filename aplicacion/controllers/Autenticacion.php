@@ -122,6 +122,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$this->email->subject('Recupera tu contraseña');
 				$this->email->message($mensaje);
 				// envio el correo
+
 				if($this->email->send()){
 					// Mensaje de feedback
 					$this->session->set_flashdata('exito', 'Encontramos tu cuenta, te hemos enviado un correo con un enlace seguro para recuperar tu contraseña');

@@ -65,7 +65,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$tipo = 'productos';
 			}
 			$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
-			$this->data['planes'] = $this->PlanesModel->lista(['PLAN_TIPO'=>$tipo,'PLAN_NIVEL <='=>'3']);
+			$this->data['planes'] = $this->PlanesModel->lista(['PLAN_TIPO'=>$tipo]);
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/form_planes',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);

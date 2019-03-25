@@ -29,7 +29,7 @@
           <div class="collapse" id="collapseExample">
             <div class="p-3">
               <form class="" action="<?php echo base_url($origen_formulario) ?>" method="get">
-                <?php if($origen_formulario=='categoria'){ ?>
+                <?php if($origen_formulario=='categoria'&&!empty($categoria)){ ?>
                   <input type="hidden" name="slug" value="<?php echo $categoria['CATEGORIA_URL']; ?>">
                 <?php } ?>
                 <input type="hidden" name="Busqueda" value="<?php if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){ echo filter_var ( $_GET['Busqueda'], FILTER_SANITIZE_STRING); } ?>">
@@ -38,8 +38,9 @@
               <?php }else{ ?>
                 <input type="hidden" name="BuscarEn" value="<?php if(isset($_GET['BuscarEn'])){ echo $_GET['BuscarEn']; }else{ echo $categoria['CATEGORIA_TIPO']; }; ?>">
               <?php } ?>
+                <div class="contenedor-filtros">
                   <select class="custom-select filtro-sel" name="OrdenBusqueda">
-                    <option selected><?php echo $this->lang->line('filtro_categoria_productos_ordenar_por'); ?></option>
+                    <option value="" selected><?php echo $this->lang->line('filtro_categoria_productos_ordenar_por'); ?></option>
                     <option value="precio_desc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='precio_desc'){ echo 'selected'; } ?>><?php echo $this->lang->line('filtro_categoria_productos_mayor_precio'); ?></option>
                     <option value="precio_asc" <?php if(isset($_GET['OrdenBusqueda'])&&$_GET['OrdenBusqueda']=='precio_asc'){ echo 'selected'; } ?>><?php echo $this->lang->line('filtro_categoria_productos_menor_precio'); ?></option>
                   </select>
@@ -50,12 +51,28 @@
                     <option value="Importados" <?php if(isset($_GET['OrigenBusqueda'])&&$_GET['OrigenBusqueda']=='Importados'){ echo 'selected'; } ?>><?php echo $this->lang->line('filtro_categoria_productos_importados'); ?></option>
                   </select>
                   <hr>
+                  <select class="custom-select filtro-sel" name="CondicionBusqueda">
+                    <option value="cualquiera" <?php if(isset($_GET['CondicionBusqueda'])&&$_GET['CondicionBusqueda']=='cualquiera'){ echo 'selected'; } ?>>Condición</option>
+                    <option value="nuevo" <?php if(isset($_GET['CondicionBusqueda'])&&$_GET['CondicionBusqueda']=='nuevo'){ echo 'selected'; } ?>>Nuevo</option>
+                    <option value="usado" <?php if(isset($_GET['CondicionBusqueda'])&&$_GET['CondicionBusqueda']=='usado'){ echo 'selected'; } ?>>Usado</option>
+                  </select>
+                  <hr>
                   <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" name="OfertaBusqueda" id="OfertaBusqueda" <?php if(isset($_GET['OfertaBusqueda'])){ echo 'checked'; } ?>>
                     <label class="custom-control-label" for="OfertaBusqueda"><?php echo $this->lang->line('filtro_categoria_productos_en_oferta'); ?></label>
                   </div>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="ArtesanalBusqueda" id="ArtesanalBusqueda" <?php if(isset($_GET['ArtesanalBusqueda'])){ echo 'checked'; } ?>>
+                    <label class="custom-control-label" for="ArtesanalBusqueda">Artesanal</label>
+                  </div>
+                  <!--
+                  <hr>
+                  <label for="customRange1">Rango de Precio</label>
+                  <input type="range" class="custom-range" min="0" max="5" id="customRange1">
+                -->
                 <hr>
                 <button type="submit" class="btn btn<?php echo $primary; ?> btn-block" ><?php echo $this->lang->line('filtro_categoria_productos_filtrar'); ?></button>
+                </div>
                 </form>
             </div>
           </div>
