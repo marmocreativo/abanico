@@ -38,6 +38,7 @@ class Tienda_Producto extends CI_Controller {
 		$this->load->model('TraduccionesModel');
 		$this->load->model('PublicacionesModel');
 		$this->load->model('PlanesModel');
+		$this->load->model('DivisasModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-primary";

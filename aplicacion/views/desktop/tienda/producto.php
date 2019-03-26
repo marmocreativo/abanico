@@ -48,17 +48,31 @@
               <hr>
               <?php echo $descripcion_corta; ?>
               <hr>
-              <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
+              <!-- Solo muestro precio si el producto está en venta -->
+              <?php
+                if(
+                  !empty($paquete)&&
+                  $producto['PRODUCTO_CANTIDAD']>0&&
+                  $producto['PRODUCTO_ESTADO']=='activo'
+                ){ // Aquí se activa o desactiva la visibilidad del precio si el producto está a la venta
+                ?>
                 <?php
                   // variables de precio
                   if($producto['PRODUCTO_DIVISA_DEFAULT']!=$_SESSION['divisa']['iso']){
-                    $precio_lista = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'];
-                    $precio_venta = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO'];
+                    $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto['PRODUCTO_DIVISA_DEFAULT']);
+                    if($producto['PRODUCTO_DIVISA_DEFAULT']!='MXN'){
+                      $precio_lista = $producto['PRODUCTO_PRECIO_LISTA']/$cambio_divisa_default['DIVISA_CONVERSION'];
+                      $precio_venta = $producto['PRODUCTO_PRECIO']/$cambio_divisa_default['DIVISA_CONVERSION'];
+                    }else{
+                      $precio_lista = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'];
+                      $precio_venta = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO'];
+                    }
                   }else{
                     $precio_lista = $producto['PRODUCTO_PRECIO_LISTA'];
                     $precio_venta = $producto['PRODUCTO_PRECIO'];
                   }
                  ?>
+              <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
               <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista ,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
               <?php } ?>
               <h2 class="product-price display-6" >
@@ -127,6 +141,8 @@
                   </div>
                 <?php } ?>
               </div>
+
+              <?php } ?>
               <div class="card opiniones-serv">
                 <div class="card-body">
                   <?php $promedio_calificaciones = $promedio_calificaciones['CALIFICACION_ESTRELLAS']; $estrellas_restan= 5-$promedio_calificaciones; ?>
@@ -412,7 +428,7 @@
                     <section class="slider">
                     <div class="flexslider carousel">
                       <ul class="slides">
-                        <?php $productos_relacionados = $this->ProductosModel->lista(['ID_USUARIO'=>$producto['ID_USUARIO']],'','','10'); ?>
+                        <?php $productos_relacionados = $this->ProductosModel->lista_relacionados(['ID_PRODUCTO !='=>$producto['ID_PRODUCTO']],$producto['ID_USUARIO'],'','10'); ?>
 
                         <?php foreach($productos_relacionados as $producto_rel){ ?>
                           <?php
@@ -427,6 +443,13 @@
                               $titulo = $producto_rel->PRODUCTO_NOMBRE;
                             }
                           }
+                          // Variables de Paquete
+                          $paquete = $this->PlanesModel->plan_activo_usuario($producto['ID_USUARIO'],'productos');
+                          if($paquete==null){
+                            $visible = 'd-none';
+                          }else{
+                            $visible = '';
+                          }
                           ?>
                         <li>
                           <div class="cuadricula-productos">
@@ -440,7 +463,7 @@
                                   <?php if(!empty($producto_rel->PRODUCTO_PRECIO_LISTA)&&$producto_rel->PRODUCTO_PRECIO<$producto_rel->PRODUCTO_PRECIO_LISTA){ ?>
                                     <span class="etiqueta-3"><?php echo $this->lang->line('etiquetas_productos_oferta'); ?></span>
                                   <?php } ?>
-                                  <?php if($producto->PRODUCTO_ARTESANAL=='si'){ ?>
+                                  <?php if($producto_rel->PRODUCTO_ARTESANAL=='si'){ ?>
                                     <span class="etiqueta-artesanal"><img src="<?php echo base_url('assets/global/img/artesanal.png'); ?>"></span>
                                   <?php } ?>
                                 </div>
@@ -460,12 +483,26 @@
                                 <?php
                                 $promedio = $this->CalificacionesModel->promedio_calificaciones_producto($producto_rel->ID_PRODUCTO);
                                 $cantidad = $this->CalificacionesModel->conteo_calificaciones_producto($producto_rel->ID_PRODUCTO);
+                                // variables de precio
+                                if($producto_rel->PRODUCTO_DIVISA_DEFAULT!=$_SESSION['divisa']['iso']){
+                                  $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto_rel->PRODUCTO_DIVISA_DEFAULT);
+                                  if($producto_rel->PRODUCTO_DIVISA_DEFAULT!='MXN'){
+                                    $precio_lista = $producto_rel->PRODUCTO_PRECIO_LISTA/$cambio_divisa_default['DIVISA_CONVERSION'];
+                                    $precio_venta = $producto_rel->PRODUCTO_PRECIO/$cambio_divisa_default['DIVISA_CONVERSION'];
+                                  }else{
+                                    $precio_lista = $_SESSION['divisa']['conversion']*$producto_rel->PRODUCTO_PRECIO_LISTA;
+                                    $precio_venta = $_SESSION['divisa']['conversion']*$producto_rel->PRODUCTO_PRECIO;
+                                  }
+                                }else{
+                                  $precio_lista = $producto_rel->PRODUCTO_PRECIO_LISTA;
+                                  $precio_venta = $producto_rel->PRODUCTO_PRECIO;
+                                }
                                 ?>
                                   <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
                                   <?php if(!empty($producto_rel->PRODUCTO_PRECIO_LISTA)&&$producto_rel->PRODUCTO_PRECIO<$producto_rel->PRODUCTO_PRECIO_LISTA){ ?>
-                                    <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto_rel->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
+                                    <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
                                   <?php } ?>
-                                  <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto_rel->PRODUCTO_PRECIO,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
+                                  <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_venta,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
                                   <ul class="rating">
                                     <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
                                     <?php for($i = 1; $i<=$estrellas; $i++){ ?>

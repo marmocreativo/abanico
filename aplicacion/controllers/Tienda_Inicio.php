@@ -40,6 +40,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('UsuariosModel');
 		$this->load->model('PedidosModel');
 		$this->load->model('PublicacionesModel');
+		$this->load->model('PlanesModel');
+		$this->load->model('DivisasModel');
   }
 
 	public function index()

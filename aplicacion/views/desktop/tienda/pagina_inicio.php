@@ -77,8 +77,15 @@
                   $titulo = $producto->PRODUCTO_NOMBRE;
                 }
               }
+              // Variables de Paquete
+              $paquete = $this->PlanesModel->plan_activo_usuario($producto->ID_USUARIO,'productos');
+              if($paquete==null){
+                $visible = 'd-none';
+              }else{
+                $visible = '';
+              }
               ?>
-            <li>
+            <li class="<?php echo $visible; ?>">
               <div class="cuadricula-productos">
                 <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
                 <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="enlace-principal">
@@ -110,6 +117,20 @@
                     <?php
                     $promedio = $this->CalificacionesModel->promedio_calificaciones_producto($producto->ID_PRODUCTO);
                     $cantidad = $this->CalificacionesModel->conteo_calificaciones_producto($producto->ID_PRODUCTO);
+                    // variables de precio
+                    if($producto->PRODUCTO_DIVISA_DEFAULT!=$_SESSION['divisa']['iso']){
+                      $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto->PRODUCTO_DIVISA_DEFAULT);
+                      if($producto->PRODUCTO_DIVISA_DEFAULT!='MXN'){
+                        $precio_lista = $producto->PRODUCTO_PRECIO_LISTA/$cambio_divisa_default['DIVISA_CONVERSION'];
+                        $precio_venta = $producto->PRODUCTO_PRECIO/$cambio_divisa_default['DIVISA_CONVERSION'];
+                      }else{
+                        $precio_lista = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA;
+                        $precio_venta = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO;
+                      }
+                    }else{
+                      $precio_lista = $producto->PRODUCTO_PRECIO_LISTA;
+                      $precio_venta = $producto->PRODUCTO_PRECIO;
+                    }
                     ?>
                       <ul class="rating">
                         <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
@@ -123,9 +144,9 @@
                       </ul>
                       <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
                       <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
-                        <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
+                        <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
                       <?php } ?>
-                      <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
+                      <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_venta,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
                   </div>
               </div>
   	    		</li>

@@ -11,6 +11,8 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
+		// Cargo Modelos
+		$this->load->model('DivisasModel');
   }
 
 	public function index()
@@ -41,6 +43,10 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 					'imagen_producto'=> $_POST['ImagenProducto'],
 					'peso_producto'=> $_POST['PesoProducto'],
 					'detalles_producto' => $_POST['DetallesProducto'],
+					'sku' => $_POST['Sku'],
+					'cantidad_max' => $_POST['CantidadMaxima'],
+					'divisa_default' => $_POST['DivisaDefault'],
+					'contra_entrega' => $_POST['ContraEntrega'],
 					'cantidad_producto' => $_POST['CantidadProducto'],
 					'precio_producto'=> $_POST['PrecioProducto'],
 					'id_tienda' => $_POST['IdTienda'],
@@ -85,7 +91,13 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 			foreach($_SESSION['carrito']['productos'] as $producto){
 				if($producto['id_producto']==$_POST['IdProducto']&&$producto['detalles_producto']==$_POST['DetallesProducto']){
 					$cantidad_anterior = $_SESSION['carrito']['productos'][$i]['cantidad_producto'];
-					$_SESSION['carrito']['productos'][$i]['cantidad_producto'] += 1;
+					$cantidad_nueva = $cantidad_anterior +=1;
+					// reviso la cantidad
+					if($cantidad_nueva>$_POST['CantidadMaxima']){
+						$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $_POST['CantidadMaxima'];
+					}else{
+						$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $cantidad_nueva;
+					}
 				}
 				++$i;
 			}
@@ -99,7 +111,15 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 			$i = 0;
 			foreach($_SESSION['carrito']['productos'] as $producto){
 				if($producto['id_producto']==$_POST['IdProducto']){
-					if($_POST['CantidadProducto']<=0){ unset( $_SESSION['carrito']['productos'][$i]); }else{$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $_POST['CantidadProducto'];  }
+					if($_POST['CantidadProducto']<=0){
+						unset( $_SESSION['carrito']['productos'][$i]);
+					}else{
+						if($_POST['CantidadProducto']>=$_POST['CantidadMaxima']){
+							$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $_POST['CantidadMaxima'];
+						}else{
+							$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $_POST['CantidadProducto'];
+						}
+					}
 				}
 				++$i;
 			}

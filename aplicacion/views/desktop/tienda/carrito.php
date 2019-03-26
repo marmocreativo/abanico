@@ -37,20 +37,44 @@
           <div class="input-group-prepend">
             <button class="btn btn-outline-primary boton-disminuir-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'>-</button>
           </div>
-            <input type="text" class="form-control form-cantidad-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>' value="<?php echo $producto['cantidad_producto'];  ?>">
+            <input type="number" max="<?php echo $producto['cantidad_max']; ?>"
+            class="form-control form-cantidad-carrito"
+            data-id-producto = '<?php echo $producto['id_producto']; ?>'
+            data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'
+            data-cantidad-max='<?php echo $producto['cantidad_max']; ?>'
+            value="<?php echo $producto['cantidad_producto'];  ?>"
+            >
           <div class="input-group-append">
-            <button class="btn btn-outline-primary boton-incrementar-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'>+</button>
+            <button class="btn btn-outline-primary boton-incrementar-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>' data-cantidad-max='<?php echo $producto['cantidad_max']; ?>'>+</button>
           </div>
         </div>
       </td>
+      <?php
+      // variables de precio
+      if($producto['divisa_default']!=$_SESSION['divisa']['iso']){
+        $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto['divisa_default']);
+        if($producto['divisa_default']!='MXN'){
+          $precio_venta = $producto['precio_producto']/$cambio_divisa_default['DIVISA_CONVERSION'];
+          $suma = ($producto['cantidad_producto']*$producto['precio_producto'])/$cambio_divisa_default['DIVISA_CONVERSION'];
+        }else{
+
+          $precio_venta = $_SESSION['divisa']['conversion']*$producto['precio_producto'];
+          $suma = $_SESSION['divisa']['conversion']*($producto['cantidad_producto']*$producto['precio_producto']);
+        }
+      }else{
+
+        $precio_venta = $producto['precio_producto'];
+        $suma = $producto['cantidad_producto']*$producto['precio_producto'];
+      }
+      ?>
       <td style="vertical-align:middle">
         <small><?php echo $_SESSION['divisa']['signo']; ?></small>
-        <?php echo number_format($_SESSION['divisa']['conversion']*$producto['precio_producto'],2);  ?><br>
+        <?php echo number_format($precio_venta,2); ?><br>
         <small><?php echo $_SESSION['divisa']['iso']; ?></small>
       </td>
       <td style="vertical-align:middle">
         <small><?php echo $_SESSION['divisa']['signo']; ?></small>
-          <?php $suma = $producto['cantidad_producto']*$producto['precio_producto']; echo number_format($_SESSION['divisa']['conversion']*$suma,2);  ?><br>
+          <?php  echo number_format($suma,2); ?><br>
         <small><?php echo $_SESSION['divisa']['iso']; ?></small>
       </td>
       <td style="vertical-align:middle;"> <button type="button" class="btn btn-danger btn-sm boton-eliminar-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'
@@ -71,7 +95,7 @@
       <td colspan="3" class="text-right"><?php echo $this->lang->line('carrito_sub_total'); ?></td>
       <td colspan="2" style="text-align:right"><h5 class="display-5">
         <small><?php echo $_SESSION['divisa']['signo']; ?></small>
-        <strong><?php echo number_format($_SESSION['divisa']['conversion']*$suma_productos,2); ?></strong>
+        <strong><?php echo number_format($suma_productos,2); ?></strong>
         <small><?php echo $_SESSION['divisa']['iso']; ?></small>
       </h5></td>
     </tr>
