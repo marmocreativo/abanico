@@ -7,6 +7,39 @@ Carrito
 // Cargo el carrito por defecto
 jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
 
+// Cargo el pedido default
+jQuery( document ).ready( function(){
+  var id_direccion = jQuery('#PedidoAjax').data('id-direccion');
+  var importe_productos_parcial = jQuery('#PedidoAjax').data('importe-pedido-parcial');
+  var importe_productos = jQuery('#PedidoAjax').data('importe-pedido-total');
+  var importe_envio_parcial = jQuery('#PedidoAjax').data('importe-envio-parcial');
+  var importe_envio_total = jQuery('#PedidoAjax').data('importe-envio-total');
+  var pedido_tienda = jQuery('#PedidoAjax').data('pedido-tienda');
+  var importe_total = jQuery('#PedidoAjax').data('importe-total');
+  var id_transportista_abanico = jQuery('#PedidoAjax').data('id-transportista');
+  var nombre_transportista_abanico = jQuery('#PedidoAjax').data('nombre-transportista');
+  jQuery.ajax({
+    method: "GET",
+    url: "<?php echo base_url('ajax/carrito/pedido_final'); ?>",
+    dataType: "html",
+    data: {
+      IdDireccion: id_direccion,
+      ImporteProductosParcial: importe_productos_parcial,
+      ImporteProductosTotal: importe_productos,
+      ImporteEnvioParcial: importe_envio_parcial,
+      ImporteEnvioTotal: importe_envio_total,
+      PedidoTienda: pedido_tienda,
+      ImporteTotal: importe_total,
+      IdTransportistaAbanico: id_transportista_abanico,
+      NombreTransportistaAbanico: nombre_transportista_abanico
+    },
+    success : function(msg)
+     {
+      jQuery('#PedidoAjax').html(msg);
+     }
+  });
+});
+
 // Desactivo el boton de Comprar si no hay productos
 jQuery( document ).ready( function(){
   var cantidad_productos = <?php echo count($_SESSION['carrito']['productos']); ?>;

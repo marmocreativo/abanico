@@ -5,7 +5,7 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 
 	public function __construct(){
     parent::__construct();
-
+		$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		if($this->agent->is_mobile()){
 			$this->data['dispositivo']  = "mobile";
 		}else{
@@ -13,6 +13,9 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 		}
 		// Cargo Modelos
 		$this->load->model('DivisasModel');
+		$this->load->model('UsuariosModel');
+		$this->load->model('PedidosModel');
+		$this->load->model('DireccionesModel');
   }
 
 	public function index()
@@ -47,6 +50,7 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 					'cantidad_max' => $_POST['CantidadMaxima'],
 					'divisa_default' => $_POST['DivisaDefault'],
 					'contra_entrega' => $_POST['ContraEntrega'],
+					'contra_entrega_pagar' => 'si',
 					'cantidad_producto' => $_POST['CantidadProducto'],
 					'precio_producto'=> $_POST['PrecioProducto'],
 					'id_tienda' => $_POST['IdTienda'],
@@ -158,5 +162,83 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 				$i += $producto['cantidad_producto'];
 			}
 			echo $i;
+	}
+	/* Pedido Final */
+
+	public function pedido_final()
+	{
+		// Datos extra
+		$usuario = $this->UsuariosModel->detalles($_SESSION['usuario']['id']);
+		$detalles_direccion = $this->DireccionesModel->detalles($_GET['IdDireccion']);
+		$direccion = $this->DireccionesModel->direccion_formateada($_GET['IdDireccion']);
+		$importe_productos_abanico = $_GET['ImporteProductosParcial'];
+		$importe_productos_total = $_GET['ImporteProductosTotal'];
+		$envio_pedido_abanico = $_GET['ImporteEnvioParcial'];
+		$envio_pedido_total = $_GET['ImporteEnvioTotal'];
+		$pedido_tienda = $_GET['PedidoTienda'];
+		$importe_total = $_GET['ImporteTotal'];
+		$id_transportista_abanico = $_GET['IdTransportistaAbanico'];
+		$nombre_transportista_abanico = $_GET['NombreTransportistaAbanico'];
+
+		$_SESSION['pedido']['Folio'] = folio_pedido();
+		$_SESSION['pedido']['IdUsuario'] = $_SESSION['usuario']['id'];
+		$_SESSION['pedido']['PedidoNombre'] = $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'];
+		$_SESSION['pedido']['PedidoCorreo'] = $_SESSION['usuario']['correo'];
+		$_SESSION['pedido']['PedidoTelefono'] = $usuario['USUARIO_TELEFONO'];
+		$_SESSION['pedido']['IdDireccion'] = $detalles_direccion['ID_DIRECCION'];
+		$_SESSION['pedido']['Direccion'] = $direccion;
+		$_SESSION['pedido']['Divisa'] = $_SESSION['divisa']['iso'];
+		$_SESSION['pedido']['Conversion'] = $_SESSION['divisa']['conversion'];
+		$_SESSION['pedido']['ImporteProductosParcial'] = number_format($_SESSION['divisa']['conversion']*$importe_productos_abanico,2,'.', '');
+		$_SESSION['pedido']['ImporteProductosTotal'] = number_format($_SESSION['divisa']['conversion']*$importe_productos_total,2,'.', '');
+		$_SESSION['pedido']['ImporteEnvioParcial'] = number_format($_SESSION['divisa']['conversion']*$envio_pedido_abanico,2,'.', '');
+		$_SESSION['pedido']['ImporteEnvioTotal'] = number_format($_SESSION['divisa']['conversion']*$envio_pedido_total,2,'.', '');
+		$_SESSION['pedido']['PedidosTiendas'] = $pedido_tienda;
+		$_SESSION['pedido']['ImporteTotal'] = number_format($_SESSION['divisa']['conversion']*$importe_total,2,'.', '');
+		$_SESSION['pedido']['IdTransportista'] = $id_transportista_abanico;
+		$_SESSION['pedido']['NombreTransportista'] = $nombre_transportista_abanico;
+		$_SESSION['pedido']['FormaPago'] = 'PayPal';
+		$_SESSION['pedido']['EstadoPago'] = 'Pagado';
+		$_SESSION['pedido']['EstadoPedido'] = 'Pagado';
+
+		echo '
+		<table class="table table-bordered">
+	    <tbody>
+	      <tr>
+	        <td class="text-right" style="width:75%"><b>'.$this->lang->line('proceso_pago_3_importe_productos').':</b></td>
+	        <td>
+	          <h5>
+	          <small>'.$_SESSION['divisa']['signo'].'</small>
+	          '.number_format($_SESSION['divisa']['conversion']*$_SESSION['pedido']['ImporteProductosTotal'],2).'
+	          <small>'.$_SESSION['divisa']['iso'].'</small>
+	          </h5>
+	        </td>
+	      </tr>
+	      <tr>
+	        <td class="text-right">
+	          <b>Envio Total:</b><br> <span class="text-muted"></span>
+	        </td>
+	        <td>
+	          <h5>
+	          <small>'.$_SESSION['divisa']['signo'].'</small>
+	          '.number_format($_SESSION['divisa']['conversion']*$_SESSION['pedido']['ImporteEnvioTotal'],2).'
+	          <small>'.$_SESSION['divisa']['iso'].'</small>
+	          </h5>
+	        </td>
+	      </tr>
+	      <tr>
+	        <td class="text-right" style="width:75%"><b>'.$this->lang->line('proceso_pago_3_total').':</b></td>
+	        <td>
+	          <h5>
+						<small>'.$_SESSION['divisa']['signo'].'</small>
+					 '.number_format($_SESSION['divisa']['conversion']*$_SESSION['pedido']['ImporteTotal'],2).'
+					 <small>'.$_SESSION['divisa']['iso'].'</small>
+	          </h5>
+	        </td>
+	      </tr>
+	    </tbody>
+	  </table>
+		';
+
 	}
 }

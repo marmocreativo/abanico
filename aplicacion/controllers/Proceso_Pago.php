@@ -140,7 +140,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['direccion'] = $this->DireccionesModel->direccion_formateada($direccion_id);
 			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
 			$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_3',$this->data);
-			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 
 		}else{
 			redirect(base_url('proceso_pago_1'));
