@@ -25,10 +25,11 @@ class TransportistasRangosModel extends CI_Model {
   /*
   * Busqueda del mejor transportista
   */
-  function mejor_precio($peso,$importe,$pais,$estado){
+  function mejor_precio($peso,$importe,$pais,$estado,$nivel){
     $this->db->select('transportistas.ID_TRANSPORTISTA, transportistas.TRANSPORTISTA_NOMBRE, transportistas.TRANSPORTISTA_TIEMPO_ENTREGA, transportistas_rangos.IMPORTE');
     $this->db->join('transportistas', 'transportistas.ID_TRANSPORTISTA = transportistas_rangos.ID_TRANSPORTISTA');
     $this->db->join('transportistas_disponibilidad', 'transportistas_disponibilidad.ID_TRANSPORTISTA = transportistas_rangos.ID_TRANSPORTISTA');
+    $this->db->where('transportistas.PLAN_NIVEL <=',$nivel);
     $this->db->where('transportistas_rangos.PESO_MAX >=',$peso);
     $this->db->where('transportistas_rangos.IMPORTE_MIN <=',$importe);
     $this->db->where('transportistas_disponibilidad.TRANSPORTISTA_PAIS',$pais);
@@ -37,6 +38,20 @@ class TransportistasRangosModel extends CI_Model {
     $this->db->limit(1);
     $query = $this->db->get('transportistas_rangos');
     return $query->row_array();;
+  }
+  function lista_mejor_precio($peso,$importe,$pais,$estado,$nivel){
+      $this->db->select('transportistas.ID_TRANSPORTISTA, transportistas_rangos.ID AS RANGO, transportistas.TRANSPORTISTA_NOMBRE, transportistas.TRANSPORTISTA_TIEMPO_ENTREGA, transportistas_rangos.IMPORTE, transportistas_rangos.PESO_MAX');
+      $this->db->join('transportistas', 'transportistas.ID_TRANSPORTISTA = transportistas_rangos.ID_TRANSPORTISTA');
+      $this->db->join('transportistas_disponibilidad', 'transportistas_disponibilidad.ID_TRANSPORTISTA = transportistas_rangos.ID_TRANSPORTISTA');
+      $this->db->where('transportistas.PLAN_NIVEL <=',$nivel);
+      $this->db->where('transportistas_rangos.PESO_MAX >=',$peso);
+      $this->db->where('transportistas_rangos.IMPORTE_MIN <=',$importe);
+      $this->db->where('transportistas_disponibilidad.TRANSPORTISTA_PAIS',$pais);
+      $this->db->where('transportistas_disponibilidad.TRANSPORTISTA_ESTADO',$estado);
+      $this->db->group_by('transportistas_rangos.ID_TRANSPORTISTA');
+      $this->db->order_by('IMPORTE ASC');
+    $query = $this->db->get('transportistas_rangos');
+    return $query->result();
   }
   /*
   * Detalles de una sola entrada

@@ -130,7 +130,16 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		if($this->form_validation->run())
 		{
-
+			// URI
+			// Quito los acentos
+			$titulo = convert_accented_characters($this->input->post('TituloPublicacion'));
+			$url = url_title($titulo,'-',TRUE);
+			if($this->PublicacionesModel->verificar_uri($url)){
+				$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
+				if($this->PublicacionesModel->verificar_uri($url)){
+					$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
+				}
+			}
 			/*
 			PROCESO DE LA IMAGEN
 			*/
@@ -165,7 +174,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$publicacion_id = $this->PublicacionesModel->actualizar( $this->input->post('Identificador'),$parametros);
 			$this->session->set_flashdata('exito', 'Publicación actualizada');
-      redirect(base_url('admin/publicaciones?id_usuario='.$this->input->post('IdUsuario')));
+      redirect(base_url('admin/publicaciones?tipo_publicacion=').$this->input->post('TipoPublicacion'));
     }else{
 
 			$this->data['publicacion'] = $this->PublicacionesModel->detalles($_GET['id']);

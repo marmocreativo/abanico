@@ -114,8 +114,7 @@ $route['login/(:any)'] = 'Autenticacion/$1';
 
 // Rutas de tienda
 $route['premios'] = 'Tienda_Premios';
-$route['premios/(:any)'] = 'Tienda_Premios/$1';
-$route['publicacion'] = 'Tienda_Publicaciones';
+$route['premios/(:any)'] = 'Tienda_Premios/vista/$1';
 $route['publicacion/(:any)'] = 'Tienda_Publicaciones/index/$1';
 $route['concursos'] = 'Tienda_Concursos';
 $route['concursos/(:any)'] = 'Tienda_Concursos/$1';
@@ -140,6 +139,8 @@ $route['busqueda'] = 'Tienda_Busqueda';
 $route['busqueda/(:any)'] = 'Tienda_Busqueda/$1';
 
 // Proceso de Pago
+//$route['proceso_pago_3'] = 'Proceso_Pago/paso3';
+$route['invitado_pago_2'] = 'Proceso_Pago/invitado_paso2';
 $route['compra_rapida'] = 'Proceso_Pago/compra_rapida';
 $route['proceso_pago_4'] = 'Proceso_Pago/paso4';
 $route['proceso_pago_3_banco'] = 'Proceso_Pago/paso3_banco';
