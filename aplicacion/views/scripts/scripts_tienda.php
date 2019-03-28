@@ -7,20 +7,21 @@ Carrito
 // Cargo el carrito por defecto
 jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
 
-// Cargo el pedido default
-jQuery( document ).ready( function(){
-  var id_direccion = jQuery('#PedidoAjax').data('id-direccion');
-  var importe_productos_parcial = jQuery('#PedidoAjax').data('importe-pedido-parcial');
-  var importe_productos = jQuery('#PedidoAjax').data('importe-pedido-total');
-  var importe_envio_parcial = jQuery('#PedidoAjax').data('importe-envio-parcial');
-  var importe_envio_total = jQuery('#PedidoAjax').data('importe-envio-total');
-  var pedido_tienda = jQuery('#PedidoAjax').data('pedido-tienda');
-  var importe_total = jQuery('#PedidoAjax').data('importe-total');
-  var id_transportista_abanico = jQuery('#PedidoAjax').data('id-transportista');
-  var nombre_transportista_abanico = jQuery('#PedidoAjax').data('nombre-transportista');
+// Creo la función para gargar el pedido
+function cargar_pedido(){
+  var id_direccion = jQuery('#PedidoAjax').attr('data-id-direccion');
+  var importe_productos_parcial = jQuery('#PedidoAjax').attr('data-importe-pedido-parcial');
+  var importe_productos = jQuery('#PedidoAjax').attr('data-importe-pedido-total');
+  var importe_envio_parcial = jQuery('#PedidoAjax').attr('data-importe-envio-parcial');
+  var importe_envio_total = jQuery('#PedidoAjax').attr('data-importe-envio-total');
+  var pedido_tienda = jQuery('#PedidoAjax').attr('data-pedido-tienda');
+  var importe_total = jQuery('#PedidoAjax').attr('data-importe-total');
+  var id_transportista_abanico = jQuery('#PedidoAjax').attr('data-id-transportista');
+  var nombre_transportista_abanico = jQuery('#PedidoAjax').attr('data-nombre-transportista');
   jQuery.ajax({
     method: "GET",
     url: "<?php echo base_url('ajax/carrito/pedido_final'); ?>",
+    cache: false,
     dataType: "html",
     data: {
       IdDireccion: id_direccion,
@@ -38,8 +39,64 @@ jQuery( document ).ready( function(){
       jQuery('#PedidoAjax').html(msg);
      }
   });
-});
+}
 
+<?php if(uri_string()=='proceso_pago_3'){ ?>
+// Cargo el pedido default
+jQuery( document ).ready( cargar_pedido());
+// Controles AJAX pedido
+jQuery('.selector-transportista-abanico').on('click', function(){
+  var id_tienda = jQuery(this).attr('data-id-tienda');
+  var id_transportista_abanico = jQuery(this).attr('data-id-transportista-abanico');
+  var nombre_transportista_abanico = jQuery(this).attr('data-nombre-transportista-abanico');
+  var importe_envio_parcial= jQuery(this).attr('data-importe-envio-parcial');
+  var importe_envio_tiendas= jQuery('#PedidoAjax').attr('data-importe-envio-tiendas');
+  var importe_envio_total = parseFloat(importe_envio_parcial)+parseFloat(importe_envio_tiendas);
+  var importe_pedido_total= jQuery('#PedidoAjax').attr('data-importe-pedido-total');
+  var importe_total = parseFloat(importe_pedido_total)+parseFloat(importe_envio_total);
+  jQuery('#PedidoAjax').removeAttr('data-nombre-transportista');
+  jQuery('#PedidoAjax').attr('data-nombre-transportista',nombre_transportista_abanico);
+  // Importe envio parcial
+  jQuery('#PedidoAjax').removeAttr('data-importe-envio-parcial');
+  jQuery('#PedidoAjax').attr('data-importe-envio-parcial',importe_envio_parcial);
+  // Importe envio total
+  jQuery('#PedidoAjax').removeAttr('data-importe-envio-total');
+  jQuery('#PedidoAjax').attr('data-importe-envio-total',importe_envio_total);
+  // Importe total
+  jQuery('#PedidoAjax').removeAttr('data-importe-total');
+  jQuery('#PedidoAjax').attr('data-importe-total',importe_total);
+  cargar_pedido();
+});
+// Radios Tiendas
+jQuery('.selector-transportista-tienda').on('click', function(){
+  var id_tienda = jQuery(this).attr('data-id-tienda');
+  var id_transportista_tienda = jQuery(this).attr('data-id-transportista-tienda');
+  var nombre_transportista_tienda = jQuery(this).attr('data-nombre-transportista-tienda');
+  var importe_envio_tiendas = 0;
+  var importe_envio_parcial= jQuery('#PedidoAjax').attr('data-importe-envio-parcial');
+  var importe_pedido_total= jQuery('#PedidoAjax').attr('data-importe-pedido-total');
+  jQuery('.selector-transportista-tienda').each(function(){
+    if(jQuery(this).is(':checked')){
+      var importe_envio_tienda = jQuery(this).attr('data-importe-envio-tienda');
+      importe_envio_tiendas += parseFloat(importe_envio_tienda);
+    }
+  });
+  // Suma
+  var importe_envio_total = parseFloat(importe_envio_parcial)+parseFloat(importe_envio_tiendas);
+  var importe_total = parseFloat(importe_pedido_total)+parseFloat(importe_envio_total);
+  // Actualizo los data
+  // Importe envio parcial
+  jQuery('#PedidoAjax').removeAttr('data-importe-envio-tiendas');
+  jQuery('#PedidoAjax').attr('data-importe-envio-tiendas',importe_envio_tiendas);
+  // Importe envio total
+  jQuery('#PedidoAjax').removeAttr('data-importe-envio-total');
+  jQuery('#PedidoAjax').attr('data-importe-envio-total',importe_envio_total);
+  // Importe total
+  jQuery('#PedidoAjax').removeAttr('data-importe-total');
+  jQuery('#PedidoAjax').attr('data-importe-total',importe_total);
+  cargar_pedido();
+});
+<?php } // / Se activa solo en el pedido_paso_3 ?>
 // Desactivo el boton de Comprar si no hay productos
 jQuery( document ).ready( function(){
   var cantidad_productos = <?php echo count($_SESSION['carrito']['productos']); ?>;

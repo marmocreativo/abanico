@@ -200,7 +200,6 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 		$_SESSION['pedido']['FormaPago'] = 'PayPal';
 		$_SESSION['pedido']['EstadoPago'] = 'Pagado';
 		$_SESSION['pedido']['EstadoPedido'] = 'Pagado';
-
 		echo '
 		<table class="table table-bordered">
 	    <tbody>

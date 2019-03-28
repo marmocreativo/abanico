@@ -16,6 +16,8 @@
       $descripcion_larga = $producto['PRODUCTO_DETALLES'];
     }
   }
+  // Variables de paquete
+  $paquete = $this->PlanesModel->plan_activo_usuario($producto['ID_USUARIO'],'productos');
 ?>
 <div class="bxInfoContent bxDetalle pb-4">
   <div class="container">
@@ -39,6 +41,29 @@
         <hr>
         <?php echo $descripcion_corta; ?>
         <hr>
+        <?php
+          if(
+            !empty($paquete)&&
+            $producto['PRODUCTO_CANTIDAD']>0&&
+            $producto['PRODUCTO_ESTADO']=='activo'
+          ){ // Aquí se activa o desactiva la visibilidad del precio si el producto está a la venta
+          ?>
+          <?php
+            // variables de precio
+            if($producto['PRODUCTO_DIVISA_DEFAULT']!=$_SESSION['divisa']['iso']){
+              $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto['PRODUCTO_DIVISA_DEFAULT']);
+              if($producto['PRODUCTO_DIVISA_DEFAULT']!='MXN'){
+                $precio_lista = $producto['PRODUCTO_PRECIO_LISTA']/$cambio_divisa_default['DIVISA_CONVERSION'];
+                $precio_venta = $producto['PRODUCTO_PRECIO']/$cambio_divisa_default['DIVISA_CONVERSION'];
+              }else{
+                $precio_lista = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'];
+                $precio_venta = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO'];
+              }
+            }else{
+              $precio_lista = $producto['PRODUCTO_PRECIO_LISTA'];
+              $precio_venta = $producto['PRODUCTO_PRECIO'];
+            }
+           ?>
         <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
         <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'],2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
         <?php } ?>
@@ -73,14 +98,18 @@
           </div>
           <div class="col">
             <button class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block" id="BotonComprar"
-                data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
-                data-nombre-producto='<?php echo $titulo; ?>'
-                data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
-                data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
-                data-detalles-producto=''
-                data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
-                data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
-                data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
+              data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
+              data-nombre-producto='<?php echo $titulo; ?>'
+              data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
+              data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'
+              data-divisa-default='<?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?>'
+              data-contra-entrega='<?php echo $producto['PRODUCTO_CONTRA_ENTREGA']; ?>'
+              data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
+              data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
+              data-detalles-producto=''
+              data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
+              data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
+              data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
                 >
                <span class="fa fa-shopping-cart"></span> <?php echo $this->lang->line('pagina_producto_formulario_al_carrito'); ?></button>
           </div>
@@ -88,19 +117,24 @@
             <div class="col-12">
               <hr>
               <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonCompraRapida"
-                  data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
-                  data-nombre-producto='<?php echo $titulo; ?>'
-                  data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
-                  data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
-                  data-detalles-producto=''
-                  data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
-                  data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
-                  data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
+                data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
+                data-nombre-producto='<?php echo $titulo; ?>'
+                data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
+                data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'
+                data-divisa-default='<?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?>'
+                data-contra-entrega='<?php echo $producto['PRODUCTO_CONTRA_ENTREGA']; ?>'
+                data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
+                data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
+                data-detalles-producto=''
+                data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
+                data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
+                data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
                   >
                  <span class="fa fa-shopping-cart"></span> <?php echo $this->lang->line('pagina_producto_formulario_comprar_ahora'); ?></button>
             </div>
           <?php } ?>
         </div>
+        <?php } ?>
       </div>
 
       <div class="col-12">

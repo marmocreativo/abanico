@@ -70,7 +70,7 @@
                   ?>
                   <div class="col-12">
                     <!-- Pedidos Abanico-->
-                    <?php /* BUCLE DE TIENDAS*/ foreach($_SESSION['carrito']['tiendas'] as $id_tienda => $tienda){ ?>
+                    <?php /* BUCLE DE TIENDAS*/ $conteo_tiendas_abanico = 0; foreach($_SESSION['carrito']['tiendas'] as $id_tienda => $tienda){ ?>
                     <?php
                       $datos_tienda = $this->TiendasModel->detalles($id_tienda);
                       $paquete_tienda = $this->PlanesModel->plan_activo_usuario($datos_tienda['ID_USUARIO'],'productos');
@@ -156,15 +156,14 @@
                       </tbody>
                     </table>
                     <?php
-                    echo $id_tienda;
                     $pedido_tienda[$id_tienda]['id_tienda'] = $id_tienda;
                     $pedido_tienda[$id_tienda]['id_transportista'] = "0";
                     $pedido_tienda[$id_tienda]['importe_transportista'] = "0";
                     ?>
-                    <?php } // Condicion Tiendas Abanico ?>
-                  <?php } // Termina el bucle de tiendas ?>
+                    <?php $conteo_tiendas_abanico ++; } // Condicion Tiendas Abanico ?>
+                  <?php  } // Termina el bucle de tiendas ?>
+                  <?php if($conteo_tiendas_abanico>0){ ?>
                   <div class="border p-3">
-                    <p>Enviar con:</p>
                     <?php
                     // Cálculos Finales
                       $peso_pedido_abanico += $suma_peso;
@@ -175,14 +174,26 @@
                       $envio_pedido_abanico += $mejor_envio_abanico['IMPORTE'];
                       $primer_radio_abanico = 0;
                     ?>
+                    <?php if(!empty($rangos)){ ?>
+
+                    <p>Enviar con:</p>
                     <?php foreach ($envio_abanico as $rangos) { ?>
                       <div class="form-check">
                         <label>
-                          <input type="radio" class="form-check-input" name="transportista_abanico" value="<?php echo $rangos->RANGO;  ?>" <?php if($primer_radio_abanico==0){ echo 'checked'; } ?>>
+                          <input type="radio" class="form-check-input selector-transportista-abanico" name="selector-transportista-abanico"
+                            data-id-tienda='0'
+                            data-id-transportista-abanico='<?php echo $rangos->ID_TRANSPORTISTA ?>'
+                            data-nombre-transportista-abanico='<?php echo $rangos->TRANSPORTISTA_NOMBRE ?>'
+                            data-importe-envio-parcial='<?php echo $rangos->IMPORTE ?>'
+                             <?php if($primer_radio_abanico==0){ echo 'checked'; } ?>>
                         <?php echo $rangos->TRANSPORTISTA_NOMBRE;  ?> | <?php echo $rangos->TRANSPORTISTA_TIEMPO_ENTREGA;  ?> | $<?php echo $rangos->IMPORTE;  ?> </label>
                       </div>
                     <?php $primer_radio_abanico++; } ?>
+                  <?php }else{ ?>
+                    <p> <?php echo $this->lang->line('proceso_pago_3_exeden_peso'); ?></p>
+                  <?php } ?>
                   </div>
+                <?php } ?>
                   <hr>
                     <!-- ***** -->
                     <!-- ***** -->
@@ -289,7 +300,6 @@
                         <tr>
                           <td colspan="4">
                             <div class="border p-3">
-                              <p>Mensajerías Tienda</p>
                               <?php
                               // Cálculos por tienda
                                 $envio_abanico = $this->TransportistasRangosModel->lista_mejor_precio($suma_peso,$suma_productos,$detalles_direccion['DIRECCION_PAIS'],$detalles_direccion['DIRECCION_ESTADO'],2);
@@ -299,15 +309,26 @@
                                 $pedido_tienda[$id_tienda]['id_transportista'] = $mejor_envio_tiendas['ID_TRANSPORTISTA'];
                                 $pedido_tienda[$id_tienda]['importe_transportista'] = $mejor_envio_tiendas['IMPORTE'];
 
-                                $envio_pedido_total += $mejor_envio_tiendas['IMPORTE'];
+                                $envio_pedido_tiendas += $mejor_envio_tiendas['IMPORTE'];
                               ?>
+                              <?php if(!empty($rangos)){ ?>
+
+                              <p>Mensajerías Tienda</p>
                               <?php foreach ($envio_abanico as $rangos) { ?>
                                 <div class="form-check">
                                   <label>
-                                    <input type="radio" class="form-check-input" name="transportista_<?php echo $id_tienda;  ?>" value="<?php echo $rangos->RANGO;  ?>" <?php if($primer_radio_tienda==0){ echo 'checked'; } ?>>
+                                    <input type="radio" class="form-check-input selector-transportista-tienda" name="selector-transportista-<?php echo $id_tienda; ?>"
+                                      data-id-tienda='<?php echo $id_tienda; ?>'
+                                      data-id-transportista-tienda='<?php echo $rangos->ID_TRANSPORTISTA ?>'
+                                      data-nombre-transportista-tienda='<?php echo $rangos->TRANSPORTISTA_NOMBRE ?>'
+                                      data-importe-envio-tienda='<?php echo $rangos->IMPORTE ?>'
+                                    <?php if($primer_radio_tienda==0){ echo 'checked'; } ?>>
                                   <?php echo $rangos->TRANSPORTISTA_NOMBRE;  ?> | <?php echo $rangos->TRANSPORTISTA_TIEMPO_ENTREGA;  ?> | $<?php echo $rangos->IMPORTE;  ?> </label>
                                 </div>
                               <?php $primer_radio_tienda++; } ?>
+                            <?php }else{ ?>
+                              <p> <?php echo $this->lang->line('proceso_pago_3_exeden_peso'); ?></p>
+                            <?php } ?>
                             </div>
                           </td>
                         </tr>
@@ -325,10 +346,15 @@
                   // Cálculos Finales
                   $peso_pedido_total = $peso_pedido_abanico+$peso_pedido_tiendas;
                   $importe_pedido_total = $importe_pedido_abanico+$importe_pedido_tiendas;
-                  $envio_pedido_total = $envio_pedido_abanico+$envio_pedido_total;
-                  echo '<pre>';
-                  var_dump($pedido_tienda);
-                  echo '</pre>';
+                  $envio_pedido_total = $envio_pedido_abanico+$envio_pedido_tiendas;
+                  $importe_total = $importe_pedido_total+$envio_pedido_total;
+                  if(!empty($mejor_envio_abanico)){
+                    $id_transportista_abanico = $mejor_envio_abanico['ID_TRANSPORTISTA'];
+                    $nombre_transportista_abanico = $mejor_envio_abanico['TRANSPORTISTA_NOMBRE'];
+                  }else{
+                    $id_transportista_abanico = 0;
+                    $nombre_transportista_abanico = '';
+                  }
                   ?>
 
                   <div class="p-3 border border-danger" id="PedidoAjax"
@@ -336,11 +362,12 @@
                     data-importe-pedido-parcial='<?php echo $importe_pedido_abanico; ?>'
                     data-importe-pedido-total='<?php echo $importe_pedido_total; ?>'
                     data-importe-envio-parcial='<?php echo $envio_pedido_abanico; ?>'
+                    data-importe-envio-tiendas='<?php echo $envio_pedido_tiendas; ?>'
                     data-importe-envio-total='<?php echo $envio_pedido_total; ?>'
                     data-pedido-tienda = '<?php echo serialize($pedido_tienda); ?>'
-                    data-importe-total = '<?php echo $importe_pedido_total; ?>'
-                    data-id-transportista = '<?php echo $mejor_envio_abanico['ID_TRANSPORTISTA']; ?>'
-                    data-nombre-transportista = '<?php echo $mejor_envio_abanico['TRANSPORTISTA_NOMBRE']; ?>'
+                    data-importe-total = '<?php echo $importe_total; ?>'
+                    data-id-transportista = '<?php echo $id_transportista_abanico; ?>'
+                    data-nombre-transportista = '<?php echo $nombre_transportista_abanico; ?>'
                   >
                   </div>
                 </div>
