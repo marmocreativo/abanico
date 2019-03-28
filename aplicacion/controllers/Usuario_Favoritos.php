@@ -31,6 +31,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('CalificacionesServiciosModel');
 		$this->load->model('CategoriasProductoModel');
 		$this->load->model('NotificacionesModel');
+		$this->load->model('PublicacionesModel');
 
 		// Variables comunes
   }

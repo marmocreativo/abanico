@@ -143,8 +143,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 
 		}else{
-			echo 'Sesion caduca';
-			//redirect(base_url('proceso_pago_1'));
+			redirect(base_url('proceso_pago_1'));
 		}
 	}
 	public function paso3_banco()
