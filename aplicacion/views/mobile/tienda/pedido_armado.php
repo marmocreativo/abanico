@@ -37,7 +37,7 @@
 <?php $folio = folio_pedido();?>
 <div class="row">
   <?php if($detalles_direccion['DIRECCION_PAIS']=='México'){ ?>
-<div class="col">
+<div class="col-12 mb-3">
   <form class="d-flex justify-content-end" id="banco_form" action="<?php echo base_url('proceso_pago_3_banco'); ?>" method="post" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="Folio" value="<?php echo $folio ; ?>">
     <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id']; ?>">
@@ -56,7 +56,7 @@
     <input type="hidden" name="ImporteTotal" value="<?php echo $importe_total ; ?>">
     <input type="hidden" name="IdTransportista" value="<?php echo $id_transportista_abanico ; ?>">
     <input type="hidden" name="NombreTransportista" value="<?php echo $nombre_transportista_abanico ; ?>">
-      <button type="submit" class="btn btn-success btn-lg btn-block"><?php echo $this->lang->line('proceso_pago_3_transferencia'); ?> <span class="fas fa-money-bill-alt"></span></button>
+      <button type="submit" class="btn btn-success btn-sm btn-block"><?php echo $this->lang->line('proceso_pago_3_transferencia'); ?> <span class="fas fa-money-bill-alt"></span></button>
   </form>
 </div>
 <?php } ?>
@@ -84,7 +84,7 @@
     <input type="hidden" name="ImporteTotal" value="<?php echo $importe_total ; ?>">
     <input type="hidden" name="IdTransportista" value="<?php echo $id_transportista_abanico ; ?>">
     <input type="hidden" name="NombreTransportista" value="<?php echo $nombre_transportista_abanico ; ?>">
-      <button type="submit" class="btn btn-primary btn-lg btn-block"><?php echo $this->lang->line('proceso_pago_3_paypal'); ?> <span class="fab fa-paypal"></span></button>
+      <button type="submit" class="btn btn-primary btn-sm btn-block"><?php echo $this->lang->line('proceso_pago_3_paypal'); ?> <span class="fab fa-paypal"></span></button>
   </form>
 </div>
 </div>
