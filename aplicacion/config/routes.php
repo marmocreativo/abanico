@@ -145,6 +145,7 @@ $route['compra_rapida'] = 'Proceso_Pago/compra_rapida';
 $route['proceso_pago_4'] = 'Proceso_Pago/paso4';
 $route['proceso_pago_3_banco'] = 'Proceso_Pago/paso3_banco';
 $route['proceso_pago_3_oxxo'] = 'Proceso_Pago/paso3_oxxo';
+$route['proceso_pago_3_paypal'] = 'Proceso_Pago/paso3_paypal';
 $route['proceso_pago_3'] = 'Proceso_Pago/paso3';
 $route['proceso_pago_2'] = 'Proceso_Pago/paso2';
 $route['proceso_pago_1'] = 'Proceso_Pago/paso1';

@@ -378,7 +378,6 @@
                               <p>Si no has solicitado la restauración de la contraseña haz caso omiso de este mensaje.</p>
                               <p>El enlace estará disponible durante 3 Hrs.</p>
                             </td>
-                          </td>
                           </tr>
                         </tbody>
                       </table>

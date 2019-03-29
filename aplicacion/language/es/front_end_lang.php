@@ -167,7 +167,7 @@ $lang['proceso_pago_2_continuar'] = 'Continuar';
 
 $lang['proceso_pago_3_cambiar_direccion'] = 'Cambiar Dirección';
 $lang['proceso_pago_3_fecha'] = 'Fecha';
-$lang['proceso_pago_3_exeden_peso'] = 'Los productos Exceden el peso máximo o tu dirección no está disponible para envíos. Por favor contacta con nosotros para ofrecerte opciones.';
+$lang['proceso_pago_3_exeden_peso'] = 'No se pudo calcular el envío automáticamente, este pedido podría generar gastos de envío extra.';
 $lang['proceso_pago_3_envio_de_productos_otro'] = 'Envio de productos de';
 $lang['proceso_pago_3_envio_de_abanico'] = 'Productos enviados por Abanico, el costo de Envío aparecerá en la parte inferior.';
 $lang['proceso_pago_3_importe_productos'] = 'Importe Productos';

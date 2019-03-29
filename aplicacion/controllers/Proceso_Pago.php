@@ -174,53 +174,109 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			redirect(base_url('proceso_pago_1'));
 		}
 	}
+	public function paso3_paypal()
+	{
+		if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			if(empty($_SESSION['carrito']['productos'])){
+				redirect(base_url('carrito'));
+			}
+			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_3_paypal',$this->data);
+			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+
+		}else{
+			redirect(base_url('proceso_pago_1'));
+		}
+	}
 	public function paso4()
 	{
 		if(empty($_SESSION['carrito']['productos'])){
 			redirect(base_url('carrito'));
 		}
-		$folio = $_SESSION['pedido']['Folio'];
+
+		if(isset($_GET['pago'])&&$_GET['pago']=='paypal'){
+			$folio = $_SESSION['pedido']['Folio'];
+			$IdUsuario = $_SESSION['pedido']['IdUsuario'];
+			$PedidoNombre = $_SESSION['pedido']['PedidoNombre'];
+			$PedidoCorreo = $_SESSION['pedido']['PedidoCorreo'];
+			$PedidoTelefono = $_SESSION['pedido']['PedidoTelefono'];
+			$IdDireccion = $_SESSION['pedido']['IdDireccion'];
+			$Direccion = $_SESSION['pedido']['Direccion'];
+			$Divisa = $_SESSION['pedido']['Divisa'];
+			$Conversion = $_SESSION['pedido']['Conversion'];
+			$ImporteProductosParcial = $_SESSION['pedido']['ImporteProductosParcial'];
+			$ImporteProductosTotal = $_SESSION['pedido']['ImporteProductosTotal'];
+			$ImporteEnvioParcial = $_SESSION['pedido']['ImporteEnvioParcial'];
+			$ImporteEnvioTotal = $_SESSION['pedido']['ImporteEnvioTotal'];
+			$IdTransportista = $_SESSION['pedido']['IdTransportista'];
+			$NombreTransportista = $_SESSION['pedido']['NombreTransportista'];
+			$ImporteTotal = $_SESSION['pedido']['ImporteTotal'];
+			$FormaPago = $_SESSION['pedido']['FormaPago'];
+			$EstadoPago = $_SESSION['pedido']['EstadoPago'];
+			$EstadoPedido = $_SESSION['pedido']['EstadoPedido'];
+			$PedidosTiendas = $_SESSION['pedido']['PedidosTiendas'];
+		}else{
+			$folio = $_POST['Folio'];
+			$IdUsuario = $_POST['IdUsuario'];
+			$PedidoNombre = $_POST['PedidoNombre'];
+			$PedidoCorreo = $_POST['PedidoCorreo'];
+			$PedidoTelefono = $_POST['PedidoTelefono'];
+			$IdDireccion = $_POST['IdDireccion'];
+			$Direccion = $_POST['Direccion'];
+			$Divisa = $_POST['Divisa'];
+			$Conversion = $_POST['Conversion'];
+			$ImporteProductosParcial = $_POST['ImporteProductosParcial'];
+			$ImporteProductosTotal = $_POST['ImporteProductosTotal'];
+			$ImporteEnvioParcial = $_POST['ImporteEnvioParcial'];
+			$ImporteEnvioTotal = $_POST['ImporteEnvioTotal'];
+			$IdTransportista = $_POST['IdTransportista'];
+			$NombreTransportista = $_POST['NombreTransportista'];
+			$ImporteTotal = $_POST['ImporteTotal'];
+			$FormaPago = $_POST['FormaPago'];
+			$EstadoPago = $_POST['EstadoPago'];
+			$EstadoPedido = $_POST['EstadoPedido'];
+			$PedidosTiendas = $_POST['PedidosTiendas'];
+		}
 		// Variables inicializadas
 		$correos_tiendas= array();
 		$parametros_pedido = array(
 			'PEDIDO_FOLIO'=>$folio,
-			'ID_USUARIO' => $_SESSION['pedido']['IdUsuario'],
-			'PEDIDO_NOMBRE' => $_SESSION['pedido']['PedidoNombre'],
-			'PEDIDO_CORREO' => $_SESSION['pedido']['PedidoCorreo'],
-			'PEDIDO_TELEFONO' => $_SESSION['pedido']['PedidoTelefono'],
-			'ID_DIRECCION' => $_SESSION['pedido']['IdDireccion'],
-			'PEDIDO_DIRECCION' => $_SESSION['pedido']['Direccion'],
-			'PEDIDO_DIVISA' => $_SESSION['pedido']['Divisa'],
-			'PEDIDO_CONVERSION' => $_SESSION['pedido']['Conversion'],
-			'PEDIDO_IMPORTE_PRODUCTOS_PARCIAL' => $_SESSION['pedido']['ImporteProductosParcial'],
-			'PEDIDO_IMPORTE_PRODUCTOS_TOTAL' => $_SESSION['pedido']['ImporteProductosTotal'],
-			'PEDIDO_IMPORTE_ENVIO_PARCIAL' => $_SESSION['pedido']['ImporteEnvioParcial'],
-			'PEDIDO_IMPORTE_ENVIO_TOTAL' => $_SESSION['pedido']['ImporteEnvioTotal'],
-			'PEDIDO_ID_TRANSPORTISTA' => $_SESSION['pedido']['IdTransportista'],
-			'PEDIDO_NOMBRE_TRANSPORTISTA' => $_SESSION['pedido']['NombreTransportista'],
-			'PEDIDO_IMPORTE_TOTAL' => $_SESSION['pedido']['ImporteTotal'],
-			'PEDIDO_FORMA_PAGO' => $_SESSION['pedido']['FormaPago'],
-			'PEDIDO_ESTADO_PAGO' => $_SESSION['pedido']['EstadoPago'],
-			'PEDIDO_ESTADO_PEDIDO' => $_SESSION['pedido']['EstadoPedido'],
+			'ID_USUARIO' => $IdUsuario,
+			'PEDIDO_NOMBRE' => $PedidoNombre,
+			'PEDIDO_CORREO' => $PedidoCorreo,
+			'PEDIDO_TELEFONO' => $PedidoTelefono,
+			'ID_DIRECCION' => $IdDireccion,
+			'PEDIDO_DIRECCION' => $Direccion,
+			'PEDIDO_DIVISA' => $Divisa,
+			'PEDIDO_CONVERSION' => $Conversion,
+			'PEDIDO_IMPORTE_PRODUCTOS_PARCIAL' => $ImporteProductosParcial,
+			'PEDIDO_IMPORTE_PRODUCTOS_TOTAL' => $ImporteProductosTotal,
+			'PEDIDO_IMPORTE_ENVIO_PARCIAL' => $ImporteEnvioParcial,
+			'PEDIDO_IMPORTE_ENVIO_TOTAL' => $ImporteEnvioTotal,
+			'PEDIDO_ID_TRANSPORTISTA' => $IdTransportista,
+			'PEDIDO_NOMBRE_TRANSPORTISTA' => $NombreTransportista,
+			'PEDIDO_IMPORTE_TOTAL' => $ImporteTotal,
+			'PEDIDO_FORMA_PAGO' => $FormaPago,
+			'PEDIDO_ESTADO_PAGO' => $EstadoPago,
+			'PEDIDO_ESTADO_PEDIDO' => $EstadoPedido,
 			'PEDIDO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 			'PEDIDO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s')
 		);
-
 			$pedido_id = $this->PedidosModel->crear($parametros_pedido);
-			$pedidos_tienda = unserialize($_SESSION['pedido']['PedidosTiendas']);
-
+			$pedidos_tienda = base64_decode($PedidosTiendas);
+			$pedidos_tienda = json_decode($pedidos_tienda);
 			// Bucle de pedidos Tiendas
-			foreach($pedidos_tienda as $id_tienda => $tienda){
+			foreach($pedidos_tienda as $tienda){
 				$parametros_tienda = array(
 					'ID_PEDIDO'=>$pedido_id,
-					'ID_TIENDA'=>$id_tienda,
-					'PEDIDO_TIENDA_IMPORTE_PRODUCTOS'=>$tienda['ImporteProductos'],
-					'PEDIDO_TIENDA_IMPORTE_ENVIO'=>$tienda['ImporteEnvio'],
-					'ID_TRANSPORTISTA'=>$tienda['IdTransportista'],
-					'TRANSPORTISTA_NOMBRE'=>$tienda['NombreTransportista'],
+					'ID_TIENDA'=>$tienda->id_tienda,
+					'PEDIDO_TIENDA_IMPORTE_PRODUCTOS'=>$tienda->importe_producto,
+					'PEDIDO_TIENDA_IMPORTE_ENVIO'=>$tienda->importe_transportista,
+					'ID_TRANSPORTISTA'=>$tienda->id_transportista,
+					'TRANSPORTISTA_NOMBRE'=>$tienda->nombre_transportista,
 					'PEDIDO_TIENDA_ESTADO'=>$this->input->post('EstadoPedido')
 				);
-				$this->data['tienda'] = $this->TiendasModel->detalles($id_tienda);
+				$this->data['tienda'] = $this->TiendasModel->detalles($tienda->id_tienda);
 				$this->data['vendedor'] = $this->UsuariosModel->detalles($this->data['tienda']['ID_USUARIO']);
 				$correos_tienda[] = $this->data['vendedor']['USUARIO_CORREO'];
 				$tienda_id = $this->PedidosTiendasModel->crear($parametros_tienda);
@@ -237,6 +293,26 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			}
 			// Bucle de Pedidos Productos
 			foreach($_SESSION['carrito']['productos'] as $producto){
+					// variables de precio
+					if($producto['divisa_default']!=$_SESSION['divisa']['iso']){
+						$cambio_divisa_default = $this->DivisasModel->detalles_iso($producto['divisa_default']);
+						if($producto['divisa_default']!='MXN'){
+							$precio_venta = $producto['precio_producto']/$cambio_divisa_default['DIVISA_CONVERSION'];
+							$suma = ($producto['cantidad_producto']*$producto['precio_producto'])/$cambio_divisa_default['DIVISA_CONVERSION'];
+						}else{
+							$precio_venta = $_SESSION['divisa']['conversion']*$producto['precio_producto'];
+							$suma = $_SESSION['divisa']['conversion']*($producto['cantidad_producto']*$producto['precio_producto']);
+						}
+					}else{
+
+						$precio_venta = $producto['precio_producto'];
+						$suma = $producto['cantidad_producto']*$producto['precio_producto'];
+					}
+					//verifico que solo sea un producto a contra ContraEntrega
+					if($producto['contra_entrega']!='si'){
+						$solo_productos_contra_entrega = false;
+					}
+
 				$parametros_productos = array(
 					'ID_PEDIDO'=>$pedido_id,
 					'ID_TIENDA'=>$producto['id_tienda'],
@@ -245,34 +321,115 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					'PRODUCTO_DETALLES'=>$producto['detalles_producto'],
 					'PRODUCTO_IMAGEN'=>$producto['imagen_producto'],
 					'CANTIDAD'=>$producto['cantidad_producto'],
-					'IMPORTE'=>number_format($_SESSION['divisa']['conversion']*$producto['precio_producto'],2,'.',''),
-					'IMPORTE_TOTAL'=>number_format($_SESSION['divisa']['conversion']*($producto['cantidad_producto']*$producto['precio_producto']),2,'.',''),
+					'IMPORTE'=>number_format($precio_venta,2,'.',''),
+					'IMPORTE_TOTAL'=>number_format($producto['cantidad_producto']*$precio_venta,2,'.',''),
 				);
 				$producto_id = $this->PedidosProductosModel->crear($parametros_productos);
+
+				$producto_a_actualizar = $this->ProductosModel->detalles($producto['id_producto']);
+				$nueva_cantidad = $producto_a_actualizar['PRODUCTO_CANTIDAD']-$producto['cantidad_producto'];
+				if($nueva_cantidad<0){
+					$nueva_cantidad = 0;
+				}
+				$cantidad = array(
+					'PRODUCTO_CANTIDAD'=>$nueva_cantidad
+				);
+				$this->ProductosModel->actualizar($producto['id_producto'],$cantidad);
+
 			}
 
 			// Datos para enviar por correo
 
+			// Datos del pedido
+
 			$this->data['pedido'] = $this->PedidosModel->detalles($pedido_id);
 			$this->data['productos'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$pedido_id],'','');
 
-			$this->data['pedido_tienda'] = $this->PedidosModel->detalles($pedido_id);
-			$this->data['productos_tienda'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$pedido_id, 'ID_TIENDA'=>$id_tienda],'','');
-			$correos_tienda[] = $this->input->post('PedidoCorreo');
+			// Pedido General
+			$ficha_pago = $this->load->view('emails/pedido_usuario_ficha',$this->data,true);
+			$mensaje_usuario = $this->load->view('emails/pedido_usuario',$this->data,true);
+			$mensaje_abanico = $this->load->view('emails/pedido_abanico',$this->data,true);
 
-			$remitente = $this->data['op']['correo_sitio'];
-			$destinatarios = $correos_tienda;
-			$plantilla = 'emails/pedido_usuario';
-			$asunto = 'Pedido Abanico | '.$pedido_id;
-			enviar_correo_abanico($remitente,$destinatarios,$plantilla,$asunto);
+			// Envio correos Generales
+			// Datos para enviar por correo
+			// Config General
+			$config['protocol']    = 'smtp';
+			$config['smtp_host']    = $this->data['op']['mailer_host'];
+			$config['smtp_port']    = $this->data['op']['mailer_port'];
+			$config['smtp_timeout'] = '7';
+			$config['smtp_user']    = $this->data['op']['mailer_user'];
+			$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+			$config['charset']    = 'utf-8';
+			$config['mailtype'] = 'html'; // or html
+			$config['validation'] = TRUE; // bool whether to validate email or not
+
+			$this->email->initialize($config);
+
+			if($this->data['pedido']['PEDIDO_FORMA_PAGO']=='Transferencia Bancaria'){
+
+				// Ficha de Pago
+				$this->email->clear();
+				$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+				$this->email->to($this->data['pedido']['PEDIDO_CORREO']);
+
+				$this->email->subject('Ficha de pago '.$this->data['pedido']['PEDIDO_FOLIO']);
+				$this->email->message($ficha_pago);
+				// envio el correo
+
+				$this->email->send();
+
+			}
+
+			// Terminar
+
+			$this->email->clear();
+			$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+			$this->email->to($this->data['pedido']['PEDIDO_CORREO']);
+
+			$this->email->subject('Compra Abanico '.$this->data['pedido']['PEDIDO_FOLIO']);
+			$this->email->message($mensaje_usuario);
+			// envio el correo
+
+			$this->email->send();
+
+			// Envio correo Abanico
+			$this->email->clear();
+			$this->email->from($this->data['op']['mailer_user'], 'Abanico Siempre lo Mejor');
+			$this->email->to($this->data['op']['correo_sitio']);
+
+			$this->email->subject('Pedido Abanico '.$this->data['pedido']['PEDIDO_FOLIO']);
+			$this->email->message($mensaje_abanico);
+			// envio el correo
+
+			$this->email->send();
 
 
-		unset($_SESSION['carrito']['productos']);
+			// Productos
+			foreach($pedidos_tienda as $tienda){
+				$this->data['pedido_tienda'] = $this->PedidosTiendasModel->detalles($pedido_id,$tienda->id_tienda);
+				$this->data['tienda'] = $this->TiendasModel->detalles($tienda->id_tienda);
+				$this->data['vendedor'] = $this->UsuariosModel->detalles($this->data['tienda']['ID_USUARIO']);
+				$this->data['productos_tienda'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$pedido_id, 'ID_TIENDA'=>$tienda->id_tienda],'','');
+						$mensaje_tienda = $this->load->view('emails/pedido_vendedor',$this->data,true);
+				$this->email->clear();
+				$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+				$this->email->to($this->data['vendedor']['USUARIO_CORREO']);
+
+				$this->email->subject('Venta en Abanico '.$this->data['pedido']['PEDIDO_FOLIO']);
+				$this->email->message($mensaje_tienda);
+				// envio el correo
+
+				$this->email->send();
+			}
+
+
 		unset($_SESSION['carrito']['tiendas']);
+		unset($_SESSION['carrito']['productos']);
 		unset($_SESSION['pedido']);
 		$_SESSION['carrito']['productos']=array();
 		$_SESSION['carrito']['tiendas']=array();
 		$_SESSION['pedido']=array();
+
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_4',$this->data);
 		$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);

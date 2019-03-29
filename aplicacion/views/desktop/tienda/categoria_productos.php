@@ -8,10 +8,12 @@
     $titulo_categoria = 'Resultados para tu Busqueda';
   }
   $productos_hijos = (object) array();
-  foreach($categorias_hijas as $categoria_hija){
-    $p_h = $this->ProductosModel->lista_categoria_activos('','',$categoria_hija->ID_CATEGORIA,'','');
-    //var_dump($productos_hijos);
-    if(!empty($p_h)){ $productos_hijos= $p_h; }
+  if(isset($categorias_hijas)){
+    foreach($categorias_hijas as $categoria_hija){
+      $p_h = $this->ProductosModel->lista_categoria_activos('','',$categoria_hija->ID_CATEGORIA,'','');
+      //var_dump($productos_hijos);
+      if(!empty($p_h)){ $productos_hijos= $p_h; }
+    }
   }
 ?>
 <div class="contenido_principal fila p-3" style="background:#eee;">

@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12">z
       <?php $suma_productos = 0;?>
       <?php if(!empty($_SESSION['carrito']['productos'] )){ ?>
         <?php foreach($_SESSION['carrito']['productos'] as $producto){ ?>

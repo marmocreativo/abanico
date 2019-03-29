@@ -167,7 +167,7 @@ $lang['proceso_pago_2_continuar'] = 'Continue';
 
 $lang['proceso_pago_3_cambiar_direccion'] = 'Change Address';
 $lang['proceso_pago_3_fecha'] = 'Date';
-$lang['proceso_pago_3_exeden_peso'] = 'The products exceed the maximum weight or your address is not available for shipments. They can generate extra shipping costs';
+$lang['proceso_pago_3_exeden_peso'] = 'The shipment could not be calculated automatically, this order could generate extra shipping costs.';
 $lang['proceso_pago_3_envio_de_productos_otro'] = 'Send by';
 $lang['proceso_pago_3_envio_de_abanico'] = 'Send by Abanico, cost will show in the bottom';
 $lang['proceso_pago_3_importe_productos'] = 'Products Cost';

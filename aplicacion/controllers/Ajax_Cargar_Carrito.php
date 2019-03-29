@@ -69,18 +69,28 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 			// Reviso si el producto ya existe
 			$existe = false;
 			$i = 0;
+			// variables para eliminar tienda en caso de ser necesario
+			$productos_tienda = array();
+			foreach($_SESSION['carrito']['tiendas']as $key => $tienda){
+				$productos_tienda[$key]=0;
+			}
+
 			foreach($_SESSION['carrito']['productos'] as $producto){
+				$productos_tienda[$producto['id_tienda']] ++;
 				if($producto['id_producto']==$_POST['IdProducto']&&$producto['detalles_producto']==$_POST['DetallesProducto']){
 					$cantidad_anterior = $_SESSION['carrito']['productos'][$i]['cantidad_producto'];
 					$cantidad_nueva = $_SESSION['carrito']['productos'][$i]['cantidad_producto'] - 1;
 					if($cantidad_nueva<=0){
 						//
-						unset( $_SESSION['carrito']['tiendas'][$_SESSION['carrito']['productos'][$i]['id_tienda']]);
 						unset( $_SESSION['carrito']['productos'][$i]);
+						$productos_tienda[$producto['id_tienda']] --;
 						$_SESSION['carrito']['productos'] = array_values($_SESSION['carrito']['productos']);
 					}else{
 						$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $cantidad_nueva;
 					}
+				}
+				if($productos_tienda[$producto['id_tienda']]<=0){
+					unset( $_SESSION['carrito']['tiendas'][$producto['id_tienda']]);
 				}
 				++$i;
 			}
@@ -113,10 +123,17 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 			// Reviso si el producto ya existe
 			$existe = false;
 			$i = 0;
+			// variables para eliminar tienda en caso de ser necesario
+			$productos_tienda = array();
+			foreach($_SESSION['carrito']['tiendas']as $key => $tienda){
+				$productos_tienda[$key]=0;
+			}
 			foreach($_SESSION['carrito']['productos'] as $producto){
+				$productos_tienda[$producto['id_tienda']] ++;
 				if($producto['id_producto']==$_POST['IdProducto']){
 					if($_POST['CantidadProducto']<=0){
 						unset( $_SESSION['carrito']['productos'][$i]);
+						$productos_tienda[$producto['id_tienda']] --;
 					}else{
 						if($_POST['CantidadProducto']>=$_POST['CantidadMaxima']){
 							$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $_POST['CantidadMaxima'];
@@ -124,6 +141,9 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 							$_SESSION['carrito']['productos'][$i]['cantidad_producto'] = $_POST['CantidadProducto'];
 						}
 					}
+				}
+				if($productos_tienda[$producto['id_tienda']]<=0){
+					unset( $_SESSION['carrito']['tiendas'][$producto['id_tienda']]);
 				}
 				++$i;
 			}
@@ -135,11 +155,21 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 			// Reviso si el producto ya existe
 			$existe = false;
 			$i = 0;
+
+			$productos_tienda = array();
+
+			foreach($_SESSION['carrito']['tiendas']as $key => $tienda){
+				$productos_tienda[$key]=0;
+			}
 			foreach($_SESSION['carrito']['productos'] as $producto){
+				$productos_tienda[$producto['id_tienda']] ++;
 				if($producto['id_producto']==$_POST['IdProducto']&&$producto['detalles_producto']==$_POST['DetallesProducto']){
-					unset( $_SESSION['carrito']['tiendas'][$_SESSION['carrito']['productos'][$i]['id_tienda']]);
 					unset( $_SESSION['carrito']['productos'][$i]);
+					$productos_tienda[$producto['id_tienda']] --;
 					$_SESSION['carrito']['productos'] = array_values($_SESSION['carrito']['productos']);
+				}
+				if($productos_tienda[$producto['id_tienda']]<=0){
+					unset( $_SESSION['carrito']['tiendas'][$producto['id_tienda']]);
 				}
 				++$i;
 			}
@@ -168,76 +198,18 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 	public function pedido_final()
 	{
 		// Datos extra
-		$usuario = $this->UsuariosModel->detalles($_SESSION['usuario']['id']);
-		$detalles_direccion = $this->DireccionesModel->detalles($_GET['IdDireccion']);
-		$direccion = $this->DireccionesModel->direccion_formateada($_GET['IdDireccion']);
-		$importe_productos_abanico = $_GET['ImporteProductosParcial'];
-		$importe_productos_total = $_GET['ImporteProductosTotal'];
-		$envio_pedido_abanico = $_GET['ImporteEnvioParcial'];
-		$envio_pedido_total = $_GET['ImporteEnvioTotal'];
-		$pedido_tienda = $_GET['PedidoTienda'];
-		$importe_total = $_GET['ImporteTotal'];
-		$id_transportista_abanico = $_GET['IdTransportistaAbanico'];
-		$nombre_transportista_abanico = $_GET['NombreTransportistaAbanico'];
-
-		$_SESSION['pedido']['Folio'] = folio_pedido();
-		$_SESSION['pedido']['IdUsuario'] = $_SESSION['usuario']['id'];
-		$_SESSION['pedido']['PedidoNombre'] = $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'];
-		$_SESSION['pedido']['PedidoCorreo'] = $_SESSION['usuario']['correo'];
-		$_SESSION['pedido']['PedidoTelefono'] = $usuario['USUARIO_TELEFONO'];
-		$_SESSION['pedido']['IdDireccion'] = $detalles_direccion['ID_DIRECCION'];
-		$_SESSION['pedido']['Direccion'] = $direccion;
-		$_SESSION['pedido']['Divisa'] = $_SESSION['divisa']['iso'];
-		$_SESSION['pedido']['Conversion'] = $_SESSION['divisa']['conversion'];
-		$_SESSION['pedido']['ImporteProductosParcial'] = number_format($_SESSION['divisa']['conversion']*$importe_productos_abanico,2,'.', '');
-		$_SESSION['pedido']['ImporteProductosTotal'] = number_format($_SESSION['divisa']['conversion']*$importe_productos_total,2,'.', '');
-		$_SESSION['pedido']['ImporteEnvioParcial'] = number_format($_SESSION['divisa']['conversion']*$envio_pedido_abanico,2,'.', '');
-		$_SESSION['pedido']['ImporteEnvioTotal'] = number_format($_SESSION['divisa']['conversion']*$envio_pedido_total,2,'.', '');
-		$_SESSION['pedido']['PedidosTiendas'] = $pedido_tienda;
-		$_SESSION['pedido']['ImporteTotal'] = number_format($_SESSION['divisa']['conversion']*$importe_total,2,'.', '');
-		$_SESSION['pedido']['IdTransportista'] = $id_transportista_abanico;
-		$_SESSION['pedido']['NombreTransportista'] = $nombre_transportista_abanico;
-		$_SESSION['pedido']['FormaPago'] = 'PayPal';
-		$_SESSION['pedido']['EstadoPago'] = 'Pagado';
-		$_SESSION['pedido']['EstadoPedido'] = 'Pagado';
-		echo '
-		<table class="table table-bordered">
-	    <tbody>
-	      <tr>
-	        <td class="text-right" style="width:75%"><b>'.$this->lang->line('proceso_pago_3_importe_productos').':</b></td>
-	        <td>
-	          <h5>
-	          <small>'.$_SESSION['divisa']['signo'].'</small>
-	          '.number_format($_SESSION['divisa']['conversion']*$_SESSION['pedido']['ImporteProductosTotal'],2).'
-	          <small>'.$_SESSION['divisa']['iso'].'</small>
-	          </h5>
-	        </td>
-	      </tr>
-	      <tr>
-	        <td class="text-right">
-	          <b>Envio Total:</b><br> <span class="text-muted"></span>
-	        </td>
-	        <td>
-	          <h5>
-	          <small>'.$_SESSION['divisa']['signo'].'</small>
-	          '.number_format($_SESSION['divisa']['conversion']*$_SESSION['pedido']['ImporteEnvioTotal'],2).'
-	          <small>'.$_SESSION['divisa']['iso'].'</small>
-	          </h5>
-	        </td>
-	      </tr>
-	      <tr>
-	        <td class="text-right" style="width:75%"><b>'.$this->lang->line('proceso_pago_3_total').':</b></td>
-	        <td>
-	          <h5>
-						<small>'.$_SESSION['divisa']['signo'].'</small>
-					 '.number_format($_SESSION['divisa']['conversion']*$_SESSION['pedido']['ImporteTotal'],2).'
-					 <small>'.$_SESSION['divisa']['iso'].'</small>
-	          </h5>
-	        </td>
-	      </tr>
-	    </tbody>
-	  </table>
-		';
+		$this->data['usuario'] = $this->UsuariosModel->detalles($_SESSION['usuario']['id']);
+		$this->data['detalles_direccion'] = $this->DireccionesModel->detalles($_GET['IdDireccion']);
+		$this->data['direccion'] = $this->DireccionesModel->direccion_formateada($_GET['IdDireccion']);
+		$this->data['importe_productos_abanico'] = $_GET['ImporteProductosParcial'];
+		$this->data['importe_productos_total'] = $_GET['ImporteProductosTotal'];
+		$this->data['envio_pedido_abanico'] = $_GET['ImporteEnvioParcial'];
+		$this->data['envio_pedido_total'] = $_GET['ImporteEnvioTotal'];
+		$this->data['pedido_tienda'] = $_GET['PedidoTienda'];
+		$this->data['importe_total'] = $_GET['ImporteTotal'];
+		$this->data['id_transportista_abanico'] = $_GET['IdTransportistaAbanico'];
+		$this->data['nombre_transportista_abanico'] = $_GET['NombreTransportistaAbanico'];
+		$this->load->view($this->data['dispositivo'].'/tienda/pedido_armado',$this->data);
 
 	}
 }

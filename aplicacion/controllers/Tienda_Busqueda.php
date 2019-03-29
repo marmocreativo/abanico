@@ -34,6 +34,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('TraduccionesModel');
 		$this->load->model('PublicacionesModel');
 		$this->load->model('PlanesModel');
+		$this->load->model('DivisasModel');
 
 		// Variables comunes
   }
