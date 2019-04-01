@@ -1,12 +1,31 @@
 <!-- Slider -->
-<div class="slideInicio">
-  <ul class="slides">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
     <?php $i = 0; foreach($slides as $slide){ ?>
-    <li>
-      <img src="contenido/img/slider/<?php echo $slide->SLIDE_IMAGEN_MOVIL; ?>">
-    </li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>" class="<?php if($i==0){ echo 'active'; } ?>"></li>
     <?php ++$i; }  ?>
-  </ul>
+    </ol>
+    <div class="carousel-inner">
+      <?php $i = 0; foreach($slides as $slide){ ?>
+      <div class="carousel-item <?php if($i==0){ echo 'active'; } ?>">
+        <div class="contenedor-texto-slide">
+          <div class="texto-slide">
+            <h1><?php echo $slide->SLIDE_TITULO; ?></h1>
+            <h2><?php echo $slide->SLIDE_SUBTITULO; ?></h2>
+          </div>
+        </div>
+        <img class="d-block w-100" src="contenido/img/slider/<?php echo $slide->SLIDE_IMAGEN_MOVIL; ?>">
+      </div>
+    <?php ++$i; }  ?>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Siguiente</span>
+    </a>
+  </div>
 </div>
 
 <div class="post-menu py-4">

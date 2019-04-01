@@ -140,7 +140,32 @@ html, body{
   float: left;
   margin:2%;
 }
-
+/*--- Slider ---*/
+.contenedor-texto-slide{
+  position: absolute;
+  top: 1%;
+  left: 20%;
+  right: 20%;
+  bottom: 1%;
+  box-sizing: border-box;
+  border: solid #ffffff 3px;
+  margin: 2% 2%;
+  padding: 2%;
+}
+.texto-slide{
+  background-color: rgba(255,255,255,0.7);
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  left: 1%;
+  right: 1%;
+  padding: 7%;
+  text-align: center;
+}
+.texto-slide h1{
+  font-size: 3em;
+  margin-bottom:0.7em;
+}
 .contenido_principal{
   min-height: 700px;
 }

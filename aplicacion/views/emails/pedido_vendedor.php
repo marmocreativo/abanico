@@ -414,6 +414,7 @@
                             </tr>
                           <?php } ?>
                           <tr>
+                            <td colspan="5">
                             <table border="0" cellpadding="2" cellspacing="0" align="right" style="width:96%; margin:2%; border-top: 1px solid lightgray;margin-top: 20px;color: #495057;">
                                   <tr>
                                     <td style="width:20%; text-align:right;"></td>
@@ -426,8 +427,14 @@
                                     <td style="width:20%; text-align:right;"></td>
                                     <td style="width:20%; text-align:right;"></td>
                                     <td style="width:20%; text-align:right;"></td>
-                                      <td style="width:20%; text-align:right;"><h5>Envio:</h5></td>
-                                      <td style="width:20%; text-align:right;"><h5>$<strong><?php echo number_format($pedido_tienda ['PEDIDO_TIENDA_IMPORTE_ENVIO'],2); ?></strong><?php echo $pedido['PEDIDO_DIVISA']; ?></h5></td>
+                                    <td style="width:20%; text-align:right;"><h5>Envio:</h5></td>
+                                    <td style="width:20%; text-align:right;"><h5>$<strong><?php echo number_format($pedido_tienda ['PEDIDO_TIENDA_IMPORTE_ENVIO'],2); ?></strong><?php echo $pedido['PEDIDO_DIVISA']; ?></h5></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td colspan="5" style="text-align:right;">
+                                      <p><?php echo $pedido['TRANSPORTISTA_NOMBRE']; ?></p>
+                                    </td>
                                   </tr>
                               </table>
                             </td>

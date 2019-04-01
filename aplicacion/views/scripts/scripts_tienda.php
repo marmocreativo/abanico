@@ -41,7 +41,7 @@ function cargar_pedido(){
   });
 }
 
-<?php if(uri_string()=='proceso_pago_3'){ ?>
+<?php if(uri_string()=='proceso_pago_3'|| uri_string()=='compra_rapida'){ ?>
 // Cargo el pedido default
 jQuery( document ).ready(function(){
   // Cargo los datos del Mejor pedido Abanico
