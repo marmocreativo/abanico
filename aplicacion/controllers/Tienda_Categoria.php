@@ -113,11 +113,13 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	 $parametros_and['PRODUCTO_ARTESANAL'] = 'si';
  }
 
+ $this->data->['parametros_or'] = $parametros_or;
+ $this->data->['parametros_and'] = $parametros_and;
+
 		if(isset($_GET['slug'])&&!empty($_GET['slug'])){
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 			$this->data['categoria'] = $this->CategoriasModel->detalles_slug($_GET['slug']);
-			$this->data['categorias_hijas'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$this->data['categoria']['ID_CATEGORIA']],'productos','','');
 			$this->data['origen_formulario'] = 'categoria';
 			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$this->data['categoria']['ID_CATEGORIA'],$orden,'');
 			$this->data['primary'] = $this->data['categoria']['CATEGORIA_COLOR'];
