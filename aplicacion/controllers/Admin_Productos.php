@@ -63,6 +63,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function busqueda()
 	{
+		// Tipo de Producto
+		if(!isset($_GET['tipo_producto'])||empty($_GET['tipo_producto'])){ $this->data['tipo_producto']='normal'; }else{ $this->data['tipo_producto']=$_GET['tipo_producto']; }
 		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
 			$parametros = array(
 				'PRODUCTO_NOMBRE'=>$_GET['Busqueda'],

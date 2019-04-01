@@ -18,17 +18,23 @@
             <input type="hidden" name="AltoMovilSlider" value="<?php echo $slider['SLIDER_ALTO_MOVIL'] ?>">
             <div class="row">
               <div class="col-9">
-                <img src="<?php echo base_url('contenido/img/slider/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail">
-                <hr>
-                <div class="form-group">
-                  <label for="ImagenSlide"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
-                  <input type="file" class="form-control" id="ImagenSlide" name="ImagenSlide">
-                </div>
-                <img src="<?php echo base_url('contenido/img/slider/default_movil.jpg') ?>" id="PrevisualizarImagenMovil" alt="" class="img-fluid img-thumbnail">
-                <hr>
-                <div class="form-group">
-                  <label for="ImagenSlideMovil"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
-                  <input type="file" class="form-control" id="ImagenSlideMovil" name="ImagenSlideMovil">
+                <div class="row">
+                  <div class="col-8">
+                    <img src="<?php echo base_url('contenido/img/slider/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail">
+                    <hr>
+                    <div class="form-group">
+                      <label for="ImagenSlide"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
+                      <input type="file" class="form-control" id="ImagenSlide" name="ImagenSlide">
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <img src="<?php echo base_url('contenido/img/slider/default_movil.jpg') ?>" id="PrevisualizarImagenMovil" alt="" class="img-fluid img-thumbnail">
+                    <hr>
+                    <div class="form-group">
+                      <label for="ImagenSlideMovil"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
+                      <input type="file" class="form-control" id="ImagenSlideMovil" name="ImagenSlideMovil">
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="TituloSlide">Titulo </label>

@@ -45,9 +45,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function index()
 	{
-		$this->data['publicacion'] = $this->PublicacionesModel->detalles_url(['ID_SLIDER'=>$this->data['slider']['ID_SLIDER']],'','');
+		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+		$this->data['publicacion'] = $this->PublicacionesModel->detalles_url($this->uri->segment(2));
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/pagina_inicio',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda/publicacion',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 	}
+
 }

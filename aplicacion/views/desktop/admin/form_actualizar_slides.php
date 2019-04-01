@@ -21,18 +21,25 @@
             <input type="hidden" name="ImagenSlideMovilAnterior" value="<?php echo $slide['SLIDE_IMAGEN_MOVIL'] ?>">
             <div class="row">
               <div class="col-9">
-                <img src="<?php echo base_url('contenido/img/slider/'.$slide['SLIDE_IMAGEN']) ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail">
-                <hr>
-                <div class="form-group">
-                  <label for="ImagenSlide"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
-                  <input type="file" class="form-control" id="ImagenSlide" name="ImagenSlide">
+                <div class="row">
+                  <div class="col-8">
+                    <img src="<?php echo base_url('contenido/img/slider/'.$slide['SLIDE_IMAGEN']) ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail">
+                    <hr>
+                    <div class="form-group">
+                      <label for="ImagenSlide">Imagen vista de escritorio</label>
+                      <input type="file" class="form-control" id="ImagenSlide" name="ImagenSlide">
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <img src="<?php echo base_url('contenido/img/slider/'.$slide['SLIDE_IMAGEN_MOVIL']) ?>" id="PrevisualizarImagenMovil" alt="" class="img-fluid img-thumbnail">
+                    <hr>
+                    <div class="form-group">
+                      <label for="ImagenSlideMovil">Imagen vista de celular</label>
+                      <input type="file" class="form-control" id="ImagenSlideMovil" name="ImagenSlideMovil">
+                    </div>
+                  </div>
                 </div>
-                <img src="<?php echo base_url('contenido/img/slider/'.$slide['SLIDE_IMAGEN_MOVIL']) ?>" id="PrevisualizarImagenMovil" alt="" class="img-fluid img-thumbnail">
-                <hr>
-                <div class="form-group">
-                  <label for="ImagenSlideMovil"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
-                  <input type="file" class="form-control" id="ImagenSlideMovil" name="ImagenSlideMovil">
-                </div>
+
                 <div class="form-group">
                   <label for="TituloSlide">Titulo </label>
                   <input type="text" name="TituloSlide" class="form-control" value="<?php echo $slide['SLIDE_TITULO'] ?>">

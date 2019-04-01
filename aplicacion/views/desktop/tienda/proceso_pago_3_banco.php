@@ -364,8 +364,8 @@
                                   <p>CLABE: <strong>0000000000000</strong></p>
                                 </td>
                                 <td colspan="2" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
-                                  <h4 style="margin:0;color:#495057;border-bottom:solid 1px lightgrey"><strong>Referencia:</strong> <?php echo $_SESSION['pedido']['Folio']; ?></h5>
-                                  <h3 style="margin:0;color:#af3193;"><strong>Monto a pagar</strong><br />$<?php echo $_SESSION['pedido']['ImporteTotal']; ?> <?php echo $_SESSION['pedido']['Divisa']; ?></h4>
+                                  <h4 style="margin:0;color:#495057;border-bottom:solid 1px lightgrey"><strong>Referencia:</strong> <?php echo $_POST['Folio']; ?></h5>
+                                  <h3 style="margin:0;color:#af3193;"><strong>Monto a pagar</strong><br />$<?php echo number_format($_POST['ImporteTotal'],2); ?> <?php echo $_POST['Divisa']; ?></h4>
                                 </td>
                               </tr>
                               <tr>
@@ -407,12 +407,28 @@
                     <button type="button" name="button" class="btn btn-outline-success" onclick="window.print();"><i class="fa fa-print"></i> <?php echo $this->lang->line('proceso_pago_3_imprimir'); ?></button>
                   </div>
                   <div class="col">
-                    <?php
-                    $_SESSION['pedido']['FormaPago'] = 'Transferencia Bancaria';
-                    $_SESSION['pedido']['EstadoPago'] = 'Pendiente';
-                    $_SESSION['pedido']['EstadoPedido'] = 'Espera Pago';
-                    ?>
                     <form class="d-flex justify-content-end" action="<?php echo base_url('proceso_pago_4'); ?>" method="post">
+                      <input type="hidden" name="Folio" value="<?php echo $_POST['Folio']; ?>">
+                      <input type="hidden" name="IdUsuario" value="<?php echo $_POST['IdUsuario']; ?>">
+                      <input type="hidden" name="PedidoNombre" value="<?php echo $_POST['PedidoNombre']; ?>">
+                      <input type="hidden" name="PedidoCorreo" value="<?php echo $_POST['PedidoCorreo']; ?>">
+                      <input type="hidden" name="PedidoTelefono" value="<?php echo $_POST['PedidoTelefono']; ?>">
+                      <input type="hidden" name="IdDireccion" value="<?php echo $_POST['IdDireccion']; ?>">
+                      <input type="hidden" name="Direccion" value="<?php echo $_POST['Direccion']; ?>">
+                      <input type="hidden" name="Divisa" value="<?php echo $_POST['Divisa']; ?>">
+                      <input type="hidden" name="Conversion" value="<?php echo $_POST['Conversion']; ?>">
+                      <input type="hidden" name="ImporteProductosParcial" value="<?php echo $_POST['ImporteProductosParcial']; ?>">
+                      <input type="hidden" name="ImporteProductosTotal" value="<?php echo $_POST['ImporteProductosTotal']; ?>">
+                      <input type="hidden" name="ImporteEnvioParcial" value="<?php echo $_POST['ImporteEnvioParcial']; ?>">
+                      <input type="hidden" name="ImporteEnvioTotal" value="<?php echo $_POST['ImporteEnvioTotal']; ?>">
+                      <input type="hidden" name="PedidosTiendas" value="<?php echo $_POST['PedidosTiendas']; ?>">
+                      <input type="hidden" name="ImporteTotal" value="<?php echo $_POST['ImporteTotal']; ?>">
+                      <input type="hidden" name="IdTransportista" value="<?php echo $_POST['IdTransportista']; ?>">
+                      <input type="hidden" name="NombreTransportista" value="<?php echo $_POST['NombreTransportista']; ?>">
+                      <input type="hidden" name="FormaPago" value='Transferencia Bancaria'>
+                      <input type="hidden" name="EstadoPago" value='Pendiente'>
+                      <input type="hidden" name="EstadoPedido" value='Espera Pago'>
+
                       <button type="submit" class="btn btn-success"> <?php echo $this->lang->line('proceso_pago_3_terminar'); ?> <i class="fa fa-chevron-right"></i></button>
                     </form>
                   </div>

@@ -48,6 +48,7 @@
               </div>
               <div class="col border-left text-center">
                 <h6> <i class="fa fa-user"></i> <?php echo $this->lang->line('proceso_pago_1_registro_rapido'); ?></h6>
+                <?php retro_alimentacion(); ?>
                 <?php if(!empty(validation_errors())){ ?>
                   <div class="alert alert-danger">
                     <?php echo validation_errors(); ?>

@@ -45,7 +45,7 @@
     /* makes it centered */
     max-width: 960px;
     padding: 10px;
-    min-width: 320px;
+    width: 960px;
   }
   /* This should also be a block element, so that it will fill 100% of the .container */
   .content {
@@ -222,10 +222,6 @@
     border-bottom: 1px solid #f6f6f6;
     Margin: 20px 0;
   }
-  .head2{
-    background-repeat: no-repeat;
-    background-position: top center;
-  }
   /* -------------------------------------
       RESPONSIVE AND MOBILE FRIENDLY STYLES
   ------------------------------------- */
@@ -268,9 +264,6 @@
       height: auto !important;
       max-width: 100% !important;
       width: auto !important;
-    }
-    .head2{
-      background-size: contain;
     }
   }
   /* -------------------------------------
@@ -315,15 +308,19 @@
               <div class="stepwizard-row setup-panel">
                 <div class="stepwizard-step">
                   <a href="#step-1" class="btn btn-default btn-circle" disabled="disabled">1</a>
+                  <p><?php echo $this->lang->line('proceso_pago_1_identificacion'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-2" class="btn btn-default btn-circle"  disabled="disabled" >2</a>
+                  <p><?php echo $this->lang->line('proceso_pago_1_direccion'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-3" class="btn btn-primary btn-circle">3</a>
+                  <p><?php echo $this->lang->line('proceso_pago_1_pago'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-4" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                  <p><?php echo $this->lang->line('proceso_pago_1_confirmacion'); ?></p>
                 </div>
               </div>
             </div>
@@ -336,7 +333,7 @@
                   <!-- START MAIN CONTENT AREA -->
                   <tr>
                     <td class="wrapper">
-                      <table class="table" role="presentation" border="0" cellpadding="0" cellspacing="0">
+                      <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                           <td>
                             <table role="presentation" border="0" cellpadding="20" cellspacing="0">
@@ -348,7 +345,7 @@
                                 </tr>
                                 <tr>
                                     <td class="head2" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; text-align: center; border-top: 1px solid lightgray;background-image: url('<?php echo base_url('assets/global/img/pleca_mail_2.png'); ?>'); backgroun-repeat:no-repeat;">
-                                      <h2 style="margin:0;color:#495057;"><strong>Esta es tu ficha de pago</strong></h2>
+                                      <h4 style="margin:0;color:#495057;"><strong>Serás redireccionado a la pasarela de pago de PayPal</strong></h4>
                                     </td>
                                 </tr>
                               </tbody>
@@ -357,23 +354,36 @@
                             <tbody>
                               <tr>
                                 <td colspan="1" style="vertical-align:middle; font-size:16px;">
-                                  <img src="<?php echo base_url('assets/global/img/banco.png'); ?>" style="float:left; margin-right:15px;" width="80px" alt="">
+                                  <img src="<?php echo base_url('assets/global/img/paypal.png'); ?>" style="float:left; margin-right:15px;" width="100%" alt="">
+                                </td>
+                                <td colspan="3" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
+
+                                  <h4 style="margin:0;color:#495057;border-bottom:solid 1px lightgrey"><strong>Referencia:</strong>Abanico <?php echo $_POST['Folio']; ?></h5>
+                                  <h3 style="margin:0;color:#af3193;"><strong>Monto a pagar</strong><br />$<?php echo number_format($_POST['ImporteTotal'],2); ?> <?php echo $_POST['Divisa']; ?></h4>
+                                </td>
+                                <td colspan="2" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
+                                  <form class="d-flex justify-content-end" id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                      <input type="hidden" name="cmd" value="_xclick">
+                                      <input type="hidden" name="business" value="marmocreativo@gmail.com">
+                                      <input type="hidden" name="item_name" value="Abanico <?php echo $_POST['Folio']; ?>">
+                                      <input type="hidden" name="item_number" value="<?php echo $_POST['Folio']; ?>">
+                                      <input type="hidden" name="amount" value="<?php echo $_POST['ImporteTotal']; ?>">
+                                      <input type="hidden" name="currency_code" value="<?php echo $_POST['Divisa']; ?>">
+                                      <input type="hidden" name="return" value="<?php echo base_url('proceso_pago_4?pago=paypal'); ?>">
+                                      <button type="submit" class="btn btn-primary btn-lg btn-block"><?php echo $this->lang->line('proceso_pago_3_paypal'); ?> <span class="fab fa-paypal"></span></button>
+                                  </form>
                                 </td>
                               </tr>
                               <tr>
-                                <td colspan="3" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
-                                  <h4 style="margin:0;color:#495057;"><strong>Depósito o transferencia Bancaria</strong></h4 >
-                                  <p>Scotiabank</p>
-                                  <p>Tarjeta: <strong>0000 0000 0000 0000</strong></p>
-                                  <p>Cuenta: <strong>000123456789</strong></p>
-                                  <p>CLABE: <strong>0000000000000</strong></p>
-                                </td>
-                                </tr>
                                 <tr>
-                                <td colspan="2" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
-                                  <h4 style="margin:0;color:#495057;border-bottom:solid 1px lightgrey"><strong>Referencia:</strong> <?php echo $_POST['Folio']; ?></h5>
-                                  <h3 style="margin:0;color:#af3193;"><strong>Monto a pagar</strong><br />$<?php echo number_format($_POST['ImporteTotal'],2); ?> <?php echo $_POST['Divisa']; ?></h4>
-                                </td>
+                                  <td style="width:20%; text-align:right;"></td>
+                                  <td style="width:20%; text-align:right;"></td>
+                                  <td style="width:20%; text-align:right;"></td>
+                                  <td style="width:20%; text-align:right;"></td>
+                                  <td style="width:20%; text-align:right;"></td>
+                                  <td style="width:20%; text-align:right;"></td>
+                                </tr>
+                              </td>
                               </tr>
                             </tbody>
                           </table>
@@ -397,36 +407,34 @@
                 <!-- END MAIN CONTENT AREA -->
                 </table>
               </div>
-              <div class="col-12">
-                <div class="row">
-                  <div class="col">
-                    <form class="d-flex justify-content-end" action="<?php echo base_url('proceso_pago_4'); ?>" method="post">
-                      <input type="hidden" name="Folio" value="<?php echo $_POST['Folio']; ?>">
-                      <input type="hidden" name="IdUsuario" value="<?php echo $_POST['IdUsuario']; ?>">
-                      <input type="hidden" name="PedidoNombre" value="<?php echo $_POST['PedidoNombre']; ?>">
-                      <input type="hidden" name="PedidoCorreo" value="<?php echo $_POST['PedidoCorreo']; ?>">
-                      <input type="hidden" name="PedidoTelefono" value="<?php echo $_POST['PedidoTelefono']; ?>">
-                      <input type="hidden" name="IdDireccion" value="<?php echo $_POST['IdDireccion']; ?>">
-                      <input type="hidden" name="Direccion" value="<?php echo $_POST['Direccion']; ?>">
-                      <input type="hidden" name="Divisa" value="<?php echo $_POST['Divisa']; ?>">
-                      <input type="hidden" name="Conversion" value="<?php echo $_POST['Conversion']; ?>">
-                      <input type="hidden" name="ImporteProductosParcial" value="<?php echo $_POST['ImporteProductosParcial']; ?>">
-                      <input type="hidden" name="ImporteProductosTotal" value="<?php echo $_POST['ImporteProductosTotal']; ?>">
-                      <input type="hidden" name="ImporteEnvioParcial" value="<?php echo $_POST['ImporteEnvioParcial']; ?>">
-                      <input type="hidden" name="ImporteEnvioTotal" value="<?php echo $_POST['ImporteEnvioTotal']; ?>">
-                      <input type="hidden" name="PedidosTiendas" value="<?php echo $_POST['PedidosTiendas']; ?>">
-                      <input type="hidden" name="ImporteTotal" value="<?php echo $_POST['ImporteTotal']; ?>">
-                      <input type="hidden" name="IdTransportista" value="<?php echo $_POST['IdTransportista']; ?>">
-                      <input type="hidden" name="NombreTransportista" value="<?php echo $_POST['NombreTransportista']; ?>">
-                      <input type="hidden" name="FormaPago" value='Transferencia Bancaria'>
-                      <input type="hidden" name="EstadoPago" value='Pendiente'>
-                      <input type="hidden" name="EstadoPedido" value='Espera Pago'>
+              <?php
+              if(isset($_SESSION['pedido'])&&!empty($_SESSION['pedido'])){
+                  unset($_SESSION['pedido']);
+              }
+              $_SESSION['pedido'] = array();
+                //CREO LA SESIÖN CON LOS DATOS DEL PEDIDO
 
-                      <button type="submit" class="btn btn-success"> <?php echo $this->lang->line('proceso_pago_3_terminar'); ?> <i class="fa fa-chevron-right"></i></button>
-                    </form>
-                  </div>
-                </div>
-              </div>
+                $_SESSION['pedido']['Folio'] = $_POST['Folio'];
+                $_SESSION['pedido']['IdUsuario'] = $_POST['IdUsuario'];
+                $_SESSION['pedido']['PedidoNombre'] = $_POST['PedidoNombre'];
+                $_SESSION['pedido']['PedidoCorreo'] = $_POST['PedidoCorreo'];
+                $_SESSION['pedido']['PedidoTelefono'] = $_POST['PedidoTelefono'];
+                $_SESSION['pedido']['IdDireccion'] = $_POST['IdDireccion'];
+                $_SESSION['pedido']['Direccion'] = $_POST['Direccion'];
+                $_SESSION['pedido']['Divisa'] = $_POST['Divisa'];
+                $_SESSION['pedido']['Conversion'] = $_POST['Conversion'];
+                $_SESSION['pedido']['ImporteProductosParcial'] = $_POST['ImporteProductosParcial'];
+                $_SESSION['pedido']['ImporteProductosTotal'] = $_POST['ImporteProductosTotal'];
+                $_SESSION['pedido']['ImporteEnvioParcial'] = $_POST['ImporteEnvioParcial'];
+                $_SESSION['pedido']['ImporteEnvioTotal'] = $_POST['ImporteEnvioTotal'];
+                $_SESSION['pedido']['PedidosTiendas'] = $_POST['PedidosTiendas'];
+                $_SESSION['pedido']['ImporteTotal'] = $_POST['ImporteTotal'];
+                $_SESSION['pedido']['IdTransportista'] = $_POST['IdTransportista'];
+                $_SESSION['pedido']['NombreTransportista'] = $_POST['NombreTransportista'];
+                $_SESSION['pedido']['FormaPago'] = 'PayPal';
+                $_SESSION['pedido']['EstadoPago'] = 'Pagado';
+                $_SESSION['pedido']['EstadoPedido'] = 'Pagado';
+              ?>
             </div>
           </div>
         </div>

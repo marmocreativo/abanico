@@ -8,19 +8,15 @@
               <div class="stepwizard-row setup-panel">
                 <div class="stepwizard-step">
                   <a href="#step-1" class="btn btn-default btn-circle" disabled="disabled">1</a>
-                  <p><?php echo $this->lang->line('proceso_pago_1_identificacion'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-2" class="btn btn-default btn-circle"  disabled="disabled" >2</a>
-                  <p><?php echo $this->lang->line('proceso_pago_1_direccion'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-3" class="btn btn-default btn-circle"  disabled="disabled">3</a>
-                  <p><?php echo $this->lang->line('proceso_pago_1_pago'); ?></p>
                 </div>
                 <div class="stepwizard-step">
                   <a href="#step-4" class="btn btn-primary btn-circle" disabled="disabled">4</a>
-                  <p><?php echo $this->lang->line('proceso_pago_1_confirmacion'); ?></p>
                 </div>
               </div>
             </div>

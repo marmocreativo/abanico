@@ -198,6 +198,36 @@ html, body{
 | -------------------------------------------------------------------------
 */
 
+/*----- Slider Principal -----*/
+.contenedor-texto-slide{
+  position: absolute;
+  top: 3%;
+  left: 5%;
+  right: 5%;
+  bottom: 3%;
+  box-sizing: border-box;
+  border: solid #ffffff 3px;
+  margin: 2% 2%;
+  padding: 2%;
+}
+.texto-slide{
+  background-color: rgba(255,255,255,0.7);
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  left: 1%;
+  right: 1%;
+  padding: 7%;
+  text-align: center;
+}
+.texto-slide h1{
+  font-size: 1.8em;
+  margin-bottom:0.7em;
+}
+.texto-slide h2{
+  font-size: 1.3em;
+  margin-bottom:0.7em;
+}
 .slideInicio{
   position: relative;
   display: block;

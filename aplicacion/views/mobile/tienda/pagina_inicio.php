@@ -1,12 +1,31 @@
 <!-- Slider -->
-<div class="slideInicio">
-  <ul class="slides">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
     <?php $i = 0; foreach($slides as $slide){ ?>
-    <li>
-      <img src="contenido/img/slider/<?php echo $slide->SLIDE_IMAGEN_MOVIL; ?>">
-    </li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i; ?>" class="<?php if($i==0){ echo 'active'; } ?>"></li>
     <?php ++$i; }  ?>
-  </ul>
+    </ol>
+    <div class="carousel-inner">
+      <?php $i = 0; foreach($slides as $slide){ ?>
+      <div class="carousel-item <?php if($i==0){ echo 'active'; } ?>">
+        <div class="contenedor-texto-slide">
+          <div class="texto-slide">
+            <h1><?php echo $slide->SLIDE_TITULO; ?></h1>
+            <h2><?php echo $slide->SLIDE_SUBTITULO; ?></h2>
+          </div>
+        </div>
+        <img class="d-block w-100" src="contenido/img/slider/<?php echo $slide->SLIDE_IMAGEN_MOVIL; ?>">
+      </div>
+    <?php ++$i; }  ?>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Siguiente</span>
+    </a>
+  </div>
 </div>
 
 <div class="post-menu py-4">
@@ -67,6 +86,13 @@
              $titulo = $producto->PRODUCTO_NOMBRE;
            }
          }
+         // Variables de Paquete
+         $paquete = $this->PlanesModel->plan_activo_usuario($producto->ID_USUARIO,'productos');
+         if($paquete==null){
+           $visible = 'd-none';
+         }else{
+           $visible = '';
+         }
          ?>
        <li>
          <div class="card">
@@ -87,6 +113,20 @@
                <?php
                $promedio = $this->CalificacionesModel->promedio_calificaciones_producto($producto->ID_PRODUCTO);
                $cantidad = $this->CalificacionesModel->conteo_calificaciones_producto($producto->ID_PRODUCTO);
+               // variables de precio
+               if($producto->PRODUCTO_DIVISA_DEFAULT!=$_SESSION['divisa']['iso']){
+                 $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto->PRODUCTO_DIVISA_DEFAULT);
+                 if($producto->PRODUCTO_DIVISA_DEFAULT!='MXN'){
+                   $precio_lista = $producto->PRODUCTO_PRECIO_LISTA/$cambio_divisa_default['DIVISA_CONVERSION'];
+                   $precio_venta = $producto->PRODUCTO_PRECIO/$cambio_divisa_default['DIVISA_CONVERSION'];
+                 }else{
+                   $precio_lista = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA;
+                   $precio_venta = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO;
+                 }
+               }else{
+                 $precio_lista = $producto->PRODUCTO_PRECIO_LISTA;
+                 $precio_venta = $producto->PRODUCTO_PRECIO;
+               }
                ?>
                <ul class="rating">
                  <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
@@ -100,9 +140,9 @@
                </ul>
                <h4 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h4>
                <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
-                 <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
+                 <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
                <?php } ?>
-               <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
+               <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_venta,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
              </div>
            </a>
            <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>

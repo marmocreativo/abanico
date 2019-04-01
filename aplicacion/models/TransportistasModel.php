@@ -51,6 +51,8 @@ class TransportistasModel extends CI_Model {
     * $id es el identificador de la entrada
  */
   function borrar($id){
+    $this->db->delete('transportistas_rangos',array('ID_TRANSPORTISTA'=>$id));
+    $this->db->delete('transportistas_disponibilidad',array('ID_TRANSPORTISTA'=>$id));
     return $this->db->delete('transportistas',array('ID_TRANSPORTISTA'=>$id));
   }
   /*

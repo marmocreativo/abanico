@@ -23,6 +23,12 @@
         </div>
       </div>
       <div class="col">
+        <?php if(empty($servicio)){ ?>
+          <div class="border border-default p-3 text-center">
+            <h3>No hemos encontrado servicios.</h3>
+            <a href="<?php echo base_url('usuario/registrar'); ?>">Se el primero en ofrecer un servicio en esta categoría</a>
+          </div>
+        <?php } ?>
         <div class="card-deck">
           <?php foreach($servicios as $servicio){ ?>
             <?php

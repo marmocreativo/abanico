@@ -40,7 +40,7 @@ class PublicacionesModel extends CI_Model {
   /*
     * Obtengo todos los detalles de una sola entrada
  */
-  function detalles_urk($url){
+  function detalles_url($url){
     return $this->db->get_where('publicaciones',array('PUBLICACION_URL'=>$url))->row_array();
   }
   /*
