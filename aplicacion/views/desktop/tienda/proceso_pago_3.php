@@ -1,7 +1,7 @@
 <div class="contenido_principal pt-3">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-9">
+      <div class="col-10">
         <div class="card mb-3 fila-gris">
           <div class="card-body p-0">
             <div class="container container-stepwizard">
@@ -423,7 +423,9 @@
         }
         ?>
 
-        <div class="col-3 p-3 bg-primary-6" id="PedidoAjax"
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-7 mb-3 p-3 bg-primary-6" id="PedidoAjax"
           data-id-direccion='<?php echo $detalles_direccion['ID_DIRECCION']; ?>'
           data-importe-pedido-parcial='<?php echo $importe_pedido_abanico; ?>'
           data-importe-pedido-total='<?php echo $importe_pedido_total; ?>'
