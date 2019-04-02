@@ -71,15 +71,19 @@
         </form>
       </div>
       <div class="col">
+        <div class="card-deck">
+          <?php $hay_productos = false; ?>
           <?php if(empty($productos)){ ?>
             <?php
               // Busco categorías hijas
         			$categorias_segundo_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria['ID_CATEGORIA']],'productos','','');
-              foreach $categorias_segundo_nivel as $categoria_segunda{
-                $productos_segundo = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$this->data['categoria']['ID_CATEGORIA'],$orden,'');
+              foreach ($categorias_segundo_nivel as $categoria_segunda){
+                $productos_segundo = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$categoria_segunda->ID_CATEGORIA,$orden,'');
+                if(!empty($productos_segundo)) { $hay_productos = true; }
                 ?>
-                <div class="card-deck">
-                  <?php foreach($productos as $producto){ ?>
+
+
+                  <?php foreach($productos_segundo as $producto){ ?>
                     <?php
                     // Variables de Traducción
                     if($_SESSION['lenguaje']['iso']==$producto->LENGUAJE){
@@ -167,14 +171,18 @@
                       </div>
                   </div>
                 <?php } ?>
-                </div>
+
                 <?php
-                $categorias_tercer_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria_segunda['ID_CATEGORIA']],'productos','','');
-                foreach $categorias_segundo_nivel as $categoria_segunda{
-                  $productos_segundo = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$this->data['categoria']['ID_CATEGORIA'],$orden,'');
+
+                $categorias_tercer_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria_segunda->ID_CATEGORIA],'productos','','');
+
+                foreach ($categorias_tercer_nivel as $categoria_tercera){
+                  $productos_tercer = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$categoria_tercera->ID_CATEGORIA,$orden,'');
+                  if(!empty($productos_tercer)) { $hay_productos = true; }
                   ?>
-                  <div class="card-deck">
-                    <?php foreach($productos as $producto){ ?>
+
+
+                    <?php foreach($productos_tercer as $producto){ ?>
                       <?php
                       // Variables de Traducción
                       if($_SESSION['lenguaje']['iso']==$producto->LENGUAJE){
@@ -262,17 +270,12 @@
                         </div>
                     </div>
                   <?php } ?>
-                  </div>
+
                   <?php
-                }
-              }
+                } // Categorias de Tercer nivel
+              } // Categorias de Segundo Nivel
             ?>
-            <div class="border border-default p-3 text-center">
-              <h3>No hemos encontrado productos.</h3>
-              <a href="<?php echo base_url('usuario/registrar'); ?>">Se el primero en ofrecer un producto en esta categoría</a>
-            </div>
-          <?php }else{ ?>
-            <div class="card-deck">
+          <?php }else{  $hay_productos = true; ?>
               <?php foreach($productos as $producto){ ?>
                 <?php
                 // Variables de Traducción
@@ -361,8 +364,14 @@
                   </div>
               </div>
             <?php } ?>
-            </div>
           <?php } ?>
+        </div>
+        <?php if(!$hay_productos){ ?>
+          <div class="border border-default p-3 text-center">
+            <h3>No hemos encontrado productos.</h3>
+            <a href="<?php echo base_url('usuario/registrar'); ?>">Se el primero en ofrecer un producto en esta categoría</a>
+          </div>
+        <?php } ?>
       </div>
     </div>
   </div>

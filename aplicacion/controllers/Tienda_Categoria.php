@@ -113,8 +113,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	 $parametros_and['PRODUCTO_ARTESANAL'] = 'si';
  }
 
- $this->data->['parametros_or'] = $parametros_or;
- $this->data->['parametros_and'] = $parametros_and;
+ $this->data['parametros_or'] = $parametros_or;
+ $this->data['parametros_and'] = $parametros_and;
+  $this->data['orden'] = $orden;
 
 		if(isset($_GET['slug'])&&!empty($_GET['slug'])){
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');

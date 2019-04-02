@@ -142,18 +142,15 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		if($this->form_validation->run())
     {
-			if(empty($this->input->post('UrlCategoria'))){
+
 				// Verifico URL
 				$url = url_title($this->input->post('NombreCategoria'),'-',TRUE);
-				if($this->ProductosModel->verificar_uri($url)){
+				if($this->CategoriasModel->verificar_uri($url)){
 					$url = url_title($this->input->post('NombreCategoria'),'-',TRUE).'-'.uniq_slug(3);
-					if($this->ProductosModel->verificar_uri($url)){
+					if($this->CategoriasModel->verificar_uri($url)){
 						$url = url_title($this->input->post('NombreCategoria'),'-',TRUE).'-'.uniq_slug(3);
 					}
 				}
-			}else{
-				$url = $this->input->post('UrlCategoria');
-			}
 			/*
 			PROCESO DE LA IMAGEN
 			*/
@@ -174,7 +171,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$parametros = array(
 				'CATEGORIA_NOMBRE' => $this->input->post('NombreCategoria'),
-				'CATEGORIA_URL' => $this->input->post('UrlCategoria'),
+				'CATEGORIA_URL' => $url,
 				'CATEGORIA_DESCRIPCION' => $this->input->post('DescripcionCategoria'),
 				'CATEGORIA_COLOR' => $this->input->post('ColorCategoria'),
 				'CATEGORIA_ICONO' => $this->input->post('IconoCategoria'),
