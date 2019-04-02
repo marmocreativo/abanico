@@ -1,9 +1,10 @@
 <div class="contenido_principal pt-3">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-sm-10">
-        <div class="card mb-3">
-          <div class="card-body">
+      <div class="col-9">
+        <div class="card mb-3 fila-gris">
+          <div class="card-body p-0">
+            <div class="container container-stepwizard">
             <div class="stepwizard">
               <div class="stepwizard-row setup-panel">
                 <div class="stepwizard-step">
@@ -24,9 +25,10 @@
                 </div>
               </div>
             </div>
-            <hr>
+            </div>
             <div class="row">
               <div class="col">
+                <div class="container mt-3">
                 <div class="row">
                   <div class="col-xs-6 col-sm-6 col-md-6">
                       <address>
@@ -47,6 +49,7 @@
                       </p>
                   </div>
                 </div>
+              </div>
                   <?php
                   // Variables globales
                     $envio_posible = true;
@@ -79,8 +82,9 @@
                       // creo el key del array de pedidos tienda;
                     ?>
                     <?php if($paquete_tienda['PLAN_ENVIO']=='abanico'){ ?>
+                    <div class="container-fluid tienda-proceso-pago py-3 mt-3">
                     <h5> <i class="fa fa-store"></i> <?php echo $datos_tienda['TIENDA_NOMBRE'];?></h5>
-                    <table class="table table-bordered table-striped">
+                    <table class="table">
                       <thead>
                         <tr>
                           <th style="width:50%"><?php echo $this->lang->line('carrito_producto'); ?></th>
@@ -115,8 +119,8 @@
                                   }
                                 ?>
                             <tr>
-                              <td>
-                                <div class="d-flex">
+                              <td class="align-middle">
+                                <div class="d-flex align-middle">
                                   <div class="w-25">
                                     <img src="<?php echo $producto['imagen_producto'];  ?>" class="img-thumbnail" width="70" alt="">
                                   </div>
@@ -139,13 +143,13 @@
                                   </div>
                                 </div>
                               </td>
-                              <td class="text-center"><?php echo $producto['cantidad_producto'];  ?></td>
-                              <td class="text-right">
+                              <td class="text-center align-middle"><?php echo $producto['cantidad_producto'];  ?></td>
+                              <td class="text-right align-middle">
                                 <small><?php echo $_SESSION['divisa']['signo']; ?></small>
                                 <?php echo number_format($precio_venta,2);  ?>
                                 <small><?php echo $_SESSION['divisa']['iso']; ?></small>
                               </td>
-                              <td class="text-right suma-producto" id="suma-producto-<?php echo $producto['id_producto']; ?>" data-id-tienda='<?php echo $id_tienda; ?>'
+                              <td class="text-right suma-producto align-middle" id="suma-producto-<?php echo $producto['id_producto']; ?>" data-id-tienda='<?php echo $id_tienda; ?>'
                               <?php if($producto['contra_entrega']=='si' && $detalles_direccion['DIRECCION_PAIS']=='Estados Unidos'){ ?>
                                 data-importe-producto='0'
                               <?php }else{ ?>
@@ -186,6 +190,7 @@
                     data-importe-transportista ='0'
                     >
                   </span>
+                  </div>
                     <?php
                     $pedido_tienda[$id_tienda]['id_tienda'] = $id_tienda;
                     $pedido_tienda[$id_tienda]['id_transportista'] = "0";
@@ -194,7 +199,7 @@
                     <?php $conteo_tiendas_abanico ++; } // Condicion Tiendas Abanico ?>
                   <?php $suma_tienda = 0; } // Termina el bucle de tiendas ?>
                   <?php if($conteo_tiendas_abanico>0){ ?>
-                  <div class="border p-3">
+                  <div class="bg-light cont-envio-pago">
                     <?php
                     // Cálculos Finales
                       $peso_pedido_abanico += $suma_peso;
@@ -213,7 +218,7 @@
                       <p> All this products are installed at home and shipping is not charged</p>
                     <?php }else{ ?>
                       <?php if(!empty($envio_abanico)){ ?>
-                        <p>Enviar con:</p>
+                        <h5 class="p-3 text-muted"><i class="fas fa-truck"></i> Enviar con:</h5>
                         <?php foreach ($envio_abanico as $rangos) { ?>
                           <div class="form-check">
                             <label>
@@ -258,8 +263,9 @@
                       // creo el key del array de pedidos tienda;
                     ?>
                     <?php if($paquete_tienda['PLAN_ENVIO']=='tienda'){ ?>
+                    <div class="container-fluid tienda-proceso-pago py-3 mt-3">
                     <h5> <i class="fa fa-store"></i> <?php echo $datos_tienda['TIENDA_NOMBRE'];?></h5>
-                    <table class="table table-bordered tienda table-striped"  data-id-tienda='<?php echo $datos_tienda['ID_TIENDA'];?>' data-nombre-tienda='<?php echo $datos_tienda['TIENDA_NOMBRE'];?>'>
+                    <table class="table tienda"  data-id-tienda='<?php echo $datos_tienda['ID_TIENDA'];?>' data-nombre-tienda='<?php echo $datos_tienda['TIENDA_NOMBRE'];?>'>
                       <thead>
                         <tr>
                           <th style="width:50%"><?php echo $this->lang->line('carrito_producto'); ?></th>
@@ -339,7 +345,7 @@
                       <tfoot>
                         <tr>
                           <td colspan="4">
-                            <div class="border p-3">
+                            <div class="bg-light cont-envio-pago">
                               <?php
                               // Cálculos por tienda
                                 $envio_tiendas = $this->TransportistasRangosModel->lista_mejor_precio($suma_peso,$suma_productos,$detalles_direccion['DIRECCION_PAIS'],$detalles_direccion['DIRECCION_ESTADO'],2);
@@ -356,7 +362,7 @@
                               ?>
                               <?php if(!empty($envio_tiendas)){ ?>
 
-                              <p>Mensajerías Tienda</p>
+                              <h5 class="p-3 mb-3 text-muted"><i class="fas fa-truck"></i> Mensajerías para <?php echo $datos_tienda['TIENDA_NOMBRE'];?></h5>
                               <?php foreach ($envio_tiendas as $rangos) { ?>
                                 <div class="form-check">
                                   <label>
@@ -395,38 +401,40 @@
                     ?>
                   <?php } // Termina el bucle de tiendas ?>
                   </div>
-                  <?php
-                  // Cálculos Finales
-                  $peso_pedido_total = $peso_pedido_abanico+$peso_pedido_tiendas;
-                  $importe_pedido_total = $importe_pedido_abanico+$importe_pedido_tiendas;
-                  $envio_pedido_total = $envio_pedido_abanico+$envio_pedido_tiendas;
-                  $importe_total = $importe_pedido_total+$envio_pedido_total;
-                  if(!empty($mejor_envio_abanico)){
-                    $id_transportista_abanico = $mejor_envio_abanico['ID_TRANSPORTISTA'];
-                    $nombre_transportista_abanico = $mejor_envio_abanico['TRANSPORTISTA_NOMBRE'];
-                  }else{
-                    $id_transportista_abanico = 0;
-                    $nombre_transportista_abanico = '';
-                  }
-                  ?>
-
-                  <div class="p-3 border border-danger" id="PedidoAjax"
-                    data-id-direccion='<?php echo $detalles_direccion['ID_DIRECCION']; ?>'
-                    data-importe-pedido-parcial='<?php echo $importe_pedido_abanico; ?>'
-                    data-importe-pedido-total='<?php echo $importe_pedido_total; ?>'
-                    data-importe-envio-parcial='<?php echo $envio_pedido_abanico; ?>'
-                    data-importe-envio-tiendas='<?php echo $envio_pedido_tiendas; ?>'
-                    data-importe-envio-total='<?php echo $envio_pedido_total; ?>'
-                    data-pedido-tienda = ''
-                    data-importe-total = '<?php echo $importe_total; ?>'
-                    data-id-transportista = '<?php echo $id_transportista_abanico; ?>'
-                    data-nombre-transportista = '<?php echo $nombre_transportista_abanico; ?>'
-                  >
-                  </div>
+                </div>
                 </div>
               </div>
             </div><!-- Card Body -->
           </div> <!-- Card -->
+        </div>
+
+        <?php
+        // Cálculos Finales
+        $peso_pedido_total = $peso_pedido_abanico+$peso_pedido_tiendas;
+        $importe_pedido_total = $importe_pedido_abanico+$importe_pedido_tiendas;
+        $envio_pedido_total = $envio_pedido_abanico+$envio_pedido_tiendas;
+        $importe_total = $importe_pedido_total+$envio_pedido_total;
+        if(!empty($mejor_envio_abanico)){
+          $id_transportista_abanico = $mejor_envio_abanico['ID_TRANSPORTISTA'];
+          $nombre_transportista_abanico = $mejor_envio_abanico['TRANSPORTISTA_NOMBRE'];
+        }else{
+          $id_transportista_abanico = 0;
+          $nombre_transportista_abanico = '';
+        }
+        ?>
+
+        <div class="col-3 p-3 bg-primary-6" id="PedidoAjax"
+          data-id-direccion='<?php echo $detalles_direccion['ID_DIRECCION']; ?>'
+          data-importe-pedido-parcial='<?php echo $importe_pedido_abanico; ?>'
+          data-importe-pedido-total='<?php echo $importe_pedido_total; ?>'
+          data-importe-envio-parcial='<?php echo $envio_pedido_abanico; ?>'
+          data-importe-envio-tiendas='<?php echo $envio_pedido_tiendas; ?>'
+          data-importe-envio-total='<?php echo $envio_pedido_total; ?>'
+          data-pedido-tienda = ''
+          data-importe-total = '<?php echo $importe_total; ?>'
+          data-id-transportista = '<?php echo $id_transportista_abanico; ?>'
+          data-nombre-transportista = '<?php echo $nombre_transportista_abanico; ?>'
+        >
         </div>
       </div>
     </div>

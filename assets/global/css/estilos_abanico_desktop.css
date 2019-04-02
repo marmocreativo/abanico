@@ -85,6 +85,8 @@ html, body{
     border-radius: 15px;
 }
 
+/* ESTILOS CARRITO */
+
 .car-icono{
   font-size: 2.5em;
   color: #ddd;
@@ -109,6 +111,30 @@ html, body{
 .btn-carrito {
   padding: 7px 9px;
 }
+.custom-control.custom-radio {
+    border-top: solid 1px lightgray;
+    /* border-bottom: solid 1px lightgray; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.custom-control.custom-radio:hover {
+    background: #e5ecef;
+}
+.container-stepwizard {
+    padding: 20px;
+    background: #73c8c8;
+    color: #094c4c;
+}
+.stepwizard .btn-default.btn-circle {
+    background: white;
+}
+.stepwizard-row:before {
+    background-color: white!important;
+}
+.btn-default.btn-circle, .btn-primary.btn-circle {
+    font-size: 16px;
+    line-height: 1;
+  }
 
 /*
 | -------------------------------------------------------------------------
@@ -178,7 +204,7 @@ html, body{
   border-bottom: solid 1px #ddd;
 }
 .fila-gris{
-  background-color: #d5dee2;
+  background-color: #e7ecef;
 }
 .fila-dark{
   background-color: #333;
@@ -561,6 +587,40 @@ html, body{
   .estrellas a{
     color: #ffc107;
   }
+  .tienda-proceso-pago {
+    background: white;
+    border-radius: 3px;
+  }
+  .tienda-proceso-pago h5 {
+    margin-bottom: 50px;
+  }
+  .tienda-proceso-pago .table thead th {
+    background: #e7ecef;
+    color: #4e6a77;
+    border-bottom: none;
+  }
+  .cont-resumen {
+    position: sticky;
+    top: 30px;
+    color: white;
+  }
+  .cont-resumen h4 {
+    margin-bottom: 50px;
+  }
+  .cont-resumen p {
+    margin-bottom: 0;
+  }
+  .btn-paypal, .btn-transfer {
+    border-radius: 26px;
+    margin-top: 10px;
+    white-space: normal;
+  }
+  .cont-envio-pago .form-check {
+    position: relative;
+    display: block;
+    padding: 9px 9px 2px 40px;
+    border-top: solid 1px lightgray;
+  }
 
 /*
 | -------------------------------------------------------------------------
@@ -700,7 +760,7 @@ img.sp-thumbnail-image {
 
 /*
 | -------------------------------------------------------------------------
-| ESTILOS MENSAJES
+| ESTILOS MENSAJES Y NOTIFICACIONES
 | -------------------------------------------------------------------------
 */
 #shelf {
@@ -791,6 +851,22 @@ img.sp-thumbnail-image {
     border: none;
     border-radius: 0;
 }
+.cont-notif {
+    min-width: 350px;
+    background: #e3e7e8;
+}
+.cont-notif h3 {
+  margin-left: 10px;
+}
+.notif {
+  padding: 20px;
+    margin: 1%;
+    width: 98%;
+    border-bottom: solid 1px lightgrey;
+    background: white;
+    border-radius: 3px;
+}
+
 
 /*
 | -------------------------------------------------------------------------
@@ -845,14 +921,6 @@ img.sp-thumbnail-image {
 .card-p-usuario:hover {
   background: #f1f1f1;
   text-decoration: none;
-}
-
-.cont-notif h3 {
-  margin-left: 10px;
-}
-.notif {
-  padding: 20px;
-  border-bottom: solid 1px lightgrey;
 }
 
 /*
