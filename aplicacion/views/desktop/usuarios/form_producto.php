@@ -56,6 +56,16 @@
                           </div>
                           <div class="col">
                             <div class="form-group">
+                              <label for="DivisaDefaultProducto">-</label>
+                              <select class="form-control" name="DivisaDefaultProducto">
+                              <?php foreach($divisas_activas as $divisas){ ?>
+                                <option value="<?php echo $divisas->DIVISA_ISO; ?>"><?php echo $divisas->DIVISA_ISO; ?></option>
+                              <?php } ?>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group">
                               <label for="PrecioProducto"><?php echo $this->lang->line('usuario_form_producto_precio_venta'); ?></label>
                               <div class="input-group mb-2">
                                 <div class="input-group-prepend">

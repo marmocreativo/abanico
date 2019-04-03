@@ -60,6 +60,14 @@
                     <input type="text" class="form-control" id="NombreProducto" name="NombreProducto" placeholder="" value="<?=!form_error('NombreProducto')?set_value('NombreProducto'):''?>">
                   </div>
                   <div class="form-group">
+                    <label for="DivisaDefaultProducto">-</label>
+                    <select class="form-control" name="DivisaDefaultProducto">
+                    <?php foreach($divisas_activas as $divisas){ ?>
+                      <option value="<?php echo $divisas->DIVISA_ISO; ?>"><?php echo $divisas->DIVISA_ISO; ?></option>
+                    <?php } ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
                     <label for="PrecioProducto"><?php echo $this->lang->line('usuario_form_producto_precio_venta'); ?></label>
                     <div class="input-group input-group-sm mb-2">
                       <div class="input-group-prepend">
