@@ -44,10 +44,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
  	{
 		$parametros_or = array();
 		$parametros_and = array();
-		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
-			$parametros_or['PRODUCTO_NOMBRE'] = $_GET['Busqueda'];
-			$parametros_or['PRODUCTO_MODELO'] = $_GET['Busqueda'];
-		}
 		// Orden
 		if(isset($_GET['OrdenBusqueda'])&&!empty($_GET['OrdenBusqueda'])){
 			switch ($_GET['OrdenBusqueda']) {

@@ -48,8 +48,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
-		$this->data['productos'] = $this->ProductosModel->lista_activos('','','','',10);
-		$this->data['servicios'] = $this->ServiciosModel->lista_activos('','','','');
+		$this->data['productos'] = $this->ProductosModel->lista_activos(['ID_USUARIO'=>$this->data['op']['id_usuario_destacado']],'','','',10);
+		$this->data['productos_recientes'] = $this->ProductosModel->lista_activos('','','','PRODUCTO_FECHA_REGISTRO DESC',10);
+		$this->data['servicios'] = $this->ServiciosModel->lista_activos('','','','','');
 		$this->data['slider'] = $this->SlidersModel->slide_nombre_lenguaje('inicio',$_SESSION['lenguaje']['iso']);
 		$this->data['slides'] = $this->SlidesModel->lista(['ID_SLIDER'=>$this->data['slider']['ID_SLIDER']],'','');
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);

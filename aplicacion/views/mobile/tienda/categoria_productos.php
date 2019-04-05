@@ -82,7 +82,7 @@
 
       <div class="col-12 mb-4">
         <?php $hay_productos = false; ?>
-        <?php if(empty($productos)){ ?>
+        <?php if(empty($productos)&&isset($categoria)){ ?>
           <?php
             // Busco categorías hijas
             $categorias_segundo_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria['ID_CATEGORIA']],'productos','','');

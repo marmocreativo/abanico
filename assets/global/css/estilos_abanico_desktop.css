@@ -185,12 +185,18 @@ html, body{
   bottom: 5%;
   left: 1%;
   right: 1%;
-  padding: 7%;
+  padding: 3%;
   text-align: center;
 }
 .texto-slide h1{
-  font-size: 3em;
-  margin-bottom:0.7em;
+  font-size: 2.2em;
+  margin-bottom:0.2em;
+}
+.texto-slide h2{
+  font-size: 1.8em;
+}
+.texto-slide h3{
+  font-size: 1.5em;
 }
 .contenido_principal{
   min-height: 700px;

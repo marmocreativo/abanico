@@ -433,7 +433,7 @@
 
                                   <tr>
                                     <td colspan="5" style="text-align:right;">
-                                      <p><?php echo $pedido['TRANSPORTISTA_NOMBRE']; ?></p>
+                                      <p><?php echo $pedido_tienda['TRANSPORTISTA_NOMBRE']; ?></p>
                                     </td>
                                   </tr>
                               </table>

@@ -114,6 +114,39 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			);
 
 			$usuario_id = $this->UsuariosModel->crear($parametros);
+
+			// Datos para enviar por correo
+
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = $this->data['op']['mailer_host'];
+				$config['smtp_port']    = $this->data['op']['mailer_port'];
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = $this->data['op']['mailer_user'];
+				$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+				$config['charset']    = 'utf-8';
+				$config['mailtype'] = 'html'; // or html
+				$config['validation'] = TRUE; // bool whether to validate email or not
+
+
+			$this->data['info'] = array();
+			$this->data['info']['Titulo'] = 'Bienvenido a Abanico';
+			$this->data['info']['Nombre'] = $this->input->post('NombreUsuario').' '.$this->input->post('ApellidosUsuario');
+			$this->data['info']['Mensaje'] = '<p>Tu registro con nosotros está completo, ahora podrás comprar y administrar tus datos iniciando sesión y entrando a tu perfil.</p>';
+			$this->data['info']['TextoBoton'] = 'Iniciar sesión';
+			$this->data['info']['EnlaceBoton'] = base_url('login');
+
+			$mensaje = $this->load->view('emails/mensaje_general',$this->data,true);
+			$this->email->initialize($config);
+
+			$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+			$this->email->to($this->input->post('CorreoUsuario'));
+
+			$this->email->subject('Bienvenido a Abanico');
+			$this->email->message($mensaje);
+			// envio el correo
+
+			$this->email->send();
+
 			$this->session->set_flashdata('exito', 'Tu registro se completó correctamente, ahora puedes iniciar sesión');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}else{

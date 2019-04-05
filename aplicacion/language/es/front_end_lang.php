@@ -34,10 +34,11 @@ $lang['inicio_menu_destacados_servicios'] = 'Servicios';
 $lang['inicio_menu_destacados_productos'] = 'Productos';
 $lang['inicio_menu_destacados_unete'] = 'Únete';
 
-$lang['inicio_productos_destacados_titulo'] = 'Productos Destacados';
+$lang['inicio_productos_destacados_titulo'] = 'Productos destacados';
 $lang['inicio_productos_mas_vendidos_titulo'] = 'Productos más vendidos';
 $lang['inicio_productos_mas_populares_titulo'] = 'Productos más populares';
 $lang['inicio_productos_relacionados_titulo'] = 'Productos Relacionados';
+$lang['inicio_productos_recientes_titulo'] = 'Productos recientes';
 
 /*
 * Página categoria Productos
@@ -111,10 +112,21 @@ $lang['categoria_servicios_migas_inicio'] = 'Inicio';
 */
 
 $lang['pagina_servicio_migas_inicio'] = 'Inicio';
+
+$lang['filtro_categoria_servicios_ordenar_por'] = 'Ordenar Por';
+$lang['filtro_categoria_servicios_alfabetico_asc'] = 'A-Z';
+$lang['filtro_categoria_servicios_alfabetico_desc'] = 'Z-A';
+$lang['filtro_categoria_servicios_calificacion_desc'] = 'Mejor Calificados';
+
+$lang['filtro_categoria_servicios_tipo'] = 'Tipo Servicio';
+$lang['filtro_categoria_servicios_presenciales'] = 'Presenciales';
+$lang['filtro_categoria_servicios_digitales'] = 'Digitales';
+$lang['filtro_categoria_servicios_filtrar_por'] = 'Filtrar por';
+
 $lang['pagina_servicio_migas_servicio'] = 'Servicio';
 $lang['pagina_servicio_descripcion_titulo'] = 'Descripción';
 $lang['pagina_servicio_adjuntos_titulo'] = 'Adjuntos';
-$lang['pagina_servicio_zona_trabajo'] = 'Zona de Trabajo';
+$lang['pagina_servicio_zona_trabajo'] = 'Zona de trabajo';
 $lang['pagina_servicio_zona_trabajo_pais'] = 'Pais';
 $lang['pagina_servicio_zona_trabajo_estado'] = 'Pais';
 $lang['pagina_servicio_zona_servicio'] = 'Zona de Servicio';

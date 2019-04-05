@@ -28,7 +28,6 @@
                   <div class="card-header text-left">
                     <img src="<?php echo base_url('assets/global/img/'.$plan->PLAN_TIPO.'_plan_'.$plan->PLAN_NIVEL.'_mono.png'); ?>" alt="">
                     <h4 class="card-title"> <?php echo $plan->PLAN_NOMBRE; ?></h4>
-                    <p class="card-text text-primary">$<?php echo $plan->PLAN_MENSUALIDAD; ?> / Al mes</p>
                   </div>
                     <div class="card-body p-0">
                       <table class="table m-0">
@@ -43,13 +42,15 @@
                         <?php if($plan->PLAN_NIVEL>=4){ ?>
                           <tr>
                             <td>Costo de Almacenamiento</td>
-                            <td>$<?php echo $plan->PLAN_ALMACENAMIENTO; ?> x M<sup>3</sup></td>
+                            <td>$<?php echo $plan->PLAN_ALMACENAMIENTO; ?> x m<sup>3</sup></td>
                           </tr>
                         <?php } ?>
+                        <?php if($plan->PLAN_NIVEL>=4){ ?>
                         <tr>
-                          <td>Envios Administrados por</td>
-                          <td><?php echo $plan->PLAN_ENVIO; ?></td>
+                          <td>Manejo del producto</td>
+                          <td><?php echo $plan->PLAN_MANEJO_PRODUCTOS; ?>%</td>
                         </tr>
+                      <?php } ?>
                         <?php if($plan->PLAN_TIPO=='productos'){ ?>
                         <tr>
                           <td>Productos Activos</td>
@@ -101,10 +102,10 @@
                       <?php if($plan->PLAN_NIVEL>=4){ ?>
                         <p class="text-center">Comunícate con nosotros para activar este plan</p>
                       <?php }else{ ?>
-                        <a href="<?php echo base_url('usuario/planes/activar?id='.$plan->ID_PLAN); ?>" class="btn btn-primary btn-block rounded-0">Activar Plan</a>
+                        <a href="<?php echo base_url('usuario/planes/activar?id='.$plan->ID_PLAN); ?>" class="btn btn-primary btn-block rounded-0">Activar plan</a>
                       <?php } // Termina condicional Nivel ?>
                     <?php }else{// Termina condicional tipo ?>
-                      <a href="<?php echo base_url('usuario/planes/activar?id='.$plan->ID_PLAN); ?>" class="btn btn-primary btn-block rounded-0">Activar Plan</a>
+                      <a href="<?php echo base_url('usuario/planes/activar?id='.$plan->ID_PLAN); ?>" class="btn btn-primary btn-block rounded-0">Activar plan</a>
                     <?php } ?>
                     </div>
                 </div>

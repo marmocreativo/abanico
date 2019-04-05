@@ -38,6 +38,7 @@ $lang['inicio_productos_destacados_titulo'] = 'Featured';
 $lang['inicio_productos_mas_vendidos_titulo'] = 'Best sellers';
 $lang['inicio_productos_mas_populares_titulo'] = 'Popular';
 $lang['inicio_productos_relacionados_titulo'] = 'Related';
+$lang['inicio_productos_recientes_titulo'] = 'New arrivals';
 
 /*
 * Página categoria Productos
@@ -111,6 +112,17 @@ $lang['categoria_servicios_migas_inicio'] = 'Home';
 */
 
 $lang['pagina_servicio_migas_inicio'] = 'Home';
+
+$lang['filtro_categoria_servicios_ordenar_por'] = 'Order by';
+$lang['filtro_categoria_servicios_alfabetico_asc'] = 'A-Z';
+$lang['filtro_categoria_servicios_alfabetico_desc'] = 'Z-A';
+$lang['filtro_categoria_servicios_calificacion_desc'] = 'Best Rated';
+
+$lang['filtro_categoria_servicios_tipo'] = 'Service Type';
+$lang['filtro_categoria_servicios_presenciales'] = 'On-site';
+$lang['filtro_categoria_servicios_digitales'] = 'Remote';
+$lang['filtro_categoria_servicios_filtrar_por'] = 'Filter by';
+
 $lang['pagina_servicio_migas_servicio'] = 'Service';
 $lang['pagina_servicio_descripcion_titulo'] = 'Description';
 $lang['pagina_servicio_adjuntos_titulo'] = 'Attachment';

@@ -134,10 +134,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			case 'servicios':
 			// Código de Busqueda
-				 $parametros_or = array(
-					 'SERVICIO_NOMBRE'=>$_GET['Busqueda'],
-				 );
-				 $parametros_or['SERVICIO_NOMBRE'] = $_GET['Busqueda'];
+			$parametros_or = array();
+	 	 $parametros_and = array();
+
+		 if(!empty($_GET['Busqueda'])){
+ 				 $parametros_or['SERVICIO_NOMBRE'] = $_GET['Busqueda'];
+ 			 }
 				 // Orden
 				 if(isset($_GET['OrdenBusqueda'])&&!empty($_GET['OrdenBusqueda'])){
 					 switch ($_GET['OrdenBusqueda']) {
@@ -147,6 +149,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 						case 'alfabetico_asc':
 					 		$orden = 'SERVICIO_NOMBRE ASC';
 					 		break;
+						case 'calificacion_desc':
+					 		$orden = 'CALIFICACION DESC';
+					 		break;
 					 	default:
 					 		$orden = 'SERVICIO_NOMBRE ASC';
 					 		break;
@@ -154,9 +159,42 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				 }else{
 					 $orden = '';
 				 }
+
+				 if(isset($_GET['TipoServicio'])&&!empty($_GET['TipoServicio'])){
+ 		 			switch ($_GET['TipoServicio']) {
+ 		 			 case 'cualquiera':
+ 		 			 // NO hago nada
+ 		 				 break;
+ 		 			 case 'profesional':
+ 		 				 $parametros_and['SERVICIO_TIPO'] = 'profesional';
+ 		 				 break;
+ 		 			 case 'digital':
+ 		 				 $parametros_and['SERVICIO_TIPO'] = 'digital';
+ 		 				 break;
+ 		 			 default:
+ 		 				 // NO hago nada
+ 		 				 break;
+ 		 			}
+ 		 		}
+
+				if(isset($_GET['PaisDireccion'])&&!empty($_GET['PaisDireccion'])){
+					$parametros_and['SERVICIO_PAIS'] = $_GET['PaisDireccion'];
+				}
+				if(isset($_GET['EstadoDireccion'])&&!empty($_GET['EstadoDireccion'])&&$_GET['EstadoDireccion']!='-'){
+					$parametros_and['SERVICIO_ESTADO_DIR'] = $_GET['EstadoDireccion'];
+				}
+				if(isset($_GET['MunicipioDireccion'])&&!empty($_GET['MunicipioDireccion'])&&$_GET['MunicipioDireccion']!='-'){
+					$parametros_and['SERVICIO_MUNICIPIO'] = $_GET['MunicipioDireccion'];
+				}
+
+				$this->data['parametros_or'] = $parametros_or;
+			  $this->data['parametros_and'] = $parametros_and;
+			   $this->data['orden'] = $orden;
+
 				 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
-	 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+				 $this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 				 $this->data['servicios'] = $this->ServiciosModel->busqueda($parametros_or,$parametros_and,$orden,'');
+				 $this->data['origen_formulario'] = 'busqueda';
 				 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 				 $this->load->view($this->data['dispositivo'].'/tienda/categoria_servicios',$this->data);
 				 $this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

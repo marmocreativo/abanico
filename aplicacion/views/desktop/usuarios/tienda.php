@@ -104,28 +104,28 @@
                             <td><?php echo $plan['PLAN_COMISION']; ?>%</td>
                           </tr>
                           <tr>
-                            <td>Espacio de Almacenamiento</td>
-                            <td><?php echo $plan['PLAN_ESPACIO_ALMACENAMIENTO']; ?> M<sup>3</sup></td>
+                            <td>Espacio de almacenamiento</td>
+                            <td><?php echo $plan['PLAN_ESPACIO_ALMACENAMIENTO']; ?> m<sup>3</sup></td>
                           </tr>
                           <tr>
-                            <td>Costo de Almacenamiento</td>
-                            <td>$<?php echo $plan['PLAN_COSTO_ALMACENAMIENTO']; ?> x M<sup>3</sup></td>
+                            <td>Costo de almacenamiento</td>
+                            <td>$<?php echo $plan['PLAN_COSTO_ALMACENAMIENTO']; ?> x m<sup>3</sup></td>
                           </tr>
                           <tr>
-                            <td>Costo Manejo de producto</td>
+                            <td>Costo manejo de producto</td>
                             <td><?php echo $plan['PLAN_MANEJO_PRODUCTOS']; ?>%</td>
                           </tr>
                           <tr>
-                            <td>Envios Administrados por</td>
-                            <td><?php echo $plan['PLAN_ENVIO']; ?></td>
+                            <td>Apoyo para envío</td>
+                            <td><?php if($plan['PLAN_ENVIO']=='abanico'){ echo 'Guías disponibles'; } ; ?></td>
                           </tr>
                           <tr>
-                            <td>Servicios Financieros</td>
+                            <td>Servicios financieros</td>
                             <td><?php echo $plan['PLAN_SERVICIOS_FINANCIEROS']; ?>% + $<?php echo $plan['PLAN_SERVICIOS_FINANCIEROS_FIJO']; ?></td>
                           </tr>
                           <?php if($plan['PLAN_TIPO']=='productos'){ ?>
                           <tr>
-                            <td>Límite de Productos Activos</td>
+                            <td>Límite de productos activos</td>
                             <td><?php echo $plan['PLAN_LIMITE_PRODUCTOS']; ?></td>
                           </tr>
                           <tr>
@@ -135,7 +135,7 @@
                           <?php } ?>
                           <?php if($plan['PLAN_TIPO']=='servicios'){ ?>
                           <tr>
-                            <td>Límite de Servicios Activos</td>
+                            <td>Límite de servicios activos</td>
                             <td><?php echo $plan['PLAN_LIMITE_SERVICIOS']; ?></td>
                           </tr>
                           <tr>

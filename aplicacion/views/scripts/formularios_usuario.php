@@ -2,9 +2,22 @@
 // Popover
 jQuery('[data-toggle="popover"]').popover();
 // Editor Tinymce para todas las clases .Editor
-tinymce.init({
-  selector:'.Editor'
-  });
+jQuery('.Editor').trumbowyg({
+  btns: [
+        ['viewHTML'],
+        ['undo', 'redo'], // Only supported in Blink browsers
+        ['formatting'],
+        ['strong', 'em', 'del'],
+        ['superscript', 'subscript'],
+        ['link'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+        ['unorderedList', 'orderedList'],
+        ['horizontalRule'],
+        ['removeformat'],
+        ['fullscreen'],
+        ['table']
+    ]
+});
 //
 // Cargo Los Paises
 jQuery.ajax({

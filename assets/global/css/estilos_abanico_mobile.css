@@ -217,16 +217,17 @@ html, body{
   bottom: 5%;
   left: 1%;
   right: 1%;
-  padding: 7%;
+  padding: 3%;
   text-align: center;
 }
 .texto-slide h1{
-  font-size: 1.8em;
-  margin-bottom:0.7em;
+  font-size: 1.2em;
 }
 .texto-slide h2{
-  font-size: 1.3em;
-  margin-bottom:0.7em;
+  font-size: 1em;
+}
+.texto-slide h3{
+  font-size: 0.8em;
 }
 .slideInicio{
   position: relative;
