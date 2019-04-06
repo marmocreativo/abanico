@@ -188,7 +188,8 @@ public function favorito()
 				'MENSAJE_ASUNTO'=>'Solicitud de Servicio',
 				'MENSAJE_TEXTO'=>$mensaje,
 				'MENSAJE_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
-				'MENSAJE_ESTADO'=>'no leido'
+				'MENSAJE_ESTADO_A'=>'no leido',
+				'MENSAJE_ESTADO_B'=>'no leido'
 			);
 			$mensaje_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
 			// Relleno Notificación

@@ -73,7 +73,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	 				'ID_REMITENTE'=>$this->input->post('IdUsuario'),
 	 				'MENSAJE_TEXTO'=>$mensaje,
 	 				'MENSAJE_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
-	 				'MENSAJE_ESTADO'=>'no leido'
+					'MENSAJE_ESTADO_A'=>'no leido',
+					'MENSAJE_ESTADO_B'=>'no leido'
 	 			);
 	 			$mensaje_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
 	 			// Redirecciono

@@ -102,6 +102,7 @@ public function favorito()
 				$this->FavoritosModel->crear($parametros);
 				// Relleno la notifiación
 				$datos_producto = $this->ProductosModel->detalles($_GET['id']);
+				$datos_usuario = $this->UsuariosModel->detalles($datos_producto['ID_USUARIO']);
 				$parametros_notificacion = array(
 					'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
 					'NOTIFICACION_CONTENIDO'=>'Alguien añadió tu producto '.$datos_producto['PRODUCTO_NOMBRE'].' a Favoritos',
@@ -110,7 +111,38 @@ public function favorito()
 				);
 				// Creo la notificación
 				$id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
+
+
+ 			 // Datos para enviar por correo
+
+  				$config['protocol']    = 'smtp';
+  				$config['smtp_host']    = $this->data['op']['mailer_host'];
+  				$config['smtp_port']    = $this->data['op']['mailer_port'];
+  				$config['smtp_timeout'] = '7';
+  				$config['smtp_user']    = $this->data['op']['mailer_user'];
+  				$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+  				$config['charset']    = 'utf-8';
+  				$config['mailtype'] = 'html'; // or html
+  				$config['validation'] = TRUE; // bool whether to validate email or not
+
+
+  			$this->data['info'] = array();
+  			$this->data['info']['Titulo'] = 'Tu producto '.$datos_producto['PRODUCTO_NOMBRE'].' fue añadido a favoritos';
+  			$this->data['info']['Nombre'] = $datos_usuario['USUARIO_NOMBRE'].' '.$datos_usuario['USUARIO_APELLIDOS'];
+  			$this->data['info']['Mensaje'] = '<p>Tu producto llamó la atención y ha sido añadido a favoritos.</p>';
+  			$this->data['info']['TextoBoton'] = 'Ver tus productos';
+  			$this->data['info']['EnlaceBoton'] = base_url('login');
+
+  			$mensaje = $this->load->view('emails/mensaje_general',$this->data,true);
+  			$this->email->initialize($config);
+
+  			$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+  			$this->email->to($datos_usuario['USUARIO_CORREO']);
+
+  			$this->email->subject('Tu producto en Favoritos');
+  			$this->email->message($mensaje);
 			 }
+
 			 redirect(base_url('usuario/favoritos'));
 		}else{
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
@@ -194,7 +226,8 @@ public function favorito()
 				'MENSAJE_ASUNTO'=>'Pregunta sobre un Producto',
 				'MENSAJE_TEXTO'=>$mensaje,
 				'MENSAJE_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
-				'MENSAJE_ESTADO'=>'no leido'
+				'MENSAJE_ESTADO_A'=>'no leido',
+				'MENSAJE_ESTADO_B'=>'no leido'
 			);
 			$mensaje_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
 

@@ -191,6 +191,7 @@ $lang['proceso_pago_3_total'] = 'Total';
 
 $lang['proceso_pago_3_transferencia'] = 'Bank Transfer';
 $lang['proceso_pago_3_paypal'] = 'Pay with PayPal';
+$lang['proceso_pago_3_oxxo'] = 'Pay at OXXO';
 $lang['proceso_pago_3_transferencia_instrucciones'] = 'Deposit / Bank Transfer';
 $lang['proceso_pago_3_numero_cuenta'] = 'Account Number';
 $lang['proceso_pago_3_monto_a_pagar'] = 'Amount to pay';

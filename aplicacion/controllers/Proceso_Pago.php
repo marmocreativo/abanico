@@ -166,9 +166,79 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			if(empty($_SESSION['carrito']['productos'])){
 				redirect(base_url('carrito'));
 			}
+
+			//var_dump($_POST);
+			require_once(APPPATH."libraries/conekta/Conekta.php");
+			\Conekta\Conekta::setApiKey("key_SP3qR73rqHWqzeJ98i5zCw");
+			\Conekta\Conekta::setApiVersion("2.0.0");
+			$importe_total = $_POST['ImporteTotal']*100;
+
+try{
+  $order = \Conekta\Order::create(
+    array(
+      "line_items" => array(
+        array(
+          "name" => $_POST['Folio'],
+          "unit_price" => $importe_total,
+          "quantity" => 1
+        )//first line_item
+      ), //line_items
+      "shipping_lines" => array(
+        array(
+          "amount" => 0,
+          "carrier" => "ABANICO"
+        )
+      ), //shipping_lines - physical goods only
+      "currency" => "MXN",
+      "customer_info" => array(
+        "name" => $_POST['PedidoNombre'],
+        "email" => $_POST['PedidoCorreo'],
+        "phone" => '+52'.$_POST['PedidoTelefono']
+      ),
+			"shipping_contact" => array(
+        "address" => array(
+          "street1" => 'asas kljakslj jh akjhs s',
+          "postal_code" => "555555",
+          "country" => "MXN"
+        )//address
+      ), //shipping_contact - required only for physical goods
+      "charges" => array(
+          array(
+              "payment_method" => array(
+                "type" => "oxxo_cash"
+              )//payment_method
+          ) //first charge
+      ) //charges
+    )//order
+  );
+} catch (\Conekta\ParameterValidationError $error){
+  echo $error->getMessage();
+} catch (\Conekta\Handler $error){
+  echo $error->getMessage();
+}
+
+/*
+echo "ID: ". $order->id;
+echo "Payment Method:". $order->charges[0]->payment_method->service_name;
+echo "Reference: ". $order->charges[0]->payment_method->reference;
+echo "$". $order->amount/100 . $order->currency;
+echo "Order";
+echo $order->line_items[0]->quantity .
+      "-". $order->line_items[0]->name .
+      "- $". $order->line_items[0]->unit_price/100;
+			*/
+
+
+			$this->data['info']= array();
+
+			$this->data['info']['Monto'] = $order->amount/100;
+			$this->data['info']['Referencia'] = $order->charges[0]->payment_method->reference;
+
+
 			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
-			$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_3_oxxo',$this->data);
+			$this->load->view('emails/ficha_oxxo',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+
 
 		}else{
 			redirect(base_url('proceso_pago_1'));

@@ -87,7 +87,7 @@ class ConversacionesMensajesModel extends CI_Model {
       break;
     }
     $this->db->where('ID_MENSAJE',$id);
-    return $this->db->update('conversaciones_mensajes',array('MENSAJE_ESTADO'=>$activo));
+    return $this->db->update('conversaciones_mensajes',array('MENSAJE_ESTADO_A'=>$activo,'MENSAJE_ESTADO_B'=>$activo));
   }
   /*
     * Cambio el estado de la entrada, puede ser cualquier estado
@@ -96,7 +96,7 @@ class ConversacionesMensajesModel extends CI_Model {
  */
   function estado($id,$activo){
     $this->db->where('ID_MENSAJE',$id);
-    return $this->db->update('conversaciones_mensajes',array('MENSAJE_ESTADO'=>$activo));
+    return $this->db->update('conversaciones_mensajes',array('MENSAJE_ESTADO_A'=>$activo,'MENSAJE_ESTADO_B'=>$activo));
   }
   /*
     * Creo el orden de los elementos
