@@ -193,7 +193,7 @@ try{
       "customer_info" => array(
         "name" => $_POST['PedidoNombre'],
         "email" => $_POST['PedidoCorreo'],
-        "phone" => '+52'.$_POST['PedidoTelefono']
+        "phone" => '+5255533322'
       ),
 			"shipping_contact" => array(
         "address" => array(
