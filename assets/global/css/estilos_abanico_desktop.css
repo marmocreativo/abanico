@@ -865,12 +865,47 @@ img.sp-thumbnail-image {
   margin-left: 10px;
 }
 .notif {
-  padding: 20px;
+  padding: 3px;
     margin: 1%;
     width: 98%;
     border-bottom: solid 1px lightgrey;
-    background: white;
+    background: #ecf0f1;
     border-radius: 3px;
+    position: relative;
+}
+.notif i {
+    text-align: center;
+    width: 56px;
+    height: 51px;
+    font-size: 1.2em;
+    padding-top: 17px;
+    border-right: solid 1px rgba(8, 45, 68, 0.12);
+    margin-right: 10px;
+}
+.no-leida {
+  background: #fff;
+}
+#venta-notif i {
+  border-left: 3px solid #00c3a5;
+}
+#general-notif i {
+  border-left: 3px solid #CC33FF;
+}
+#compra-notif i {
+  border-left: 3px solid #33CCFF;
+}
+#mensaje-notif i {
+  border-left: 3px solid #FF3399;
+}
+.no-leida::before {
+    content: '';
+    background: #F44336;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    border-radius: 50%;
 }
 
 

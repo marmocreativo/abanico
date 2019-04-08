@@ -9,8 +9,8 @@
     <div class="carousel-inner">
       <?php $i = 0; foreach($slides as $slide){ ?>
       <div class="carousel-item <?php if($i==0){ echo 'active'; } ?>">
-        <div class="contenedor-texto-slide">
-          <div class="texto-slide">
+        <div class="contenedor-texto-slide align-middle">
+          <div class="texto-slide align-middle">
             <h1><?php echo $slide->SLIDE_TITULO; ?></h1>
             <h2><?php echo $slide->SLIDE_SUBTITULO; ?></h2>
             <h3><?php echo $slide->SLIDE_BOTON; ?></h3>
