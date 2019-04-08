@@ -9,10 +9,12 @@ if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
   </button>
   <div class="dropdown-menu dropdown-menu-right cont-notif" aria-labelledby="btnNotificaciones">
     <h3>NOTIFICACIONES</h3>
+    <!--
     <a class="dropdown-item notif text-primary no-leida" href="" id="venta-notif"><i class="fas fa-shopping-cart"></i>Tienes una nueva venta</a>
     <a class="dropdown-item notif text-primary" href="" id="general-notif"><i class="fas fa-bell"></i>Notificación genérica</a>
     <a class="dropdown-item notif text-primary" href="" id="compra-notif"><i class="fas fa-box-open"></i>Compraste un producto</a>
     <a class="dropdown-item notif text-primary" href="" id="mensaje-notif"><i class="far fa-envelope"></i>Tienes un nuevo mensaje</a>
+  -->
     <?php foreach($notificaciones as $notificación){ ?>
       <a class="dropdown-item notif text-primary" href="<?php echo base_url('usuario'); ?>"><?php echo $notificación->NOTIFICACION_CONTENIDO; ?></a>
     <?php } ?>

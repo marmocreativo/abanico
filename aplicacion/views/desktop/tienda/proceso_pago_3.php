@@ -425,7 +425,7 @@
 
       </div>
       <div class="row justify-content-center">
-        <div class="col-7 mb-3 p-3 bg-primary-6" id="PedidoAjax"
+        <div class="col-8 mb-3 p-3 bg-primary-6" id="PedidoAjax"
           data-id-direccion='<?php echo $detalles_direccion['ID_DIRECCION']; ?>'
           data-importe-pedido-parcial='<?php echo $importe_pedido_abanico; ?>'
           data-importe-pedido-total='<?php echo $importe_pedido_total; ?>'
