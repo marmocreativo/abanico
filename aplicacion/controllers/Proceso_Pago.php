@@ -167,76 +167,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				redirect(base_url('carrito'));
 			}
 
-			//var_dump($_POST);
-			require_once(APPPATH."libraries/conekta/Conekta.php");
-			\Conekta\Conekta::setApiKey("key_SP3qR73rqHWqzeJ98i5zCw");
-			\Conekta\Conekta::setApiVersion("2.0.0");
-			$importe_total = $_POST['ImporteTotal']*100;
-
-try{
-  $order = \Conekta\Order::create(
-    array(
-      "line_items" => array(
-        array(
-          "name" => $_POST['Folio'],
-          "unit_price" => $importe_total,
-          "quantity" => 1
-        )//first line_item
-      ), //line_items
-      "shipping_lines" => array(
-        array(
-          "amount" => 0,
-          "carrier" => "ABANICO"
-        )
-      ), //shipping_lines - physical goods only
-      "currency" => "MXN",
-      "customer_info" => array(
-        "name" => $_POST['PedidoNombre'],
-        "email" => $_POST['PedidoCorreo'],
-        "phone" => '+5255533322'
-      ),
-			"shipping_contact" => array(
-        "address" => array(
-          "street1" => 'asas kljakslj jh akjhs s',
-          "postal_code" => "555555",
-          "country" => "MXN"
-        )//address
-      ), //shipping_contact - required only for physical goods
-      "charges" => array(
-          array(
-              "payment_method" => array(
-                "type" => "oxxo_cash"
-              )//payment_method
-          ) //first charge
-      ) //charges
-    )//order
-  );
-} catch (\Conekta\ParameterValidationError $error){
-  echo $error->getMessage();
-} catch (\Conekta\Handler $error){
-  echo $error->getMessage();
-}
-
-/*
-echo "ID: ". $order->id;
-echo "Payment Method:". $order->charges[0]->payment_method->service_name;
-echo "Reference: ". $order->charges[0]->payment_method->reference;
-echo "$". $order->amount/100 . $order->currency;
-echo "Order";
-echo $order->line_items[0]->quantity .
-      "-". $order->line_items[0]->name .
-      "- $". $order->line_items[0]->unit_price/100;
-			*/
-
-
-			$this->data['info']= array();
-
-			$this->data['info']['Monto'] = $order->amount/100;
-			$this->data['info']['Referencia'] = $order->charges[0]->payment_method->reference;
-
-
 			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
-			$this->load->view('emails/ficha_oxxo',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_3_oxxo',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 
 
@@ -264,7 +196,7 @@ echo $order->line_items[0]->quantity .
 			redirect(base_url('carrito'));
 		}
 
-		if(isset($_GET['pago'])&&$_GET['pago']=='paypal'){
+		if(isset($_GET['pago'])&&($_GET['pago']=='paypal'|| $_GET['pago']=='oxxo')){
 			$folio = $_SESSION['pedido']['Folio'];
 			$IdUsuario = $_SESSION['pedido']['IdUsuario'];
 			$PedidoNombre = $_SESSION['pedido']['PedidoNombre'];
@@ -472,6 +404,94 @@ echo $order->line_items[0]->quantity .
 			// envio el correo
 
 			$this->email->send();
+			// IF OXXO
+			if(isset($_GET['pago'])&&$_GET['pago']=='oxxo'){
+
+				require_once(APPPATH."libraries/conekta/Conekta.php");
+				\Conekta\Conekta::setApiKey("key_SP3qR73rqHWqzeJ98i5zCw");
+				\Conekta\Conekta::setApiVersion("2.0.0");
+				// Preparo variables OXXO
+				$oxxo_ImporteProductosTotal = $ImporteProductosTotal*100;
+				$oxxo_ImporteEnvioTotal = $ImporteEnvioTotal*100;
+				if(empty($PedidoTelefono)){
+					$oxxo_telefono = '+5255334455';
+				}else{
+					$oxxo_telefono = '+52'.$PedidoTelefono;
+				}
+
+				$detalles_direccion = $this->DireccionesModel->detalles($IdDireccion);
+				$codigo_postal = $detalles_direccion['DIRECCION_CODIGO_POSTAL'];
+
+				if(empty($codigo_postal)){
+					$codigo_postal = '552233';
+				}else{
+					$codigo_postal = $codigo_postal;
+				}
+
+				try{
+				  $order = \Conekta\Order::create(
+				    array(
+				      "line_items" => array(
+				        array(
+				          "name" => $folio,
+				          "unit_price" => $oxxo_ImporteProductosTotal,
+				          "quantity" => 1
+				        )//first line_item
+				      ), //line_items
+				      "shipping_lines" => array(
+				        array(
+				          "amount" => $oxxo_ImporteEnvioTotal,
+				          "carrier" => "ABANICO"
+				        )
+				      ), //shipping_lines - physical goods only
+				      "currency" => "MXN",
+				      "customer_info" => array(
+				        "name" => $PedidoNombre,
+				        "email" => $PedidoCorreo,
+				        "phone" => '+52'.$oxxo_telefono,
+				      ),
+							"shipping_contact" => array(
+				        "address" => array(
+				          "street1" => $Direccion,
+				          "postal_code" => $codigo_postal,
+				          "country" => "MXN"
+				        )//address
+				      ), //shipping_contact - required only for physical goods
+				      "charges" => array(
+				          array(
+				              "payment_method" => array(
+				                "type" => "oxxo_cash"
+				              )//payment_method
+				          ) //first charge
+				      ) //charges
+				    )//order
+				  );
+				} catch (\Conekta\ParameterValidationError $error){
+				  echo $error->getMessage();
+				} catch (\Conekta\Handler $error){
+				  echo $error->getMessage();
+				}
+
+				if(isset($order)&&!empty($order)){
+					$this->data['info']= array();
+					$this->data['info']['Monto'] = $order->amount/100;
+					$this->data['info']['Referencia'] = $order->charges[0]->payment_method->reference;
+
+					$mensaje_oxxo = $this->load->view('emails/ficha_oxxo',$this->data,true);
+
+					// Envio correo Abanico
+					$this->email->clear();
+					$this->email->from($this->data['op']['mailer_user'], 'Abanico Siempre lo Mejor');
+					$this->email->to($PedidoCorreo);
+
+					$this->email->subject('OXXO | Abanico | '.$this->data['pedido']['PEDIDO_FOLIO']);
+					$this->email->message($mensaje_oxxo);
+					// envio el correo
+
+					$this->email->send();
+				}
+
+			} // termina IF OXXO
 
 
 			// Productos

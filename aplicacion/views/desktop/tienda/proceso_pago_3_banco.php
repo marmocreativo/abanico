@@ -407,7 +407,7 @@
                     <button type="button" name="button" class="btn btn-outline-success" onclick="window.print();"><i class="fa fa-print"></i> <?php echo $this->lang->line('proceso_pago_3_imprimir'); ?></button>
                   </div>
                   <div class="col">
-                    <form class="d-flex justify-content-end" action="<?php echo base_url('proceso_pago_4'); ?>" method="post">
+                    <form class="d-flex justify-content-end" action="<?php echo base_url('proceso_pago_4?pago=oxxo'); ?>" method="post">
                       <input type="hidden" name="Folio" value="<?php echo $_POST['Folio']; ?>">
                       <input type="hidden" name="IdUsuario" value="<?php echo $_POST['IdUsuario']; ?>">
                       <input type="hidden" name="PedidoNombre" value="<?php echo $_POST['PedidoNombre']; ?>">

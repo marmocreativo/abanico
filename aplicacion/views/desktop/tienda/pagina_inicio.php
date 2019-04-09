@@ -64,7 +64,6 @@
 
 
 <!-- Inicia el cuerpo del texto -->
-
 <div class="fila fila-gris">
   <div class="container-fluid">
     <div class="row">
