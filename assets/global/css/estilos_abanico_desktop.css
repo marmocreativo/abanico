@@ -240,23 +240,54 @@ html, body{
   background-color: #ddd;
 }
 .contenedor-ganador{
-  text-align: right;
-
+  width: 100%;
+  height: auto;
+}
+.cont-ganador {
+  border-top: solid 1px lightgray;
+}
+.img-ganador {
+  background: white;
+  width: 100%;
+  height: 560px;
+  margin: 20px auto;
+  border-radius: 15px;
+}
+.head-ganador {
+  background-size: cover;
+background-image: url(http://localhost:8888/abanico-master/assets/global/img/pleca_gana_arriba.png);
+height: 121px;
+background-position: bottom;
+border-bottom: solid 1px lightgray;
+}
+.head-ganador img {
+  padding: 10px 0;
 }
 .fecha-ganador{
-  font-size: 1.2em;
+  font-size: 1em;
 }
 .fecha-ganador span{
-  font-size: 1.2em;
+  font-size: 1em;
 }
 .titulo-ganador{
-  font-size: 2em;
-  font-weight: 500;
+  font-size: 1.5em;
+  line-height: 0.8em;
 }
 .nombre-ganador{
   font-size: 2em;
+font-weight: 700;
+line-height: 1.2em;
+color: #FF6600;
+}
+.premio-ganador {
+  background-size: cover;
+  background-image: url(http://localhost:8888/abanico-master/assets/global/img/pleca_gana_abajo.png);
+  height: 100px;
+  background-position: top;
+  border-top: solid 1px lightgray;
   font-weight: 200;
-  color: orange;
+  font-size: 1.5em;
+  margin-top: 10px
 }
 .form-group input {
   margin: 0 .25rem;

@@ -269,7 +269,7 @@
   </div>
 </div>
 
-<div class="fila p-0" id="Concursos">
+<div class="fila fila-gris p-0" id="Concursos">
   <div class="container-fluid">
     <div class="row">
       <div class="col-4 border-right py-5 bg-primary-17 col-twits">
@@ -279,26 +279,32 @@
           <a class="twitter-timeline" href="https://twitter.com/stMaRmO/timelines/1106610018290417664?ref_src=twsrc%5Etfw">AbanicoDatosCuriosos - Curated tweets by stMaRmO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-8 cont-ganador">
         <?php if($this->PremiosModel->verificar_ganador()){ $premio = $this->PremiosModel->ultimo_ganador(); ?>
         <div class="row">
           <div class="col">
-            <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid" alt="">
+            <div class="img-ganador">
+              <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid" alt="">
+            </div>
           </div>
-          <div class="col">
-            <div class="contenedor-ganador">
-
-              <div class="fecha-ganador">
-                <span><?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?></span> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
-              </div>
-              <div class="titulo-ganador">
-                Nuestro Ganador Mensual
+          <div class="col d-flex align-items-center">
+            <div class="contenedor-ganador text-center">
+              <div class="container-fluid head-ganador">
+                <img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt="Logo" width="50px">
+                <div class="fecha-ganador">
+                  <?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
+                </div>
+                <div class="titulo-ganador">
+                  Nuestro Ganador Mensual
+                </div>
               </div>
               <div class="nombre-ganador">
+                <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
                 <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
-                Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b>
+                Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
+                <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
               </div>
-              <div class="premio-ganador">
+              <div class="premio-ganador text-primary">
                 Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
               </div>
             </div>
