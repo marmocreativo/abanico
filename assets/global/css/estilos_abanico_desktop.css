@@ -244,14 +244,14 @@ html, body{
 
 }
 .fecha-ganador{
-  font-size: 1.8em;
+  font-size: 1.2em;
 }
 .fecha-ganador span{
-  font-size: 2.8em;
+  font-size: 1.2em;
 }
 .titulo-ganador{
-  font-size: 3em;
-  font-weight: 700;
+  font-size: 2em;
+  font-weight: 500;
 }
 .nombre-ganador{
   font-size: 2em;
@@ -1015,4 +1015,22 @@ border-top: solid 9px #980500;
 }
 #productos_plan_4 {
   border-top: solid 9px #0e2bff;
+}
+
+
+#carouselAyuda span.carousel-control-next-icon, #carouselAyuda span.carousel-control-prev-icon {
+    padding: 5px;
+    background-color: #1f2d2d;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-size: 69%;
+}
+#carouselAyuda .carousel-caption {
+    background: #35bfa6d4;
+    position: absolute;
+    bottom: 0;
+}
+#carouselAyuda .carousel-indicators {
+    bottom: 5px;
 }

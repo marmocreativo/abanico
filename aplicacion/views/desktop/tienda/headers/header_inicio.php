@@ -31,6 +31,7 @@
               <?php $this->load->view('desktop/tienda/widgets/menu_divisa'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_usuario'); ?>
+              <button type="button" class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-light" data-toggle="modal" data-target="#ModalAyuda" style="background:transparent;"><i class="far fa-question-circle"></i></button>
             </div>
           </div>
         </div>
