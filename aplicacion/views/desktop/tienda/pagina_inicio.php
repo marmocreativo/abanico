@@ -29,7 +29,8 @@
     </a>
   </div>
 </div>
-<div class="post-menu col-8 py-4">
+<div class="row fila-gris">
+<div class="post-menu col-9 py-4">
   <div class="container-fluid">
     <div class="row">
       <div class="col border-right">
@@ -59,6 +60,7 @@
     </div>
   </div>
 </div>
+</div>
 
 
 <!-- Inicia el cuerpo del texto -->
@@ -67,7 +69,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <h2 class="h3 text-center border-bottom pb-3 mb-3"><?php echo $this->lang->line('inicio_productos_destacados_titulo'); ?></h2>
+        <h2 class="car-titulo text-center text-primary pb-3 mb-3"><img alt="" src="<?php echo base_url(); ?>assets/global/img/decor_izq.png" width="25px"><?php echo $this->lang->line('inicio_productos_destacados_titulo'); ?><img alt="" src="<?php echo base_url(); ?>assets/global/img/decor_der.png" width="25px"></h2>
         <section class="slider">
         <div class="flexslider carousel">
           <ul class="slides">
@@ -165,11 +167,11 @@
     </div>
   </div>
 </div>
-<div class="fila">
+<div class="fila fila-gris border-top">
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <h2 class="h3 text-center border-bottom pb-3 mb-3"><?php echo $this->lang->line('inicio_productos_recientes_titulo'); ?></h2>
+        <h2 class="car-titulo text-center pb-3 mb-3 text-primary"><img alt="" src="<?php echo base_url(); ?>assets/global/img/decor_izq.png" width="25px"><?php echo $this->lang->line('inicio_productos_recientes_titulo'); ?><img alt="" src="<?php echo base_url(); ?>assets/global/img/decor_der.png" width="25px"></h2>
         <section class="slider">
         <div class="flexslider carousel">
           <ul class="slides">
@@ -268,16 +270,17 @@
   </div>
 </div>
 
-<div class="fila" id="Concursos">
-  <div class="container-fluid px-5">
+<div class="fila p-0" id="Concursos">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-5 border-right px-3">
+      <div class="col-4 border-right py-5 bg-primary-17 col-twits">
         <div class="px-3">
+          <h2 class="text-light text-center">Datos Curiosos</h2>
           <a href="https://twitter.com/intent/tweet?button_hashtag=AbanicoSiempreLoMejor&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #AbanicoSiempreLoMejor</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           <a class="twitter-timeline" href="https://twitter.com/stMaRmO/timelines/1106610018290417664?ref_src=twsrc%5Etfw">AbanicoDatosCuriosos - Curated tweets by stMaRmO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
-      <div class="col-7">
+      <div class="col-8">
         <?php if($this->PremiosModel->verificar_ganador()){ $premio = $this->PremiosModel->ultimo_ganador(); ?>
         <div class="row">
           <div class="col">

@@ -110,6 +110,8 @@ html, body{
 }
 .btn-carrito {
   padding: 7px 9px;
+  font-size: 1rem;
+  background: transparent;
 }
 .custom-control.custom-radio {
     border-top: solid 1px lightgray;
@@ -303,6 +305,7 @@ html, body{
   position:relative;
   border: 1px solid #ced4da;
   border-top: none;
+  min-height: 160px;
 }
 .cuadricula-productos .contenedor-etiquetas{
   display: block;
@@ -416,7 +419,7 @@ html, body{
   background-color: transparent;
 }
 .product-content .rating{padding:0;margin:0 0 7px;list-style:none}
-.cuadricula-productos .rating li{font-size:12px;color:#ffd200;transition:all .3s ease 0s}
+.cuadricula-productos .rating li{font-size:12px;color:#ffd200;transition:all .3s ease 0s;display: inline;}
 .cuadricula-productos .rating li.disable{color:rgba(0,0,0,.2)}
 .cuadricula-productos .title{font-size:16px;font-weight:400;margin:0 0 3px;transition:all .3s ease 0s}
 .cuadricula-productos .title a{color:rgba(0,0,0,.5)}
@@ -434,6 +437,10 @@ html, body{
 .flex-direction-nav a:before {
     font-size: 30px;
     line-height: 38px;
+}
+.col-twits {
+  max-height: 600px;
+  overflow: auto;
 }
 
 /*
