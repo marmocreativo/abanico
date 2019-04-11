@@ -255,7 +255,7 @@ html, body{
 }
 .head-ganador {
   background-size: cover;
-background-image: url(http://localhost:8888/abanico-master/assets/global/img/pleca_gana_arriba.png);
+background-image: url('../img/pleca_gana_arriba.png');
 height: 121px;
 background-position: bottom;
 border-bottom: solid 1px lightgray;
@@ -281,7 +281,7 @@ color: #FF6600;
 }
 .premio-ganador {
   background-size: cover;
-  background-image: url(http://localhost:8888/abanico-master/assets/global/img/pleca_gana_abajo.png);
+  background-image: url('../img/pleca_gana_abajo.png');
   height: 100px;
   background-position: top;
   border-top: solid 1px lightgray;

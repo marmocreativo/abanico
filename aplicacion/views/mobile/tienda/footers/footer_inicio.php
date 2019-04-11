@@ -8,7 +8,7 @@
 <div class="footer">
   <div class="container-fluid">
     <div class="row p-3">
-      <div class="col-6">
+      <div class="col-12">
         <h5>Acerca de Abanico</h5>
         <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'acerca'],'','');?>
         <ul class="list-unstyled">
@@ -17,7 +17,7 @@
         <?php } ?>
         </ul>
       </div>
-      <div class="col-6">
+      <div class="col-12 mt-3 bordered-top">
         <h5>Legales</h5>
         <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'legales'],'','');?>
         <ul class="list-unstyled">
@@ -26,7 +26,7 @@
         <?php } ?>
         </ul>
       </div>
-      <div class="col-6 mt-3 bordered-top">
+      <div class="col-12 mt-3 bordered-top">
         <h5>Concursos</h5>
         <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'concursos'],'','');?>
         <ul class="list-unstyled">
@@ -35,7 +35,7 @@
         <?php } ?>
         </ul>
       </div>
-      <div class="col-6 mt-3 bordered-top">
+      <div class="col-12 mt-3 bordered-top">
         <h5>Ayuda</h5>
         <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'ayuda'],'','');?>
         <ul class="list-unstyled">
@@ -84,6 +84,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/localization/messages_es.js"></script>
+  <script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/trumbowyg.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/plugins/cleanpaste/trumbowyg.cleanpaste.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/plugins/table/trumbowyg.table.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/tienda/js/starrr/starrr.js"></script>
   <script defer src="<?php echo base_url(); ?>assets/tienda/js/flexslider/jquery.flexslider.js"></script>
   <script defer src="<?php echo base_url(); ?>assets/global/js/jquery.sliderPro.min.js"></script>

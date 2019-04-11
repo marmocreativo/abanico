@@ -183,6 +183,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
       $categoria_id = $this->CategoriasModel->actualizar( $this->input->post('Identificador'),$parametros);
 
+			$color = $this->input->post('ColorCategoria');
+			$icono = $color = $this->input->post('IconoCategoria');
+
 			// Mensaje Feedback
 			$this->session->set_flashdata('exito', 'Categoría actualizada');
 			//  Redirecciono

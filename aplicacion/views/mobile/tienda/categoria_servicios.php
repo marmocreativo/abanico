@@ -13,10 +13,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <!-- <h1 class="h4 text-center pb-3"> <i class="fa fa-tools mr-2"></i> <?php echo $titulo_categoria; ?></h1> -->
         <div class="col-12">
           <ol class="breadcrumb vistaMovil">
-            <li class="breadcrumb-item"><a href="http://localhost/abanico-master/">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><?php echo $this->lang->line('categoria_productos_migas_inicio'); ?></a></li>
             <li class="breadcrumb-item active text-primary " aria-current="page">Todos los servicios</li>
           </ol>
         </div>
@@ -24,7 +23,7 @@
       <div class="col-12 mb-3">
         <div class="card">
 
-          <button class="btn btnFiltros btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <button class="btn btnFiltros btn<?php echo $primary; ?> btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="fas fa-sliders-h mr-2"></i>Filtros
           </button>
           <div class="collapse" id="collapseExample">
@@ -74,335 +73,138 @@
         </div>
       </div>
       <div class="col-12">
-        <?php $hay_servicios = false; ?>
-        <?php if(empty($servicios)&&isset($categoria)){ ?>
-          <?php
+        <?php $hay_servicios = false;
+
+         if(empty($servicios)&&isset($categoria)){
+
             // Busco categorías hijas
             $categorias_segundo_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria['ID_CATEGORIA']],'servicios','','');
             foreach ($categorias_segundo_nivel as $categoria_segunda){
               $servicios_segundo = $this->ServiciosModel->lista_categoria_activos($parametros_or,$parametros_and,$categoria_segunda->ID_CATEGORIA,$orden,'');
-              if(!empty($servicios_segundo)) { $hay_servicios = true; }
-              ?>
-              <?php foreach($servicios_segundo as $servicio){ ?>
-                <?php
-                  // Variables de Traducción
-                  if($_SESSION['lenguaje']['iso']==$servicio->LENGUAJE){
-                    $titulo = $servicio->SERVICIO_NOMBRE;
-                    $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
-                  }else{
-                    $traduccion = $this->TraduccionesModel->lista($servicio->ID_SERVICIO,'servicio',$_SESSION['lenguaje']['iso']);
-                    if(!empty($traduccion)){
-                      $titulo = $traduccion['TITULO'];
-                      $descripcion_corta = $traduccion['DESCRIPCION_CORTA'];
-                    }else{
-                      $titulo = $servicio->SERVICIO_NOMBRE;
-                      $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
-                    }
-                  }
-                  // Variables de Paquete
-                  $paquete = $this->PlanesModel->plan_activo_usuario($servicio->ID_USUARIO,'servicios');
-                  if($paquete==null){
-                    $visible = 'd-none';
-                  }else{
-                    $visible = '';
-                  }
-                ?>
-              <div class="servicios <?php echo $visible; ?>">
-                <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio->ID_SERVICIO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-                <?php if($paquete['PLAN_NIVEL']>=2){ ?>
-                  <a href="<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" class="portada enlace-principal-servicio">
-                <?php }else{ ?>
-                  <a href="#" class="portada enlace-principal-servicio" data-toggle="modal" data-target="#modal<?php echo $servicio->ID_SERVICIO; ?>">
-                <?php } ?>
-
-                  <div class="rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>)"> </div>
-                </a>
-                <div class="product-content text-center">
-                  <?php
-                  $promedio = $this->CalificacionesServiciosModel->promedio_calificaciones_producto($servicio->ID_SERVICIO);
-                  $cantidad = $this->CalificacionesServiciosModel->conteo_calificaciones_producto($servicio->ID_SERVICIO);
-                  ?>
-                  <ul class="rating">
-                    <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
-                    <?php for($i = 1; $i<=$estrellas; $i++){ ?>
-                    <li class="fa fa-star"></li>
-                  <?php } ?>
-                  <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
-                    <li class="fa fa-star"></li>
-                  <?php } ?>
-                    <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
-                  </ul>
-                  <h3 class="title text-primary"><?php echo $titulo; ?> </h3>
-                  <div class="">
-                    <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
-                      <a href="<?php echo base_url('servicio/favorito?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-outline-primary" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
-                    <?php }else{ ?>
-                      <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$servicio->ID_SERVICIO)); ?>" class="btn btn-outline-primary" title="Quitar de Favoritos"> <span class="fa fa-heart"></span> </a>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div>
-              <!-- Modal -->
-              <div class="modal fade" id="modal<?php echo $servicio->ID_SERVICIO; ?>" tabindex="-1" role="dialog" aria-labelledby="modal<?php echo $servicio->ID_SERVICIO; ?>" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row">
-                        <div class="col-12">
-                          <div class="portada-servicios img-thumbnail rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>); background-size: cover; background-repeat: no-repeat; height:250px;"> </div>
-                        </div>
-                        <div class="col">
-                          <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
-                          <?php
-                            switch ($servicio->SERVICIO_TIPO) {
-                              case 'profesional':
-                                echo $this->lang->line('usuario_form_servicio_tipo_presencial');
-                                break;
-                              case 'digital':
-                                echo $this->lang->line('usuario_form_servicio_tipo_distancia');
-                                break;
-                              default:
-                                // code...
-                                break;
-                            }
-                          ?>
-                          <div class="border-top mt-3 pt-3">
-                            <?php echo $descripcion_corta; ?>
-                          </div>
-                          <hr>
-                          <a href="<?php echo base_url('servicio/contacto?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-primary btn-block"> <i class="fa fa-paper-plane"></i> Contactar</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <?php }// Termina cuadritula de servicios ?>
-            <?php
-
+              if(!empty($servicios_segundo)) {
+                $hay_servicios = true;
+                  $servicios = array_merge($servicios, $servicios_segundo);
+               }
             $categorias_tercer_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria_segunda->ID_CATEGORIA],'servicios','','');
 
             foreach ($categorias_tercer_nivel as $categoria_tercera){
               $servicios_tercer = $this->ServiciosModel->lista_categoria_activos($parametros_or,$parametros_and,$categoria_tercera->ID_CATEGORIA,$orden,'');
-              if(!empty($servicios_tercer)) { $hay_servicios = true; }
-              ?>
-
-              <?php foreach($servicios_tercer as $servicio){ ?>
-                <?php
-                  // Variables de Traducción
-                  if($_SESSION['lenguaje']['iso']==$servicio->LENGUAJE){
-                    $titulo = $servicio->SERVICIO_NOMBRE;
-                    $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
-                  }else{
-                    $traduccion = $this->TraduccionesModel->lista($servicio->ID_SERVICIO,'servicio',$_SESSION['lenguaje']['iso']);
-                    if(!empty($traduccion)){
-                      $titulo = $traduccion['TITULO'];
-                      $descripcion_corta = $traduccion['DESCRIPCION_CORTA'];
-                    }else{
-                      $titulo = $servicio->SERVICIO_NOMBRE;
-                      $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
-                    }
-                  }
-                  // Variables de Paquete
-                  $paquete = $this->PlanesModel->plan_activo_usuario($servicio->ID_USUARIO,'servicios');
-                  if($paquete==null){
-                    $visible = 'd-none';
-                  }else{
-                    $visible = '';
-                  }
-                ?>
-              <div class="servicios <?php echo $visible; ?>">
-                <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio->ID_SERVICIO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-                <?php if($paquete['PLAN_NIVEL']>=2){ ?>
-                  <a href="<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" class="portada enlace-principal-servicio">
-                <?php }else{ ?>
-                  <a href="#" class="portada enlace-principal-servicio" data-toggle="modal" data-target="#modal<?php echo $servicio->ID_SERVICIO; ?>">
-                <?php } ?>
-
-                  <div class="rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>)"> </div>
-                </a>
-                <div class="product-content text-center">
-                  <?php
-                  $promedio = $this->CalificacionesServiciosModel->promedio_calificaciones_producto($servicio->ID_SERVICIO);
-                  $cantidad = $this->CalificacionesServiciosModel->conteo_calificaciones_producto($servicio->ID_SERVICIO);
-                  ?>
-                  <ul class="rating">
-                    <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
-                    <?php for($i = 1; $i<=$estrellas; $i++){ ?>
-                    <li class="fa fa-star"></li>
-                  <?php } ?>
-                  <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
-                    <li class="fa fa-star"></li>
-                  <?php } ?>
-                    <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
-                  </ul>
-                  <h3 class="title text-primary"><?php echo $titulo; ?> </h3>
-                  <div class="">
-                    <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
-                      <a href="<?php echo base_url('servicio/favorito?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-outline-primary" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
-                    <?php }else{ ?>
-                      <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$servicio->ID_SERVICIO)); ?>" class="btn btn-outline-primary" title="Quitar de Favoritos"> <span class="fa fa-heart"></span> </a>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div>
-              <!-- Modal -->
-              <div class="modal fade" id="modal<?php echo $servicio->ID_SERVICIO; ?>" tabindex="-1" role="dialog" aria-labelledby="modal<?php echo $servicio->ID_SERVICIO; ?>" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row">
-                        <div class="col-12">
-                          <div class="portada-servicios img-thumbnail rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>); background-size: cover; background-repeat: no-repeat; height:250px;"> </div>
-                        </div>
-                        <div class="col">
-                          <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
-                          <?php
-                            switch ($servicio->SERVICIO_TIPO) {
-                              case 'profesional':
-                                echo $this->lang->line('usuario_form_servicio_tipo_presencial');
-                                break;
-                              case 'digital':
-                                echo $this->lang->line('usuario_form_servicio_tipo_distancia');
-                                break;
-                              default:
-                                // code...
-                                break;
-                            }
-                          ?>
-                          <div class="border-top mt-3 pt-3">
-                            <?php echo $descripcion_corta; ?>
-                          </div>
-                          <hr>
-                          <a href="<?php echo base_url('servicio/contacto?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-primary btn-block"> <i class="fa fa-paper-plane"></i> Contactar</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <?php }// Termina cuadritula de servicios ?>
-
-            <?php
-
+              if(!empty($servicios_tercer)) {
+                $hay_servicios = true;
+                $servicios = array_merge($servicios, $servicios_tercer);
+               }
           } // Categorias de Tercer nivel
           } // Categorias de Segundo Nivel
-        ?>
-          <?php }else{  $hay_servicios = true; ?>
-
-            <?php foreach($servicios as $servicio){ ?>
-              <?php
-                // Variables de Traducción
-                if($_SESSION['lenguaje']['iso']==$servicio->LENGUAJE){
+        }else{  $hay_servicios = true; }// termina el condicional de productos
+          ?>
+          <!-- CUADRICULA DE SERVICIOS -->
+          <?php foreach($servicios as $servicio){ ?>
+            <?php
+              // Variables de Traducción
+              if($_SESSION['lenguaje']['iso']==$servicio->LENGUAJE){
+                $titulo = $servicio->SERVICIO_NOMBRE;
+                $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
+              }else{
+                $traduccion = $this->TraduccionesModel->lista($servicio->ID_SERVICIO,'servicio',$_SESSION['lenguaje']['iso']);
+                if(!empty($traduccion)){
+                  $titulo = $traduccion['TITULO'];
+                  $descripcion_corta = $traduccion['DESCRIPCION_CORTA'];
+                }else{
                   $titulo = $servicio->SERVICIO_NOMBRE;
                   $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
-                }else{
-                  $traduccion = $this->TraduccionesModel->lista($servicio->ID_SERVICIO,'servicio',$_SESSION['lenguaje']['iso']);
-                  if(!empty($traduccion)){
-                    $titulo = $traduccion['TITULO'];
-                    $descripcion_corta = $traduccion['DESCRIPCION_CORTA'];
-                  }else{
-                    $titulo = $servicio->SERVICIO_NOMBRE;
-                    $descripcion_corta = $servicio->SERVICIO_DESCRIPCION;
-                  }
                 }
-                // Variables de Paquete
-                $paquete = $this->PlanesModel->plan_activo_usuario($servicio->ID_USUARIO,'servicios');
-                if($paquete==null){
-                  $visible = 'd-none';
-                }else{
-                  $visible = '';
-                }
-              ?>
-            <div class="servicios <?php echo $visible; ?>">
-              <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio->ID_SERVICIO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-              <?php if($paquete['PLAN_NIVEL']>=2){ ?>
-                <a href="<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" class="portada enlace-principal-servicio">
-              <?php }else{ ?>
-                <a href="#" class="portada enlace-principal-servicio" data-toggle="modal" data-target="#modal<?php echo $servicio->ID_SERVICIO; ?>">
-              <?php } ?>
+              }
+              // Variables de Paquete
+              $paquete = $this->PlanesModel->plan_activo_usuario($servicio->ID_USUARIO,'servicios');
+              if($paquete==null){
+                $visible = 'd-none';
+              }else{
+                $visible = '';
+              }
+            ?>
+          <div class="servicios <?php echo $visible; ?>">
+            <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio->ID_SERVICIO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+            <?php if($paquete['PLAN_NIVEL']>=2){ ?>
+              <a href="<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" class="portada enlace-principal-servicio">
+            <?php }else{ ?>
+              <a href="#" class="portada enlace-principal-servicio" data-toggle="modal" data-target="#modal<?php echo $servicio->ID_SERVICIO; ?>">
+            <?php } ?>
 
-                <div class="rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>)"> </div>
-              </a>
-              <div class="product-content text-center">
-                <?php
-                $promedio = $this->CalificacionesServiciosModel->promedio_calificaciones_producto($servicio->ID_SERVICIO);
-                $cantidad = $this->CalificacionesServiciosModel->conteo_calificaciones_producto($servicio->ID_SERVICIO);
-                ?>
-                <ul class="rating">
-                  <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
-                  <?php for($i = 1; $i<=$estrellas; $i++){ ?>
-                  <li class="fa fa-star"></li>
+              <div class="rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>)"> </div>
+            </a>
+            <div class="product-content text-center">
+              <?php
+              $promedio = $this->CalificacionesServiciosModel->promedio_calificaciones_producto($servicio->ID_SERVICIO);
+              $cantidad = $this->CalificacionesServiciosModel->conteo_calificaciones_producto($servicio->ID_SERVICIO);
+              ?>
+              <ul class="rating">
+                <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
+                <?php for($i = 1; $i<=$estrellas; $i++){ ?>
+                <li class="fa fa-star"></li>
+              <?php } ?>
+              <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+                <li class="fa fa-star"></li>
+              <?php } ?>
+                <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
+              </ul>
+              <h3 class="title text<?php echo $primary; ?>"><?php echo $titulo; ?> </h3>
+              <div class="">
+                <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+                  <a href="<?php echo base_url('servicio/favorito?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-outline-primary" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+                <?php }else{ ?>
+                  <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$servicio->ID_SERVICIO)); ?>" class="btn btn-outline-primary" title="Quitar de Favoritos"> <span class="fa fa-heart"></span> </a>
                 <?php } ?>
-                <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
-                  <li class="fa fa-star"></li>
-                <?php } ?>
-                  <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
-                </ul>
-                <h3 class="title text-primary"><?php echo $titulo; ?> </h3>
-                <div class="">
-                  <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
-                    <a href="<?php echo base_url('servicio/favorito?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-outline-primary" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
-                  <?php }else{ ?>
-                    <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$servicio->ID_SERVICIO)); ?>" class="btn btn-outline-primary" title="Quitar de Favoritos"> <span class="fa fa-heart"></span> </a>
-                  <?php } ?>
-                </div>
               </div>
             </div>
-            <!-- Modal -->
-            <div class="modal fade" id="modal<?php echo $servicio->ID_SERVICIO; ?>" tabindex="-1" role="dialog" aria-labelledby="modal<?php echo $servicio->ID_SERVICIO; ?>" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="portada-servicios img-thumbnail rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>); background-size: cover; background-repeat: no-repeat; height:250px;"> </div>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="modal<?php echo $servicio->ID_SERVICIO; ?>" tabindex="-1" role="dialog" aria-labelledby="modal<?php echo $servicio->ID_SERVICIO; ?>" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="portada-servicios img-thumbnail rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>); background-size: cover; background-repeat: no-repeat; height:250px;"> </div>
+                    </div>
+                    <div class="col">
+                      <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
+                      <?php
+                        switch ($servicio->SERVICIO_TIPO) {
+                          case 'profesional':
+                            echo $this->lang->line('usuario_form_servicio_tipo_presencial');
+                            break;
+                          case 'digital':
+                            echo $this->lang->line('usuario_form_servicio_tipo_distancia');
+                            break;
+                          default:
+                            // code...
+                            break;
+                        }
+                      ?>
+                      <div class="border-top mt-3 pt-3">
+                        <?php echo $descripcion_corta; ?>
                       </div>
-                      <div class="col">
-                        <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
-                        <?php
-                          switch ($servicio->SERVICIO_TIPO) {
-                            case 'profesional':
-                              echo $this->lang->line('usuario_form_servicio_tipo_presencial');
-                              break;
-                            case 'digital':
-                              echo $this->lang->line('usuario_form_servicio_tipo_distancia');
-                              break;
-                            default:
-                              // code...
-                              break;
-                          }
-                        ?>
-                        <div class="border-top mt-3 pt-3">
-                          <?php echo $descripcion_corta; ?>
-                        </div>
-                        <hr>
-                        <a href="<?php echo base_url('servicio/contacto?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-primary btn-block"> <i class="fa fa-paper-plane"></i> Contactar</a>
-                      </div>
+                      <hr>
+                      <a href="<?php echo base_url('servicio/contacto?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-primary btn-block"> <i class="fa fa-paper-plane"></i> Contactar</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          <?php }// Termina cuadritula de servicios ?>
-
-        <?php }// termina el condicional de productos ?>
-
+          </div>
+        <?php }// Termina cuadritula de servicios ?>
+          <!-- /CUADRICULA DE SERVICIOS -->
+        <?php if(!$hay_servicios){ ?>
+          <div class="border border-default p-3 text-center">
+            <h3>No hemos encontrado servicios.</h3>
+            <a href="<?php echo base_url('usuario/registrar'); ?>">Se el primero en ofrecer un servicio en esta categoría</a>
+          </div>
+        <?php } ?>
        </div>
 
     </div>

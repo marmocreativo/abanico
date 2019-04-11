@@ -532,8 +532,6 @@ html, body{
   position: relative;
   float: left;
   width: 45%;
-  max-width: 125px;
-  height: 125px;
   background-color: #ebebeb;
 }
 
@@ -541,7 +539,6 @@ html, body{
   overflow: hidden;
   float: left;
   padding-top: 0;
-  height: 125px;
   width: 55%;
 }
 
