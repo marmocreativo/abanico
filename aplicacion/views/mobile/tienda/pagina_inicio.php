@@ -257,16 +257,50 @@
 <div class="fila py-4" id="Concursos">
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 cont-ganador">
+        <?php if($this->PremiosModel->verificar_ganador()){ $premio = $this->PremiosModel->ultimo_ganador(); ?>
         <div class="row">
-          <div class="col">
-            <h3>Sorteo Mensual</h3>
-            <?php if($this->PremiosModel->verificar_ganador()){ $premio = $this->PremiosModel->ultimo_ganador(); ?>
-            <div class="row">
-              <div class="col">
+          <div class="col-12 d-flex align-items-center">
+            <div class="contenedor-ganador text-center">
+              <div class="container-fluid head-ganador">
+                <img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt="Logo" width="50px">
+                <div class="fecha-ganador">
+                  <?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
+                </div>
+                <div class="titulo-ganador">
+                  Nuestro Ganador Mensual
+                </div>
+              </div>
+              <div class="nombre-ganador">
+                <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
+                <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
+                Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
+                <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
+              </div>
+              <div class="premio-ganador text-primary">
+                Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
+              </div>
+            </div>
+          </div>
+
+            <div class="col">
+              <div class="img-ganador">
                 <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid" alt="">
               </div>
-              <div class="col">
+            </div>
+        </div>
+      <?php }else{ ?>
+        <?php
+          $pedido_ganador = $this->PedidosModel->pedido_ganador(date('Y-m-d'));
+          if(!empty($pedido_ganador)){
+            $premios = $this->PremiosModel->lista(['PREMIO_GANADOR'=>0],'PREMIO_FECHA_DISPONIBLE DESC',1);
+            foreach($premios as $premio){
+               $this->PremiosModel->guardar_ganador($premio->ID_PREMIO,$pedido_ganador['ID_USUARIO']);
+            }
+          ?>
+          <?php $premio = $this->PremiosModel->ultimo_ganador(); ?>
+            <div class="row">
+              <div class="col-12">
                 <div class="contenedor-ganador">
 
                   <div class="fecha-ganador">
@@ -284,64 +318,34 @@
                   </div>
                 </div>
               </div>
-            </div>
-          <?php }else{ ?>
-            <?php
-              $pedido_ganador = $this->PedidosModel->pedido_ganador(date('Y-m-d'));
-              if(!empty($pedido_ganador)){
-                $premios = $this->PremiosModel->lista(['PREMIO_GANADOR'=>0],'PREMIO_FECHA_DISPONIBLE DESC',1);
-                foreach($premios as $premio){
-                   $this->PremiosModel->guardar_ganador($premio->ID_PREMIO,$pedido_ganador['ID_USUARIO']);
-                }
-              ?>
-              <?php $premio = $this->PremiosModel->ultimo_ganador(); ?>
-                <div class="row">
-                  <div class="col">
-                    <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid" alt="">
-                  </div>
-                  <div class="col">
-                    <div class="contenedor-ganador">
 
-                      <div class="fecha-ganador">
-                        <span><?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?></span> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
-                      </div>
-                      <div class="titulo-ganador">
-                        Nuestro Ganador Mensual
-                      </div>
-                      <div class="nombre-ganador">
-                        <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
-                        Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b>
-                      </div>
-                      <div class="premio-ganador">
-                        Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
-                      </div>
-                    </div>
+                <div class="col">
+                  <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid" alt="">
+                </div>
+            </div>
+          <?php }else{ $premios = $this->PremiosModel->lista(['PREMIO_GANADOR'=>0],'PREMIO_FECHA_DISPONIBLE DESC',1);
+          foreach($premios as $premio){
+          ?>
+            <div class="row">
+              <div class="col">
+                <div class="contenedor-ganador">
+                  <p> <small>Aún no Hay Ganador: Próximo concurso</small> </p>
+                  <div class="fecha-ganador">
+                    <span><?php echo date('d', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?></span> <?php echo date('M', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?> <?php echo date('Y', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?>
+                  </div>
+                  <div class="titulo-ganador">
+                    Compra y Gana un  <?php echo $premio->PREMIO_TITULO; ?>
                   </div>
                 </div>
-              <?php }else{ $premios = $this->PremiosModel->lista(['PREMIO_GANADOR'=>0],'PREMIO_FECHA_DISPONIBLE DESC',1);
-              foreach($premios as $premio){
-              ?>
-                <div class="row">
-                  <div class="col">
-                    <img src="contenido/img/publicaciones/<?php echo $premio->PREMIO_IMAGEN; ?>" class="img-fluid" alt="">
-                  </div>
-                  <div class="col">
-                    <div class="contenedor-ganador">
-                      <p> <small>Aún no Hay Ganador: Próximo concurso</small> </p>
-                      <div class="fecha-ganador">
-                        <span><?php echo date('d', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?></span> <?php echo date('M', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?> <?php echo date('Y', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?>
-                      </div>
-                      <div class="titulo-ganador">
-                        Compra y Gana un  <?php echo $premio->PREMIO_TITULO; ?>
-                      </div>
-                    </div>
-                  </div>
+              </div>
+
+                <div class="col-12">
+                  <img src="contenido/img/publicaciones/<?php echo $premio->PREMIO_IMAGEN; ?>" class="img-fluid" alt="">
                 </div>
-              <?php } ?>
-            <?php  } // termina condicional de pedido ganador  ?>
+            </div>
           <?php } ?>
-          </div>
-        </div>
+        <?php  } // termina condicional de pedido ganador  ?>
+      <?php } ?>
       </div>
 
       <div class="col-12 mt-3 pt-3 border-top">

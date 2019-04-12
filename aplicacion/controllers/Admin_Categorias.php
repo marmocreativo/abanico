@@ -181,10 +181,31 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'CATEGORIA_ESTADO'=> 'activo'
       );
 
-      $categoria_id = $this->CategoriasModel->actualizar( $this->input->post('Identificador'),$parametros);
+      $this->CategoriasModel->actualizar( $this->input->post('Identificador'),$parametros);
 
 			$color = $this->input->post('ColorCategoria');
-			$icono = $color = $this->input->post('IconoCategoria');
+			$icono = $this->input->post('IconoCategoria');
+
+			// Busco Segundo Nivel
+			$categorias_segundo = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$this->input->post('Identificador')],$this->input->post('TipoCategoria'),'','');
+
+			foreach($categorias_segundo as $categoria_segundo){
+				// Actualizo
+				$parametros_segundo = array(
+					'CATEGORIA_COLOR' => $color,
+					'CATEGORIA_ICONO' => $icono
+	      );
+				$this->CategoriasModel->actualizar($categoria_segundo->ID_CATEGORIA,$parametros_segundo);
+				// Busco tercer Nivel
+				$categorias_tercero = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria_segundo->ID_CATEGORIA],$this->input->post('TipoCategoria'),'','');
+				foreach($categorias_tercero as $categoria_tercero){
+					$parametros_tercero = array(
+						'CATEGORIA_COLOR' => $color,
+						'CATEGORIA_ICONO' => $icono
+		      );
+					$this->CategoriasModel->actualizar($categoria_tercero->ID_CATEGORIA,$parametros_tercero);
+				}
+			}
 
 			// Mensaje Feedback
 			$this->session->set_flashdata('exito', 'Categoría actualizada');

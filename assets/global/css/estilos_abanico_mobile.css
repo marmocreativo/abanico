@@ -777,37 +777,67 @@ Lo comento por que cambié la posición del botón
     border-bottom: solid 1px #b5b5b5;
 }
 .imagen-curioso{
-  /* transform: scale(1.5) translateY(50px) translateX(50px); */
+  transform: scale(1.5) translateY(50px) translateX(50px);
   position: absolute;
-  width: 100px;
-  height: auto;
   z-index: 100;
 }
 .dato-curioso{
-  /* padding: 10px; */
+  padding: 10px;
+  padding-left:50%;
 }
 .dato-ganador{
   background-color: #ddd;
-  padding: 1rem;
-  padding-left:20%;
 }
 .contenedor-ganador{
-  text-align: right;
+  width: 100%;
+  height: auto;
+}
+.cont-ganador {
+  border-top: solid 1px lightgray;
+}
+.img-ganador {
+  background: white;
+  width: 100%;
+  height: 560px;
+  margin: 20px auto;
+  border-radius: 15px;
+  text-align: center;
+}
+.head-ganador {
+  background-size: cover;
+background-image: url('../img/pleca_gana_arriba.png');
+height: 121px;
+background-position: bottom;
+border-bottom: solid 1px lightgray;
+}
+.head-ganador img {
+  padding: 10px 0;
 }
 .fecha-ganador{
-  font-size: 1.2em;
+  font-size: 1em;
 }
 .fecha-ganador span{
-  font-size: 2rem;
+  font-size: 1em;
 }
 .titulo-ganador{
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.5em;
+  line-height: 0.8em;
 }
 .nombre-ganador{
-  font-size: 1rem;
+  font-size: 2em;
+font-weight: 700;
+line-height: 1.2em;
+color: #FF6600;
+}
+.premio-ganador {
+  background-size: cover;
+  background-image: url('../img/pleca_gana_abajo.png');
+  height: 100px;
+  background-position: top;
+  border-top: solid 1px lightgray;
   font-weight: 200;
-  color: #FF6600;
+  font-size: 1.5em;
+  margin-top: 10px
 }
 
 /*

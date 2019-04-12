@@ -284,7 +284,7 @@
         <div class="row">
           <div class="col">
             <div class="img-ganador">
-              <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid" alt="">
+              <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid h-100" alt="">
             </div>
           </div>
           <div class="col d-flex align-items-center">
@@ -322,7 +322,7 @@
           <?php $premio = $this->PremiosModel->ultimo_ganador(); ?>
             <div class="row">
               <div class="col">
-                <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid" alt="">
+                <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid h-100" alt="">
               </div>
               <div class="col">
                 <div class="contenedor-ganador">
@@ -383,7 +383,7 @@
         </button>
       </div>
       <div class="modal-body p-0">
-        
+
           <div class="linea-colores-delgada">
             <div class="barra-color barra-azul"></div>
             <div class="barra-color barra-rosa"></div>

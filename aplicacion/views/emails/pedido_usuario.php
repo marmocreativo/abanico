@@ -338,7 +338,7 @@
                         <tbody>
                             <tr>
                                 <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px; text-align: center;">
-                                    <img src="<?php echo base_url('assets/global/img/logo.png'); ?>" alt="" width="100px">
+                                    <img src="<?php echo base_url('assets/global/img/logo_correo.png'); ?>" alt="" width="100px">
                                 </td>
                             </tr>
                             <tr>

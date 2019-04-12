@@ -65,11 +65,11 @@
             }
            ?>
         <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
-        <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'],2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
+        <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
         <?php } ?>
         <h2 class="product-price display-6" >
           <small><?php echo $_SESSION['divisa']['signo']; ?></small>
-            <span id="Precio_Producto" ><?php echo number_format($_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO'],2); ?></span>
+            <span id="Precio_Producto" ><?php echo number_format($precio_venta,2); ?></span>
           <small><?php echo $_SESSION['divisa']['iso']; ?> </small>
         </h2>
         <hr>
