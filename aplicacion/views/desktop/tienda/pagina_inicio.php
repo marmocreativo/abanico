@@ -290,8 +290,7 @@
           <div class="col d-flex align-items-center">
             <div class="contenedor-ganador text-center">
               <div class="container-fluid head-ganador">
-                <img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt="Logo" width="50px">
-                <div class="fecha-ganador">
+                <div class="fecha-ganador" style="margin-top:50px;">
                   <?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
                 </div>
                 <div class="titulo-ganador">
@@ -374,7 +373,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="ModalAyuda" tabindex="-1" role="dialog" aria-labelledby="ModalAyuda" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle"><i class="far fa-question-circle"></i> Ayuda</h5>

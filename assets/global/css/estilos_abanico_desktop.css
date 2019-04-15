@@ -1066,3 +1066,7 @@ border-top: solid 9px #980500;
 #carouselAyuda .carousel-indicators {
     bottom: 5px;
 }
+
+.modal-xl {
+    max-width: 90%;
+}

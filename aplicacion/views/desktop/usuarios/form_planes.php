@@ -31,8 +31,17 @@
                             </tr>
                             <?php if($plan->PLAN_NIVEL>=4){ ?>
                               <tr>
-                                <td>Costo de almacenamiento</td>
-                                <td>$<?php echo $plan->PLAN_ALMACENAMIENTO; ?> x m<sup>3</sup></td>
+                                <td colspan="2">
+                                  <div class="row">
+                                    <div class="col">
+                                      Costo de almacenamiento<br>
+                                    </div>
+                                    <div class="col text-right">
+                                      $<?php echo $plan->PLAN_ALMACENAMIENTO; ?> x m<sup>3</sup><br>
+                                    </div>
+                                  </div>
+                                  <small>Renta mínima 0.25 m<sup>3</sup></small>
+                                </td>
                               </tr>
                             <?php } ?>
                             <?php if($plan->PLAN_NIVEL>=4){ ?>

@@ -262,8 +262,7 @@
         <div class="row">
           <div class="col-12 d-flex align-items-center">
             <div class="contenedor-ganador text-center">
-              <div class="container-fluid head-ganador">
-                <img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt="Logo" width="50px">
+              <div class="container-fluid head-ganador"  style="margin-top:50px;">
                 <div class="fecha-ganador">
                   <?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
                 </div>

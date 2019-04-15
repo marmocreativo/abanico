@@ -270,7 +270,7 @@ public function favorito()
 			// Mensaje FeedBack
 			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado, recibirás la respuesta en tu <a href="'.base_url('usuario/mensajes').'">Bandeja de Entrada</a>');
 			// Redirecciono
-			//redirect(base_url('servicio/contacto?id='.$this->input->post('IdServicio')));
+			redirect(base_url('servicio/contacto?id='.$this->input->post('IdServicio')));
 
 		}else{
 		 $this->data['servicio'] = $this->ServiciosModel->detalles($_GET['id']);

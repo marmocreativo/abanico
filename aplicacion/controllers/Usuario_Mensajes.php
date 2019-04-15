@@ -66,8 +66,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	 				'CONVERSACION_ESTADO'=>'respuesta'
 	 			);
 	 			$conversacion_id = $this->ConversacionesModel->actualizar($this->input->post('Identificador'),$parametros_conversacion);
+				$datos_conversacion = $this->ConversacionesModel->detalles($this->input->post('Identificador'));
 	 			// Mensaje
-	 			$mensaje .= $this->input->post('MensajeTexto');
+	 			$mensaje = $this->input->post('MensajeTexto');
 	 			$parametros_mensaje = array(
 	 				'ID_CONVERSACION'=>$this->input->post('Identificador'),
 	 				'ID_REMITENTE'=>$this->input->post('IdUsuario'),
@@ -77,6 +78,44 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					'MENSAJE_ESTADO_B'=>'no leido'
 	 			);
 	 			$mensaje_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
+
+				if($datos_conversacion['ID_USUARIO_A']==$this->input->post('IdUsuario')){
+					$datos_receptor = $this->UsuariosModel->detalles($datos_conversacion['ID_USUARIO_B']);
+					$datos_remitente = $this->UsuariosModel->detalles($datos_conversacion['ID_USUARIO_A']);
+				}
+				if($datos_conversacion['ID_USUARIO_B']==$this->input->post('IdUsuario')){
+					$datos_receptor = $this->UsuariosModel->detalles($datos_conversacion['ID_USUARIO_A']);
+					$datos_remitente = $this->UsuariosModel->detalles($datos_conversacion['ID_USUARIO_B']);
+				}
+				// Datos para enviar por correo
+
+	 				$config['protocol']    = 'smtp';
+	 				$config['smtp_host']    = $this->data['op']['mailer_host'];
+	 				$config['smtp_port']    = $this->data['op']['mailer_port'];
+	 				$config['smtp_timeout'] = '7';
+	 				$config['smtp_user']    = $this->data['op']['mailer_user'];
+	 				$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+	 				$config['charset']    = 'utf-8';
+	 				$config['mailtype'] = 'html'; // or html
+	 				$config['validation'] = TRUE; // bool whether to validate email or not
+
+
+	 			$this->data['info'] = array();
+	 			$this->data['info']['Titulo'] = 'Conversando con:  '.$datos_remitente['USUARIO_NOMBRE'].' '.$datos_remitente['USUARIO_APELLIDOS'];
+	 			$this->data['info']['Nombre'] = 'Puedes contestar a esta pregunta en tu panel de usuario';
+	 			$this->data['info']['Mensaje'] = $mensaje;
+	 			$this->data['info']['TextoBoton'] = 'Bandeja de entrada';
+	 			$this->data['info']['EnlaceBoton'] = base_url('usuario/mensajes');
+
+	 			$mensaje = $this->load->view('emails/mensaje_general',$this->data,true);
+	 			$this->email->initialize($config);
+
+	 			$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+	 			$this->email->to($datos_receptor['USUARIO_CORREO']);
+
+	 			$this->email->subject('Conversación sobre: '.$datos_conversacion['CONVERSACION_TIPO']);
+	 			$this->email->message($mensaje);
+	 			$this->email->send();
 	 			// Redirecciono
 	 			redirect(base_url('usuario/mensajes/conversacion?id='.$this->input->post('Identificador')));
 			}else{
