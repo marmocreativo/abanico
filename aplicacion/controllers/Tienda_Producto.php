@@ -141,6 +141,7 @@ public function favorito()
 
   			$this->email->subject('Tu producto en Favoritos');
   			$this->email->message($mensaje);
+				$this->email->send();
 			 }
 
 			 redirect(base_url('usuario/favoritos'));
@@ -233,6 +234,7 @@ public function favorito()
 
 			// Relleno la notificación
  		 $datos_producto = $this->ProductosModel->detalles($this->input->post('IdProducto'));
+		 $datos_usuario = $this->UsuariosModel->detalles($datos_producto['ID_USUARIO']);
  		 $parametros_notificacion = array(
  			 'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
  			 'NOTIFICACION_CONTENIDO'=>'Alguien ha hecho una pregunta sobre tu producto '.$datos_producto['PRODUCTO_NOMBRE'],
@@ -241,6 +243,36 @@ public function favorito()
  		 );
  		 // Creo la notificación
  		 $id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
+
+		 // Datos para enviar por correo
+
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = $this->data['op']['mailer_host'];
+				$config['smtp_port']    = $this->data['op']['mailer_port'];
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = $this->data['op']['mailer_user'];
+				$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+				$config['charset']    = 'utf-8';
+				$config['mailtype'] = 'html'; // or html
+				$config['validation'] = TRUE; // bool whether to validate email or not
+
+
+			$this->data['info'] = array();
+			$this->data['info']['Titulo'] = 'Hay preguntas sobre:  '.$datos_producto['PRODUCTO_NOMBRE'];
+			$this->data['info']['Nombre'] = 'Puedes contestar a esta pregunta en tu panel de usuario';
+			$this->data['info']['Mensaje'] = $mensaje;
+			$this->data['info']['TextoBoton'] = 'Bandeja de entrada';
+			$this->data['info']['EnlaceBoton'] = base_url('usuario/mensajes');
+
+			$mensaje = $this->load->view('emails/mensaje_general',$this->data,true);
+			$this->email->initialize($config);
+
+			$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+			$this->email->to($datos_usuario['USUARIO_CORREO']);
+
+			$this->email->subject('Pregunta sobre tus productos');
+			$this->email->message($mensaje);
+			$this->email->send();
 
 			// Mensaje FeedBack
 			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado, recibirás la respuesta en tu <a href="'.base_url('usuario/mensajes').'">Bandeja de Entrada</a>');

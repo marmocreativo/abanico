@@ -30,6 +30,7 @@
               <li class="breadcrumb-item active <?php echo 'text'.$primary; ?>" aria-current="page"><?php echo $this->lang->line('pagina_producto_migas_producto'); ?></li>
             </ol>
           </nav>
+          <?php retro_alimentacion(); ?>
           <div class="row mb-5">
             <div class="col-7">
               <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
