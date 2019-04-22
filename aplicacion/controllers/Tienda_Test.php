@@ -36,27 +36,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function index()
 	{
-		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
-		$this->data['productos'] = $this->ProductosModel->lista_activos('','','','',10);
-		/*
-		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/test',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
-		*/
-		$this->data['pedido'] = $this->PedidosModel->detalles(25);
-		$this->data['productos'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$this->data['pedido']['ID_PEDIDO']],'','');
-		$this->load->view('emails/pedido_usuario',$this->data);
-	}
-
-
-	public function categorias_todas()
-	{
-		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$_GET['tipo'],'','');
-		$this->data['productos'] = $this->ProductosModel->lista_activos('','','','',10);
-
-		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/test_todasCategorias',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
-
+		$this->data['info']= array();
+		$this->data['info']['Monto'] = 260;
+		$this->data['info']['Referencia'] = '98000002179953';
+		$mensaje_oxxo = $this->load->view('emails/ficha_oxxo',$this->data);
 	}
 }
