@@ -347,22 +347,18 @@ table {
 															</tbody>
 														</table>
 														<table style="width:96%; margin:2%; color: #495057;">
-													</tr>
 													<tr>
-														<td>
-																<img src="<?php echo base_url('assets/global/img/oxxopay_brand.png'); ?>" alt="OXXOPay" style="margin: 0;padding: 0;max-width: 150px;margin-top: 2px;">
+														<td style="text-align:right; width:50%">
+																<img src="<?php echo base_url('assets/global/img/oxxopay_brand.png'); ?>" alt="OXXOPay" style="margin: 0;padding: 0;max-width: 150px;margin-top: 2px;margin-right:10px;">
 														</td>
 														<td>
 															<h3 style="margin: 0;padding: 0;margin-bottom: 10px;font-size: 15px;font-weight: 600;text-transform: uppercase;">Monto a pagar</h3>
 															<h2 style="margin: 0;padding: 0;font-size: 36px;color: #000000;line-height: 24px;margin-bottom: 15px;">$<?php echo $info['Monto'] ?> <sup style="margin: 0;padding: 0;font-size: 16px;position: relative;top: -2px;">MXN</sup></h2>
 															<p style="margin: 0;padding: 0;font-size: 10px;line-height: 14px;">OXXO cobrará una comisión adicional al momento de realizar el pago.</p>
 														</td>
-														<td></td>
-														<td></td>
-														<td></td>
 													</tr>
 													<tr>
-														<td colspan="5">
+														<td colspan="2">
 															<h3 style="margin: 0;padding: 0;margin-bottom: 10px;font-size: 15px;font-weight: 600;">Referencia</h3>
 															<h1 style="margin: 0 0 20px 0;padding: 6px 0 7px;font-size: 27px;margin-top: -1px;border: 1px solid #b0afb5;border-radius: 4px;background: #f8f9fa;"><?php echo $info['Referencia'] ?></h1>
 
