@@ -20,7 +20,7 @@
 <div class="contenido_principal">
   <div class="main">
       <div class="serv-profile">
-        <div class="jumbotron mb-2">
+        <div class="jumbotron mb-2" style="background-image:url('<?php echo base_url('assets/global/img/bg-servicios.jpg'); ?>'); background-position: center center;">
         </div>
         <div class="container">
           <div class="row mb-5">

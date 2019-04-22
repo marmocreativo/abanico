@@ -284,8 +284,19 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$tienda_id = $this->PedidosTiendasModel->crear($parametros_tienda);
 				// Relleno Notificación
 				$parametros_notificacion = array(
+					'ID_USUARIO'=>$IdUsuario,
+					'NOTIFICACION_CONTENIDO'=>'Gracias por comprar',
+					'NOTIFICACION_TIPO'=>'compra',
+					'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+					'NOTIFICACION_ESTADO'=>'no leido'
+				);
+				// Creo la notificación
+				$id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
+				// Notificacón comprador
+				$parametros_notificacion = array(
 					'ID_USUARIO'=>$this->data['tienda']['ID_USUARIO'],
 					'NOTIFICACION_CONTENIDO'=>'Felicidades alguien te ha hecho una compra',
+					'NOTIFICACION_TIPO'=>'venta',
 					'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 					'NOTIFICACION_ESTADO'=>'no leido'
 				);

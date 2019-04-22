@@ -105,7 +105,8 @@ public function favorito()
 				$datos_usuario = $this->UsuariosModel->detalles($datos_producto['ID_USUARIO']);
 				$parametros_notificacion = array(
 					'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
-					'NOTIFICACION_CONTENIDO'=>'Alguien añadió tu producto '.$datos_producto['PRODUCTO_NOMBRE'].' a Favoritos',
+					'NOTIFICACION_CONTENIDO'=>'Tu producto '.$datos_producto['PRODUCTO_NOMBRE'].' fue añadido a favoritos',
+					'NOTIFICACION_TIPO'=>'general',
 					'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 					'NOTIFICACION_ESTADO'=>'no leido'
 				);
@@ -185,6 +186,7 @@ public function favorito()
 		 $parametros_notificacion = array(
 			 'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
 			 'NOTIFICACION_CONTENIDO'=>'Alguien calificó tu producto '.$datos_producto['PRODUCTO_NOMBRE'].' con '.$this->input->post('EstrellasCalificacion').' Estrellas',
+			 'NOTIFICACION_TIPO'=>'general',
 			 'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 			 'NOTIFICACION_ESTADO'=>'no leido'
 		 );
@@ -238,6 +240,7 @@ public function favorito()
  		 $parametros_notificacion = array(
  			 'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
  			 'NOTIFICACION_CONTENIDO'=>'Alguien ha hecho una pregunta sobre tu producto '.$datos_producto['PRODUCTO_NOMBRE'],
+			 'NOTIFICACION_TIPO'=>'mensaje',
  			 'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
  			 'NOTIFICACION_ESTADO'=>'no leido'
  		 );

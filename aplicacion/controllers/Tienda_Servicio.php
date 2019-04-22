@@ -100,6 +100,7 @@ public function favorito()
 			 $parametros_notificacion = array(
 				 'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
 				 'NOTIFICACION_CONTENIDO'=>'Alguien añadió tu servicio '.$datos_servicio['SERVICIO_NOMBRE'].' a Favoritos',
+				 'NOTIFICACION_TIPO'=>'general',
 				 'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 				 'NOTIFICACION_ESTADO'=>'no leido'
 			 );
@@ -179,6 +180,7 @@ public function favorito()
 		 $parametros_notificacion = array(
 			 'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
 			 'NOTIFICACION_CONTENIDO'=>'Alguien calificí tu servicio '.$datos_servicio['SERVICIO_NOMBRE'].' con '.$this->input->post('EstrellasCalificacion').' Estrellas',
+			 'NOTIFICACION_TIPO'=>'general',
 			 'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 			 'NOTIFICACION_ESTADO'=>'no leido'
 		 );
@@ -231,6 +233,7 @@ public function favorito()
 			$parametros_notificacion = array(
 				'ID_USUARIO'=>$datos_servicio['ID_USUARIO'],
 				'NOTIFICACION_CONTENIDO'=>'Tienes un nuevo mensaje sobre tu servicio'.$datos_servicio['SERVICIO_NOMBRE'],
+				'NOTIFICACION_TIPO'=>'mensaje',
 				'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 				'NOTIFICACION_ESTADO'=>'no leido'
 			);

@@ -126,7 +126,11 @@
                           <?php if($plan['PLAN_TIPO']=='productos'){ ?>
                           <tr>
                             <td>Límite de productos activos</td>
-                            <td><?php echo $plan['PLAN_LIMITE_PRODUCTOS']; ?></td>
+                            <?php if($plan['PLAN_LIMITE_PRODUCTOS']==0){ ?>
+                              <td>Ilimitados</td>
+                            <?php }else{ ?>
+                              <td><?php echo $plan['PLAN_LIMITE_PRODUCTOS']; ?></td>
+                            <?php } ?>
                           </tr>
                           <tr>
                             <td>Límite fotografías por producto</td>

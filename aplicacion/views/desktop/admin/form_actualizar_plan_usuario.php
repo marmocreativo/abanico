@@ -49,9 +49,9 @@
                 <div class="form-group">
                   <label for="EspacioAlmacenamientoPlan">Espacio Almacenamiento</label>
                   <div class="input-group">
-                    <input type="number" class="form-control" name="EspacioAlmacenamientoPlan" id="EspacioAlmacenamientoPlan" placeholder="" value="<?php echo $plan['PLAN_COSTO_ALMACENAMIENTO'] ?>">
+                    <input type="number" class="form-control" name="EspacioAlmacenamientoPlan" id="EspacioAlmacenamientoPlan" placeholder="" value="<?php echo $plan['PLAN_ESPACIO_ALMACENAMIENTO'] ?>">
                     <div class="input-group-append">
-                        <span class="input-group-text">x M<sup>3</sup></span>
+                        <span class="input-group-text">M<sup>3</sup></span>
                       </div>
                   </div>
                 </div>

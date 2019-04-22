@@ -359,9 +359,8 @@
                                 <td colspan="3" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
                                   <h2 style="margin:0;color:#495057;"><strong>Depósito o transferencia Bancaria</strong></h2>
                                   <p>Scotiabank</p>
-                                  <p>Tarjeta: <strong>0000 0000 0000 0000</strong></p>
                                   <p>Cuenta: <strong>000123456789</strong></p>
-                                  <p>CLABE: <strong>0000000000000</strong></p>
+                                  <p>CLABE: <strong>044180256000006682</strong></p>
                                 </td>
                                 <td colspan="2" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
                                   <h4 style="margin:0;color:#495057;border-bottom:solid 1px lightgrey"><strong>Referencia:</strong> <?php echo $_POST['Folio']; ?></h5>
