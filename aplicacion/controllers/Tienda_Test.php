@@ -39,6 +39,19 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->data['info']= array();
 		$this->data['info']['Monto'] = 260;
 		$this->data['info']['Referencia'] = '98000002179953';
-		$mensaje_oxxo = $this->load->view('emails/ficha_oxxo',$this->data);
+		$this->data['info']['Titulo'] = 'Titulo';
+		$this->data['info']['Nombre'] = 'Nombre';
+		$this->data['info']['Mensaje'] = 'Un mensaje Largo';
+		$this->data['info']['EnlaceBoton'] = 'Enlace';
+		$this->data['info']['TextoBoton'] = 'Texto del boton';
+		$this->data['pedido']['PEDIDO_FOLIO'] = 'XXXXXX';
+		$this->data['pedido']['PEDIDO_IMPORTE_TOTAL'] = 'XXXXXX';
+		$this->data['pedido']['PEDIDO_DIVISA'] = 'XXXXXX';
+		if(isset($_GET['mail'])){
+			$mail = $_GET['mail'];
+		}else{
+			$mail = 'ficha_oxxo';
+		}
+		$mensaje_oxxo = $this->load->view('emails/'.$mail,$this->data);
 	}
 }
