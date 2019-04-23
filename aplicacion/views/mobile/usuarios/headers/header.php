@@ -16,7 +16,14 @@
   </head>
   <body>
     <!-- Header -->
-    <div class="menu-superior bg<?php echo $primary; ?>"></div>
+    <div class="menu-superior bg<?php echo $primary; ?>">
+      <div class="btn-group float-right text-white" role="group" aria-label="Button group with nested dropdown">
+        <?php $this->load->view('desktop/tienda/widgets/menu_notificaciones'); ?>
+        <?php $this->load->view('mobile/tienda/widgets/menu_divisa'); ?>
+        <?php $this->load->view('mobile/tienda/widgets/menu_lenguaje'); ?>
+        <button type="button" class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-light" data-toggle="modal" data-target="#ModalAyuda" style="background:transparent;"><i class="far fa-question-circle"></i></button>
+      </div>
+    </div>
     </div>
     <div class="menu-principal">
       <nav class="navbar navbar-expand menuUsuario">
