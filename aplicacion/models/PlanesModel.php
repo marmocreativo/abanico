@@ -56,6 +56,11 @@ class PlanesModel extends CI_Model {
     $query = $this->db->get('planes_usuarios');
     return $query->row_array();
   }
+  function lista_pagos($id){
+    $this->db->where('ID_PLAN_USUARIO',$id);
+    $query = $this->db->get('planes_pagos');
+    return $query->result();
+  }
   /*
     * Creo una nueva entrada usando los parámetros
  */

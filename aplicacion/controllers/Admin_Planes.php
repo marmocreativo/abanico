@@ -164,6 +164,25 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$tienda =  $this->TiendasModel->tienda_usuario($this->input->post('IdUsuario'));
 			$perfil = $this->PerfilServiciosModel->perfil_usuario($this->input->post('IdUsuario'));
 
+			$parametros_pago = array(
+				'ID_PLAN_USUARIO' => $this->input->post('Identificador'),
+				'PAGO_CONCEPTO' => $this->input->post('NombrePlan'),
+				'PAGO_FORMA' => $this->input->post('Transferencia Bancaria'),
+				'PLAN_ESPACIO_ALMACENAMIENTO' => $this->input->post('EspacioAlmacenamientoPlan'),
+				'PLAN_COSTO_ALMACENAMIENTO' => $this->input->post('CostoAlmacenamientoPlan'),
+				'PLAN_COMISION' => $this->input->post('ComisionPlan'),
+				'PLAN_MANEJO_PRODUCTOS' => $this->input->post('ManejoProductosPlan'),
+				'PLAN_ENVIO' => $this->input->post('EnvioPlan'),
+				'PLAN_SERVICIOS_FINANCIEROS' => $this->input->post('ServiciosFinancierosPlan'),
+				'PLAN_SERVICIOS_FINANCIEROS_FIJO' => $this->input->post('ServiciosFinancierosFijoPlan'),
+				'PLAN_NIVEL' => $this->input->post('NivelPlan'),
+				'PLAN_ESTADO'=>$this->input->post('EstadoPlan'),
+				'PLAN_LIMITE_PRODUCTOS' => $this->input->post('LimiteProductosPlan'),
+				'PLAN_LIMITE_SERVICIOS' => $this->input->post('LimiteServiciosPlan'),
+				'PLAN_FOTOS_PRODUCTOS' => $this->input->post('FotosProductosPlan'),
+				'PLAN_FOTOS_SERVICIOS' => $this->input->post('FotosProductosPlan'),
+			);
+
 			$this->session->set_flashdata('exito', 'Plan Actualizado');
 			if($plan['PLAN_TIPO']=='productos'){
 				redirect(base_url('admin/tiendas/actualizar?id_tienda='.$tienda['ID_TIENDA']));

@@ -170,6 +170,35 @@
                             </div>
                           </div>
                         </div>
+                        <div class="row">
+                        <div class="col-12">
+                          <hr>
+                          <h4 class="h5"> <span class="fa fa-money-bill"></span> Pago del plan</b></h4>
+                        </div>
+                          <!--Permisos para pagar y cancelar -->
+                          <?php $pagos = $this->PlanesModel->lista_pagos($plan['ID_PLAN_USUARIO']); ?>
+                          <?php foreach($pagos as $pago){ ?>
+                        <?php if($pago->PAGO_ESTADO=='pendiente'){ ?>
+                          <div class="col-12">
+                            <form class="" action="<?php echo base_url('usuario/planes/subir_comprobante'); ?>" method="post" enctype="multipart/form-data">
+                              <input type="hidden" name="IdPedido" value="<?php echo $pago->ID_PLAN_USUARIO; ?>">
+                              <input type="hidden" name="FormaPago" value="Transferencia Bancaria">
+                              <input type="hidden" name="DescripcionPago" value="Comprobante de cliente">
+                              <input type="hidden" name="EstadoPago" value="Verificando">
+                              <div class="form-group">
+                                <label for="FolioPago"><?php echo $this->lang->line('usuario_detalles_pago_folio'); ?></label>
+                                <input type="text" class="form-control" name="FolioPago" value="">
+                              </div>
+                              <div class="form-group">
+                                <label for="ArchivoPago"><?php echo $this->lang->line('usuario_detalles_pago_archivo'); ?></label>
+                                <input type="file" class="form-control" name="ArchivoPago" value="" required>
+                              </div>
+                              <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_detalles_pago_subir'); ?></button>
+                            </form>
+                          </div>
+                        <?php }// Si el Pago está pendientes y es por transferencia Bancaria ?>
+                      <?php }// Bucle de pagos ?>
+                        </div>
                       </div>
                       <div class="card-footer">
                         <div class="row">
@@ -177,7 +206,7 @@
                             <p>Estado del Pago: <b><?php echo $plan['PLAN_ESTADO']; ?></b></p>
                           </div>
                           <div class="col d-flex justify-content-end">
-                            <p>Fecha Límite de Pago: <b><?php echo date('Y-m-d',strtotime("+10 days",strtotime($plan['FECHA_INICIO']))); ?></b></p>
+                            <p>Fecha Límite de Pago: <b><?php echo date('d-m-Y',strtotime("+10 days",strtotime($plan['FECHA_INICIO']))); ?></b></p>
                           </div>
                         </div>
                       </div>
