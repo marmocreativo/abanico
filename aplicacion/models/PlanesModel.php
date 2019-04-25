@@ -37,7 +37,20 @@ class PlanesModel extends CI_Model {
     $this->db->where('FECHA_TERMINO >=',date('Y-m-d'));
     $this->db->group_end();
     $this->db->group_start();
+    $this->db->or_where('PLAN_ESTADO','pagado');
+    $this->db->group_end();
+    $query = $this->db->get('planes_usuarios');
+    return $query->row_array();
+  }
+  function plan_pendiente_usuario($id,$tipo){
+    $this->db->group_start();
+    $this->db->where('PLAN_TIPO',$tipo);
+    $this->db->where('ID_USUARIO',$id);
+    $this->db->where('FECHA_TERMINO >=',date('Y-m-d'));
+    $this->db->group_end();
+    $this->db->group_start();
     $this->db->or_where('PLAN_ESTADO','pendiente');
+    $this->db->or_where('PLAN_ESTADO','espera pago');
     $this->db->or_where('PLAN_ESTADO','pagado');
     $this->db->group_end();
     $query = $this->db->get('planes_usuarios');

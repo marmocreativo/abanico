@@ -94,7 +94,7 @@
                       <div class="card-body">
                         <h4 class="h5"> <span class="fa fa-file-signature"></span> Plan activo | <b><?php echo $plan['PLAN_NOMBRE']; ?></b></h4>
                         <hr>
-                        <table class="table table-sm table-striped">
+                        <table class="table table-sm">
                           <tr>
                             <td>Mensualidad</td>
                             <td>$<?php echo $plan['PLAN_MENSUALIDAD']; ?></td>
