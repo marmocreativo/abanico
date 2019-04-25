@@ -190,9 +190,10 @@
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
-                  <label for="EstadoPlan">Estado del Pago</label>
+                  <label for="EstadoPlan">Estado del Plan</label>
                   <select class="form-control" name="EstadoPlan">
                     <option value="pendiente" <?php if($plan['PLAN_ESTADO']=='pendiente'){ echo 'selected'; } ?> >Pendiente</option>
+                    <option value="espera pago" <?php if($plan['PLAN_ESTADO']=='espera pago'){ echo 'selected'; } ?> >Espera de Pago</option>
                     <option value="pagado" <?php if($plan['PLAN_ESTADO']=='pagado'){ echo 'selected'; } ?> >Pagado</option>
                     <option value="cancelado" <?php if($plan['PLAN_ESTADO']=='cancelado'){ echo 'selected'; } ?> >Cancelado</option>
                   </select>
@@ -200,6 +201,57 @@
               </div>
             </div>
             <hr>
+            <div class="row">
+              <div class="col-12 my-3">
+                <h4> <i class="fa fa-money-bill"></i> Corte y Pagos</h4>
+              </div>
+              <div class="col-12">
+                Fecha de Inicio:  <?php $fecha_inicio = $plan['FECHA_INICIO']; echo $fecha_inicio; ?><br>
+                Fecha de Término:  <?php $fecha_termino = $plan['FECHA_TERMINO']; echo $fecha_termino; ?><br>
+                <?php
+                  $hoy = date('d');
+                  $dia_de_corte = 27;
+                  if($hoy<$dia_de_corte){
+                    $primer_corte = date($dia_de_corte.'-m-Y');
+                    $segundo_corte = date('d-m-Y', strtotime(date("d-m-Y", strtotime(date($dia_de_corte.'-m-Y'))) . "+30 days"));
+                  }else{
+                    $primer_corte = date($dia_de_corte.'-m-Y');
+                  }
+                  echo $primer_corte.'<br>';
+                  if(isset($segundo_corte)){
+                    echo $segundo_corte.'<br>';
+                  }
+                  // convierto las fechas a objetos
+                  $fecha_inicio = new DateTime($fecha_inicio);
+                  $fecha_termino = new DateTime($fecha_termino);
+                  // Calculo el primer corte
+                  $primer_corte = new DateTime($primer_corte);
+                  $dias_para_primer_corte = $fecha_inicio->diff($primer_corte);
+                  $dias_para_primer_corte = number_format($dias_para_primer_corte->d);
+
+                  if(isset($segundo_corte)){
+                    $segundo_corte = new DateTime($segundo_corte);
+                    $dias_para_segundo_corte = $primer_corte->diff($fecha_termino);
+                    $dias_para_segundo_corte = number_format($dias_para_segundo_corte->d);
+                  }
+                ?>
+
+
+                Mensualidad : $<?php echo $plan['PLAN_MENSUALIDAD']; ?><br>
+                Espacio Almacenamiento : $<?php echo $plan['PLAN_ESPACIO_ALMACENAMIENTO']; ?> m<sup>3</sup><br>
+                Costo X m<sup>3</sup> : <?php echo $plan['PLAN_COSTO_ALMACENAMIENTO']; ?><br>
+                Costo Total por Almacenamiento: $<?php $costo_almacenamiento = $plan['PLAN_ESPACIO_ALMACENAMIENTO']*$plan['PLAN_COSTO_ALMACENAMIENTO']; echo $costo_almacenamiento; ?><br>
+                Importe Mensual Total: $<?php $total = $costo_almacenamiento + $plan['PLAN_MENSUALIDAD'];  echo $total; ?><br>
+                Costo por día: $<?php $costo_por_dia = $total/30; echo $costo_por_dia; ?><br>
+                Días para el primer Corte: <?php echo $dias_para_primer_corte; ?><br>
+                Por pagar Primer Corte: $<?php $por_pagar = $costo_por_dia*$dias_para_primer_corte; echo $por_pagar;  ?><br>
+                <?php if(isset($segundo_corte)){ ?>
+                  Días para el segundo Corte: <?php echo $dias_para_segundo_corte; ?><br>
+                  Por pagar Segundo Corte: $<?php $por_pagar = $costo_por_dia*$dias_para_segundo_corte; echo $por_pagar;  ?><br>
+                <?php } ?>
+
+              </div>
+            </div>
             <button type="submit" class="btn btn<?php echo $primary; ?> float-right" name="button"> <span class="fa fa-save"></span> Guardar</button>
           </form>
         </div>

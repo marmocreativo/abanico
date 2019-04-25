@@ -206,7 +206,7 @@
               </div>
               <div class="row">
                 <div class="col">
-                  <a href="<?php echo base_url('admin/planes/actualizar_plan_usuario?id='.$plan['ID_PLAN_USUARIO']); ?>" class="btn btn-primary btn-block">Editar Plan</a>
+                  <a href="<?php echo base_url('admin/planes/actualizar_plan_usuario?id='.$plan['ID_PLAN_USUARIO']); ?>" class="btn btn-primary btn-block">Activar / Editar Plan</a>
                 </div>
               </div>
             </div>

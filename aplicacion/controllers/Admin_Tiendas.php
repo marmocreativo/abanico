@@ -249,7 +249,11 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$this->data['tienda'] = $this->TiendasModel->detalles($_GET['id_tienda']);
 			$this->data['usuario'] = $this->UsuariosModel->detalles($this->data['tienda']['ID_USUARIO']);
-			$this->data['plan'] = $this->PlanesModel->plan_activo_usuario($this->data['tienda']['ID_USUARIO'],'productos');
+			$plan = $this->PlanesModel->plan_activo_usuario($this->data['tienda']['ID_USUARIO'],'productos');
+			if(empty($plan)){
+				$plan = $this->PlanesModel->plan_pendiente_usuario($this->data['tienda']['ID_USUARIO'],'productos');
+			}
+			$this->data['plan'] = $plan;
 			$this->data['direccion_tienda'] = $this->DireccionesModel->direccion_fiscal($this->data['tienda']['ID_USUARIO']);
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
