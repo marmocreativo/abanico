@@ -17,7 +17,8 @@ $route['translate_uri_dashes'] = FALSE;
 */
 
 // Rutas de Administrador
-
+$route['admin/corte_vendedores'] = 'Admin_CorteVendedores';
+$route['admin/corte_vendedores/(:any)'] = 'Admin_CorteVendedores/$1';
 $route['admin/premios'] = 'Admin_Premios';
 $route['admin/premios/(:any)'] = 'Admin_Premios/$1';
 $route['admin/slides'] = 'Admin_Slides';

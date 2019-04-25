@@ -911,6 +911,7 @@ img.sp-thumbnail-image {
     background: #ecf0f1;
     border-radius: 3px;
     position: relative;
+    font-size: 12px;
 }
 .notif i {
     text-align: center;

@@ -86,7 +86,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'ID_USUARIO'=>$_SESSION['usuario']['id'],
 				'PLAN_NOMBRE'=>$plan['PLAN_NOMBRE'],
 				'PLAN_MENSUALIDAD'=>$plan['PLAN_MENSUALIDAD'],
-				'PLAN_ESPACIO_ALMACENAMIENTO'=>0,
+				'PLAN_ESPACIO_ALMACENAMIENTO'=>0.25,
 				'PLAN_COSTO_ALMACENAMIENTO'=>$plan['PLAN_ALMACENAMIENTO'],
 				'PLAN_COMISION'=>$plan['PLAN_COMISION'],
 				'PLAN_MANEJO_PRODUCTOS'=>$plan['PLAN_MANEJO_PRODUCTOS'],

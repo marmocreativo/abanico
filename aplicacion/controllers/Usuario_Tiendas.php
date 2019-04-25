@@ -124,6 +124,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 					 // Registro la dirección en la tienda
 					 $tienda_id = $this->TiendasModel->actualizar($tienda_id,array('ID_DIRECCION'=>$direccion_id));
+					 $datos_usuario = $this->UsuariosModel->detalles($this->input->post('IdUsuario'));
 					 // Reviso los permisos del Usuario
 					 $usuario = $this->UsuariosModel->detalles($this->input->post('IdUsuario'));
 					 $tienda = $this->TiendasModel->tienda_usuario($usuario['ID_USUARIO']);
@@ -143,6 +144,38 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					 }
 					 // Actualizo el tipo de Usuario
 					 $this->UsuariosModel->permiso($usuario['ID_USUARIO'],$permiso);
+
+					 // Datos para enviar por correo
+
+		 				$config['protocol']    = 'smtp';
+		 				$config['smtp_host']    = $this->data['op']['mailer_host'];
+		 				$config['smtp_port']    = $this->data['op']['mailer_port'];
+		 				$config['smtp_timeout'] = '7';
+		 				$config['smtp_user']    = $this->data['op']['mailer_user'];
+		 				$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+		 				$config['charset']    = 'utf-8';
+		 				$config['mailtype'] = 'html'; // or html
+		 				$config['validation'] = TRUE; // bool whether to validate email or not
+
+
+		 			$this->data['info'] = array();
+		 			$this->data['info']['Titulo'] = 'Vendedor en Abanico';
+		 			$this->data['info']['Nombre'] = 'La tienda <b>'.$this->input->post('NombreTienda').'</b>';
+		 			$this->data['info']['Mensaje'] = '<p>Ahora está registrada y podrás vender productos en nuestro sitio web</p>';
+		 			$this->data['info']['TextoBoton'] = 'Iniciar sesión';
+		 			$this->data['info']['EnlaceBoton'] = base_url('login');
+
+		 			$mensaje = $this->load->view('emails/mensaje_general',$this->data,true);
+		 			$this->email->initialize($config);
+
+		 			$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+		 			$this->email->to($datos_usuario['USUARIO_CORREO']);
+
+		 			$this->email->subject('Vendedor en Abanico');
+		 			$this->email->message($mensaje);
+		 			// envio el correo
+
+		 			$this->email->send();
 
 					 // Mensaje de Feedback
 					 $this->session->set_flashdata('exito', 'Se registró la tienda con éxito');

@@ -36,27 +36,22 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function index()
 	{
-		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
-		$this->data['productos'] = $this->ProductosModel->lista_activos('','','','',10);
-		/*
-		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/test',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
-		*/
-		$this->data['pedido'] = $this->PedidosModel->detalles(25);
-		$this->data['productos'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$this->data['pedido']['ID_PEDIDO']],'','');
-		$this->load->view('emails/pedido_usuario',$this->data);
-	}
-
-
-	public function categorias_todas()
-	{
-		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$_GET['tipo'],'','');
-		$this->data['productos'] = $this->ProductosModel->lista_activos('','','','',10);
-
-		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/test_todasCategorias',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
-
+		$this->data['info']= array();
+		$this->data['info']['Monto'] = 260;
+		$this->data['info']['Referencia'] = '98000002179953';
+		$this->data['info']['Titulo'] = 'Titulo';
+		$this->data['info']['Nombre'] = 'Nombre';
+		$this->data['info']['Mensaje'] = 'Un mensaje Largo';
+		$this->data['info']['EnlaceBoton'] = 'Enlace';
+		$this->data['info']['TextoBoton'] = 'Texto del boton';
+		$this->data['pedido']['PEDIDO_FOLIO'] = 'XXXXXX';
+		$this->data['pedido']['PEDIDO_IMPORTE_TOTAL'] = 'XXXXXX';
+		$this->data['pedido']['PEDIDO_DIVISA'] = 'XXXXXX';
+		if(isset($_GET['mail'])){
+			$mail = $_GET['mail'];
+		}else{
+			$mail = 'ficha_oxxo';
+		}
+		$mensaje_oxxo = $this->load->view('emails/'.$mail,$this->data);
 	}
 }

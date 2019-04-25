@@ -66,7 +66,17 @@
                               </div>
                               <div class="col">
                                 <div class="form-group">
-                                  <label for="PrecioProducto">Precio Unitario</label>
+                                  <label for="DivisaDefaultProducto">-</label>
+                                  <select class="form-control" name="DivisaDefaultProducto">
+                                  <?php foreach($divisas_activas as $divisas){ ?>
+                                    <option value="<?php echo $divisas->DIVISA_ISO; ?>" <?php if($producto['PRODUCTO_DIVISA_DEFAULT']==$divisas->DIVISA_ISO){ echo 'selected'; } ?>><?php echo $divisas->DIVISA_ISO; ?></option>
+                                  <?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="PrecioProducto"><?php echo $this->lang->line('usuario_form_producto_precio_venta'); ?></label>
                                   <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                       <div class="input-group-text">$</div>
@@ -77,19 +87,19 @@
                               </div>
                               <div class="col">
                                 <div class="form-group">
-                                  <label for="PrecioListaProducto">Precio de Lista</label>
+                                  <label for="PrecioListaProducto"><?php echo $this->lang->line('usuario_form_producto_precio_lista'); ?></label>
                                   <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                       <div class="input-group-text">$</div>
                                     </div>
-                                  <input type="text" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO_LISTA']; ?>">
+                                  <input type="number" step="0.01" min="<?php echo $producto['PRODUCTO_PRECIO']+1; ?>" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO_LISTA']; ?>">
                                   </div>
-                                  <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Este es el precio que aparecerá en la lista de producto Tachado</small>
+                                  <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> <?php echo $this->lang->line('usuario_form_producto_precio_lista_instrucciones'); ?></small>
                                 </div>
                               </div>
                               <div class="col">
                                 <div class="form-group">
-                                  <label for="CantidadProducto">Cantidad disponibles</label>
+                                  <label for="CantidadProducto"><?php echo $this->lang->line('usuario_form_producto_cantidad'); ?></label>
                                   <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="1" value="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>">
                                 </div>
                               </div>
