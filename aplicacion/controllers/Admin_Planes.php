@@ -27,6 +27,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('PerfilServiciosModel');
 		$this->load->model('EstadisticasModel');
 		$this->load->model('NotificacionesModel');
+		$this->load->model('UsuariosModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -164,25 +165,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$tienda =  $this->TiendasModel->tienda_usuario($this->input->post('IdUsuario'));
 			$perfil = $this->PerfilServiciosModel->perfil_usuario($this->input->post('IdUsuario'));
 
-			$parametros_pago = array(
-				'ID_PLAN_USUARIO' => $this->input->post('Identificador'),
-				'PAGO_CONCEPTO' => $this->input->post('NombrePlan'),
-				'PAGO_FORMA' => $this->input->post('Transferencia Bancaria'),
-				'PLAN_ESPACIO_ALMACENAMIENTO' => $this->input->post('EspacioAlmacenamientoPlan'),
-				'PLAN_COSTO_ALMACENAMIENTO' => $this->input->post('CostoAlmacenamientoPlan'),
-				'PLAN_COMISION' => $this->input->post('ComisionPlan'),
-				'PLAN_MANEJO_PRODUCTOS' => $this->input->post('ManejoProductosPlan'),
-				'PLAN_ENVIO' => $this->input->post('EnvioPlan'),
-				'PLAN_SERVICIOS_FINANCIEROS' => $this->input->post('ServiciosFinancierosPlan'),
-				'PLAN_SERVICIOS_FINANCIEROS_FIJO' => $this->input->post('ServiciosFinancierosFijoPlan'),
-				'PLAN_NIVEL' => $this->input->post('NivelPlan'),
-				'PLAN_ESTADO'=>$this->input->post('EstadoPlan'),
-				'PLAN_LIMITE_PRODUCTOS' => $this->input->post('LimiteProductosPlan'),
-				'PLAN_LIMITE_SERVICIOS' => $this->input->post('LimiteServiciosPlan'),
-				'PLAN_FOTOS_PRODUCTOS' => $this->input->post('FotosProductosPlan'),
-				'PLAN_FOTOS_SERVICIOS' => $this->input->post('FotosProductosPlan'),
-			);
-
 			$this->session->set_flashdata('exito', 'Plan Actualizado');
 			if($plan['PLAN_TIPO']=='productos'){
 				redirect(base_url('admin/tiendas/actualizar?id_tienda='.$tienda['ID_TIENDA']));
@@ -197,6 +179,92 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_plan_usuario',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
+	}
+	/*
+	* ENVIAR FICHA PAGO PLAN
+	*/
+	public function enviar_ficha_plan()
+	{
+			$id_usuario = $this->input->post('IdUsuario');
+			$id_plan_usuario = $this->input->post('IdPlanUsuario');
+			$pago_concepto = $this->input->post('PagoConcepto');
+			$pago_folio = folio_pedido();
+			$pago_forma = $this->input->post('PagoForma');
+			$pago_importe = $this->input->post('PagoImporte');
+			$pago_divisa = $this->input->post('PagoDivisa');
+			$pago_conversion = $this->input->post('PagoConversion');
+			$fecha_limite = $this->input->post('FechaLimite');
+			$mensualidad = $this->input->post('Mensualidad');
+			$espacio_almacenamiento = $this->input->post('EspacioAlmacenamiento');
+			$costo_almacenamiento = $this->input->post('CostoAlmacenamiento');
+			$costo_almacenamiento_total = $this->input->post('CostoAlmacenamientoTotal');
+			$costo_por_dia  = $this->input->post('CostoPorDia');
+			$pago_estado = $this->input->post('EstadoPago');
+
+			$parametros_pago = array(
+				'ID_PLAN_USUARIO' => $id_plan_usuario,
+				'PAGO_CONCEPTO' => $pago_concepto,
+				'PAGO_FOLIO' => $pago_folio,
+				'PAGO_FORMA' => $pago_forma,
+				'PAGO_IMPORTE' => $pago_importe,
+				'PAGO_DIVISA' => $pago_divisa,
+				'PAGO_CONVERSION' => $pago_conversion,
+				'FECHA_LIMITE' => $fecha_limite,
+				'PAGO_ESTADO' => $pago_estado,
+			);
+			$this->PlanesModel->crear_pago_plan($parametros_pago);
+			$usuario = $this->UsuariosModel->detalles($id_usuario);
+			$this->data['plan'] = $this->PlanesModel->detalles_usuario($id_plan_usuario);
+
+			// Datos para enviar por corre
+			$this->data['pago']=array();
+			$this->data['pago']['id_usuario']= $id_usuario;
+			$this->data['pago']['id_plan_usuario']= $id_plan_usuario;
+			$this->data['pago']['pago_concepto']= $pago_concepto;
+			$this->data['pago']['pago_folio']= $pago_folio;
+			$this->data['pago']['pago_forma']= $pago_forma;
+			$this->data['pago']['pago_importe']= $pago_importe;
+			$this->data['pago']['pago_divisa']= $pago_divisa;
+			$this->data['pago']['pago_conversion']= $pago_conversion;
+			$this->data['pago']['fecha_limite']= $fecha_limite;
+			$this->data['pago']['mensualidad']= $mensualidad;
+			$this->data['pago']['espacio_almacenamiento']= $espacio_almacenamiento;
+			$this->data['pago']['costo_almacenamiento']= $costo_almacenamiento;
+			$this->data['pago']['costo_almacenamiento_total']= $costo_almacenamiento_total;
+			$this->data['pago']['costo_por_dia']= $costo_por_dia;
+			$this->data['pago']['pago_estado']= $pago_estado;
+			// Pedido General
+			$ficha_pago = $this->load->view('emails/plan_ficha',$this->data, true);
+
+			// Envio correos Generales
+			// Datos para enviar por correo
+			// Config General
+			$config['protocol']    = 'smtp';
+			$config['smtp_host']    = $this->data['op']['mailer_host'];
+			$config['smtp_port']    = $this->data['op']['mailer_port'];
+			$config['smtp_timeout'] = '7';
+			$config['smtp_user']    = $this->data['op']['mailer_user'];
+			$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+			$config['charset']    = 'utf-8';
+			$config['mailtype'] = 'html'; // or html
+			$config['validation'] = TRUE; // bool whether to validate email or not
+
+			$this->email->initialize($config);
+
+				// Ficha de Pago
+				$this->email->clear();
+				$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+				$this->email->to($usuario['USUARIO_CORREO']);
+
+				$this->email->subject('Ficha de pago | '.$pago_concepto);
+				$this->email->message($ficha_pago);
+				// envio el correo
+
+				$this->email->send();
+
+			$this->session->set_flashdata('exito', 'Ficha Enviada');
+			redirect(base_url('admin/planes/actualizar_plan_usuario?id='.$this->input->post('IdPlanUsuario')));
+
 	}
 	public function lista_planes()
 	{

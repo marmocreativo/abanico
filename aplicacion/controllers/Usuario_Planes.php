@@ -70,6 +70,49 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->view($this->data['dispositivo'].'/usuarios/form_planes',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 	}
+	public function subir_comprobante()
+	{
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+				// Subo el archivo
+				$nombre_archivo = 'pago-'.uniqid();
+				$config['upload_path']          = 'contenido/adjuntos/pedidos';
+				$config['allowed_types']        = 'pdf|jpg|png';
+				$config['file_name']						=	$nombre_archivo;
+
+				$this->load->library('upload', $config);
+
+				if ( ! $this->upload->do_upload('ArchivoPago')){
+					$this->session->set_flashdata('alerta', 'No se pudo subir el archivo');
+					redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+				}else{
+					$archivo = $this->upload->data('file_name');
+					// Parametros del Servicio
+					$parametros = array(
+						'ID_PEDIDO'=> $this->input->post('IdPedido'),
+						'PAGO_FORMA'=> $this->input->post('FormaPago'),
+						'PAGO_FOLIO'=> $this->input->post('FolioPago'),
+						'PAGO_ARCHIVO'=>$archivo,
+						'PAGO_DESCRIPCION'=> $this->input->post('DescripcionPago'),
+						'PAGO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+						'PAGO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+						'PAGO_ESTADO'=> $this->input->post('EstadoPago'),
+					);
+					$parametros_pedido = array(
+						'PEDIDO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+						'PEDIDO_ESTADO_PAGO'=>'Pagado',
+						//'PEDIDO_ESTADO_PAGO'=> $this->input->post('EstadoPago'),
+					);
+				}
+				// Creo el Servicio
+				$adjunto_id = $this->PagosPedidosModel->crear($parametros);
+				$adjunto_id = $this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros_pedido);
+				$this->session->set_flashdata('exito', 'Comprobante cargado correctamente');
+				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+
+}
 
 	public function activar()
 	{

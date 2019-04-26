@@ -181,14 +181,8 @@
                         <?php if($pago->PAGO_ESTADO=='pendiente'){ ?>
                           <div class="col-12">
                             <form class="" action="<?php echo base_url('usuario/planes/subir_comprobante'); ?>" method="post" enctype="multipart/form-data">
-                              <input type="hidden" name="IdPedido" value="<?php echo $pago->ID_PLAN_USUARIO; ?>">
-                              <input type="hidden" name="FormaPago" value="Transferencia Bancaria">
-                              <input type="hidden" name="DescripcionPago" value="Comprobante de cliente">
-                              <input type="hidden" name="EstadoPago" value="Verificando">
-                              <div class="form-group">
-                                <label for="FolioPago"><?php echo $this->lang->line('usuario_detalles_pago_folio'); ?></label>
-                                <input type="text" class="form-control" name="FolioPago" value="">
-                              </div>
+                              <input type="hidden" name="IdPago" value="<?php echo $pago->ID_PAGO; ?>">
+                              <input type="hidden" name="Origen" value="usuario/tienda">
                               <div class="form-group">
                                 <label for="ArchivoPago"><?php echo $this->lang->line('usuario_detalles_pago_archivo'); ?></label>
                                 <input type="file" class="form-control" name="ArchivoPago" value="" required>

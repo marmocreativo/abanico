@@ -14,6 +14,7 @@
             </div>
             <hr>
           <?php } ?>
+          <?php retro_alimentacion(); ?>
 
           <form class="" action="<?php echo base_url('admin/planes/actualizar_plan_usuario'); ?>" method="post" enctype="multipart/form-data">
             <input type="hidden" name="Identificador" value="<?php echo $plan['ID_PLAN_USUARIO'] ?>">
@@ -235,17 +236,21 @@
                   </tr>
                 </tbody>
               </table>
-              <form class="" action="<?php echo base_url('admin/planes/ficha_plan_usuario'); ?>" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="Identificador" value="<?php echo $plan['ID_PLAN_USUARIO'] ?>">
+              <form class="" action="<?php echo base_url('admin/planes/enviar_ficha_plan'); ?>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="IdUsuario" value="<?php echo $plan['ID_USUARIO'] ?>">
+                <input type="hidden" name="IdPlanUsuario" value="<?php echo $plan['ID_PLAN_USUARIO'] ?>">
                 <input type="hidden" name="PagoConcepto" value="<?php echo $plan['PLAN_NOMBRE'] ?>">
                 <input type="hidden" name="Mensualidad" value="<?php echo $plan['PLAN_MENSUALIDAD'] ?>">
                 <input type="hidden" name="EspacioAlmacenamiento" value="<?php echo $plan['PLAN_ESPACIO_ALMACENAMIENTO'] ?>">
                 <input type="hidden" name="CostoAlmacenamiento" value="<?php echo $plan['PLAN_COSTO_ALMACENAMIENTO'] ?>">
                 <input type="hidden" name="CostoAlmacenamientoTotal" value="<?php echo number_format($costo_almacenamiento ,2) ?>">
-                <input type="hidden" name="ImporteMensual" value="<?php echo number_format($total ,2) ?>">
+                <input type="hidden" name="PagoImporte" value="<?php echo number_format($total ,2) ?>">
+                <input type="hidden" name="PagoDivisa" value="MXN">
+                <input type="hidden" name="PagoConversion" value="1.00">
+                <input type="hidden" name="FechaLimite" value="<?php echo date('Y-m-d',strtotime("+10 days",strtotime($plan['FECHA_INICIO']))); ?>">
                 <input type="hidden" name="CostoPorDia" value="<?php echo number_format($costo_por_dia ,2) ?>">
-                <input type="hidden" name="FormaPago" value="Transferencia Bancaria">
-                <input type="hidden" name="EstadoPago" value="Pendiente">
+                <input type="hidden" name="PagoForma" value="Transferencia Bancaria">
+                <input type="hidden" name="EstadoPago" value="pendiente">
                 <button type="submit" class="btn btn<?php echo $primary; ?> float-right" name="button"> <span class="fa fa-envelope"></span> Enviar Ficha</button>
               </form>
             <?php }else{ ?>
