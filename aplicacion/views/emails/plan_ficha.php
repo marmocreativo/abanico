@@ -338,7 +338,7 @@
                         <tbody>
                             <tr>
                                 <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px; text-align: center;">
-                                    <img src="<?php echo base_url('assets/global/img/logo_correo.png'); ?>" alt="" width="100px">
+                                    <img src="<?php echo base_url('assets/global/img/logo_correo.png'); ?>" alt="" width="200px">
                                 </td>
                             </tr>
                             <tr>
@@ -369,35 +369,22 @@
                             <tr>
                               <td colspan="5">
                                 <hr>
-
-                                  <h3>Detalles del plan</h3>
-                                <table cellpadding="20" cellspacing="0" style="width:100%; border:solid 1px #ddd; margin:2%; color: #495057;">
-                                  <tbody>
-                                    <tr>
-                                      <td colspan="2" style="border:solid 1px #ddd;"><b>Fecha de Inicio:</b> <br><?php echo date('d-m-Y', strtotime($plan['FECHA_INICIO'])); ?></td>
-                                      <td  style="border:solid 1px #ddd;"><b>Fecha de Término:</b> <br><?php echo date('d-m-Y', strtotime($plan['FECHA_TERMINO'])); ?></td>
-                                      <td  style="border:solid 1px #ddd;"><b>Fecha Límite de Pago:</b> <br><?php echo date('d-m-Y',strtotime("+10 days",strtotime($pago['fecha_limite']))); ?></td>
-                                    </tr>
-                                    <tr>
-                                      <td style="border:solid 1px #ddd;"><b>Mensualidad:</b> $<?php echo $pago['mensualidad']; ?> MXN</td>
-                                      <td style="border:solid 1px #ddd;"><b>Espacio Almacenamiento:</b> <?php echo $pago['espacio_almacenamiento']; ?> m<sup>3</sup></td>
-                                      <td style="border:solid 1px #ddd;"><b>Costo X m<sup>3</sup>:</b> $<?php echo $pago['costo_almacenamiento']; ?> <?php echo $pago['pago_divisa']; ?></td>
-                                      <td style="border:solid 1px #ddd;"><b>Costo Almacentamiento:</b> $<?php echo $pago['costo_almacenamiento_total']; ?> <?php echo $pago['pago_divisa']; ?></td>
-                                    </tr>
-                                    <tr>
-                                      <td colspan="2" style="border:solid 1px #ddd;">
-                                        <b>Importe Mensual:</b> $<?php echo $pago['pago_importe']; ?> <?php echo $pago['pago_divisa']; ?>
-                                      </td>
-                                        <td colspan="2" style="border:solid 1px #ddd;"><b>Costo por día:</b> $<?php echo $pago['costo_por_dia']; ?> <?php echo $pago['pago_divisa']; ?><br></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                                <h3>Detalles del plan</h3>
+                                <p><b>Fecha de Inicio:</b> | <?php echo date('d-m-Y', strtotime($plan['FECHA_INICIO'])); ?></p>
+                                <p><b>Fecha de Término:</b> | <?php echo date('d-m-Y', strtotime($plan['FECHA_TERMINO'])); ?></p>
+                                <p><b>Fecha Límite de Pago:</b> | <?php echo date('d-m-Y',strtotime("+10 days",strtotime($pago['fecha_limite']))); ?></p>
+                                <p><b>Mensualidad:</b> | $<?php echo $pago['mensualidad']; ?> MXN</p>
+                                <p><b>Espacio Almacenamiento:</b> | <?php echo $pago['espacio_almacenamiento']; ?> m<sup>3</sup></p>
+                                <p><b>Costo X m<sup>3</sup>:</b> | $<?php echo $pago['costo_almacenamiento']; ?> <?php echo $pago['pago_divisa']; ?></p>
+                                <p><b>Costo Almacentamiento:</b> | $<?php echo $pago['costo_almacenamiento_total']; ?> <?php echo $pago['pago_divisa']; ?></p>
+                                <p><b>Importe Mensual:</b> | $<?php echo $pago['pago_importe']; ?> <?php echo $pago['pago_divisa']; ?></p>
+                                <p><b>Costo por día: | </b> $<?php echo $pago['costo_por_dia']; ?> <?php echo $pago['pago_divisa']; ?></p>
                               </td>
                             </tr>
                             <tr>
                               <td colspan="5">
                                 <p>No olvides confirmarnos tu pago envíando una fotografía, captura de pantalla o comprobante de transferencia al correo <a href="mailto:atencionclientes@abanicoytu.com">atencionclientes@abanicoytu.com</a> </p>
-                                <p>También puedes actualizar tu información de pago iniciando sesión en <a href="https://abanicoytu.com/demo/usuario"> https://abanicoytu.com/demo/usuario</a></p>
+                                <p>También puedes actualizar tu información de pago iniciando sesión en <a href="https://abanicoytu.com/demo/usuario/tienda"> https://abanicoytu.com/demo/usuario/tienda</a></p>
                               </td>
                             </tr>
                             <tr>

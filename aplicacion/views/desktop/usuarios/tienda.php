@@ -191,6 +191,11 @@
                             </form>
                           </div>
                         <?php }// Si el Pago está pendientes y es por transferencia Bancaria ?>
+                        <?php if($pago->PAGO_ESTADO=='comprobante'){ ?>
+                          <div class="col-12">
+                            <h4>Tu comprobante ha sido recibido, tu plan estará activo pronto.</h4>
+                          </div>
+                        <?php }// Si el Pago está pendientes y es por transferencia Bancaria ?>
                       <?php }// Bucle de pagos ?>
                         </div>
                       </div>

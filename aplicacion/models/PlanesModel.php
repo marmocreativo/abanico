@@ -76,6 +76,10 @@ class PlanesModel extends CI_Model {
     $this->db->insert('planes_pagos',$parametros);
     return $this->db->insert_id();
   }
+  function actualizar_pago_plan($id,$parametros){
+    $this->db->where('ID_PAGO',$id);
+    return $this->db->update('planes_pagos',$parametros);
+  }
   /*
     * Actualizo una entrada
     * $id es el identificador de la entrada

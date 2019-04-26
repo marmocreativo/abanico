@@ -86,31 +86,20 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 				if ( ! $this->upload->do_upload('ArchivoPago')){
 					$this->session->set_flashdata('alerta', 'No se pudo subir el archivo');
-					redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+					redirect(base_url('usuario/tienda'));
 				}else{
 					$archivo = $this->upload->data('file_name');
 					// Parametros del Servicio
 					$parametros = array(
-						'ID_PEDIDO'=> $this->input->post('IdPedido'),
-						'PAGO_FORMA'=> $this->input->post('FormaPago'),
-						'PAGO_FOLIO'=> $this->input->post('FolioPago'),
 						'PAGO_ARCHIVO'=>$archivo,
-						'PAGO_DESCRIPCION'=> $this->input->post('DescripcionPago'),
-						'PAGO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
-						'PAGO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
-						'PAGO_ESTADO'=> $this->input->post('EstadoPago'),
-					);
-					$parametros_pedido = array(
-						'PEDIDO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
-						'PEDIDO_ESTADO_PAGO'=>'Pagado',
-						//'PEDIDO_ESTADO_PAGO'=> $this->input->post('EstadoPago'),
+						'FECHA_PAGO' => date('Y-m-d'),
+						'PAGO_ESTADO'=> 'comprobante',
 					);
 				}
 				// Creo el Servicio
-				$adjunto_id = $this->PagosPedidosModel->crear($parametros);
-				$adjunto_id = $this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros_pedido);
+				$adjunto_id = $this->PlanesModel->actualizar_pago_plan($this->input->post('IdPago'),$parametros);
 				$this->session->set_flashdata('exito', 'Comprobante cargado correctamente');
-				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+				redirect(base_url($this->input->post('Origen')));
 
 }
 

@@ -185,60 +185,61 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	*/
 	public function enviar_ficha_plan()
 	{
-			$id_usuario = $this->input->post('IdUsuario');
-			$id_plan_usuario = $this->input->post('IdPlanUsuario');
-			$pago_concepto = $this->input->post('PagoConcepto');
-			$pago_folio = folio_pedido();
-			$pago_forma = $this->input->post('PagoForma');
-			$pago_importe = $this->input->post('PagoImporte');
-			$pago_divisa = $this->input->post('PagoDivisa');
-			$pago_conversion = $this->input->post('PagoConversion');
-			$fecha_limite = $this->input->post('FechaLimite');
-			$mensualidad = $this->input->post('Mensualidad');
-			$espacio_almacenamiento = $this->input->post('EspacioAlmacenamiento');
-			$costo_almacenamiento = $this->input->post('CostoAlmacenamiento');
-			$costo_almacenamiento_total = $this->input->post('CostoAlmacenamientoTotal');
-			$costo_por_dia  = $this->input->post('CostoPorDia');
-			$pago_estado = $this->input->post('EstadoPago');
+
+			$this->data['pago']=array();
+			$this->data['pago']['id_usuario'] = $this->input->post('IdUsuario');
+			$this->data['pago']['id_plan_usuario'] = $this->input->post('IdPlanUsuario');
+			$this->data['pago']['pago_concepto'] = $this->input->post('PagoConcepto');
+			$this->data['pago']['pago_folio'] = folio_pedido();
+			$this->data['pago']['pago_forma'] = $this->input->post('PagoForma');
+			$this->data['pago']['pago_importe'] = $this->input->post('PagoImporte');
+			$this->data['pago']['pago_divisa'] = $this->input->post('PagoDivisa');
+			$this->data['pago']['pago_conversion'] = $this->input->post('PagoConversion');
+			$this->data['pago']['fecha_limite'] = $this->input->post('FechaLimite');
+			$this->data['pago']['mensualidad'] = $this->input->post('Mensualidad');
+			$this->data['pago']['espacio_almacenamiento'] = $this->input->post('EspacioAlmacenamiento');
+			$this->data['pago']['costo_almacenamiento'] = $this->input->post('CostoAlmacenamiento');
+			$this->data['pago']['costo_almacenamiento_total'] = $this->input->post('CostoAlmacenamientoTotal');
+			$this->data['pago']['costo_por_dia']  = $this->input->post('CostoPorDia');
+			$this->data['pago']['pago_estado'] = $this->input->post('EstadoPago');
 
 			$parametros_pago = array(
-				'ID_PLAN_USUARIO' => $id_plan_usuario,
-				'PAGO_CONCEPTO' => $pago_concepto,
-				'PAGO_FOLIO' => $pago_folio,
-				'PAGO_FORMA' => $pago_forma,
-				'PAGO_IMPORTE' => $pago_importe,
-				'PAGO_DIVISA' => $pago_divisa,
-				'PAGO_CONVERSION' => $pago_conversion,
-				'FECHA_LIMITE' => $fecha_limite,
-				'PAGO_ESTADO' => $pago_estado,
+				'ID_PLAN_USUARIO' => $this->data['pago']['id_plan_usuario'],
+				'PAGO_CONCEPTO' => $this->data['pago']['pago_concepto'],
+				'PAGO_FORMA' => $this->data['pago']['pago_forma'],
+				'PAGO_IMPORTE' => $this->data['pago']['pago_importe'],
+				'PAGO_DIVISA' => $this->data['pago']['pago_divisa'],
+				'PAGO_CONVERSION' => $this->data['pago']['pago_conversion'],
+				'FECHA_LIMITE' => $this->data['pago']['fecha_limite'],
+				'PAGO_ESTADO' => $this->data['pago']['pago_estado'],
 			);
-			$this->PlanesModel->crear_pago_plan($parametros_pago);
-			$usuario = $this->UsuariosModel->detalles($id_usuario);
-			$this->data['plan'] = $this->PlanesModel->detalles_usuario($id_plan_usuario);
 
-			// Datos para enviar por corre
-			$this->data['pago']=array();
-			$this->data['pago']['id_usuario']= $id_usuario;
-			$this->data['pago']['id_plan_usuario']= $id_plan_usuario;
-			$this->data['pago']['pago_concepto']= $pago_concepto;
-			$this->data['pago']['pago_folio']= $pago_folio;
-			$this->data['pago']['pago_forma']= $pago_forma;
-			$this->data['pago']['pago_importe']= $pago_importe;
-			$this->data['pago']['pago_divisa']= $pago_divisa;
-			$this->data['pago']['pago_conversion']= $pago_conversion;
-			$this->data['pago']['fecha_limite']= $fecha_limite;
-			$this->data['pago']['mensualidad']= $mensualidad;
-			$this->data['pago']['espacio_almacenamiento']= $espacio_almacenamiento;
-			$this->data['pago']['costo_almacenamiento']= $costo_almacenamiento;
-			$this->data['pago']['costo_almacenamiento_total']= $costo_almacenamiento_total;
-			$this->data['pago']['costo_por_dia']= $costo_por_dia;
-			$this->data['pago']['pago_estado']= $pago_estado;
+			if(!null==$this->input->post('IdPago')){
+				$this->PlanesModel->actualizar_pago_plan($this->input->post('IdPago'),$parametros_pago);
+			}else{
+				$parametros_pago['PAGO_FOLIO'] = $this->data['pago']['pago_folio'];
+				$this->PlanesModel->crear_pago_plan($parametros_pago);
+			}
+
+			// Actualizo espera de pago
+
+			$parametros = array(
+				'PLAN_ESTADO'=>'espera pago',
+			);
+
+			$this->PlanesModel->actualizar_plan_usuario( $this->data['pago']['id_plan_usuario'],$parametros);
+
+			// Datos para el correo
+			$usuario = $this->UsuariosModel->detalles($this->data['pago']['id_usuario']);
+			$this->data['plan'] = $this->PlanesModel->detalles_usuario($this->data['pago']['id_plan_usuario']);
+
 			// Pedido General
 			$ficha_pago = $this->load->view('emails/plan_ficha',$this->data, true);
 
 			// Envio correos Generales
 			// Datos para enviar por correo
 			// Config General
+
 			$config['protocol']    = 'smtp';
 			$config['smtp_host']    = $this->data['op']['mailer_host'];
 			$config['smtp_port']    = $this->data['op']['mailer_port'];
@@ -256,7 +257,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
 				$this->email->to($usuario['USUARIO_CORREO']);
 
-				$this->email->subject('Ficha de pago | '.$pago_concepto);
+				$this->email->subject('Ficha de pago | '.$this->data['pago']['pago_concepto']);
 				$this->email->message($ficha_pago);
 				// envio el correo
 
@@ -264,7 +265,92 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$this->session->set_flashdata('exito', 'Ficha Enviada');
 			redirect(base_url('admin/planes/actualizar_plan_usuario?id='.$this->input->post('IdPlanUsuario')));
+	}
+	public function actualizar_pago_plan()
+	{
+			$this->data['pago']=array();
+			$this->data['pago']['id_plan_usuario'] = $this->input->post('IdPlanUsuario');
+			$this->data['pago']['id_usuario'] = $this->input->post('IdUsuario');
+			$this->data['pago']['pago_forma'] = $this->input->post('PagoForma');
+			$this->data['pago']['fecha_pago'] = $this->input->post('FechaPago');
+			$this->data['pago']['pago_estado'] = $this->input->post('PagoEstado');
+			$this->data['pago']['pago_concepto'] = $this->input->post('PagoConcepto');
 
+			$parametros_pago = array(
+				'PAGO_FORMA' => $this->data['pago']['pago_forma'],
+				'FECHA_PAGO' => $this->data['pago']['fecha_pago'],
+				'PAGO_ESTADO' => $this->data['pago']['pago_estado'],
+			);
+
+
+			$this->PlanesModel->actualizar_pago_plan($this->input->post('IdPago'),$parametros_pago);
+
+			// Actualizo espera de pago
+			switch ($this->data['pago']['pago_estado']) {
+				case 'pendiente':
+						$estado_plan = 'espera pago';
+					break;
+				case 'comprobante':
+						$estado_plan = 'espera pago';
+					break;
+				case 'pagado':
+						$estado_plan = 'pagado';
+					break;
+				case 'rechazado':
+						$estado_plan = 'cancelado';
+					break;
+				default:
+						$estado_plan = 'espera pago';
+					break;
+			}
+			$parametros = array(
+				'PLAN_ESTADO'=>$estado_plan,
+			);
+
+			$this->PlanesModel->actualizar_plan_usuario( $this->data['pago']['id_plan_usuario'],$parametros);
+
+			// Datos para el correo
+			$usuario = $this->UsuariosModel->detalles($this->data['pago']['id_usuario']);
+			$this->data['plan'] = $this->PlanesModel->detalles_usuario($this->data['pago']['id_plan_usuario']);
+
+			// Pedido General
+			$this->data['info'] = array();
+			$this->data['info']['Titulo'] = 'Plan | '.$this->data['pago']['pago_concepto'];
+			$this->data['info']['Nombre'] = 'El estado de tu Pago con folio: '.$this->input->post('PagoFolio').' ha sido registrado como: <b>'.$this->input->post('PagoEstado').'</b>';
+			$this->data['info']['Mensaje'] = '<p>Puedes revisar el estado de tu cuenta en tu perfil.</p>';
+			$this->data['info']['TextoBoton'] = 'Iniciar sesión';
+			$this->data['info']['EnlaceBoton'] = base_url('login');
+			$mensaje = $this->load->view('emails/mensaje_general',$this->data,true);
+
+			// Envio correos Generales
+			// Datos para enviar por correo
+			// Config General
+
+			$config['protocol']    = 'smtp';
+			$config['smtp_host']    = $this->data['op']['mailer_host'];
+			$config['smtp_port']    = $this->data['op']['mailer_port'];
+			$config['smtp_timeout'] = '7';
+			$config['smtp_user']    = $this->data['op']['mailer_user'];
+			$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+			$config['charset']    = 'utf-8';
+			$config['mailtype'] = 'html'; // or html
+			$config['validation'] = TRUE; // bool whether to validate email or not
+
+			$this->email->initialize($config);
+
+				// Ficha de Pago
+				$this->email->clear();
+				$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+				$this->email->to($usuario['USUARIO_CORREO']);
+
+				$this->email->subject('Confirmación de Pago | '.$this->data['pago']['pago_concepto']);
+				$this->email->message($mensaje);
+				// envio el correo
+
+				$this->email->send();
+
+			$this->session->set_flashdata('exito', 'Pago y Plan Actualizados');
+			redirect(base_url('admin/planes/actualizar_plan_usuario?id='.$this->input->post('IdPlanUsuario')));
 	}
 	public function lista_planes()
 	{
