@@ -41,7 +41,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tools"></i>Servicios</a>
         <ul class="sub-menu children dropdown-menu">
           <li><i class="fa fa-user-tie"></i><a href="<?php echo base_url('admin/perfiles_servicios'); ?>"> Perfiles</a></li>
-          <li><a href="<?php echo base_url('admin/servicios'); ?>"><i class="menu-icon fa fa-tools"></i> Servicios</a></li>
+          <li><i class="menu-icon fa fa-tools"></i><a href="<?php echo base_url('admin/servicios'); ?>"> Servicios</a></li>
           <li><i class="fa fa-envelope"></i><a href="<?php echo base_url('admin/servidores_mensajes'); ?>"> Mensajes</a></li>
         </ul>
     </li>

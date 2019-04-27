@@ -145,6 +145,43 @@
                         </div>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <hr>
+                        <h4 class="h5"> <span class="fa fa-money-bill"></span> Pago del plan</b></h4>
+                      </div>
+                  <!--Permisos para pagar y cancelar -->
+                  <?php $pagos = $this->PlanesModel->lista_pagos($plan['ID_PLAN_USUARIO']); ?>
+                  <?php foreach($pagos as $pago){ ?>
+                    <?php if($pago->PAGO_ESTADO=='pendiente'){ ?>
+                      <div class="col-12">
+                        <form class="" action="<?php echo base_url('usuario/planes/subir_comprobante'); ?>" method="post" enctype="multipart/form-data">
+                          <input type="hidden" name="IdPago" value="<?php echo $pago->ID_PAGO; ?>">
+                          <input type="hidden" name="Origen" value="usuario/perfil_servicios">
+                          <div class="form-group">
+                            <label for="ArchivoPago"><?php echo $this->lang->line('usuario_detalles_pago_archivo'); ?></label>
+                            <input type="file" class="form-control" name="ArchivoPago" value="" required>
+                          </div>
+                          <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_detalles_pago_subir'); ?></button>
+                        </form>
+                      </div>
+                    <?php }// Si el Pago está pendientes y es por transferencia Bancaria ?>
+                    <?php if($pago->PAGO_ESTADO=='comprobante'){ ?>
+                      <div class="col-12">
+                        <div class="alert alert-success">
+                          <h6>Tu comprobante ha sido recibido, tu plan estará activo pronto.</h6>
+                        </div>
+                      </div>
+                    <?php }// Si se subió comprobante ?>
+                    <?php if($pago->PAGO_ESTADO=='pagado'){ ?>
+                      <div class="col-12">
+                        <div class="alert alert-success">
+                          <h6>Tu plan se encuentra <?php echo $pago->PAGO_ESTADO; ?></h6>
+                        </div>
+                      </div>
+                    <?php }// Si se subió comprobante ?>
+                  <?php }// Bucle de pagos ?>
+                    </div>
                   </div>
                   <div class="card-footer">
                     <div class="row">
