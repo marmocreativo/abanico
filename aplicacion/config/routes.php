@@ -139,7 +139,7 @@ $route['servicio/(:any)'] = 'Tienda_Servicio/$1';
 $route['busqueda'] = 'Tienda_Busqueda';
 $route['busqueda/(:any)'] = 'Tienda_Busqueda/$1';
 $route['auto'] = 'Auto_hooks';
-$route['auto/(:any)'] = 'Auto_hooks/vista/$1';
+$route['auto/(:any)'] = 'Auto_hooks/$1';
 
 // Proceso de Pago
 //$route['proceso_pago_3'] = 'Proceso_Pago/paso3';

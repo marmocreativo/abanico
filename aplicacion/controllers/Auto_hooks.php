@@ -41,4 +41,37 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 		echo 'Sistemas automáticos';
 	}
+	public function actualizacion_pago_oxxo()
+	{
+
+		$body = @file_get_contents('php://input');
+		$data = json_decode($body);
+		http_response_code(200); // Return 200 OK
+
+			$parametros_pago = array(
+				'PAGO_FORMA'=> 'oxxo',
+				'PAGO_FOLIO'=> $data->id,
+				'PAGO_DESCRIPCION'=>serialize($data),
+				'PAGO_ESTADO'=> 'Pagado'
+			);
+
+			$adjunto_id = $this->PagosPedidosModel->crear($parametros_pago);
+
+			if ($data->type == 'charge.paid'){
+				// Creo el Servicio
+				/*
+			  $msg = "Tu pago id '.$data->id.' ha sido comprobado. a las : ".$data->created_at;
+				// Envio correo Abanico
+				$this->email->clear();
+				$this->email->from($this->data['op']['mailer_user'], 'Abanico Siempre lo Mejor');
+				$this->email->to('marmocreativo@gmail.com');
+
+				$this->email->subject('Pago OXXO | Abanico | ');
+				$this->email->message($msg);
+				// envio el correo
+
+				$this->email->send();
+				*/
+			}
+	}
 }

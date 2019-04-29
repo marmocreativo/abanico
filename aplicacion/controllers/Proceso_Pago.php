@@ -422,7 +422,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			if(isset($_GET['pago'])&&$_GET['pago']=='oxxo'){
 
 				require_once(APPPATH."libraries/conekta/Conekta.php");
+				// LLAVE DE PRODUCCIÓN
+				\Conekta\Conekta::setApiKey("key_k1eq7vjpQ3SywiDWj9FwXA");
+				/*
+				// LLAVE DE PRUEBAS
 				\Conekta\Conekta::setApiKey("key_SP3qR73rqHWqzeJ98i5zCw");
+				*/
 				\Conekta\Conekta::setApiVersion("2.0.0");
 				// Preparo variables OXXO
 				$oxxo_ImporteProductosTotal = $ImporteProductosTotal*100;
