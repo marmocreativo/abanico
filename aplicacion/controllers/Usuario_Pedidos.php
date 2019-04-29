@@ -94,11 +94,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				}else{
 					$archivo = $this->upload->data('file_name');
 					// Parametros del Servicio
-					$parametros = array(
+					$parametros_pago = array(
 						'ID_PEDIDO'=> $this->input->post('IdPedido'),
 						'PAGO_FORMA'=> $this->input->post('FormaPago'),
 						'PAGO_FOLIO'=> $this->input->post('FolioPago'),
 						'PAGO_ARCHIVO'=>$archivo,
+						'PAGO_IMPORTE'=> $this->input->post('PedidoImporte'),
 						'PAGO_DESCRIPCION'=> $this->input->post('DescripcionPago'),
 						'PAGO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 						'PAGO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
@@ -110,7 +111,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					);
 				}
 				// Creo el Servicio
-				$adjunto_id = $this->PagosPedidosModel->crear($parametros);
+				$adjunto_id = $this->PagosPedidosModel->crear($parametros_pago);
 				$adjunto_id = $this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros_pedido);
 				$this->session->set_flashdata('exito', 'Comprobante cargado correctamente');
 				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));

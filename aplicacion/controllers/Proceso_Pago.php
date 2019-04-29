@@ -37,6 +37,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('NotificacionesModel');
 		$this->load->model('PublicacionesModel');
 		$this->load->model('PlanesModel');
+		$this->load->model('PagosPedidosModel');
 		$this->load->model('DivisasModel');
 
 		//var_dump($_SESSION['pedido']);
@@ -197,6 +198,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}
 
 		if(isset($_GET['pago'])&&($_GET['pago']=='paypal'|| $_GET['pago']=='oxxo')){
+			// Si uso una pasarela externa uso variables de sesión
 			$folio = $_SESSION['pedido']['Folio'];
 			$IdUsuario = $_SESSION['pedido']['IdUsuario'];
 			$PedidoNombre = $_SESSION['pedido']['PedidoNombre'];
@@ -218,6 +220,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$EstadoPedido = $_SESSION['pedido']['EstadoPedido'];
 			$PedidosTiendas = $_SESSION['pedido']['PedidosTiendas'];
 		}else{
+			// Si uso deposito bancario o contra entrega uso variables post
 			$folio = $_POST['Folio'];
 			$IdUsuario = $_POST['IdUsuario'];
 			$PedidoNombre = $_POST['PedidoNombre'];
@@ -484,6 +487,22 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				}
 
 				if(isset($order)&&!empty($order)){
+					// Creo el pago en la base de datos
+
+					$parametros_pago = array(
+						'ID_PEDIDO'=> $pedido_id,
+						'PAGO_FORMA'=> 'oxxo',
+						'PAGO_FOLIO'=> $order->id,
+						'PAGO_ARCHIVO'=>'',
+						'PAGO_IMPORTE'=> $order->amount/100,
+						'PAGO_DESCRIPCION'=>  $order->charges[0]->payment_method->reference,
+						'PAGO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+						'PAGO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+						'PAGO_ESTADO'=> 'Pendiente'
+					);
+				// Creo el Servicio
+				$adjunto_id = $this->PagosPedidosModel->crear($parametros_pago);
+				// Creo los correos
 					$this->data['info']= array();
 					$this->data['info']['Monto'] = $order->amount/100;
 					$this->data['info']['Referencia'] = $order->charges[0]->payment_method->reference;
@@ -503,9 +522,24 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				}
 
 			} // termina IF OXXO
+			// IF PAYPAL
+			if(isset($_GET['pago'])&&$_GET['pago']=='paypal'){
+			$parametros_pago = array(
+				'ID_PEDIDO'=> $pedido_id,
+				'PAGO_FORMA'=> $FormaPago,
+				'PAGO_FOLIO'=> $folio,
+				'PAGO_IMPORTE'=> $ImporteTotal,
+				'PAGO_ARCHIVO'=>'',
+				'PAGO_DESCRIPCION'=> 'Pago realizado con paypal',
+				'PAGO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+				'PAGO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+				'PAGO_ESTADO'=> $EstadoPago,
+			);
+				// Creo el Servicio
+				$adjunto_id = $this->PagosPedidosModel->crear($parametros_pago);
+			}
 
-
-			// Productos
+			// Correos por tienda
 			foreach($pedidos_tienda as $tienda){
 				$this->data['pedido_tienda'] = $this->PedidosTiendasModel->detalles($pedido_id,$tienda->id_tienda);
 				$this->data['tienda'] = $this->TiendasModel->detalles($tienda->id_tienda);
