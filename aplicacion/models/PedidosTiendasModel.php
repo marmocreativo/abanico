@@ -46,6 +46,20 @@ class PedidosTiendasModel extends CI_Model {
     $query = $this->db->get('pedidos_tiendas');
     return $query->result();
   }
+  function lista_pedidos_pagos_tienda($id_tienda,$inicio,$fin){
+    $this->db->select('tiendas.*,pedidos.*,pedidos_tiendas.*,pedidos_pagos.*');
+    $this->db->join('pedidos','pedidos_tiendas.ID_PEDIDO = pedidos.ID_PEDIDO');
+    $this->db->join('tiendas','pedidos_tiendas.ID_TIENDA = tiendas.ID_TIENDA');
+    $this->db->join('pedidos_pagos','pedidos_tiendas.ID_PEDIDO = pedidos_pagos.ID_PEDIDO');
+    $this->db->group_start();
+    $this->db->where('pedidos_tiendas.ID_TIENDA',$id_tienda);
+    $this->db->where('pedidos_pagos.PAGO_FECHA_ACTUALIZACION >=',$inicio);
+    $this->db->where('pedidos_pagos.PAGO_FECHA_ACTUALIZACION <',$fin);
+    $this->db->where('pedidos_pagos.PAGO_ESTADO','Pagado');
+    $this->db->group_end();
+    $query = $this->db->get('pedidos_tiendas');
+    return $query->result();
+  }
   /*
     * Obtengo todos los detalles de una sola entrada
  */

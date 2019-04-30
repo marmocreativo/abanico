@@ -47,6 +47,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function index()
 	{
+			$this->data['tiendas'] = $this->TiendasModel->lista('','','','');
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_corte_vendedores',$this->data);
