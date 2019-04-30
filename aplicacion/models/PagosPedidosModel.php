@@ -29,6 +29,10 @@ class PagosPedidosModel extends CI_Model {
     $this->db->insert('pedidos_pagos',$parametros);
     return $this->db->insert_id();
   }
+  function actualizar_oxxo($id,$parametros){
+    $this->db->where('PAGO_FOLIO',$id);
+    return $this->db->update('pedidos_pagos',$parametros);
+  }
   /*
     * Borro una entrada
     * $id es el identificador de la entrada

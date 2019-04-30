@@ -45,33 +45,18 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 
 		$body = @file_get_contents('php://input');
-		$data = json_decode($body);
+		$datos = json_decode($body);
 		http_response_code(200); // Return 200 OK
 
-			$parametros_pago = array(
-				'PAGO_FORMA'=> 'oxxo',
-				'PAGO_FOLIO'=> $data->id,
-				'PAGO_DESCRIPCION'=>serialize($data),
-				'PAGO_ESTADO'=> 'Pagado'
-			);
+		if($datos->data->object->payment_status=='paid'){
+		$folio = $datos->data->object->id;
+		$parametros_pago = array(
+			'PAGO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+			'PAGO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+			'PAGO_ESTADO'=> 'Pagado'
+		);
+		$this->PagosPedidosModel->actualizar_oxxo($folio,$parametros_pago);
+	}
 
-			$adjunto_id = $this->PagosPedidosModel->crear($parametros_pago);
-
-			if ($data->type == 'charge.paid'){
-				// Creo el Servicio
-				/*
-			  $msg = "Tu pago id '.$data->id.' ha sido comprobado. a las : ".$data->created_at;
-				// Envio correo Abanico
-				$this->email->clear();
-				$this->email->from($this->data['op']['mailer_user'], 'Abanico Siempre lo Mejor');
-				$this->email->to('marmocreativo@gmail.com');
-
-				$this->email->subject('Pago OXXO | Abanico | ');
-				$this->email->message($msg);
-				// envio el correo
-
-				$this->email->send();
-				*/
-			}
 	}
 }

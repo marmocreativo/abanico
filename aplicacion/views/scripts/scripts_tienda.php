@@ -508,16 +508,20 @@ var precio = $('.CombinacionProducto').find(':selected').data('precio-producto')
 var detalles = $('.CombinacionProducto').find(':selected').data('detalles-producto');
 var precio_visible = $('.CombinacionProducto').find(':selected').data('precio-visible-producto');
 jQuery('#Precio_Producto').html(precio_visible);
-jQuery('#BotonComprar').data('precio-producto',precio);
-jQuery('#BotonComprar').data('detalles-producto',detalles);
+jQuery('#BotonComprar').attr('data-precio-producto',precio);
+jQuery('#BotonComprar').attr('data-detalles-producto',detalles);
+jQuery('#BotonCompraRapida').attr('data-precio-producto',precio);
+jQuery('#BotonCompraRapida').attr('data-detalles-producto',detalles);
 // Al cambiar
 jQuery('.CombinacionProducto').on('change',function(e){
   var precio = jQuery(this).find(':selected').data('precio-producto');
   var detalles = jQuery(this).find(':selected').data('detalles-producto');
   var precio_visible = jQuery(this).find(':selected').data('precio-visible-producto');
   jQuery('#Precio_Producto').html(precio_visible);
-  jQuery('#BotonComprar').data('precio-producto',precio);
-  jQuery('#BotonComprar').data('detalles-producto',detalles);
+  jQuery('#BotonComprar').attr('data-precio-producto',precio);
+  jQuery('#BotonComprar').attr('data-detalles-producto',detalles);
+  jQuery('#BotonCompraRapida').attr('data-precio-producto',precio);
+  jQuery('#BotonCompraRapida').attr('data-detalles-producto',detalles);
 
 });
 /*
