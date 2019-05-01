@@ -214,6 +214,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$ImporteEnvioTotal = $_SESSION['pedido']['ImporteEnvioTotal'];
 			$IdTransportista = $_SESSION['pedido']['IdTransportista'];
 			$NombreTransportista = $_SESSION['pedido']['NombreTransportista'];
+			$ComisionServicioFinancieroPorcentaje = $_SESSION['pedido']['ComisionServicioFinancieroPorcentaje'];
+			$ComisionServicioFinancieroFijo = $_SESSION['pedido']['ComisionServicioFinancieroFijo'];
 			$ImporteTotal = $_SESSION['pedido']['ImporteTotal'];
 			$FormaPago = $_SESSION['pedido']['FormaPago'];
 			$EstadoPago = $_SESSION['pedido']['EstadoPago'];
@@ -236,6 +238,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$ImporteEnvioTotal = $_POST['ImporteEnvioTotal'];
 			$IdTransportista = $_POST['IdTransportista'];
 			$NombreTransportista = $_POST['NombreTransportista'];
+			$ComisionServicioFinancieroPorcentaje = $_POST['ComisionServicioFinancieroPorcentaje'];
+			$ComisionServicioFinancieroFijo = $_POST['ComisionServicioFinancieroFijo'];
 			$ImporteTotal = $_POST['ImporteTotal'];
 			$FormaPago = $_POST['FormaPago'];
 			$EstadoPago = $_POST['EstadoPago'];
@@ -272,11 +276,25 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$pedidos_tienda = json_decode($pedidos_tienda);
 			// Bucle de pedidos Tiendas
 			foreach($pedidos_tienda as $tienda){
+				$importe_tienda = $tienda->importe_producto+$tienda->importe_transportista;
+				$comision_venta = $tienda->importe_producto*($tienda->comision_venta/100);
+				$comision_manejo = $tienda->importe_producto*($tienda->comision_manejo/100);
+				$comision_servicios_financieros = ($importe_tienda*($ComisionServicioFinancieroPorcentaje/100))+$ComisionServicioFinancieroFijo;
+				$deducciones = $comision_venta+$comision_manejo+$comision_servicios_financieros;
+				$importe_a_liquidar = $importe_tienda-$deducciones;
 				$parametros_tienda = array(
 					'ID_PEDIDO'=>$pedido_id,
 					'ID_TIENDA'=>$tienda->id_tienda,
 					'PEDIDO_TIENDA_IMPORTE_PRODUCTOS'=>$tienda->importe_producto,
 					'PEDIDO_TIENDA_IMPORTE_ENVIO'=>$tienda->importe_transportista,
+					'PORCENTAJE_COMISION_VENTA'=>$tienda->comision_venta,
+					'PORCENTAJE_COMISION_MANEJO'=>$tienda->comision_manejo,
+					'PORCENTAJE_SERVICIOS_FINANCIEROS'=>$ComisionServicioFinancieroPorcentaje,
+					'COMISION_FIJA_SERVICIOS_FINANCIEROS'=>$ComisionServicioFinancieroFijo,
+					'COMISION_VENTA'=>$comision_venta,
+					'COMISION_MANEJO'=>$comision_manejo,
+					'COMISION_SERVICIOS_FINANCIEROS'=>$comision_servicios_financieros,
+					'IMPORTE_A_LIQUIDAR'=>$importe_a_liquidar,
 					'ID_TRANSPORTISTA'=>$tienda->id_transportista,
 					'TRANSPORTISTA_NOMBRE'=>$tienda->nombre_transportista,
 					'PEDIDO_TIENDA_ESTADO'=>$this->input->post('EstadoPedido')
@@ -427,7 +445,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 				// LLAVE DE PRUEBAS
 				\Conekta\Conekta::setApiKey("key_SP3qR73rqHWqzeJ98i5zCw");
-				
+
 				\Conekta\Conekta::setApiVersion("2.0.0");
 				// Preparo variables OXXO
 				$oxxo_ImporteProductosTotal = $ImporteProductosTotal*100;

@@ -50,12 +50,19 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		if($datos->data->object->payment_status=='paid'){
 		$folio = $datos->data->object->id;
+		$pago = $this->PagosPedidosModel->detalles_folio($folio);
 		$parametros_pago = array(
 			'PAGO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 			'PAGO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
 			'PAGO_ESTADO'=> 'Pagado'
 		);
 		$this->PagosPedidosModel->actualizar_oxxo($folio,$parametros_pago);
+		// Pedido
+		$parametros_pedido = array(
+			'PEDIDO_ESTADO_PEDIDO'=>'Pagado',
+			'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s')
+		);
+		$this->PedidosModel->actualizar($pago['ID_PEDIDO'],$parametros_pedido);
 	}
 
 	}

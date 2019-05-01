@@ -40,6 +40,8 @@
     <input type="hidden" name="ImporteEnvioParcial" value="<?php echo $envio_pedido_abanico ; ?>">
     <input type="hidden" name="ImporteEnvioTotal" value="<?php echo $envio_pedido_total ; ?>">
     <input type="hidden" name="PedidosTiendas" value="<?php echo $pedido_tienda ; ?>">
+    <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="0">
+    <input type="hidden" name="ComisionServicioFinancieroFijo" value="0">
     <input type="hidden" name="ImporteTotal" value="<?php echo $importe_total ; ?>">
     <input type="hidden" name="IdTransportista" value="<?php echo $id_transportista_abanico ; ?>">
     <input type="hidden" name="NombreTransportista" value="<?php echo $nombre_transportista_abanico ; ?>">
@@ -47,6 +49,7 @@
   </form>
 </div>
 <?php } ?>
+<?php if($detalles_direccion['DIRECCION_PAIS']=='México'){ ?>
 <div class="col">
   <form class="d-flex justify-content-end" id="banco_form" action="<?php echo base_url('proceso_pago_3_oxxo'); ?>" method="post" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="Folio" value="<?php echo $folio ; ?>">
@@ -63,12 +66,21 @@
     <input type="hidden" name="ImporteEnvioParcial" value="<?php echo $envio_pedido_abanico ; ?>">
     <input type="hidden" name="ImporteEnvioTotal" value="<?php echo $envio_pedido_total ; ?>">
     <input type="hidden" name="PedidosTiendas" value="<?php echo $pedido_tienda ; ?>">
+
+    <?php
+      $porcentaje_servicio_financiero = 4.6;
+      $fijo_servicio_financiero = 0;
+    ?>
+    <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="<?php echo $porcentaje_servicio_financiero; ?>">
+    <input type="hidden" name="ComisionServicioFinancieroFijo" value="<?php echo $fijo_servicio_financiero; ?>">
     <input type="hidden" name="ImporteTotal" value="<?php echo $importe_total ; ?>">
     <input type="hidden" name="IdTransportista" value="<?php echo $id_transportista_abanico ; ?>">
     <input type="hidden" name="NombreTransportista" value="<?php echo $nombre_transportista_abanico ; ?>">
       <button type="submit" class="btn btn-danger btn-lg btn-block btn-transfer"><?php echo $this->lang->line('proceso_pago_3_oxxo'); ?> <span class="fas fa-cash-register"></span></button>
   </form>
 </div>
+<?php } ?>
+<?php if($_SESSION['divisa']['iso']=='MXN'){ ?>
 <div class="col">
   <form class="d-flex justify-content-end" id="banco_form" action="<?php echo base_url('proceso_pago_3_paypal'); ?>" method="post" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="Folio" value="<?php echo $folio ; ?>">
@@ -85,11 +97,18 @@
     <input type="hidden" name="ImporteEnvioParcial" value="<?php echo $envio_pedido_abanico ; ?>">
     <input type="hidden" name="ImporteEnvioTotal" value="<?php echo $envio_pedido_total ; ?>">
     <input type="hidden" name="PedidosTiendas" value="<?php echo $pedido_tienda ; ?>">
+    <?php
+      $porcentaje_servicio_financiero = 4.6;
+      $fijo_servicio_financiero = 4;
+    ?>
+    <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="<?php echo $porcentaje_servicio_financiero; ?>">
+    <input type="hidden" name="ComisionServicioFinancieroFijo" value="<?php echo $fijo_servicio_financiero; ?>">
     <input type="hidden" name="ImporteTotal" value="<?php echo $importe_total ; ?>">
     <input type="hidden" name="IdTransportista" value="<?php echo $id_transportista_abanico ; ?>">
     <input type="hidden" name="NombreTransportista" value="<?php echo $nombre_transportista_abanico ; ?>">
       <button type="submit" class="btn btn-light btn-lg btn-block btn-paypal text-primary-18"><?php echo $this->lang->line('proceso_pago_3_paypal'); ?> <span class="fab fa-paypal"></span></button>
   </form>
 </div>
+<?php } ?>
 </div>
 </div>

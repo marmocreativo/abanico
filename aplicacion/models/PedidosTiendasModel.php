@@ -47,7 +47,7 @@ class PedidosTiendasModel extends CI_Model {
     return $query->result();
   }
   function lista_pedidos_pagos_tienda($id_tienda,$inicio,$fin){
-    $this->db->select('tiendas.*,pedidos.*,pedidos_tiendas.*,pedidos_pagos.*');
+    $this->db->select('tiendas.*,pedidos.*,pedidos_tiendas.*,pedidos_pagos.*, pedidos_tiendas.ID as ID_PEDIDO_TIENDA');
     $this->db->join('pedidos','pedidos_tiendas.ID_PEDIDO = pedidos.ID_PEDIDO');
     $this->db->join('tiendas','pedidos_tiendas.ID_TIENDA = tiendas.ID_TIENDA');
     $this->db->join('pedidos_pagos','pedidos_tiendas.ID_PEDIDO = pedidos_pagos.ID_PEDIDO');

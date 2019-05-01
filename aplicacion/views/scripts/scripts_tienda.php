@@ -63,6 +63,8 @@ jQuery( document ).ready(function(){
     var id_transportista = jQuery(this).attr('data-id-transportista');
     var nombre_transportista = jQuery(this).attr('data-nombre-transportista');
     var importe_transportista = jQuery(this).attr('data-importe-transportista');
+    var comision_venta = jQuery(this).attr('data-comision-venta');
+    var comision_manejo = jQuery(this).attr('data-comision-manejo');
     pedidos_tienda[id_tienda] = {
       'id_tienda': id_tienda,
       'nombre_tienda': nombre_tienda,
@@ -70,6 +72,8 @@ jQuery( document ).ready(function(){
       'id_transportista': id_transportista,
       'nombre_transportista': nombre_transportista,
       'importe_transportista': importe_transportista,
+      'comision_venta': comision_venta,
+      'comision_manejo': comision_manejo,
     };
   });
   // Vuelvo a leer todas las tiendas y cargo los datos en el pedido
@@ -106,6 +110,8 @@ jQuery('.selector-transportista-abanico').on('click', function(){
     var id_transportista = jQuery(this).attr('data-id-transportista');
     var nombre_transportista = jQuery(this).attr('data-nombre-transportista');
     var importe_transportista = jQuery(this).attr('data-importe-transportista');
+    var comision_venta = jQuery(this).attr('data-comision-venta');
+    var comision_manejo = jQuery(this).attr('data-comision-manejo');
     pedidos_tienda[id_tienda] = {
       'id_tienda': id_tienda,
       'nombre_tienda': nombre_tienda,
@@ -113,6 +119,8 @@ jQuery('.selector-transportista-abanico').on('click', function(){
       'id_transportista': id_transportista,
       'nombre_transportista': nombre_transportista,
       'importe_transportista': importe_transportista,
+      'comision_venta': comision_venta,
+      'comision_manejo': comision_manejo,
     };
   });
   // Vuelvo a leer todas las tiendas y cargo los datos en el pedido
@@ -159,6 +167,8 @@ jQuery('.selector-transportista-tienda').on('click', function(){
     var id_transportista = jQuery(this).attr('data-id-transportista');
     var nombre_transportista = jQuery(this).attr('data-nombre-transportista');
     var importe_transportista = jQuery(this).attr('data-importe-transportista');
+    var comision_venta = jQuery(this).attr('data-comision-venta');
+    var comision_manejo = jQuery(this).attr('data-comision-manejo');
     pedidos_tienda[id_tienda] = {
       'id_tienda': id_tienda,
       'nombre_tienda': nombre_tienda,
@@ -166,6 +176,8 @@ jQuery('.selector-transportista-tienda').on('click', function(){
       'id_transportista': id_transportista,
       'nombre_transportista': nombre_transportista,
       'importe_transportista': importe_transportista,
+      'comision_venta': comision_venta,
+      'comision_manejo': comision_manejo,
     };
   });
 
@@ -234,6 +246,8 @@ var importe_envio_total= jQuery('#PedidoAjax').attr('data-importe-envio-total');
     var id_transportista = jQuery(this).attr('data-id-transportista');
     var nombre_transportista = jQuery(this).attr('data-nombre-transportista');
     var importe_transportista = jQuery(this).attr('data-importe-transportista');
+    var comision_venta = jQuery(this).attr('data-comision-venta');
+    var comision_manejo = jQuery(this).attr('data-comision-manejo');
     pedidos_tienda[id_tienda] = {
       'id_tienda': id_tienda,
       'nombre_tienda': nombre_tienda,
@@ -241,6 +255,8 @@ var importe_envio_total= jQuery('#PedidoAjax').attr('data-importe-envio-total');
       'id_transportista': id_transportista,
       'nombre_transportista': nombre_transportista,
       'importe_transportista': importe_transportista,
+      'comision_venta': comision_venta,
+      'comision_manejo': comision_manejo,
     };
   });
 

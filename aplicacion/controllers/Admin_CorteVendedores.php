@@ -47,11 +47,45 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function index()
 	{
-			$this->data['tiendas'] = $this->TiendasModel->lista('','','','');
+			$this->data['todas_tiendas'] = $this->TiendasModel->lista('','','','');
+			//
+			if(isset($_GET['IdTienda'])&&!empty($_GET['IdTienda'])){
+				$this->data['tiendas'] = $this->TiendasModel->lista(['ID_TIENDA'=>$_GET['IdTienda']],'','','');
+			}else{
+				$this->data['tiendas'] = $this->TiendasModel->lista('','','','');
+			}
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_corte_vendedores',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+	}
+	public function actualizar()
+	{
+		foreach($_POST['FolioLiquidacion'] as $pedido => $folio){
+			if(!empty($folio)){
+				$parametros = array(
+					'PEDIDO_TIENDA_LIQUIDADO'=>'si',
+					'FOLIO_LIQUIDAR'=>$folio
+				);
+				$this->PedidosTiendasModel->actualizar($pedido,$parametros);
+			}
+		}
+		$this->session->set_flashdata('exito', 'Folios Cargados Correctamente');
+		redirect(base_url('admin/corte_vendedores?MesCorte='.$_POST['MesCorte'].'&AnioCorte='.$_POST['AnioCorte'].'&IdTienda='.$_POST['IdTienda']));
+	}
+	public function imprimir()
+	{
+			$this->data['todas_tiendas'] = $this->TiendasModel->lista('','','','');
+			//
+			if(isset($_GET['IdTienda'])&&!empty($_GET['IdTienda'])){
+				$this->data['tiendas'] = $this->TiendasModel->lista(['ID_TIENDA'=>$_GET['IdTienda']],'','','');
+			}else{
+				$this->data['tiendas'] = $this->TiendasModel->lista('','','','');
+			}
+			$this->data['titulo'] = 'Ficha Liquidación';
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header_imprimir',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/lista_corte_vendedores_imprimir',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer_imprimir',$this->data);
 	}
 
 }

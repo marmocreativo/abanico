@@ -112,7 +112,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				}
 				// Creo el Servicio
 				$adjunto_id = $this->PagosPedidosModel->crear($parametros_pago);
-				$adjunto_id = $this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros_pedido);
+				$this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros_pedido);
 				$this->session->set_flashdata('exito', 'Comprobante cargado correctamente');
 				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
 			}else{
