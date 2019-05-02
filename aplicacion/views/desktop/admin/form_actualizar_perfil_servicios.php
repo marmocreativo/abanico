@@ -209,7 +209,7 @@
             <div class="card-body">
               <h4 class="h5"> <span class="fa fa-file-signature"></span> Plan activo | <b>Ninguno</b></h4>
               <hr>
-              <a href="<?php echo base_url('admin/planes/lista_planes?tipo=productos&id_usuario='.$tienda['ID_USUARIO']); ?>" class="btn btn-primary"> <i class="fa fa-plus"></i> Activar Plan</a>
+              <a href="<?php echo base_url('admin/planes/lista_planes?tipo=productos&id_usuario='.$_GET['id_usuario']); ?>" class="btn btn-primary"> <i class="fa fa-plus"></i> Activar Plan</a>
             </div>
           </div>
         <?php } ?>

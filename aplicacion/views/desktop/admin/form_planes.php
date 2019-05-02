@@ -100,7 +100,7 @@
                       </table>
                     </div>
                     <div class="card-body p-0">
-                      <a href="<?php echo base_url('usuario/planes/activar?id='.$plan->ID_PLAN); ?>" class="btn btn-primary btn-block rounded-0">Activar plan</a>
+                      <a href="<?php echo base_url('admin/planes/activar?id='.$plan->ID_PLAN.'&id_usuario='.$_GET['id_usuario']); ?>" class="btn btn-primary btn-block rounded-0">Activar plan</a>
                     </div>
                 </div>
             </div>

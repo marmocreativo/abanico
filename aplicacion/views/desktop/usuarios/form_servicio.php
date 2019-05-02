@@ -219,31 +219,28 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo5.1.png'); ?>" alt="Registro paso 1">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo6.1.png'); ?>" alt="Registro paso 1">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo5.2.png'); ?>" alt="Registro paso 2">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo6.2.png'); ?>" alt="Registro paso 2">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo5.3.png'); ?>" alt="Registro paso 3">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo6.3.png'); ?>" alt="Registro paso 3">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo5.4.png'); ?>" alt="Registro paso 3">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo6.4.png'); ?>" alt="Registro paso 3">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo5.5.png'); ?>" alt="Registro paso 3">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo6.5.png'); ?>" alt="Registro paso 3">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo5.6.png'); ?>" alt="Registro paso 3">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo6.6.png'); ?>" alt="Registro paso 3">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo5.7.png'); ?>" alt="Registro paso 4">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo6.7.png'); ?>" alt="Registro paso 4">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo5.8.png'); ?>" alt="Registro paso 4">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo5.9.png'); ?>" alt="Registro paso 4">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo6.8.png'); ?>" alt="Registro paso 4">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselAyuda" role="button" data-slide="prev">
