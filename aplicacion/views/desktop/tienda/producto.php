@@ -33,15 +33,14 @@
           <?php retro_alimentacion(); ?>
           <div class="row mb-5">
             <div class="col-7">
-              <div class="col-12 slider-fotos d-flex align-items-center justify-content-center">
+              <div class="col-12 mb-3 slider-fotos d-flex align-items-center justify-content-center">
                 <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
                 <img src="<?php echo base_url($ruta_portada) ?>" class="img-fluid visor-galeria-producto" style="max-height:500px" alt="">
               </div>
               <div class="card-deck no-gutters">
                 <?php foreach($galerias as $galeria){ ?>
                   <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
-                <div class="card col-2 mx-1">
-                  <img class="card-img-top imagen-galeria-producto" src="<?php echo base_url($ruta_galeria) ?>">
+                <div class="card col-2 mx-1" style="background-image:url('<?php echo base_url($ruta_galeria) ?>'); background-size:cover; background-position:center;">
                 </div>
                 <?php } ?>
               </div>
