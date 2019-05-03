@@ -787,6 +787,8 @@ img.sp-thumbnail-image {
 
 .slider-fotos {
   height: 500px;
+  text-align: center;
+  border: solid 1px #e8ecef;
 }
 
 /*

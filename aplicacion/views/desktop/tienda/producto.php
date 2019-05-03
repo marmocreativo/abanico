@@ -33,7 +33,7 @@
           <?php retro_alimentacion(); ?>
           <div class="row mb-5">
             <div class="col-7">
-              <div class="col-12 slider-fotos">
+              <div class="col-12 slider-fotos d-flex align-items-center justify-content-center">
                 <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
                 <img src="<?php echo base_url($ruta_portada) ?>" class="img-fluid visor-galeria-producto" style="max-height:500px" alt="">
               </div>
