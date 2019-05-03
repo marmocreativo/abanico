@@ -40,7 +40,7 @@
               <div class="card-deck no-gutters">
                 <?php foreach($galerias as $galeria){ ?>
                   <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
-                <div class="card col-2 mx-1" style="background-image:url('<?php echo base_url($ruta_galeria) ?>'); background-size:cover; background-position:center;">
+                <div class="card col-2 mx-1 slider-thumbs" style="background-image:url('<?php echo base_url($ruta_galeria) ?>'); background-size:cover; background-position:center;">
                 </div>
                 <?php } ?>
               </div>

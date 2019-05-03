@@ -790,6 +790,9 @@ img.sp-thumbnail-image {
   text-align: center;
   border: solid 1px #e8ecef;
 }
+.slider-thumbs {
+  height: 70px;
+}
 
 /*
 | -------------------------------------------------------------------------
