@@ -113,6 +113,49 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				// Creo el Servicio
 				$adjunto_id = $this->PagosPedidosModel->crear($parametros_pago);
 				$this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros_pedido);
+
+				$datos_pedido = $this->PedidosModel->detalles($this->input->post('IdPedido'));
+
+				// Preparo correo de revisión
+
+				$this->data['info'] = array();
+
+				$this->data['info']['Titulo'] = 'Se ha subido un comprobante de pago para el pedido | '.$datos_pedido['PEDIDO_FOLIO'];
+				$this->data['info']['Nombre'] = 'Por favor revisa que el comprobante sea valido y actualiza el estado del pedido a pagado';
+				$this->data['info']['Mensaje'] = '<p>Puedes revisar los detalles del plan en el administrador</p>';
+				$this->data['info']['TextoBoton'] = 'Iniciar sesión';
+				$this->data['info']['EnlaceBoton'] = base_url('admin/pedidos/detalles?id_pedido='.$datos_pedido['ID_PEDIDO']);
+				// Pedido General
+				$mensaje_abanico = $this->load->view('emails/mensaje_general',$this->data,true);
+
+				// Envio correos Generales
+				// Datos para enviar por correo
+				// Config General
+
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = $this->data['op']['mailer_host'];
+				$config['smtp_port']    = $this->data['op']['mailer_port'];
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = $this->data['op']['mailer_user'];
+				$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+				$config['charset']    = 'utf-8';
+				$config['mailtype'] = 'html'; // or html
+				$config['validation'] = TRUE; // bool whether to validate email or not
+
+				$this->email->initialize($config);
+
+				// Envio correo comprobante
+				$this->email->clear();
+				$this->email->from($this->data['op']['mailer_user'], 'Abanico Siempre lo Mejor');
+				$this->email->to($this->data['op']['correo_sitio']);
+
+
+				$this->email->subject('Comprobante de pago '.$datos_pedido['PEDIDO_FOLIO']);
+				$this->email->message($mensaje_abanico);
+				// envio el correo
+
+				$this->email->send();
+
 				$this->session->set_flashdata('exito', 'Comprobante cargado correctamente');
 				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
 			}else{

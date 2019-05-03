@@ -54,4 +54,10 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}
 		$mensaje_oxxo = $this->load->view('emails/'.$mail,$this->data);
 	}
+	public function guia(){
+		$this->data['pedido']['PEDIDO_NOMBRE']='Georgina Alcántar López';
+		$this->data['pedido']['PEDIDO_DIRECCION']='Bahía No. 51 depto 103 Ampli. Las Águilas. Álvaro Obregón. CDMX. CP. 01159';
+		$this->data['pedido_tienda']['GUIA_PAQUETERIA']='';
+		$this->load->view($this->data['dispositivo'].'/admin/imprimir_guia_limpia',$this->data);
+	}
 }

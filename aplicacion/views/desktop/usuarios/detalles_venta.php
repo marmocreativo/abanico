@@ -142,9 +142,9 @@
                   <td><?php echo $this->lang->line('usuario_detalles_envio_guia'); ?>:<br><b><?php echo $pedido_tienda['GUIA_PAQUETERIA']; ?></b></td>
                   <td>
                       <a href="<?php echo $pedido_tienda['URL_RASTREO']; ?>" target="_blank" class="btn btn-outline-primary btn-sm btn-block"> <?php echo $this->lang->line('usuario_detalles_envio_rastrear'); ?></a>
-                    <?php if(isset($_SESSION['usuario'])&&verificar_permiso(['tec-5','adm-6'])){ ?>
+
                       <a href="<?php echo base_url('admin/guias/imprimir_limpia?id_pedido='.$pedido_tienda['ID_PEDIDO'].'&id_tienda='.$pedido_tienda['ID_TIENDA']); ?>" class="btn btn-sm btn-block btn-success" target="_blank"> <i class="fa fa-print"></i> Imprimir</a>
-                    <?php } ?>
+
                   </td>
                 </tr>
               </table>

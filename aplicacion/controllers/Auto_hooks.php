@@ -60,6 +60,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		// Pedido
 		$parametros_pedido = array(
 			'PEDIDO_ESTADO_PEDIDO'=>'Pagado',
+			'PEDIDO_ESTADO_PAGO'=>'Pagado',
 			'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s')
 		);
 		$this->PedidosModel->actualizar($pago['ID_PEDIDO'],$parametros_pedido);

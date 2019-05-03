@@ -33,6 +33,11 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('EstadisticasModel');
 		$this->load->model('NotificacionesModel');
 
+
+  }
+
+	public function index()
+	{
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
@@ -43,11 +48,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
 			redirect(base_url('usuario'));
 		}
-  }
-
-	public function index()
-	{
-
 			$this->data['guias'] = $this->GuiasPedidosModel->lista('','GUIA_FECHA_REGISTRO DESC','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_guias',$this->data);
@@ -56,6 +56,16 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function busqueda()
 	{
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// Verifico Permiso
+		if(!verificar_permiso(['tec-5','adm-6'])){
+			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
+			redirect(base_url('usuario'));
+		}
 		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
 			$parametros = array(
 				'PEDIDO_IMPORTE'=>$_GET['Busqueda'],
@@ -75,6 +85,16 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	}
 	public function detalles()
 	{
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// Verifico Permiso
+		if(!verificar_permiso(['tec-5','adm-6'])){
+			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
+			redirect(base_url('usuario'));
+		}
 			$this->data['puntos_registro'] = $this->PuntosRegistroModel->lista('','','','');
 			$this->data['guia'] = $this->GuiasPedidosModel->detalles($_GET['guia']);
 			$this->data['ubicaciones'] = $this->RutasGuiasModel->lista_rutas($this->data['guia']['GUIA_CODIGO']);
@@ -84,17 +104,43 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	}
 	public function imprimir()
 	{
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// Verifico Permiso
+		if(!verificar_permiso(['tec-5','adm-6'])){
+			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
+			redirect(base_url('usuario'));
+		}
 			$this->data['guia'] = $this->GuiasPedidosModel->detalles($_GET['guia']);
 			$this->load->view($this->data['dispositivo'].'/admin/imprimir_guia',$this->data);
 	}
 	public function imprimir_limpia()
 	{
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+
 			$this->data['pedido_tienda'] = $this->PedidosTiendasModel->detalles($_GET['id_pedido'],$_GET['id_tienda']);
 			$this->data['pedido'] = $this->PedidosModel->detalles($this->data['pedido_tienda']['ID_PEDIDO']);
 			$this->load->view($this->data['dispositivo'].'/admin/imprimir_guia_limpia',$this->data);
 	}
 	public function ruta()
 	{
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// Verifico Permiso
+		if(!verificar_permiso(['tec-5','adm-6'])){
+			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
+			redirect(base_url('usuario'));
+		}
 		$this->form_validation->set_rules('Guia', 'Número de Guía', 'required', array('required' => 'Debes escribir tu %s.'));
 
 		if($this->form_validation->run())
@@ -123,6 +169,16 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	}
 	public function ruta_auto()
 	{
+		// Verifico Sesión
+		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
+			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+		}
+		// Verifico Permiso
+		if(!verificar_permiso(['tec-5','adm-6'])){
+			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
+			redirect(base_url('usuario'));
+		}
 		$this->form_validation->set_rules('Guia', 'Número de Guía', 'required', array('required' => 'Debes escribir tu %s.'));
 
 		$punto_registro = $this->PuntosRegistroModel->detalles($this->input->post('IdPunto'));
