@@ -85,6 +85,8 @@ html, body{
     border-radius: 15px;
 }
 
+/* ESTILOS CARRITO */
+
 .car-icono{
   font-size: 2.5em;
   color: #ddd;
@@ -108,7 +110,33 @@ html, body{
 }
 .btn-carrito {
   padding: 7px 9px;
+  font-size: 1rem;
+  background: transparent;
 }
+.custom-control.custom-radio {
+    border-top: solid 1px lightgray;
+    /* border-bottom: solid 1px lightgray; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.custom-control.custom-radio:hover {
+    background: #e5ecef;
+}
+.container-stepwizard {
+    padding: 20px;
+    background: #73c8c8;
+    color: #094c4c;
+}
+.stepwizard .btn-default.btn-circle {
+    background: white;
+}
+.stepwizard-row:before {
+    background-color: white!important;
+}
+.btn-default.btn-circle, .btn-primary.btn-circle {
+    font-size: 16px;
+    line-height: 1;
+  }
 
 /*
 | -------------------------------------------------------------------------
@@ -140,7 +168,38 @@ html, body{
   float: left;
   margin:2%;
 }
-
+/*--- Slider ---*/
+.contenedor-texto-slide{
+  position: absolute;
+  top: 1%;
+  left: 20%;
+  right: 20%;
+  bottom: 1%;
+  box-sizing: border-box;
+  border: solid #ffffff 3px;
+  margin: 2% 2%;
+  padding: 2%;
+}
+.texto-slide{
+  background-color: rgba(255,255,255,0.7);
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  left: 1%;
+  right: 1%;
+  padding: 3%;
+  text-align: center;
+}
+.texto-slide h1{
+  font-size: 2.2em;
+  margin-bottom:0.2em;
+}
+.texto-slide h2{
+  font-size: 1.8em;
+}
+.texto-slide h3{
+  font-size: 1.5em;
+}
 .contenido_principal{
   min-height: 700px;
 }
@@ -153,7 +212,7 @@ html, body{
   border-bottom: solid 1px #ddd;
 }
 .fila-gris{
-  background-color: #ddd;
+  background-color: #e7ecef;
 }
 .fila-dark{
   background-color: #333;
@@ -181,23 +240,55 @@ html, body{
   background-color: #ddd;
 }
 .contenedor-ganador{
-  text-align: right;
-
+  width: 100%;
+  height: auto;
+}
+.cont-ganador {
+  border-top: solid 1px lightgray;
+}
+.img-ganador {
+  background: white;
+  width: 100%;
+  height: 560px;
+  margin: 20px auto;
+  border-radius: 15px;
+  text-align: center;
+}
+.head-ganador {
+  background-size: cover;
+background-image: url('../img/pleca_gana_arriba.png');
+height: 121px;
+background-position: bottom;
+border-bottom: solid 1px lightgray;
+}
+.head-ganador img {
+  padding: 10px 0;
 }
 .fecha-ganador{
-  font-size: 1.8em;
+  font-size: 1em;
 }
 .fecha-ganador span{
-  font-size: 2.8em;
+  font-size: 1em;
 }
 .titulo-ganador{
-  font-size: 3em;
-  font-weight: 700;
+  font-size: 1.5em;
+  line-height: 0.8em;
 }
 .nombre-ganador{
   font-size: 2em;
+font-weight: 700;
+line-height: 1.2em;
+color: #FF6600;
+}
+.premio-ganador {
+  background-size: cover;
+  background-image: url('../img/pleca_gana_abajo.png');
+  height: 100px;
+  background-position: top;
+  border-top: solid 1px lightgray;
   font-weight: 200;
-  color: orange;
+  font-size: 1.5em;
+  margin-top: 10px
 }
 .form-group input {
   margin: 0 .25rem;
@@ -246,6 +337,7 @@ html, body{
   position:relative;
   border: 1px solid #ced4da;
   border-top: none;
+  min-height: 160px;
 }
 .cuadricula-productos .contenedor-etiquetas{
   display: block;
@@ -359,9 +451,9 @@ html, body{
   background-color: transparent;
 }
 .product-content .rating{padding:0;margin:0 0 7px;list-style:none}
-.cuadricula-productos .rating li{font-size:12px;color:#ffd200;transition:all .3s ease 0s}
+.cuadricula-productos .rating li{font-size:12px;color:#ffd200;transition:all .3s ease 0s;display: inline;}
 .cuadricula-productos .rating li.disable{color:rgba(0,0,0,.2)}
-.cuadricula-productos .title{font-size:16px;font-weight:400;text-transform:capitalize;margin:0 0 3px;transition:all .3s ease 0s}
+.cuadricula-productos .title{font-size:16px;font-weight:400;margin:0 0 3px;transition:all .3s ease 0s}
 .cuadricula-productos .title a{color:rgba(0,0,0,.5)}
 .cuadricula-productos .title a:hover{color:#c0392b}
 .cuadricula-productos .price{color:#6c757d;font-size:20px;font-weight: bold;margin:0;display:block;transition:all .5s ease 0s}
@@ -377,6 +469,10 @@ html, body{
 .flex-direction-nav a:before {
     font-size: 30px;
     line-height: 38px;
+}
+.col-twits {
+  max-height: 600px;
+  overflow: auto;
 }
 
 /*
@@ -536,6 +632,40 @@ html, body{
   .estrellas a{
     color: #ffc107;
   }
+  .tienda-proceso-pago {
+    background: white;
+    border-radius: 3px;
+  }
+  .tienda-proceso-pago h5 {
+    margin-bottom: 50px;
+  }
+  .tienda-proceso-pago .table thead th {
+    background: #e7ecef;
+    color: #4e6a77;
+    border-bottom: none;
+  }
+  .cont-resumen {
+    position: sticky;
+    top: 30px;
+    color: white;
+  }
+  .cont-resumen h4 {
+    margin-bottom: 50px;
+  }
+  .cont-resumen p {
+    margin-bottom: 0;
+  }
+  .btn-paypal, .btn-transfer {
+    border-radius: 26px;
+    margin-top: 10px;
+    white-space: normal;
+  }
+  .cont-envio-pago .form-check {
+    position: relative;
+    display: block;
+    padding: 9px 9px 2px 40px;
+    border-top: solid 1px lightgray;
+  }
 
 /*
 | -------------------------------------------------------------------------
@@ -651,6 +781,21 @@ img.sp-thumbnail-image {
 
 /*
 | -------------------------------------------------------------------------
+| SLIDER FOTOS PRODUCTOS
+| -------------------------------------------------------------------------
+*/
+
+.slider-fotos {
+  height: 500px;
+  text-align: center;
+  border: solid 1px #e8ecef;
+}
+.slider-thumbs {
+  height: 70px;
+}
+
+/*
+| -------------------------------------------------------------------------
 | ESTILOS VISTA TODAS LAS CATEGORIAS
 | -------------------------------------------------------------------------
 */
@@ -675,7 +820,7 @@ img.sp-thumbnail-image {
 
 /*
 | -------------------------------------------------------------------------
-| ESTILOS MENSAJES
+| ESTILOS MENSAJES Y NOTIFICACIONES
 | -------------------------------------------------------------------------
 */
 #shelf {
@@ -766,6 +911,58 @@ img.sp-thumbnail-image {
     border: none;
     border-radius: 0;
 }
+.cont-notif {
+    min-width: 350px;
+    background: #e3e7e8;
+}
+.cont-notif h3 {
+  margin-left: 10px;
+}
+.notif {
+  padding: 3px;
+    margin: 1%;
+    width: 98%;
+    border-bottom: solid 1px lightgrey;
+    background: #ecf0f1;
+    border-radius: 3px;
+    position: relative;
+    font-size: 12px;
+}
+.notif i {
+    text-align: center;
+    width: 56px;
+    height: 51px;
+    font-size: 1.2em;
+    padding-top: 17px;
+    border-right: solid 1px rgba(8, 45, 68, 0.12);
+    margin-right: 10px;
+}
+.no-leida {
+  background: #fff;
+}
+#venta-notif i {
+  border-left: 3px solid #00c3a5;
+}
+#general-notif i {
+  border-left: 3px solid #CC33FF;
+}
+#compra-notif i {
+  border-left: 3px solid #33CCFF;
+}
+#mensaje-notif i {
+  border-left: 3px solid #FF3399;
+}
+.no-leida::before {
+    content: '';
+    background: #F44336;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    border-radius: 50%;
+}
+
 
 /*
 | -------------------------------------------------------------------------
@@ -822,10 +1019,70 @@ img.sp-thumbnail-image {
   text-decoration: none;
 }
 
-.cont-notif h3 {
-  margin-left: 10px;
+/*
+| -------------------------------------------------------------------------
+| ESTILOS TABLA DE PLANES
+| -------------------------------------------------------------------------
+*/
+.tabla-planes img {
+  width: 120px;
+  margin: 30px 0 10px 0;
 }
-.notif {
-  padding: 20px;
-  border-bottom: solid 1px lightgrey;
+.tabla-planes H5 {
+  font-weight: 600;
+  margin: 0;
+}
+.tabla-planes .card-header{
+  min-height: 205px;
+}
+.tabla-planes .card {
+  border-left: none;
+}
+.tabla-planes .card .card-body p.text-center {
+    background: #e4e7e8;
+    padding: 5px 0;
+    margin: 0;
+}
+.tabla-planes table.table.m-0 {
+    line-height: 18px;
+}
+#servicios_plan_1 .card, #productos_plan_1 .card {
+  border-left: solid 1px lightgray;
+}
+#servicios_plan_1, #productos_plan_1 {
+  border-top: solid 9px #97038e;
+}
+#servicios_plan_2, #productos_plan_3 {
+  border-top: solid 9px #f27100;
+}
+#servicios_plan_3, #productos_plan_5 {
+  border-top: solid 9px #1cc6a2;
+}
+#productos_plan_2 {
+border-top: solid 9px #980500;
+}
+#productos_plan_4 {
+  border-top: solid 9px #0e2bff;
+}
+
+
+#carouselAyuda span.carousel-control-next-icon, #carouselAyuda span.carousel-control-prev-icon {
+    padding: 5px;
+    background-color: #1f2d2d;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-size: 69%;
+}
+#carouselAyuda .carousel-caption {
+    background: #35bfa6d4;
+    position: absolute;
+    bottom: 0;
+}
+#carouselAyuda .carousel-indicators {
+    bottom: 5px;
+}
+
+.modal-xl {
+    max-width: 80%;
 }

@@ -11,19 +11,26 @@ class SlidesModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista(){
-    $query = $this->db->get('slides');
-    return $query->result();
-  }/*
-    * Enlisto todas las entradas de un slide
- */
-  function lista_activos($id_slider){
-    $query = $this->db->where('ID_SLIDER',$id_slider);
-    $query = $this->db->where('SLIDE_ESTADO','activo');
-    $query = $this->db->order_by('ORDEN','ASC');
+  function lista($parametros,$orden,$limite){
+    if(!empty($parametros)){
+      $this->db->or_like($parametros);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
     $query = $this->db->get('slides');
     return $query->result();
   }
+  /*
+    * Verificar URI
+ */
+ function verificar_uri($url){
+   $publicacion = $this->db->get_where('slides',array('SLIDE_URL'=>$url))->row_array();
+   if(!empty($publicacion)){ return TRUE; }else{ return FALSE; }
+ }
   /*
     * Obtengo todos los detalles de una sola entrada
  */
@@ -36,6 +43,15 @@ class SlidesModel extends CI_Model {
   function crear($parametros){
     $this->db->insert('slides',$parametros);
     return $this->db->insert_id();
+  }
+  /*
+    * Actualizo una entrada
+    * $id es el identificador de la entrada
+    * $parametros son los campos actualizados
+ */
+  function actualizar($id,$parametros){
+    $this->db->where('ID_SLIDE',$id);
+    return $this->db->update('slides',$parametros);
   }
   /*
     * Borro una entrada
@@ -64,6 +80,19 @@ class SlidesModel extends CI_Model {
     }
     $this->db->where('ID_SLIDE',$id);
     return $this->db->update('slides',array('SLIDE_ESTADO'=>$activo));
+  }
+
+  /*
+    * Creo el orden de los elementos
+    * $orden son los identificadores de las entradas en el orden en que quiero que aparezcan
+ */
+  function ordenar($orden){
+    $i = 0;
+    foreach($orden as $orden){
+      $this->db->where('ID_SLIDE',$orden);
+      return $this->db->update('slides',array('ORDEN'=>$i));
+      ++$i;
+    }
   }
 
 }

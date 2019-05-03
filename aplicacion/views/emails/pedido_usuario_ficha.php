@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Pedido Abanico</title>
+    <title>Abanico | Contraseña Olvidada</title>
     <style>
       /* -------------------------------------
           GLOBAL RESETS
@@ -228,6 +228,15 @@
         border-bottom: 1px solid #f6f6f6;
         Margin: 20px 0;
       }
+      .head2{
+        font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;
+        text-align: center;
+        border-top: 1px solid lightgray;
+        background-image: url('<?php echo base_url('assets/global/img/pleca_mail_2.png'); ?>');
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position: top center;
+      }
       /* -------------------------------------
           RESPONSIVE AND MOBILE FRIENDLY STYLES
       ------------------------------------- */
@@ -270,6 +279,9 @@
           height: auto !important;
           max-width: 100% !important;
           width: auto !important;
+        }
+        .head2{
+          background-size:contain;
         }
       }
       /* -------------------------------------
@@ -326,48 +338,53 @@
                         <tbody>
                             <tr>
                                 <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px; text-align: center;">
-                                    <img src="<?php echo base_url('assets/global/img/logo.png'); ?>" alt="" width="100px">
+                                    <img src="<?php echo base_url('assets/global/img/logo_correo.png'); ?>" alt="" width="200px">
                                 </td>
                             </tr>
                             <tr>
-                                <td class="head2" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; text-align: center; border-top: 1px solid lightgray;background-image: url('<?php echo base_url('assets/global/img/pleca_mail_2.png'); ?>')">
-                                  <h2 style="margin:0;color:#495057;"><strong>Esta es tu ficha de pago</strong></h2>
-                                  <h3 style="margin:0;color:#495057;">Mensaje de prueba, lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nibh purus, dapibus nec ullamcorper non, bibendum id felis.</strong></h3>
+                                <td class="head2">
+                                  <h2 style="margin:0;color:#495057;"><strong>Ficha de Pago</strong></h2>
+                                  <p style="margin:0;color:#495057;">Folio: <?php echo $pedido['PEDIDO_FOLIO']; ?></p>
                                 </td>
                             </tr>
                           </tbody>
                         </table>
-                      <table cellpadding="20" cellspacing="0" style="width:96%; margin:2%; color: #495057;">
-                        <tbody>
-                          <tr>
-                            <td colspan="1" style="vertical-align:middle; font-size:16px;">
-                              <img src="<?php echo base_url('assets/global/img/banco.png'); ?>" style="float:left; margin-right:15px;" width="100%" alt="">
-                            </td>
-                            <td colspan="3" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
-                              <h2 style="margin:0;color:#495057;"><strong>Nombre de Producto</strong></h2>
-                              <p>Scotiabank</p>
-                              <p>Tarjeta: <strong>0000 0000 0000 0000</strong></p>
-                              <p>Cuenta: <strong>000123456789</strong></p>
-                              <p>CLABE: <strong>0000000000000</strong></p>
-                            </td>
-                            <td colspan="2" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
-                              <h4 style="margin:0;color:#495057;border-bottom:solid 1px lightgrey"><strong>Referencia:</strong> YBPK86</h5>
-                              <h3 style="margin:0;color:#af3193;"><strong>Monto a pagar</strong><br />$10,003.00 MXN</h4>
-                            </td>
-                          </tr>
-                          <tr>
+                        <table cellpadding="20" cellspacing="0" style="width:96%; margin:2%; color: #495057;">
+                          <tbody>
                             <tr>
-                              <td style="width:20%; text-align:right;"></td>
-                              <td style="width:20%; text-align:right;"></td>
-                              <td style="width:20%; text-align:right;"></td>
-                              <td style="width:20%; text-align:right;"></td>
-                              <td style="width:20%; text-align:right;"></td>
-                              <td style="width:20%; text-align:right;"></td>
+                              <td colspan="1" style="vertical-align:middle; font-size:16px;">
+                                <img src="<?php echo base_url('assets/global/img/banco.png'); ?>" style="float:left; margin-right:15px;" width="100%" alt="">
+                              </td>
+                              <td colspan="3" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
+                                <h4 style="margin:0;color:#495057;"><strong>Depósito o Transferencia Bancaria</strong></h4>
+                                <p>Scotiabank</p>
+                                <p>Cuenta: <strong>256 0000 0668</strong></p>
+                                <p>CLABE: <strong>0441 8025 6000 0066 82</strong></p>
+                              </td>
+                              <td colspan="2" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
+                                <h4 style="margin:0;color:#495057;border-bottom:solid 1px lightgrey"><strong>Referencia:</strong> <?php echo $pedido['PEDIDO_FOLIO']; ?></h5>
+                                <h3 style="margin:0;color:#af3193;"><strong>Monto a pagar</strong><br />$<?php echo $pedido['PEDIDO_IMPORTE_TOTAL']; ?> <?php echo $pedido['PEDIDO_DIVISA']; ?></h4>
+                              </td>
                             </tr>
-                          </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                            <tr>
+                              <td colspan="5">
+                                <p>No olvides confirmarnos tu pago envíando una fotografía, captura de pantalla o comprobante de transferencia al correo <a href="mailto:atencionclientes@abanicoytu.com">atencionclientes@abanicoytu.com</a> </p>
+                                <p>También puedes actualizar tu pedido iniciando sesión en <a href="https://abanicoytu.com/demo/usuario"> https://abanicoytu.com/demo/usuario</a></p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <tr>
+                                <td style="width:20%; text-align:right;"></td>
+                                <td style="width:20%; text-align:right;"></td>
+                                <td style="width:20%; text-align:right;"></td>
+                                <td style="width:20%; text-align:right;"></td>
+                                <td style="width:20%; text-align:right;"></td>
+                                <td style="width:20%; text-align:right;"></td>
+                              </tr>
+                            </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </td>
                     </tr>
                   </table>

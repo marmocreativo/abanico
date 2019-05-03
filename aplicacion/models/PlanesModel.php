@@ -37,11 +37,29 @@ class PlanesModel extends CI_Model {
     $this->db->where('FECHA_TERMINO >=',date('Y-m-d'));
     $this->db->group_end();
     $this->db->group_start();
-    $this->db->or_where('PLAN_ESTADO','pendiente');
     $this->db->or_where('PLAN_ESTADO','pagado');
     $this->db->group_end();
     $query = $this->db->get('planes_usuarios');
     return $query->row_array();
+  }
+  function plan_pendiente_usuario($id,$tipo){
+    $this->db->group_start();
+    $this->db->where('PLAN_TIPO',$tipo);
+    $this->db->where('ID_USUARIO',$id);
+    $this->db->where('FECHA_TERMINO >=',date('Y-m-d'));
+    $this->db->group_end();
+    $this->db->group_start();
+    $this->db->or_where('PLAN_ESTADO','pendiente');
+    $this->db->or_where('PLAN_ESTADO','espera pago');
+    $this->db->or_where('PLAN_ESTADO','pagado');
+    $this->db->group_end();
+    $query = $this->db->get('planes_usuarios');
+    return $query->row_array();
+  }
+  function lista_pagos($id){
+    $this->db->where('ID_PLAN_USUARIO',$id);
+    $query = $this->db->get('planes_pagos');
+    return $query->result();
   }
   /*
     * Creo una nueva entrada usando los parámetros
@@ -53,6 +71,14 @@ class PlanesModel extends CI_Model {
   function crear_plan_usuario($parametros){
     $this->db->insert('planes_usuarios',$parametros);
     return $this->db->insert_id();
+  }
+  function crear_pago_plan($parametros){
+    $this->db->insert('planes_pagos',$parametros);
+    return $this->db->insert_id();
+  }
+  function actualizar_pago_plan($id,$parametros){
+    $this->db->where('ID_PAGO',$id);
+    return $this->db->update('planes_pagos',$parametros);
   }
   /*
     * Actualizo una entrada

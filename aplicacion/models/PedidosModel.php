@@ -52,6 +52,15 @@ class PedidosModel extends CI_Model {
   function detalles($id){
     return $this->db->get_where('pedidos',array('ID_PEDIDO'=>$id))->row_array();
   }
+  function pedido_ganador($fecha){
+    $fecha_max = $fecha;
+    $fecha_min = date('Y-m-d', strtotime($fecha.' -1 month'));
+    $this->db->order_by('ID_PEDIDO','random');
+    return $this->db->get_where('pedidos',array(
+      'PEDIDO_FECHA_REGISTRO >='=>$fecha_min,
+      'PEDIDO_ESTADO_PAGO'=>'Pagado'
+    ))->row_array();
+  }
 
   /*
     * Conteo de productos

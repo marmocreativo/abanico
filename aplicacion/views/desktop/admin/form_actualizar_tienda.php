@@ -201,12 +201,12 @@
                   <p>Estado del Pago: <b><?php echo $plan['PLAN_ESTADO']; ?></b></p>
                 </div>
                 <div class="col d-flex justify-content-end">
-                  <p>Fecha Límite de Pago: <b><?php echo date('Y-m-d',strtotime("+10 days",strtotime($plan['FECHA_INICIO']))); ?></b></p>
+                  <p>Fecha Límite de Pago: <b><?php echo date('d-m-Y',strtotime("+5 days",strtotime($plan['FECHA_INICIO']))); ?></b></p>
                 </div>
               </div>
               <div class="row">
                 <div class="col">
-                  <a href="<?php echo base_url('admin/planes/actualizar_plan_usuario?id='.$plan['ID_PLAN_USUARIO']); ?>" class="btn btn-primary btn-block">Editar Plan</a>
+                  <a href="<?php echo base_url('admin/planes/actualizar_plan_usuario?id='.$plan['ID_PLAN_USUARIO']); ?>" class="btn btn-primary btn-block">Activar / Editar Plan</a>
                 </div>
               </div>
             </div>

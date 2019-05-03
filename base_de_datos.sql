@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 06-03-2019 a las 17:49:49
+-- Tiempo de generación: 30-04-2019 a las 21:07:04
 -- Versión del servidor: 5.6.40-84.0-log
 -- Versión de PHP: 5.6.30
 
@@ -38,15 +38,6 @@ CREATE TABLE `adjuntos_usuarios` (
   `ADJUNTO_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `adjuntos_usuarios`
---
-
-INSERT INTO `adjuntos_usuarios` (`ID_ADJUNTO`, `ID_USUARIO`, `ID_OBJETO`, `ADJUNTO_NOMBRE`, `ADJUNTO_ARCHIVO`, `ADJUNTO_TIPO`, `ADJUNTO_FECHA_REGISTRO`) VALUES
-(1, '5c64a6b2e13ae0.49457839', 1, 'Este es un documento', 'archivo-5c64ac7d3bc6d.pdf', 'servicio', '2019-02-13 23:47:09'),
-(2, '5c0653d43d92e7.75019474', 8, 'Muestra que ando trabajando', 'archivo-5c6d6eb224ec0.jpg', 'servicio', '2019-02-20 15:13:54'),
-(3, '5c6f40192d2e14.12282150', 10, 'Gracias por tu preferencia', 'archivo-5c6f4183958ff.jpg', 'servicio', '2019-02-22 00:25:39');
-
 -- --------------------------------------------------------
 
 --
@@ -69,7 +60,7 @@ CREATE TABLE `calificaciones_productos` (
 --
 
 INSERT INTO `calificaciones_productos` (`ID_CALIFICACION`, `ID_PRODUCTO`, `ID_USUARIO`, `ID_USUARIO_CALIFICADOR`, `CALIFICACION_ESTRELLAS`, `CALIFICACION_COMENTARIO`, `CALIFICACION_ESTADO`, `CALIFICACION_FECHA_REGISTRO`) VALUES
-(1, 1, '5c64a6b2e13ae0.49457839', '5c0653d43d92e7.75019474', 5, 'Hola', 'activo', '2019-02-14 00:01:58');
+(1, 26, '5c9c1ff62ce0c3.78174962', '5ca4043cde1435.48493149', 5, 'Excelente calidad, muy resistente y fácil de instalar', 'activo', '2019-04-12 00:50:33');
 
 -- --------------------------------------------------------
 
@@ -87,13 +78,6 @@ CREATE TABLE `calificaciones_servicios` (
   `CALIFICACION_ESTADO` varchar(255) DEFAULT NULL,
   `CALIFICACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `calificaciones_servicios`
---
-
-INSERT INTO `calificaciones_servicios` (`ID_CALIFICACION`, `ID_SERVICIO`, `ID_USUARIO`, `ID_USUARIO_CALIFICADOR`, `CALIFICACION_ESTRELLAS`, `CALIFICACION_COMENTARIO`, `CALIFICACION_ESTADO`, `CALIFICACION_FECHA_REGISTRO`) VALUES
-(1, 1, '5c64a6b2e13ae0.49457839', '5c64a6b2e13ae0.49457839', 5, 'Este es un comentario', 'activo', '2019-02-13 23:49:10');
 
 -- --------------------------------------------------------
 
@@ -120,15 +104,15 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `CATEGORIA_DESCRIPCION`, `CATEGORIA_COLOR`, `CATEGORIA_ICONO`, `CATEGORIA_IMAGEN`, `CATEGORIA_PADRE`, `CATEGORIA_FINAL`, `CATEGORIA_TIPO`, `CATEGORIA_ESTADO`) VALUES
-(24, 'Tecnología, Computación y Gadgets', 'tecnolog??a-computaci??n-y-gadgets', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 0, 0, 'productos', 'activo'),
-(25, 'Belleza y Cuidado Personal', 'belleza-y-cuidado-personal', '', '-primary-2', 'fas fa-spa', 'default.jpg', 0, 0, 'productos', 'activo'),
-(26, 'Deportes y Aire Libre', 'deportes-y-aire-libre', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 0, 0, 'productos', 'activo'),
-(27, 'Hogar', 'hogar-y-electrodom??sticos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 0, 0, 'productos', 'activo'),
-(29, 'Bebés', 'juguetes-y-beb??s', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 0, 0, 'productos', 'activo'),
+(24, 'Tecnología, Computación y Gadgets', 'tecnología-computación-y-gadgets-z4p', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 0, 0, 'productos', 'activo'),
+(25, 'Belleza y Cuidado Personal', 'belleza-y-cuidado-personal-f3s', '', '-primary-2', 'fas fa-spa', 'default.jpg', 0, 0, 'productos', 'activo'),
+(26, 'Deportes y Aire Libre', 'deportes-y-aire-libre-dhh', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 0, 0, 'productos', 'activo'),
+(27, 'Hogar', 'hogar', '', '-primary-4', 'fas fa-blender', 'default.jpg', 0, 0, 'productos', 'activo'),
+(29, 'Bebés', 'bebés-nm6', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 0, 0, 'productos', 'activo'),
 (30, 'Libros', 'libros', '', '-primary-7', 'fas fa-book', 'default.jpg', 0, 0, 'productos', 'activo'),
-(31, 'Moda Joyas y Relojes', 'moda-joyas-y-relojes', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 0, 0, 'productos', 'activo'),
-(33, 'Vehículos y Accesorios', 'veh??culos-y-accesorios', '', '-primary-10', 'fas fa-car', 'default.jpg', 0, 0, 'productos', 'activo'),
-(34, 'Manualidades y Artesanías', 'manualidades-y-artesan??as', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 0, 0, 'productos', 'activo'),
+(31, 'Moda, Joyas y Relojes', 'moda-joyas-y-relojes-m0m', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 0, 0, 'productos', 'activo'),
+(33, 'Vehículos y Accesorios', 'vehículos-y-accesorios', '', '-primary-10', 'fas fa-car', 'default.jpg', 0, 0, 'productos', 'activo'),
+(34, 'Manualidades y Artesanías', 'manualidades-y-artesanías', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 0, 0, 'productos', 'activo'),
 (36, 'Audio', 'audio', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 24, 0, 'productos', 'activo'),
 (37, 'Televisores', 'televisores', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 24, 0, 'productos', 'activo'),
 (38, 'Fotografía y Video', 'fotograf??a-y-video', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 24, 0, 'productos', 'activo'),
@@ -141,12 +125,12 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (45, 'Microcomponentes', 'microcomponentes', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 36, 0, 'productos', 'activo'),
 (46, 'Varios', 'varios', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 36, 0, 'productos', 'activo'),
 (47, 'Pantallas', 'pantallas', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
-(48, 'Barras de Sonido', 'barras-de-sonido', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
+(48, 'Barras de sonido', 'barras-de-sonido', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
 (49, 'Blu-ray, DVD y Reproductores', 'bluray-dvd-y-reproductores', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
 (50, 'Accesorios', 'accesorios', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
 (51, 'Varios', 'varios-zu0', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 37, 0, 'productos', 'activo'),
 (52, 'Cámaras', 'c??maras', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 38, 0, 'productos', 'activo'),
-(53, 'Cámaras Profesionales', 'c??maras-profesionales', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 38, 0, 'productos', 'activo'),
+(53, 'Cámaras profesionales', 'c??maras-profesionales', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 38, 0, 'productos', 'activo'),
 (54, 'Lentes', 'lentes', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 38, 0, 'productos', 'activo'),
 (55, 'Accesorios', 'accesorios-3ch', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 38, 0, 'productos', 'activo'),
 (56, 'Varios', 'varios-jtn', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 38, 0, 'productos', 'activo'),
@@ -164,12 +148,12 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (68, 'Accesorios', 'accesorios-7te', '', '-primary-1', 'fas fa-laptop', 'default.jpg', 41, 0, 'productos', 'activo'),
 (69, 'Perfumería', 'perfumes', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
 (70, 'Maquillaje', 'maquillaje', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
-(71, 'Cuidado de la Piel', 'cuidado-de-la-piel', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
+(71, 'Cuidado de la piel', 'cuidado-de-la-piel', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
 (72, 'Depilación y Peluquería', 'depilaci??n-y-peluquer??a', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
 (73, 'Cabello', 'cuidado-del-cabello', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
-(74, 'Cuidado Dental', 'cuidado-dental', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
-(75, 'Perfumes de Hombre', 'perfumes-de-hombre', '', '-primary-2', 'fas fa-spa', 'default.jpg', 69, 0, 'productos', 'activo'),
-(76, 'Perfumes de Mujer', 'perfumes-de-mujer', '', '-primary-2', 'fas fa-spa', 'default.jpg', 69, 0, 'productos', 'activo'),
+(74, 'Cuidado dental', 'cuidado-dental', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
+(75, 'Perfumes de hombre', 'perfumes-de-hombre', '', '-primary-2', 'fas fa-spa', 'default.jpg', 69, 0, 'productos', 'activo'),
+(76, 'Perfumes de mujer', 'perfumes-de-mujer', '', '-primary-2', 'fas fa-spa', 'default.jpg', 69, 0, 'productos', 'activo'),
 (77, 'Rostro', 'rostro', '', '-primary-2', 'fas fa-spa', 'default.jpg', 70, 0, 'productos', 'activo'),
 (78, 'Ojos', 'ojos', '', '-primary-2', 'fas fa-spa', 'default.jpg', 70, 0, 'productos', 'activo'),
 (79, 'Labios', 'labios', '', '-primary-2', 'fas fa-spa', 'default.jpg', 70, 0, 'productos', 'activo'),
@@ -188,12 +172,12 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (92, 'Cepillos', 'cepillos', '', '-primary-2', 'fas fa-spa', 'default.jpg', 74, 0, 'productos', 'activo'),
 (93, 'Pastas', 'pastas', '', '-primary-2', 'fas fa-spa', 'default.jpg', 74, 0, 'productos', 'activo'),
 (94, 'Varios', 'varios-dik', '', '-primary-2', 'fas fa-spa', 'default.jpg', 74, 0, 'productos', 'activo'),
-(104, 'Ingeniería y Construcción', 'ingenier??a-y-construcci??n', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 0, 0, 'servicios', 'activo'),
-(105, 'Mantenimiento y Hogar', 'mantenimiento-y-hogar', '', '-primary-15', 'fas fa-home', 'default.jpg', 0, 0, 'servicios', 'activo'),
-(106, 'Mecánicos y Automotrices', 'mec??nicos-y-automotrices', '', '-primary-16', 'fas fa-car', 'default.jpg', 0, 0, 'servicios', 'activo'),
-(107, 'Administración', 'administraci??n', '', '-primary-17', 'fas fa-user-tie', 'default.jpg', 0, 0, 'servicios', 'activo'),
+(104, 'Ingeniería y Construcción', 'ingeniería-y-construcción-hlh', '', '-warning', 'fas fa-wrench', 'default.jpg', 0, 0, 'servicios', 'activo'),
+(105, 'Mantenimiento y Hogar', 'mantenimiento-y-hogar', '', '-primary-9', 'fas fa-home', 'default.jpg', 0, 0, 'servicios', 'activo'),
+(106, 'Mecánicos y Automotrices', 'mecánicos-y-automotrices-47d', '', '-success', 'fas fa-car', 'default.jpg', 0, 0, 'servicios', 'activo'),
+(107, 'Administración', 'administración-tzm', '', '-danger', 'fas fa-user-tie', 'default.jpg', 0, 0, 'servicios', 'activo'),
 (108, 'Arte y Entretenimiento', 'arte-y-entretenimiento', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 0, 0, 'servicios', 'activo'),
-(109, 'Salud', 'm??dicos-y-enfermer??a', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 0, 0, 'servicios', 'activo'),
+(109, 'Salud', 'salud-a12', '', '-primary', 'fas fa-briefcase-medical', 'default.jpg', 0, 0, 'servicios', 'activo'),
 (111, 'Bicicletas', 'bicicletas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
 (112, ' Fitnes', 'entrenamiento-y-fitness', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
 (113, 'Campismo', 'campismo', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
@@ -205,10 +189,10 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (119, 'Accesorios', 'accesorios-chk', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 111, 0, 'productos', 'activo'),
 (120, 'Barras y Pesas', 'barras-y-pesas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
 (121, 'Caminadoras y Equipo', 'caminadoras-y-equipo', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
-(122, 'Entrenamiento Funcional', 'entrenamiento-funcional', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
-(123, 'Miscelaneas', 'yoga', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
-(124, 'Casas de Campaña', 'casas-de-campaña', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
-(125, 'Colchones Inflables', 'colchones-inflables', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
+(122, 'Entrenamiento funcional', 'entrenamiento-funcional', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
+(123, 'Varios', 'yoga', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 112, 0, 'productos', 'activo'),
+(124, 'Casas de campaña', 'casas-de-campaña', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
+(125, 'Colchones inflables', 'colchones-inflables', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
 (126, 'Hieleras', 'hieleras', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
 (127, 'Mochilas', 'mochilas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
 (128, 'Sillas y Mesas', 'sillas-y-mesas', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
@@ -236,17 +220,16 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (151, 'Lavavajillas', 'lavavajillas', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
 (152, 'Ropa y Accesorios', 'ropa-infantil', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
 (153, 'Muebles', 'muebles-infantiles', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
-(154, 'Bebés', 'bebés', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
+(154, 'Artículos para bebes', 'bebés', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
 (158, 'Pañales', 'pañales', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
 (159, 'Carriolas', 'carriolas', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
 (160, 'Cunas', 'cunas', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
 (161, 'Seguridad y monitores', 'seguridad-y-monitores', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
 (162, 'Aseo e higiene', 'aseo-e-higiene', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
-(171, 'Literatura Clásica', 'literatura-y-ficción', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(171, 'Literatura clásica', 'literatura-y-ficción', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (172, 'Profesionales y Técnicos', 'profesional-y-técnico', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (173, 'Romance', 'romance', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
-(174, 'eBooks Kindle', 'ebooks-kindle', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
-(175, 'Ciencia Ficción y Fantasía', 'ciencia-ficción-y-fantasía', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(175, 'Ciencia ficción y Fantasía', 'ciencia-ficción-y-fantasía', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (176, 'Ropa de hombre', 'ropa', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 31, 0, 'productos', 'activo'),
 (177, 'Ropa de mujer', 'zapatos', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 31, 0, 'productos', 'activo'),
 (178, 'Ropa y calzado infantil', 'ropa-y-calzado-infantil', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 31, 0, 'productos', 'activo'),
@@ -268,9 +251,9 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (194, 'Sandalias', 'sandalias', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 180, 0, 'productos', 'activo'),
 (195, 'Tenis', 'tenis', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 180, 0, 'productos', 'activo'),
 (196, 'Botas', 'botas', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 180, 0, 'productos', 'activo'),
-(197, 'Flats', 'flats', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 180, 0, 'productos', 'activo'),
+(197, 'Floor shoes ', 'flats', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 180, 0, 'productos', 'activo'),
 (198, 'Tacones', 'tacones', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 180, 0, 'productos', 'activo'),
-(199, 'Tenis deportivos', 'tenis-deportivos', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
+(199, 'Tenis ', 'tenis-deportivos', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
 (200, 'Botas', 'botas-pan', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
 (201, 'Casuales', 'casuales', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
 (202, 'Formales', 'formales', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 181, 0, 'productos', 'activo'),
@@ -285,32 +268,32 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (218, 'Aretes', 'aretes', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 214, 0, 'productos', 'activo'),
 (219, 'Anillos', 'anillos', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 214, 0, 'productos', 'activo'),
 (220, 'Pulceras', 'pulceras', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 214, 0, 'productos', 'activo'),
-(227, 'Eléctrica y Electrónica', 'eléctrica-y-electrónica', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
-(228, 'Ingeniería Civil', 'ingeniería-civil', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
-(229, 'Ingeniería Ambiental', 'ingeniería-ambiental', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
-(230, 'Computación', 'computación', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
-(231, 'Ingeniería Mecánica', 'ingeniería-mecánica', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
-(232, 'Ingeniería Industrial', 'ingeniería-industrial', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
-(233, 'Instalaciones ', 'instalaciones', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
-(234, 'Obras', 'obras', '', '-primary-14', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
-(235, 'Eléctrico ', 'electricista', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
-(236, 'Plomería', 'plomería', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
-(237, 'Cerrajería ', 'cerrajería', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
-(238, 'Albañilería', 'albañilería', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(227, 'Eléctricidad y Electrónica', 'eléctrica-y-electrónica', '', '-warning', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(228, 'Ingeniería civil', 'ingeniería-civil', '', '-warning', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(229, 'Ingeniería ambiental', 'ingeniería-ambiental', '', '-warning', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(230, 'Computación', 'computación', '', '-warning', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(231, 'Ingeniería mecánica', 'ingeniería-mecánica', '', '-warning', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(232, 'Ingeniería industrial', 'ingeniería-industrial', '', '-warning', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(233, 'Instalaciones ', 'instalaciones', '', '-warning', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(234, 'Obras', 'obras', '', '-warning', 'fas fa-wrench', 'default.jpg', 104, 0, 'servicios', 'activo'),
+(235, 'Eléctricidad', 'electricista', '', '-primary-9', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(236, 'Plomería', 'plomería', '', '-primary-9', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(237, 'Cerrajería ', 'cerrajería', '', '-primary-9', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(238, 'Albañilería', 'albañilería', '', '-primary-9', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
 (239, 'Actores y Mimos', 'actores', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
-(240, 'Pediatra', 'pediatra', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
-(241, 'Dermatología', 'dermatología', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
-(242, 'Psicología ', 'psicología', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
-(243, 'Ginecología', 'ginecología', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
-(244, 'Dentista', 'dentista', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
-(245, 'Ortopedista ', 'ortopedista', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
-(246, 'Jardineria', 'jardineria', '', '-success', 'fas fa-leaf', 'default.jpg', 0, 0, 'productos', 'activo'),
+(240, 'Pediatra', 'pediatra', '', '-primary', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(241, 'Dermatología', 'dermatología', '', '-primary', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(242, 'Psicología ', 'psicología', '', '-primary', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(243, 'Ginecología', 'ginecología', '', '-primary', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(244, 'Dentista', 'dentista', '', '-primary', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(245, 'Ortopedista ', 'ortopedista', '', '-primary', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(246, 'Jardinería', 'jardinería-unf', '', '-success', 'fas fa-leaf', 'default.jpg', 0, 0, 'productos', 'activo'),
 (247, 'Muebles', 'muebles-swo', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
 (248, 'Iluminación', 'iluminación-64q', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
 (249, 'Herramientas', 'herramientas', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
 (250, 'Decoración', 'decoración-2ok', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
 (251, 'Plantas', 'plantas', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
-(252, 'Nutrientes para Plantas', 'nutrientes-para-plantas', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
+(252, 'Accesorios para jardinería', 'nutrientes-para-plantas', '', '-success', 'fas fa-leaf', 'default.jpg', 246, 0, 'productos', 'activo'),
 (253, 'Varios', 'varios-5n1', '', '-primary-2', 'fas fa-spa', 'default.jpg', 73, 0, 'productos', 'activo'),
 (254, 'Protectores', 'protectores', '', '-primary-2', 'fas fa-spa', 'default.jpg', 74, 0, 'productos', 'activo'),
 (255, 'Deportes', 'deportes', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
@@ -318,16 +301,15 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (257, 'Futbol', 'futbol', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 255, 0, 'productos', 'activo'),
 (258, 'Voleibol', 'voleibol', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 255, 0, 'productos', 'activo'),
 (259, 'Carrera y Caminata', 'carrera-y-caminata', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 255, 0, 'productos', 'activo'),
-(260, 'Deportes Extremos', 'deportes-extremos', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
+(260, 'Deportes extremos', 'deportes-extremos', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
 (261, 'Paracaidismo', 'paracaidismo', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 260, 0, 'productos', 'activo'),
-(262, 'Deportes Acuáticos', 'deportes-acuáticos', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
+(262, 'Deportes acuáticos', 'deportes-acuáticos', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
 (263, 'Natación', 'natación', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 262, 0, 'productos', 'activo'),
 (264, 'Buceo', 'buceo', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 262, 0, 'productos', 'activo'),
 (265, 'Yoga', 'yoga-yyh', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 26, 0, 'productos', 'activo'),
-(266, 'Yoga', 'yoga-5wr', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 265, 0, 'productos', 'activo'),
 (267, 'Cocina', 'cocina-h6g', '', '-primary-4', 'fas fa-blender', 'default.jpg', 129, 0, 'productos', 'activo'),
 (268, 'Extensiones', 'extensiones', '', '-primary-4', 'fas fa-blender', 'default.jpg', 134, 0, 'productos', 'activo'),
-(269, 'Interrupciones', 'interrupciones', '', '-primary-4', 'fas fa-blender', 'default.jpg', 134, 0, 'productos', 'activo'),
+(269, 'Interruptores', 'interrupciones', '', '-primary-4', 'fas fa-blender', 'default.jpg', 134, 0, 'productos', 'activo'),
 (270, 'Contactos', 'contactos', '', '-primary-4', 'fas fa-blender', 'default.jpg', 134, 0, 'productos', 'activo'),
 (271, 'Timbres', 'timbres', '', '-primary-4', 'fas fa-blender', 'default.jpg', 134, 0, 'productos', 'activo'),
 (272, 'Alarmas y Sensores', 'alarmas-y-sensores', '', '-primary-4', 'fas fa-blender', 'default.jpg', 134, 0, 'productos', 'activo'),
@@ -335,18 +317,17 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (274, 'Tostadoras', 'tostadoras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
 (275, 'Cafeteras', 'cafeteras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
 (276, 'Sandwicheras / Waffleras', 'sandwicheras-waffleras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
-(277, 'Arrozeras', 'arrozeras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
-(278, 'Pañaleras', 'pañaleras', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 152, 0, 'productos', 'activo'),
+(277, 'Arroceras', 'arrozeras', '', '-primary-4', 'fas fa-blender', 'default.jpg', 135, 0, 'productos', 'activo'),
 (279, 'Cunas', 'cunas-pmb', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 153, 0, 'productos', 'activo'),
 (280, 'Camas', 'camas', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 153, 0, 'productos', 'activo'),
-(282, 'Niños y Juguetes', 'niños-y-juguetes', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 0, 0, 'productos', 'activo'),
+(282, 'Niños y Juguetes', 'niños-y-juguetes-b7q', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 0, 0, 'productos', 'activo'),
 (283, 'Juguetes y Juegos', 'juguetes-y-juegos', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 282, 0, 'productos', 'activo'),
-(284, 'Juegos de Mesa', 'juegos-de-mesa', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
+(284, 'Juegos de mesa', 'juegos-de-mesa', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
 (285, 'Peluches', 'peluches', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
-(286, 'Figuras de Acción', 'figuras-de-acción', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
+(286, 'Figuras de acción', 'figuras-de-acción', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
 (287, 'Juguetes', 'juguetes', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
-(288, 'Juguetes Electrónicos', 'juguetes-electrónicos', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
-(289, 'Juguetes para Jardín', 'juguetes-para-jardín', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
+(288, 'Juguetes electrónicos', 'juguetes-electrónicos', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
+(289, 'Juguetes para jardín', 'juguetes-para-jardín', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 283, 0, 'productos', 'activo'),
 (290, 'Drones y Radio Control', 'drones-y-radio-control', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 282, 0, 'productos', 'activo'),
 (291, 'Montables', 'montables', '', '-primary-9', 'fas fa-gamepad', 'default.jpg', 290, 0, 'productos', 'activo'),
 (292, 'Sedán', 'sedán', '', '-primary-10', 'fas fa-car', 'default.jpg', 210, 0, 'productos', 'activo'),
@@ -372,11 +353,11 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (312, 'Gastronomía', 'gastronomía', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (313, 'Historia y Biografías', 'gastronomía-xew', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (314, 'Religión', 'religión', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
-(315, 'Salud Alternativa', 'salud-alternativa', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(315, 'Medicina alternativa', 'salud-alternativa', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (316, 'Animales / Mascotas', 'animales-mascotas', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (317, 'Plantas y Agricultura', 'plantas-y-agricultura', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
-(318, 'Libros para Colorear', 'libros-para-colorear', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
-(319, 'Comics', 'comics', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(318, 'Libros para colorear', 'libros-para-colorear', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
+(319, 'Cómics', 'comics', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (320, 'Audiolibros', 'audiolibros', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (321, 'Infantil y Juvenil', 'infantil-y-juvenil-64q', '', '-primary-7', 'fas fa-book', 'default.jpg', 30, 0, 'productos', 'activo'),
 (322, 'Físico - Matemáticos', 'físico-matemáticos', '', '-primary-7', 'fas fa-book', 'default.jpg', 172, 0, 'productos', 'activo'),
@@ -388,60 +369,68 @@ INSERT INTO `categorias` (`ID_CATEGORIA`, `CATEGORIA_NOMBRE`, `CATEGORIA_URL`, `
 (328, 'Derecho', 'derecho', '', '-primary-7', 'fas fa-book', 'default.jpg', 172, 0, 'productos', 'activo'),
 (329, 'Alimentación y Lactancia', 'alimentación-y-lactancia', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 29, 0, 'productos', 'activo'),
 (330, 'Mamilas', 'mamilas', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 329, 0, 'productos', 'activo'),
-(331, 'Saca Leche', 'saca-leche', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 329, 0, 'productos', 'activo'),
+(331, 'Tiraleche', 'saca-leche', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 329, 0, 'productos', 'activo'),
 (332, 'Chupones', 'chupones', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 329, 0, 'productos', 'activo'),
 (333, 'Cuerpo', 'cuerpo', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
 (334, 'Manos', 'manos', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
 (335, 'Jabones', 'jabones', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
 (336, 'Higiene Femenina', 'higiene-femenina', '', '-primary-2', 'fas fa-spa', 'default.jpg', 25, 0, 'productos', 'activo'),
-(337, 'Pisos y Acabados', 'pisos-y-acabados', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
-(338, 'Herrería', 'herrería', '', '-primary-15', 'fas fa-home', 'default.jpg', 337, 0, 'servicios', 'activo'),
-(339, 'Jardineros', 'jardineros', '', '-primary-15', 'fas fa-home', 'default.jpg', 337, 0, 'servicios', 'activo'),
-(340, 'Limpieza', 'limpieza', '', '-primary-15', 'fas fa-home', 'default.jpg', 337, 0, 'servicios', 'activo'),
-(341, 'Ventanas y Canceles', 'ventanas-y-canceles', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
-(342, 'Reparación Electrodomésticos y Electrónica', 'reparación-electrodomésticos-y-electrónica', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
-(343, 'Pintores', 'pintores', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
-(344, 'Carpintería', 'carpintería', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
-(345, 'Restauración de Muebles', 'restauración-de-muebles', '', '-primary-15', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(337, 'Pisos y Acabados', 'pisos-y-acabados', '', '-primary-9', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(338, 'Herrería', 'herrería', '', '-primary-9', 'fas fa-home', 'default.jpg', 337, 0, 'servicios', 'activo'),
+(339, 'Jardineros', 'jardineros', '', '-primary-9', 'fas fa-home', 'default.jpg', 337, 0, 'servicios', 'activo'),
+(340, 'Limpieza', 'limpieza', '', '-primary-9', 'fas fa-home', 'default.jpg', 337, 0, 'servicios', 'activo'),
+(341, 'Ventanas y Canceles', 'ventanas-y-canceles', '', '-primary-9', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(342, 'Reparación de electrodomésticos y electrónicos', 'reparación-electrodomésticos-y-electrónica', '', '-primary-9', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(343, 'Pintores', 'pintores', '', '-primary-9', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(344, 'Carpintería', 'carpintería', '', '-primary-9', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
+(345, 'Restauración de Muebles', 'restauración-de-muebles', '', '-primary-9', 'fas fa-home', 'default.jpg', 105, 0, 'servicios', 'activo'),
 (346, 'Músicos', 'músicos', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
 (347, 'Magos', 'magos', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
 (348, 'Payasos', 'payasos', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
-(349, 'Médicos', 'médicos', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
-(350, 'Nutrición', 'nutrición', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
-(351, 'Cardiología', 'cardiología', '', '-primary-19', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
-(352, 'Contadores', 'contadores', '', '-primary-17', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
-(353, 'Administradores', 'administradores', '', '-primary-17', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
-(354, 'Abogados', 'abogados', '', '-primary-17', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
-(355, 'Otros', 'otros', '', '-primary-17', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
-(356, 'Mecánicos', 'mecánicos', '', '-primary-16', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
-(357, 'Hojalateros', 'hojalateros', '', '-primary-16', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
-(358, 'Pintura', 'pintura', '', '-primary-16', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
-(359, 'Restauradores', 'restauradores', '', '-primary-16', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
+(349, 'Médicos', 'médicos', '', '-primary', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(350, 'Nutrición', 'nutrición', '', '-primary', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(351, 'Cardiología', 'cardiología', '', '-primary', 'fas fa-briefcase-medical', 'default.jpg', 109, 0, 'servicios', 'activo'),
+(352, 'Contadores', 'contadores', '', '-danger', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
+(353, 'Administradores', 'administradores', '', '-danger', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
+(354, 'Abogados', 'abogados', '', '-danger', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
+(355, 'Otros', 'otros', '', '-danger', 'fas fa-user-tie', 'default.jpg', 107, 0, 'servicios', 'activo'),
+(356, 'Mecánicos', 'mecánicos', '', '-success', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
+(357, 'Hojalateros', 'hojalateros', '', '-success', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
+(358, 'Pintura', 'pintura', '', '-success', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
+(359, 'Restauradores', 'restauradores', '', '-success', 'fas fa-car', 'default.jpg', 106, 0, 'servicios', 'activo'),
 (360, 'Pintores y Escultores', 'pintores-y-escultores', '', '-primary-16', 'fas fa-paint-brush', 'default.jpg', 108, 0, 'servicios', 'activo'),
 (361, 'Educación', 'educación', '', '-primary-1', 'fas fa-chalkboard-teacher', 'default.jpg', 0, 0, 'servicios', 'activo'),
-(362, 'Idiomas', 'idiomas-g9f', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
-(363, 'Música', 'música', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
-(364, 'Manualidades', 'manualidades', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
-(365, 'Arte', 'arte', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
-(366, 'Regularizaciones', 'regularizaciones', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
-(367, 'Computación', 'computación-5wu', '', '-primary-1', 'fas fa-school', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(362, 'Idiomas', 'idiomas-g9f', '', '-primary-1', 'fas fa-chalkboard-teacher', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(363, 'Música', 'música', '', '-primary-1', 'fas fa-chalkboard-teacher', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(364, 'Manualidades', 'manualidades', '', '-primary-1', 'fas fa-chalkboard-teacher', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(365, 'Arte', 'arte', '', '-primary-1', 'fas fa-chalkboard-teacher', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(366, 'Regularizaciones', 'regularizaciones', '', '-primary-1', 'fas fa-chalkboard-teacher', 'default.jpg', 361, 0, 'servicios', 'activo'),
+(367, 'Computación', 'computación-5wu', '', '-primary-1', 'fas fa-chalkboard-teacher', 'default.jpg', 361, 0, 'servicios', 'activo'),
 (368, 'Fitnes y Nutrición', 'fitnes-y-nutrición', '', '-primary-2', 'fas fa-child', 'default.jpg', 0, 0, 'servicios', 'activo'),
-(369, 'Entrenadores', 'entrenadores', '', '-primary', 'fas fa-list', 'default.jpg', 368, 0, 'servicios', 'activo'),
-(370, 'Nutriólogos', 'nutriólogos', '', '-primary', 'fas fa-list', 'default.jpg', 368, 0, 'servicios', 'activo'),
+(369, 'Entrenadores', 'entrenadores', '', '-primary-2', 'fas fa-child', 'default.jpg', 368, 0, 'servicios', 'activo'),
+(370, 'Nutriólogos', 'nutriólogos', '', '-primary-2', 'fas fa-child', 'default.jpg', 368, 0, 'servicios', 'activo'),
 (371, 'Banquetes', 'banquetes', '', '-primary-3', 'fas fa-utensils', 'default.jpg', 0, 0, 'servicios', 'activo'),
-(372, 'Cattering', 'cattering', '', '-primary', 'fas fa-list', 'default.jpg', 371, 0, 'servicios', 'activo'),
-(373, 'Buffettes', 'buffettes', '', '-primary', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
-(374, 'Mesas y Sillas', 'mesas-y-sillas', '', '-primary', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
+(372, 'Cattering', 'cattering', '', '-primary-3', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
+(373, 'Buffettes', 'buffettes', '', '-primary-3', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
+(374, 'Mesas y Sillas', 'mesas-y-sillas', '', '-primary-3', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
 (375, 'Meseros', 'meseros', '', '-primary-3', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
-(376, 'Cocineros / Chefs', 'cocineros', '', '-primary-3', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
+(376, 'Cocineros y Chefs', 'cocineros', '', '-primary-3', 'fas fa-utensils', 'default.jpg', 371, 0, 'servicios', 'activo'),
 (377, 'Fiestas Infantiles', 'fiestas-infantiles', '', '-primary-4', 'fas fa-gift', 'default.jpg', 0, 0, 'servicios', 'activo'),
 (378, 'Shows', 'shows', '', '-primary-4', 'fas fa-gift', 'default.jpg', 377, 0, 'servicios', 'activo'),
 (379, 'Decoración', 'decoración-g3t', '', '-primary-4', 'fas fa-gift', 'default.jpg', 377, 0, 'servicios', 'activo'),
-(380, 'Muebles / Mobiliario', 'muebles-mobiliario', '', '-primary-4', 'fas fa-gift', 'default.jpg', 377, 0, 'servicios', 'activo'),
+(380, 'Muebles y mobiliario', 'muebles-mobiliario', '', '-primary-4', 'fas fa-gift', 'default.jpg', 377, 0, 'servicios', 'activo'),
 (381, 'Inflables /Brincolines', 'inflables-brincolines', '', '-primary-4', 'fas fa-gift', 'default.jpg', 377, 0, 'servicios', 'activo'),
 (382, 'Filtros de Agua', 'filtros-de-agua', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
 (383, 'Accesorios para FIltros de Agua', 'accesorios-para-filtros-de-agua', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
-(384, 'Cartuchos para filtros de agua', 'cartuchos-para-filtros-de-agua', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo');
+(384, 'Cartuchos para filtros de agua', 'cartuchos-para-filtros-de-agua', '', '-primary-4', 'fas fa-blender', 'default.jpg', 130, 0, 'productos', 'activo'),
+(385, 'Tenis', 'tenis-k5w', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 178, 0, 'productos', 'activo'),
+(386, 'Toldos', 'toldos', '', '-primary-3', 'fas fa-futbol', 'default.jpg', 113, 0, 'productos', 'activo'),
+(387, 'Pañaleras', 'panaleras', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 154, 0, 'productos', 'activo'),
+(388, 'Accesorios ', 'accesorios-6fz', '', '-primary-6', 'fas fa-shapes', 'default.jpg', 329, 0, 'productos', 'activo'),
+(389, 'Chamarras y abrigos', 'chamarras-y-abrigos-8sa', '', '-primary-8', 'fas fa-tshirt', 'default.jpg', 177, 0, 'productos', 'activo'),
+(391, 'Joyeros', 'joyeros', '', '-primary-11', 'fas fa-hand-holding-heart', 'default.jpg', 34, 0, 'productos', 'activo'),
+(392, 'Relojes', 'relojes', '', '-primary-8', 'fas fa-gift', 'default.jpg', 31, 0, 'productos', 'activo'),
+(393, 'Joyería', 'joyeria', '', '-primary-8', 'far fa-gem', 'default.jpg', 31, 0, 'productos', 'activo');
 
 -- --------------------------------------------------------
 
@@ -460,13 +449,32 @@ CREATE TABLE `categorias_productos` (
 --
 
 INSERT INTO `categorias_productos` (`ID`, `ID_CATEGORIA`, `ID_PRODUCTO`) VALUES
-(55, 60, 1),
-(58, 220, 3),
-(61, 299, 6),
-(70, 384, 10),
-(71, 382, 9),
-(72, 383, 11),
-(73, 139, 12);
+(132, 384, 25),
+(134, 383, 26),
+(143, 384, 24),
+(148, 144, 29),
+(149, 144, 3),
+(150, 144, 15),
+(151, 144, 28),
+(152, 144, 37),
+(153, 144, 30),
+(154, 144, 35),
+(155, 144, 34),
+(156, 144, 33),
+(157, 144, 13),
+(158, 144, 14),
+(159, 144, 17),
+(161, 144, 32),
+(162, 391, 21),
+(165, 144, 27),
+(167, 392, 5),
+(171, 144, 22),
+(172, 144, 2),
+(177, 144, 9),
+(178, 144, 7),
+(179, 144, 8),
+(182, 144, 1),
+(184, 144, 39);
 
 -- --------------------------------------------------------
 
@@ -497,18 +505,7 @@ CREATE TABLE `categorias_servicios` (
 --
 
 INSERT INTO `categorias_servicios` (`ID`, `ID_CATEGORIA`, `ID_SERVICIO`) VALUES
-(10, 33, 1),
-(20, 360, 1),
-(21, 369, 2),
-(22, 366, 3),
-(23, 355, 4),
-(24, 369, 5),
-(25, 365, 6),
-(26, 356, 7),
-(28, 365, 9),
-(29, 379, 10),
-(31, 379, 8),
-(32, 348, 11);
+(1, 362, 1);
 
 -- --------------------------------------------------------
 
@@ -527,6 +524,15 @@ CREATE TABLE `conversaciones` (
   `CONVERSACION_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `conversaciones`
+--
+
+INSERT INTO `conversaciones` (`ID_CONVERSACION`, `ID_USUARIO_A`, `ID_USUARIO_B`, `ID_OBJETO`, `CONVERSACION_FECHA_REGISTRO`, `CONVERSACION_FECHA_ACTUALIZACION`, `CONVERSACION_TIPO`, `CONVERSACION_ESTADO`) VALUES
+(1, '5c0653d43d92e7.75019474', '5ca4043cde1435.48493149', 1, '2019-04-05 20:13:59', '2019-04-05 20:13:59', 'mensaje servicio', 'no leido'),
+(2, '5c0653d43d92e7.75019474', '5c9c1ff62ce0c3.78174962', 21, '2019-04-15 18:23:54', '2019-04-15 18:45:04', 'pregunta producto', 'respuesta'),
+(3, '5c0653d43d92e7.75019474', '5ca4043cde1435.48493149', 1, '2019-04-15 18:46:05', '2019-04-15 18:51:48', 'mensaje servicio', 'respuesta');
+
 -- --------------------------------------------------------
 
 --
@@ -544,6 +550,24 @@ CREATE TABLE `conversaciones_mensajes` (
   `MENSAJE_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `conversaciones_mensajes`
+--
+
+INSERT INTO `conversaciones_mensajes` (`ID_MENSAJE`, `ID_CONVERSACION`, `ID_REMITENTE`, `MENSAJE_ASUNTO`, `MENSAJE_TEXTO`, `MENSAJE_ESTADO_A`, `MENSAJE_ESTADO_B`, `MENSAJE_FECHA_REGISTRO`) VALUES
+(1, 1, '5c0653d43d92e7.75019474', 'Solicitud de Servicio', '<p><b>Servicio:</b> Traducción de textos Inglés-español-inglés</p><p>HOla</p>', 'no leido', 'no leido', '2019-04-05 20:13:59'),
+(2, 2, '5c0653d43d92e7.75019474', 'Pregunta sobre un Producto', '<p><b>Producto:</b> Joyero de madera hecho a mano</p><p>Hola, quisiera saber cuantas copias de las llaves me dan ?</p>', 'no leido', 'no leido', '2019-04-15 18:23:54'),
+(3, 2, '5c9c1ff62ce0c3.78174962', '', 'Hola, te entregamos 2 llavew con la caja. ', 'no leido', 'no leido', '2019-04-15 18:27:16'),
+(4, 2, '5c0653d43d92e7.75019474', '', 'Oh que bien, muchas gracias', 'no leido', 'no leido', '2019-04-15 18:35:43'),
+(5, 2, '5c0653d43d92e7.75019474', '', 'Creo que pediré 2', 'no leido', 'no leido', '2019-04-15 18:38:09'),
+(6, 2, '5c0653d43d92e7.75019474', '', 'Hola de nuevo, sigo indeciso ', 'no leido', 'no leido', '2019-04-15 18:40:07'),
+(7, 2, '5c0653d43d92e7.75019474', '', 'Tienen en café ?', 'no leido', 'no leido', '2019-04-15 18:40:50'),
+(8, 2, '5c0653d43d92e7.75019474', '', 'De nuevo yo', 'no leido', 'no leido', '2019-04-15 18:44:05'),
+(9, 2, '5c9c1ff62ce0c3.78174962', '', 'Hola, no tenemos café, todas son de color natura para que puedas personalizarla. ', 'no leido', 'no leido', '2019-04-15 18:45:04'),
+(10, 3, '5c0653d43d92e7.75019474', 'Solicitud de Servicio', '<p><b>Servicio:</b> Traducción de textos Inglés-español-inglés</p><p>Hola, no se nada de Inglés y voy a ir a Disney me ayudan ??</p>', 'no leido', 'no leido', '2019-04-15 18:46:05'),
+(11, 3, '5ca4043cde1435.48493149', '', 'Hola, nos dedicamos a traducciones así que desafortunadamente no podemos ayudarte. Gracias', 'no leido', 'no leido', '2019-04-15 18:49:30'),
+(12, 3, '5c0653d43d92e7.75019474', '', 'Bueno, ni modo, gracias', 'no leido', 'no leido', '2019-04-15 18:51:48');
+
 -- --------------------------------------------------------
 
 --
@@ -557,13 +581,6 @@ CREATE TABLE `datos_curiosos` (
   `FECHA_REGISTRO` date NOT NULL DEFAULT '0000-00-00',
   `VOTACIONES` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `datos_curiosos`
---
-
-INSERT INTO `datos_curiosos` (`ID`, `ID_USUARIO`, `TEXTO`, `FECHA_REGISTRO`, `VOTACIONES`) VALUES
-(1, '5c0653d43d92e7.75019474', 'Cada año, cientos de árboles nuevos crecen porque hay ardillas que olvidan dónde enterraron sus nueces.', '2019-03-01', 5);
 
 -- --------------------------------------------------------
 
@@ -594,29 +611,17 @@ CREATE TABLE `direcciones` (
 --
 
 INSERT INTO `direcciones` (`ID_DIRECCION`, `ID_USUARIO`, `ID_TIENDA`, `DIRECCION_TIPO`, `DIRECCION_ALIAS`, `DIRECCION_PAIS`, `DIRECCION_ESTADO`, `DIRECCION_CIUDAD`, `DIRECCION_MUNICIPIO`, `DIRECCION_BARRIO`, `DIRECCION_CALLE_Y_NUMERO`, `DIRECCION_CODIGO_POSTAL`, `DIRECCION_REFERENCIAS`, `DIRECCION_FECHA_REGISTRO`, `DIRECCION_FECHA_ACTUALIZACION`) VALUES
-(1, '5c64a6b2e13ae0.49457839', 1, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Mexico', 'Cuauhtémoc', 'Roma', 'Algo', '06900', '-', '2019-02-13 23:29:14', '2019-02-13 23:29:14'),
-(2, '5c64a6b2e13ae0.49457839', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', '', 'Benito Juárez', 'Roma', 'Calle Falsa', '07900', '-', '2019-02-13 23:41:06', '2019-02-13 23:41:06'),
-(3, '5c0653d43d92e7.75019474', 0, 'envio', 'Casa', 'México', 'Ciudad de México', 'México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', 'Cerca de primaria 12', '2019-02-14 00:44:45', '2019-02-14 00:44:45'),
-(4, '5c65b1c4706825.75278703', 0, 'perfil', 'Direccion Perfil', 'México', 'Yucatán', 'Mérida', 'Mérida', 'Centro', 'calle 9 #105 x 22B y 24 ', '97205', '-', '2019-02-14 18:24:58', '2019-02-14 18:24:58'),
-(5, '5c65b1c4706825.75278703', 2, 'fiscal', 'Direccion Tienda', 'México', 'Yucatán', 'Mérida', 'Mérida', 'centro ', 'iowut39847', '97205', '-', '2019-02-14 18:51:11', '2019-02-14 18:51:11'),
-(6, '5c65b1c4706825.75278703', 0, 'envio', 'casa', 'México', 'Yucatán', 'Mérida', 'Mérida', 'Centro', 'uigytstrdoi´mbvjgct', '97205', '', '2019-02-14 18:55:13', '2019-02-14 18:55:13'),
-(7, '5c66692e593e37.03171377', 3, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', '', 'Benito Juárez', 'gral anaya', 'cda paz montes de oca', '03340', '-', '2019-02-15 07:28:23', '2019-02-15 07:28:23'),
-(8, '5c66692e593e37.03171377', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', '', 'Benito Juárez', 'gral anaya', '', '', '-', '2019-02-15 07:37:50', '2019-02-15 07:37:50'),
-(9, '5c6b5624be4de4.14234611', 4, 'fiscal', 'Direccion Tienda', 'México', 'Chiapas', '', 'Angel Albino Corzo', '', '135 INT. 6', '25880', '-', '2019-02-19 01:09:19', '2019-02-19 01:09:19'),
-(10, '5c6c330a6d6d60.37455226', 5, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', '', 'Álvaro Obregón', 'Presidentes', 'Lerdo de Tejada 90', '01290', '-', '2019-02-19 16:57:59', '2019-02-19 16:57:59'),
-(11, '5c6c330a6d6d60.37455226', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', '', 'Álvaro Obregón', 'Presidentes', 'LERDO DE TEJADA 90', '01290', '-', '2019-02-19 17:16:29', '2019-02-19 17:16:29'),
-(12, '5c0653d43d92e7.75019474', 6, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', '', 'Cuauhtémoc', 'Tlatelolco', '22', '06900', '-', '2019-02-20 15:14:10', '2019-02-20 15:14:10'),
-(13, '5c0653d43d92e7.75019474', 0, 'perfil', 'Direccion Perfil', 'México', 'Aguascalientes', '', 'Aguascalientes', 'ddd', '112', '06900', '-', '2019-02-20 07:23:19', '2019-02-20 07:23:19'),
-(14, '', 0, 'perfil', 'Direccion Perfil', 'México', 'Baja California Sur', '', 'La Paz', '', '456 int 9', '12345', '-', '2019-02-20 15:02:10', '2019-02-20 15:02:10'),
-(15, '', 7, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan', 'Avenida 561 No. 148', '000000', '-', '2019-02-20 15:30:26', '2019-02-20 15:30:26'),
-(16, '5c0653d43d92e7.75019474', 8, 'fiscal', 'Direccion Tienda', '', '', 'Ciudad de México', '', 'San Juan', 'Avenida 561 No. 148', '000000', '-', '2019-02-20 15:32:52', '2019-02-20 15:32:52'),
-(17, '5c6d69209eab74.87165826', 9, 'fiscal', 'Direccion Tienda', 'México', 'Baja California Sur', '', 'La Paz', '', 'Calle 346 num. 17', '123654', '-', '2019-02-20 20:08:54', '2019-02-20 20:08:54'),
-(18, '5c08a9dc2cb096.56391251', 10, 'fiscal', 'Direccion Tienda', 'Estados Unidos', 'New York', '', 'New York County', 'A', '2801 1FL.', '11226', '-', '2019-02-21 20:15:34', '2019-02-21 20:15:34'),
-(19, '5c6f1749c753c5.12159032', 11, 'fiscal', 'Direccion Tienda', 'México', 'Tabasco', '', 'Comalcalco', '', 'Calle 52 no. 7', '29475', '-', '2019-02-21 21:28:55', '2019-02-21 21:28:55'),
-(20, '5c6d69209eab74.87165826', 0, 'envio', 'Abuelita', 'México', 'Chiapas', '', 'Amatán', '', 'Jarrones 28 int. 4', '827154', '', '2019-02-21 21:41:03', '2019-02-21 21:41:03'),
-(21, '5c6f40192d2e14.12282150', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', '', 'Álvaro Obregón', '', 'ejercito nacional 223', '01700', '-', '2019-02-22 00:22:59', '2019-02-22 00:22:59'),
-(22, '5c76cfe87cbbe0.54725147', 0, 'perfil', 'Direccion Perfil', 'México', 'Jalisco', 'Ayutlan', 'Ayotlán', '', 'Animosidad 14 ', '85694', '-', '2019-02-27 18:01:37', '2019-02-27 18:01:37'),
-(23, '5c08a9dc2cb096.56391251', 0, 'envio', 'aa', 'Canadá', 'Northwest Territories', 'aa', 'Aklavik', 'aa', 'aa', '12345', 'aa', '2019-03-05 00:43:16', '2019-03-05 00:43:16');
+(1, '5c9c1ff62ce0c3.78174962', 1, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', '', 'Miguel Hidalgo', '', 'Gelati 14-5', '11850', '-', '2019-03-28 00:22:48', '2019-03-28 00:22:48'),
+(2, '5c0653d43d92e7.75019474', 0, 'envio', 'Casa', 'México', 'Ciudad de México', 'CDMX', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', 'Cerca de la primaria No. 12', '2019-03-28 00:45:26', '2019-03-28 00:45:26'),
+(4, '5c9c1ff62ce0c3.78174962', 0, 'envio', 'Casa ', 'México', 'Ciudad de México', 'CDMX', 'Miguel Hidalgo', 'SAN MIGUEL CHAPULTEPEC', 'GELATI 14 DEPTO 5 ', '11850', '', '2019-03-29 02:17:04', '2019-03-29 02:17:04'),
+(5, '5c08a9dc2cb096.56391251', 0, 'envio', '', 'México', 'Ciudad de México', '', 'Cuauhtémoc', 'a', 'a', '11850', 'a', '2019-03-29 21:41:33', '2019-03-29 21:41:33'),
+(6, '5ca4043cde1435.48493149', 2, 'fiscal', 'Direccion Tienda', 'México', 'Jalisco', '', 'Atengo', 'A', 'A', '15874', '-', '2019-04-02 23:55:12', '2019-04-02 23:55:12'),
+(7, '5ca4043cde1435.48493149', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', '', 'Miguel Hidalgo', '', 'Rebollar 130 interior 6', '11850', '-', '2019-04-04 00:43:32', '2019-04-04 00:43:32'),
+(8, '5ca4043cde1435.48493149', 0, 'envio', '', 'México', 'Ciudad de México', '', 'Gustavo A. Madero', 'A', '1 -6', '12345', '', '2019-04-05 23:38:11', '2019-04-05 23:38:11'),
+(9, '5cb3e89a74a543.21168150', 0, 'envio', '11, 2DDDDD', 'México', 'Ciudad de México', 'CDMX', 'La Magdalena Contreras', '11, 2DDDDD', '11, 2DDDDD\r\n2DDDDD', '10400', '11, 2DDDDD\r\n2DDDDD', '2019-04-15 02:13:25', '2019-04-15 02:13:25'),
+(10, '5c0653d43d92e7.75019474', 3, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '-', '2019-04-15 18:09:22', '2019-04-15 18:09:22'),
+(11, '5c0653d43d92e7.75019474', 4, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Avenida 561 No. 148', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '-', '2019-04-22 21:16:35', '2019-04-22 21:16:35'),
+(12, '5cbf2af567b4e4.45277430', 0, 'envio', 'Casa', 'México', 'Ciudad de México', '', 'Cuauhtémoc', 'Tlatelolco', 'Manuel Gonzalez 380', '06900', '', '2019-04-30 20:16:58', '2019-04-30 20:16:58');
 
 -- --------------------------------------------------------
 
@@ -629,7 +634,7 @@ CREATE TABLE `divisas` (
   `DIVISA_ISO` varchar(10) NOT NULL,
   `DIVISA_NOMBRE` varchar(255) NOT NULL,
   `DIVISA_SIGNO` varchar(3) NOT NULL,
-  `DIVISA_CONVERSION` decimal(10,3) NOT NULL,
+  `DIVISA_CONVERSION` decimal(10,4) NOT NULL,
   `DIVISA_ESTADO` varchar(255) NOT NULL DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -638,10 +643,10 @@ CREATE TABLE `divisas` (
 --
 
 INSERT INTO `divisas` (`ID_DIVISA`, `DIVISA_ISO`, `DIVISA_NOMBRE`, `DIVISA_SIGNO`, `DIVISA_CONVERSION`, `DIVISA_ESTADO`) VALUES
-(1, 'MXN', 'Pesos', '$', '1.000', 'activo'),
-(2, 'USD', 'Dollar', '$', '0.053', 'activo'),
-(3, 'EUR', 'EURO', '€', '0.043', 'inactivo'),
-(4, 'CAN', 'Dollar Can', '$', '0.072', 'activo');
+(1, 'MXN', 'Pesos', '$', '1.0000', 'activo'),
+(2, 'USD', 'Dollar', '$', '0.0530', 'activo'),
+(3, 'EUR', 'EURO', '€', '0.0430', 'inactivo'),
+(4, 'CAN', 'Dollar Can', '$', '0.0720', 'activo');
 
 -- --------------------------------------------------------
 
@@ -778,7 +783,8 @@ CREATE TABLE `favoritos` (
 --
 
 INSERT INTO `favoritos` (`ID_FAVORITO`, `ID_USUARIO`, `ID_OBJETO`, `FAVORITO_TIPO`, `FAVORITO_FECHA_REGISTRO`) VALUES
-(1, '5c65b1c4706825.75278703', 1, 'producto', '2019-02-14 18:54:08');
+(4, '5c0653d43d92e7.75019474', 31, 'producto', '2019-04-03 00:31:33'),
+(5, '5c0653d43d92e7.75019474', 33, 'producto', '2019-04-22 21:28:52');
 
 -- --------------------------------------------------------
 
@@ -800,23 +806,91 @@ CREATE TABLE `galeria_productos` (
 --
 
 INSERT INTO `galeria_productos` (`ID_GALERIA`, `ID_PRODUCTO`, `GALERIA_ARCHIVO`, `GALERIA_PORTADA`, `GALERIA_ESTADO`, `ORDEN`) VALUES
-(1, 1, 'producto-5c64a95f61d0f.jpg', 'no', 'activo', 1),
-(3, 1, 'producto-5c64a97634d8e.jpg', 'si', 'activo', 1),
-(4, 3, 'producto-5c666ad85d6f6.jpg', 'si', 'activo', 1),
-(5, 4, 'producto-5c666bcc3fd66.jpg', 'si', 'activo', 1),
-(6, 5, 'producto-5c6b59fda3429.jpg', 'si', 'activo', 1),
-(8, 6, 'producto-5c6c37388dab5.jpg', 'si', 'activo', 1),
-(9, 7, 'producto-5c6dbb4fc09b8.jpg', 'si', 'activo', 1),
-(10, 7, 'producto-5c6dde0bf0257.jpg', 'no', 'activo', 1),
-(13, 7, 'producto-5c6de686c62a7.jpg', 'no', 'activo', 1),
-(14, 8, 'producto-5c6de7780eab6.jpg', 'si', 'activo', 1),
-(15, 7, 'producto-5c6de87bd2dd5.jpg', 'no', 'activo', 1),
-(16, 9, 'producto-5c6f07bf4ba6a.jpg', 'si', 'activo', 1),
-(17, 10, 'producto-5c6f08730e9c3.jpg', 'si', 'activo', 1),
-(18, 11, 'producto-5c6f091f1e67c.jpg', 'si', 'activo', 1),
-(19, 11, 'producto-5c6f0937299aa.jpg', 'no', 'activo', 1),
-(20, 12, 'producto-5c6f191d6891d.jpg', 'si', 'activo', 1),
-(21, 13, 'producto-5c6f19c4264a9.jpg', 'si', 'activo', 1);
+(1, 2, 'producto-5c9c23abe6a67.jpg', 'si', 'activo', 1),
+(2, 2, 'producto-5c9c23c02371f.jpg', 'no', 'activo', 1),
+(3, 1, 'producto-5c9c243b1e60f.jpg', 'si', 'activo', 1),
+(5, 5, 'producto-5c9c2592ce35d.jpg', 'si', 'activo', 1),
+(6, 5, 'producto-5c9c25a32af98.jpg', 'no', 'activo', 1),
+(7, 6, 'producto-5c9c2667a1982.jpg', 'si', 'activo', 1),
+(8, 6, 'producto-5c9c26741f97c.jpg', 'no', 'activo', 1),
+(9, 7, 'producto-5c9c26d0623a8.jpg', 'si', 'activo', 1),
+(10, 7, 'producto-5c9c26de0c726.jpg', 'no', 'activo', 1),
+(11, 8, 'producto-5c9c271ebda79.jpg', 'si', 'activo', 1),
+(12, 8, 'producto-5c9c2736ca42f.jpg', 'no', 'activo', 1),
+(13, 9, 'producto-5c9c276378cee.jpg', 'si', 'activo', 1),
+(18, 13, 'producto-5c9c28da75e2f.jpg', 'si', 'activo', 1),
+(19, 13, 'producto-5c9c28ecec3d4.jpg', 'no', 'activo', 1),
+(20, 13, 'producto-5c9c28f4ee9b6.jpg', 'no', 'activo', 1),
+(21, 14, 'producto-5c9c2c66498d7.jpg', 'si', 'activo', 1),
+(22, 14, 'producto-5c9c2c73840d6.jpg', 'no', 'activo', 1),
+(23, 15, 'producto-5c9c2cae406a7.jpg', 'si', 'activo', 1),
+(25, 17, 'producto-5c9c2d274df94.jpg', 'si', 'activo', 1),
+(26, 17, 'producto-5c9c2d3b615bc.jpg', 'no', 'activo', 1),
+(27, 17, 'producto-5c9c2d4f5ffa0.jpg', 'no', 'activo', 1),
+(31, 21, 'producto-5c9d6e923b77f.jpg', 'si', 'activo', 1),
+(32, 21, 'producto-5c9d6e9f122eb.jpg', 'no', 'activo', 1),
+(33, 22, 'producto-5c9d6f6a2ec42.jpg', 'si', 'activo', 1),
+(34, 22, 'producto-5c9d6f787b74b.jpg', 'no', 'activo', 1),
+(35, 22, 'producto-5c9d6f815d20c.jpg', 'no', 'activo', 1),
+(37, 24, 'producto-5c9d6fdc2e89b.jpg', 'si', 'activo', 1),
+(38, 24, 'producto-5c9d6fea71a08.jpg', 'no', 'activo', 1),
+(39, 25, 'producto-5c9d701991608.jpg', 'si', 'activo', 1),
+(40, 26, 'producto-5c9d7f645a89f.jpg', 'si', 'activo', 1),
+(41, 4, 'producto-5c9d832337d0f.jpg', 'si', 'activo', 1),
+(42, 3, 'producto-5ca3e88609e00.jpg', 'si', 'activo', 1),
+(43, 3, 'producto-5ca3e88fa6bb0.jpg', 'no', 'activo', 1),
+(45, 29, 'producto-5ca3f33ccf705.jpg', 'si', 'activo', 1),
+(46, 30, 'producto-5ca3fab1e9617.jpg', 'si', 'activo', 1),
+(47, 31, 'producto-5ca409e192039.jpg', 'si', 'activo', 1),
+(48, 32, 'producto-5ca40a108883f.jpg', 'si', 'activo', 1),
+(49, 33, 'producto-5ca560168ba6f.jpg', 'no', 'activo', 1),
+(50, 33, 'producto-5ca56021092ba.jpg', 'no', 'activo', 1),
+(51, 33, 'producto-5ca5602cc731e.jpg', 'si', 'activo', 1),
+(52, 34, 'producto-5cb76b7e82c38.jpg', 'si', 'activo', 1),
+(53, 34, 'producto-5cb76b927cd1f.jpg', 'no', 'activo', 1),
+(54, 34, 'producto-5cb76ba6c2e21.jpg', 'no', 'activo', 1),
+(55, 34, 'producto-5cb76c9204136.jpg', 'no', 'activo', 1),
+(56, 34, 'producto-5cb76ca729d19.jpg', 'no', 'activo', 1),
+(57, 15, 'producto-5cb7702f00718.jpg', 'no', 'activo', 1),
+(58, 15, 'producto-5cb7705caf07d.jpg', 'no', 'activo', 1),
+(59, 35, 'producto-5cb774599b419.jpg', 'no', 'activo', 1),
+(60, 35, 'producto-5cb7746d494d7.jpg', 'no', 'activo', 1),
+(61, 35, 'producto-5cb7747ee0c1b.jpg', 'si', 'activo', 1),
+(62, 28, 'producto-5cb778b2e6b1e.jpg', 'si', 'activo', 1),
+(63, 36, 'producto-5cb77961b2ea0.jpg', 'si', 'activo', 1),
+(64, 36, 'producto-5cb7799fa5fd6.jpg', 'no', 'activo', 1),
+(65, 36, 'producto-5cb779b9400ed.jpg', 'no', 'activo', 1),
+(66, 36, 'producto-5cb779dd1645d.jpg', 'no', 'activo', 1),
+(67, 30, 'producto-5cb779ff00e78.jpg', 'no', 'activo', 1),
+(69, 30, 'producto-5cb77a6534a3a.jpg', 'no', 'activo', 1),
+(71, 30, 'producto-5cb77a9c53568.jpg', 'no', 'activo', 1),
+(72, 37, 'producto-5cb77c138fcbd.jpg', 'si', 'activo', 1),
+(73, 37, 'producto-5cb77c38ec016.jpg', 'no', 'activo', 1),
+(74, 37, 'producto-5cb77c483a0f1.jpg', 'no', 'activo', 1),
+(75, 39, 'producto-5cc1f0bd2446d.jpg', 'si', 'activo', 1),
+(76, 39, 'producto-5cc1f0cf6e636.jpg', 'no', 'activo', 1),
+(77, 40, 'producto-5cc893f5efcfc.jpg', 'si', 'activo', 1),
+(78, 40, 'producto-5cc894293192f.jpg', 'no', 'activo', 1),
+(79, 40, 'producto-5cc8944a08d96.jpg', 'no', 'activo', 1),
+(80, 40, 'producto-5cc8945dac8d2.jpg', 'no', 'activo', 1),
+(81, 40, 'producto-5cc894689e4c3.jpg', 'no', 'activo', 1),
+(82, 40, 'producto-5cc8949d06e43.jpg', 'no', 'activo', 1),
+(83, 40, 'producto-5cc894ac68751.jpg', 'no', 'activo', 1),
+(84, 40, 'producto-5cc894f86ce96.jpg', 'no', 'activo', 1),
+(85, 40, 'producto-5cc895078a224.jpg', 'no', 'activo', 1),
+(86, 42, 'producto-5cc898c8dd0db.jpg', 'no', 'activo', 1),
+(87, 42, 'producto-5cc898edd004e.jpg', 'si', 'activo', 1),
+(88, 43, 'producto-5cc89992e3b01.jpg', 'si', 'activo', 1),
+(89, 44, 'producto-5cc899c86e7bd.jpg', 'si', 'activo', 1),
+(90, 45, 'producto-5cc89b5f8acaa.jpg', 'si', 'activo', 1),
+(91, 46, 'producto-5cc89bb892be3.jpg', 'si', 'activo', 1),
+(92, 47, 'producto-5cc89be6be08f.jpg', 'si', 'activo', 1),
+(93, 48, 'producto-5cc89c15ce3a1.jpg', 'si', 'activo', 1),
+(94, 48, 'producto-5cc89c25ed1e2.jpg', 'no', 'activo', 1),
+(95, 48, 'producto-5cc89c266cc22.jpg', 'no', 'activo', 1),
+(96, 49, 'producto-5cc89c7bbb180.jpg', 'si', 'activo', 1),
+(97, 27, 'producto-5cc89cfc3a72f.jpg', 'si', 'activo', 1),
+(98, 27, 'producto-5cc89d0707fdd.jpg', 'no', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -838,10 +912,7 @@ CREATE TABLE `galeria_servicios` (
 --
 
 INSERT INTO `galeria_servicios` (`ID_GALERIA`, `ID_SERVICIO`, `GALERIA_ARCHIVO`, `GALERIA_PORTADA`, `GALERIA_ESTADO`, `ORDEN`) VALUES
-(1, 2, 'Servicio-5c65b4061abc1.jpg', 'si', 'activo', 1),
-(2, 3, 'Servicio-5c65b5077a3c9.jpg', 'si', 'activo', 1),
-(3, 4, 'Servicio-5c65b5acb2d0f.jpg', 'si', 'activo', 1),
-(4, 8, 'Servicio-5c6d6e856ede1.jpg', 'si', 'activo', 1);
+(1, 1, 'Servicio-5ca56226f2dda.jpg', 'si', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -860,6 +931,13 @@ CREATE TABLE `guias_abanico` (
   `GUIA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `GUIA_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `guias_abanico`
+--
+
+INSERT INTO `guias_abanico` (`GUIA_CODIGO`, `ID_PEDIDO`, `GUIA_NOMBRE`, `GUIA_DIRECCION`, `GUIA_TELEFONO`, `GUIA_CORREO`, `GUIA_ESTADO`, `GUIA_FECHA_REGISTRO`, `GUIA_FECHA_ACTUALIZACION`) VALUES
+('GSILB5-12', 12, 'Manuel Marmolejo Martínez', 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, CDMX, Ciudad de México, 07969, México', ' 26032335    ', 'marmocreativo@gmail.com', 'Preparacion', '2019-04-03 00:23:29', '2019-04-03 00:23:29');
 
 -- --------------------------------------------------------
 
@@ -9679,26 +9757,10 @@ CREATE TABLE `notificaciones` (
   `ID_NOTIFICACION` int(11) NOT NULL,
   `ID_USUARIO` varchar(255) DEFAULT NULL,
   `NOTIFICACION_CONTENIDO` varchar(255) DEFAULT NULL,
+  `NOTIFICACION_TIPO` varchar(255) NOT NULL DEFAULT 'general',
   `NOTIFICACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `NOTIFICACION_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `notificaciones`
---
-
-INSERT INTO `notificaciones` (`ID_NOTIFICACION`, `ID_USUARIO`, `NOTIFICACION_CONTENIDO`, `NOTIFICACION_FECHA_REGISTRO`, `NOTIFICACION_ESTADO`) VALUES
-(1, NULL, 'Alguien calificí tu servicio  con 5 Estrellas', '2019-02-13 23:49:10', 'no leido'),
-(2, '5c64a6b2e13ae0.49457839', 'Alguien calificó tu producto Computadora iMac con 5 Estrellas', '2019-02-14 00:01:58', 'no leido'),
-(3, '5c64a6b2e13ae0.49457839', 'Felicidades alguien te ha hecho una compra', '2019-02-14 00:45:13', 'no leido'),
-(4, '5c64a6b2e13ae0.49457839', 'Alguien añadió tu producto Computadora iMac a Favoritos', '2019-02-14 18:54:08', 'no leido'),
-(5, '5c64a6b2e13ae0.49457839', 'Felicidades alguien te ha hecho una compra', '2019-02-14 18:55:44', 'no leido'),
-(6, '5c08a9dc2cb096.56391251', 'Felicidades alguien te ha hecho una compra', '2019-02-21 20:31:12', 'leido'),
-(7, '5c66692e593e37.03171377', 'Felicidades alguien te ha hecho una compra', '2019-02-21 21:00:38', 'no leido'),
-(8, '5c6f1749c753c5.12159032', 'Felicidades alguien te ha hecho una compra', '2019-02-21 21:41:18', 'no leido'),
-(9, '5c08a9dc2cb096.56391251', 'Felicidades alguien te ha hecho una compra', '2019-02-27 17:41:39', 'leido'),
-(10, '5c6c330a6d6d60.37455226', 'Felicidades alguien te ha hecho una compra', '2019-03-01 21:41:36', 'no leido'),
-(11, '5c6b5624be4de4.14234611', 'Felicidades alguien te ha hecho una compra', '2019-03-05 00:45:04', 'no leido');
 
 -- --------------------------------------------------------
 
@@ -9752,10 +9814,11 @@ INSERT INTO `opciones` (`ID`, `OPCION_NOMBRE`, `OPCION_VALOR`, `ACTIVO`) VALUES
 (32, 'alto_imagenes_transportistas', '200', 1),
 (33, 'ruta_adjuntos_usuario', 'contenido/adjuntos/usuarios/', 1),
 (34, 'dias_productos_nuevos', '15', 1),
-(35, 'tiempo_inactividad_sesion', '15', 1),
+(35, 'tiempo_inactividad_sesion', '45', 1),
 (36, 'ruta_imagenes_perfil_servicios', 'contenido/img/perfiles/', 1),
 (37, 'ancho_imagenes_perfil_servicios', '300', 1),
-(38, 'alto_imagenes_perfil_servicios', '300', 1);
+(38, 'alto_imagenes_perfil_servicios', '300', 1),
+(39, 'id_usuario_destacado', '5c9c1ff62ce0c3.78174962', 1);
 
 -- --------------------------------------------------------
 
@@ -9814,19 +9877,6 @@ CREATE TABLE `pedidos` (
   `PEDIDO_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `pedidos`
---
-
-INSERT INTO `pedidos` (`ID_PEDIDO`, `PEDIDO_FOLIO`, `ID_USUARIO`, `PEDIDO_NOMBRE`, `PEDIDO_CORREO`, `PEDIDO_TELEFONO`, `ID_DIRECCION`, `PEDIDO_DIRECCION`, `PEDIDO_DIVISA`, `PEDIDO_CONVERSION`, `PEDIDO_IMPORTE_PRODUCTOS_PARCIAL`, `PEDIDO_IMPORTE_PRODUCTOS_TOTAL`, `PEDIDO_IMPORTE_ENVIO_PARCIAL`, `PEDIDO_IMPORTE_ENVIO_TOTAL`, `PEDIDO_ID_TRANSPORTISTA`, `PEDIDO_NOMBRE_TRANSPORTISTA`, `PEDIDO_RECIBE`, `PEDIDO_COMENTARIOS`, `PEDIDO_IMPORTE_DESCUENTO`, `PEDIDO_DESCUENTO_DESCRIPCION`, `PEDIDO_IMPORTE_TOTAL`, `PEDIDO_FORMA_PAGO`, `PEDIDO_ESTADO_PAGO`, `PEDIDO_ESTADO_PEDIDO`, `PEDIDO_FECHA_REGISTRO`, `PEDIDO_FECHA_ACTUALIZACION`) VALUES
-(1, 'YBK6P8', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335    ', 3, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, México, Ciudad de México, 07969, México', 'MXN', '1.000', '10000.00', '10000.00', '3.00', '3.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '10003.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-02-14 00:45:13', '2019-02-14 00:45:13'),
-(2, 'QU8YDV', '5c65b1c4706825.75278703', 'Irving Omar  Téllez Vera', 'irom_tv@hotmail.com', ' 9991441579', 6, 'uigytstrdoi´mbvjgct, Centro, Mérida, Mérida, Yucatán, 97205, México', 'MXN', '1.000', '10000.00', '10000.00', '3.00', '3.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '10003.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-02-14 18:55:44', '2019-02-14 18:55:44'),
-(3, 'OIXWNB', '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', NULL, 'No hay dirección registrada', 'MXN', '1.000', '600.00', '600.00', '0.00', '0.00', NULL, NULL, NULL, NULL, NULL, NULL, '600.00', 'Transferencia Bancaria', 'Pendiente', 'Cancelado', '2019-02-21 20:32:43', '2019-02-21 20:32:43'),
-(4, '9J05N3', '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', NULL, 'No hay dirección registrada', 'MXN', '1.000', '745.00', '745.00', '0.00', '0.00', NULL, NULL, NULL, NULL, NULL, NULL, '745.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-02-21 21:00:38', '2019-02-21 21:00:38'),
-(5, 'AB3Y9W', '5c6d69209eab74.87165826', 'Laura  Esquivel', '1234@hotmail.com', NULL, 20, 'Jarrones 28 int. 4, , Amatán, , Chiapas, 827154, México', 'MXN', '1.000', '960.00', '960.00', '1.00', '1.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '961.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-02-21 21:41:18', '2019-02-21 21:41:18'),
-(6, 'BO4ZCQ', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335    ', 3, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, México, Ciudad de México, 07969, México', 'MXN', '1.000', '300.00', '300.00', '1.00', '1.00', 3, 'Abanico México', NULL, NULL, NULL, NULL, '301.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-03-01 21:41:36', '2019-03-01 21:41:36'),
-(7, 'UMY235', '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', 23, 'aa, aa, Aklavik, aa, Northwest Territories, 12345, Canadá', 'MXN', '1.000', '360.00', '360.00', '0.00', '0.00', NULL, NULL, NULL, NULL, NULL, NULL, '360.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-03-05 00:45:04', '2019-03-05 00:45:04');
-
 -- --------------------------------------------------------
 
 --
@@ -9881,20 +9931,6 @@ CREATE TABLE `pedidos_productos` (
   `IMPORTE_TOTAL` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `pedidos_productos`
---
-
-INSERT INTO `pedidos_productos` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `ID_PRODUCTO`, `PRODUCTO_NOMBRE`, `PRODUCTO_DETALLES`, `PRODUCTO_IMAGEN`, `CANTIDAD`, `IMPORTE`, `IMPORTE_TOTAL`) VALUES
-(1, 1, 1, 1, 'Computadora iMac', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c64a97634d8e.jpg', 1, '10000.00', '10000.00'),
-(2, 2, 1, 1, 'Computadora iMac', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c64a97634d8e.jpg', 1, '10000.00', '10000.00'),
-(3, 3, 10, 11, 'Valvula para filtro de agua de 1 etapa', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c6f091f1e67c.jpg', 1, '600.00', '600.00'),
-(4, 4, 3, 3, 'collar', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c666ad85d6f6.jpg', 1, '745.00', '745.00'),
-(5, 5, 11, 12, 'Mallas para lavar ropa delicada', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c6f191d6891d.jpg', 3, '120.00', '360.00'),
-(6, 5, 10, 11, 'Valvula para filtro de agua de 1 etapa', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c6f091f1e67c.jpg', 1, '600.00', '600.00'),
-(7, 6, 5, 6, 'Centro de Mesa', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c6c37388dab5.jpg', 1, '300.00', '300.00'),
-(8, 7, 4, 5, 'Sombrilla de papel', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c6b59fda3429.jpg', 1, '360.00', '360.00');
-
 -- --------------------------------------------------------
 
 --
@@ -9907,26 +9943,22 @@ CREATE TABLE `pedidos_tiendas` (
   `ID_TIENDA` int(11) NOT NULL,
   `PEDIDO_TIENDA_IMPORTE_PRODUCTOS` decimal(10,2) DEFAULT NULL,
   `PEDIDO_TIENDA_IMPORTE_ENVIO` decimal(10,2) DEFAULT NULL,
+  `PORCENTAJE_COMISION_VENTA` decimal(10,2) NOT NULL DEFAULT '7.00',
+  `PORCENTAJE_COMISION_MANEJO` decimal(10,2) NOT NULL DEFAULT '8.00',
+  `PORCENTAJE_SERVICIOS_FINANCIEROS` decimal(10,2) NOT NULL DEFAULT '6.00',
+  `COMISION_FIJA_SERVICIOS_FINANCIEROS` decimal(10,2) NOT NULL DEFAULT '5.00',
+  `COMISION_VENTA` decimal(10,2) NOT NULL,
+  `COMISION_MANEJO` decimal(10,2) NOT NULL,
+  `COMISION_SERVICIOS_FINANCIEROS` decimal(10,2) NOT NULL,
+  `PEDIDO_TIENDA_LIQUIDADO` varchar(255) NOT NULL DEFAULT 'no',
+  `IMPORTE_A_LIQUIDAR` decimal(10,2) NOT NULL,
+  `FOLIO_LIQUIDAR` varchar(255) NOT NULL,
   `ID_TRANSPORTISTA` int(11) DEFAULT NULL,
   `TRANSPORTISTA_NOMBRE` varchar(255) DEFAULT NULL,
   `GUIA_PAQUETERIA` varchar(255) DEFAULT NULL,
   `URL_RASTREO` varchar(255) NOT NULL,
   `PEDIDO_TIENDA_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `pedidos_tiendas`
---
-
-INSERT INTO `pedidos_tiendas` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `PEDIDO_TIENDA_IMPORTE_PRODUCTOS`, `PEDIDO_TIENDA_IMPORTE_ENVIO`, `ID_TRANSPORTISTA`, `TRANSPORTISTA_NOMBRE`, `GUIA_PAQUETERIA`, `URL_RASTREO`, `PEDIDO_TIENDA_ESTADO`) VALUES
-(1, 1, 1, '10000.00', '0.00', 0, '', NULL, '', NULL),
-(2, 2, 1, '10000.00', '0.00', 0, '', NULL, '', NULL),
-(3, 3, 10, '600.00', '0.00', 0, '', NULL, '', NULL),
-(4, 4, 3, '745.00', '0.00', 0, '', NULL, '', NULL),
-(5, 5, 11, '360.00', '0.00', 0, '', NULL, '', NULL),
-(6, 5, 10, '600.00', '0.00', 0, '', NULL, '', NULL),
-(7, 6, 5, '300.00', '0.00', 0, '', NULL, '', NULL),
-(8, 7, 4, '360.00', '0.00', 0, '', NULL, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -9953,14 +9985,7 @@ CREATE TABLE `perfiles_servicios` (
 --
 
 INSERT INTO `perfiles_servicios` (`ID_PERFIL`, `ID_USUARIO`, `PERFIL_NOMBRE`, `PERFIL_RAZON_SOCIAL`, `PERFIL_RFC`, `PERFIL_TELEFONO`, `ID_DIRECCION`, `PERFIL_IMAGEN`, `PERFIL_FECHA_REGISTRO`, `PERFIL_FECHA_ACTUALIZACION`, `PERFIL_ESTADO`) VALUES
-(1, '5c64a6b2e13ae0.49457839', 'Servicio Prueba', 'Servicio s.a.', '1232233ABC', '12345678', 2, 'default.jpg', '2019-02-13 23:41:06', '2019-02-13 23:41:06', 'activo'),
-(2, '5c65b1c4706825.75278703', 'Irving Omar  Téllez Vera', 'Irving Omar Téllez Vera', 'TEVI760326CU2', '9991441579', 4, 'default.jpg', '2019-02-14 18:24:58', '2019-02-14 18:24:58', 'activo'),
-(3, '5c66692e593e37.03171377', 'citlali diaz', '', 'diacronías 680204', '546789234', 8, 'perfil_servicios-5c666c4e45cd1.jpg', '2019-02-15 07:37:25', '2019-02-15 07:37:50', 'activo'),
-(4, '5c6c330a6d6d60.37455226', 'SOPHIE´S FLOWERS', 'Jesska García', 'GATJ781104', '55555555', 11, 'perfil_servicios-5c6c39ed8fa25.jpg', '2019-02-19 17:16:29', '2019-02-19 17:16:29', 'activo'),
-(5, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', '', '', '12345678', 13, 'default.jpg', '2019-02-20 07:23:19', '2019-02-20 07:23:19', 'activo'),
-(6, '5c6d69209eab74.87165826', 'Laura', '', '', '5555555555', 14, 'perfil_servicios-5c6d6bf21ee28.jpg', '2019-02-20 15:02:10', '2019-02-20 15:17:42', 'activo'),
-(7, '5c6f40192d2e14.12282150', 'Maritza León', 'The National Expert', 'MAL741001LU9', '55 49540086', 21, 'default.jpg', '2019-02-22 00:22:59', '2019-02-22 00:22:59', 'activo'),
-(8, '5c76cfe87cbbe0.54725147', 'Panfilo Torres', 'S.R. de A.C.', '123456789', '2222222222', 22, 'perfil_servicios-5c76d08109638.jpg', '2019-02-27 18:00:27', '2019-02-27 18:01:37', 'activo');
+(1, '5ca4043cde1435.48493149', 'P RP', '', '', '55-1300-3000', 7, 'default.jpg', '2019-04-04 00:43:32', '2019-04-04 01:43:32', 'activo');
 
 -- --------------------------------------------------------
 
@@ -9993,11 +10018,11 @@ CREATE TABLE `planes` (
 --
 
 INSERT INTO `planes` (`ID_PLAN`, `PLAN_NOMBRE`, `PLAN_DESCRIPCION`, `PLAN_MENSUALIDAD`, `PLAN_ALMACENAMIENTO`, `PLAN_COMISION`, `PLAN_MANEJO_PRODUCTOS`, `PLAN_ENVIO`, `PLAN_SERVICIOS_FINANCIEROS`, `PLAN_SERVICIOS_FINANCIEROS_FIJO`, `PLAN_TIPO`, `PLAN_NIVEL`, `PLAN_IMAGEN`, `PLAN_LIMITE_PRODUCTOS`, `PLAN_LIMITE_SERVICIOS`, `PLAN_FOTOS_PRODUCTOS`, `PLAN_FOTOS_SERVICIOS`) VALUES
-(1, 'Vendedor Casual', '', '0.00', '0.00', '13.00', '0.00', 'tienda', '6.00', '5.00', 'productos', 1, 'default.jpg', 2, 2, 2, 2),
-(2, 'Vendedor Regular | Básico', '', '180.00', '0.00', '7.00', '0.00', 'tienda', '6.00', '5.00', 'productos', 2, 'default.jpg', 0, 0, 5, 5),
-(3, 'Vendedor Regular | Envío Incluido ', '', '180.00', '0.00', '7.00', '0.00', 'abanico', '6.00', '5.00', 'productos', 3, 'default.jpg', 0, 0, 5, 5),
-(4, 'Vendedor Regular | Envío y Almacen', '', '180.00', '210.00', '7.00', '8.00', 'abanico', '6.00', '5.00', 'productos', 4, 'default.jpg', 0, 0, 5, 5),
-(5, 'Vendedor Regular | Todo Incluido', '', '180.00', '210.00', '7.00', '8.00', 'abanico', '6.00', '5.00', 'productos', 5, 'default.jpg', 0, 0, 5, 5),
+(1, 'Vendedor casual', '', '0.00', '0.00', '13.00', '0.00', 'tienda', '6.00', '5.00', 'productos', 1, 'default.jpg', 2, 2, 2, 2),
+(2, 'Vendedor regular | básico', '', '180.00', '0.00', '7.00', '0.00', 'tienda', '6.00', '5.00', 'productos', 2, 'default.jpg', 0, 0, 5, 5),
+(3, 'Vendedor regular | apoyo para envío', '', '180.00', '0.00', '7.00', '0.00', 'abanico', '6.00', '5.00', 'productos', 3, 'default.jpg', 0, 0, 5, 5),
+(4, 'Vendedor regular | envío y almacen', '', '180.00', '210.00', '7.00', '8.00', 'abanico', '6.00', '5.00', 'productos', 4, 'default.jpg', 0, 0, 5, 5),
+(5, 'Vendedor regular | todo incluido', '', '180.00', '210.00', '7.00', '8.00', 'abanico', '6.00', '5.00', 'productos', 5, 'default.jpg', 0, 0, 5, 5),
 (6, 'Anúnciate con nosotros', '', '200.00', '0.00', '0.00', '0.00', 'tienda', '0.00', '0.00', 'servicios', 1, 'default.jpg', 1, 2, 1, 1),
 (7, 'Paquete completo', '', '500.00', '0.00', '0.00', '0.00', 'tienda', '0.00', '0.00', 'servicios', 2, 'default.jpg', 1, 5, 3, 3),
 (8, 'Paquete de lujo', '', '500.00', '0.00', '0.00', '0.00', 'abanico', '0.00', '0.00', 'servicios', 3, 'default.jpg', 0, 0, 0, 0),
@@ -10017,6 +10042,8 @@ CREATE TABLE `planes_pagos` (
   `PAGO_FOLIO` varchar(255) NOT NULL,
   `PAGO_FORMA` varchar(255) NOT NULL,
   `PAGO_IMPORTE` decimal(10,2) NOT NULL,
+  `PAGO_DIVISA` varchar(255) NOT NULL DEFAULT 'MXN',
+  `PAGO_CONVERSION` decimal(10,2) NOT NULL DEFAULT '1.00',
   `FECHA_LIMITE` date NOT NULL DEFAULT '0000-00-00',
   `FECHA_PAGO` date NOT NULL DEFAULT '0000-00-00',
   `PAGO_ARCHIVO` varchar(255) NOT NULL,
@@ -10055,13 +10082,6 @@ CREATE TABLE `planes_usuarios` (
   `AUTO_RENOVAR` varchar(255) NOT NULL DEFAULT 'si'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `planes_usuarios`
---
-
-INSERT INTO `planes_usuarios` (`ID_PLAN_USUARIO`, `ID_PLAN`, `ID_USUARIO`, `PLAN_NOMBRE`, `PLAN_MENSUALIDAD`, `PLAN_ESPACIO_ALMACENAMIENTO`, `PLAN_COSTO_ALMACENAMIENTO`, `PLAN_COMISION`, `PLAN_MANEJO_PRODUCTOS`, `PLAN_ENVIO`, `PLAN_SERVICIOS_FINANCIEROS`, `PLAN_SERVICIOS_FINANCIEROS_FIJO`, `PLAN_TIPO`, `PLAN_LIMITE_PRODUCTOS`, `PLAN_LIMITE_SERVICIOS`, `PLAN_FOTOS_PRODUCTOS`, `PLAN_FOTOS_SERVICIOS`, `PLAN_NIVEL`, `PLAN_ESTADO`, `PLAN_NOTAS`, `FECHA_INICIO`, `FECHA_TERMINO`, `AUTO_RENOVAR`) VALUES
-(1, 2, '5c0653d43d92e7.75019474', 'Vendedor Regular | Básico', '180.00', '210.00', '210.00', '7.00', '0.00', 'tienda', '6.00', '5.00', 'productos', 0, 0, 5, 5, 2, 'pagado', '', '2019-03-06', '2019-04-06', 'si');
-
 -- --------------------------------------------------------
 
 --
@@ -10078,6 +10098,29 @@ CREATE TABLE `preguntas_frecuentes` (
   `PREGUNTA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `ORDEN` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `premios`
+--
+
+CREATE TABLE `premios` (
+  `ID_PREMIO` int(11) NOT NULL,
+  `PREMIO_TITULO` varchar(255) NOT NULL,
+  `PREMIO_GANADOR` varchar(255) NOT NULL DEFAULT '0',
+  `PREMIO_IMAGEN` varchar(255) NOT NULL,
+  `PREMIO_FECHA_DISPONIBLE` date NOT NULL,
+  `PREMIO_ESTADO` varchar(255) NOT NULL DEFAULT 'pendiente'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `premios`
+--
+
+INSERT INTO `premios` (`ID_PREMIO`, `PREMIO_TITULO`, `PREMIO_GANADOR`, `PREMIO_IMAGEN`, `PREMIO_FECHA_DISPONIBLE`, `PREMIO_ESTADO`) VALUES
+(1, 'Juego de Sartenes', '5c08a9dc2cb096.56391251', 'premio-5c8c18747f642.jpg', '2019-03-01', 'pendiente'),
+(2, 'Horno Eléctrico', '5c08a9dc2cb096.56391251', 'premio-5c8c2cebcc159.jpg', '2019-04-01', 'pendiente');
 
 -- --------------------------------------------------------
 
@@ -10104,6 +10147,8 @@ CREATE TABLE `productos` (
   `PRODUCTO_MPN` varchar(255) NOT NULL,
   `PRODUCTO_PRECIO` decimal(10,2) NOT NULL,
   `PRODUCTO_PRECIO_LISTA` decimal(10,2) NOT NULL,
+  `PRODUCTO_DIVISA_DEFAULT` varchar(255) NOT NULL DEFAULT 'MXN',
+  `PRODUCTO_CONTRA_ENTREGA` varchar(255) NOT NULL DEFAULT 'no',
   `PRODUCTO_CANTIDAD` int(6) NOT NULL,
   `PRODUCTO_CANTIDAD_MINIMA` int(6) NOT NULL,
   `PRODUCTO_INVENTARIO` tinyint(1) NOT NULL,
@@ -10128,20 +10173,46 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOMBRE`, `PRODUCTO_URL`, `PRODUCTO_DESCRIPCION`, `PRODUCTO_DETALLES`, `PRODUCTO_MODELO`, `PRODUCTO_ORIGEN`, `PRODUCTO_ARTESANAL`, `PRODUCTO_SKU`, `PRODUCTO_UPC`, `PRODUCTO_EAN`, `PRODUCTO_JAN`, `PRODUCTO_ISBN`, `PRODUCTO_MPN`, `PRODUCTO_PRECIO`, `PRODUCTO_PRECIO_LISTA`, `PRODUCTO_CANTIDAD`, `PRODUCTO_CANTIDAD_MINIMA`, `PRODUCTO_INVENTARIO`, `PRODUCTO_MENSAJE_SIN_STOCK`, `PRODUCTO_FECHA_REGISTRO`, `PRODUCTO_FECHA_ACTUALIZACION`, `PRODUCTO_FECHA_PUBLICACION`, `PRODUCTO_ANCHO`, `PRODUCTO_ALTO`, `PRODUCTO_PROFUNDO`, `PRODUCTO_PESO`, `PRODUCTO_TIPO`, `PRODUCTO_CONDICION`, `CANTIDAD_VENTAS`, `CALIFICACION`, `LENGUAJE`, `PRODUCTO_ESTADO`, `ORDEN`) VALUES
-(1, '5c64a6b2e13ae0.49457839', '1', 'Computadora iMac', 'computadora-imac', 'Esta es una descripción.', '', '2012', 'Otro', 'no', '', '', '', '', '', '', '10000.00', '11000.00', 1, 1, 1, 'No disponible para la venta', '2019-02-14 00:37:38', '2019-02-14 00:37:38', '2019-02-14 00:37:38', '40.00', '40.00', '2.00', '3.00', 'normal', 'usado', 0, '0.00', 'es', 'activo', 1),
-(2, '5c65b1c4706825.75278703', '2', 'condones ziko', 'condones-ziko', '', '', 'extra suave ', 'México', 'no', '984756', '', '', '', '', '', '12.00', '9.00', 1000000, 1100, 1, 'No disponible para la venta', '2019-02-14 18:53:14', '2019-02-14 18:53:14', '2019-02-14 18:53:14', '20.00', '45.00', '44.50', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(3, '5c66692e593e37.03171377', '3', 'collar', 'collar', 'collar en plata ley 925', '', '1', 'México', 'no', 'co1', '', '', '', '', '', '745.00', '830.00', 1, 1, 1, 'No disponible para la venta', '2019-02-15 07:34:14', '2019-02-15 07:34:14', '2019-02-15 07:34:14', '4.00', '45.00', '0.30', '31.00', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(4, '5c66692e593e37.03171377', '3', 'juego pulsera y aretes', 'juego-pulsera-y-aretes', 'pulsera y aretes con jadeita', '', '1', 'México', 'no', 'a1', '', '', '', '', '', '48.00', '55.00', 1, 1, 1, 'No disponible para la venta', '2019-02-15 07:35:40', '2019-02-15 07:35:40', '2019-02-15 07:35:40', '3.00', '28.00', '0.40', '23.00', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(5, '5c6b5624be4de4.14234611', '4', 'Sombrilla de papel', 'sombrilla-de-papel', 'Sombrilla de papel. El perfecto accesorio para esta epoca de calor y sol. ', '<p>Hermosas sombrillas realizadas 100% en papel y bamboo. Plegables. En varios modelos y colores.&nbsp;</p>', '', 'México', 'no', '', '', '', '', '', '', '360.00', '420.00', 25, 1, 1, 'No disponible para la venta', '2019-02-19 01:22:05', '2019-02-19 01:22:05', '2019-02-19 01:22:05', '57.00', '28.00', '42.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(6, '5c6c330a6d6d60.37455226', '5', 'Centro de Mesa', 'centro-de-mesa', 'Centro de Mesa ', '', 'SF0001', 'México', 'no', '', '', '', '', '', '', '300.00', '300.00', 1, 1, 1, 'No disponible para la venta', '2019-02-19 17:04:56', '2019-02-19 17:04:56', '2019-02-19 17:04:56', '30.00', '30.00', '30.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(7, '5c0653d43d92e7.75019474', '6', 'Cuaderno de dibujo', 'cuadro-de-dibujo', '', '', 'toci-20', 'México', 'si', 'toci-20', '', '', '', '', '', '100.00', '159.00', 1, 1, 1, 'No disponible para la venta', '2019-03-01 21:39:26', '2019-03-01 21:39:26', '2019-03-01 21:39:26', '12.00', '12.00', '12.00', '0.50', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(8, '5c6d69209eab74.87165826', '9', 'Cajitas del corazón ', 'cajitas-del-corazón', 'Guarda tus mas lindos secretos', '', '', '', 'no', '', '', '', '', '', '', '250.00', '230.00', 10, 1, 1, 'No disponible para la venta', '2019-02-20 23:50:20', '2019-02-20 23:50:20', '2019-02-20 23:50:20', '16.00', '16.00', '16.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(9, '5c08a9dc2cb096.56391251', '10', 'Filtro de agua de una etapa', 'filtro-de-agua-de-una-etapa', 'Util y practico filtro de agua de 1 fase', '<p>Con este excelente filtro de agua no tendra que preocuparse por cargar pesados garrafones. 100% confiable debido capacidad de purificacion le permite eliminar el 98% de los germenes, bacterias y contaminantes del agua.&nbsp;</p>', 'UC45', 'Otro', 'no', '', '', '', '', '', '', '1400.00', '1800.00', 5, 1, 1, 'No disponible para la venta', '2019-02-21 20:53:46', '2019-02-21 20:53:46', '2019-02-21 20:53:46', '15.00', '40.00', '15.00', '1.00', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(10, '5c08a9dc2cb096.56391251', '10', 'Cartucho de fibra de coco', 'cartucho-de-fibra-de-coco', 'Cartucho para filtro de agua de 1 etapa', '<p>Cartucho de carbon activado hecho 100% con fibra de coco. Este cartucho elimina metales, bacterias, solidos disueltos y cerca de 50 particular disueltas en el agua.&nbsp;</p>', 'AT32', 'Otro', 'no', '', '', '', '', '', '', '500.00', '550.00', 20, 1, 1, 'No disponible para la venta', '2019-02-21 20:52:30', '2019-02-21 20:52:30', '2019-02-21 20:52:30', '12.00', '38.00', '12.00', '0.25', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(11, '5c08a9dc2cb096.56391251', '10', 'Valvula para filtro de agua de 1 etapa', 'valvula-para-filtro-de-agua-de-1-etapa', 'Válvula para filtro de agua de 1 etapa. ', '<p>Valvula de repuesto para filtros de agua de 1 etapa. Original. Solo tienes que colocarla en tu manguera y listo, puedes usar tu filtro nuevamente sin ningun problema.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '600.00', '680.00', 10, 1, 1, 'No disponible para la venta', '2019-02-21 20:55:30', '2019-02-21 20:55:30', '2019-02-21 20:55:30', '10.00', '8.00', '14.00', '0.05', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(12, '5c6f1749c753c5.12159032', '11', 'Mallas para lavar ropa delicada', 'mallas-para-lavar-ropa-delicada', 'Mallas para lavar tu ropa delicada', '', '', 'Otro', 'no', '', '', '', '', '', '', '120.00', '150.00', 100, 1, 1, 'No disponible para la venta', '2019-02-21 21:33:17', '2019-02-21 21:33:17', '2019-02-21 21:33:17', '30.00', '40.00', '30.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(13, '5c6f1749c753c5.12159032', '11', 'Malla para lavar ropa intima', 'malla-para-lavar-ropa-intima', 'Malla para ropa intima', '<p>Mant&eacute;n tu ropa &iacute;ntima como el d&iacute;a que la compraste&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '60.00', '80.00', 18, 1, 1, 'No disponible para la venta', '2019-02-21 21:36:04', '2019-02-21 21:36:04', '2019-02-21 21:36:04', '15.00', '24.00', '15.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1);
+INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOMBRE`, `PRODUCTO_URL`, `PRODUCTO_DESCRIPCION`, `PRODUCTO_DETALLES`, `PRODUCTO_MODELO`, `PRODUCTO_ORIGEN`, `PRODUCTO_ARTESANAL`, `PRODUCTO_SKU`, `PRODUCTO_UPC`, `PRODUCTO_EAN`, `PRODUCTO_JAN`, `PRODUCTO_ISBN`, `PRODUCTO_MPN`, `PRODUCTO_PRECIO`, `PRODUCTO_PRECIO_LISTA`, `PRODUCTO_DIVISA_DEFAULT`, `PRODUCTO_CONTRA_ENTREGA`, `PRODUCTO_CANTIDAD`, `PRODUCTO_CANTIDAD_MINIMA`, `PRODUCTO_INVENTARIO`, `PRODUCTO_MENSAJE_SIN_STOCK`, `PRODUCTO_FECHA_REGISTRO`, `PRODUCTO_FECHA_ACTUALIZACION`, `PRODUCTO_FECHA_PUBLICACION`, `PRODUCTO_ANCHO`, `PRODUCTO_ALTO`, `PRODUCTO_PROFUNDO`, `PRODUCTO_PESO`, `PRODUCTO_TIPO`, `PRODUCTO_CONDICION`, `CANTIDAD_VENTAS`, `CALIFICACION`, `LENGUAJE`, `PRODUCTO_ESTADO`, `ORDEN`) VALUES
+(1, '5c9c1ff62ce0c3.78174962', '1', 'Tijeras de cocina ', 'tijeras-de-cocina', 'Tijeras de cocina multiusos con abre nueces integrado. ', '<p>Tijeras de acero inoxidable de 20 centímetros de excelente calidad. Muy resistentes y de larga duración.&nbsp;</p><p>Cuentan con un abre nueces y un abridor de botellas o tarros. Son aptas para ser lavadas en lavavajillas.&nbsp;<br></p>', '', 'Otro', 'no', '', '', '', '', '', '', '90.00', '0.00', 'MXN', 'no', 2, 1, 1, 'No disponible para la venta', '2019-04-30 22:18:17', '2019-04-30 22:18:17', '2019-04-30 22:18:17', '12.00', '18.00', '2.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(2, '5c9c1ff62ce0c3.78174962', '1', 'Juego de tijeras para cocina', 'juego-de-tijeras-para-cocina', 'Versátiles tijeras para la cocina, la oficina y el hogar. Con mangos recubiertos para mejor agarre y máxima seguridad. ', '\r\n\r\n\r\n<p>Este juego de tijeras es uno de los favoritos en el mercado.&nbsp;</p><p>Su suave recubrimiento en el mango permite un máximo agarre al momento de cortar y su cuerpo de acero inoxidable lo hace muy resistente y de larga duración. El set incluye 1 par de tijeras de 21.6 cm y 2 pares de 13 cm. Garantía de fabricación de por vida.&nbsp;</p>\r\n\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '220.00', '0.00', 'MXN', 'no', 2, 1, 1, 'No disponible para la venta', '2019-04-30 21:21:40', '2019-04-30 21:21:40', '2019-04-30 21:21:40', '12.70', '12.70', '20.30', '0.14', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(3, '5c9c1ff62ce0c3.78174962', '1', 'Pinzas para alimentos', 'pinzas-para-alimentos', 'Pinza para alimentos con puntas de silicon grado alimenticio. Excelentes para el manejo de alimentos calientes o para servir las ensaladas.  ', '<p>Versatil pinza para alimentos con puntas de silicon. Esta practica pinza cuenta con un sistema que le permite mantenerse cerrada lo que evita que se atore en los cajones de la cocina. Sus puntas de silicon resisten altas temperaturas sin quemarse ni volverve blandas. Cuerpo de acero inoxidable. Los lados estas recubiertos con silicon antiderrapante que permite un excelente agarre de la pinza aun cuando este caliente.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '107.00', '0.00', 'MXN', 'no', 31, 1, 1, 'No disponible para la venta', '2019-04-25 17:47:24', '2019-04-25 17:47:24', '2019-04-25 17:47:24', '4.00', '4.00', '27.50', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(4, '5c9c1ff62ce0c3.78174962', '1', 'Reloj para caballero  Mitaki-Japan®', 'reloj-para-caballero', 'Reloj deportivo digital para hombre marca Mitaki-Japan®', '<h3 class=\"product-subtitle\" style=\"box-sizing: border-box; font-family: Raleway, sans-serif; font-weight: 400; line-height: 18px; color: #949494; margin: 0px 0px 14px; font-size: 14px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; vertical-align: baseline; text-size-adjust: none; text-align: justify;\">Excelente reloj para usarlo cuando haces ejercicio o en un dia informal. Sus caracteristicas principales incluyen funcion de fecha, alarma, se ilumina al marcarse la hora y luz. Su resistente banda de poliuretano es hipoalergenica y de alta resistencia.&nbsp;</h3>', '', 'Otro', 'no', '', '', '', '', '', '', '650.00', '0.00', 'MXN', 'no', 2, 1, 1, 'No disponible para la venta', '2019-04-22 19:15:27', '2019-04-22 19:15:27', '2019-04-22 19:15:27', '2.00', '5.00', '181.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(5, '5c9c1ff62ce0c3.78174962', '1', 'Reloj digital deportivo para caballero marca Mitaki-Japan® modelo Super', 'reloj-para-caballero-rcx', 'Practico y resistente reloj digital para caballero de la marca Mitaki-Japan®', '<ul style=\"box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Raleway, sans-serif; vertical-align: baseline; text-size-adjust: none; list-style: none; color: #808080;\">\r\n<li style=\"box-sizing: border-box; margin: 0px; padding: 4px 0px 4px 10px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; text-size-adjust: none;\"><strong>Este excelente reloj cuenta con funciones de luz, cronometro, fecha y es resistente al agua hasta los 30 metros. Tu compañero ideal para hacer ejercicio todos los días. Muy liviano y resistente.&nbsp;</strong></li>\r\n</ul>', '', 'Otro', 'no', '', '', '', '', '', '', '650.00', '680.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 19:20:11', '2019-04-30 19:20:11', '2019-04-30 19:20:11', '5.00', '2.00', '18.00', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(6, '5c9c1ff62ce0c3.78174962', '1', 'Reloj para dama  Mitaki-Japan® Ladies\' Digital Sport Watch', 'reloj-para-dama', 'Practico y cómodo reloj deportivo digital de la marca Mitaki-Japan®. Utilízalo para ir al gimnasio, a correr e incluso a nadar ya que es resistente al agua. ', '<ul style=\"box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Raleway, sans-serif; vertical-align: baseline; text-size-adjust: none; list-style: none; color: #808080;\">\r\n<li style=\"box-sizing: border-box; margin: 0px; padding: 4px 0px 4px 10px; border: 0px; font: inherit; vertical-align: baseline; text-size-adjust: none;\">Este excelente reloj incluye funciones de fecha, luz y alarma. Es resistente al agua hasta los 30 metros de profundidad.</li>\r\n<li style=\"box-sizing: border-box; margin: 0px; padding: 4px 0px 4px 10px; border: 0px; font: inherit; vertical-align: baseline; text-size-adjust: none;\">&nbsp;</li>\r\n</ul>', '', 'Otro', 'no', '', '', '', '', '', '', '280.00', '0.00', 'MXN', 'no', 2, 1, 1, 'No disponible para la venta', '2019-04-30 22:25:18', '2019-04-30 22:25:18', '2019-04-30 22:25:18', '1.00', '5.00', '18.00', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(7, '5c9c1ff62ce0c3.78174962', '1', 'Vaso termo ', 'vaso-termo', 'Vaso térmico de doble pared y tapa transparente para que tu bebida viaje contigo a cualquier lado. ', '<p>Con este vaso térmico puedes llevar tus bebidas favoritas contigo a cualquier lado.&nbsp;</p><p>Totalmente fabricado con una doble pared de acero inoxidable al vacío, con tapa de rosca antiderrames y transparente. El acero inoxidable hace que la limpieza sea muy fácil y jamás guardara aromas o sabores desagradables.&nbsp;</p><p>Capacidad de 473 mililitros.</p>', '', 'Otro', 'no', '', '', '', '', '', '', '220.00', '0.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 22:02:48', '2019-04-30 22:02:48', '2019-04-30 22:02:48', '0.00', '0.00', '0.00', '0.33', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(8, '5c9c1ff62ce0c3.78174962', '1', 'Botella de vidrio con proteccion ', 'botella-de-vidrio-con-proteccion', 'Botella de vidrio de 473 mililitros de capacidad con envoltura de silicon negra y tapa abatible.', '<p><span style=\"font-size: 1rem;\">Para ti que eres respetuoso con el ambiente y estas disminuyendo el uso de plásticos te recomendamos esta práctica botella para llevar tus bebidas favoritas a donde vayas. El vidrio es de borosilicato altamente resistente a los golpes. La envoltura de silicón permite un mayor agarre por su efecto antideslizante. La tapa es anti-derrames. Puedes usar tu botella todo el tiempo y lavarla fácilmente. NO introducir en lavavajillas.&nbsp;</span><br></p>', '', 'Otro', 'no', '', '', '', '', '', '', '250.00', '0.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 22:08:52', '2019-05-01 00:24:08', '2019-04-30 22:08:52', '0.00', '0.00', '0.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(9, '5c9c1ff62ce0c3.78174962', '1', 'Termo con recubrimiento para máximo agarre', 'termo-con-recubrimiento-de-agarre', 'Practico termo de doble pared ideal para trasladar tus líquidos sin derrames. ', '<p>Esta botella de doble pared mantiene tus bebidas favoritas calientes o frías durante horas.</p><p>Con su envoltura de silicón es muy fácil de sujetarla, mientras que su tapa abre fácil permite que abrirla y cerrarla sea pan comido. El vaso esta totalmente hecho de acero inoxidable 18/8 lo que lo hace altamente resistente a la corroción y fácil de limpiar.</p><p>No tendrás que preocuparte por olores desagradables o sabores que queden impregnados. </p><pre><br></pre>', '', 'Otro', 'no', '', '', '', '', '', '', '280.00', '0.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 22:02:32', '2019-04-30 22:02:32', '2019-04-30 22:02:32', '0.00', '0.00', '0.00', '0.35', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(13, '5c9c1ff62ce0c3.78174962', '1', 'Infusor para te en forma de fresa', 'infusor-para-te-en-forma-de-fresa', 'Lindo infusor para preparar té con hoja suelta en forma de fresa ', '\r\n\r\n\r\n\r\n<p>Fabricado con silicon grado alimenticio, este infusor resulta muy seguro para su uso ya que el material es totalmente adecuado para su uso en alimentos. No desprenderá sabores en el agua y es muy fácil de lavar. Más fácil de lavar que un infusor metálico. Es un adecuado compañero en las largas horas laborales o en los viajes de fin de semana.&nbsp;</p>\r\n\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '75.00', '0.00', 'MXN', 'no', 25, 1, 1, 'No disponible para la venta', '2019-04-25 18:11:57', '2019-04-25 18:11:57', '2019-04-25 18:11:57', '0.00', '0.00', '0.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(14, '5c9c1ff62ce0c3.78174962', '1', 'Infusor de té en forma de T-Rex', 'infusor-de-té-en-forma-de-t-rex', 'Infusiona tus hierbas de forma divertida con este lindo dinosaurio. ', '\r\n\r\n\r\n\r\n\r\n<p>Fabricado con silicón grado alimenticio, este verde amigo es una opción refrescante para preparar tu té todos los días. Puedes llenar el cuerpo y la cabeza para obtener la concentración que más te gusta. Resistente y durable, fácil de lavar.&nbsp;</p>\r\n\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '114.00', '0.00', 'MXN', 'no', 24, 1, 1, 'No disponible para la venta', '2019-04-25 18:12:26', '2019-04-29 20:22:06', '2019-04-25 18:12:26', '0.00', '0.00', '0.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(15, '5c9c1ff62ce0c3.78174962', '1', 'Marcadores para copas de emojis', 'marcadores-para-vaso-o-copas-de-emojis', 'Set de 8  marcadores para copas de emojis. ', '<p>Divertidas caras de emojis para marcar tus copas durante tus fiestas. No correrás más el riesgo de que alguien se tome tu bebida, solo marca tu copa y disfruta de la fiesta.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '166.00', '0.00', 'MXN', 'no', 22, 1, 1, 'No disponible para la venta', '2019-04-25 17:47:53', '2019-04-25 17:47:53', '2019-04-25 17:47:53', '5.00', '5.00', '5.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(17, '5c9c1ff62ce0c3.78174962', '1', 'Conejo porta bolsas de té', 'conejo-porta-bolsas-de-té', 'Mantén seco y limpio tu plato mientras disfrutas de tu taza de te con estos  4 prácticos conejos de silicón.', '\r\n\r\n\r\n\r\n\r\n<p>No te quemes los dedos \"pescando\" tu bolsita de té. Con este práctico conejo olvidate de las bolsas que se mojan y de buscar donde ponerlas una vez que tu té esté listo. Simplemente coloca el conejo en la orilla de la taza, enrolla el cordón de tu bolsa y espera a que se desprenda todo el sabor y el olor. Una vez listo tu té simplemente baja el conejo y utilizalo como plato para depositar tu bolsita mojada. Te encantarán!</p>\r\n<p>Fabricados con silicón grado alimenticio aprobado por la FDA.&nbsp;</p>\r\n\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '126.00', '0.00', 'MXN', 'no', 5, 1, 1, 'No disponible para la venta', '2019-04-25 18:13:04', '2019-04-30 13:29:51', '2019-04-25 18:13:04', '0.00', '0.00', '0.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(21, '5c9c1ff62ce0c3.78174962', '1', 'Joyero de madera hecho a mano', 'joyero-de-madera-hecho-a-mano', 'Hermosa caja de madera hecha a mano con cerradura totalmente funcional.', '<p>Esta linda caja de madera esta totalmente hecha a mano por un artesano veracruzano. El trabajo se encuentra perfectamente detallado y los acabados muy bien cuidados. La cerradura es de primera calidad y es totalmente funcional. Incluye dos llaves. Al adquirir esta caja estarás apoyando a un joven artesano que lucha dia tras dia para ofrecer su trabajo con la mejor calidad.&nbsp;</p>', '', 'México', 'si', '', '', '', '', '', '', '200.00', '240.00', 'MXN', 'no', 7, 1, 1, 'No disponible para la venta', '2019-04-30 19:07:17', '2019-04-30 19:07:17', '2019-04-30 19:07:17', '17.50', '13.00', '18.00', '0.75', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(22, '5c9c1ff62ce0c3.78174962', '1', 'Set de 6 piezas de tapas de silicón elásticas que se adaptan a cualquier contenedor de 6.5 a 20 cm. ', 'tapas-de-silicón', 'Prácticas y resistentes tapas de silicón, grado alimenticio, para conservar tus alimentos por mayor tiempo en el refrigerador. Set de 6 piezas de 20 cm, 17 cm, 15 cm, 12 cm, 10 cm y  6.5 cm. ', '<p style=\"text-align: justify; \">Set de 6 piezas de tapas elásticas de silicona grado alimenticio, aprobado por la FDA, el cual es totalmente seguro para uso con alimentos ya que es un material inocuo que no libera ningún tipo de gas, olor o residuo.</p><p style=\"text-align: justify;\">Las tapas miden 20 cm, 17 cm, 15 cm, 12 cm, 10 cm y 6.5 cm. Son ideales para aquellos moldes plásticos que se han quedado sin su tapa, para cubrir frutas y verduras y almacenarlos en el refrigerador e incluso puedes utilizarse para cubrir una taza con sobrantes líquidos. Su resistente material les permite amoldarse a cualquier forma, sellando herméticamente el borde del recipiente, lo que evita derramamientos en el refrigerador si la taza o el vaso llegara a voltearse.</p><p style=\"text-align: justify; \">Crean un cierre hermético cuando se colocan sobre un recipiente para maximizar el tiempo que tu comida permanece fresca sin dejar que el aire entre en el interior.<br></p>', '', 'Otro', 'no', '', '', '', '', '', '', '144.00', '170.00', 'MXN', 'no', 47, 1, 1, 'No disponible para la venta', '2019-04-30 21:05:01', '2019-04-30 21:05:01', '2019-04-30 21:05:01', '19.00', '3.00', '3.00', '0.22', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(24, '5c9c1ff62ce0c3.78174962', '1', 'Cartucho de fibra de coco para filtro encima del fregadero', 'cartucho-de-fibra-de-coco', 'Cartucho de fibra de coco para filtros sobre el fregadero.', '<p>Cartucho de excelente calidad. Hecho 100% con fibra de coco que es uno de los mejores materiales para la purificación del agua. Practico y muy resiste. Dura hasta 6 meses.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '400.00', '0.00', 'MXN', 'no', 99, 1, 1, 'No disponible para la venta', '2019-04-22 22:44:00', '2019-04-22 22:44:00', '2019-04-22 22:44:00', '7.00', '25.00', '10.50', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(25, '5c9c1ff62ce0c3.78174962', '1', 'Cartucho de carbón activado para filtros sobre y bajo el fregadero', 'cartucho-royal', 'Cartucho para filtros sobre y debajo del fregadero. ', '<p>Repuesto de cartucho para filtro sobre y debajo del fregadero. Ideal para los filtros Eclipse y Royal. Cuerpo de carbon activado de la mejor calidad.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '100.00', '0.00', 'USD', 'no', 49, 1, 1, 'No disponible para la venta', '2019-04-22 19:14:46', '2019-04-22 19:14:46', '2019-04-22 19:14:46', '12.00', '20.00', '1.00', '1.00', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(26, '5c9c1ff62ce0c3.78174962', '1', 'Manguera con válvula para filtro sobre el fregadero', 'manguera-con-válvula-para-filtro-sobre-el-fregadero', 'Válvula y manguera para filtro encima del fregadero. ', '\r\n\r\n\r\n\r\n\r\n<p>Válvula y manguera de respuesto para los filtros de agua instalados arriba del fregadero. La válvula está fabricada en acero inoxidable y la manguera es de alta calidad, con un metro de longitud para facilitar el acomodo del filtro en cualquier area del fregadero.&nbsp;</p>\r\n\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '35.00', '0.00', 'USD', 'no', 0, 1, 1, 'No disponible para la venta', '2019-04-22 19:15:02', '2019-04-22 19:15:02', '2019-04-22 19:15:02', '0.00', '0.00', '0.00', '0.50', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(27, '5c9c1ff62ce0c3.78174962', '1', 'Set de 4 tazas para medir alimentos marca Chef\'s Secret® en acero inoxidable', 'chefs-secret-4pc-t304-stainless-steel-measuring-cup-set', 'Set de 4 tazas para medición de la marca Chef\'s Secret® en acero inoxidable. ', '<p style=\"box-sizing: border-box; line-height: 22px; margin: 0px 0px 15px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; vertical-align: baseline; text-size-adjust: none;\">Útil y práctico set de 4 tazas para medición de alimentos. No vuelvas a adivinar si estas usando la cantidad correcta de tus ingredientes al preparar tus recetas favoritas. Con estas tazas medidoras tendrás el control total para preparar esos exquisitos platillos que a tu familia les encantan.&nbsp;</p><p style=\"box-sizing: border-box; line-height: 22px; margin: 0px 0px 15px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; vertical-align: baseline; text-size-adjust: none;\">Este set viene con un anillo para mantener las tazas juntas. Los mangos gruesos están soldados al cuerpo de la taza por lo que no existe riesgo que se desprendan. La capacidad de cada taza, 1 taza, 1/2 taza, 1/3 taza y 1/4 taza, está grabada en el mango. El exterior presenta un acabado espejo mientras que el interior es satinado.</p>\r\n\r\n<ul style=\"box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Raleway, sans-serif; vertical-align: baseline; text-size-adjust: none; list-style: none; color: #808080;\">\r\n<li style=\"box-sizing: border-box; margin: 0px; padding: 4px 0px 4px 10px; border: 0px; font: inherit; vertical-align: baseline; text-size-adjust: none;\">&nbsp;</li>\r\n</ul>', '', 'Otro', 'no', '', '', '', '', '', '', '280.00', '320.00', 'MXN', 'no', 0, 1, 1, 'No disponible para la venta', '2019-04-30 19:09:48', '2019-04-30 19:09:48', '2019-04-30 19:09:48', '6.00', '6.00', '15.00', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(28, '5c9c1ff62ce0c3.78174962', '1', 'Divertidas moldes para hotcakes o huevo', 'divertidas-moldes-para-hotcakes-o-huevo', 'Prepara hotcakes en forma de conejo, buho o un radiante sol con estos moldes de silicon grado alimenticio. ', '<p>Divierte a tus niños cada mañana preparando un divertido desayuno. Nuestros moldes de silicón en forma de sol con nube, conejo o buho harán del desayuno una nueva experiencia. Hechos con silicón grado alimenticio puedes estar segura que tus desayunos solo serán divertidos y nutritivos.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '106.00', '0.00', 'MXN', 'no', 35, 1, 1, 'No disponible para la venta', '2019-04-25 17:49:45', '2019-04-25 17:49:45', '2019-04-25 17:49:45', '0.00', '0.00', '0.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(29, '5c9c1ff62ce0c3.78174962', '1', 'Espatula para mezcla y capacetes para hornear ', 'espatula-para-mezcla-y-capacetes-para-hornear', 'Conveniente juego de espátula y capacetes para hornear hechos de silicón grado alimenticio. ', '<p>Si eres amante de los postres, este lindo set es lo tuyo. Con una espátula de 21.5 cm de largo para preparar tus mezclas y 12 capacetes de 7 cm de diámetro para panquecitos o cupcakes podrás preparar deliciosos postres para toda la familia. Todo fabricado en silicon grado alimenticio aceptado por la FDA para su uso en preparación de alimentos.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '118.00', '0.00', 'MXN', 'no', 33, 1, 1, 'No disponible para la venta', '2019-04-25 17:45:24', '2019-04-29 21:01:26', '2019-04-25 17:45:24', '0.00', '0.00', '0.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(30, '5c9c1ff62ce0c3.78174962', '1', 'Esponja de silicón para lavar platos y embudo plegable', 'esponja-de-silicona-para-trastos-y-embudo-plegable', 'Esponja de silicón de 11 cm de diámetro y embudo cuadrado plegable de 7.5 cm. ', '<p>&nbsp;Esponja de silicona de 11 cm de diámetro ideal para jarras de vidrio, vasos, artículos delicados y sartenes recubiertas con teflón. Embudo cuadrado plegable para que jamas se atore en el cajon o con otros instrumentos de tu cocina. Solo estiralo y vierte tus líquidos, cuando termines puedes voltearlo para lavarlo.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '98.00', '0.00', 'MXN', 'no', 68, 1, 1, 'No disponible para la venta', '2019-04-25 18:02:57', '2019-04-29 20:59:05', '2019-04-25 18:02:57', '0.00', '0.00', '0.00', '0.08', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(32, '5ca4043cde1435.48493149', '2', 'popotes de acero inoxidable ', 'popotes-de-acero-inoxidable', '', '', '', 'Otro', 'no', '', '', '', '', '', '', '122.50', '0.00', 'MXN', 'no', 17, 1, 1, 'No disponible para la venta', '2019-04-25 18:35:50', '2019-04-25 18:35:50', '2019-04-25 18:35:50', '1.00', '18.00', '1.00', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(33, '5c9c1ff62ce0c3.78174962', '1', 'Recipiente para hacer palomitas en el microondas', 'recipiente-para-hacer-palomitas-en-el-microondas', 'Molde para hacer palomitas en el microondas. ', 'Te gustan las palomitas caseras pero odias hacerlas en la estufa? Te tenemos la solución. Con este molde podrás disfrutar del sabor natural de las palomitas caseras sin tener que estar cuidando que no se quemen. Simplemente agrega granos de maíz palomero y en 3 minutos aproximadamente estarás disfrutando de unas deliciosas palomitas.&nbsp;', '', 'Otro', 'no', '', '', '', '', '', '', '145.00', '0.00', 'MXN', 'no', 22, 1, 1, 'No disponible para la venta', '2019-04-25 18:11:33', '2019-04-25 18:11:33', '2019-04-25 18:11:33', '20.00', '15.00', '0.00', '0.32', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(34, '5c9c1ff62ce0c3.78174962', '1', 'Set de moldes para hielo de Star wars ', 'set-de-moldes-para-hielo-de-star-wars', 'Juego de 8 bandejas de hielo de silicona Star Wars: Stormtrooper, Darth Vader, X-Wing Fighter, Millennium Falcon, R2-D2, Han Solo, Boba Fett, y Death Star', '<p>Los moldes están fabricados 100% de silicona pura de alta calidad y grado alimenticio lo que los hace totalmente seguros para utilizarnos al preparar alimentos. Son fabulosos para hielo y chocolate, también pueden ser usados como moldes para gelatina o dulces.&nbsp;</p><p>Son fáciles de usar y de limpiar. Disfruta de un buen rato creando las figuras.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '285.00', '0.00', 'MXN', 'no', 35, 1, 1, 'No disponible para la venta', '2019-04-25 18:11:13', '2019-04-25 18:11:13', '2019-04-25 18:11:13', '20.00', '10.00', '20.00', '0.75', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(35, '5c9c1ff62ce0c3.78174962', '1', 'Infusor de té en forma de buzo', 'infusor-de-té-en-forma-de-buzo', 'Práctico infusor en forma de buzo para preparar cualquier te de hoja suelta.', '<p>Fabricado con silicona 100% grado alimenticio, este infusor es una forma refrescante de preparar tu bebida cada mañana, ya sea que escojas hierbabuena, menta, canela o tu sabor favorito, este compañero hará de todas tus hojas una bebida deliciosa. Su tanque de contrapeso hace que sea más fácil mantenerlo en posición y al estar hecho de acero inoxidable no debes de preocuparte de que pierda su calidad al momento de lavarlo.&nbsp;</p><p>El silicon jamás dejará un sabor extraño en tu té. Muy fácil de limpiar, solo necesitas agua fría y jabón.&nbsp;</p><br><br>', '', 'Otro', 'no', '', '', '', '', '', '', '112.00', '0.00', 'MXN', 'no', 24, 1, 1, 'No disponible para la venta', '2019-04-25 18:09:11', '2019-04-29 21:03:05', '2019-04-25 18:09:11', '6.00', '10.00', '4.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(36, '5c9c1ff62ce0c3.78174962', '1', 'Set de 12 marcadores en forma de animales para copas o vasos', 'set-de-marcadores-para-copas-o-vasos', '', '', '', 'Otro', 'no', '', '', '', '', '', '', '112.00', '0.00', 'MXN', 'no', 34, 1, 1, 'No disponible para la venta', '2019-04-25 18:01:46', '2019-04-25 18:01:46', '2019-04-25 18:01:46', '10.00', '10.00', '10.00', '0.15', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(37, '5c9c1ff62ce0c3.78174962', '1', 'Set de 6 marcadores en forma de pequeños hombres para copas y vasos', 'set-de-6-marcadores-en-forma-de-pequeños-hombres-para-copas-y-vasos', '', '', '', 'Otro', 'no', '', '', '', '', '', '', '95.00', '0.00', 'MXN', 'no', 0, 1, 1, 'No disponible para la venta', '2019-04-25 18:02:18', '2019-04-29 20:48:06', '2019-04-25 18:02:18', '10.00', '10.00', '10.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(39, '5c9c1ff62ce0c3.78174962', '1', 'Infusores para té en forma de caracol ', 'infusores-para-té-en-forma-de-caracol', 'Adorables caracoles para sostener tu bolsita de té en la taza y evitar que se hunda. 6 piezas de colores surtidos. ', '<p>Hechos de silicona grado alimenticio, estos adorables caracoles son totalmente seguros para el uso en bebidas.&nbsp;</p><p>Solo enrolla la tira de tu bolsita de te en el cuerpo del caracol y vierte el agua. Olvidate de introducir los dedos en el agua para sacar la bolsa de te cuando esta se va hacia adentro de la taza o cuando tu bebida está en el punto exacto.&nbsp;&nbsp;</p><p>Set de 6 caracoles en colores surtidos.&nbsp;</p><br>', '', 'Otro', 'no', '', '', '', '', '', '', '83.00', '0.00', 'MXN', 'no', 20, 1, 1, 'No disponible para la venta', '2019-04-30 22:31:47', '2019-04-30 22:31:47', '2019-04-30 22:31:47', '0.50', '0.50', '0.50', '0.12', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(40, '5c9c1ff62ce0c3.78174962', '1', 'Fabulosa sombrilla de papel. Ideal para protegerte del sol', 'fabulosa-sombrilla-de-papel-ideal-para-protegerte-del-sol', '', '', '', 'México', 'no', '', '', '', '', '', '', '2.00', '0.00', 'MXN', 'no', 60, 1, 1, 'No disponible para la venta', '2019-04-30 18:33:43', '2019-04-30 18:33:43', '2019-04-30 18:33:43', '83.00', '42.00', '0.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(41, '5c9c1ff62ce0c3.78174962', '1', 'Útiles cucharas medidoras de acero inoxidable', 'Útiles-cucharas-medidoras-de-acero-inoxidable', '', '', '', 'México', 'no', '', '', '', '', '', '', '100.00', '0.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 18:48:46', '2019-04-30 18:48:46', '2019-04-30 18:48:46', '2.00', '12.00', '2.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(42, '5c9c1ff62ce0c3.78174962', '1', 'Cartucho alcalino', 'cartucho-alcalino', '', '', '', 'México', 'no', '', '', '', '', '', '', '120.00', '0.00', 'USD', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 18:50:28', '2019-04-30 18:50:28', '2019-04-30 18:50:28', '8.00', '30.00', '0.00', '1.00', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(43, '5c9c1ff62ce0c3.78174962', '1', 'Cartucho inline', 'cartucho-inline', '', '', '', 'México', 'no', '', '', '', '', '', '', '60.00', '0.00', 'USD', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 18:53:06', '2019-04-30 18:53:06', '2019-04-30 18:53:06', '6.00', '30.00', '5.00', '0.40', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(44, '5c9c1ff62ce0c3.78174962', '1', 'Manguera doble para filtro sobre el fregadero', 'manguera-doble-para-filtro-sobre-el-fregadero', '', '', '', 'México', 'no', '', '', '', '', '', '', '30.00', '0.00', 'USD', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 18:54:00', '2019-04-30 18:54:00', '2019-04-30 18:54:00', '1.00', '30.00', '1.00', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(45, '5c9c1ff62ce0c3.78174962', '1', 'a', 'a', '', '', '', 'México', 'no', '', '', '', '', '', '', '1.00', '0.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 19:00:47', '2019-04-30 19:00:47', '2019-04-30 19:00:47', '1.00', '1.00', '1.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(46, '5c9c1ff62ce0c3.78174962', '1', 'Prefiltro', 'prefiltro', '', '', '', 'México', 'no', '', '', '', '', '', '', '2.00', '2.00', 'USD', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 19:02:16', '2019-04-30 19:02:16', '2019-04-30 19:02:16', '2.00', '2.00', '2.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(47, '5c9c1ff62ce0c3.78174962', '1', 'Válvula de paso ', 'válvula-de-paso', '', '', '', 'México', 'no', '', '', '', '', '', '', '10.00', '0.00', 'USD', 'no', 0, 1, 1, 'No disponible para la venta', '2019-04-30 19:03:02', '2019-05-01 00:16:26', '2019-04-30 19:03:02', '4.00', '4.00', '4.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(48, '5c9c1ff62ce0c3.78174962', '1', 'Soporte para cartucho ', 'soporte-para-cartucho', '', '', '', 'México', 'no', '', '', '', '', '', '', '25.00', '0.00', 'USD', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 19:04:06', '2019-04-30 19:04:06', '2019-04-30 19:04:06', '6.00', '10.00', '2.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(49, '5c9c1ff62ce0c3.78174962', '1', 'Válvula para filtro sobre el fregadero', 'válvula-para-filtro-sobre-el-fregadero', '', '', '', 'México', 'no', '', '', '', '', '', '', '25.00', '0.00', 'USD', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 19:05:31', '2019-04-30 19:05:31', '2019-04-30 19:05:31', '8.00', '6.00', '4.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -10160,6 +10231,25 @@ CREATE TABLE `productos_combinaciones` (
   `COMBINACION_PROFUNDO` decimal(10,2) DEFAULT NULL,
   `COMBINACION_PESO` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `productos_combinaciones`
+--
+
+INSERT INTO `productos_combinaciones` (`ID_COMBINACION`, `ID_PRODUCTO`, `COMBINACION_GRUPO`, `COMBINACION_OPCION`, `COMBINACION_PRECIO`, `COMBINACION_ANCHO`, `COMBINACION_ALTO`, `COMBINACION_PROFUNDO`, `COMBINACION_PESO`) VALUES
+(1, '22', 'Calidad', '165 gramos', '132.00', '19.00', '3.00', '3.00', '0.17'),
+(2, '22', 'Calidad', '135 gramos', '125.00', '19.00', '3.00', '3.00', '0.22'),
+(3, '22', 'Calidad', '220 gramos', '148.00', '19.00', '3.00', '3.00', '0.22'),
+(4, '30', 'Forma', 'Embudo redondo-esponja ovalada', '98.00', '0.00', '0.00', '0.00', '0.08'),
+(5, '30', 'Forma', 'Embudo cuadrado-esponja redonda', '98.00', '0.00', '0.00', '0.00', '0.08'),
+(6, '35', 'Color', 'Gris', '112.00', '6.00', '10.00', '4.00', '0.10'),
+(7, '35', 'Color', 'Azul', '112.00', '6.00', '10.00', '4.00', '0.10'),
+(8, '35', 'Color', 'Verde', '112.00', '6.00', '10.00', '4.00', '0.10'),
+(9, '35', 'Color', 'Rojo', '112.00', '6.00', '10.00', '4.00', '0.10'),
+(10, '7', 'Color', 'Negro', '345.00', '0.00', '0.00', '0.00', '0.30'),
+(11, '7', 'Color', 'Azul', '345.00', '0.00', '0.00', '0.00', '0.30'),
+(12, '9', 'Color', 'Azul turquesa', '520.00', '0.00', '0.00', '0.00', '0.30'),
+(13, '9', 'Color', 'Gris', '520.00', '0.00', '0.00', '0.00', '0.30');
 
 -- --------------------------------------------------------
 
@@ -10185,17 +10275,30 @@ CREATE TABLE `productos_rangos_mayoreo` (
 CREATE TABLE `publicaciones` (
   `ID_PUBLICACION` int(11) NOT NULL,
   `PUBLICACION_TITULO` varchar(255) DEFAULT NULL,
+  `PUBLICACION_URL` varchar(255) NOT NULL,
   `PUBLICACION_RESUMEN` text,
   `PUBLICACION_CONTENIDO` text,
   `PUBLICACION_IMAGEN` varchar(255) DEFAULT NULL,
   `PUBLICACION_TIPO` varchar(255) DEFAULT NULL,
-  `PUBLICACION_PLANTILLA` varchar(255) DEFAULT NULL,
   `PUBLICACION_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `PUBLICACION_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `PUBLICACION_FECHA_PUBLICACION` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `PUBLICACION_ESTADO` varchar(255) DEFAULT NULL,
   `ORDEN` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `publicaciones`
+--
+
+INSERT INTO `publicaciones` (`ID_PUBLICACION`, `PUBLICACION_TITULO`, `PUBLICACION_URL`, `PUBLICACION_RESUMEN`, `PUBLICACION_CONTENIDO`, `PUBLICACION_IMAGEN`, `PUBLICACION_TIPO`, `PUBLICACION_FECHA_REGISTRO`, `PUBLICACION_FECHA_ACTUALIZACION`, `PUBLICACION_FECHA_PUBLICACION`, `PUBLICACION_ESTADO`, `ORDEN`) VALUES
+(1, 'Términos y Condiciones', 'términos-y-condiciones', ' ', '', 'default.jpg', 'pagina', '2019-03-15 22:10:23', '2019-03-15 22:10:23', '2019-03-15 22:10:23', 'activo', NULL),
+(2, 'Aviso de Privacidad', 'aviso-de-privacidad-ok6', '   ', '<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: bold; font-style: italic; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">DECLARACI&Oacute;N DE PRIVACIDAD</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Para Abanico Siempre lo mejor S.A. de C.V. (en adelante ABANICO) la privacidad de la informaci&oacute;n de sus usuarios, compradores, proveedores y prestadores de servicios es lo m&aacute;s importante, por eso, y en cumplimiento a la Ley Federal de Protecci&oacute;n de Datos Personales en Posesi&oacute;n de los Particulares, le informamos que somos responsables de sus datos personales, del uso y tratamiento que se le d&eacute; a los mismos y la forma en que se comparten. Para cualquier aclaraci&oacute;n, duda o comentario s&iacute;rvase contactarnos al correo electr&oacute;nico </span><a style=\"text-decoration: none;\" href=\"mailto:atencioncliente@abanicoytu.com\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000080; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">atencioncliente@abanicoytu.com</span></a></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">A continuaci&oacute;n, se describe nuestra pol&iacute;tica de privacidad la cual acepta usted al visitar nuestra p&aacute;gina electr&oacute;nica </span><a style=\"text-decoration: none;\" href=\"http://www.abanicoytu.com\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000080; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">www.abanicoytu.com</span></a><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\"> en la cual hacemos de su conocimiento que informaci&oacute;n recabamos, con que finalidad y como es utilizada para poder realizar con confianza cualquier actividad en nuestra p&aacute;gina. Este documento es parte de los T&eacute;rminos y Condiciones Generales de www.abanicoytu.com, por lo que al aceptar dicho T&eacute;rminos y Condiciones el usuario acepta las disposiciones aqu&iacute; expuestas. </span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\">&nbsp;</p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: bold; font-style: italic; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">INFORMACION RECABADA</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">DIRECTAMENTE. De manera general la informaci&oacute;n que nosotros solicitamos de nuestros compradores, vendedores, prestadores de servicios, distribuidores, colaboradores y/o cualquiera persona relacionada con nosotros es: nombre completo, domicilio, tel&eacute;fono, tel&eacute;fono m&oacute;vil, correo electr&oacute;nico, edad, fecha de nacimiento, nacionalidad, RFC, datos de facturaci&oacute;n, INE, n&uacute;mero de INFONAVIT, n&uacute;mero de tarjeta bancaria, identificadores de cuentas bancarias, entre otros (algunos solo aplican para nuestros colaboradores). &nbsp;Para poder confirmar los datos personales es posible que acudamos a entidades p&uacute;blicas, compa&ntilde;&iacute;as especializadas o centrales de riesgo. Por lo que al registrarte nos autorizas a compartir los datos personales, financieros y patrimoniales con dichas entidades. La informaci&oacute;n que ellas arrojen ser&aacute; tratada de forma confidencial. </span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 6pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Cuando un usuario se registra en www.abanicoytu.com a trav&eacute;s de su cuenta personal en una red social estar&aacute; dando su consentimiento para se le envi&eacute; informaci&oacute;n o mensajes de finalidad descriptiva al correo electr&oacute;nico vinculado a la cuenta personal. </span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">INDIRECTAMENTE. Cuando navegas en nuestra tienda recibimos de manera autom&aacute;tica informaci&oacute;n sobre la actividad de los usuarios y visitantes tales como la URL de la que proviene, a que URL acceden, que navegador se est&aacute; usando y la direcci&oacute;n de protocolo de internet de tu computadora (IP) con el fin de proporcionarnos informaci&oacute;n que nos ayuda a conocer acerca de su navegador y sistema operativo. &nbsp;</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Como muchas otras p&aacute;ginas recabamos cierto tipo de informaci&oacute;n cuando su navegador acceda a nuestra p&aacute;gina a trav&eacute;s de las &ldquo;cookies&rdquo;. No es requisito su aceptaci&oacute;n al momento de navegar, sin embargo, habr&aacute; ciertas funciones que no puedas realizarse de manera &oacute;ptima si no son aceptadas. La mayor&iacute;a de los navegadores indican como configurar su navegador para que no acepte cookies. Asimismo, se puede deshabilitar o eliminar datos similares utilizados por los complementos de los navegadores. Sin embargo, recomendamos dejar habilitadas las cookies para que le sea posible utilizar funciones esenciales de nuestra p&aacute;gina. </span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: bold; font-style: italic; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">CONSENTIMIENTO</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">ABANICO bajo ninguna circunstancia vender&aacute;, alquilar&aacute; o compartir&aacute; los Datos Personales salvo en aquellas formas establecidas en el presente aviso de privacidad. Una vez que el usuario se registre en nuestra p&aacute;gina acepta de forma expresa el uso y transferencia total o parcial de los datos personales a las entidades mencionadas en este aviso. &nbsp;Cabe recordar que en todo momento haremos todo lo posible por que tu informaci&oacute;n personal este protegida. En caso de que terceras partes intercepten o accedan a cierta informaci&oacute;n o transmisi&oacute;n de datos ABANICO no responder&aacute; por la informaci&oacute;n que sea revelada. </span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Si llegara a existir una raz&oacute;n secundaria para solicitarte alg&uacute;n dato, como estudios de marketing o de an&aacute;lisis de informaci&oacute;n, te pediremos expresamente consentimiento para hacer uso de ella. </span></p>\r\n<p><strong style=\"font-weight: normal;\">&nbsp;</strong><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: bold; font-style: italic; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">USO DE LA INFORMACION</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Los datos personales nos sirven para brindarles a nuestros usuarios una mejor experiencia dentro de nuestra p&aacute;gina, permiti&eacute;ndonos agilizar operaciones y realizarlas de forma segura y ayudar a compradores y vendedores a contactarse de forma segura y responsable. &nbsp;Tambi&eacute;n, nos permite hacerle llegar a los usuarios informaci&oacute;n sobre productos o servicios que est&eacute;n relacionados con el historial de nuestros clientes, poder cumplir los acuerdos que hemos adquirido con nuestros clientes, informar sobre cambios en nuestros productos y servicios y brindar atenci&oacute;n al usuario de forma personalizada y eficiente. </span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Adem&aacute;s de mejorar tu experiencia de compra con nosotros, tus datos nos sirven para poder conocer de forma interna cuales son los gustos, necesidades e intereses de nuestros clientes. Mejorar la forma en que nos acercamos a los clientes y como nos comunicamos con ellos. Incrementar la oferta de productos y servicios. Enviar informaci&oacute;n y mensajes sobre nuestros contenidos, noticias, publicidad, productos y servicios. </span></p>\r\n<p><strong style=\"font-weight: normal;\">&nbsp;</strong><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: bold; font-style: italic; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">CON QUIEN COMPARTIMOS TU INFORMACION</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Dada la naturaleza de nuestra empresa debemos compartir informaci&oacute;n con todos aquellos proveedores o empresas que nos ayudan a realizar las operaciones de transporte, medios de pago, seguros, intermediarios en la gesti&oacute;n de pagos, empresas afiliadas, proveedores de servicios a terceros. &nbsp;Si hay un requerimiento judicial o si es necesario suministrar los datos personales a las entidades que intervengan en la resoluci&oacute;n de disputas entre usuarios como son compa&ntilde;&iacute;as de seguros, tribunales de arbitraje o los tribunales competentes para solucionar tales disputas. </span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">En general, los proveedores de terceras partes utilizados por nosotros solo recopilar&aacute;n, usar&aacute;n y divulgar&aacute;n tu informaci&oacute;n en la medida que sea necesaria para que les permita desempe&ntilde;ar los servicios que nos proveen. Sin embargo, algunos proveedores de servicios de terceros, tales como pasarelas de pago y otros procesadores de transacciones de pago, tienen sus propias pol&iacute;ticas de privacidad con respecto a la informaci&oacute;n que estamos obligados a proporcionarles para las transacciones relacionadas con las compras. En estos casos, te recomendamos que leas las pol&iacute;ticas de privacidad para que puedas entender la manera en que tu informaci&oacute;n personal ser&aacute; manejada. En particular, recuerda que algunos proveedores pueden estar ubicados o contar con instalaciones que se encuentran en una jurisdicci&oacute;n diferente a ti o nosotros. &nbsp;As&iacute; que si deseas proceder con una transacci&oacute;n que involucra los servicios de un proveedor a terceros, tu informaci&oacute;n puede estar sujeta a las leyes de la jurisdicci&oacute;n(es) en que se encuentra el proveedor de servicios o sus instalaciones. A modo de ejemplo, si te encuentras en M&eacute;xico y tu transacci&oacute;n es procesada por una pasarela de pago con sede en Estados Unidos, entonces tu informaci&oacute;n personal utilizada para completar la transacci&oacute;n puede ser sujeto de divulgaci&oacute;n en virtud de la legislaci&oacute;n de Estados Unidos, incluyendo la Ley Patriota.</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Una vez que abandonas el sitio web de nuestra tienda o te rediriges a un sitio o aplicaci&oacute;n de terceros, ya no est&aacute;s siendo regulados por la presente Pol&iacute;tica de Privacidad o los T&eacute;rminos de Servicio de nuestra p&aacute;gina web.</span></p>\r\n<p><strong style=\"font-weight: normal;\">&nbsp;</strong><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: bold; font-style: italic; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">USO DE DATOS CON OTROS USUARIOS</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Dada la naturaleza de nuestro negocio en ocasiones se crear&aacute;n interacciones entre nuestros usuarios. Esto conlleva a permitir un acceso limitado a los datos personales para que puedan establecer comunicaci&oacute;n entre ellos, organizar la prestaci&oacute;n de servicios y alguna otra actividad en la que haya convenido los usuarios al momento de su negociaci&oacute;n. Sin excepci&oacute;n, no podr&aacute;n intercambiarse datos personales de un tercero sin el consentimiento expl&iacute;cito de ABANICO y del usuario en cuesti&oacute;n. </span></p>\r\n<p><strong style=\"font-weight: normal;\">&nbsp;</strong><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: bold; font-style: italic; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">DERECHOS ARCO (ACCESO, RECTIFICACION, CANCELACION Y OPOSICION) Y REVOCACION DEL CONSENTIMIENTO</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Para cualquier aclaraci&oacute;n, modificaci&oacute;n o revocaci&oacute;n de los datos el usuario puede comunicarse al correo electr&oacute;nico atencioncliente@abanicoytu.com</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Cuando el usuario quiera ejercer sus derechos ARCO o bien revocar el consentimiento que nos haya otorgado deber&aacute; de enviar directamente su solicitud al &aacute;rea de servicio de atenci&oacute;n al cliente a trav&eacute;s de la cuenta de correo atencioncliente@abanicoytu.com. La solicitud debe incluir: 1) nombre y domicilio u otro medio para establecer comunicaci&oacute;n con el usuario, 2) copia del documento que acredite su identidad, 3) una descripci&oacute;n clara y precisa de la informaci&oacute;n sobre la cual se solicita ejecutar alguno o los derechos ARCO, 4) carta donde se exprese claramente el deseo de revocaci&oacute;n del consentimiento al uso y tratamiento de los datos personales. Evaluaremos y daremos soluci&oacute;n a su solicitud en un plazo de 25 d&iacute;as h&aacute;biles despu&eacute;s del cual se le informar&aacute; de la resoluci&oacute;n a su solicitud a trav&eacute;s del correo electr&oacute;nico del que se hizo llegar la solicitud. </span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Usted podr&aacute; revisar y modificar la informaci&oacute;n que nos brind&oacute; al momento de registrarse incluyendo: correo electr&oacute;nico, domicilio, ciudad, regi&oacute;n, c&oacute;digo postal, n&uacute;mero principal de tel&eacute;fono, datos de facturaci&oacute;n y clave. En ocasiones, mantendremos la informaci&oacute;n que ha sido modificada con el fin de resolver disputas, reclamaciones o aclaraciones con otros usuarios. Esto implica que no siempre ser&aacute;n eliminados de nuestras bases toda la informaci&oacute;n que solicite el usuario. </span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">En caso de ya no querer recibir ofertas por correo electr&oacute;nico el usuario deber&aacute; modificar su configuraci&oacute;n dentro de su perfil de usuario. </span></p>\r\n<p><strong style=\"font-weight: normal;\">&nbsp;</strong><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: bold; font-style: italic; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">SEGURIDAD DE LA INFORMACION</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Para proteger tu informaci&oacute;n personal seguimos las mejores pr&aacute;cticas de la industria para asegurarnos de que no se d&eacute; un uso inapropiado, acceso err&oacute;neo, divulgaci&oacute;n, alteraci&oacute;n o destrucci&oacute;n de la informaci&oacute;n. La informaci&oacute;n de los m&eacute;todos de pago es ________________ y encriptada mediante el protocolo Secure Socket Layer (SSL) y es procesada por las pasarelas de pago en sus servidores seguros. Sus datos personales y contrase&ntilde;a se almacenan en nuestras bases de datos en nuestro servidor detr&aacute;s de un firewall. Seguimos todos los requisitos de PCI-DSS e implementamos normas adicionales aceptadas por la industria y, aunque no existe una garant&iacute;a de 100% de seguridad, nosotros hacemos todo lo posible para que no exista ning&uacute;n riesgo. </span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 0pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Cuando confirmas tu pedido es posible que algunas pasarelas de pago revelen los &uacute;ltimos cuatro d&iacute;gitos de tu n&uacute;mero de tarjeta de cr&eacute;dito. </span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Para mayor protecci&oacute;n sugerimos que te asegures de cerrar correctamente tu sesi&oacute;n al estar utilizando una computadora compartida. </span></p>\r\n<p><strong style=\"font-weight: normal;\">&nbsp;</strong><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: bold; font-style: italic; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">EDAD DE CONSENTIMIENTO</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 8pt; text-indent: 36pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Para hacer uso de nuestros servicios debes de tener la capacidad legal para contratar, por lo que si no cumples con esta condici&oacute;n deber&aacute;s abstenerte de proporcionar tus datos personales. Solo si tus padres o tutores est&aacute;n de acuerdo, y nos brindan su consentimiento por escrito, podr&aacute;s registrarte en nuestra base de datos. </span></p>\r\n<p><strong style=\"font-weight: normal;\">&nbsp;</strong><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: bold; font-style: italic; font-variant: normal; text-decoration: underline; -webkit-text-decoration-skip: none; text-decoration-skip-ink: none; vertical-align: baseline; white-space: pre-wrap;\">CAMBIOS A ESTA POL&Iacute;TICA DE PRIVACIDAD</span></p>\r\n<p dir=\"ltr\" style=\"line-height: 1.2; margin-top: 0pt; margin-bottom: 8pt; text-align: justify;\"><span style=\"font-size: 12pt; font-family: \'Iskoola Pota\'; color: #000000; background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;\">Nos reservamos el derecho de modificar esta pol&iacute;tica de privacidad en cualquier momento, por lo que es conveniente que te mantengas al pendiente de las modificaciones. Los cambios y aclaraciones entrar&aacute;n en vigor inmediatamente despu&eacute;s de su publicaci&oacute;n en el sitio web. Si hacemos cambios en esta pol&iacute;tica, notificaremos aqu&iacute; que ha sido actualizada, por lo que cual est&aacute;s enterado de qu&eacute; informaci&oacute;n recopilamos, c&oacute;mo y bajo qu&eacute; circunstancias, si las hubiere, la utilizamos y/o divulgamos.</span></p>', 'default.jpg', 'legales', '2019-04-02 22:22:01', '2019-04-02 22:22:01', '2019-04-02 22:22:01', 'activo', NULL);
+INSERT INTO `publicaciones` (`ID_PUBLICACION`, `PUBLICACION_TITULO`, `PUBLICACION_URL`, `PUBLICACION_RESUMEN`, `PUBLICACION_CONTENIDO`, `PUBLICACION_IMAGEN`, `PUBLICACION_TIPO`, `PUBLICACION_FECHA_REGISTRO`, `PUBLICACION_FECHA_ACTUALIZACION`, `PUBLICACION_FECHA_PUBLICACION`, `PUBLICACION_ESTADO`, `ORDEN`) VALUES
+(3, 'Términos y condiciones de servicio para vendedores y prestadores de servicios', 'terminos-y-condiciones-de-servicio-para-vendedores-y-prestadores-de-servicios-7oc', '                  ', '<p>TÉRMINOS Y CONDICIONES DE SERVICIO PARA VENDEDORES\r\nY PRESTADORES DE SERVICIOS</p><p>INFORMACIÓN GENERAL</p><p><strong><em><u>ACUERDO PARA VENDEDORES DE LA TIENDA EN LÍNEA\r\n</u></em></strong></p><p>La empresa Abanico Siempre lo mejor S. A. de\r\nC. V., en adelante “ABANICO” ofrece este sitio web <a href=\"http://www.abanicoytu.com/\">www.abanicoytu.com</a> en adelante “EL SITIO”. En\r\ntodo el sitio, los términos “nosotros” y “nuestro” se refieren a Abanico\r\nSiempre lo mejor S.A. de C.V., e incluye toda la información, herramientas y\r\nservicios disponibles para ti, VENDEDORES(AS) / PRETADORES(AS), quienes están condicionados\r\na aceptar todos los términos, condiciones, políticas y notificaciones aquí\r\nestablecidos para poder tener acceso a EL SITIO y ofertar sus productos y/o\r\nservicios. </p><p><strong><em><u>ACEPTACIÓN DE LOS TÉRMINOS DE USO</u></em></strong><u></u></p><p>Al acceder, navegar y anunciarte en EL SITIO\r\nde ABANICO, los VENDEDORES(AS)/PRETADORES(AS) aceptan sujetarse a los Términos\r\ny Condiciones sin limitación o condición alguna, incluyendo las\r\nactualizaciones, modificaciones y adiciones que ABANICO publique. Dada la\r\nnaturaleza de ABANICO, algunos sitios o servicios pueden estar regulados por términos\r\ny condiciones adicionales, por lo que sugerimos al público lea atentamente\r\ntales términos en las secciones correspondientes. Las condiciones de servicio aquí\r\nexpuestas aplican a todos los usuarios del sitio, incluyendo sin limitación a\r\nusuarios que sean navegadores, vendedores, prestadores de servicios,\r\nproveedores, clientes, comerciantes, y/o colaboradores de contenido.</p><p>Por favor, lee estos “Términos y Condiciones”\r\ncuidadosamente antes de acceder o utilizar nuestro sitio web ya que al acceder\r\no utilizar cualquier parte del sitio, estás aceptando los Términos y\r\nCondiciones. Si no estás de acuerdo con ellos no deberías acceder a la página\r\nweb o usar cualquiera de los servicios. ABANICO se reserva el derecho de efectuar\r\nmodificaciones o cambios en estos Términos y Condiciones sin necesidad de\r\nnotificar personalmente a VENDEDORES(AS)/PRETADORES(AS) y será la última versión\r\nla que aplique en todo momento dejando sin validez cualquier documento\r\npublicado anteriormente. </p><p><strong><em><u>TÉRMINOS GENERALES</u></em></strong><u></u></p><p>Entiendes que la información que nos brindes,\r\nsin incluir la información de tu tarjeta de crédito, puede ser transferida sin\r\nencriptar y/o involucrar transmisiones a través de varias redes y cambios para\r\najustarse o adaptarse a los requisitos técnicos de conexión de redes o\r\ndispositivos. La información de tarjetas de crédito estará siempre encriptada\r\ndurante la transferencia a través de las redes.</p><p>Estás de acuerdo con no reproducir, duplicar,\r\ncopiar, vender, revender o explotar cualquier parte del servicio, uso del\r\nservicio, o acceso al servicio o cualquier contacto en el sitio web a través\r\ndel cual se presta el servicio, sin el expreso permiso por escrito de nuestra\r\nparte. Los títulos utilizados en este acuerdo se incluyen solo por conveniencia\r\ny no limita o afecta a estos Términos de Servicio.<strong><em></em></strong></p><p><strong><em></em></strong></p><p><strong><em><u>RESTRICCIÓN DE EDAD</u></em></strong><u></u></p><p>Al utilizar este sitio, declaras que tienes\r\nal menos la mayoría de edad en tu estado o provincia de residencia, o nos has\r\nhecho llegar la documentación que acredite un permiso por parte de tus padres,\r\ntutores o representantes legales para que accedas a EL SITIO. <strong><em></em></strong></p><p><strong><em></em></strong></p><p><strong><em><u>REGISTRO DE VENDEDORES(AS)/PRETADORES(AS)</u></em></strong><u></u></p><p>Para hacer uso de EL SITIO y/o los servicios\r\nprestados por ABANICO los VENDEDORES(AS)/PRETADORES(AS) deberán estar\r\nregistrados a través de una cuenta en la página <a href=\"http://www.abanicoytu.com/\">www.abanicoytu.com</a> e ingresando toda la información\r\nsolicitada de manera clara, precisa y verdadera. La actualización de los datos\r\npersonales es entera responsabilidad los VENDEDORES(AS)/PRETADORES(AS) la cual deberá\r\nrealizarse cada vez que exista algún cambio en la misma. ABANICO podrá requerir\r\nalgún comprobante y/o dato adicional que nos permitan validar la información\r\nbrindada por los VENDEDORES(AS)/PRETADORES(AS) sin que esto implique que\r\nABANICO se responsabiliza por la veracidad de la información que estos\r\nproporcionen. De no poder comprobarse la información, ABANICO se reserva el\r\nderecho de suspender temporal o definitivamente sus anuncios. Los VENDEDORES(AS)/PRETADORES(AS)\r\ngarantizan y responden, en cualquier caso, de la veracidad de la información\r\nque están dando. </p><p> Una\r\nvez registrados los VENDEDORES(AS)/PRETADORES(AS) generaran una contraseña de\r\nacceso y solo ellos serán los únicos responsables de asegurar su contraseña y\r\nde las actividades que ocurran bajo el uso de la cuenta o contraseña. En caso\r\nde detectar un mal uso de la cuenta o contraseña los VENDEDORES(AS)/PRETADORES(AS)\r\ndeberán de indicárnoslo inmediatamente. En ningún caso ABANICO será responsable\r\npor pérdidas o daños de cualquier tipo incurridos como resultado de la falta de\r\ncumplimiento de esta condición. </p><p>Si llegara a detectarse un uso fraudulento, malintencionado\r\no contrario a estos Términos y Condiciones, un uso de nuestros productos con algún\r\npropósito ilegal o no autorizado y/o la violación de cualquier ley\r\njurisdiccional, ABANICO se reserva el derecho de dar por terminada cualquier relación\r\ncomercial, suspender definitivamente las cuentas e incluso colaborar\r\njudicialmente para la persecución de los infractores, sin que esto genere algún\r\nderecho a indemnización o resarcimiento. </p><p><strong><em><u>PRIVACIDAD DE LA INFORMACION REGISTRADA POR LOS\r\n</u></em></strong><strong><u>VENDEDORES(AS) / PRETADORES(AS)</u></strong></p><p>ABANICO se compromete en todo momento a\r\ncumplir las leyes de protección de datos personales aplicables y a los Términos\r\nde su Aviso de Privacidad, el cual puede ser consultado en la dirección web https:// </p><p><strong><em><u>PROPIEDAD INTELECTUAL DE ABANICO</u></em></strong><u></u></p><p>EL SITIO está protegido por las leyes de\r\nderecho de autor y propiedad industrial tanto en México como en aquellas zonas\r\ndonde los tratados internacionales en la materia tengan injerencia. ABANICO\r\ntiene la propiedad de los derechos de autor del contenido y el software de su\r\nsitio web. Todos los derechos no otorgados en estos Términos y Condiciones\r\nquedan reservados. Queda absolutamente prohibido reproducir y/o distribuir\r\ncualquier material del sitio de ABANICO. ABANICO NO otorga ningún permiso para\r\nhacer uso del material que se encuentre en su sitio web. </p><p><strong><em><u>ACTIVIDADES ILEGALES Y/O PERJUDICIALES</u></em></strong><u></u></p><p>Los VENDEDORES(AS)/PRETADORES(AS) aceptan NO\r\nrealizar ningún tipo de comportamiento ilegal como: 1) utilizar el sitio <a href=\"http://www.abanicoytu.com/\">www.abanicoytu.com</a> para fines ilícitos; 2)\r\nacosar, abusar, insultar, dañar, difamar, calumniar, desprestigiar, intimidar o\r\ndiscriminar por razones de género, orientación sexual, religión, etnia, raza,\r\nedad, nacionalidad o discapacidad u hostigar de manera electrónica a otra\r\npersona; 3) atentar contra la privacidad de otras personas; 4) distribuir o\r\ntransmitir cualquier gusano, virus, código o programas perjudiciales por medio\r\ndel sitio www.abanicoytu.com; 5) introducir publicidad no autorizada; 6)\r\nincluir material obsceno; 7) incluir redireccionamiento o servidores proxy; 8)\r\ninterferir, alterar o modificar el funcionamiento, los servidores o redes\r\nconectados a www.abanicoytu.com; 9) ejecutar programas o mantener una conexión\r\nde marcado activa o de cualquier otra forma eludir la desconexión automática\r\npor inactividad; 10) utilizar EL SITIO en violación de las disposiciones de\r\ncualquier otro proveedor de sitios web, en dichos sitios web, salas de chat o\r\nelementos similares; 11) utilizar EL SITIO para acceder a las cuentas de otras\r\npersonas sin su autorización; 12) intentar vulnerar las medidas de seguridad de\r\nEL SITIO u obtener o eludir las contraseñas de otras personas; 13) participar\r\nen acciones diseñadas para afectar el acceso a la red bombardeando un sitio o\r\ncualquier red de Internet con tráfico inútil; 14) pedirle a otros que realicen\r\no participen en actos ilícitos; 15) violar cualquier regulación, reglas, leyes\r\ninternacionales, federales, provinciales o estatales, u ordenanzas locales; 16)\r\npara infringir o violar el derecho de propiedad intelectual nuestro o de terceras\r\npartes; 17) presentar información falsa o engañosa; 18) recopilar o rastrear\r\ninformación personal de otros; 19) generar spam, phish, pharm, pretext, spider,\r\ncrawl, or scrape; 20) cualquier propósito obsceno o inmoral; o 21) para\r\ninterferir con o burlar los elementos de seguridad del Servicio o cualquier\r\nsitio web relacionado. </p><p><strong><em><u>PUBLICACIÓN DE PRODUCTOS Y SERVICIOS</u></em></strong><strong><u></u></strong></p><p><strong>Existen dos formas por medio de las cuales los VENDEDORES(AS)/PRETADORES(AS)\r\npodrán ofertar sus productos o servicios:</strong></p><p><strong></strong></p><ol><li>Publicando ellos mismos su información,\r\n siguiendo los sencillos pasos que se muestran en EL SITIO. En el caso de los\r\n diferentes productos, todas las publicaciones sin excepción deberán\r\n incluir fotografías del producto, información detallada y precisa de las\r\n características del producto, por ejemplo: tamaño, material, usos,\r\n modificaciones de uso de ser necesario, requerimientos especiales como\r\n voltajes, uso de batería, etc. Se da por entendido que por el simple hecho\r\n de subir la publicación en EL SITIO los VENDEDOR(AS) están poniendo a la\r\n venta su(s) producto(s) y que tienen la facultad legal, y el permiso de su\r\n titular, para venderlo. Así mismo, queda entendido que los VENDEDOR(AS)\r\n poseen el artículo en existencia, listo para su entrega y que cumple con\r\n todos los permisos fiscales ante las autoridades nacionales e internacionales\r\n para poder venderlo. De detectarse cualquier infracción en estos términos\r\n ABANICO está facultado para solicitar la modificación de la(s) publicación(es)\r\n o bien darlas de baja de EL SITIO.</li></ol><p>Una\r\nvez que la información sea cargada en el sistema se realizará un seguimiento\r\npor parte de ABANICO para determinar la veracidad de la información presentada.\r\nEs derecho de ABANICO solicitar al vendedor pruebas de la procedencia legal de\r\nla mercancía, así como otros documentos relacionados con el vendedor o la\r\nempresa. </p><p> Para el\r\ncaso de los servicios, los PRESTADOR(AS) deberán incluir una descripción detallada\r\ndel tipo de servicio que ofrece, así como un rango de costo aproximado. Deberá\r\nde especificarse el área o regiones que el prestador está dispuesto a atender y\r\nlos horarios en los que se realizan los servicios. </p><p> Todos los\r\nVENDEDORES(AS)/PRETADORES(AS) deberán abstenerse de publicar, distribuir o\r\ntransmitir cualquier contenido que sea ilícito, acosador, difamatorio, abusivo,\r\namenazante, obsceno, doloso, calumnioso o invasivo de la privacidad de otro\r\nindividuo. Que viole o vulnere los derechos de autor, marcas, secretos industriales,\r\npatentes u otros derechos de propiedad intelectual de cualquier parte, incluyendo\r\nsin limitación el uso de materiales de terceros protegidos por la ley de\r\nderechos de autor sin la autorización correspondiente, utilizar marcas de\r\nterceros sin la autorización o atribución correspondiente, y utilizar o\r\ndistribuir información de terceros protegida o no como secreto industrial en\r\nviolación a cualquier obligación de confidencialidad.</p><ol><li>Previo acuerdo con ABANICO para\r\n que su información sea subida al EL SITIO por parte de nuestro\r\n departamento encargado. En este caso los VENDEDORES(AS)/PRETADORES(AS), deberán\r\n contactarse con ABANICO al correo electrónico <a href=\"mailto:ventas@abanicoytu.com\" style=\"\">ventas@abanicoytu.com</a>&nbsp;para determinar qué mecanismos de publicación son los que se adaptan mejor\r\n a las características de sus productos o servicios.</li></ol><p><strong>En ambos casos se deberán\r\nanexar a su registro la siguiente documentación: </strong></p><p><strong>VENDEDOR(AS)</strong></p><p>1. \r\nIdentificación oficial </p><p>2. \r\nComprobante de domicilio</p><p>3. \r\nRFC en caso de estar inscrito bajo el\r\nRégimen de Incorporación Fiscal o ser una persona Moral. </p><p>4. \r\nEstado de cuenta bancario donde se\r\nobserve claramente el numero de la cuenta y la CLABE interbancaria. </p><p>5. \r\nDe tratarse de una persona moral será\r\nnecesario anexar la copia del acta constitutiva de la empresa. </p><p><strong></strong></p><p><strong>PRESTADORES (AS)</strong></p><p>1. \r\nIdentificación oficial </p><p>2. \r\nComprobante de domicilio</p><p>3. \r\nNúmero de teléfono activo al momento\r\nde registrarse</p><p>4. \r\nDos números telefónicos de personas\r\nque extiendan una recomendación para el prestador de servicio o 2 cartas de\r\nrecomendación donde se indiquen los servicios que han sido prestados con\r\nanterioridad. </p><p><strong></strong></p><p>Una vez registrados en la página y entregada la\r\ndocumentación ABANICO se pondrá en contacto con los vendedores y prestadores\r\npara confirmar la información. Con todos los requisitos cubiertos, la tienda\r\ny/o el anuncio serán dados de alta en un periodo máximo de 4 días hábiles. De\r\nno entregarse tal información requerida ABANICO se reserva el derecho de\r\nsuspender temporalmente el anuncio o eliminarlo de forma definitiva de EL\r\nSITIO.</p><p>En aquellos casos que la publicación y/o comercialización\r\nde productos y/o servicios estén relacionados con el consumo de tabaco y\r\nalcohol los VENDEDORES(AS)/PRETADORES(AS) estarán obligado a añadir dentro del\r\nanuncio una leyenda visible, clara y precisa que estos productos o servicios están\r\nlimitados para aquellas personas mayores de 18 años.</p><p><strong><em><u></u></em></strong></p><p><strong><em><u>SERVICIO DE RECOLECCIÓN, ALMACENAJE Y ENTREGA\r\nPOR PARTE DE ABANICO</u></em></strong></p><p>Los VENDEDOR(AS) podrán: </p><p>1. \r\nTener bajo su resguardo los productos y ser los responsables del manejo y envío\r\nde los mismos al momento que se realice una compra. Bajo este esquema, los VENDEDORES(AS)\r\nasumen totalmente la responsabilidad de la entrega en tiempo y forma de los\r\nproductos. </p><p>2. \r\nTener bajo su resguardo los productos y al momento de realizarse una venta\r\ncoordinarse con ABANICO para obtener una guía de envío prepagada con la que\r\npuedan hacer llegar sus productos a los compradores. En este caso los VENDEDORES(AS)\r\naceptan las comisiones y condiciones que Abanico señale. </p><p>3. Acceder a los servicios de almacenaje y\r\nentrega de ABANICO. Bajo este esquema los VENDEDORES(AS) deberán:</p><p>a) \r\nDar de alta sus productos en la plataforma. </p><p>b) \r\nEnviar una relación describiendo a detalle el número de productos,\r\ndimensiones, pesos, características y precios. La entrega de los productos deberá\r\nrealizarse antes de 48 h posteriores al registro en un horario de 9:30 a 15:00 h. De existir discrepancia al momento de la\r\nentrega entre el número de productos registrados y el enviado al almacén se suspenderá\r\nla recepción de los mismos. Una vez recibidos los productos se enviará una confirmación\r\nde recepción o, de ser el caso, una carta de rechazo explicando el por qué los\r\nproductos no pueden ser almacenados. </p><p>c) Únicamente el personal de ABANICO será el\r\nencargado de realizar el inventario dentro de la bodega y de la manipulación de\r\nlos productos. </p><p>d)\r\nSi los VENDEDORES(AS) entregan los productos ya listos para su entrega, ABANICO\r\nno se hará responsable por daños o perdidas que pudieran ocurrir debidos a un\r\nmal empacado y protección de los productos. Por esta razón, los VENDEDORES(AS)\r\ndeberán de firmar una carta de liberación de responsabilidad por parte de\r\nABANICO. Caso contrario, si los VENDEDORES(AS) entregan sus productos para que\r\nABANICO se encargue del empacado, embalaje y traslado, será completa\r\nresponsabilidad de ABANICO cualquier daño que los productos puedan sufrir una\r\nvez que hayan sido entregados en el depósito. ABANICO responderá en caso de pérdida\r\ntotal o parcial de los productos siempre y cuando las causas sean directamente\r\nimputables. Si la perdida es el resultado de causas totalmente ajenas a ABANICO\r\neste no se responsabilizará por las mismas. </p><p>e)\r\nDe ningún modo ABANICO devolverá a los VENDEDORES(AS) los productos que ya estén\r\ndestinados a ser entregados a EL COMPRADOR o cuando exista algún saldo pendiente.\r\n</p><p>f)\r\nLos costos por concepto de almacenaje en las instalaciones de ABANICO son: $210.00\r\nmensuales por metro cúbico ($210.00 x m<sup>3</sup>) o la cantidad proporcional\r\nque sus productos necesiten. Esta tarifa está sujeta a modificaciones, mismas\r\nque deberán ser dadas a conocer por ABANICO con al menos 15 días naturales de\r\nanticipación. </p><p>g)\r\nLos costos de manejo serán del 8% cuando ABANICO se encargue de todo el proceso\r\nde embalaje. Esto incluye empacado, entrega al servicio de mensajería y rastreo\r\ndel envío hasta su entrega al cliente final. \r\n</p><p>h) Los costos de envío corresponderán\r\na las tarifas que las compañías de entrega señalen. Dado que es un servicio\r\nexterno totalmente ajeno del control de ABANICO al precio señalado será\r\nnecesario agregarle el IVA. </p><p>Los VENDEDORES(AS) aceptan que todo costo relacionado por almacenaje, manejo\r\ny entrega sea descontado del monto final por concepto de las ventas generadas.\r\nDe no haber forma de realizar el descuento, los gastos deberán de ser cubiertos\r\npor los VENDEDORES(AS) a más tardar 5 días naturales posteriores a la fecha de\r\ncontrato. Si el monto no ha sido cubierto durante dos meses consecutivos la mercancía\r\nserá retenida y los VENDEDORES(AS) aceptan que no podrán ejercer ningún tipo de\r\nacción legal que implique la devolución, reposición o indemnización por tal mercancía.\r\n</p><p><strong><em><u>COSTO\r\nDE LOS PLANES </u></em></strong></p><p><strong>Costos para vendedores</strong></p><p>Los precios del\r\nservicio de ABANICO abajo listados <strong>ya\r\nincluyen el IVA</strong>.</p>\r\n<div class=\"table-responsive\">\r\n<table class=\"table table-bordered table-condensed\">\r\n <tbody><tr>\r\n <td>\r\n \r\n </td>\r\n <td>\r\n <p><strong>VENDEDOR CASUAL</strong></p>\r\n </td>\r\n <td>\r\n <p><strong>VENDEDOR REGULAR </strong></p>\r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n \r\n </td>\r\n <td>\r\n <p><strong></strong></p>\r\n </td>\r\n <td>\r\n <p>Tú te encargas de todo.</p>\r\n </td>\r\n <td>\r\n <p>Tú te encargas de todo y nosotros te ayudamos a realizar\r\n tus envíos.</p>\r\n \r\n </td>\r\n <td>\r\n <p>Tu creas tu tienda a tu gusto y nosotros nos encargamos del\r\n resto. *</p>\r\n </td>\r\n <td>\r\n <p>Lo hacemos todo por ti. *</p>\r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Mensualidad</p>\r\n \r\n </td>\r\n <td>\r\n <p><strong>- - -</strong></p>\r\n </td>\r\n <td>\r\n <p>$180.00</p>\r\n </td>\r\n <td>\r\n <p>$180.00</p>\r\n </td>\r\n <td>\r\n <p>$180.00</p>\r\n </td>\r\n <td>\r\n <p>$180.00</p>\r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Almacenamiento</p>\r\n \r\n \r\n </td>\r\n <td>\r\n <p><strong>- - -</strong></p>\r\n </td>\r\n <td>\r\n <p>- - -</p>\r\n </td>\r\n <td>\r\n <p>- - -</p>\r\n </td>\r\n <td>\r\n <p>$210.00 mensuales x m<sup>3</sup> **</p>\r\n </td>\r\n <td>\r\n <p>$210.00 mensuales x m<sup>3</sup> **</p>\r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Comisión por venta realizada </p>\r\n </td>\r\n <td>\r\n <p><strong>13%</strong></p>\r\n <p><strong>De comisión por venta</strong></p>\r\n <p><strong></strong></p>\r\n </td>\r\n <td>\r\n <p>7 % </p>\r\n <p>De comisión por venta</p>\r\n </td>\r\n <td>\r\n <p>7 % </p>\r\n <p>De comisión por venta\r\n </p>\r\n </td>\r\n <td>\r\n <p>7 % </p>\r\n <p>De comisión por venta\r\n </p>\r\n </td>\r\n <td>\r\n <p>7 % </p>\r\n <p>De comisión por venta\r\n </p>\r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Manejo del producto</p>\r\n </td>\r\n <td>\r\n <p><strong>- - -</strong></p>\r\n </td>\r\n <td>\r\n <p>- - -</p>\r\n </td>\r\n <td>\r\n <p>- - -</p>\r\n </td>\r\n <td>\r\n <p>8 % </p>\r\n <p>del costo del\r\n producto</p>\r\n \r\n </td>\r\n <td>\r\n <p>8 % </p>\r\n <p>del costo del\r\n producto</p>\r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n \r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Envío del producto<sup> 1</sup></p>\r\n </td>\r\n <td>\r\n <p>- - -</p>\r\n </td>\r\n <td>\r\n <p>- - -</p>\r\n </td>\r\n <td>\r\n <p>Costo del envío + IVA</p>\r\n </td>\r\n <td>\r\n <p>Costo del envío</p>\r\n <p>+ IVA</p>\r\n </td>\r\n <td>\r\n <p>Costo del envío </p>\r\n <p>+ IVA</p>\r\n \r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Servicios financieros por venta realizada (sujeto a condición\r\n bancaria)<sup> 1</sup>. </p>\r\n \r\n </td>\r\n <td>\r\n <p>6% + $5.00</p>\r\n <p>por transacción.<strong></strong></p>\r\n </td>\r\n <td>\r\n <p>6% + $5.00</p>\r\n <p>por transacción.</p>\r\n </td>\r\n <td>\r\n <p>6% + $5.00</p>\r\n <p>por transacción.</p>\r\n </td>\r\n <td>\r\n <p>6% + $5.00</p>\r\n <p>por transacción.</p>\r\n </td>\r\n <td>\r\n <p>6% + $5.00</p>\r\n <p>por transacción.</p>\r\n </td>\r\n</tr>\r\n</tbody></table>\r\n</div>\r\n<p>* Si el cliente requiere la toma de\r\nfotografías para su anuncio, el costo de cada fotografía por producto será de\r\n$30.00</p><p>** El costo del\r\nalmacenaje va de acuerdo a la cantidad de espacio que tu producto necesite. </p><p><sup>1</sup> El costo de estos dos rubros depende del\r\ntipo de pago que escoge el cliente, así como del servicio de mensajería\r\nseleccionado. Por esta razón, los costos se señalan más el IVA correspondiente.</p><p><strong></strong></p><p><strong>El servicio de anuncios para venta\r\no renta de automóviles y bienes raíces tendrá los siguientes costos: </strong></p><p>Todos los precios abajo\r\nenlistados <strong>ya incluyen el IVA</strong>.</p>\r\n<div class=\"table-responsive\">\r\n<table class=\"table table-bordered table-condensed\">\r\n <tbody><tr>\r\n <td>\r\n \r\n </td>\r\n <td>\r\n <p>Incluye</p>\r\n </td>\r\n <td>\r\n <p>Costo</p>\r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Automóviles y bienes raíces. </p>\r\n </td>\r\n <td>\r\n <p>Mensualidad. Anuncio con tu\r\n automóvil o inmueble que incluye 3 fotografías y breve descripción. </p>\r\n \r\n </td>\r\n <td>\r\n <p>$ 200.00 </p>\r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Automóviles y bienes raíces. Paquete completo</p>\r\n </td>\r\n <td>\r\n <p>Mensualidad. Anuncio con tu\r\n automóvil o inmueble que incluye hasta 6 fotografías y una descripción\r\n detallada de tu automóvil o inmueble. </p>\r\n  \r\n </td>\r\n <td>\r\n <p>$500.00</p>\r\n \r\n \r\n </td>\r\n</tr>\r\n</tbody></table><p><strong></strong></p><p><strong>Costos para oferta de servicios</strong></p><p>Todos los precios abajo\r\nlistados <strong>ya incluyen el IVA</strong>.</p><table class=\"table table-bordered table-condensed\">\r\n <tbody><tr>\r\n <td>\r\n \r\n </td>\r\n <td>\r\n <p>Incluye</p>\r\n </td>\r\n <td>\r\n <p>Espacio ocupado</p>\r\n </td>\r\n <td>\r\n <p>Costo</p>\r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Anúnciate con nosotros</p>\r\n </td>\r\n <td>\r\n <p>Mensualidad. Descripción de tu\r\n servicio y zona donde se realiza. Mantenimiento del perfil. </p>\r\n </td>\r\n <td>\r\n <p>Tu anuncio comparte el espacio\r\n con otros anunciantes de la misma categoría. </p>\r\n </td>\r\n <td>\r\n <p>$ 200.00 </p>\r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Paquete completo</p>\r\n </td>\r\n <td>\r\n <p>Mensualidad. Descripción\r\n detallada de tu servicio y zona donde se realiza. Mantenimiento del perfil.\r\n Incluye la presentación de fotos y/o videos*, así como de documentos\r\n relevantes para que tus clientes potenciales te conozcan. </p>\r\n </td>\r\n <td>\r\n <p>Tu anuncio se presenta de manera\r\n individual en una página dentro de la categoría asignada. </p>\r\n </td>\r\n <td>\r\n <p>$500.00</p>\r\n \r\n \r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Paquete de lujo</p>\r\n </td>\r\n <td>\r\n <p>Diseñamos tu anuncio de acuerdo a\r\n tus necesidades. </p>\r\n </td>\r\n <td>\r\n <p>Se define según tus requerimientos.\r\n </p>\r\n </td>\r\n <td>\r\n <p>El costo se define de acuerdo a tus requerimientos. </p>\r\n </td>\r\n</tr>\r\n</tbody></table>\r\n</div>\r\n<p>*Esta información debe\r\nde ser entregada por el cliente para ser anexados en el sitio. </p><p><strong><em><u>ENVÍO DE PRODUCTOS</u></em></strong><u></u></p><p>Una vez que se ha recibido la confirmación de\r\nla orden de pago comienza a correr el tiempo de entrega del producto. Al\r\nmomento de realizarse la entrega del producto en el domicilio registrado será\r\nnecesario que el comprador o la persona que recibe se identifique con un\r\ndocumento oficial (credencial para votar, pasaporte, forma migratoria de ser el\r\ncaso). </p><p>El comprador puede elegir entre 3 tipos de envíos:</p><ol>\r\n <li>Entrega normal. Con un plazo de entrega de 4 a 10 días\r\n hábiles posteriores a la confirmación de recepción de la orden.</li>\r\n <li>Entrega Express. Con un plazo de entrega de 2 a 4 días\r\n hábiles posteriores a la confirmación de recepción de la orden. </li>\r\n <li>Entrega Especial. Con un plazo de entrega del mismo día\r\n hábil hasta el día siguiente posterior a la confirmación de la entrega de\r\n la orden. Esta entrega requiere que el monto del producto haya sido\r\n liquidado al momento de hacer el pedido. Las entregas únicamente se realizarán\r\n en direcciones establecidas (casa habitación, oficina o comercio), en ningún\r\n caso las entregas se realizarán en lugares públicos. El área de cobertura\r\n se limita a la Ciudad de México y el Área Metropolitana con algunas\r\n excepciones. Si la opción de Entrega Especial no se despliega al momento\r\n de capturar la información correspondiente al método de pago y tipo de\r\n entrega significa que aún no está disponible esta entrega en el área solicitada.\r\n Los horarios de la entrega especial serán de lunes a viernes de 10:00 am a\r\n 7:00 pm de lunes a viernes y sábado de 10:00 am a 12:00 pm. La entrega se realizará\r\n exclusivamente por personal de ABANICO perfectamente identificado. </li>\r\n</ol><p>Costos de entrega</p>\r\n<div class=\"table-responsive\">\r\n<table class=\"table table-bordered table-condensed\">\r\n <tbody><tr>\r\n <td>\r\n <p><strong>1. Costo de entrega normal</strong></p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p><strong>Peso en gramos por pieza</strong></p>\r\n </td>\r\n <td>\r\n <p><strong>TARIFA</strong></p>\r\n </td>\r\n <td>\r\n <p><strong>IVA</strong></p>\r\n </td>\r\n <td>\r\n <p><strong>TOTAL</strong></p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>Hasta</p>\r\n </td>\r\n <td>\r\n  \r\n </td>\r\n <td>\r\n  \r\n </td>\r\n <td>\r\n <p>1,000</p>\r\n </td>\r\n <td>\r\n <p>$34.48</p>\r\n </td>\r\n <td>\r\n <p>$5.52</p>\r\n </td>\r\n <td>\r\n <p>$40.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>1,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>2,000</p>\r\n </td>\r\n <td>\r\n <p>$40.95</p>\r\n </td>\r\n <td>\r\n <p>$6.55</p>\r\n </td>\r\n <td>\r\n <p>$47.50</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>2,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>3,000</p>\r\n </td>\r\n <td>\r\n <p>$45.69</p>\r\n </td>\r\n <td>\r\n <p>$7.31</p>\r\n </td>\r\n <td>\r\n <p>$53.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>3,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>4,000</p>\r\n </td>\r\n <td>\r\n <p>$50.00</p>\r\n </td>\r\n <td>\r\n <p>$8.00</p>\r\n </td>\r\n <td>\r\n <p>$58.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>4,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>5,000</p>\r\n </td>\r\n <td>\r\n <p>$54.74</p>\r\n </td>\r\n <td>\r\n <p>$8.76</p>\r\n </td>\r\n <td>\r\n <p>$63.50</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>5,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>6,000</p>\r\n </td>\r\n <td>\r\n <p>$63.79</p>\r\n </td>\r\n <td>\r\n <p>$10.21</p>\r\n </td>\r\n <td>\r\n <p>$74.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>6,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>7,000</p>\r\n </td>\r\n <td>\r\n <p>$64.66</p>\r\n </td>\r\n <td>\r\n <p>$10.34</p>\r\n </td>\r\n <td>\r\n <p>$75.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>7,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>8,000</p>\r\n </td>\r\n <td>\r\n <p>$65.52</p>\r\n </td>\r\n <td>\r\n <p>$10.48</p>\r\n </td>\r\n <td>\r\n <p>$76.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>8,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>9,000</p>\r\n </td>\r\n <td>\r\n <p>$66.38</p>\r\n </td>\r\n <td>\r\n <p>$10.62</p>\r\n </td>\r\n <td>\r\n <p>$77.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>9,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>10,000</p>\r\n </td>\r\n <td>\r\n <p>$67.24</p>\r\n </td>\r\n <td>\r\n <p>$10.76</p>\r\n </td>\r\n <td>\r\n <p>$78.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>10,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>11,000</p>\r\n </td>\r\n <td>\r\n <p>$70.69</p>\r\n </td>\r\n <td>\r\n <p>$11.31</p>\r\n </td>\r\n <td>\r\n <p>$82.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>11,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>12,000</p>\r\n </td>\r\n <td>\r\n <p>$71.55</p>\r\n </td>\r\n <td>\r\n <p>$11.45</p>\r\n </td>\r\n <td>\r\n <p>$83.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>12,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>13,000</p>\r\n </td>\r\n <td>\r\n <p>$72.41</p>\r\n </td>\r\n <td>\r\n <p>$11.59</p>\r\n </td>\r\n <td>\r\n <p>$84.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>13,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>14,000</p>\r\n </td>\r\n <td>\r\n <p>$73.71</p>\r\n </td>\r\n <td>\r\n <p>$11.79</p>\r\n </td>\r\n <td>\r\n <p>$85.50</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>14,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>15,000</p>\r\n </td>\r\n <td>\r\n <p>$74.14</p>\r\n </td>\r\n <td>\r\n <p>$11.86</p>\r\n </td>\r\n <td>\r\n <p>$86.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>15,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>16,000</p>\r\n </td>\r\n <td>\r\n <p>$75.43</p>\r\n </td>\r\n <td>\r\n <p>$12.07</p>\r\n </td>\r\n <td>\r\n <p>$87.50</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>16,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>17,000</p>\r\n </td>\r\n <td>\r\n <p>$75.86</p>\r\n </td>\r\n <td>\r\n <p>$12.14</p>\r\n </td>\r\n <td>\r\n <p>$88.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>17,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>18,000</p>\r\n </td>\r\n <td>\r\n <p>$77.16</p>\r\n </td>\r\n <td>\r\n <p>$12.34</p>\r\n </td>\r\n <td>\r\n <p>$89.50</p>\r\n </td>\r\n <td>\r\n \r\n </td>\r\n <td>\r\n \r\n </td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n \r\n </td>\r\n <td>\r\n <p>18,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>19,000</p>\r\n </td>\r\n <td>\r\n <p>$78.88</p>\r\n </td>\r\n <td>\r\n <p>$12.62</p>\r\n </td>\r\n <td>\r\n <p>$91.50</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>19,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>20,000</p>\r\n </td>\r\n <td>\r\n <p>$79.74</p>\r\n </td>\r\n <td>\r\n <p>$12.76</p>\r\n </td>\r\n <td>\r\n <p>$92.50</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>20,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>21,000</p>\r\n </td>\r\n <td>\r\n <p>$81.03</p>\r\n </td>\r\n <td>\r\n <p>$12.97</p>\r\n </td>\r\n <td>\r\n <p>$94.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>21,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>22,000</p>\r\n </td>\r\n <td>\r\n <p>$81.90</p>\r\n </td>\r\n <td>\r\n <p>$13.10</p>\r\n </td>\r\n <td>\r\n <p>$95.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>22,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>23,000</p>\r\n </td>\r\n <td>\r\n <p>$82.76</p>\r\n </td>\r\n <td>\r\n <p>$13.24</p>\r\n </td>\r\n <td>\r\n <p>$96.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>23,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>24,000</p>\r\n </td>\r\n <td>\r\n <p>$83.19</p>\r\n </td>\r\n <td>\r\n <p>$13.31</p>\r\n </td>\r\n <td>\r\n <p>$96.50</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>más de </p>\r\n </td>\r\n <td>\r\n <p>24,000</p>\r\n </td>\r\n <td>\r\n <p>hasta</p>\r\n </td>\r\n <td>\r\n <p>25,000</p>\r\n </td>\r\n <td>\r\n <p>$84.48</p>\r\n </td>\r\n <td>\r\n <p>$13.52</p>\r\n </td>\r\n <td>\r\n <p>$98.00</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>PESO Y DIMENSIONES</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>a)</p>\r\n </td>\r\n <td>\r\n <p>Peso: El señalado en esta tarifa.</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>b)</p>\r\n </td>\r\n <td>\r\n <p>Dimensiones máximas: 1,05 metros para su\r\n mayor dimensión; además, la suma del perímetro de la base</p>\r\n </td>\r\n</tr>\r\n <tr>\r\n <td></td>\r\n <td>\r\n <p>más la dimensión mayor no debe exceder de 2\r\n metros.</p>\r\n </td>\r\n <td></td>\r\n <td></td>\r\n <td></td>\r\n</tr>\r\n <tr>\r\n <td>\r\n <p>c)</p>\r\n </td>\r\n <td>\r\n <p>Dimensiones mínimas: Tener un frente cuyas\r\n dimensiones no sean menores a 9x14 cms.</p>\r\n </td>\r\n <td></td>\r\n</tr>\r\n</tbody></table>\r\n</div><p>2. \r\nCostos de entrega exprés. </p><p>El costo de la entrega en esta modalidad será\r\nde $82.59 a cualquier parte de la Ciudad de México, área conurbada y en el\r\ninterior del país. Los tiempos de entrega van de 3 a 5 días dependiendo la zona\r\na la que sean enviados los productos. </p><p>3. \r\nCostos de la entrega\r\nespecial.</p><p>Los productos ofertados en nuestra página no\r\nincluyen instalación, ajustes, configuración ni adaptaciones de ningún tipo,\r\nsalvo que se explique claramente lo contrario. La entrega de los productos se realizará\r\na la entrada del domicilio indicado y no incluye ningún tipo de movimiento de\r\nmudanza. </p><p>ABANICO puede rechazar o suspender el\r\ntransporte de cualquier producto o mercancía cuando:</p><ol>\r\n <li>La información del remitente y destinatario este\r\n incompleta, no sea correcta o que los productos no correspondan a los\r\n registrados para su entrega.</li>\r\n <li>Cuando los materiales contenidos en el paquete\r\n puedan dañar otros paquetes o representen un peligro un riesgo para el\r\n equipo o empleados de ABANICO o de sus prestadores de servicios. </li>\r\n <li>Que el paquete no se encuentre debidamente embalado\r\n para su transporte. </li>\r\n <li>Que el paquete no incluya la guía de envío con todos\r\n los datos tanto del remitente como del destinatario. </li>\r\n <li>Que el peso, volumen y/o apariencia del empaque no\r\n coincidan con los descritos en la guía de envío. </li>\r\n</ol><p>Con el objetivo de verificar lo anterior,\r\nABANICO se reserva el derecho de inspeccionar todos los paquetes o de permitir\r\na las autoridades competentes llevar a cabo las inspecciones adecuadas. </p><p>Si llegamos a detectar que los VENDEDORES(AS)\r\nestán haciendo mal uso de los métodos de entrega de ABANICO al falsear la información\r\nreferente al peso, volumen o cantidad de productos que serán enviados ABANICO considerará\r\nque están faltando a los presentes Términos de Servicio y deberán cubrir los\r\ncostos del traslado desde el punto de recolección hasta la bodega de ABANICO y de\r\nvuelta hacia el punto de recolección. Además, los VENDEDORES(AS) deberán cubrir\r\nel cargo por generación de la guía liquidando el costo real que debió de ser\r\ncobrado de acuerdo al peso y número de productos sin tener derecho al descuento\r\nen la tarifa que ABANICO ofrece. </p><p>En caso de que estos costos no sean cubiertos\r\ncon el saldo que los VENDEDORES(AS) tengan se requerirá su pago en un periodo\r\nno mayor a 10 días naturales a partir de la notificación de la penalización. De\r\nno realizarse el pago en este plazo la tienda será dado de baja inmediatamente\r\nde la página y la mercancía quedará a consignación de ABANICO. En este caso los\r\nVENDEDORES(AS) no podrán ejercer acción legal alguna en contra de ABANICO que\r\nimplique la devolución, indemnización o reposición de los productos. </p><p><strong><em><u>CAMBIOS Y DEVOLUCIONES</u></em></strong><u></u></p><p>Los gastos derivados de las\r\ndevoluciones serán cubiertos por los VENDERORES(AS). </p><p><strong><em><u>EXACTITUD, EXHAUSTIVIDAD Y ACTUALIDAD DE LA INFORMACIÓN</u></em></strong><u></u></p><p>A pesar de que intentamos hacer una revisión exhaustiva\r\nde todo el material que ingresa a nuestra página, no nos hacemos responsables\r\nsi la información disponible en este sitio no es exacta, completa o actual. El\r\nmaterial en este sitio es provisto solo para información general y no debe\r\nconfiarse en ella o utilizarse como la única base para la toma de decisiones\r\nsin consultar, primeramente, información más precisa, completa u oportuna. Los VENDEDORES(AS)\r\ntienen la obligación de detallar lo más posible las características de sus productos,\r\nasí como de presentar la información gráfica y textual más clara y precisa de\r\nlos mismos. Los VENDEDORES(AS) deberán responder a todas las preguntas o\r\nsolucionar las dudas que EL COMPRADOR externe a través de nuestra sección de\r\npreguntas. De detectarse que los VENDEDORES(AS) no están respondiendo las\r\ninquietudes de EL COMPRADOR la página será dada de baja por un período de 8 días\r\nnaturales. </p><p><strong><em><u>MODIFICACIONES AL SERVICIO Y PRECIOS</u></em></strong><u></u></p><p>Los precios de nuestros servicios para los VENDEDORES(AS)/PRESTADORES(AS)\r\nestán sujetos a cambio o modificaciones, mismos que serán dados a conocer con\r\nal menos 30 días naturales previos a la implementación de los mismos. De igual\r\nmodo, nos reservamos el derecho de modificar o discontinuar el servicio (o\r\ncualquier parte del contenido) en cualquier momento sin aviso previo. Por lo\r\nanterior, no seremos responsables ante ti o alguna tercera parte por cualquier\r\nmodificación, cambio de precio, suspensión o discontinuidad del Servicio.</p><p><strong><em><u>PRODUCTOS Y/O SERVICIOS</u></em></strong><u></u></p><p>Es responsabilidad de los VENDEDOR(ES)/PRESTADORES(AS) mantener\r\nactualizado el inventario de sus productos y su información de contacto en la página\r\ncuando no se encuentren bajo el esquema de contratación de los servicios de\r\nalmacenaje y entrega de ABANICO. De no mantener la información al día ABANICO dará\r\nde baja la publicación por un período de 7 días naturales. </p><p><strong><em><u>EXCLUSIÓN DE GARANTÍAS Y LIMITACIÓN DE RESPONSABILIDAD</u></em></strong><u></u></p><p>No garantizamos ni aseguramos que el uso de nuestro\r\nservicio será ininterrumpido, puntual, seguro o libre de errores. No\r\ngarantizamos que los resultados que se puedan obtener del uso del servicio\r\nserán exactos o confiables. Aceptas que de manera ocasional podemos quitar el\r\nservicio por períodos indefinidos o cancelar el servicio en cualquier momento\r\nsin previo aviso. Aceptas expresamente que el uso de, o la posibilidad de utilizar,\r\nel servicio es bajo tu propio riesgo. Los productos y servicios proporcionados\r\na través del servicio son (salvo lo expresamente manifestado por nosotros) proporcionados\r\n\"de la forma en que se presentan\" y \"de acuerdo a su disponibilidad\"\r\npara su uso, sin ningún tipo de representación, garantías o condiciones, ya sea\r\nexpresa o implícita, incluidas todas las garantías o condiciones implícitas de\r\ncomercialización, calidad comercializable, la aptitud para un propósito\r\nparticular, durabilidad, título y no infracción.</p><p>En ningún caso Abanico Siempre lo mejor S.A. de C.V.,\r\nnuestros directores, funcionarios, empleados, afiliados, agentes, contratistas,\r\ninternos, proveedores, prestadores de servicios o licenciantes serán\r\nresponsables por cualquier daño, pérdida, reclamo, o daños directos,\r\nindirectos, incidentales, punitivos, especiales o consecuentes de cualquier\r\ntipo, incluyendo, sin limitación, pérdida de beneficios, pérdida de ingresos,\r\npérdida de ahorros, pérdida de datos, costos de reemplazo, o cualquier daño\r\nsimilar, ya sea basado en contrato, agravio (incluyendo negligencia),\r\nresponsabilidad estricta o de otra manera, como consecuencia del uso de\r\ncualquiera de los servicios o productos adquiridos mediante el servicio, o por\r\ncualquier otro reclamo relacionado de alguna manera con el uso del servicio o\r\ncualquier producto, incluyendo pero no limitado, a cualquier error u omisión en\r\ncualquier contenido, o cualquier pérdida o daño de cualquier tipo incurridos\r\ncomo resultado de la utilización del servicio o cualquier contenido (o\r\nproducto) publicado, transmitido, o que se pongan a disposición a través del\r\nservicio, incluso si se avisa de su posibilidad. Debido a que algunos estados o\r\njurisdicciones no permiten la exclusión o la limitación de responsabilidad por\r\ndaños consecuenciales o incidentales, en tales estados o jurisdicciones,\r\nnuestra responsabilidad se limitará en la medida máxima permitida por la ley.</p><p><strong><em>INDEMNIZACIÓN</em></strong></p><p>Los VENDEDORES(AS) aceptan indemnizar, defender y\r\nmantener indemne a Abanico Siempre lo mejor S.A. de C.V. y nuestras matrices,\r\nsubsidiarias, afiliados, socios, funcionarios, directores, agentes,\r\ncontratistas, concesionarios, proveedores de servicios, subcontratistas,\r\nproveedores, internos y empleados, de cualquier reclamo o demanda, incluyendo honorarios\r\nrazonables de abogados, hechos por cualquier tercero a causa o como resultado\r\nde su incumplimiento de las Condiciones de Servicio o de los documentos que\r\nincorporan como referencia, o la violación de cualquier ley o de los derechos\r\nde un tercero.</p><p><strong><em><u>COMENTARIOS DE USUARIO, CAPTACIÓN Y OTROS ENVÍOS</u></em></strong><u></u></p><p>Si, a solicitud nuestra, envías ciertas presentaciones\r\nespecíficas (por ejemplo, la participación en concursos) o sin una solicitud de\r\nnuestra parte envías ideas creativas, sugerencias, proposiciones, planes, u\r\notros materiales, ya sea en línea, por email, por correo postal, o de otra\r\nmanera (colectivamente, \'comentarios\'), aceptas que podamos, en cualquier\r\nmomento, sin restricción, editar, copiar, publicar, distribuir, traducir o\r\nutilizar por cualquier medio comentarios que nos hayas enviado. No tenemos ni\r\ntendremos ninguna obligación de mantener ningún comentario confidencialmente,\r\nde pagar compensación por comentarios o de responder a comentarios.</p><p>Nosotros podemos, pero no tenemos obligación de, monitorear,\r\neditar o remover contenido que consideremos sea ilegítimo, ofensivo,\r\namenazante, calumnioso, difamatorio, pornográfico, obsceno u objetable o viole\r\nla propiedad intelectual de cualquiera de las partes o los Términos de\r\nServicio.</p><p>Aceptas que tus comentarios no violarán los derechos de\r\nterceras partes, incluyendo derechos de autor, marca, privacidad, personalidad\r\nu otros derechos personales o de propiedad. Asimismo, aceptas que tus\r\ncomentarios no contienen material difamatorio o ilegal, abusivo u obsceno, o\r\ncontienen virus informáticos u otro malware que pudiera, de alguna manera,\r\nafectar el funcionamiento del Servicio o de cualquier sitio web\r\nrelacionado. No puedes utilizar una\r\ndirección de correo electrónico falsa, usar otra identidad que no sea legítima,\r\no engañar a terceras partes o a nosotros en cuanto al origen de tus\r\ncomentarios. Tú eres el único\r\nresponsable por los comentarios que haces y su precisión. No nos hacemos responsables y no asumimos\r\nninguna obligación con respecto a los comentarios publicados por ti o cualquier\r\ntercer parte.</p><p><strong><em><u>ERRORES, INEXACTITUDES Y OMISIONES</u></em></strong><u></u></p><p>De vez en cuando puede haber información en nuestro sitio\r\nque contiene errores tipográficos, inexactitudes u omisiones que puedan estar\r\nrelacionadas con las descripciones de productos, precios, promociones, ofertas,\r\ngastos de envío del producto, el tiempo de tránsito y la disponibilidad. Nos\r\nreservamos el derecho de corregir los errores, inexactitudes u omisiones y de\r\ncambiar o actualizar la información o cancelar pedidos si alguna información en\r\nel Servicio o en cualquier sitio web relacionado es inexacta en cualquier\r\nmomento sin previo aviso (incluso después de que hayas enviado tu orden).</p><p>No asumimos ninguna obligación de actualizar, corregir o\r\naclarar la información incluyendo, sin limitación, la información de precios,\r\nexcepto cuando sea requerido por la ley. Ninguna especificación actualizada o\r\nfecha de actualización aplicada en EL Servicio o en cualquier sitio web\r\nrelacionado, debe ser tomada como una indicación de que todo el contenido ha sido\r\nmodificado o actualizado.</p><p><strong><em><u>RESCISIÓN</u></em></strong><u></u></p><p>Las obligaciones y responsabilidades de las partes que\r\nhayan incurrido con anterioridad a la fecha de terminación sobrevivirán a la\r\nterminación de este acuerdo a todos los efectos.</p><p>Estas Condiciones de servicio son efectivos a menos que y\r\nhasta que sea finalizado por ti o nosotros. Puedes finalizar cualquier relación\r\ncon nosotros en cualquier momento comunicándote directamente al teléfono\r\n___________ y señalando que ya no deseas utilizar nuestros servicios. </p><p>Si a nuestro juicio, fallas o se sospecha que has fallado\r\nen el cumplimiento de cualquier término o disposición de estas condiciones de servicio,\r\ntambién podemos terminar este acuerdo en cualquier momento sin previo aviso, y\r\nseguirás siendo responsable de todos los montos adeudados hasta incluida la\r\nfecha de terminación; y/o en consecuencia podemos negarte el acceso a nuestros\r\nservicios (o cualquier parte del mismo).</p><p><u></u></p><p><strong><em><u>ACUERDO COMPLETO</u></em></strong></p><p>Nuestra falla para ejercer o hacer valer cualquier derecho\r\no disposición de estas Condiciones de Servicio no constituirá una renuncia a\r\ntal derecho o disposición. Estas Condiciones del servicio y las políticas o\r\nreglas de operación publicadas por nosotros en este sitio o con respecto al\r\nservicio constituyen el acuerdo completo y el entendimiento entre tú y nosotros\r\ny rigen el uso del Servicio y reemplaza cualquier acuerdo, comunicaciones y\r\npropuestas anteriores o contemporáneas, ya sea oral o escrita, entre tú y\r\nnosotros (incluyendo, pero no limitado a, cualquier versión previa de los\r\nTérminos de Servicio). Cualquier ambigüedad en la interpretación de estas\r\nCondiciones del servicio no se interpretarán en contra del grupo de redacción.</p>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n', 'default.jpg', 'legales', '2019-04-11 17:10:57', '2019-04-11 17:10:57', '2019-04-11 17:10:57', 'activo', NULL);
+INSERT INTO `publicaciones` (`ID_PUBLICACION`, `PUBLICACION_TITULO`, `PUBLICACION_URL`, `PUBLICACION_RESUMEN`, `PUBLICACION_CONTENIDO`, `PUBLICACION_IMAGEN`, `PUBLICACION_TIPO`, `PUBLICACION_FECHA_REGISTRO`, `PUBLICACION_FECHA_ACTUALIZACION`, `PUBLICACION_FECHA_PUBLICACION`, `PUBLICACION_ESTADO`, `ORDEN`) VALUES
+(4, 'Términos y condiciones de servicio para usuarios', 'terminos-y-condiciones-de-servicio-para-usuarios-nil', '      ', '<p>TÉRMINOS\r\nY CONDICIONES DE SERVICIO PARA USUARIOS</p><p>INFORMACIÓN GENERAL</p><p><strong><em><u>USO DEL SERVICIO PARA\r\nUSUARIOS</u></em></strong><em></em></p><p>La empresa Abanico Siempre lo mejor S. A. de C.V., en adelante\r\n“ABANICO” ofrece este sitio web <a href=\"http://www.abanicoytu.com/\">www.abanicoytu.com</a>\r\nen adelante “EL SITIO”. En todo el sitio, los términos “nosotros” y “nuestro”\r\nse refieren a Abanico Siempre lo mejor S.A. de C.V., e incluyen toda la\r\ninformación, herramientas y servicios disponibles para ustedes, LOS USUARIOS, quienes\r\nestán condicionados a aceptar todos los términos, condiciones, políticas y\r\nnotificaciones aquí establecidos para poder tener acceso a EL SITIO y realizar\r\nsus compras. </p><p><strong><em><u>ACEPTACIÓN DE LOS TÉRMINOS DE USO</u></em></strong><u></u></p><p>Al\r\nacceder, navegar y comprar en EL SITIO de ABANICO, EL USUARIO acepta sujetarse\r\na estos Términos y Condiciones sin limitación o condición alguna, incluyendo\r\nlas actualizaciones, modificaciones y adiciones que ABANICO publique. Dada la\r\nnaturaleza de ABANICO, algunos sitios o servicios pueden estar regulados por\r\ntérminos y condiciones adicionales, por lo que sugerimos al público que lea\r\natentamente tales términos en las secciones correspondientes. Los Términos y\r\nCondiciones de Servicio para usuarios aquí expuestos aplican a todos los usuarios\r\ndel sitio, incluyendo, sin limitación, a usuarios que sean navegadores,\r\nproveedores, clientes, comerciantes, y/o colaboradores de contenido.</p><p>Por favor, lea estos\r\nTérminos y Condiciones cuidadosamente ya que al acceder o utilizar cualquier\r\nparte de EL SITIO los está aceptando. Si no está de acuerdo con todos los Términos\r\ny Condiciones de este acuerdo no debería acceder a la página web o usar\r\ncualquiera de los servicios. ABANICO se reserva el derecho de efectuar modificaciones\r\no cambios en estos Términos y Condiciones sin necesidad de notificar\r\npersonalmente al USUARIO y será la última versión la que aplique en todo\r\nmomento al USUARIO dejando sin validez cualquier documento publicado\r\nanteriormente.</p><p><strong><em><u>TÉRMINOS GENERALES</u></em></strong></p><p>Entiendes\r\nque tu contenido (sin incluir la información de tu tarjeta de crédito), puede ser\r\ntransferida sin encriptar e involucrar transmisiones a través de varias redes y\r\ncambios para ajustarse o adaptarse a los requisitos técnicos de conexión de\r\nredes o dispositivos. La información de tarjetas de crédito está siempre\r\nencriptada durante la transferencia a través de las redes.</p><p>Estás de acuerdo con no\r\nreproducir, duplicar, copiar, vender, revender o explotar cualquier parte del\r\nServicio, uso del Servicio, o acceso al Servicio o cualquier contacto en el\r\nsitio web a través del cual se presta el servicio, sin consentimiento por\r\nescrito de nuestra parte. Los títulos utilizados en este acuerdo se incluyen\r\nsolo por conveniencia y no limita o afecta a estos Términos y Condiciones.</p><p><strong><em></em></strong></p><p><strong><em></em></strong></p><p><strong><em><u>RESTRICCIÓN DE EDAD</u></em></strong></p><p>Al utilizar este sitio,\r\ndeclaras que tienes al menos la mayoría de edad en tu estado o lugar de residencia,\r\no nos has hecho llegar la documentación que acredite un permiso por parte de tus\r\npadres, tutores o representante legal para que accedas y hagas uso de EL SITIO.\r\n</p><p><strong><em>REGISTRO</em></strong></p><p>Para\r\nhacer uso de EL SITIO y/o los servicios prestados EL USUARIO podrá:</p><p>a) CREAR UNA CUENTA\r\nregistrándose en la página <a href=\"http://www.abanicoytu.com/\">www.abanicoytu.com</a>\r\ne ingresando la información que se le solicita con datos válidos y verdaderos.\r\nDichos datos deberán de ser actualizados por EL USUARIO cada vez que exista\r\nalgún cambio en la información ingresada con anterioridad. ABANICO podrá requerir\r\nalgún comprobante y/o dato adicional que nos permitan validar la información\r\nbrindada por los USUARIOS sin que esto implique que ABANICO se responsabiliza\r\npor la veracidad de la información que EL USUARIO proporcione, siendo\r\nresponsabilidad absoluta de EL USUARIO garantizar la veracidad, exactitud y\r\nautenticidad de la información. De no poder comprobar la información de EL USUARIO,\r\nABANICO se reserva el derecho de suspender temporal o definitivamente a tales USUARIOS.\r\nEL USUARIO solo podrá ser titular de una cuenta, no pudiendo acceder a más de\r\nuna con diferentes direcciones de correo electrónico o modificando y/o\r\nalterando sus datos personales. Una vez registrado, EL USUARIO generará una\r\ncontraseña de acceso. EL USUARIO será el único responsable de asegurar su\r\ncontraseña y de las actividades que ocurran bajo el uso de la cuenta o contraseña.\r\nEn caso de detectar un mal uso de la cuenta o contraseña EL USUARIO deberá reportarlo\r\ninmediatamente. En ningún caso ABANICO será responsable por pérdidas o daños de\r\ncualquier tipo incurridos como resultado de la falta de cumplimiento de esta\r\ncondición. </p><p>De\r\nllegarse a detectar un uso fraudulento, malintencionado o contrario a estos\r\nTérminos y Condiciones, y un uso de nuestros productos con algún propósito\r\nilegal o no autorizado y/o la violación de cualquier ley jurisdiccional,\r\nABANICO se reserva el derecho de dar por terminada cualquier relación\r\ncomercial, suspender definitivamente las cuentas e incluso colaborar\r\njudicialmente para la persecución de los infractores, sin que esto genere algún\r\nderecho a indemnización o resarcimiento por parte de ABANICO.</p><p>Algunos\r\nservicios presentes en EL SITIO pueden requerir un registro posterior o\r\nsuscripción. En caso de decidir registrarse y/o suscribirse EL USUARIO se\r\ncompromete a brindar información precisa, actualizada y verdadera. </p><p>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nb) ACCEDER AL SITIO COMO INVITADO. En este caso\r\nserá posible navegar sin limitaciones en EL SITIO, sin embargo, tendrá que\r\ncrear un registro para poder realizar sus compras.<br></p><p><strong><em>PRIVACIDAD DE LA INFORMACIÓN</em></strong></p><p>ABANICO se compromete en\r\ntodo momento a cumplir las leyes de protección de datos personales aplicables y\r\na los términos de su Aviso de Privacidad el cual puede ser consultado en la\r\ndirección web <a href=\"https://abanicoytu.com/demo/publicacion/aviso-de-privacidad-ok6\">https://abanicoytu.com/demo/publicacion/aviso-de-privacidad-ok6</a>.</p><p> <strong><em></em></strong></p><p><strong><em>PROPIEDAD INTELECTUAL DE ABANICO</em></strong></p><p>Nuestro sitio <a href=\"http://www.abanicoytu.com/\">www.abanicoytu.com</a> está protegido por las\r\nleyes de derecho de autor y propiedad industrial tanto en México como en\r\naquellas zonas donde los tratados internacionales en la materia realizados por\r\nMéxico tengan injerencia. ABANICO tiene la propiedad de los derechos de autor\r\ndel contenido y el software de su sitio web y sus afiliados. Todos los derechos\r\nno otorgados en estos Términos y Condiciones quedan reservados. Queda\r\nabsolutamente prohibido reproducir y/o distribuir cualquier material del sitio\r\nde ABANICO. EL USUARIO puede generar una copia de parte del material publicado\r\nsiempre y cuando sea para uso personal y sin fines comerciales y solo cuando el\r\nmaterial, los avisos y leyendas no sean alterados o modificados en forma\r\nalguna. ABANICO NO otorga ningún permiso para hacer uso del material que se\r\nencuentre en su sitio web.</p><p><strong><em>ACTIVIDADES ILEGALES Y/O PERJUDICIALES</em></strong></p><p>EL USUARIO acepta no realizar ninguna actividad ilegal tales\r\ncomo: 1) utilizar EL SITIO para fines ilícitos; 2) acosar, abusar, insultar,\r\ndañar, difamar, calumniar, desprestigiar, intimidar o discriminar por razones\r\nde género, orientación sexual, religión, etnia, raza, edad, nacionalidad u\r\nhostigar de manera electrónica a otra persona; 3) atentar contra la privacidad\r\nde otras personas; 4) distribuir o transmitir cualquier gusano, virus, código o\r\nprogramas perjudiciales por medio de EL SITIO; 5) introducir publicidad no\r\nautorizada; 6) incluir material obsceno; 7) incluir redireccionamiento o\r\nservidores proxy; 8) interferir, alterar o modificar el funcionamiento, los\r\nservidores o redes conectados a www.abanicoytu.com; 9) ejecutar programas o\r\nconfigurar especialmente equipos de tal manera que mantengan una conexión de\r\nmarcado activa aunque no se use o de cualquier otra forma eludir la desconexión\r\nautomática por inactividad; 10) utilizar EL SITIO en violación de las\r\ndisposiciones de cualquier otro proveedor de sitios web; 11) utilizar EL SITIO para\r\nacceder a las cuentas de otras personas; 12) obtener o eludir las contraseñas\r\nde otras personas, y 13) participar en acciones diseñadas para afectar el\r\nacceso a la red bombardeando un sitio o cualquier red de Internet con tráfico\r\ninútil; 14) solicitarle a terceros que realicen o participen en actos ilícitos;\r\n15) violar cualquier regulación, reglas, leyes internacionales, federales,\r\nprovinciales o estatales, u ordenanzas locales; 16) infringir o violar el\r\nderecho de propiedad intelectual nuestro o de terceras partes; 17) presentar\r\ninformación falsa o engañosa; 18) recopilar o rastrear información personal de\r\notros; 19) para generar spam, phish, pharm, pretext, spider, crawl, o scrape;\r\n19) interferir con o burlar los elementos de seguridad del Servicio. Nos\r\nreservamos el derecho de suspender el uso del Servicio o de cualquier sitio web\r\nrelacionado por violar cualquiera de los incisos de los usos prohibidos.<em></em></p><p><em></em></p><p><strong><em><u>CONDICIONES DE COMPRA</u></em></strong></p><p><strong><em>ENVIO DE PRODUCTOS</em></strong></p><p>Una vez\r\nque se ha recibido la confirmación de la orden de pago comienza a correr el\r\ntiempo de entrega del producto. Al momento de realizarse la entrega del\r\nproducto en el domicilio registrado será necesario que el USUARIO o la persona\r\nque recibe se identifique con un documento oficial (credencial para votar,\r\npasaporte, forma migratoria de ser el caso).</p><p>El USUARIO puede elegir\r\nentre 3 tipos de envío:</p><p>1. \r\nEntrega normal. Con un plazo\r\nde entrega de 3 a 7 días hábiles posteriores a la confirmación de recepción de\r\nla orden.</p><p>2. \r\nEntrega Express. Con un\r\nplazo de entrega de 2 a 5 días hábiles posteriores a la confirmación de\r\nrecepción de la orden.</p><p>3. \r\nEntrega Especial. Con un\r\nplazo de entrega del mismo día hábil hasta el día siguiente posterior a la\r\nconfirmación de la entrega de la orden. Esta entrega requiere que el monto del\r\nproducto haya sido liquidado al momento de hacer el pedido. Las entregas\r\núnicamente se realizarán en direcciones establecidas (casa habitación, oficina\r\no comercio), en ningún caso las entregas se realizarán en lugares públicos. El\r\nárea de cobertura se limita a la Ciudad de México y el Área Metropolitana con\r\nalgunas excepciones. Si la opción de Entrega Especial no se despliega al\r\nmomento de capturar la información correspondiente al método de pago y tipo de\r\nentrega significa que aún no está disponible en el área solicitada. Los\r\nhorarios de entrega son de lunes a viernes de 12:00 am a 7:00 pm de lunes a\r\nviernes y sábado de 10:00 am a 13:00 pm. La entrega se realizará exclusivamente\r\npor personal de ABANICO perfectamente identificado.</p><p>Los\r\ncostos de envío serán mostrados antes de finalizar la compra y el cliente\r\ntendrá la libertad de escoger aquel servicio que mas le convenga en tiempo y\r\nforma. Cuando los productos sean de Abanico o de alguna de las tiendas\r\nasociadas los productos serán enviados de manera conjunta.</p><p>Los\r\nproductos y/o servicios ofertados en nuestra página no incluyen instalación,\r\najustes, configuración ni adaptaciones de ningún tipo, salvo que se explique\r\nclaramente lo contrario. La entrega de los productos se realizará a la entrada\r\ndel domicilio indicado y no incluye ningún tipo de movimiento de mudanza.</p><p>ABANICO puede rechazar o\r\nsuspender el transporte de cualquier producto o mercancía cuando:</p><p>1. \r\nLa información del\r\nremitente y destinatario está incompleta, no sea correcta o que los productos\r\nno correspondan a los registrados para entrega.</p><p>2. \r\nCuando los materiales\r\ncontenidos en el paquete puedan dañar otros paquetes o representen un peligro o\r\nun riesgo para el equipo o empleados de ABANICO o de sus prestadores de\r\nservicios.</p><p>3. \r\nQue el paquete no se\r\nencuentre debidamente embalado para su transporte.</p><p>4. \r\nQue el paquete no incluya\r\nla guía de envío con todos los datos tanto del remitente como del destinatario.\r\n</p><p>5. \r\nQue el peso, volumen y/o\r\napariencia del empaque no coincidan con los descritos en la guía de envío.</p><p>Con el objetivo de verificar lo anterior, ABANICO se reserva el\r\nderecho de inspeccionar todos los paquetes o de permitir a las autoridades\r\ncompetentes llevar a cabo las inspecciones necesarias. En caso de existir\r\nalguna reclamación EL USUARIO deberá presentarla por escrito al correo\r\nelectrónico atencioncliente@abanicoytu.com dentro de los 7 días siguientes a la\r\nentrega del producto. Para que la reclamación proceda todos los cargos\r\nrelacionados con el producto en cuestión deberán de estar completamente liquidados.\r\n</p><p><strong><em>CAMBIOS Y DEVOLUCIONES</em></strong></p><p>Para obtener el cambio de\r\nun producto o la devolución del dinero El USUARIO deberá solicitarlo dentro de\r\nlos primeros 5 días hábiles posteriores a la entrega del producto, siempre y\r\ncuando no se trate de mercancía ilegal, estupefacientes, drogas, pornografía\r\nilegal o cualquier producto que NO se encuentre en la lista de productos\r\npermitidos por las Autoridades Mexicanas para su comercialización en el país.\r\nLos gastos derivados de las devoluciones serán cubiertos por EL USUARIO.</p><p> Los cambios y/o\r\ndevoluciones deberán solicitarse de acuerdo a nuestra política (LIGA PARA EL TEXTO DE CAMBIOS Y DEVOLUCIONES).\r\nPara mayor información EL USUARIO puede comunicarse al correo electrónico <a href=\"mailto:devoluciones@abanicoytu.com\">devoluciones@abanicoytu.com</a> dentro\r\nde los primeros 5 días hábiles posteriores a la recepción del producto en\r\ncuestión.</p><p> El(los) producto(s) que sean\r\ndevueltos deberán encontrarse en perfecto estado, con su comprobante original\r\nde compra, el empaque y los instructivos originales. En caso de haber\r\nsolicitado una factura, esta deberá acompañar al producto al momento de ser devuelto.\r\nDe no cumplirse con todos los requisitos ABANICO se reserva el derecho de NO\r\nrealizar la devolución.</p><p>En ningún caso se\r\nrealizarán devoluciones de medias, lencería, bonetería, discos, libros y\r\nrevistas, software, equipos de cómputo, consolas y videojuegos, vinos y\r\nlicores, vestidos de noche, joyería fina y de fantasía, línea blanca, sonido y\r\ntelevisión, gourmet, flores, colchones, reclinables, almohadas, tapetes,\r\nnavideños, perecederos, artículos personalizados y artículos de uso personal.</p><p><em>CANCELACIONES POR PARTE DEL USUARIO</em></p><p>Para poder realizar una cancelación el pedido debe de tener un\r\nestatus de “<strong><em><u>en espera de pago</u></em></strong>”. Si ya hay un estatus diferente a\r\neste, EL USUARIO deberá realizar una devolución una vez recibido el o los\r\nproductos de acuerdo con nuestros Términos y Condiciones, misma que deberá de analizarse\r\npara su resolución. Los costos asociados con la devolución únicamente serán cubiertos\r\npor ABANICO cuando se trate de sus productos. Caso contrario, cada tienda será responsable\r\npor el costo del proceso de devolución. Para poder realizar una cancelación, EL\r\nUSUARIO deberá enviar un correo electrónico a <a href=\"mailto:devoluciones@abanicoytu.com\">devoluciones@abanicoytu.com</a>.</p><p><em>CARGOS NO RECONOCIDOS POR PARTE DEL USUARIO</em></p><p>De\r\nllegarse a presentar un cargo a tarjeta de crédito o débito que no sea\r\nreconocido por EL USUARIO, ABANICO iniciará una averiguación previa apoyándose\r\ndel Ministerio Público y la Institución financiera que corresponda. ABANICO tomará\r\nlas medidas necesarias, dentro del marco de la ley, para recuperar el o los\r\nproductos en caso de haber sido entregados a EL USUARIO.</p><p><strong><em>EXACTITUD, EXHAUSTIVIDAD Y ACTUALIDAD DE LA INFORMACIÓN</em></strong></p><p>A pesar\r\nde que intentamos hacer una revisión exhaustiva de todo el material que ingresa\r\na nuestra página, no nos hacemos responsables si la información disponible en\r\neste sitio no es exacta, completa o actual. El material en este sitio es\r\nprovisto solo para información general y no debe confiarse en ella o utilizarse\r\ncomo la única base para la toma de decisiones sin consultar, primeramente,\r\ninformación más precisa, completa u oportuna. Si existiera alguna duda o\r\ncomentario sugerimos encarecidamente que EL USUARIO se acerque a los vendedores\r\ny/o prestadores de servicios y les externe todas sus dudas antes de adquirir el\r\nproducto o servicio. <del></del>Así mismo, hacemos el esfuerzo de\r\nmostrar las características, colores e imágenes de nuestros productos de la\r\nforma más precisa, sin embargo, nos es imposible garantizar que observes a\r\ntravés de tu monitor o pantalla los colores exactos de los productos que te\r\ninteresan.</p><p>Este sitio puede contener\r\ncierta información histórica la cual es provista únicamente para tu referencia.\r\nABANICO se reserva el derecho de modificar los contenidos de este sitio en\r\ncualquier momento, por lo que invitamos a EL USUARIO a revisar y monitorear la\r\ninformación para detectar cambios que puedan tener injerencia en su compra.</p><p><strong><em>MODIFICACIONES AL SERVICIO Y PRECIOS</em></strong></p><p>Los precios de nuestros\r\nproductos están sujetos a cambio sin previo aviso. De igual modo, nos\r\nreservamos el derecho de modificar o discontinuar el Servicio (o cualquier\r\nparte del contenido) en cualquier momento sin aviso previo. Por lo anterior, no\r\nseremos responsables ante ti o alguna tercera parte por cualquier modificación,\r\ncambio de precio, suspensión o discontinuidad del Servicio.</p><p><strong><em>PRODUCTOS O SERVICIOS</em></strong></p><p>Ciertos\r\nproductos o servicios pueden estar disponibles exclusivamente en línea a través\r\ndel sitio web. Estos productos o servicios pueden tener cantidades limitadas\r\ny/o estar sujetos a devolución o cambio de acuerdo con nuestra política de\r\ndevolución únicamente.</p><p>Nos reservamos el derecho\r\nde limitar las ventas de nuestros productos o servicios a cualquier persona,\r\nregión geográfica o jurisdicción. Este derecho será ejercido dependiendo del caso\r\nen cuestión. Así mismo, nos reservamos el derecho de limitar las cantidades de\r\nlos productos y/o servicios que ofrecemos. Nos reservamos el derecho de discontinuar\r\ncualquier producto en cualquier momento. \r\n</p><p><strong><em>FACTURACIÓN</em></strong></p><p>EL USUARIO puede solicitar\r\nuna factura por su compra al momento de realizarla o dentro de los 5 días\r\nnaturales posteriores a la compra.</p><p><strong><em>EXCLUSIÓN DE GARANTÍAS Y LIMITACIÓN DE RESPONSABILIDAD</em></strong></p><p>No\r\ngarantizamos ni aseguramos que el uso de nuestro servicio será ininterrumpido,\r\npuntual, seguro o libre de errores. No garantizamos que los resultados que se\r\npuedan obtener del uso del servicio serán exactos o confiables. Aceptas que de\r\nmanera ocasional podemos quitar el servicio por períodos indefinidos o cancelar\r\nel servicio en cualquier momento sin previo aviso. Aceptas expresamente que el\r\nuso de, o la posibilidad de utilizar, el servicio es bajo tu propio riesgo. Los\r\nproductos y servicios proporcionados a través del servicio son (salvo lo\r\nexpresamente manifestado por nosotros) proporcionados \"de la forma en que\r\nse presentan\" y \"de acuerdo a su disponibilidad\" para su uso,\r\nsin ningún tipo de representación, garantías o condiciones, ya sea expresa o\r\nimplícita, incluidas todas las garantías o condiciones implícitas de\r\ncomercialización, calidad comercializable, la aptitud para un propósito\r\nparticular, durabilidad, título y no infracción.</p><p>En ningún caso Abanico\r\nSiempre lo mejor S.A. de C.V., nuestros directores, funcionarios, empleados,\r\nafiliados, agentes, contratistas, internos, proveedores o prestadores de\r\nservicios serán responsables por cualquier daño, pérdida, reclamo, o daños\r\ndirectos, indirectos, incidentales, punitivos, especiales o consecuentes de\r\ncualquier tipo, incluyendo, sin limitación, pérdida de beneficios, pérdida de\r\ningresos, pérdida de ahorros, pérdida de datos, costos de reemplazo, o\r\ncualquier daño similar, ya sea basado en contrato, agravio (incluyendo\r\nnegligencia), responsabilidad estricta o de otra manera, como consecuencia del\r\nuso de cualquiera de los servicios o productos adquiridos mediante el servicio,\r\no por cualquier otro reclamo relacionado de alguna manera con el uso del\r\nservicio o cualquier producto, incluyendo pero no limitado, a cualquier error u\r\nomisión en cualquier contenido, o cualquier pérdida o daño de cualquier tipo\r\nincurridos como resultado de la utilización del servicio o cualquier contenido\r\n(o producto) publicado, transmitido, o que se pongan a disposición a través del\r\nservicio, incluso si se avisa de su posibilidad. Debido a que algunos estados o\r\njurisdicciones no permiten la exclusión o la limitación de responsabilidad por\r\ndaños consecuenciales o incidentales, en tales estados o jurisdicciones,\r\nnuestra responsabilidad se limitará en la medida máxima permitida por la ley.</p><p><strong><em>INDEMNIZACIÓN</em></strong></p><p>El USUARIO acepta\r\nindemnizar y mantener indemne a Abanico Siempre lo mejor S.A. de C.V. y\r\nnuestras matrices, subsidiarias, afiliados, socios, funcionarios, directores,\r\nagentes, contratistas, concesionarios, proveedores de servicios,\r\nsubcontratistas, proveedores, internos y empleados, de cualquier reclamo o\r\ndemanda, incluyendo honorarios razonables de abogados, hechos por cualquier\r\ntercero a causa o como resultado de su incumplimiento de las Condiciones de\r\nServicio o de los documentos que incorporan como referencia, o la violación de cualquier\r\nley o de los derechos de un tercero.</p><p><strong><em>COMENTARIOS DE USUARIO, CAPTACIÓN Y\r\nOTROS ENVÍOS</em></strong></p><p>Si, a pedido nuestro, envías ciertas\r\npresentaciones específicas (por ejemplo, la participación en concursos) o sin\r\nun pedido de nuestra parte envías ideas creativas, sugerencias, proposiciones,\r\nplanes, u otros materiales, ya sea en línea, por email, por correo postal, o de\r\notra manera (colectivamente, \'comentarios\'), aceptas que podamos, en cualquier\r\nmomento y sin restricción, editar, copiar, publicar, distribuir, traducir o\r\nutilizar por cualquier medio comentarios que nos hayas enviado. No tenemos ni\r\ntendremos ninguna obligación de mantener ningún comentario confidencialmente,\r\nde pagar compensación por comentarios o de responder a comentarios.</p><p>Nosotros podemos, pero no tenemos\r\nobligación de, monitorear, editar o remover contenido que consideremos sea\r\nilegítimo, ofensivo, amenazante, calumnioso, difamatorio, pornográfico, obsceno\r\nu objetable o viole la propiedad intelectual de cualquiera de las partes o los\r\nTérminos de Servicio.</p><p>Aceptas que tus comentarios no violarán\r\nlos derechos de terceras partes, incluyendo derechos de autor, marca, privacidad,\r\npersonalidad u otros derechos personales o de propiedad. Asimismo, aceptas que\r\ntus comentarios no contienen material difamatorio o ilegal, abusivo u obsceno,\r\no contienen virus informáticos u otro malware que pudiera, de alguna manera,\r\nafectar el funcionamiento del Servicio o de cualquier sitio web relacionado. No\r\npuedes utilizar una dirección de correo electrónico falsa, usar otra identidad\r\nque no sea legítima, o engañar a terceras partes o a nosotros en cuanto al\r\norigen de tus comentarios. Tu eres el único responsable por los comentarios que\r\nhaces y su precisión. No nos hacemos responsables y no asumimos ninguna\r\nobligación con respecto a los comentarios publicados por ti o cualquier tercer\r\nparte.</p><p><strong><em>ERRORES, INEXACTITUDES Y OMISIONES</em></strong></p><p>De vez en cuando puede haber\r\ninformación en nuestro sitio o en el Servicio que contiene errores\r\ntipográficos, inexactitudes u omisiones que puedan estar relacionadas con las\r\ndescripciones de productos, precios, promociones, ofertas, gastos de envío del\r\nproducto, el tiempo de tránsito y la disponibilidad. Nos reservamos el derecho\r\nde corregir los errores, inexactitudes u omisiones y de cambiar o actualizar la\r\ninformación o cancelar pedidos si alguna información en el Servicio o en\r\ncualquier sitio web relacionado es inexacta en cualquier momento sin previo\r\naviso (incluso después de que hayas enviado tu orden).</p><p>No asumimos ninguna obligación de actualizar,\r\ncorregir o aclarar la información en el servicio o en cualquier sitio web\r\nrelacionado, incluyendo, sin limitación, la información de precios, excepto\r\ncuando sea requerido por la ley. Ninguna actualización o fecha de actualización\r\naplicada debe ser tomada para indicar que toda la información en el servicio o\r\nen cualquier sitio web relacionado ha sido modificado o actualizado.</p><p><strong><em>RESCISIÓN</em></strong></p><p>Las obligaciones y responsabilidades de\r\nlas partes que hayan incurrido con anterioridad a la fecha de terminación sobrevivirán\r\na la terminación de este acuerdo a todos los efectos.</p><p>Estas Condiciones de servicio son\r\nefectivos a menos que y hasta que sea terminado por ti o nosotros. Puedes\r\nterminar estos Términos de Servicio en cualquier momento por avisarnos que ya\r\nno deseas utilizar nuestros servicios, o cuando dejes de usar nuestro sitio.</p><p>Si a nuestro juicio, fallas, o se\r\nsospecha que has fallado, en el cumplimiento de cualquier término o disposición\r\nde estos Términos y Condiciones de Servicio, también podemos terminar este\r\nacuerdo en cualquier momento sin previo aviso, y seguirás siendo responsable de\r\ntodos los montos adeudados hasta incluida la fecha de terminación; y/o en\r\nconsecuencia podemos negarte el acceso a nuestros servicios (o cualquier parte\r\ndel mismo).</p><p><strong><em>ACUERDO COMPLETO</em></strong></p><p>Nuestra falla para ejercer o hacer\r\nvaler cualquier derecho o disposición de estos Términos y Condiciones no constituirá una renuncia a tal derecho o\r\ndisposición.</p><p>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nEstas Condiciones del servicio y las políticas o\r\nreglas de operación publicadas por nosotros en este sitio o con respecto al\r\nservicio constituyen el acuerdo completo y el entendimiento entre tú y nosotros\r\ny rigen el uso del servicio y reemplaza cualquier acuerdo, comunicaciones y propuestas\r\nanteriores o contemporáneas, ya sea oral o escrita, entre tú y nosotros (incluyendo,\r\npero no limitado a, cualquier versión previa de los Términos y Condiciones).<br></p>', 'default.jpg', 'legales', '2019-04-15 17:43:04', '2019-04-15 17:43:04', '2019-04-15 17:43:04', 'activo', NULL),
+(5, 'Devoluciones', 'devoluciones', ' ', '<p><strong><em><u>DEVOLUCIONES</u></em></strong></p>\r\n\r\n<p><strong>Generalidades</strong></p>\r\n\r\n<p><strong> </strong>A continuación,\r\nse describen los procesos y condiciones para hacer efectiva la garantía de un\r\nproducto o solicitar un cambio o devolución. Solo se podrán comenzar estos\r\nprocesos una vez que el producto se encuentre en manos de EL COMPRADOR. Los\r\nproductos pueden tener diferentes políticas de devolución de acuerdo a LA TIENDA\r\nque lo esté ofertando, por lo que pedimos atentamente que EL COMPRADOR revise\r\nlas políticas propias de cada tienda. Al realizar una devolución debes tener en\r\ncuenta que el reembolso y la forma en que se realizará pueden variar de acuerdo\r\na la condición del artículo, el tiempo que haya estado en tu poder y la forma\r\nen la que fue adquirido. Cuando el producto devuelto no se encuentra en sus\r\ncondiciones originales, ha sido usado o es diferente al que se envió NO SERA\r\nPOSIBLE PROCESAR EL REEMBOLSO. </p>\r\n\r\n\r\n\r\n<p><strong><em><u>GARANTÍA </u></em></strong></p>\r\n\r\n<p>Para hacer válida la garantía de los artículos adquiridos a través de nuestra\r\npágina <a href=\"http://www.abanicoytu.com/\">www.ABANICOytu.com</a>\r\nel comprador tendrá dos opciones:</p>\r\n\r\n\r\n\r\n<p>1. \r\nSi los artículos pertenecen a la marca ABANICO, el cliente deberá presentar\r\nel correo de verificación de compra enviado por ABANICO, contar con la remisión\r\no factura en donde se encuentre escrita la garantía o la póliza del proveedor o\r\nfabricante, donde este claramente establecido el tipo y tiempo de garantía del\r\nproducto. ABANICO actuará como intermediario ante el proveedor o fabricante\r\nquienes son los únicos responsables de hacer válida la garantía de sus productos.\r\n </p>\r\n\r\n<p>En caso de que el producto dañado no pueda ser reparado, reemplazado, se\r\nencuentre agotado o descontinuado por el fabricante, ABANICO ofrecerá alternativas\r\nde productos de la misma categoría y valor del producto original o un reembolso.\r\nEl tiempo de respuesta a la reclamación de la garantía será de 15 días hábiles\r\nuna vez que hayamos recibido toda la documentación necesaria para realizar el trámite.\r\n</p>\r\n\r\n\r\n\r\n<p>2. \r\nCuando los productos pertenezcan a tiendas asociadas a ABANICO, el\r\ncomprador deberá de ponerse directamente en contacto con las tiendas para hacer\r\nválida la garantía de los productos bajo los términos que las propias tiendas\r\nhayan especificado. Los vendedores asociados a ABANICO son los únicos\r\nresponsables del envío de la factura y de la garantía de sus productos. Los gastos\r\nasociados con el traslado del producto correrán a cargo del vendedor o la\r\ntienda. </p>\r\n\r\n \r\n\r\n<p>En ambos casos, el cliente cuenta con 5\r\ndías naturales a partir de la recepción del producto para comunicarse con ABANICO,\r\nLA TIENDA o EL VENDEDOR para reportar cualquier anomalía o malfuncionamiento\r\ndel producto. Se deberá presentar en todos los casos la documentación de pago y\r\ngarantía del producto en cuestión. La validez de la garantía dependerá de las\r\nespecificaciones mencionadas en la descripción de cada producto de acuerdo a\r\ncada proveedor o marca.</p>\r\n\r\n<p> Si\r\nel malfuncionamiento del producto o desperfecto se debe a un uso incorrecto o\r\ndesconocimiento por parte del comprador la garantía queda anulada de forma\r\ninmediata.</p>\r\n\r\n<p> En\r\ntodos los casos los clientes deben de leer cuidadosamente las condiciones de\r\nlas pólizas de garantía ya que <strong>NI</strong> ABANICO,\r\nLAS TIENDAS o LOS VENDEDORES podrán hacerse cargo de reclamaciones que hayan\r\nsido ocasionadas por causas ajenas a la operación del producto, tales como\r\ncambios bruscos de voltaje, utilización de accesorios inadecuados o no\r\nrecomendados por los fabricantes, derrames de líquidos, fuego, abuso en el\r\nmanejo del producto, desgaste natural de algunos materiales en la composición\r\ndel producto. No se responde por software incluido en los equipos de computación,\r\nerrores de configuración de ningún tipo, daños causados por virus,\r\nincompatibilidad o incumplimiento de las condiciones mínimas de uso de algún\r\nsoftware específico. La garantía que ofrece la Tienda o el fabricante no será\r\naplicable en ningún caso por incompatibilidad con algún software y/o hardware.</p>\r\n\r\n<p>Estas políticas no son excluyentes ni\r\ndeben ser entendidas o utilizadas en contraposición a las condiciones de\r\ngarantía que maneje cada proveedor.</p>\r\n\r\n\r\n\r\n<p><strong><em><u>DEVOLUCIONES</u></em></strong><em><u></u></em></p>\r\n\r\n<p>Solo se podrá iniciar una solicitud de devolución\r\ncuando el bien adquirido se encuentre dañado, roto, no funcione de manera\r\nadecuado (siempre y cuando esta condición no haya sido indicada en la descripción\r\no características del producto), o este no cumpla con la descripción que fue\r\npublicada. No se incluyen aquellos casos en los que el producto haya sido\r\nextraviado, robado o dañado por el servicio de paquetería o transportista. La única\r\nexcepción será cuando los productos sean entregados por medio del servicio exprés\r\nde ABANICO. </p>\r\n\r\n<p>Para iniciar una solicitud de devolución\r\nEL COMPRADOR deberá contactar al área de atención a clientes al correo <a href=\"mailto:atencioncliente@abanicoytu.com\">atencioncliente@abanicoytu.com</a>\r\nindicando de manera detallada los motivos por los que se solicita la devolución.\r\nUna vez iniciado el proceso de devolución la solicitud será evaluada por\r\nnuestro personal siguiendo los lineamientos establecidos en nuestra política de\r\ndevoluciones. </p>\r\n\r\n<p>Al aceptarse la devolución EL COMPRADOR\r\ndeberá enviar el producto a ABANICO cuando los productos pertenezcan a esta\r\ntienda, o directamente AL VENDEDOR del que adquirió el bien. En ambos casos,\r\nlos gastos derivados del traslado del producto correrán a cargo de ABANICO o de\r\nLA TIENDA responsable del mismo. </p>\r\n\r\n<p>Los productos que sean devueltos deberán\r\nestar acompañados por el comprobante original de la compra y, en su caso, la\r\nfactura que la tienda hubiere emitido. El tiempo de respuesta de la solicitud\r\nde devolución dependerá del producto en cuestión. </p>\r\n\r\n\r\n\r\n<p>El comprador podrá optar por los siguientes tipos de devolución:</p>\r\n\r\n<p><strong>Reembolso a tarjeta de crédito o débito</strong>: El Comprador podrá solicitar el abono\r\ndel importe del producto devuelto, a la tarjeta de crédito o débito con la que\r\nse haya pagado dicho producto. Con un tiempo estimado para que el monto se vea\r\nreflejado en su tarjeta de hasta 15 días naturales posteriores a su aceptación.\r\n</p>\r\n\r\n<p><strong>Transferencia bancaria:</strong>El Comprador podrá solicitar la\r\ndevolución mediante transferencia bancaria por el total de la compra. Con un\r\ntiempo estimado para que la transferencia se vea reflejada de 5 días hábiles. </p>\r\n\r\n<p>Si el reembolso no aparece y el tiempo de procesamiento para tu\r\nmétodo de pago ha pasado, por favor comunícate con nosotros. </p>\r\n\r\n\r\n\r\n<p><strong><em><u>CAMBIOS</u></em></strong><em><u></u></em></p>\r\n\r\n<p>EL COMPRADOR deberá contactar al área\r\nde atención a clientes enviando un correo a <a href=\"mailto:atencionclientes@abanicoytu.com\">atencionclientes@abanicoytu.com</a>\r\npara iniciar su solicitud de cambio físico de la mercancía cuando el producto se\r\nencuentre dañado, roto o no funcione de manera adecuada. En ningún caso se realizarán\r\ncambios de productos enlistados en <strong>“Restricciones\r\nde cambio y/o devolución”</strong>. Al momento de contactarse con ABANICO, EL\r\nCOMPRADOR deberá indicar la razón por la cual solicita un cambio físico y las\r\nespecificaciones del producto a cambiar. </p>\r\n\r\n<p>Una vez contactados con ABANICO se le indicará\r\na EL COMPRADOR la forma en que se llevará a cabo la devolución del producto. Los\r\nproductos que sean enviados de vuelta deberán de estar en su empaque original,\r\nacompañados por la documentación con que fue entregado, el recibo emitido por ABANICO\r\no LA TIENDA y, en su caso, la factura de compra que fue elaborada. Una vez\r\nrecibido el producto se procederá a evaluarlo y se notificará a EL COMPRADOR\r\ndentro de los 15 días hábiles posteriores a la recepción del producto si la solicitud\r\nde cambio procede o no. Cuando el cambio se solicite por algún motivo\r\natribuible a ABANICO o a LA TIENDA el envío se realizara sin costo para EL\r\nCOMPRADOR. Si el cambio es atribuible a EL COMPRADOR, este será responsable de\r\nasumir todos los gastos del proceso. </p>\r\n\r\n\r\n\r\n<p><strong>Información necesaria para cualquier proceso de cambio y/o devolución:</strong></p>\r\n\r\n<p>Para solicitar un proceso de cambio y/o\r\ndevolución EL COMPRADOR deberá enviar a <a href=\"mailto:atencioncliente@abanicoytu.com\">atencioncliente@abanicoytu.com</a>\r\nla siguiente documentación:</p><p><ul><li>\r\n\r\nNúmero\r\n de pedido con el que se compró el producto.</li><li>Fechas\r\n en la que se realizó la compra.</li><li>Fecha\r\n en que se recibió el producto.</li><li>Descripción\r\n del artículo.</li><li>Motivo\r\n y razones por las que se solicita la devolución o cambio.</li></ul></p>\r\n\r\n\r\n\r\n<p>Es posible que ABANICO o LA TIENDA\r\nsoliciten pruebas de la condición en la que fue recibido el producto, como fotografías.\r\n</p>\r\n\r\n<p>Los productos devueltos a ABANICO o LA\r\nTIENDA, deberán estar en las mismas condiciones en las que fueron recibidos,\r\nincluir todas las partes, accesorios y empaque original. No debe observarse\r\ndaño alguno en el producto.</p>\r\n\r\n<p>El tiempo para recibir los productos\r\nque sustituyan a la compra original podrán variar de acuerdo a la disponibilidad,\r\ntiempo de respuesta de los proveedores y los tiempos de la mensajería. </p>\r\n\r\n \r\n\r\n<p>Los <strong>COSTOS DE ENVIO</strong> asociados\r\nal cambio o devolución de los productos <strong>serán\r\ncubiertos</strong> de la siguiente manera:</p>\r\n\r\n\r\n\r\n<p>1. Cuando el producto este incompleto, la tienda correrá con los gastos.</p>\r\n\r\n<p>2. Cuando el daño del producto haya sido causado por un mal manejo de la\r\nmensajería, esta correrá con los gastos. </p>\r\n\r\n<p>3. Cuando el daño sea causado por un embalaje inadecuado, LA TIENDA o ABANICO\r\ncubrirán los gastos.</p>\r\n\r\n<p>4. cuando el producto no cumpla con las especificaciones marcadas en el\r\nanuncio, LA TIENDA cubrirá los gastos. </p>\r\n\r\n\r\n\r\n<p><strong><em><u>RESTRICCIONES DE\r\nCAMBIO Y/O DEVOLUCIÓN</u></em></strong><em><u></u></em></p>\r\n\r\n<p>Los relojes con valor superior a los $1150.00,\r\ncomputadoras, televisores, proyectores y celulares estarán respaldados por la garantía\r\ndel fabricante. </p>\r\n\r\n<p>Muebles que no requieren ensamblaje. Todos los materiales de uso y soporte\r\ndel producto (manuales, tarjetas de garantía, etc.) deberán ser devueltos con\r\nel artículo. No es necesario que presenten su envoltura original para\r\ndevolverlos. </p>\r\n\r\n<p>Muebles que requieren ensamblaje. Todos los materiales de uso y soporte\r\ndel producto (incluyendo herramientas, manuales, tarjetas de garantía, etc.)\r\ndeben ser devueltos con el artículo. El producto a devolverse debe estar\r\ndesensamblado y dentro de su empaque original.</p>\r\n\r\n<p>Equipo de gimnasio.<strong></strong>Todos los materiales de uso y soporte del\r\nproducto (incluyendo herramientas, manuales, tarjetas de garantía, etc.)\r\ndeberán ser devueltos con el artículo. El producto a devolverse debe estar\r\ndesensamblado y dentro de su empaque original.</p>\r\n\r\n<p>Los productos de línea blanca podrán ser\r\ndevueltos siempre y cuando la instalación y desinstalación hayan sido\r\nrealizadas por personal autorizado por el fabricante. </p>\r\n\r\n<p>En caso de solicitar una devolución o\r\ncambio en productos hechos a mano y/o personalizados EL COMPRADOR deberá contactar\r\ndirectamente al vendedor externo, quien no esta obligado a recibir la reclamación\r\na menos que los productos presenten daño o defectos al ser recibidos o si existe\r\nun error tipográfico o de configuración debido a un error del vendedor. En\r\nestos casos, el producto debe de ser devuelto en su empaque original e incluir,\r\nsi aplica, certificados de autenticidad, avalúo, etc. Caso contrario, no se aceptará\r\nla devolución de los productos. </p>\r\n\r\n\r\n\r\n<p>NO SE ACEPTARÁN CAMBIOS NI DEVOLUCIONES EN LOS SIGUIENTES PRODUCTOS:</p>\r\n\r\n<p><ul><li>Alimentos y bebidas</li><li>Artículos de limpieza para lentes,\r\ncámaras, celulares, zapatos.</li><li>Artículos de uso personal como\r\nrastrillos, rasuradoras, navajas, etc. </li><li>Artículos funerarios y velas</li><li>Artículos perecederos</li><li>Audífonos</li><li>Bisutería y joyería</li><li>Chocolates</li><li>Colchones y artículos de cama\r\n(almohadas, fundas, cubrecamas)</li><li>Consumibles</li><li>Cosméticos y perfumes (sólo si el\r\nproducto está sellado)</li><li>Cualquier producto que no tenga el\r\nnúmero de serie o el código universal de producto (UPC)</li><li>Despensa, vinos y gourmet</li><li>Disfraces (sólo aplica por cambio de\r\ntalla)</li><li>Dispositivos médicos</li><li>Flores</li><li>Juguetes sexuales</li><li>Lápices, colores, bolígrafos</li><li>Laptops y computadoras de escritorio</li><li>Lencería, ropa interior y ropa de baño</li><li>Libros (sólo en casos de error de\r\nimpresión)</li><li>Manos libres</li><li>Máquinas de coser</li><li>Medicamentos, vitaminas, suplementos alimenticios\r\ny productos naturales</li><li>Mercancía dañada y/o desgastada por el\r\nuso común.</li><li>Modeladores / fajas / leggins / pantimedias</li><li>Películas</li><li>Preservativos y anticonceptivos</li><li>Productos de copia inmediata (revistas,\r\nCD, DVD, Blu-ray, software, videojuegos)</li><li>Productos de farmacia, de incontinencia\r\ne higiene personal</li><li>Productos de lactancia y Cuidado para\r\nbebés</li><li>Productos de salud y cuidado personal</li><li>Productos o servicios de computación</li><li>Productos para afeitado y depilación</li><li>Productos que están clasificados como\r\nmateriales peligrosos o que usen líquidos inflamables o combustibles</li><li>Productos que no se encuentren en el catálogo\r\nde ABANICO o LA TIENDA pero que han sido realizados a solicitud del cliente</li><li>Refacciones, repuestos y autopartes</li><li>Relojes,</li><li>Shampoo y artículos para el cuidado de\r\nOjos, Labios, Boca u Oídos</li><li>Software abierto</li><li>Tarjetas de memoria para PC</li><li>Tarjetas de regalo (excepto en casos\r\nrequeridos por ley)</li><li>Tarjetas SIM de telefonía para\r\ncelulares</li><li>Tarjetas telefónicas</li><li>Test de salud, genéticos, etc. </li><li>Tiempo aire</li><li>Toallas y calcetines</li><li>Video juegos</li></ul></p>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<p><strong><em><u>CANCELACIONES</u></em></strong></p>\r\n\r\n<p> La compra solo puede\r\nser cancelada por EL COMPRADOR cuando el envío se encuentre en un estatus “en\r\nespera de pago”. Si el estatus es diferente deberá de procederse a solicitar\r\nuna devolución. </p>\r\n\r\n<p> Si la compra es cancelada\r\npor LA TIENDA, EL VENDEDOR o ABANICO se generará un cupón que EL COMPRADOR podrá\r\nhacer efectivo inmediatamente en la página. Si el comprador no desea el cupón podrá\r\nsolicitar un reembolso acorde a la forma de pago utilizada enviando un correo a\r\n<a href=\"mailto:atencionclientes@abanicoytu.com\">atencionclientes@ABANICOytu.com</a>.\r\nLos reembolsos se realizarán únicamente a la tarjeta de crédito o debido que\r\nfue utilizada para realizar la compra. Cuando la compra se realizó a través de PAYPAL\r\nel reembolso se realizará directamente a tu cuenta y posteriormente será PayPal\r\nquien sea responsable de reintegrar el importe a la tarjeta con la que se\r\nrealizo la compra. En el caso de depósitos bancarios o pagos en tiendas OXXO\r\nnos comunicaremos contigo para solicitar información necesaria para poder\r\ndepositar el monto. El reembolso se realizará dentro de las siguientes 48 horas\r\na la solicitud y le será informado a través de un correo electrónico, sin\r\nembargo, el tiempo que tarde en verse reflejado en las cuentas personales dependerá\r\nde los tiempos que manejen los diferentes bancos los cuales pueden tomar entre\r\n4 a 23 días. </p>\r\n\r\n', 'default.jpg', 'legales', '2019-04-03 23:22:26', '2019-04-03 23:22:26', '2019-04-03 23:22:26', 'activo', NULL);
 
 -- --------------------------------------------------------
 
@@ -10216,13 +10319,6 @@ CREATE TABLE `puntos_registro` (
   `PUNTO_REFERENCIAS` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `puntos_registro`
---
-
-INSERT INTO `puntos_registro` (`ID_PUNTO`, `PUNTO_ALIAS`, `PUNTO_PAIS`, `PUNTO_ESTADO`, `PUNTO_CIUDAD`, `PUNTO_MUNICIPIO`, `PUNTO_BARRIO`, `PUNTO_CALLE_Y_NUMERO`, `PUNTO_CODIGO_POSTAL`, `PUNTO_REFERENCIAS`) VALUES
-(1, 'Almacen', 'México', 'Ciudad de México', 'Ciudad de México', 'Miguel Hidalgo', 'San Miguel Chapultepec', '14-5', '11850', '');
-
 -- --------------------------------------------------------
 
 --
@@ -10237,16 +10333,6 @@ CREATE TABLE `rutas_abanico` (
   `PUNTO_DIRECCION` varchar(255) DEFAULT NULL,
   `RUTA_FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `rutas_abanico`
---
-
-INSERT INTO `rutas_abanico` (`ID`, `GUIA_CODIGO`, `ID_PUNTO`, `PUNTO_ALIAS`, `PUNTO_DIRECCION`, `RUTA_FECHA_REGISTRO`) VALUES
-(1, 'H8FA35-3', 0, 'En Preparación', 'Preparando Paquete', '2019-01-09 20:55:26'),
-(2, 'RLHO5T-25', 0, 'En bodega', 'Preparando para salir', '2019-01-09 23:20:06'),
-(3, 'RLHO5T-25', 0, 'Almacen', '14-5, San Miguel Chapultepec, Miguel Hidalgo, Ciudad de México, Ciudad de México, 11850, México', '2019-01-09 23:22:21'),
-(4, 'RLHO5T-25', 0, 'Entregado', 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, Ciudad de México, Ciudad de México, 07969, México', '2019-01-09 23:22:28');
 
 -- --------------------------------------------------------
 
@@ -10267,8 +10353,9 @@ CREATE TABLE `seguridad_usuarios` (
 --
 
 INSERT INTO `seguridad_usuarios` (`ID`, `ID_USUARIO`, `CLAVE`, `FECHA_REGISTRO`, `ESTADO`) VALUES
-(1, '5c64a6b2e13ae0.49457839', 'IuxQdzs4eO', '2019-02-13 23:52:21', 'activo'),
-(2, '5c0653d43d92e7.75019474', 'oDX531ob6n', '2019-02-14 00:22:21', 'activo');
+(1, '5c0653d43d92e7.75019474', 'baH3ArWJ7H', '2019-03-25 18:43:53', 'activo'),
+(2, '5c08a9dc2cb096.56391251', 'faOmaXDyun', '2019-03-25 20:57:18', 'inactivo'),
+(3, '5c0653d43d92e7.75019474', 'XmfURaSG3D', '2019-04-04 00:00:16', 'activo');
 
 -- --------------------------------------------------------
 
@@ -10305,17 +10392,7 @@ CREATE TABLE `servicios` (
 --
 
 INSERT INTO `servicios` (`ID_SERVICIO`, `ID_USUARIO`, `USUARIO_NOMBRE`, `SERVICIO_NOMBRE`, `SERVICIO_DESCRIPCION`, `SERVICIO_DETALLES`, `SERVICIO_PAIS`, `SERVICIO_ESTADO_DIR`, `SERVICIO_MUNICIPIO`, `SERVICIO_ZONA_TRABAJO`, `SERVICIO_IMAGEN`, `SERVICIO_IMAGEN_FONDO`, `CANTIDAD_CONVERSACIONES`, `CALIFICACION`, `SERVICIO_FECHA_REGISTRO`, `SERVICIO_FECHA_ACTUALIZACION`, `SERVICIO_FECHA_PUBLICACION`, `SERVICIO_TIPO`, `LENGUAJE`, `SERVICIO_ESTADO`, `ORDEN`) VALUES
-(1, '5c64a6b2e13ae0.49457839', 'Prueba Servicio', 'Animación y videos', 'Sin descripcion', '<p>Bla bla bla</p>', 'México', 'Baja California Sur', 'La Paz', 'Entre calle falsa y calle verdadera', 'default.jpg', 'default.jpg', 0, '0.00', '2019-02-13 23:46:27', '2019-02-13 23:46:27', '2019-02-13 23:46:27', 'digital', 'es', 'activo', 1),
-(2, '5c65b1c4706825.75278703', 'Irving Omar  Téllez Vera', 'Clases de buceo open water', 'El educando obtendrá habilidades en el manejo del equipo SCUBA para practicar el buceo recreativo.', '', 'México', 'Yucatán', 'Mérida', 'Centro Alberca Olimpica Juan de la Barrera ', 'default.jpg', 'default.jpg', 0, '0.00', '2019-02-14 18:31:34', '2019-02-14 18:31:34', '2019-02-14 18:31:34', 'profesional', 'es', 'activo', 1),
-(3, '5c65b1c4706825.75278703', 'Irving Omar  Téllez Vera', 'Revisión de docuementos Técnicos científicos de acuerdo a NOM-MX', 'Revision de documentos de titulación, articulos cientificos, reportes tecnicos, protocolos, procedimientos, check list, DAF, Métodos analiticos, entre otros. ', '', 'México', 'Yucatán', 'Mérida', 'zona centro de Mérida \r\n', 'default.jpg', 'default.jpg', 0, '0.00', '2019-02-14 18:35:51', '2019-02-14 18:35:51', '2019-02-14 18:35:51', 'digital', 'es', 'activo', 1),
-(4, '5c65b1c4706825.75278703', 'Irving Omar  Téllez Vera', 'Traducción español-inglés de documentos tecnicos cientificos y literarios', 'Revisión, edición y traducción de documentos técnicos-científicos.', '', 'México', 'Yucatán', 'Mérida', 'centro ', 'default.jpg', 'default.jpg', 0, '0.00', '2019-02-14 18:38:36', '2019-02-14 18:38:36', '2019-02-14 18:38:36', 'digital', 'es', 'activo', 1),
-(5, '5c65b1c4706825.75278703', 'Irving Omar  Téllez Vera', 'Clases de defensa personal ', 'Se entrena a personas para defensa personal a traves de tae Kwon Do y el acondicionamiento físico.', '', 'México', 'Yucatán', 'Mérida', 'centro zona ', 'default.jpg', 'default.jpg', 0, '0.00', '2019-02-14 18:45:42', '2019-02-14 18:45:42', '2019-02-14 18:45:42', 'profesional', 'es', 'activo', 1),
-(6, '5c66692e593e37.03171377', 'citlali diaz', 'joyeria ', 'se realizan piezas en plata y oro sobre diseño y pedido.', '', 'México', 'Ciudad de México', 'Benito Juárez', 'toda la ciudad de Mexico  area metropolitano\r\n', 'default.jpg', 'default.jpg', 0, '0.00', '2019-02-15 07:41:29', '2019-02-15 07:41:29', '2019-02-15 07:41:29', 'profesional', 'es', 'activo', 1),
-(7, '5c65b1c4706825.75278703', 'Irving Omar  Téllez Vera', 'Renta de Vehiculo con chofer ', 'Se renta vehiculo sedan para cuatro perosonas y  mas el chofer, aire acondicionado, servicio de audio y video. \r\n', '', 'México', '-', '-', 'Todo Mexico', 'default.jpg', 'default.jpg', 0, '0.00', '2019-02-16 06:34:10', '2019-02-16 06:34:10', '2019-02-16 06:34:10', 'profesional', 'es', 'activo', 1),
-(8, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Diseño gráfico', 'Diseño de todo tipo', '', 'México', 'Ciudad de México', 'Gustavo A. Madero', 'En toda la ciudad por Internet', 'default.jpg', 'default.jpg', 0, '0.00', '2019-02-20 15:13:09', '2019-02-22 23:11:50', '2019-02-20 15:13:09', 'digital', 'es', 'activo', 1),
-(9, '5c6d69209eab74.87165826', 'Laura  Esquivel', 'Fabricacion de cajas de madera bajo pedido', 'Hacemos tu caja de madera totalmente a tu gusto', '', 'Canadá', 'British Columbia', 'Port Coquitlam', '', 'default.jpg', 'default.jpg', 0, '0.00', '2019-02-20 23:54:32', '2019-02-20 23:54:32', '2019-02-20 23:54:32', 'digital', 'es', 'activo', 1),
-(10, '5c6f40192d2e14.12282150', 'Maritza León', 'The National Expert will report to the Project Manager ', 'The National Expert will work under direct supervision of the Vice-President of INEGI and in close collaboration with both the Geosciences Department as well as Economics Department to ensure that the two groups work harmoniously towards the objectives of the project', '', 'México', 'Ciudad de México', 'Álvaro Obregón', '', 'default.jpg', 'default.jpg', 0, '0.00', '2019-02-22 00:25:11', '2019-02-22 00:25:11', '2019-02-22 00:25:11', 'digital', 'es', 'activo', 1),
-(11, '5c76cfe87cbbe0.54725147', 'Panfilo Torres', 'Diversion para sus fiestas', 'Animoso payaso para fiestas. Sus niños disfrutaran cada instante de la fiesta con mis juegos y diversiones', '', 'México', 'Jalisco', 'Atengo', '', 'default.jpg', 'default.jpg', 0, '0.00', '2019-02-27 18:04:20', '2019-02-27 18:04:20', '2019-02-27 18:04:20', 'profesional', 'es', 'activo', 1);
+(1, '5ca4043cde1435.48493149', 'P RP', 'Traducción de textos Inglés-español-inglés', 'Si tienes que traducir un texto no te preocupes, yo lo hago por ti. Me especializo en textos científicos y en resúmenes para congresos, tesis o simposios. ', '', 'México', '-', '-', 'En todo México ', 'default.jpg', 'default.jpg', 0, '0.00', '2019-04-04 00:47:18', '2019-04-04 00:47:18', '2019-04-04 00:47:18', 'digital', 'es', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -10333,6 +10410,14 @@ CREATE TABLE `sliders` (
   `SLIDER_LENGUAJE` varchar(255) DEFAULT NULL,
   `SLIDER_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `sliders`
+--
+
+INSERT INTO `sliders` (`ID_SLIDER`, `SLIDER_ANCHO`, `SLIDER_ALTO`, `SLIDER_ANCHO_MOVIL`, `SLIDER_ALTO_MOVIL`, `SLIDER_NOMBRE`, `SLIDER_LENGUAJE`, `SLIDER_ESTADO`) VALUES
+(1, '1600', '340', '640', '440', 'inicio', 'es', 'activo'),
+(2, '1600', '340', '640', '440', 'inicio', 'en', 'activo');
 
 -- --------------------------------------------------------
 
@@ -10352,6 +10437,16 @@ CREATE TABLE `slides` (
   `SLIDE_ESTADO` varchar(255) DEFAULT NULL,
   `ORDEN` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `slides`
+--
+
+INSERT INTO `slides` (`ID_SLIDE`, `ID_SLIDER`, `SLIDE_IMAGEN`, `SLIDE_IMAGEN_MOVIL`, `SLIDE_TITULO`, `SLIDE_SUBTITULO`, `SLIDE_BOTON`, `SLIDE_ENLACE`, `SLIDE_ESTADO`, `ORDEN`) VALUES
+(1, 1, 'slide-5c9ee9f132894.jpg', 'slide_movil_5c9ee9fda6a30.jpg', 'Nuestra filosofía', 'productos de calidad al mejor precio', '', 'https://abanicoytu.com/demo/categoria', 'activo', NULL),
+(2, 1, 'slide-5c9eea33ad908.jpg', 'slide_movil_5c9eea410df5f.jpg', 'Anunciate con nosotros', 'y obtén 3 meses gratis. ', 'Contáctanos para más información', 'https://abanicoytu.com/demo/categoria', 'activo', NULL),
+(3, 2, 'slide-5c9eebaf5d368.jpg', 'slide_movil_5c9eebaf767fe.jpg', 'NATIONAL CRAFTSMEN', 'OFRECEN SUS PRODUCTOS', NULL, 'https://abanicoytu.com/demo/categoria', 'activo', NULL),
+(4, 2, 'slide-5c9eebe345b87.jpg', 'slide_movil_5c9eebe360a28.jpg', ' EXPORT PRODUCTS', '100% MEXICAN', NULL, 'https://abanicoytu.com/demo/categoria', 'activo', NULL);
 
 -- --------------------------------------------------------
 
@@ -10380,15 +10475,9 @@ CREATE TABLE `tiendas` (
 --
 
 INSERT INTO `tiendas` (`ID_TIENDA`, `ID_USUARIO`, `TIENDA_NOMBRE`, `TIENDA_RAZON_SOCIAL`, `TIENDA_RFC`, `TIENDA_TELEFONO`, `ID_DIRECCION`, `TIENDA_IMAGEN`, `TIENDA_IMAGEN_FONDO`, `TIENDA_FECHA_REGISTRO`, `TIENDA_FECHA_ACTUALIZACION`, `TIENDA_TIPO`, `TIENDA_ESTADO`) VALUES
-(1, '5c64a6b2e13ae0.49457839', 'Mi tiendita', 'Mi tiendita s.a.', 'AAABBCC123', '12345678', 1, 'default.jpg', 'default.jpg', '2019-02-13 23:29:14', '2019-02-13 23:29:14', 'vendedor', 'activo'),
-(2, '5c65b1c4706825.75278703', 'ZIKO', 'Irving Omar Téllez Vera ', 'TEVI760326CU2', '9991441579', 5, 'tienda-5c65b89e58c2c.jpg', 'default.jpg', '2019-02-14 18:51:11', '2019-02-14 18:51:11', 'tienda', 'activo'),
-(3, '5c66692e593e37.03171377', 'mumama', 'persona fisica', 'diacronías 680204', '5556043338', 7, 'tienda-5c666a174f98c.jpg', 'default.jpg', '2019-02-15 07:28:23', '2019-02-15 07:28:23', 'tienda', 'activo'),
-(4, '5c6b5624be4de4.14234611', 'La caja magica', 'S.A. DE C.V.', 'CJM021819', '5555555555', 9, 'default.jpg', 'default.jpg', '2019-02-19 01:09:19', '2019-02-19 01:09:19', 'vendedor', 'activo'),
-(5, '5c6c330a6d6d60.37455226', 'Sophie´s Flowers', 'Jessika García', 'GATJ781104', '555555555', 10, 'tienda-5c6c3597b8aa8.jpg', 'default.jpg', '2019-02-19 16:57:59', '2019-02-19 16:57:59', 'tienda', 'activo'),
-(6, '5c0653d43d92e7.75019474', 'Espejo negro', '', '', '26032335', 16, 'tienda-5c6d7323ebafd.jpg', 'default.jpg', '2019-02-20 15:32:52', '2019-02-20 15:35:22', 'tienda', 'activo'),
-(9, '5c6d69209eab74.87165826', 'Cajitas del corazon', 'S.A. de C.V.', 'OEAD856102', '5555555555', 17, 'default.jpg', 'default.jpg', '2019-02-20 20:08:54', '2019-02-20 20:08:54', 'tienda', 'activo'),
-(10, '5c08a9dc2cb096.56391251', 'Agua y salud', 'SCdeSA', 'UCPR842659', '5555555555', 18, 'tienda-5c6f06e6e2fc5.jpg', 'default.jpg', '2019-02-21 20:15:34', '2019-02-21 20:15:34', 'tienda', 'activo'),
-(11, '5c6f1749c753c5.12159032', 'Todo limpio y en orden', 'RIF', 'CSaA739216', '2255552222', 19, 'tienda-5c6f1815df67d.jpg', 'default.jpg', '2019-02-21 21:28:55', '2019-02-21 21:28:55', 'tienda', 'activo');
+(1, '5c9c1ff62ce0c3.78174962', 'ABANICO', 'Abanico Siempre lo mejor S.A de C.V.', 'ASL180905EY8', '5513003000', 1, 'default.jpg', 'default.jpg', '2019-03-28 00:22:48', '2019-03-28 01:22:48', 'tienda', 'activo'),
+(2, '5ca4043cde1435.48493149', 'Marinas ', 'A', 'A', 'A', 6, 'default.jpg', 'default.jpg', '2019-04-02 23:55:12', '2019-04-03 00:55:12', 'tienda', 'activo'),
+(4, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Store', '', '', '26032335', 11, 'default.jpg', 'default.jpg', '2019-04-22 21:16:35', '2019-04-22 21:16:35', 'vendedor', 'activo');
 
 -- --------------------------------------------------------
 
@@ -10411,7 +10500,7 @@ CREATE TABLE `traducciones` (
 --
 
 INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO`, `DESCRIPCION_CORTA`, `DESCRIPCION_LARGA`, `LENGUAJE`) VALUES
-(1, 7, 'producto', 'Sketch Book', 'English description', 'Hello', 'en'),
+(1, 7, 'producto', '16oz Teal Double Wall Vacuum Tumbler', 'Easy to open and close with clear Tritan flip top lid.', '16oz Teal Double Wall Vacuum Tumbler keeps your favorite beverages hot or cold for hours on the go. Easy to open and close with clear Tritan flip top lid. The tumbler is made out of stainless steel that is durable and easy to clean! \r\n\r\n', 'en'),
 (2, 24, 'categoria', 'Technology, Computing and Gadgets', NULL, NULL, 'en'),
 (3, 36, 'categoria', 'Audio', NULL, NULL, 'en'),
 (4, 24, 'categoria', ' Technologie, informatique et gadgets', NULL, NULL, 'fr'),
@@ -10419,11 +10508,11 @@ INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO
 (6, 42, 'categoria', 'Headphones', NULL, NULL, 'en'),
 (7, 42, 'categoria', 'Prothèses auditives', NULL, NULL, 'fr'),
 (8, 43, 'categoria', ' Orateurs', NULL, NULL, 'fr'),
-(9, 43, 'categoria', 'Horns', NULL, NULL, 'en'),
+(9, 43, 'categoria', 'Speakers', NULL, NULL, 'en'),
 (10, 25, 'categoria', 'Beauty and Personal Care', NULL, NULL, 'en'),
 (11, 44, 'categoria', ' Des microphones', NULL, NULL, 'fr'),
 (12, 44, 'categoria', 'Microphones', NULL, NULL, 'en'),
-(13, 45, 'categoria', 'Component ', NULL, NULL, 'en'),
+(13, 45, 'categoria', 'minicomponent ', NULL, NULL, 'en'),
 (14, 45, 'categoria', 'Composant', NULL, NULL, 'fr'),
 (15, 45, 'categoria', 'Composant', NULL, NULL, 'fr'),
 (16, 46, 'categoria', 'More', NULL, NULL, 'en'),
@@ -10449,7 +10538,7 @@ INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO
 (36, 55, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
 (37, 56, 'categoria', 'More', NULL, NULL, 'en'),
 (38, 56, 'categoria', 'Plus', NULL, NULL, 'fr'),
-(39, 54, 'categoria', 'Glasses', NULL, NULL, 'en'),
+(39, 54, 'categoria', 'Lenses', NULL, NULL, 'en'),
 (40, 54, 'categoria', 'Lentilles', NULL, NULL, 'fr'),
 (41, 53, 'categoria', 'Professional cameras', NULL, NULL, 'en'),
 (42, 53, 'categoria', 'Caméras professionnelles', NULL, NULL, 'fr'),
@@ -10510,10 +10599,10 @@ INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO
 (97, 253, 'categoria', 'More', NULL, NULL, 'en'),
 (98, 87, 'categoria', 'More', NULL, NULL, 'en'),
 (99, 87, 'categoria', 'Plus', NULL, NULL, 'fr'),
-(100, 94, 'categoria', 'Variety', NULL, NULL, 'en'),
+(100, 94, 'categoria', 'More', NULL, NULL, 'en'),
 (101, 94, 'categoria', 'Variété', NULL, NULL, 'fr'),
 (102, 254, 'categoria', 'Protecteurs', NULL, NULL, 'fr'),
-(103, 254, 'categoria', 'Protectors', NULL, NULL, 'en'),
+(103, 254, 'categoria', 'Dental guard', NULL, NULL, 'en'),
 (104, 91, 'categoria', 'Brushes and accessories', NULL, NULL, 'en'),
 (105, 91, 'categoria', ' Pinceaux et accessoires', NULL, NULL, 'fr'),
 (106, 90, 'categoria', 'Dyes', NULL, NULL, 'en'),
@@ -10530,14 +10619,14 @@ INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO
 (117, 86, 'categoria', 'Machines à raser et épilateurs', NULL, NULL, 'fr'),
 (118, 86, 'categoria', 'Shaving Machines and Epilators', NULL, NULL, 'en'),
 (119, 86, 'categoria', 'Shaving Machines and Epilators', NULL, NULL, 'en'),
-(120, 93, 'categoria', 'Pasta', NULL, NULL, 'en'),
+(120, 93, 'categoria', 'Toothpaste', NULL, NULL, 'en'),
 (121, 93, 'categoria', 'Des pâtes', NULL, NULL, 'fr'),
 (122, 89, 'categoria', 'Conditionneurs', NULL, NULL, 'fr'),
 (123, 89, 'categoria', 'Conditioners', NULL, NULL, 'en'),
 (124, 85, 'categoria', 'Cire Dépilatoire', NULL, NULL, 'fr'),
 (125, 85, 'categoria', 'Depilatory Wax', NULL, NULL, 'en'),
 (126, 92, 'categoria', 'Des pinceaux', NULL, NULL, 'fr'),
-(127, 92, 'categoria', 'Brushes', NULL, NULL, 'en'),
+(127, 92, 'categoria', 'Toothbrush', NULL, NULL, 'en'),
 (128, 88, 'categoria', 'Shampoo', NULL, NULL, 'en'),
 (129, 88, 'categoria', 'Champú', NULL, NULL, 'fr'),
 (130, 84, 'categoria', ' Crèmes épilatoires', NULL, NULL, 'fr'),
@@ -10563,7 +10652,7 @@ INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO
 (150, 76, 'categoria', ' Women\'s Perfume', NULL, NULL, 'en'),
 (151, 76, 'categoria', ' Parfums femmes', NULL, NULL, 'fr'),
 (152, 76, 'categoria', ' Parfums femmes', NULL, NULL, 'fr'),
-(153, 75, 'categoria', 'Fragrance for man', NULL, NULL, 'en'),
+(153, 75, 'categoria', 'Men\'s fragrance', NULL, NULL, 'en'),
 (154, 75, 'categoria', 'Parfums pour hommes', NULL, NULL, 'fr'),
 (155, 75, 'categoria', 'Parfums pour hommes', NULL, NULL, 'fr'),
 (156, 75, 'categoria', 'Parfums pour hommes', NULL, NULL, 'fr'),
@@ -10576,13 +10665,13 @@ INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO
 (163, 71, 'categoria', 'Skin care', NULL, NULL, 'en'),
 (164, 70, 'categoria', 'Maquillage', NULL, NULL, 'fr'),
 (165, 70, 'categoria', 'Makeup', NULL, NULL, 'en'),
-(166, 69, 'categoria', 'Perfumería', NULL, NULL, 'en'),
+(166, 69, 'categoria', 'Fragrance', NULL, NULL, 'en'),
 (167, 69, 'categoria', 'Parfumerie', NULL, NULL, 'fr'),
 (168, 266, 'categoria', 'Yoga', NULL, NULL, 'en'),
 (169, 266, 'categoria', 'Yoga', NULL, NULL, 'fr'),
 (170, 265, 'categoria', 'Yoga', NULL, NULL, 'en'),
 (171, 265, 'categoria', 'Yoga', NULL, NULL, 'fr'),
-(172, 259, 'categoria', 'Race and Walk', NULL, NULL, 'en'),
+(172, 259, 'categoria', 'Running and hiking', NULL, NULL, 'en'),
 (173, 259, 'categoria', 'Course et marche', NULL, NULL, 'fr'),
 (174, 258, 'categoria', 'Volleyball', NULL, NULL, 'en'),
 (175, 258, 'categoria', 'Volley-ball', NULL, NULL, 'fr'),
@@ -10610,10 +10699,10 @@ INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO
 (197, 128, 'categoria', 'Chaises et tables', NULL, NULL, 'fr'),
 (198, 128, 'categoria', 'Chairs and tables', NULL, NULL, 'en'),
 (199, 123, 'categoria', 'Divers', NULL, NULL, 'fr'),
-(200, 123, 'categoria', 'Miscellaneous', NULL, NULL, 'en'),
+(200, 123, 'categoria', 'More', NULL, NULL, 'en'),
 (201, 127, 'categoria', ' Sacs à dos', NULL, NULL, 'fr'),
 (202, 127, 'categoria', 'Backpacks', NULL, NULL, 'en'),
-(203, 117, 'categoria', 'Electrical', NULL, NULL, 'en'),
+(203, 117, 'categoria', 'Electric bike', NULL, NULL, 'en'),
 (204, 117, 'categoria', ' Électrique', NULL, NULL, 'fr'),
 (205, 122, 'categoria', 'Functional training', NULL, NULL, 'en'),
 (206, 122, 'categoria', 'Entraînement fonctionnel', NULL, NULL, 'fr'),
@@ -10623,11 +10712,11 @@ INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO
 (210, 116, 'categoria', 'Folding', NULL, NULL, 'en'),
 (211, 121, 'categoria', 'Tapis de course et équipement', NULL, NULL, 'fr'),
 (212, 121, 'categoria', ' Treadmills and Equipment', NULL, NULL, 'en'),
-(213, 125, 'categoria', 'Inflatable mattresses', NULL, NULL, 'en'),
+(213, 125, 'categoria', 'Air Mattress', NULL, NULL, 'en'),
 (214, 125, 'categoria', 'Matelas gonflables', NULL, NULL, 'fr'),
 (215, 115, 'categoria', 'Urban', NULL, NULL, 'en'),
 (216, 115, 'categoria', 'Urbain', NULL, NULL, 'fr'),
-(217, 124, 'categoria', 'Campaign Houses', NULL, NULL, 'en'),
+(217, 124, 'categoria', 'Tents', NULL, NULL, 'en'),
 (218, 124, 'categoria', 'Maisons de campagne', NULL, NULL, 'fr'),
 (219, 120, 'categoria', 'Barres et poids', NULL, NULL, 'fr'),
 (220, 120, 'categoria', 'Barres et poids', NULL, NULL, 'fr'),
@@ -10646,7 +10735,1007 @@ INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO
 (233, 305, 'categoria', 'Mirrors', NULL, NULL, 'en'),
 (234, 305, 'categoria', ' Miroirs', NULL, NULL, 'fr'),
 (235, 304, 'categoria', 'Des photos', NULL, NULL, 'fr'),
-(236, 304, 'categoria', 'Decorative paintings', NULL, NULL, 'en');
+(236, 304, 'categoria', 'Wall art', NULL, NULL, 'en'),
+(237, 303, 'categoria', 'Carpets', NULL, NULL, 'en'),
+(238, 303, 'categoria', 'Tapis', NULL, NULL, 'fr'),
+(239, 302, 'categoria', 'Wall clocks', NULL, NULL, 'en'),
+(240, 302, 'categoria', 'Horloges Murales', NULL, NULL, 'fr'),
+(241, 307, 'categoria', 'Pressure Cooker ', NULL, NULL, 'en'),
+(242, 307, 'categoria', 'cocotte minute', NULL, NULL, 'fr'),
+(243, 306, 'categoria', 'Slow cooker ', NULL, NULL, 'en'),
+(244, 306, 'categoria', 'Autocuiseur', NULL, NULL, 'fr'),
+(245, 277, 'categoria', 'Rice cooker', NULL, NULL, 'en'),
+(246, 277, 'categoria', 'Cuiseur à riz', NULL, NULL, 'fr'),
+(247, 301, 'categoria', 'Flower vase and vases', NULL, NULL, 'en'),
+(248, 301, 'categoria', 'Vases', NULL, NULL, 'fr'),
+(249, 300, 'categoria', ' Decorative figures', NULL, NULL, 'en'),
+(250, 300, 'categoria', 'Figures décoratives', NULL, NULL, 'fr'),
+(251, 276, 'categoria', 'sandwich maker and waffle maker ', NULL, NULL, 'en'),
+(252, 276, 'categoria', 'Sandwicherie / gaufriers', NULL, NULL, 'fr'),
+(253, 299, 'categoria', 'Centerpiece  ', NULL, NULL, 'en'),
+(254, 299, 'categoria', 'Centre de table', NULL, NULL, 'fr'),
+(255, 299, 'categoria', 'Centre de table', NULL, NULL, 'fr'),
+(256, 299, 'categoria', 'Centre de table', NULL, NULL, 'fr'),
+(257, 299, 'categoria', 'Centre de table', NULL, NULL, 'fr'),
+(258, 299, 'categoria', 'Centre de table', NULL, NULL, 'fr'),
+(259, 299, 'categoria', 'Centre de table', NULL, NULL, 'fr'),
+(260, 275, 'categoria', 'Coffee makers', NULL, NULL, 'en'),
+(261, 275, 'categoria', 'Cafetières', NULL, NULL, 'fr'),
+(262, 275, 'categoria', 'Cafetières', NULL, NULL, 'fr'),
+(263, 275, 'categoria', 'Coffee makers', NULL, NULL, 'en'),
+(264, 298, 'categoria', 'Photo frame', NULL, NULL, 'en'),
+(265, 298, 'categoria', ' Cadre photo', NULL, NULL, 'fr'),
+(266, 298, 'categoria', ' Cadre photo', NULL, NULL, 'fr'),
+(267, 274, 'categoria', 'Toasters', NULL, NULL, 'en'),
+(268, 274, 'categoria', 'Grille-pain', NULL, NULL, 'fr'),
+(269, 297, 'categoria', 'Paniers', NULL, NULL, 'fr'),
+(270, 297, 'categoria', 'Baskets', NULL, NULL, 'en'),
+(271, 272, 'categoria', 'Alarms and Sensors', NULL, NULL, 'en'),
+(272, 272, 'categoria', 'Alarmes et Capteurs', NULL, NULL, 'fr'),
+(273, 272, 'categoria', 'Alarmes et Capteurs', NULL, NULL, 'fr'),
+(274, 272, 'categoria', 'Alarms and Sensors', NULL, NULL, 'en'),
+(275, 273, 'categoria', 'Blenders', NULL, NULL, 'en'),
+(276, 273, 'categoria', 'Mélangeurs', NULL, NULL, 'fr'),
+(277, 296, 'categoria', 'Fireplaces', NULL, NULL, 'en'),
+(278, 296, 'categoria', 'Cheminées', NULL, NULL, 'fr'),
+(279, 271, 'categoria', 'Cloches', NULL, NULL, 'fr'),
+(280, 271, 'categoria', 'Bells', NULL, NULL, 'en'),
+(281, 271, 'categoria', 'Cloches', NULL, NULL, 'fr'),
+(282, 271, 'categoria', 'Bells', NULL, NULL, 'en'),
+(283, 151, 'categoria', 'Lave vaisselle', NULL, NULL, 'fr'),
+(284, 151, 'categoria', 'Dishwasher', NULL, NULL, 'en'),
+(285, 151, 'categoria', 'Dishwasher', NULL, NULL, 'en'),
+(286, 151, 'categoria', 'Lave vaisselle', NULL, NULL, 'fr'),
+(287, 151, 'categoria', 'Dishwasher', NULL, NULL, 'en'),
+(288, 151, 'categoria', 'Dishwasher', NULL, NULL, 'en'),
+(289, 151, 'categoria', 'Lave vaisselle', NULL, NULL, 'fr'),
+(290, 295, 'categoria', 'Bougies et Chandeliers', NULL, NULL, 'fr'),
+(291, 295, 'categoria', 'Candles and Candlesticks', NULL, NULL, 'en'),
+(292, 295, 'categoria', 'Candles and Candlesticks', NULL, NULL, 'en'),
+(293, 295, 'categoria', 'Bougies et Chandeliers', NULL, NULL, 'fr'),
+(294, 270, 'categoria', 'Contacts', NULL, NULL, 'en'),
+(295, 270, 'categoria', 'Les contacts', NULL, NULL, 'fr'),
+(296, 270, 'categoria', 'Les contacts', NULL, NULL, 'fr'),
+(297, 270, 'categoria', 'Contacts', NULL, NULL, 'en'),
+(298, 26, 'categoria', 'Sports and Outdoors', NULL, NULL, 'en'),
+(299, 26, 'categoria', 'Sports et plein air', NULL, NULL, 'fr'),
+(300, 26, 'categoria', 'Sports et plein air', NULL, NULL, 'fr'),
+(301, 26, 'categoria', 'Sports and Outdoors', NULL, NULL, 'en'),
+(302, 25, 'categoria', 'Beauté et soins personnels', NULL, NULL, 'fr'),
+(303, 25, 'categoria', 'Beauté et soins personnels', NULL, NULL, 'fr'),
+(304, 25, 'categoria', 'Beauté et soins personnels', NULL, NULL, 'fr'),
+(305, 27, 'categoria', 'Foyer', NULL, NULL, 'fr'),
+(306, 27, 'categoria', 'Home', NULL, NULL, 'en'),
+(307, 27, 'categoria', 'Home', NULL, NULL, 'en'),
+(308, 27, 'categoria', 'Foyer', NULL, NULL, 'fr'),
+(309, 150, 'categoria', 'Ovens', NULL, NULL, 'en'),
+(310, 150, 'categoria', ' Fours', NULL, NULL, 'fr'),
+(311, 150, 'categoria', ' Fours', NULL, NULL, 'fr'),
+(312, 150, 'categoria', 'Ovens', NULL, NULL, 'en'),
+(313, 150, 'categoria', ' Fours', NULL, NULL, 'fr'),
+(314, 150, 'categoria', 'Ovens', NULL, NULL, 'en'),
+(315, 149, 'categoria', 'Washing machines', NULL, NULL, 'en'),
+(316, 149, 'categoria', 'Machines à laver', NULL, NULL, 'fr'),
+(317, 149, 'categoria', 'Machines à laver', NULL, NULL, 'fr'),
+(318, 149, 'categoria', 'Washing machines', NULL, NULL, 'en'),
+(319, 269, 'categoria', 'Switches', NULL, NULL, 'en'),
+(320, 269, 'categoria', ' Interrupteurs', NULL, NULL, 'fr'),
+(321, 294, 'categoria', 'Posters', NULL, NULL, 'en'),
+(322, 294, 'categoria', 'Des affiches', NULL, NULL, 'fr'),
+(323, 294, 'categoria', 'Des affiches', NULL, NULL, 'fr'),
+(324, 294, 'categoria', 'Posters', NULL, NULL, 'en'),
+(325, 148, 'categoria', 'Refrigerators', NULL, NULL, 'en'),
+(326, 268, 'categoria', 'Extension cords', NULL, NULL, 'en'),
+(327, 268, 'categoria', 'Les extensions', NULL, NULL, 'fr'),
+(328, 268, 'categoria', 'Les extensions', NULL, NULL, 'fr'),
+(329, 268, 'categoria', 'Extensions', NULL, NULL, 'en'),
+(330, 268, 'categoria', 'Extensions', NULL, NULL, 'en'),
+(331, 293, 'categoria', 'Hangings', NULL, NULL, 'en'),
+(332, 293, 'categoria', 'Tapisseries', NULL, NULL, 'fr'),
+(333, 293, 'categoria', 'Tapisseries', NULL, NULL, 'fr'),
+(334, 135, 'categoria', 'Appliances ', NULL, NULL, 'en'),
+(335, 135, 'categoria', ' Appareils et ligne blanche', NULL, NULL, 'fr'),
+(336, 135, 'categoria', ' Appareils et ligne blanche', NULL, NULL, 'fr'),
+(337, 134, 'categoria', 'Lighting', NULL, NULL, 'en'),
+(338, 134, 'categoria', 'L\'éclairage', NULL, NULL, 'fr'),
+(339, 133, 'categoria', ' Decor', NULL, NULL, 'en'),
+(340, 133, 'categoria', 'Décoration', NULL, NULL, 'fr'),
+(341, 133, 'categoria', 'Décoration', NULL, NULL, 'fr'),
+(342, 133, 'categoria', ' Decor', NULL, NULL, 'en'),
+(343, 133, 'categoria', 'Décoration', NULL, NULL, 'fr'),
+(344, 384, 'categoria', 'Water filter\'s cartridges', NULL, NULL, 'en'),
+(345, 384, 'categoria', 'Cartouches pour filtres à eau', NULL, NULL, 'fr'),
+(346, 384, 'categoria', 'Cartouches pour filtres à eau', NULL, NULL, 'fr'),
+(347, 384, 'categoria', ' Cartridges for water filters', NULL, NULL, 'en'),
+(348, 384, 'categoria', ' Cartridges for water filters', NULL, NULL, 'en'),
+(349, 383, 'categoria', 'Water Filter\'s accesories', NULL, NULL, 'en'),
+(350, 383, 'categoria', 'Accessoires pour filtres à eau', NULL, NULL, 'fr'),
+(351, 383, 'categoria', 'Accessoires pour filtres à eau', NULL, NULL, 'fr'),
+(352, 383, 'categoria', 'Accessoires pour filtres à eau', NULL, NULL, 'fr'),
+(353, 383, 'categoria', 'Accessories for Water Filters', NULL, NULL, 'en'),
+(354, 383, 'categoria', 'Accessories for Water Filters', NULL, NULL, 'en'),
+(355, 267, 'categoria', ' Kitchen', NULL, NULL, 'en'),
+(356, 267, 'categoria', 'Cuisine', NULL, NULL, 'fr'),
+(357, 267, 'categoria', 'Cuisine', NULL, NULL, 'fr'),
+(358, 267, 'categoria', ' Kitchen', NULL, NULL, 'en'),
+(359, 267, 'categoria', ' Kitchen', NULL, NULL, 'en'),
+(360, 382, 'categoria', 'Water filters', NULL, NULL, 'en'),
+(361, 382, 'categoria', 'Filtres à eau', NULL, NULL, 'fr'),
+(362, 140, 'categoria', 'Jardin', NULL, NULL, 'fr'),
+(363, 140, 'categoria', 'Yard', NULL, NULL, 'en'),
+(364, 140, 'categoria', 'Yard', NULL, NULL, 'en'),
+(365, 140, 'categoria', 'Jardin', NULL, NULL, 'fr'),
+(366, 140, 'categoria', 'Jardin', NULL, NULL, 'fr'),
+(367, 140, 'categoria', 'Yard', NULL, NULL, 'en'),
+(368, 140, 'categoria', 'Yard', NULL, NULL, 'en'),
+(369, 140, 'categoria', 'Jardin', NULL, NULL, 'fr'),
+(370, 140, 'categoria', 'Jardin', NULL, NULL, 'fr'),
+(371, 140, 'categoria', 'Yard', NULL, NULL, 'en'),
+(372, 144, 'categoria', 'Kitchen accessories', NULL, NULL, 'en'),
+(373, 144, 'categoria', 'Accessoires de cuisine', NULL, NULL, 'fr'),
+(374, 144, 'categoria', 'Accessoires de cuisine', NULL, NULL, 'fr'),
+(375, 139, 'categoria', 'Salle de bain', NULL, NULL, 'fr'),
+(376, 139, 'categoria', 'Bathroom', NULL, NULL, 'en'),
+(377, 139, 'categoria', 'Bathroom', NULL, NULL, 'en'),
+(378, 139, 'categoria', 'Salle de bain', NULL, NULL, 'fr'),
+(379, 139, 'categoria', 'Bathroom', NULL, NULL, 'en'),
+(380, 139, 'categoria', 'Salle de bain', NULL, NULL, 'fr'),
+(381, 139, 'categoria', 'Bathroom', NULL, NULL, 'en'),
+(382, 138, 'categoria', 'Study', NULL, NULL, 'en'),
+(383, 138, 'categoria', 'Étude', NULL, NULL, 'fr'),
+(384, 138, 'categoria', 'Étude', NULL, NULL, 'fr'),
+(385, 138, 'categoria', 'Étude', NULL, NULL, 'fr'),
+(386, 143, 'categoria', 'Pots and pans', NULL, NULL, 'en'),
+(387, 143, 'categoria', 'Casseroles et poêles', NULL, NULL, 'fr'),
+(388, 143, 'categoria', 'Casseroles et poêles', NULL, NULL, 'fr'),
+(389, 143, 'categoria', 'Pots and pans', NULL, NULL, 'en'),
+(390, 143, 'categoria', 'Pots and pans', NULL, NULL, 'en'),
+(391, 143, 'categoria', 'Casseroles et poêles', NULL, NULL, 'fr'),
+(392, 143, 'categoria', 'Casseroles et poêles', NULL, NULL, 'fr'),
+(393, 147, 'categoria', 'Box Spring', NULL, NULL, 'en'),
+(394, 147, 'categoria', 'Box Spring', NULL, NULL, 'en'),
+(395, 147, 'categoria', 'Box Spring', NULL, NULL, 'en'),
+(396, 147, 'categoria', ' sommier', NULL, NULL, 'fr'),
+(397, 147, 'categoria', ' sommier', NULL, NULL, 'fr'),
+(398, 147, 'categoria', ' sommier', NULL, NULL, 'fr'),
+(399, 137, 'categoria', 'Bedroom', NULL, NULL, 'en'),
+(400, 137, 'categoria', 'Chambre à coucher', NULL, NULL, 'fr'),
+(401, 137, 'categoria', 'Chambre à coucher', NULL, NULL, 'fr'),
+(402, 142, 'categoria', 'Cake shop', NULL, NULL, 'en'),
+(403, 142, 'categoria', 'Pâtisserie', NULL, NULL, 'fr'),
+(404, 142, 'categoria', 'Pâtisserie', NULL, NULL, 'fr'),
+(405, 142, 'categoria', 'Cake shop', NULL, NULL, 'en'),
+(406, 142, 'categoria', 'Cake shop', NULL, NULL, 'en'),
+(407, 142, 'categoria', 'Pâtisserie', NULL, NULL, 'fr'),
+(408, 142, 'categoria', 'Pâtisserie', NULL, NULL, 'fr'),
+(409, 146, 'categoria', 'Pillows', NULL, NULL, 'en'),
+(410, 146, 'categoria', ' Oreillers', NULL, NULL, 'fr'),
+(411, 146, 'categoria', ' Oreillers', NULL, NULL, 'fr'),
+(412, 146, 'categoria', 'Pillows', NULL, NULL, 'en'),
+(413, 146, 'categoria', ' Oreillers', NULL, NULL, 'fr'),
+(414, 146, 'categoria', ' Oreillers', NULL, NULL, 'fr'),
+(415, 146, 'categoria', 'Pillows', NULL, NULL, 'en'),
+(416, 146, 'categoria', 'Pillows', NULL, NULL, 'en'),
+(417, 146, 'categoria', 'Pillows', NULL, NULL, 'en'),
+(418, 146, 'categoria', ' Oreillers', NULL, NULL, 'fr'),
+(419, 136, 'categoria', 'Chambre', NULL, NULL, 'fr'),
+(420, 136, 'categoria', 'Room', NULL, NULL, 'en'),
+(421, 136, 'categoria', 'Chambre', NULL, NULL, 'fr'),
+(422, 136, 'categoria', 'Room', NULL, NULL, 'en'),
+(423, 141, 'categoria', 'Cutlery and Knives', NULL, NULL, 'en'),
+(424, 141, 'categoria', 'Couverts et couteaux', NULL, NULL, 'fr'),
+(425, 141, 'categoria', 'Couverts et couteaux', NULL, NULL, 'fr'),
+(426, 141, 'categoria', 'Cutlery and Knives', NULL, NULL, 'en'),
+(427, 141, 'categoria', 'Cutlery and Knives', NULL, NULL, 'en'),
+(428, 145, 'categoria', 'Mattresses', NULL, NULL, 'en'),
+(429, 145, 'categoria', 'Matelas', NULL, NULL, 'fr'),
+(430, 145, 'categoria', 'Matelas', NULL, NULL, 'fr'),
+(431, 145, 'categoria', 'Mattresses', NULL, NULL, 'en'),
+(432, 145, 'categoria', 'Mattresses', NULL, NULL, 'en'),
+(433, 132, 'categoria', 'Bedroom', NULL, NULL, 'en'),
+(434, 132, 'categoria', 'Chambre à coucher', NULL, NULL, 'fr'),
+(435, 132, 'categoria', 'Chambre à coucher', NULL, NULL, 'fr'),
+(436, 132, 'categoria', 'Bedroom', NULL, NULL, 'en'),
+(437, 132, 'categoria', 'Bedroom', NULL, NULL, 'en'),
+(438, 132, 'categoria', 'Bedroom', NULL, NULL, 'en'),
+(439, 132, 'categoria', 'Bedroom', NULL, NULL, 'en'),
+(440, 132, 'categoria', 'Bedroom', NULL, NULL, 'en'),
+(441, 132, 'categoria', 'Bedroom', NULL, NULL, 'en'),
+(442, 132, 'categoria', 'Chambre à coucher', NULL, NULL, 'fr'),
+(443, 132, 'categoria', 'Bedroom', NULL, NULL, 'en'),
+(444, 132, 'categoria', 'Bedroom', NULL, NULL, 'en'),
+(445, 132, 'categoria', 'Chambre à coucher', NULL, NULL, 'fr'),
+(446, 132, 'categoria', 'Chambre à coucher', NULL, NULL, 'fr'),
+(447, 130, 'categoria', 'Kitchen', NULL, NULL, 'en'),
+(448, 130, 'categoria', 'Cuisine', NULL, NULL, 'fr'),
+(449, 130, 'categoria', 'Cuisine', NULL, NULL, 'fr'),
+(450, 130, 'categoria', 'Cuisine', NULL, NULL, 'fr'),
+(451, 130, 'categoria', 'Cuisine', NULL, NULL, 'fr'),
+(452, 129, 'categoria', 'Les meubles', NULL, NULL, 'fr'),
+(453, 129, 'categoria', 'Furnitures', NULL, NULL, 'en'),
+(454, 129, 'categoria', 'Furnitures', NULL, NULL, 'en'),
+(455, 129, 'categoria', 'Furnitures', NULL, NULL, 'en'),
+(456, 129, 'categoria', 'Furnitures', NULL, NULL, 'en'),
+(457, 129, 'categoria', 'Furnitures', NULL, NULL, 'en'),
+(458, 129, 'categoria', 'Les meubles', NULL, NULL, 'fr'),
+(459, 129, 'categoria', 'Furnitures', NULL, NULL, 'en'),
+(460, 29, 'categoria', 'Babies', NULL, NULL, 'en'),
+(461, 29, 'categoria', 'Les bébés', NULL, NULL, 'fr'),
+(462, 29, 'categoria', 'Les bébés', NULL, NULL, 'fr'),
+(463, 29, 'categoria', 'Les bébés', NULL, NULL, 'fr'),
+(464, 29, 'categoria', 'Babies', NULL, NULL, 'en'),
+(465, 29, 'categoria', 'Babies', NULL, NULL, 'en'),
+(466, 29, 'categoria', 'Les bébés', NULL, NULL, 'fr'),
+(467, 29, 'categoria', 'Les bébés', NULL, NULL, 'fr'),
+(468, 29, 'categoria', 'Babies', NULL, NULL, 'en'),
+(469, 332, 'categoria', 'Pacifiers', NULL, NULL, 'en'),
+(470, 332, 'categoria', 'Sucettes', NULL, NULL, 'fr'),
+(471, 332, 'categoria', 'Sucettes', NULL, NULL, 'fr'),
+(472, 332, 'categoria', 'Sucettes', NULL, NULL, 'fr'),
+(473, 332, 'categoria', 'Pacifiers', NULL, NULL, 'en'),
+(474, 332, 'categoria', 'Pacifiers', NULL, NULL, 'en'),
+(475, 332, 'categoria', 'Sucettes', NULL, NULL, 'fr'),
+(476, 332, 'categoria', 'Sucettes', NULL, NULL, 'fr'),
+(477, 332, 'categoria', 'Pacifiers', NULL, NULL, 'en'),
+(478, 331, 'categoria', 'Extractor pump', NULL, NULL, 'en'),
+(479, 331, 'categoria', 'Tire-lait', NULL, NULL, 'fr'),
+(480, 330, 'categoria', 'Feeding bottle', NULL, NULL, 'en'),
+(481, 330, 'categoria', 'Biberon', NULL, NULL, 'fr'),
+(482, 330, 'categoria', 'Biberon', NULL, NULL, 'fr'),
+(483, 329, 'categoria', 'Feeding and Breastfeeding', NULL, NULL, 'en'),
+(484, 329, 'categoria', 'Allaitement et L\'allaitement', NULL, NULL, 'fr'),
+(485, 329, 'categoria', 'Allaitement et L\'allaitement', NULL, NULL, 'fr'),
+(486, 329, 'categoria', 'Allaitement et L\'allaitement', NULL, NULL, 'fr'),
+(487, 329, 'categoria', 'Allaitement et L\'allaitement', NULL, NULL, 'fr'),
+(488, 329, 'categoria', 'Allaitement et L\'allaitement', NULL, NULL, 'fr'),
+(489, 329, 'categoria', 'Allaitement et L\'allaitement', NULL, NULL, 'fr'),
+(490, 329, 'categoria', 'Allaitement et L\'allaitement', NULL, NULL, 'fr'),
+(491, 329, 'categoria', 'Allaitement et L\'allaitement', NULL, NULL, 'fr'),
+(492, 329, 'categoria', 'Allaitement et L\'allaitement', NULL, NULL, 'fr'),
+(493, 162, 'categoria', 'Propreté et hygiène', NULL, NULL, 'fr'),
+(494, 162, 'categoria', 'Cleanliness and hygiene', NULL, NULL, 'en'),
+(495, 161, 'categoria', 'Security and monitors', NULL, NULL, 'en'),
+(496, 161, 'categoria', 'Sécurité et moniteurs', NULL, NULL, 'fr'),
+(497, 161, 'categoria', 'Sécurité et moniteurs', NULL, NULL, 'fr'),
+(498, 161, 'categoria', 'Sécurité et moniteurs', NULL, NULL, 'fr'),
+(499, 161, 'categoria', 'Sécurité et moniteurs', NULL, NULL, 'fr'),
+(500, 161, 'categoria', 'Security and monitors', NULL, NULL, 'en'),
+(501, 161, 'categoria', 'Sécurité et moniteurs', NULL, NULL, 'fr'),
+(502, 161, 'categoria', 'Sécurité et moniteurs', NULL, NULL, 'fr'),
+(503, 161, 'categoria', 'Sécurité et moniteurs', NULL, NULL, 'fr'),
+(504, 161, 'categoria', 'Sécurité et moniteurs', NULL, NULL, 'fr'),
+(505, 160, 'categoria', 'Berceaux', NULL, NULL, 'fr'),
+(506, 160, 'categoria', 'Cribs', NULL, NULL, 'en'),
+(507, 160, 'categoria', 'Cribs', NULL, NULL, 'en'),
+(508, 160, 'categoria', 'Cribs', NULL, NULL, 'en'),
+(509, 160, 'categoria', 'Cribs', NULL, NULL, 'en'),
+(510, 160, 'categoria', 'Cribs', NULL, NULL, 'en'),
+(511, 160, 'categoria', 'Berceaux', NULL, NULL, 'fr'),
+(512, 159, 'categoria', 'Strollers', NULL, NULL, 'en'),
+(513, 280, 'categoria', 'Des lits', NULL, NULL, 'fr'),
+(514, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(515, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(516, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(517, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(518, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(519, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(520, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(521, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(522, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(523, 280, 'categoria', 'Des lits', NULL, NULL, 'fr'),
+(524, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(525, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(526, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(527, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(528, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(529, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(530, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(531, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(532, 280, 'categoria', 'Des lits', NULL, NULL, 'fr'),
+(533, 280, 'categoria', 'Beds', NULL, NULL, 'en'),
+(534, 280, 'categoria', 'Des lits', NULL, NULL, 'fr'),
+(535, 280, 'categoria', 'Des lits', NULL, NULL, 'fr'),
+(536, 279, 'categoria', 'Cribs', NULL, NULL, 'en'),
+(537, 279, 'categoria', 'Berceaux', NULL, NULL, 'fr'),
+(538, 158, 'categoria', ' Diapers', NULL, NULL, 'en'),
+(539, 158, 'categoria', 'Couches ', NULL, NULL, 'fr'),
+(540, 158, 'categoria', 'Couches ', NULL, NULL, 'fr'),
+(541, 278, 'categoria', 'Diapers bag', NULL, NULL, 'en'),
+(542, 278, 'categoria', 'sac à langer', NULL, NULL, 'fr'),
+(543, 154, 'categoria', 'Babies', NULL, NULL, 'en'),
+(544, 154, 'categoria', ' Les bébés', NULL, NULL, 'fr'),
+(545, 154, 'categoria', ' Les bébés', NULL, NULL, 'fr'),
+(546, 153, 'categoria', 'Les meubles', NULL, NULL, 'fr'),
+(547, 153, 'categoria', 'Furniture', NULL, NULL, 'en'),
+(548, 153, 'categoria', 'Furniture', NULL, NULL, 'en'),
+(549, 153, 'categoria', 'Les meubles', NULL, NULL, 'fr'),
+(550, 153, 'categoria', 'Les meubles', NULL, NULL, 'fr'),
+(551, 153, 'categoria', 'Furniture', NULL, NULL, 'en'),
+(552, 152, 'categoria', 'Clothes and accessories', NULL, NULL, 'en'),
+(553, 152, 'categoria', 'Vêtements et accessoires', NULL, NULL, 'fr'),
+(554, 152, 'categoria', 'Clothes and accessories', NULL, NULL, 'en'),
+(555, 152, 'categoria', 'Vêtements et accessoires', NULL, NULL, 'fr'),
+(556, 152, 'categoria', 'Vêtements et accessoires', NULL, NULL, 'fr'),
+(557, 152, 'categoria', 'Clothes and accessories', NULL, NULL, 'en'),
+(558, 152, 'categoria', 'Vêtements et accessoires', NULL, NULL, 'fr'),
+(559, 152, 'categoria', 'Clothes and accessories', NULL, NULL, 'en'),
+(560, 152, 'categoria', 'Vêtements et accessoires', NULL, NULL, 'fr'),
+(561, 152, 'categoria', 'Clothes and accessories', NULL, NULL, 'en'),
+(562, 152, 'categoria', 'Vêtements et accessoires', NULL, NULL, 'fr'),
+(563, 321, 'categoria', 'Children and Youth', NULL, NULL, 'en'),
+(564, 321, 'categoria', 'Enfants et jeunes', NULL, NULL, 'fr'),
+(565, 321, 'categoria', 'Enfants et jeunes', NULL, NULL, 'fr'),
+(566, 321, 'categoria', 'Enfants et jeunes', NULL, NULL, 'fr'),
+(567, 321, 'categoria', 'Children and Youth', NULL, NULL, 'en'),
+(568, 321, 'categoria', 'Children and Youth', NULL, NULL, 'en'),
+(569, 319, 'categoria', 'Comics', NULL, NULL, 'en'),
+(570, 319, 'categoria', 'des bandes dessinées', NULL, NULL, 'fr'),
+(571, 319, 'categoria', 'des bandes dessinées', NULL, NULL, 'fr'),
+(572, 319, 'categoria', 'Comics', NULL, NULL, 'en'),
+(573, 319, 'categoria', 'Comics', NULL, NULL, 'en'),
+(574, 320, 'categoria', 'Audiobooks', NULL, NULL, 'en'),
+(575, 320, 'categoria', 'Livres audio', NULL, NULL, 'fr'),
+(576, 320, 'categoria', 'Audiobooks', NULL, NULL, 'en'),
+(577, 320, 'categoria', 'Livres audio', NULL, NULL, 'fr'),
+(578, 320, 'categoria', 'Audiobooks', NULL, NULL, 'en'),
+(579, 320, 'categoria', 'Audiobooks', NULL, NULL, 'en'),
+(580, 318, 'categoria', 'Coloring books', NULL, NULL, 'en'),
+(581, 318, 'categoria', 'Livres à colorier', NULL, NULL, 'fr'),
+(582, 318, 'categoria', 'Livres à colorier', NULL, NULL, 'fr'),
+(583, 317, 'categoria', 'Plants and Agriculture', NULL, NULL, 'en'),
+(584, 317, 'categoria', 'Plantes et Agriculture', NULL, NULL, 'fr'),
+(585, 317, 'categoria', 'Plantes et Agriculture', NULL, NULL, 'fr'),
+(586, 317, 'categoria', 'Plantes et Agriculture', NULL, NULL, 'fr'),
+(587, 317, 'categoria', 'Plants and Agriculture', NULL, NULL, 'en'),
+(588, 317, 'categoria', 'Plants and Agriculture', NULL, NULL, 'en'),
+(589, 317, 'categoria', 'Plantes et Agriculture', NULL, NULL, 'fr'),
+(590, 317, 'categoria', 'Plantes et Agriculture', NULL, NULL, 'fr'),
+(591, 317, 'categoria', 'Plants and Agriculture', NULL, NULL, 'en'),
+(592, 317, 'categoria', 'Plants and Agriculture', NULL, NULL, 'en'),
+(593, 317, 'categoria', 'Plantes et Agriculture', NULL, NULL, 'fr'),
+(594, 317, 'categoria', 'Plantes et Agriculture', NULL, NULL, 'fr'),
+(595, 317, 'categoria', 'Plants and Agriculture', NULL, NULL, 'en'),
+(596, 317, 'categoria', 'Plantes et Agriculture', NULL, NULL, 'fr'),
+(597, 317, 'categoria', 'Plantes et Agriculture', NULL, NULL, 'fr'),
+(598, 317, 'categoria', 'Plants and Agriculture', NULL, NULL, 'en'),
+(599, 317, 'categoria', 'Plantes et Agriculture', NULL, NULL, 'fr'),
+(600, 30, 'categoria', 'Books', NULL, NULL, 'en'),
+(601, 30, 'categoria', 'Des livres', NULL, NULL, 'fr'),
+(602, 316, 'categoria', 'Pets', NULL, NULL, 'en'),
+(603, 316, 'categoria', 'Animaux / Animaux domestiques', NULL, NULL, 'fr'),
+(604, 316, 'categoria', 'Animaux / Animaux domestiques', NULL, NULL, 'fr'),
+(605, 316, 'categoria', 'Animaux / Animaux domestiques', NULL, NULL, 'fr'),
+(606, 316, 'categoria', 'Animals / Pets', NULL, NULL, 'en'),
+(607, 316, 'categoria', 'Animals / Pets', NULL, NULL, 'en'),
+(608, 316, 'categoria', 'Animaux / Animaux domestiques', NULL, NULL, 'fr'),
+(609, 316, 'categoria', 'Animaux / Animaux domestiques', NULL, NULL, 'fr'),
+(610, 316, 'categoria', 'Animals / Pets', NULL, NULL, 'en'),
+(611, 316, 'categoria', 'Animals / Pets', NULL, NULL, 'en'),
+(612, 316, 'categoria', 'Animaux / Animaux domestiques', NULL, NULL, 'fr'),
+(613, 316, 'categoria', 'Animaux / Animaux domestiques', NULL, NULL, 'fr'),
+(614, 316, 'categoria', 'Animaux / Animaux domestiques', NULL, NULL, 'fr'),
+(615, 316, 'categoria', 'Animals / Pets', NULL, NULL, 'en'),
+(616, 315, 'categoria', ' Alternative medicine', NULL, NULL, 'en'),
+(617, 315, 'categoria', 'Santé alternative', NULL, NULL, 'fr'),
+(618, 315, 'categoria', 'Santé alternative', NULL, NULL, 'fr'),
+(619, 315, 'categoria', ' Alternative Health', NULL, NULL, 'en'),
+(620, 315, 'categoria', ' Alternative Health', NULL, NULL, 'en'),
+(621, 314, 'categoria', 'Religion', NULL, NULL, 'en'),
+(622, 314, 'categoria', 'La religion', NULL, NULL, 'fr'),
+(623, 314, 'categoria', 'La religion', NULL, NULL, 'fr'),
+(624, 314, 'categoria', 'La religion', NULL, NULL, 'fr'),
+(625, 314, 'categoria', 'Religion', NULL, NULL, 'en'),
+(626, 314, 'categoria', 'La religion', NULL, NULL, 'fr'),
+(627, 313, 'categoria', 'History and Biographies', NULL, NULL, 'en'),
+(628, 313, 'categoria', ' Histoire et Biographies', NULL, NULL, 'fr'),
+(629, 313, 'categoria', ' Histoire et Biographies', NULL, NULL, 'fr'),
+(630, 313, 'categoria', ' Histoire et Biographies', NULL, NULL, 'fr'),
+(631, 313, 'categoria', 'History and Biographies', NULL, NULL, 'en'),
+(632, 313, 'categoria', 'History and Biographies', NULL, NULL, 'en'),
+(633, 313, 'categoria', ' Histoire et Biographies', NULL, NULL, 'fr'),
+(634, 312, 'categoria', 'Gastronomy', NULL, NULL, 'en'),
+(635, 312, 'categoria', 'Gastronomie', NULL, NULL, 'fr'),
+(636, 312, 'categoria', 'Gastronomie', NULL, NULL, 'fr'),
+(637, 312, 'categoria', 'Gastronomy', NULL, NULL, 'en'),
+(638, 312, 'categoria', 'Gastronomy', NULL, NULL, 'en'),
+(639, 312, 'categoria', 'Gastronomie', NULL, NULL, 'fr'),
+(640, 312, 'categoria', 'Gastronomie', NULL, NULL, 'fr'),
+(641, 312, 'categoria', 'Gastronomy', NULL, NULL, 'en'),
+(642, 312, 'categoria', 'Gastronomie', NULL, NULL, 'fr'),
+(643, 311, 'categoria', 'Esotericism', NULL, NULL, 'en'),
+(644, 311, 'categoria', 'Ésotérisme', NULL, NULL, 'fr'),
+(645, 311, 'categoria', 'Ésotérisme', NULL, NULL, 'fr'),
+(646, 311, 'categoria', 'Esotericism', NULL, NULL, 'en'),
+(647, 311, 'categoria', 'Esotericism', NULL, NULL, 'en'),
+(648, 311, 'categoria', 'Ésotérisme', NULL, NULL, 'fr'),
+(649, 310, 'categoria', 'School books', NULL, NULL, 'en'),
+(650, 310, 'categoria', 'Écoliers', NULL, NULL, 'fr'),
+(651, 310, 'categoria', 'Écoliers', NULL, NULL, 'fr'),
+(652, 310, 'categoria', 'Schoolchildren', NULL, NULL, 'en'),
+(653, 310, 'categoria', 'Schoolchildren', NULL, NULL, 'en'),
+(654, 310, 'categoria', 'Schoolchildren', NULL, NULL, 'en'),
+(655, 310, 'categoria', 'Écoliers', NULL, NULL, 'fr'),
+(656, 309, 'categoria', 'Languages', NULL, NULL, 'en'),
+(657, 309, 'categoria', ' langues', NULL, NULL, 'fr'),
+(658, 309, 'categoria', ' langues', NULL, NULL, 'fr'),
+(659, 309, 'categoria', 'Languages', NULL, NULL, 'en'),
+(660, 309, 'categoria', ' langues', NULL, NULL, 'fr'),
+(661, 309, 'categoria', 'Languages', NULL, NULL, 'en'),
+(662, 309, 'categoria', 'Languages', NULL, NULL, 'en'),
+(663, 309, 'categoria', ' langues', NULL, NULL, 'fr'),
+(664, 308, 'categoria', 'For Travelers / Tourism', NULL, NULL, 'en'),
+(665, 308, 'categoria', 'Pour les voyageurs / tourisme', NULL, NULL, 'fr'),
+(666, 308, 'categoria', 'Pour les voyageurs / tourisme', NULL, NULL, 'fr'),
+(667, 308, 'categoria', 'Pour les voyageurs / tourisme', NULL, NULL, 'fr'),
+(668, 308, 'categoria', 'For Travelers / Tourism', NULL, NULL, 'en'),
+(669, 308, 'categoria', 'For Travelers / Tourism', NULL, NULL, 'en'),
+(670, 308, 'categoria', 'For Travelers / Tourism', NULL, NULL, 'en'),
+(671, 308, 'categoria', 'Pour les voyageurs / tourisme', NULL, NULL, 'fr'),
+(672, 308, 'categoria', 'Pour les voyageurs / tourisme', NULL, NULL, 'fr'),
+(673, 175, 'categoria', 'Science fiction and Fantasy', NULL, NULL, 'en'),
+(674, 175, 'categoria', 'Science Fiction et Fantasy', NULL, NULL, 'fr'),
+(675, 175, 'categoria', 'Science Fiction et Fantasy', NULL, NULL, 'fr'),
+(676, 175, 'categoria', 'Science Fiction and Fantasy', NULL, NULL, 'en'),
+(677, 175, 'categoria', 'Science Fiction and Fantasy', NULL, NULL, 'en'),
+(678, 175, 'categoria', 'Science Fiction et Fantasy', NULL, NULL, 'fr'),
+(679, 174, 'categoria', 'eBooks Kindle ', NULL, NULL, 'en'),
+(680, 174, 'categoria', 'eBooks Kindle ', NULL, NULL, 'en'),
+(681, 174, 'categoria', 'eBooks Kindle', NULL, NULL, 'fr'),
+(682, 328, 'categoria', ' Les lois', NULL, NULL, 'fr'),
+(683, 328, 'categoria', 'Laws', NULL, NULL, 'en'),
+(684, 328, 'categoria', 'Straight', NULL, NULL, 'en'),
+(685, 328, 'categoria', 'Droit', NULL, NULL, 'fr'),
+(686, 328, 'categoria', 'Droit', NULL, NULL, 'fr'),
+(687, 327, 'categoria', ' Administration / Finance', NULL, NULL, 'en'),
+(688, 327, 'categoria', 'Administration / Finance', NULL, NULL, 'fr'),
+(689, 327, 'categoria', 'Administration / Finance', NULL, NULL, 'fr'),
+(690, 327, 'categoria', 'Administration / Finance', NULL, NULL, 'fr'),
+(691, 327, 'categoria', ' Administration / Finance', NULL, NULL, 'en'),
+(692, 327, 'categoria', ' Administration / Finance', NULL, NULL, 'en'),
+(693, 327, 'categoria', 'Administration / Finance', NULL, NULL, 'fr'),
+(694, 326, 'categoria', 'Humanities', NULL, NULL, 'en'),
+(695, 326, 'categoria', ' Sciences humaines', NULL, NULL, 'fr'),
+(696, 326, 'categoria', ' Sciences humaines', NULL, NULL, 'fr'),
+(697, 326, 'categoria', ' Sciences humaines', NULL, NULL, 'fr'),
+(698, 326, 'categoria', 'Humanities', NULL, NULL, 'en'),
+(699, 326, 'categoria', 'Humanities', NULL, NULL, 'en'),
+(700, 326, 'categoria', ' Sciences humaines', NULL, NULL, 'fr'),
+(701, 326, 'categoria', 'Humanities', NULL, NULL, 'en'),
+(702, 325, 'categoria', 'Art and Architecture', NULL, NULL, 'en'),
+(703, 325, 'categoria', 'Art et architecture', NULL, NULL, 'fr'),
+(704, 324, 'categoria', 'Medicine', NULL, NULL, 'en'),
+(705, 324, 'categoria', 'Médecine', NULL, NULL, 'fr'),
+(706, 324, 'categoria', 'Médecine', NULL, NULL, 'fr'),
+(707, 324, 'categoria', 'Medicine', NULL, NULL, 'en'),
+(708, 324, 'categoria', 'Medicine', NULL, NULL, 'en'),
+(709, 324, 'categoria', 'Médecine', NULL, NULL, 'fr'),
+(710, 324, 'categoria', 'Médecine', NULL, NULL, 'fr'),
+(711, 324, 'categoria', 'Medicine', NULL, NULL, 'en'),
+(712, 324, 'categoria', 'Medicine', NULL, NULL, 'en'),
+(713, 324, 'categoria', 'Médecine', NULL, NULL, 'fr'),
+(714, 324, 'categoria', 'Médecine', NULL, NULL, 'fr'),
+(715, 324, 'categoria', 'Médecine', NULL, NULL, 'fr'),
+(716, 323, 'categoria', 'Biological Sciences', NULL, NULL, 'en'),
+(717, 323, 'categoria', 'Sciences biologiques', NULL, NULL, 'fr'),
+(718, 323, 'categoria', 'Sciences biologiques', NULL, NULL, 'fr'),
+(719, 323, 'categoria', 'Sciences biologiques', NULL, NULL, 'fr'),
+(720, 323, 'categoria', 'Sciences biologiques', NULL, NULL, 'fr'),
+(721, 323, 'categoria', 'Sciences biologiques', NULL, NULL, 'fr'),
+(722, 323, 'categoria', 'Biological Sciences', NULL, NULL, 'en'),
+(723, 323, 'categoria', 'Sciences biologiques', NULL, NULL, 'fr'),
+(724, 322, 'categoria', 'Physicist - Mathematicians', NULL, NULL, 'en'),
+(725, 322, 'categoria', 'Physicien - Mathématiciens', NULL, NULL, 'fr'),
+(726, 322, 'categoria', 'Physicien - Mathématiciens', NULL, NULL, 'fr'),
+(727, 322, 'categoria', 'Physicien - Mathématiciens', NULL, NULL, 'fr'),
+(728, 322, 'categoria', 'Physicist - Mathematicians', NULL, NULL, 'en'),
+(729, 322, 'categoria', 'Physicist - Mathematicians', NULL, NULL, 'en'),
+(730, 322, 'categoria', 'Physicist - Mathematicians', NULL, NULL, 'en'),
+(731, 322, 'categoria', 'Physicien - Mathématiciens', NULL, NULL, 'fr'),
+(732, 322, 'categoria', 'Physicien - Mathématiciens', NULL, NULL, 'fr'),
+(733, 322, 'categoria', 'Physicist - Mathematicians', NULL, NULL, 'en'),
+(734, 173, 'categoria', 'Romance', NULL, NULL, 'en'),
+(735, 173, 'categoria', 'Romance', NULL, NULL, 'fr'),
+(736, 173, 'categoria', 'Romance', NULL, NULL, 'fr'),
+(737, 173, 'categoria', 'Romance', NULL, NULL, 'fr'),
+(738, 173, 'categoria', 'Romance', NULL, NULL, 'en'),
+(739, 173, 'categoria', 'Romance', NULL, NULL, 'en'),
+(740, 173, 'categoria', 'Romance', NULL, NULL, 'fr'),
+(741, 173, 'categoria', 'Romance', NULL, NULL, 'fr'),
+(742, 173, 'categoria', 'Romance', NULL, NULL, 'en'),
+(743, 172, 'categoria', 'professional and technical books', NULL, NULL, 'en'),
+(744, 172, 'categoria', 'Professionnels et Techniciens', NULL, NULL, 'fr'),
+(745, 172, 'categoria', 'Professionnels et Techniciens', NULL, NULL, 'fr'),
+(746, 172, 'categoria', 'Professionnels et Techniciens', NULL, NULL, 'fr'),
+(747, 172, 'categoria', 'Professionals and Technicians', NULL, NULL, 'en'),
+(748, 172, 'categoria', 'Professionals and Technicians', NULL, NULL, 'en'),
+(749, 172, 'categoria', 'Professionnels et Techniciens', NULL, NULL, 'fr'),
+(750, 172, 'categoria', 'Professionnels et Techniciens', NULL, NULL, 'fr'),
+(751, 172, 'categoria', 'Professionals and Technicians', NULL, NULL, 'en'),
+(752, 172, 'categoria', 'Professionals and Technicians', NULL, NULL, 'en'),
+(753, 171, 'categoria', 'Literature', NULL, NULL, 'en'),
+(754, 171, 'categoria', 'Littérature classique', NULL, NULL, 'fr'),
+(755, 171, 'categoria', 'Littérature classique', NULL, NULL, 'fr'),
+(756, 171, 'categoria', 'Classic literature', NULL, NULL, 'en'),
+(757, 171, 'categoria', 'Littérature classique', NULL, NULL, 'fr'),
+(758, 171, 'categoria', 'Classic literature', NULL, NULL, 'en'),
+(759, 198, 'categoria', 'high heel shoes', NULL, NULL, 'en'),
+(760, 198, 'categoria', 'Les talons', NULL, NULL, 'fr'),
+(761, 198, 'categoria', 'Les talons', NULL, NULL, 'fr'),
+(762, 198, 'categoria', 'high heel shoes', NULL, NULL, 'en'),
+(763, 202, 'categoria', 'Formal', NULL, NULL, 'en'),
+(764, 202, 'categoria', 'Formelle', NULL, NULL, 'fr'),
+(765, 202, 'categoria', 'Formelle', NULL, NULL, 'fr'),
+(766, 202, 'categoria', 'Formal', NULL, NULL, 'en'),
+(767, 202, 'categoria', 'Formal', NULL, NULL, 'en'),
+(768, 31, 'categoria', 'Bijoux Fantaisie et Montres', NULL, NULL, 'fr'),
+(769, 31, 'categoria', 'Fashion Jewelry and Watches', NULL, NULL, 'en'),
+(770, 31, 'categoria', 'Fashion Jewelry and Watches', NULL, NULL, 'en'),
+(771, 31, 'categoria', 'Bijoux Fantaisie et Montres', NULL, NULL, 'fr'),
+(772, 31, 'categoria', 'Bijoux Fantaisie et Montres', NULL, NULL, 'fr'),
+(773, 31, 'categoria', 'Fashion Jewelry and Watches', NULL, NULL, 'en'),
+(774, 31, 'categoria', 'Fashion Jewelry and Watches', NULL, NULL, 'en'),
+(775, 31, 'categoria', 'Bijoux Fantaisie et Montres', NULL, NULL, 'fr'),
+(776, 31, 'categoria', 'Bijoux Fantaisie et Montres', NULL, NULL, 'fr'),
+(777, 197, 'categoria', 'Floor shoes ', NULL, NULL, 'en'),
+(778, 197, 'categoria', 'Chaussures de sol', NULL, NULL, 'fr'),
+(779, 197, 'categoria', 'Chaussures de sol', NULL, NULL, 'fr'),
+(780, 201, 'categoria', 'Casual', NULL, NULL, 'en'),
+(781, 201, 'categoria', 'Casual', NULL, NULL, 'fr'),
+(782, 196, 'categoria', 'Boots', NULL, NULL, 'en'),
+(783, 196, 'categoria', 'Bottes', NULL, NULL, 'fr'),
+(784, 196, 'categoria', 'Bottes', NULL, NULL, 'fr'),
+(785, 196, 'categoria', 'Boots', NULL, NULL, 'en'),
+(786, 200, 'categoria', 'Bottes', NULL, NULL, 'fr'),
+(787, 200, 'categoria', 'Boots', NULL, NULL, 'en'),
+(788, 200, 'categoria', 'Boots', NULL, NULL, 'en'),
+(789, 200, 'categoria', 'Bottes', NULL, NULL, 'fr'),
+(790, 200, 'categoria', 'Bottes', NULL, NULL, 'fr'),
+(791, 195, 'categoria', 'Tennis', NULL, NULL, 'en'),
+(792, 195, 'categoria', 'De tennis', NULL, NULL, 'fr'),
+(793, 195, 'categoria', 'De tennis', NULL, NULL, 'fr'),
+(794, 195, 'categoria', 'De tennis', NULL, NULL, 'fr'),
+(795, 195, 'categoria', 'Tennis', NULL, NULL, 'en'),
+(796, 195, 'categoria', 'Tennis', NULL, NULL, 'en'),
+(797, 195, 'categoria', 'Tennis', NULL, NULL, 'en'),
+(798, 195, 'categoria', 'De tennis', NULL, NULL, 'fr'),
+(799, 195, 'categoria', 'De tennis', NULL, NULL, 'fr'),
+(800, 199, 'categoria', 'Tennis', NULL, NULL, 'en'),
+(801, 199, 'categoria', 'De tennis', NULL, NULL, 'fr'),
+(802, 199, 'categoria', 'De tennis', NULL, NULL, 'fr'),
+(803, 199, 'categoria', 'De tennis', NULL, NULL, 'fr'),
+(804, 199, 'categoria', 'Tennis', NULL, NULL, 'en'),
+(805, 199, 'categoria', 'Tennis', NULL, NULL, 'en'),
+(806, 199, 'categoria', 'Tennis', NULL, NULL, 'en'),
+(807, 199, 'categoria', 'De tennis', NULL, NULL, 'fr'),
+(808, 199, 'categoria', 'De tennis', NULL, NULL, 'fr'),
+(809, 199, 'categoria', 'De tennis', NULL, NULL, 'fr'),
+(810, 194, 'categoria', 'Flips flops', NULL, NULL, 'en'),
+(811, 194, 'categoria', 'Sandales', NULL, NULL, 'fr'),
+(812, 194, 'categoria', 'Flips flops', NULL, NULL, 'en'),
+(813, 194, 'categoria', 'Sandales', NULL, NULL, 'fr'),
+(814, 194, 'categoria', 'Flips flops', NULL, NULL, 'en'),
+(815, 180, 'categoria', 'Chaussures pour femmes', NULL, NULL, 'fr'),
+(816, 180, 'categoria', 'Women\'s shoes', NULL, NULL, 'en'),
+(817, 180, 'categoria', 'Chaussures de femme', NULL, NULL, 'fr'),
+(818, 180, 'categoria', 'Woman\'s shoes', NULL, NULL, 'en'),
+(819, 180, 'categoria', 'Chaussures de femme', NULL, NULL, 'fr'),
+(820, 180, 'categoria', 'Woman\'s shoes', NULL, NULL, 'en'),
+(821, 180, 'categoria', 'Chaussures de femme', NULL, NULL, 'fr'),
+(822, 180, 'categoria', 'Woman\'s shoes', NULL, NULL, 'en'),
+(823, 180, 'categoria', 'Chaussures de femme', NULL, NULL, 'fr'),
+(824, 180, 'categoria', 'Woman\'s shoes', NULL, NULL, 'en'),
+(825, 181, 'categoria', ' Chaussures hommes', NULL, NULL, 'fr'),
+(826, 181, 'categoria', 'Men\'s shoes', NULL, NULL, 'en'),
+(827, 179, 'categoria', 'Accessories', NULL, NULL, 'en'),
+(828, 179, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(829, 179, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(830, 179, 'categoria', 'Accessories', NULL, NULL, 'en'),
+(831, 179, 'categoria', 'Accessories', NULL, NULL, 'en'),
+(832, 179, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(833, 179, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(834, 179, 'categoria', 'Accessories', NULL, NULL, 'en'),
+(835, 179, 'categoria', 'Accessories', NULL, NULL, 'en'),
+(836, 179, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(837, 179, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(838, 179, 'categoria', 'Accessories', NULL, NULL, 'en'),
+(839, 179, 'categoria', 'Accessories', NULL, NULL, 'en'),
+(840, 193, 'categoria', 'Sportswear', NULL, NULL, 'en'),
+(841, 193, 'categoria', 'Tenue de sport', NULL, NULL, 'fr'),
+(842, 193, 'categoria', 'Sportswear', NULL, NULL, 'en'),
+(843, 193, 'categoria', 'Tenue de sport', NULL, NULL, 'fr'),
+(844, 187, 'categoria', 'Sweaters', NULL, NULL, 'en'),
+(845, 187, 'categoria', 'Chandails', NULL, NULL, 'fr'),
+(846, 187, 'categoria', 'Chandails', NULL, NULL, 'fr'),
+(847, 187, 'categoria', 'Sweaters', NULL, NULL, 'en'),
+(848, 187, 'categoria', 'Sweaters', NULL, NULL, 'en'),
+(849, 187, 'categoria', 'Chandails', NULL, NULL, 'fr'),
+(850, 187, 'categoria', 'Chandails', NULL, NULL, 'fr'),
+(851, 187, 'categoria', 'Sweaters', NULL, NULL, 'en'),
+(852, 186, 'categoria', 'Trousers', NULL, NULL, 'en'),
+(853, 186, 'categoria', ' Pantalons', NULL, NULL, 'fr'),
+(854, 192, 'categoria', 'Jackets and coats', NULL, NULL, 'en');
+INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO`, `DESCRIPCION_CORTA`, `DESCRIPCION_LARGA`, `LENGUAJE`) VALUES
+(855, 192, 'categoria', 'Vestes et manteaux', NULL, NULL, 'fr'),
+(856, 192, 'categoria', 'Vestes et manteaux', NULL, NULL, 'fr'),
+(857, 192, 'categoria', 'Vestes et manteaux', NULL, NULL, 'fr'),
+(858, 192, 'categoria', 'Jackets and coats', NULL, NULL, 'en'),
+(859, 192, 'categoria', 'Jackets and coats', NULL, NULL, 'en'),
+(860, 192, 'categoria', 'Vestes et manteaux', NULL, NULL, 'fr'),
+(861, 185, 'categoria', 'Skirts', NULL, NULL, 'en'),
+(862, 185, 'categoria', 'Jupes', NULL, NULL, 'fr'),
+(863, 185, 'categoria', 'Jupes', NULL, NULL, 'fr'),
+(864, 185, 'categoria', 'Jupes', NULL, NULL, 'fr'),
+(865, 185, 'categoria', 'Skirts', NULL, NULL, 'en'),
+(866, 185, 'categoria', 'Skirts', NULL, NULL, 'en'),
+(867, 185, 'categoria', 'Jupes', NULL, NULL, 'fr'),
+(868, 185, 'categoria', 'Jupes', NULL, NULL, 'fr'),
+(869, 185, 'categoria', 'Jupes', NULL, NULL, 'fr'),
+(870, 185, 'categoria', 'Jupes', NULL, NULL, 'fr'),
+(871, 191, 'categoria', 'jeans', NULL, NULL, 'fr'),
+(872, 191, 'categoria', 'Jeans', NULL, NULL, 'en'),
+(873, 191, 'categoria', 'jeans', NULL, NULL, 'fr'),
+(874, 191, 'categoria', 'Jeans', NULL, NULL, 'en'),
+(875, 190, 'categoria', 'Trousers', NULL, NULL, 'en'),
+(876, 190, 'categoria', 'Pantalons', NULL, NULL, 'fr'),
+(877, 190, 'categoria', 'Pantalons', NULL, NULL, 'fr'),
+(878, 190, 'categoria', 'Pants', NULL, NULL, 'en'),
+(879, 190, 'categoria', 'Pants', NULL, NULL, 'en'),
+(880, 190, 'categoria', 'Pants', NULL, NULL, 'en'),
+(881, 190, 'categoria', 'Pants', NULL, NULL, 'en'),
+(882, 190, 'categoria', 'Pants', NULL, NULL, 'en'),
+(883, 190, 'categoria', 'Pants', NULL, NULL, 'en'),
+(884, 190, 'categoria', 'Pants', NULL, NULL, 'en'),
+(885, 190, 'categoria', 'Pants', NULL, NULL, 'en'),
+(886, 190, 'categoria', 'Pantalons', NULL, NULL, 'fr'),
+(887, 190, 'categoria', 'Pantalons', NULL, NULL, 'fr'),
+(888, 190, 'categoria', 'Pantalons', NULL, NULL, 'fr'),
+(889, 184, 'categoria', 'T-shirts', NULL, NULL, 'en'),
+(890, 184, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(891, 184, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(892, 184, 'categoria', 'T-shirts', NULL, NULL, 'en'),
+(893, 184, 'categoria', 'T-shirts', NULL, NULL, 'en'),
+(894, 184, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(895, 184, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(896, 184, 'categoria', 'T-shirts', NULL, NULL, 'en'),
+(897, 189, 'categoria', 'T-shirts', NULL, NULL, 'en'),
+(898, 189, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(899, 189, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(900, 189, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(901, 189, 'categoria', 'T-shirts', NULL, NULL, 'en'),
+(902, 189, 'categoria', 'T-shirts', NULL, NULL, 'en'),
+(903, 189, 'categoria', 'T-shirts', NULL, NULL, 'en'),
+(904, 189, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(905, 189, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(906, 189, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(907, 189, 'categoria', 'T-shirts', NULL, NULL, 'en'),
+(908, 189, 'categoria', 'T-shirts', NULL, NULL, 'en'),
+(909, 189, 'categoria', 'T-shirts', NULL, NULL, 'en'),
+(910, 189, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(911, 189, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(912, 189, 'categoria', 'T-shirts', NULL, NULL, 'fr'),
+(913, 183, 'categoria', 'Blouses', NULL, NULL, 'fr'),
+(914, 183, 'categoria', 'Blouses', NULL, NULL, 'en'),
+(915, 183, 'categoria', 'Blouses', NULL, NULL, 'en'),
+(916, 183, 'categoria', 'Blouses', NULL, NULL, 'fr'),
+(917, 183, 'categoria', 'Blouses', NULL, NULL, 'fr'),
+(918, 183, 'categoria', 'Blouses', NULL, NULL, 'en'),
+(919, 183, 'categoria', 'Blouses', NULL, NULL, 'en'),
+(920, 182, 'categoria', 'Dresses', NULL, NULL, 'en'),
+(921, 182, 'categoria', ' Les robes', NULL, NULL, 'fr'),
+(922, 182, 'categoria', ' Les robes', NULL, NULL, 'fr'),
+(923, 182, 'categoria', ' Les robes', NULL, NULL, 'fr'),
+(924, 182, 'categoria', ' Les robes', NULL, NULL, 'fr'),
+(925, 182, 'categoria', ' Les robes', NULL, NULL, 'fr'),
+(926, 182, 'categoria', ' Les robes', NULL, NULL, 'fr'),
+(927, 182, 'categoria', ' Les robes', NULL, NULL, 'fr'),
+(928, 182, 'categoria', ' Les robes', NULL, NULL, 'fr'),
+(929, 182, 'categoria', ' Les robes', NULL, NULL, 'fr'),
+(930, 188, 'categoria', 'Chemises', NULL, NULL, 'fr'),
+(931, 188, 'categoria', 'Shirts', NULL, NULL, 'en'),
+(932, 188, 'categoria', 'Shirts', NULL, NULL, 'en'),
+(933, 188, 'categoria', 'Chemises', NULL, NULL, 'fr'),
+(934, 188, 'categoria', 'Chemises', NULL, NULL, 'fr'),
+(935, 188, 'categoria', 'Chemises', NULL, NULL, 'fr'),
+(936, 188, 'categoria', 'Shirts', NULL, NULL, 'en'),
+(937, 188, 'categoria', 'Shirts', NULL, NULL, 'en'),
+(938, 188, 'categoria', 'Chemises', NULL, NULL, 'fr'),
+(939, 188, 'categoria', 'Chemises', NULL, NULL, 'fr'),
+(940, 188, 'categoria', 'Shirts', NULL, NULL, 'en'),
+(941, 188, 'categoria', 'Shirts', NULL, NULL, 'en'),
+(942, 178, 'categoria', 'Vêtements et chaussures pour enfants', NULL, NULL, 'fr'),
+(943, 178, 'categoria', 'Children\'s clothing and footwear', NULL, NULL, 'en'),
+(944, 178, 'categoria', 'Children\'s clothing and footwear', NULL, NULL, 'en'),
+(945, 178, 'categoria', 'Vêtements et chaussures pour enfants', NULL, NULL, 'fr'),
+(946, 178, 'categoria', 'Vêtements et chaussures pour enfants', NULL, NULL, 'fr'),
+(947, 178, 'categoria', 'Vêtements et chaussures pour enfants', NULL, NULL, 'fr'),
+(948, 177, 'categoria', 'Women\'s fashion', NULL, NULL, 'en'),
+(949, 177, 'categoria', 'Vêtements de femme', NULL, NULL, 'fr'),
+(950, 177, 'categoria', 'Vêtements de femme', NULL, NULL, 'fr'),
+(951, 177, 'categoria', 'Vêtements de femme', NULL, NULL, 'fr'),
+(952, 177, 'categoria', 'Vêtements de femme', NULL, NULL, 'fr'),
+(953, 177, 'categoria', 'Womenswear', NULL, NULL, 'en'),
+(954, 177, 'categoria', 'Womenswear', NULL, NULL, 'en'),
+(955, 177, 'categoria', 'Vêtements de femme', NULL, NULL, 'fr'),
+(956, 177, 'categoria', 'Vêtements de femme', NULL, NULL, 'fr'),
+(957, 177, 'categoria', 'Vêtements de femme', NULL, NULL, 'fr'),
+(958, 177, 'categoria', 'Womenswear', NULL, NULL, 'en'),
+(959, 177, 'categoria', 'Womenswear', NULL, NULL, 'en'),
+(960, 177, 'categoria', 'Vêtements de femme', NULL, NULL, 'fr'),
+(961, 177, 'categoria', 'Vêtements de femme', NULL, NULL, 'fr'),
+(962, 176, 'categoria', 'Men\'s fashion', NULL, NULL, 'en'),
+(963, 176, 'categoria', 'Vêtement d\'homme', NULL, NULL, 'fr'),
+(964, 176, 'categoria', 'Vêtement d\'homme', NULL, NULL, 'fr'),
+(965, 176, 'categoria', 'Vêtement d\'homme', NULL, NULL, 'fr'),
+(966, 176, 'categoria', 'Mens clothing', NULL, NULL, 'en'),
+(967, 176, 'categoria', 'Mens clothing', NULL, NULL, 'en'),
+(968, 176, 'categoria', 'Mens clothing', NULL, NULL, 'en'),
+(969, 176, 'categoria', 'Mens clothing', NULL, NULL, 'en'),
+(970, 176, 'categoria', 'Mens clothing', NULL, NULL, 'en'),
+(971, 176, 'categoria', 'Mens clothing', NULL, NULL, 'en'),
+(972, 176, 'categoria', 'Vêtement d\'homme', NULL, NULL, 'fr'),
+(973, 176, 'categoria', 'Vêtement d\'homme', NULL, NULL, 'fr'),
+(974, 385, 'categoria', 'Tennis', NULL, NULL, 'en'),
+(975, 385, 'categoria', 'Tennis', NULL, NULL, 'fr'),
+(976, 212, 'categoria', 'Motorcycles', NULL, NULL, 'en'),
+(977, 212, 'categoria', 'Motos', NULL, NULL, 'fr'),
+(978, 212, 'categoria', 'Motos', NULL, NULL, 'fr'),
+(979, 212, 'categoria', 'Motos', NULL, NULL, 'fr'),
+(980, 212, 'categoria', 'Motorcycles', NULL, NULL, 'en'),
+(981, 212, 'categoria', 'Motorcycles', NULL, NULL, 'en'),
+(982, 212, 'categoria', 'Motos', NULL, NULL, 'fr'),
+(983, 212, 'categoria', 'Motos', NULL, NULL, 'fr'),
+(984, 212, 'categoria', 'Motos', NULL, NULL, 'fr'),
+(985, 212, 'categoria', 'Motorcycles', NULL, NULL, 'en'),
+(986, 212, 'categoria', 'Motorcycles', NULL, NULL, 'en'),
+(987, 212, 'categoria', 'Motorcycles', NULL, NULL, 'en'),
+(988, 33, 'categoria', ' Vehicles and Accessories', NULL, NULL, 'en'),
+(989, 33, 'categoria', ' Véhicules et accessoires', NULL, NULL, 'fr'),
+(990, 33, 'categoria', ' Véhicules et accessoires', NULL, NULL, 'fr'),
+(991, 33, 'categoria', ' Véhicules et accessoires', NULL, NULL, 'fr'),
+(992, 33, 'categoria', ' Vehicles and Accessories', NULL, NULL, 'en'),
+(993, 33, 'categoria', ' Véhicules et accessoires', NULL, NULL, 'fr'),
+(994, 33, 'categoria', ' Véhicules et accessoires', NULL, NULL, 'fr'),
+(995, 33, 'categoria', ' Vehicles and Accessories', NULL, NULL, 'en'),
+(996, 33, 'categoria', ' Vehicles and Accessories', NULL, NULL, 'en'),
+(997, 33, 'categoria', ' Véhicules et accessoires', NULL, NULL, 'fr'),
+(998, 33, 'categoria', ' Véhicules et accessoires', NULL, NULL, 'fr'),
+(999, 33, 'categoria', ' Vehicles and Accessories', NULL, NULL, 'en'),
+(1000, 211, 'categoria', 'Accessoires de voiture', NULL, NULL, 'fr'),
+(1001, 211, 'categoria', 'Car accessories', NULL, NULL, 'en'),
+(1002, 211, 'categoria', 'Car accessories', NULL, NULL, 'en'),
+(1003, 211, 'categoria', 'Accessoires de voiture', NULL, NULL, 'fr'),
+(1004, 211, 'categoria', 'Accessoires de voiture', NULL, NULL, 'fr'),
+(1005, 211, 'categoria', 'Car accessories', NULL, NULL, 'en'),
+(1006, 211, 'categoria', 'Car accessories', NULL, NULL, 'en'),
+(1007, 292, 'categoria', 'Sedan', NULL, NULL, 'en'),
+(1008, 292, 'categoria', 'Berline', NULL, NULL, 'fr'),
+(1009, 213, 'categoria', 'Trucks', NULL, NULL, 'en'),
+(1010, 213, 'categoria', 'Camions', NULL, NULL, 'fr'),
+(1011, 213, 'categoria', 'Camions', NULL, NULL, 'fr'),
+(1012, 213, 'categoria', 'Camions', NULL, NULL, 'fr'),
+(1013, 213, 'categoria', 'Trucks', NULL, NULL, 'en'),
+(1014, 213, 'categoria', 'Trucks', NULL, NULL, 'en'),
+(1015, 213, 'categoria', 'Camions', NULL, NULL, 'fr'),
+(1016, 213, 'categoria', 'Camions', NULL, NULL, 'fr'),
+(1017, 213, 'categoria', 'Camions', NULL, NULL, 'fr'),
+(1018, 213, 'categoria', 'Trucks', NULL, NULL, 'en'),
+(1019, 213, 'categoria', 'Trucks', NULL, NULL, 'en'),
+(1020, 210, 'categoria', ' Cars', NULL, NULL, 'en'),
+(1021, 210, 'categoria', 'Les voitures', NULL, NULL, 'fr'),
+(1022, 210, 'categoria', 'Les voitures', NULL, NULL, 'fr'),
+(1023, 210, 'categoria', 'Les voitures', NULL, NULL, 'fr'),
+(1024, 210, 'categoria', ' Cars', NULL, NULL, 'en'),
+(1025, 210, 'categoria', ' Cars', NULL, NULL, 'en'),
+(1026, 210, 'categoria', 'Les voitures', NULL, NULL, 'fr'),
+(1027, 210, 'categoria', 'Les voitures', NULL, NULL, 'fr'),
+(1028, 210, 'categoria', ' Cars', NULL, NULL, 'en'),
+(1029, 210, 'categoria', ' Cars', NULL, NULL, 'en'),
+(1030, 34, 'categoria', 'Handicrafts and crafts', NULL, NULL, 'en'),
+(1031, 34, 'categoria', 'Artisanat et artisanat', NULL, NULL, 'fr'),
+(1032, 34, 'categoria', 'Artisanat et artisanat', NULL, NULL, 'fr'),
+(1033, 34, 'categoria', 'Artisanat et artisanat', NULL, NULL, 'fr'),
+(1034, 34, 'categoria', 'Crafts and Crafts', NULL, NULL, 'en'),
+(1035, 34, 'categoria', 'Crafts and Crafts', NULL, NULL, 'en'),
+(1036, 34, 'categoria', 'Crafts and Crafts', NULL, NULL, 'en'),
+(1037, 34, 'categoria', 'Artisanat et artisanat', NULL, NULL, 'fr'),
+(1038, 34, 'categoria', 'Artisanat et artisanat', NULL, NULL, 'fr'),
+(1039, 220, 'categoria', 'Bracelets', NULL, NULL, 'en'),
+(1040, 220, 'categoria', 'Bracelets', NULL, NULL, 'fr'),
+(1041, 220, 'categoria', 'Bracelets', NULL, NULL, 'fr'),
+(1042, 220, 'categoria', 'Bracelets', NULL, NULL, 'fr'),
+(1043, 220, 'categoria', 'Bracelets', NULL, NULL, 'en'),
+(1044, 220, 'categoria', 'Bracelets', NULL, NULL, 'en'),
+(1045, 220, 'categoria', 'Bracelets', NULL, NULL, 'fr'),
+(1046, 220, 'categoria', 'Bracelets', NULL, NULL, 'fr'),
+(1047, 220, 'categoria', 'Bracelets', NULL, NULL, 'en'),
+(1048, 220, 'categoria', 'Bracelets', NULL, NULL, 'en'),
+(1049, 219, 'categoria', 'Rings', NULL, NULL, 'en'),
+(1050, 219, 'categoria', 'Bagues', NULL, NULL, 'fr'),
+(1051, 219, 'categoria', 'Rings', NULL, NULL, 'en'),
+(1052, 219, 'categoria', 'Rings', NULL, NULL, 'en'),
+(1053, 219, 'categoria', 'Bagues', NULL, NULL, 'fr'),
+(1054, 219, 'categoria', 'Bagues', NULL, NULL, 'fr'),
+(1055, 219, 'categoria', 'Bagues', NULL, NULL, 'fr'),
+(1056, 219, 'categoria', 'Rings', NULL, NULL, 'en'),
+(1057, 219, 'categoria', 'Rings', NULL, NULL, 'en'),
+(1058, 219, 'categoria', 'Bagues', NULL, NULL, 'fr'),
+(1059, 219, 'categoria', 'Bagues', NULL, NULL, 'fr'),
+(1060, 218, 'categoria', 'Earrings', NULL, NULL, 'en'),
+(1061, 218, 'categoria', 'Boucles d\'oreilles', NULL, NULL, 'fr'),
+(1062, 218, 'categoria', 'Boucles d\'oreilles', NULL, NULL, 'fr'),
+(1063, 218, 'categoria', 'Boucles d\'oreilles', NULL, NULL, 'fr'),
+(1064, 218, 'categoria', 'Earrings', NULL, NULL, 'en'),
+(1065, 218, 'categoria', 'Earrings', NULL, NULL, 'en'),
+(1066, 218, 'categoria', 'Boucles d\'oreilles', NULL, NULL, 'fr'),
+(1067, 218, 'categoria', 'Boucles d\'oreilles', NULL, NULL, 'fr'),
+(1068, 217, 'categoria', 'Necklaces', NULL, NULL, 'en'),
+(1069, 217, 'categoria', 'Colliers', NULL, NULL, 'fr'),
+(1070, 217, 'categoria', 'Colliers', NULL, NULL, 'fr'),
+(1071, 216, 'categoria', 'Pot de fleur', NULL, NULL, 'fr'),
+(1072, 216, 'categoria', 'Flower pots', NULL, NULL, 'en'),
+(1073, 216, 'categoria', 'Flower pot', NULL, NULL, 'en'),
+(1074, 216, 'categoria', 'Flower pot', NULL, NULL, 'en'),
+(1075, 216, 'categoria', 'Pot de fleur', NULL, NULL, 'fr'),
+(1076, 216, 'categoria', 'Pot de fleur', NULL, NULL, 'fr'),
+(1077, 216, 'categoria', 'Pot de fleur', NULL, NULL, 'fr'),
+(1078, 216, 'categoria', 'Flower pot', NULL, NULL, 'en'),
+(1079, 216, 'categoria', 'Flower pot', NULL, NULL, 'en'),
+(1080, 216, 'categoria', 'Flower pot', NULL, NULL, 'en'),
+(1081, 216, 'categoria', 'Pot de fleur', NULL, NULL, 'fr'),
+(1082, 215, 'categoria', 'Vases', NULL, NULL, 'fr'),
+(1083, 215, 'categoria', 'Vases', NULL, NULL, 'en'),
+(1084, 215, 'categoria', 'Vases', NULL, NULL, 'en'),
+(1085, 215, 'categoria', 'Vases', NULL, NULL, 'en'),
+(1086, 215, 'categoria', 'Vases', NULL, NULL, 'fr'),
+(1087, 215, 'categoria', 'Vases', NULL, NULL, 'fr'),
+(1088, 215, 'categoria', 'Vases', NULL, NULL, 'fr'),
+(1089, 215, 'categoria', 'Vases', NULL, NULL, 'en'),
+(1090, 215, 'categoria', 'Vases', NULL, NULL, 'en'),
+(1091, 215, 'categoria', 'Vases', NULL, NULL, 'en'),
+(1092, 215, 'categoria', 'Vases', NULL, NULL, 'en'),
+(1093, 214, 'categoria', 'accessories', NULL, NULL, 'en'),
+(1094, 214, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(1095, 214, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(1096, 214, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(1097, 214, 'categoria', 'accessories', NULL, NULL, 'en'),
+(1098, 214, 'categoria', 'accessories', NULL, NULL, 'en'),
+(1099, 214, 'categoria', 'accessories', NULL, NULL, 'en'),
+(1100, 214, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(1101, 214, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(1102, 214, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(1103, 214, 'categoria', 'accessories', NULL, NULL, 'en'),
+(1104, 214, 'categoria', 'accessories', NULL, NULL, 'en'),
+(1105, 214, 'categoria', 'accessories', NULL, NULL, 'en'),
+(1106, 214, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(1107, 214, 'categoria', 'Accessoires', NULL, NULL, 'fr'),
+(1108, 214, 'categoria', 'accessories', NULL, NULL, 'en'),
+(1109, 214, 'categoria', 'accessories', NULL, NULL, 'en'),
+(1110, 246, 'categoria', 'Gardening', NULL, NULL, 'en'),
+(1111, 246, 'categoria', 'Jardinage', NULL, NULL, 'fr'),
+(1112, 246, 'categoria', 'Jardinage', NULL, NULL, 'fr'),
+(1113, 246, 'categoria', 'Gardening', NULL, NULL, 'en'),
+(1114, 246, 'categoria', 'Jardinage', NULL, NULL, 'fr'),
+(1115, 252, 'categoria', ' Gardening supplies', NULL, NULL, 'en'),
+(1116, 252, 'categoria', 'Nutriments pour les plantes', NULL, NULL, 'fr'),
+(1117, 252, 'categoria', ' Nutrients for Plants', NULL, NULL, 'en'),
+(1118, 252, 'categoria', 'Nutriments pour les plantes', NULL, NULL, 'fr'),
+(1119, 252, 'categoria', 'Nutriments pour les plantes', NULL, NULL, 'fr'),
+(1120, 252, 'categoria', ' Nutrients for Plants', NULL, NULL, 'en'),
+(1121, 252, 'categoria', ' Nutrients for Plants', NULL, NULL, 'en'),
+(1122, 252, 'categoria', 'Nutriments pour les plantes', NULL, NULL, 'fr'),
+(1123, 252, 'categoria', 'Nutriments pour les plantes', NULL, NULL, 'fr'),
+(1124, 251, 'categoria', 'Plants', NULL, NULL, 'en'),
+(1125, 251, 'categoria', 'Plantes', NULL, NULL, 'fr'),
+(1126, 251, 'categoria', 'Plantes', NULL, NULL, 'fr'),
+(1127, 251, 'categoria', 'Plants', NULL, NULL, 'en'),
+(1128, 251, 'categoria', 'Plants', NULL, NULL, 'en'),
+(1129, 251, 'categoria', 'Plantes', NULL, NULL, 'fr'),
+(1130, 251, 'categoria', 'Plantes', NULL, NULL, 'fr'),
+(1131, 251, 'categoria', 'Plantes', NULL, NULL, 'fr'),
+(1132, 251, 'categoria', 'Plants', NULL, NULL, 'en'),
+(1133, 250, 'categoria', 'Decor', NULL, NULL, 'en'),
+(1134, 250, 'categoria', 'Décoration', NULL, NULL, 'fr'),
+(1135, 250, 'categoria', 'Décoration', NULL, NULL, 'fr'),
+(1136, 250, 'categoria', 'Décoration', NULL, NULL, 'fr'),
+(1137, 250, 'categoria', 'Decor', NULL, NULL, 'en'),
+(1138, 249, 'categoria', 'Tools', NULL, NULL, 'en'),
+(1139, 249, 'categoria', 'Des outils', NULL, NULL, 'fr'),
+(1140, 249, 'categoria', 'Des outils', NULL, NULL, 'fr'),
+(1141, 249, 'categoria', 'Des outils', NULL, NULL, 'fr'),
+(1142, 249, 'categoria', 'Tools', NULL, NULL, 'en'),
+(1143, 249, 'categoria', 'Tools', NULL, NULL, 'en'),
+(1144, 248, 'categoria', 'Lightening', NULL, NULL, 'en'),
+(1145, 248, 'categoria', 'L\'éclairage', NULL, NULL, 'fr'),
+(1146, 247, 'categoria', 'Furniture', NULL, NULL, 'en'),
+(1147, 247, 'categoria', 'Les meubles', NULL, NULL, 'fr'),
+(1148, 247, 'categoria', 'Les meubles', NULL, NULL, 'fr'),
+(1149, 247, 'categoria', 'Furniture', NULL, NULL, 'en'),
+(1150, 247, 'categoria', 'Les meubles', NULL, NULL, 'fr'),
+(1151, 247, 'categoria', 'Les meubles', NULL, NULL, 'fr'),
+(1152, 282, 'categoria', 'Children and Toys', NULL, NULL, 'en'),
+(1153, 282, 'categoria', 'Enfants et jouets', NULL, NULL, 'fr'),
+(1154, 282, 'categoria', 'Enfants et jouets', NULL, NULL, 'fr'),
+(1155, 282, 'categoria', 'Children and Toys', NULL, NULL, 'en'),
+(1156, 282, 'categoria', 'Children and Toys', NULL, NULL, 'en'),
+(1157, 282, 'categoria', 'Enfants et jouets', NULL, NULL, 'fr'),
+(1158, 282, 'categoria', 'Enfants et jouets', NULL, NULL, 'fr'),
+(1159, 289, 'categoria', ' Jouets de jardin', NULL, NULL, 'fr'),
+(1160, 289, 'categoria', 'Garden toys', NULL, NULL, 'en'),
+(1161, 289, 'categoria', 'Toys for Garden', NULL, NULL, 'en'),
+(1162, 289, 'categoria', ' Jouets de jardin', NULL, NULL, 'fr'),
+(1163, 289, 'categoria', ' Jouets de jardin', NULL, NULL, 'fr'),
+(1164, 289, 'categoria', 'Toys for Garden', NULL, NULL, 'en'),
+(1165, 289, 'categoria', ' Jouets de jardin', NULL, NULL, 'fr'),
+(1166, 288, 'categoria', 'Electronic toys', NULL, NULL, 'en'),
+(1167, 288, 'categoria', 'Jouets électroniques', NULL, NULL, 'fr'),
+(1168, 288, 'categoria', 'Jouets électroniques', NULL, NULL, 'fr'),
+(1169, 288, 'categoria', 'Electronic Toys', NULL, NULL, 'en'),
+(1170, 288, 'categoria', 'Electronic Toys', NULL, NULL, 'en'),
+(1171, 288, 'categoria', 'Jouets électroniques', NULL, NULL, 'fr'),
+(1172, 288, 'categoria', 'Jouets électroniques', NULL, NULL, 'fr'),
+(1173, 288, 'categoria', 'Electronic Toys', NULL, NULL, 'en'),
+(1174, 288, 'categoria', 'Jouets électroniques', NULL, NULL, 'fr'),
+(1175, 287, 'categoria', 'Toys', NULL, NULL, 'en'),
+(1176, 287, 'categoria', 'Les jouets', NULL, NULL, 'fr'),
+(1177, 287, 'categoria', 'Les jouets', NULL, NULL, 'fr'),
+(1178, 287, 'categoria', 'Toys', NULL, NULL, 'en'),
+(1179, 287, 'categoria', 'Toys', NULL, NULL, 'en'),
+(1180, 287, 'categoria', 'Les jouets', NULL, NULL, 'fr'),
+(1181, 287, 'categoria', 'Les jouets', NULL, NULL, 'fr'),
+(1182, 287, 'categoria', 'Toys', NULL, NULL, 'en'),
+(1183, 286, 'categoria', 'Action figures', NULL, NULL, 'en'),
+(1184, 286, 'categoria', 'Figurines d\'action', NULL, NULL, 'fr'),
+(1185, 286, 'categoria', 'Action figures', NULL, NULL, 'en'),
+(1186, 286, 'categoria', 'Figurines d\'action', NULL, NULL, 'fr'),
+(1187, 285, 'categoria', 'Animaux en peluche', NULL, NULL, 'fr'),
+(1188, 285, 'categoria', 'Teddies', NULL, NULL, 'en'),
+(1189, 285, 'categoria', 'Teddies', NULL, NULL, 'en'),
+(1190, 285, 'categoria', 'Animaux en peluche', NULL, NULL, 'fr'),
+(1191, 285, 'categoria', 'Animaux en peluche', NULL, NULL, 'fr'),
+(1192, 285, 'categoria', 'Teddies', NULL, NULL, 'en'),
+(1193, 285, 'categoria', 'Teddies', NULL, NULL, 'en'),
+(1194, 285, 'categoria', 'Animaux en peluche', NULL, NULL, 'fr'),
+(1195, 285, 'categoria', 'Animaux en peluche', NULL, NULL, 'fr'),
+(1196, 291, 'categoria', 'Montable', NULL, NULL, 'fr'),
+(1197, 291, 'categoria', ' Mountable', NULL, NULL, 'en'),
+(1198, 291, 'categoria', ' Mountable', NULL, NULL, 'en'),
+(1199, 291, 'categoria', 'Montable', NULL, NULL, 'fr'),
+(1200, 291, 'categoria', 'Montable', NULL, NULL, 'fr'),
+(1201, 291, 'categoria', ' Mountable', NULL, NULL, 'en'),
+(1202, 291, 'categoria', ' Mountable', NULL, NULL, 'en'),
+(1203, 291, 'categoria', 'Montable', NULL, NULL, 'fr'),
+(1204, 291, 'categoria', 'Montable', NULL, NULL, 'fr'),
+(1205, 284, 'categoria', 'Table games', NULL, NULL, 'en'),
+(1206, 284, 'categoria', 'Jeux de société', NULL, NULL, 'fr'),
+(1207, 284, 'categoria', 'Jeux de société', NULL, NULL, 'fr'),
+(1208, 284, 'categoria', 'Table games', NULL, NULL, 'en'),
+(1209, 290, 'categoria', ' Drones and Radio Control', NULL, NULL, 'en'),
+(1210, 290, 'categoria', 'Drones et radiocommande', NULL, NULL, 'fr'),
+(1211, 290, 'categoria', 'Drones et radiocommande', NULL, NULL, 'fr'),
+(1212, 290, 'categoria', 'Drones et radiocommande', NULL, NULL, 'fr'),
+(1213, 290, 'categoria', ' Drones and Radio Control', NULL, NULL, 'en'),
+(1214, 290, 'categoria', ' Drones and Radio Control', NULL, NULL, 'en'),
+(1215, 290, 'categoria', 'Drones et radiocommande', NULL, NULL, 'fr'),
+(1216, 290, 'categoria', 'Drones et radiocommande', NULL, NULL, 'fr'),
+(1217, 290, 'categoria', ' Drones and Radio Control', NULL, NULL, 'en'),
+(1218, 290, 'categoria', ' Drones and Radio Control', NULL, NULL, 'en'),
+(1219, 290, 'categoria', 'Drones et radiocommande', NULL, NULL, 'fr'),
+(1220, 283, 'categoria', 'Toys and games', NULL, NULL, 'en'),
+(1221, 283, 'categoria', 'Jouets et jeux', NULL, NULL, 'fr'),
+(1222, 386, 'categoria', 'Sunshade canopy', NULL, NULL, 'en'),
+(1223, 387, 'categoria', 'Diapers bag', NULL, NULL, 'en'),
+(1224, 388, 'categoria', 'More', NULL, NULL, 'en'),
+(1225, 389, 'categoria', 'Jackets and coats', NULL, NULL, 'en'),
+(1226, 104, 'categoria', 'Engineering and Construction', NULL, NULL, 'en'),
+(1227, 105, 'categoria', 'Home  maintenance', NULL, NULL, 'en'),
+(1228, 106, 'categoria', ' Mechanical and automotive engineers', NULL, NULL, 'en'),
+(1229, 5, 'producto', 'Mitaki-Japan® Men\'s Digital Sport Watch', '', 'FEATURES\r\nDate Function\r\nStopwatch\r\nLight\r\nWaterproof up to 30 Meters\r\nNot intended for children under 13 years of age.', 'en'),
+(1230, 6, 'producto', 'Mitaki-Japan® Ladies\' Digital Sport Watch', '', 'The features for this product include: date function, stopwatch, light and alarm. It is waterproof up to 30 meters. Not intented for children under 13 years of age.', 'en'),
+(1231, 27, 'producto', 'Chef\'s Secret® 4pc T304 Stainless Steel Measuring Cup Set', '', 'Features key ring, thick welded handles, etched handle markings, mirror finish exterior, satin interior, and pour spout design. Set includes: 1 cup, 1/2 cup, 1/3 cup, and 1/4 cup. Limited lifetime warranty.', 'en'),
+(1232, 2, 'producto', ' 3pc Small Household Scissor Set', '3pc Small Household Scissor Set with Soft-touch handles offer a safe, comfortable grip', 'This 3pc Small Household Scissor Set is one of our customer favorites. Soft-touch handles offer a safe, comfortable grip. Set includes an 8-1/2” pair of scissors and 2 pairs of scissors measuring 5-1/8” each. Limited lifetime warranty.', 'en'),
+(1233, 8, 'producto', 'X-Pac 18oz Glass Bottle with Black Silicone Wrap and Flip Lid.', 'X-Pac 18oz Glass Bottle with Black Silicone Wrap and Flip Lid. Silicone wrap helps with anti-slip and is easier to grip. Black open-close lid is spill free. Bottle is reusable and eco-friendly but do not place in dishwater, hand wash.', 'X-Pac 18oz Glass Bottle with Black Silicone Wrap and Flip Lid. Borosilicate Glass is shatter resistant and heavy duty glass. Silicone wrap helps with anti-slip and is easier to grip. Black open-close lid is spill free. Bottle is reusable and eco-friendly but do not place in dishwater, hand wash.', 'en'),
+(1234, 9, 'producto', '18oz Teal Double Wall Vacuum Bottle', '18oz Teal Double Wall Vacuum Bottle. Comes with a silicone wrap and a flip top lid making it easy to grip and open and close. ', '18oz Teal Double Wall Vacuum Bottle keeps your favorite beverages hot or cold for hours on the go. Comes with a silicone wrap and a flip top lid making it easy to grip and open and close. The tumbler is made out of stainless steel that is durable and easy to clean! ', 'en'),
+(1235, 1, 'producto', '8\" high-quality stainless steel Multi-Purpose Kitchen Shears ', 'Multi-Purpose Kitchen Shears features nut cracker and a bottle or jar opener.', 'Multi-Purpose Kitchen Shears features nut cracker and a bottle or jar opener. These 8\" high-quality stainless steel  shears are dishwasher safe. Limited lifetime warranty. ', 'en');
 
 -- --------------------------------------------------------
 
@@ -10656,7 +11745,7 @@ INSERT INTO `traducciones` (`ID_TRADUCCION`, `ID_OBJETO`, `TIPO_OBJETO`, `TITULO
 
 CREATE TABLE `transportistas` (
   `ID_TRANSPORTISTA` int(11) NOT NULL,
-  `ID_USUARIO` varchar(255) NOT NULL,
+  `PLAN_NIVEL` varchar(255) NOT NULL DEFAULT '3',
   `TRANSPORTISTA_NOMBRE` varchar(255) DEFAULT NULL,
   `TRANSPORTISTA_DESCRIPCION` text NOT NULL,
   `TRANSPORTISTA_LOGO` varchar(255) DEFAULT 'default.jpg',
@@ -10669,9 +11758,10 @@ CREATE TABLE `transportistas` (
 -- Volcado de datos para la tabla `transportistas`
 --
 
-INSERT INTO `transportistas` (`ID_TRANSPORTISTA`, `ID_USUARIO`, `TRANSPORTISTA_NOMBRE`, `TRANSPORTISTA_DESCRIPCION`, `TRANSPORTISTA_LOGO`, `TRANSPORTISTA_TIEMPO_ENTREGA`, `TRANSPORTISTA_URL_RASTREO`, `TRANSPORTISTA_ESTADO`) VALUES
-(3, '0', 'Abanico México', 'Abanico en Área Metropolitana', 'transportista-5c327ca22c8ef.jpg', '1 a 2 días hábiles', '', 'activo'),
-(9, '0', 'Fedex', 'Fedex', 'default.jpg', '1 a 2 días hábiles', '', 'activo');
+INSERT INTO `transportistas` (`ID_TRANSPORTISTA`, `PLAN_NIVEL`, `TRANSPORTISTA_NOMBRE`, `TRANSPORTISTA_DESCRIPCION`, `TRANSPORTISTA_LOGO`, `TRANSPORTISTA_TIEMPO_ENTREGA`, `TRANSPORTISTA_URL_RASTREO`, `TRANSPORTISTA_ESTADO`) VALUES
+(3, '2', 'Correos de México', 'Depósitos Indivuduales (Nacional)', 'transportista-5c327ca22c8ef.jpg', '4 a 6 días hábiles', 'https://www.correosdemexico.gob.mx/SSLServicios/SeguimientoEnvio/Seguimiento.aspx', 'activo'),
+(4, '5', 'Mensajería Abanico', 'Mensajería de Abanico', 'default.jpg', '1 a 2 días hábiles', '', 'activo'),
+(6, '5', 'Mexpost', '', 'default.jpg', 'hasta 7 días hábiles', '', 'activo');
 
 -- --------------------------------------------------------
 
@@ -10690,6 +11780,70 @@ CREATE TABLE `transportistas_disponibilidad` (
 --
 
 INSERT INTO `transportistas_disponibilidad` (`ID_TRANSPORTISTA`, `TRANSPORTISTA_PAIS`, `TRANSPORTISTA_ESTADO`) VALUES
+(4, 'México', 'Aguascalientes'),
+(4, 'México', 'Baja California'),
+(4, 'México', 'Baja California Sur'),
+(4, 'México', 'Campeche'),
+(4, 'México', 'Chiapas'),
+(4, 'México', 'Chihuahua'),
+(4, 'México', 'Ciudad de México'),
+(4, 'México', 'Coahuila'),
+(4, 'México', 'Colima'),
+(4, 'México', 'Durango'),
+(4, 'México', 'Estado de México'),
+(4, 'México', 'Guanajuato'),
+(4, 'México', 'Guerrero'),
+(4, 'México', 'Hidalgo'),
+(4, 'México', 'Jalisco'),
+(4, 'México', 'Michoacán'),
+(4, 'México', 'Morelos'),
+(4, 'México', 'Nayarit'),
+(4, 'México', 'Nuevo León'),
+(4, 'México', 'Oaxaca'),
+(4, 'México', 'Puebla'),
+(4, 'México', 'Querétaro'),
+(4, 'México', 'Quintana Roo'),
+(4, 'México', 'San Luis Potosí'),
+(4, 'México', 'Sinaloa'),
+(4, 'México', 'Sonora'),
+(4, 'México', 'Tabasco'),
+(4, 'México', 'Tamaulipas'),
+(4, 'México', 'Tlaxcala'),
+(4, 'México', 'Veracruz'),
+(4, 'México', 'Yucatán'),
+(4, 'México', 'Zacatecas'),
+(6, 'México', 'Aguascalientes'),
+(6, 'México', 'Baja California'),
+(6, 'México', 'Baja California Sur'),
+(6, 'México', 'Campeche'),
+(6, 'México', 'Chiapas'),
+(6, 'México', 'Chihuahua'),
+(6, 'México', 'Ciudad de México'),
+(6, 'México', 'Coahuila'),
+(6, 'México', 'Colima'),
+(6, 'México', 'Durango'),
+(6, 'México', 'Estado de México'),
+(6, 'México', 'Guanajuato'),
+(6, 'México', 'Guerrero'),
+(6, 'México', 'Hidalgo'),
+(6, 'México', 'Jalisco'),
+(6, 'México', 'Michoacán'),
+(6, 'México', 'Morelos'),
+(6, 'México', 'Nayarit'),
+(6, 'México', 'Nuevo León'),
+(6, 'México', 'Oaxaca'),
+(6, 'México', 'Puebla'),
+(6, 'México', 'Querétaro'),
+(6, 'México', 'Quintana Roo'),
+(6, 'México', 'San Luis Potosí'),
+(6, 'México', 'Sinaloa'),
+(6, 'México', 'Sonora'),
+(6, 'México', 'Tabasco'),
+(6, 'México', 'Tamaulipas'),
+(6, 'México', 'Tlaxcala'),
+(6, 'México', 'Veracruz'),
+(6, 'México', 'Yucatán'),
+(6, 'México', 'Zacatecas'),
 (3, 'México', 'Aguascalientes'),
 (3, 'México', 'Baja California'),
 (3, 'México', 'Baja California Sur'),
@@ -10721,39 +11875,7 @@ INSERT INTO `transportistas_disponibilidad` (`ID_TRANSPORTISTA`, `TRANSPORTISTA_
 (3, 'México', 'Tlaxcala'),
 (3, 'México', 'Veracruz'),
 (3, 'México', 'Yucatán'),
-(3, 'México', 'Zacatecas'),
-(9, 'México', 'Aguascalientes'),
-(9, 'México', 'Baja California'),
-(9, 'México', 'Baja California Sur'),
-(9, 'México', 'Campeche'),
-(9, 'México', 'Chiapas'),
-(9, 'México', 'Chihuahua'),
-(9, 'México', 'Ciudad de México'),
-(9, 'México', 'Coahuila'),
-(9, 'México', 'Colima'),
-(9, 'México', 'Durango'),
-(9, 'México', 'Estado de México'),
-(9, 'México', 'Guanajuato'),
-(9, 'México', 'Guerrero'),
-(9, 'México', 'Hidalgo'),
-(9, 'México', 'Jalisco'),
-(9, 'México', 'Michoacán'),
-(9, 'México', 'Morelos'),
-(9, 'México', 'Nayarit'),
-(9, 'México', 'Nuevo León'),
-(9, 'México', 'Oaxaca'),
-(9, 'México', 'Puebla'),
-(9, 'México', 'Querétaro'),
-(9, 'México', 'Quintana Roo'),
-(9, 'México', 'San Luis Potosí'),
-(9, 'México', 'Sinaloa'),
-(9, 'México', 'Sonora'),
-(9, 'México', 'Tabasco'),
-(9, 'México', 'Tamaulipas'),
-(9, 'México', 'Tlaxcala'),
-(9, 'México', 'Veracruz'),
-(9, 'México', 'Yucatán'),
-(9, 'México', 'Zacatecas');
+(3, 'México', 'Zacatecas');
 
 -- --------------------------------------------------------
 
@@ -10774,14 +11896,33 @@ CREATE TABLE `transportistas_rangos` (
 --
 
 INSERT INTO `transportistas_rangos` (`ID`, `ID_TRANSPORTISTA`, `PESO_MAX`, `IMPORTE_MIN`, `IMPORTE`) VALUES
-(8, 3, '1.00', '1.00', '1.00'),
-(9, 3, '2.00', '1.00', '2.00'),
-(10, 3, '3.00', '1.00', '3.00'),
-(11, 3, '4.00', '1.00', '4.00'),
-(12, 3, '5.00', '1.00', '5.00'),
-(13, 3, '6.00', '1.00', '6.00'),
-(14, 3, '50.00', '1.00', '7.00'),
-(16, 9, '1.00', '100.00', '100.00');
+(15, 3, '1.00', '0.00', '40.00'),
+(16, 3, '2.00', '0.00', '47.50'),
+(17, 3, '3.00', '0.00', '53.00'),
+(18, 3, '4.00', '0.00', '58.00'),
+(19, 3, '5.00', '0.00', '63.50'),
+(20, 3, '6.00', '0.00', '74.00'),
+(21, 3, '7.00', '0.00', '75.00'),
+(22, 3, '8.00', '0.00', '76.00'),
+(23, 3, '9.00', '0.00', '77.00'),
+(24, 3, '10.00', '0.00', '78.00'),
+(25, 3, '11.00', '0.00', '82.00'),
+(26, 3, '12.00', '0.00', '83.00'),
+(27, 3, '13.00', '0.00', '84.00'),
+(28, 3, '14.00', '0.00', '86.00'),
+(29, 3, '15.00', '0.00', '86.00'),
+(30, 3, '16.00', '0.00', '87.50'),
+(31, 3, '17.00', '0.00', '88.00'),
+(32, 3, '18.00', '0.00', '89.50'),
+(33, 3, '19.00', '0.00', '91.50'),
+(34, 3, '20.00', '0.00', '92.50'),
+(35, 3, '21.00', '0.00', '94.00'),
+(36, 3, '22.00', '0.00', '95.00'),
+(37, 3, '23.00', '0.00', '96.00'),
+(38, 3, '24.00', '0.00', '96.50'),
+(39, 3, '25.00', '0.00', '98.00'),
+(40, 4, '3.00', '0.00', '65.00'),
+(44, 6, '10.00', '0.00', '87.00');
 
 -- --------------------------------------------------------
 
@@ -10810,21 +11951,12 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`ID_USUARIO`, `USUARIO_NOMBRE`, `USUARIO_APELLIDOS`, `USUARIO_CORREO`, `USUARIO_TELEFONO`, `USUARIO_FECHA_NACIMIENTO`, `USUARIO_PASSWORD`, `USUARIO_FECHA_REGISTRO`, `USUARIO_FECHA_ACTUALIZACION`, `USUARIO_TIPO`, `USUARIO_LISTA_DE_CORREO`, `USUARIO_ESTADO`) VALUES
 ('5c0653d43d92e7.75019474', 'Manuel', 'Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335    ', '1989-04-18', '$2y$10$LXIw8Tq1BsAT3xaK6AQJBuA0l9Dxw/3qzMAbsRuzi4OQLoFQip3WS', '2018-12-04 17:15:48', '2019-02-09 18:39:09', 'adm-6', 'si', 'activo'),
-('5c0864799aba54.31749554', 'TANIA', 'RODRIGUEZ', 'saenztania19@gmail.com', '(559) 194-5042', '0000-00-00', '$2y$10$cNIjKg5FVO8kZ.qWWMiEYu1ZYGEykVraUjMobNXCjENE/g1GUl6Vy', '2018-12-05 23:51:21', '2019-01-02 20:30:19', 'adm-6', 'si', 'activo'),
-('5c08a9dc2cb096.56391251', 'JORGE', 'CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', '0000-00-00', '$2y$10$a0nvxJfzsdHyQp6A8GGKwOnqQW/YmRDOw3En0gtVPtzjQZlhC3nE6', '2018-12-06 04:47:24', '2019-01-02 20:30:24', 'adm-6', 'si', 'activo'),
-('5c64a6b2e13ae0.49457839', 'Prueba', 'Tienda', 'pixelbiff@gmail.com', ' 5522656200', '2019-02-22', '$2y$10$W.0n.gttuavLGtHHu5ywc.yLMHocm/FP3zpTf/9u7HGztudol5e1m', '2019-02-13 23:22:26', '2019-02-13 23:52:03', 'vns-4', 'no', 'activo'),
-('5c65b1c4706825.75278703', 'Irving Omar ', 'Téllez Vera', 'irom_tv@hotmail.com', ' 9991441579', '1966-03-26', '$2y$10$EE6N2857VCNfwSbtHSkynu5V6F7benOd/uScDM96gRRFoluj3xB3S', '2019-02-14 18:21:56', '2019-02-14 18:51:11', 'vns-4', 'si', 'activo'),
-('5c65edcf7fa3a4.69517159', 'Ana', 'Ahmed', 'ahmed.ana01@gmail.com', NULL, '0000-00-00', '$2y$10$5tkkVruTgaxWhJjmXvlvkuxZeIWGOm6qUlqrhDeYWFXxxxJrfkYMq', '2019-02-14 22:38:07', '2019-02-14 22:38:07', 'usr-1', 'si', 'activo'),
-('5c66692e593e37.03171377', 'citlali', 'diaz', 'mujeresdemanosmagicas@gmail.com', NULL, '0000-00-00', '$2y$10$TepGNT8fRZOC4lg6pzKAIua3NB9ss1BuGfZXFt4NdEqc/QszNQGqC', '2019-02-15 07:24:30', '2019-02-15 07:37:25', 'vns-4', 'si', 'activo'),
-('5c6b5624be4de4.14234611', 'Lilia', 'Rodriguez', 'peroplix@hotmail.com', NULL, '0000-00-00', '$2y$10$E6JPYll1SdHQqAl0gMZd9OYCdbiSJStSK0MEIDmTNZlG0jmd1NnSm', '2019-02-19 01:04:36', '2019-02-19 01:09:19', 'vnd-2', 'si', 'activo'),
-('5c6bbf66d903a0.56116082', 'Sweetia ', 'Mendoza ', 'sweet_mmc85@hotmail.com', NULL, '0000-00-00', '$2y$10$K/QI2BsS/TbmhN3fwfPyveH8GhxNyL2AEI18.KTOC5kl4THh8o9z6', '2019-02-19 08:33:42', '2019-02-19 08:33:42', 'usr-1', 'si', 'activo'),
-('5c6c330a6d6d60.37455226', 'JESSIKA', 'GARCIA ', 'jessika.garcia192@gmail.com', NULL, '0000-00-00', '$2y$10$YXnwYcaV8NkEK.Hn5Zni1uwQ1JZ9gJbPWUygSVW4AqExBL/GPjDdS', '2019-02-19 16:47:06', '2019-02-19 17:16:29', 'vns-4', 'si', 'activo'),
-('5c6d69209eab74.87165826', 'Laura ', 'Esquivel', '1234@hotmail.com', NULL, '0000-00-00', '$2y$10$SeCi77uYzTfb/T.xrzh/kuiXvkHvqqUEgVNnSPEX20oqbLfwGN5Me', '2019-02-20 14:50:08', '2019-02-20 20:08:54', 'vns-4', 'si', 'activo'),
-('5c6def73580bd8.29176182', 'Marcela', 'Reyna', 'reinamar@gmail.com', NULL, '0000-00-00', '$2y$10$u8ovGw.gwWCPyJ3NWVZ5.O5Ss9RH6YK3yRkZXNDoxu371gNsHpyEG', '2019-02-21 00:23:15', '2019-02-21 00:23:15', 'usr-1', 'si', 'activo'),
-('5c6f1749c753c5.12159032', 'Casiopea', 'R', 'aurin_cs@hotmail.com', NULL, '0000-00-00', '$2y$10$Pb.nW6tlOIDb/qrfEbmdf.GtlHHwnc/sr6AmlB3AuBJmbd56XUIxa', '2019-02-21 21:25:29', '2019-02-21 21:28:55', 'vnd-2', 'si', 'activo'),
-('5c6f40192d2e14.12282150', 'Maritza', 'León', 'storgi@gmail.com', NULL, '0000-00-00', '$2y$10$ZB4tXNQCO2EoRotGunLhw.uj2IyTNIBtqUd9gyApbaRLfrXt/PNVO', '2019-02-22 00:19:37', '2019-02-22 00:22:59', 'ser-3', 'si', 'activo'),
-('5c74735cba37c5.86850606', 'Maribel', 'Pinto', 'mary_cp1987@hotmail.com', NULL, '0000-00-00', '$2y$10$5CDihn0l8bGmHuQupxYEouLQwAhhH/AkUqdgde944cLt.PLlnmSuu', '2019-02-25 22:59:40', '2019-02-25 22:59:40', 'usr-1', 'si', 'activo'),
-('5c76cfe87cbbe0.54725147', 'Panfilo', 'Torres', 'panfito@hotmail.com', NULL, '0000-00-00', '$2y$10$q1WalYn5JEgurrbKlarBS.7CWe0wvrQr.We/w4HX1aFXZYfxtT7vO', '2019-02-27 17:59:04', '2019-02-27 18:00:27', 'ser-3', 'si', 'activo');
+('5c08a9dc2cb096.56391251', 'JORGE', 'CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', '0000-00-00', '$2y$10$PUEif7/5WRJ22jQguwxq4uHoY1yL9nyuhOI3hfCm.t8Abg5qnnpfa', '2018-12-06 04:47:24', '2019-03-25 20:57:18', 'adm-6', 'si', 'activo'),
+('5c9c1ff62ce0c3.78174962', 'ABANICO', 'SLM', 'tienda@abanicoytu.com', NULL, '0000-00-00', '$2y$10$XD53mwS1Zij.rhmtzNr/3eJ.OqVSeh8AZFOg3FtRi5Lfjl0QqQHSu', '2019-03-28 00:14:30', '2019-04-02 17:51:14', 'vnd-2', 'si', 'activo'),
+('5ca4043cde1435.48493149', 'P', 'RP', 'peroplix@hotmail.com', NULL, '0000-00-00', '$2y$10$SuZUuccnVZEQsHGGwFagruoSGKYjE97YYy8PwaIIfzJnGlq/L2wDO', '2019-04-02 23:54:20', '2019-04-04 01:43:32', 'vns-4', 'si', 'activo'),
+('5ca7fc2217e2c3.68837078', 'Franco', 'Martínez Pérez', 'stmarmo@hotmail.com', NULL, '0000-00-00', '$2y$10$RHfxVLnxPlCq3K2zrErQ.eSqJooH1A9NX2DyWFFDp4w5SBZsXz8Yu', '2019-04-06 00:08:50', '2019-04-06 00:08:50', 'usr-1', 'si', 'activo'),
+('5cb3e89a74a543.21168150', 'AAAAAAA', 'EEEEEEE', 'ejemplo@conekta.com', '5555555555', '0000-00-00', '$2y$10$jHfp.iJs1S60GUqupRKTjOrtN003kEMfrcyvUEUvuemkyENgJgB/.', '2019-04-15 02:12:42', '2019-04-15 02:12:42', 'usr-1', 'si', 'activo'),
+('5cbf2af567b4e4.45277430', 'Andres', 'Ruelas', 'pixelbiff@gmail.com', NULL, '0000-00-00', '$2y$10$Yr.RtgyBH2bw2i59plL3BeW./uEac6mae/z7DX3uNr/9i26c58iay', '2019-04-23 15:10:45', '2019-04-23 15:10:45', 'usr-1', 'si', 'activo');
 
 -- --------------------------------------------------------
 
@@ -10876,134 +12008,256 @@ CREATE TABLE `vistas_generales` (
 --
 
 INSERT INTO `vistas_generales` (`ID_VISTA`, `VISTA_IP`, `VISTA_CANTIDAD`, `ID_OBJETO`, `VISTA_TIPO`, `VISTA_FECHA`) VALUES
-(1, '201.103.111.130', '1', 1, 'producto', '2019-02-13 23:34:50'),
-(2, '201.103.111.130', '1', 1, 'producto', '2019-02-13 23:39:17'),
-(3, '201.103.111.130', '1', 1, 'servicio', '2019-02-13 23:47:36'),
-(4, '201.103.111.130', '1', 1, 'servicio', '2019-02-13 23:49:10'),
-(5, '201.103.111.130', '1', 1, 'servicio', '2019-02-13 23:49:39'),
-(6, '201.103.111.130', '1', 1, 'producto', '2019-02-13 23:56:59'),
-(7, '201.103.111.130', '1', 1, 'producto', '2019-02-13 23:57:44'),
-(8, '201.103.111.130', '1', 1, 'producto', '2019-02-13 23:58:35'),
-(9, '201.103.111.130', '1', 1, 'producto', '2019-02-14 00:01:48'),
-(10, '201.103.111.130', '1', 1, 'producto', '2019-02-14 00:01:58'),
-(11, '201.103.111.130', '1', 1, 'producto', '2019-02-14 00:03:15'),
-(12, '201.103.111.130', '1', 1, 'servicio', '2019-02-14 00:04:28'),
-(13, '201.103.111.130', '1', 1, 'producto', '2019-02-14 00:07:11'),
-(14, '201.103.111.130', '1', 1, 'producto', '2019-02-14 00:36:05'),
-(15, '201.103.111.130', '1', 1, 'producto', '2019-02-14 00:37:02'),
-(16, '201.103.111.130', '1', 1, 'producto', '2019-02-14 00:37:50'),
-(17, '201.103.111.130', '1', 1, 'producto', '2019-02-14 00:43:56'),
-(18, '201.103.111.130', '1', 1, 'producto', '2019-02-14 00:48:04'),
-(19, '201.103.111.130', '1', 1, 'producto', '2019-02-14 00:48:14'),
-(20, '201.103.111.130', '1', 1, 'producto', '2019-02-14 01:15:00'),
-(21, '187.170.135.173', '1', 1, 'servicio', '2019-02-14 04:53:25'),
-(22, '187.170.135.173', '1', 1, 'servicio', '2019-02-14 04:54:00'),
-(23, '187.170.135.173', '1', 1, 'servicio', '2019-02-14 05:18:38'),
-(24, '177.237.155.205', '1', 1, 'producto', '2019-02-14 18:54:11'),
-(25, '187.170.135.173', '1', 1, 'servicio', '2019-02-15 04:26:08'),
-(26, '187.170.135.173', '1', 2, 'producto', '2019-02-15 04:26:25'),
-(27, '187.170.135.173', '1', 2, 'producto', '2019-02-15 04:26:42'),
-(28, '201.137.147.44', '1', 4, 'producto', '2019-02-15 07:43:30'),
-(29, '177.237.155.205', '1', 1, 'producto', '2019-02-15 22:56:14'),
-(30, '177.237.155.205', '1', 1, 'producto', '2019-02-15 22:56:48'),
-(31, '187.170.135.173', '1', 3, 'producto', '2019-02-16 03:57:05'),
-(32, '189.216.140.88', '1', 4, 'producto', '2019-02-16 04:01:50'),
-(33, '189.216.140.88', '1', 4, 'producto', '2019-02-16 04:02:24'),
-(34, '189.216.140.88', '1', 4, 'producto', '2019-02-16 04:04:14'),
-(35, '189.216.140.88', '1', 3, 'producto', '2019-02-16 04:04:32'),
-(36, '189.216.140.88', '1', 1, 'producto', '2019-02-16 04:05:25'),
-(37, '187.170.135.173', '1', 3, 'producto', '2019-02-16 06:07:42'),
-(38, '201.141.47.185', '1', 3, 'producto', '2019-02-17 20:54:31'),
-(39, '201.141.47.185', '1', 4, 'producto', '2019-02-17 21:20:58'),
-(40, '201.141.47.185', '1', 1, 'producto', '2019-02-17 21:23:45'),
-(41, '187.170.135.173', '1', 6, 'servicio', '2019-02-19 01:01:04'),
-(42, '187.170.135.173', '1', 3, 'producto', '2019-02-19 01:01:28'),
-(43, '187.170.135.173', '1', 6, 'servicio', '2019-02-19 01:02:00'),
-(44, '187.170.135.173', '1', 3, 'producto', '2019-02-19 01:02:21'),
-(45, '187.170.135.173', '1', 3, 'producto', '2019-02-19 01:05:49'),
-(46, '187.170.135.173', '1', 5, 'producto', '2019-02-19 01:20:27'),
-(47, '189.216.199.194', '1', 5, 'servicio', '2019-02-20 07:25:16'),
-(48, '189.216.199.194', '1', 7, 'servicio', '2019-02-20 07:27:05'),
-(49, '189.216.199.194', '1', 3, 'producto', '2019-02-20 07:27:48'),
-(50, '189.216.199.194', '1', 3, 'producto', '2019-02-20 07:28:44'),
-(51, '189.216.199.194', '1', 3, 'producto', '2019-02-20 07:29:18'),
-(52, '189.216.199.194', '1', 5, 'producto', '2019-02-20 07:36:14'),
-(53, '187.170.159.244', '1', 6, 'producto', '2019-02-20 14:57:35'),
-(54, '201.103.111.130', '1', 2, 'producto', '2019-02-20 20:41:33'),
-(55, '201.103.111.130', '1', 1, 'producto', '2019-02-20 22:11:22'),
-(56, '201.103.111.130', '1', 7, 'producto', '2019-02-20 22:42:46'),
-(57, '201.103.111.130', '1', 7, 'producto', '2019-02-20 22:42:54'),
-(58, '201.103.111.130', '1', 7, 'producto', '2019-02-20 22:49:33'),
-(59, '201.103.111.130', '1', 6, 'producto', '2019-02-20 22:51:50'),
-(60, '201.103.111.130', '1', 3, 'producto', '2019-02-20 23:03:40'),
-(61, '201.103.111.130', '1', 7, 'producto', '2019-02-20 23:03:47'),
-(62, '201.103.111.130', '1', 7, 'producto', '2019-02-20 23:04:41'),
-(63, '201.103.111.130', '1', 7, 'producto', '2019-02-20 23:04:43'),
-(64, '99.203.143.62', '1', 4, 'producto', '2019-02-20 23:09:24'),
-(65, '201.103.111.130', '1', 7, 'producto', '2019-02-20 23:09:46'),
-(66, '99.203.143.62', '1', 7, 'producto', '2019-02-20 23:09:50'),
-(67, '99.203.143.62', '1', 7, 'producto', '2019-02-20 23:31:12'),
-(68, '99.203.143.62', '1', 8, 'producto', '2019-02-20 23:38:22'),
-(69, '99.203.143.62', '1', 8, 'producto', '2019-02-20 23:41:43'),
-(70, '99.203.143.62', '1', 8, 'producto', '2019-02-20 23:49:26'),
-(71, '99.203.143.62', '1', 6, 'producto', '2019-02-20 23:51:00'),
-(72, '201.103.111.130', '1', 7, 'producto', '2019-02-20 23:54:47'),
-(73, '201.103.111.130', '1', 9, 'servicio', '2019-02-20 23:56:49'),
-(74, '201.103.111.130', '1', 3, 'servicio', '2019-02-21 00:04:19'),
-(75, '201.103.111.130', '1', 8, 'producto', '2019-02-21 00:47:48'),
-(76, '201.103.111.130', '1', 7, 'producto', '2019-02-21 00:48:07'),
-(77, '187.170.159.244', '1', 11, 'producto', '2019-02-21 20:28:28'),
-(78, '187.170.159.244', '1', 11, 'producto', '2019-02-21 20:28:52'),
-(79, '187.170.159.244', '1', 9, 'servicio', '2019-02-21 20:40:56'),
-(80, '187.170.159.244', '1', 9, 'servicio', '2019-02-21 20:41:57'),
-(81, '187.170.159.244', '1', 9, 'servicio', '2019-02-21 20:42:08'),
-(82, '187.170.159.244', '1', 9, 'servicio', '2019-02-21 20:42:30'),
-(83, '187.170.159.244', '1', 3, 'producto', '2019-02-21 21:00:16'),
-(84, '187.170.159.244', '1', 12, 'producto', '2019-02-21 21:38:15'),
-(85, '187.170.159.244', '1', 12, 'producto', '2019-02-21 21:39:12'),
-(86, '187.170.159.244', '1', 11, 'producto', '2019-02-21 21:39:18'),
-(87, '187.190.156.190', '1', 11, 'producto', '2019-02-21 21:40:31'),
-(88, '201.117.72.177', '1', 3, 'producto', '2019-02-22 00:18:39'),
-(89, '201.117.72.177', '1', 10, 'servicio', '2019-02-22 00:27:26'),
-(90, '64.180.213.26', '1', 4, 'servicio', '2019-02-22 20:03:16'),
-(91, '64.180.213.26', '1', 10, 'servicio', '2019-02-22 20:03:24'),
-(92, '64.180.213.26', '1', 3, 'servicio', '2019-02-22 20:03:33'),
-(93, '64.180.213.26', '1', 7, 'producto', '2019-02-22 21:37:32'),
-(94, '64.180.213.26', '1', 2, 'servicio', '2019-02-22 21:42:34'),
-(95, '64.180.213.26', '1', 7, 'servicio', '2019-02-22 21:42:39'),
-(96, '64.180.213.26', '1', 13, 'producto', '2019-02-22 21:42:49'),
-(97, '64.180.213.26', '1', 9, 'servicio', '2019-02-22 21:43:05'),
-(98, '64.180.213.26', '1', 10, 'servicio', '2019-02-22 21:43:12'),
-(99, '201.103.93.18', '1', 5, 'servicio', '2019-02-22 21:43:17'),
-(100, '64.180.213.26', '1', 3, 'servicio', '2019-02-22 21:43:20'),
-(101, '64.180.213.26', '1', 8, 'servicio', '2019-02-22 21:43:36'),
-(102, '189.206.207.252', '1', 3, 'servicio', '2019-02-22 22:47:37'),
-(103, '189.206.207.252', '1', 11, 'producto', '2019-02-22 22:49:00'),
-(104, '189.216.199.194', '1', 7, 'producto', '2019-02-25 03:52:28'),
-(105, '200.105.247.186', '1', 2, 'servicio', '2019-02-25 22:52:29'),
-(106, '200.105.247.186', '1', 1, 'producto', '2019-02-25 22:54:28'),
-(107, '201.103.93.18', '1', 11, 'servicio', '2019-02-27 18:05:01'),
-(108, '201.103.111.130', '1', 6, 'producto', '2019-03-01 21:40:08'),
-(109, '201.103.111.130', '1', 6, 'producto', '2019-03-01 21:40:12'),
-(110, '99.203.55.107', '1', 12, 'producto', '2019-03-01 22:02:40'),
-(111, '99.203.55.107', '1', 8, 'producto', '2019-03-01 22:03:04'),
-(112, '99.203.55.107', '1', 5, 'producto', '2019-03-01 22:03:44'),
-(113, '99.203.55.107', '1', 6, 'producto', '2019-03-01 22:04:07'),
-(114, '201.103.111.130', '1', 4, 'producto', '2019-03-01 22:13:39'),
-(115, '201.103.111.130', '1', 4, 'producto', '2019-03-01 22:13:41'),
-(116, '201.103.111.130', '1', 4, 'producto', '2019-03-01 22:13:42'),
-(117, '201.103.111.130', '1', 4, 'producto', '2019-03-01 22:13:43'),
-(118, '201.103.111.130', '1', 4, 'producto', '2019-03-01 22:13:43'),
-(119, '201.103.111.130', '1', 4, 'producto', '2019-03-01 22:13:44'),
-(120, '201.103.111.130', '1', 10, 'producto', '2019-03-01 22:26:19'),
-(121, '201.103.111.130', '1', 9, 'producto', '2019-03-01 22:26:25'),
-(122, '201.103.111.130', '1', 9, 'producto', '2019-03-01 22:42:39'),
-(123, '201.103.93.18', '1', 3, 'producto', '2019-03-02 02:06:48'),
-(124, '201.103.93.18', '1', 3, 'producto', '2019-03-02 02:07:01'),
-(125, '201.103.93.18', '1', 3, 'producto', '2019-03-02 02:07:09'),
-(126, '201.103.93.18', '1', 3, 'producto', '2019-03-02 02:07:17'),
-(127, '201.103.93.18', '1', 3, 'producto', '2019-03-02 02:07:32'),
-(128, '187.170.162.9', '1', 5, 'producto', '2019-03-05 00:41:56');
+(1, '201.103.170.245', '1', 2, 'producto', '2019-03-28 00:32:00'),
+(2, '201.103.170.245', '1', 2, 'producto', '2019-03-28 00:32:13'),
+(3, '201.103.170.245', '1', 1, 'producto', '2019-03-28 00:32:22'),
+(4, '201.103.170.245', '1', 2, 'producto', '2019-03-28 00:34:36'),
+(5, '201.103.170.245', '1', 1, 'producto', '2019-03-28 00:44:41'),
+(6, '201.103.170.245', '1', 3, 'producto', '2019-03-28 00:44:45'),
+(7, '201.103.170.245', '1', 3, 'producto', '2019-03-28 00:48:44'),
+(8, '201.103.170.245', '1', 2, 'producto', '2019-03-28 00:49:01'),
+(9, '201.103.170.245', '1', 7, 'producto', '2019-03-28 00:49:10'),
+(10, '201.103.170.245', '1', 1, 'producto', '2019-03-28 00:49:57'),
+(11, '201.103.170.245', '1', 5, 'producto', '2019-03-28 00:51:17'),
+(12, '201.103.170.245', '1', 5, 'producto', '2019-03-28 00:51:29'),
+(13, '201.103.170.245', '1', 13, 'producto', '2019-03-28 00:53:43'),
+(14, '201.103.170.245', '1', 17, 'producto', '2019-03-28 01:33:48'),
+(15, '201.103.170.245', '1', 14, 'producto', '2019-03-28 01:34:08'),
+(16, '201.103.170.245', '1', 13, 'producto', '2019-03-28 01:34:27'),
+(17, '201.103.170.245', '1', 10, 'producto', '2019-03-28 01:35:51'),
+(18, '201.103.170.245', '1', 10, 'producto', '2019-03-28 01:35:57'),
+(19, '201.103.170.245', '1', 14, 'producto', '2019-03-28 01:36:13'),
+(20, '201.103.170.245', '1', 15, 'producto', '2019-03-28 01:38:12'),
+(21, '201.103.170.245', '1', 15, 'producto', '2019-03-28 01:38:21'),
+(22, '201.103.129.52', '1', 2, 'producto', '2019-03-28 01:53:30'),
+(23, '201.103.129.52', '1', 10, 'producto', '2019-03-28 01:53:52'),
+(24, '201.103.129.52', '1', 11, 'producto', '2019-03-28 01:54:07'),
+(25, '201.103.129.52', '1', 12, 'producto', '2019-03-28 01:54:15'),
+(26, '201.103.129.52', '1', 13, 'producto', '2019-03-28 01:54:23'),
+(27, '201.103.129.52', '1', 14, 'producto', '2019-03-28 01:54:43'),
+(28, '201.103.129.52', '1', 15, 'producto', '2019-03-28 01:55:05'),
+(29, '201.103.129.52', '1', 14, 'producto', '2019-03-28 01:55:53'),
+(30, '201.103.129.52', '1', 15, 'producto', '2019-03-28 01:56:06'),
+(31, '201.103.129.52', '1', 2, 'producto', '2019-03-28 01:56:14'),
+(32, '201.103.129.52', '1', 13, 'producto', '2019-03-28 02:00:04'),
+(33, '201.103.129.52', '1', 14, 'producto', '2019-03-28 02:07:28'),
+(34, '201.103.129.52', '1', 15, 'producto', '2019-03-28 02:07:41'),
+(35, '201.103.129.52', '1', 10, 'producto', '2019-03-28 02:07:58'),
+(36, '201.103.129.52', '1', 11, 'producto', '2019-03-28 02:08:06'),
+(37, '187.162.102.5', '1', 3, 'producto', '2019-03-28 04:21:42'),
+(38, '201.103.129.52', '1', 5, 'producto', '2019-03-28 16:59:09'),
+(39, '201.103.64.155', '1', 4, 'producto', '2019-03-29 01:46:51'),
+(40, '201.103.64.155', '1', 11, 'producto', '2019-03-29 02:15:56'),
+(41, '69.116.185.153', '1', 25, 'producto', '2019-03-29 03:50:23'),
+(42, '187.190.156.190', '1', 6, 'producto', '2019-03-29 19:59:07'),
+(43, '187.190.156.190', '1', 7, 'producto', '2019-03-29 20:00:19'),
+(44, '187.162.102.5', '1', 20, 'producto', '2019-03-29 20:10:40'),
+(45, '187.162.102.5', '1', 8, 'producto', '2019-03-29 20:11:13'),
+(46, '201.103.129.52', '1', 22, 'producto', '2019-03-29 20:40:27'),
+(47, '201.103.129.52', '1', 21, 'producto', '2019-03-29 20:40:46'),
+(48, '201.103.129.52', '1', 23, 'producto', '2019-03-29 20:41:01'),
+(49, '187.162.102.5', '1', 4, 'producto', '2019-03-29 20:44:39'),
+(50, '201.103.129.52', '1', 26, 'producto', '2019-03-29 21:11:30'),
+(51, '201.103.64.155', '1', 20, 'producto', '2019-03-29 21:40:00'),
+(52, '201.103.64.155', '1', 13, 'producto', '2019-03-29 21:40:18'),
+(53, '201.103.64.155', '1', 12, 'producto', '2019-03-29 21:40:30'),
+(54, '201.103.64.155', '1', 18, 'producto', '2019-03-29 21:40:43'),
+(55, '201.103.64.155', '1', 6, 'producto', '2019-03-29 21:44:03'),
+(56, '201.103.64.155', '1', 6, 'producto', '2019-03-29 21:44:58'),
+(57, '201.103.64.155', '1', 6, 'producto', '2019-03-29 21:45:11'),
+(58, '201.103.64.155', '1', 6, 'producto', '2019-03-29 21:45:15'),
+(59, '201.103.64.155', '1', 4, 'producto', '2019-03-29 21:45:27'),
+(60, '201.103.64.155', '1', 4, 'producto', '2019-03-29 21:45:59'),
+(61, '201.103.64.155', '1', 2, 'producto', '2019-03-29 21:48:12'),
+(62, '201.103.64.155', '1', 25, 'producto', '2019-03-29 21:53:51'),
+(63, '99.203.28.52', '1', 14, 'producto', '2019-03-30 18:24:18'),
+(64, '187.190.156.190', '1', 17, 'producto', '2019-03-30 18:37:08'),
+(65, '201.103.100.211', '1', 20, 'producto', '2019-04-01 22:07:34'),
+(66, '201.103.100.211', '1', 22, 'producto', '2019-04-01 22:07:43'),
+(67, '187.190.156.190', '1', 12, 'producto', '2019-04-02 07:36:18'),
+(68, '201.103.38.1', '1', 22, 'producto', '2019-04-02 19:41:39'),
+(69, '201.103.38.1', '1', 22, 'producto', '2019-04-02 19:43:22'),
+(70, '201.103.38.1', '1', 15, 'producto', '2019-04-02 20:49:05'),
+(71, '201.103.38.1', '1', 8, 'producto', '2019-04-02 20:54:13'),
+(72, '201.103.38.1', '1', 27, 'producto', '2019-04-02 21:00:41'),
+(73, '201.103.38.1', '1', 3, 'producto', '2019-04-02 21:59:13'),
+(74, '201.103.38.1', '1', 17, 'producto', '2019-04-02 22:05:39'),
+(75, '201.103.38.1', '1', 15, 'producto', '2019-04-02 22:05:58'),
+(76, '201.103.38.1', '1', 4, 'producto', '2019-04-02 22:06:36'),
+(77, '201.103.38.1', '1', 29, 'producto', '2019-04-02 22:42:41'),
+(78, '201.103.38.1', '1', 28, 'producto', '2019-04-02 22:49:48'),
+(79, '201.103.38.1', '1', 29, 'producto', '2019-04-02 22:51:37'),
+(80, '201.103.38.1', '1', 25, 'producto', '2019-04-02 23:24:41'),
+(81, '201.103.38.1', '1', 25, 'producto', '2019-04-02 23:27:23'),
+(82, '201.103.38.1', '1', 25, 'producto', '2019-04-02 23:27:58'),
+(83, '201.103.38.1', '1', 25, 'producto', '2019-04-02 23:28:10'),
+(84, '201.103.38.1', '1', 31, 'producto', '2019-04-03 00:20:29'),
+(85, '201.103.38.1', '1', 31, 'producto', '2019-04-03 00:26:22'),
+(86, '201.103.38.1', '1', 31, 'producto', '2019-04-03 00:27:14'),
+(87, '201.103.38.1', '1', 31, 'producto', '2019-04-03 00:31:36'),
+(88, '201.103.38.1', '1', 22, 'producto', '2019-04-03 01:10:27'),
+(89, '187.162.102.5', '1', 27, 'producto', '2019-04-03 20:00:29'),
+(90, '187.162.102.5', '1', 29, 'producto', '2019-04-03 20:01:04'),
+(91, '187.162.102.5', '1', 2, 'producto', '2019-04-03 20:01:08'),
+(92, '187.162.102.5', '1', 3, 'producto', '2019-04-03 20:01:40'),
+(93, '187.162.102.5', '1', 21, 'producto', '2019-04-03 20:02:23'),
+(94, '187.162.102.5', '1', 21, 'producto', '2019-04-03 20:55:05'),
+(95, '201.103.38.1', '1', 1, 'producto', '2019-04-03 22:31:32'),
+(96, '201.103.38.1', '1', 1, 'producto', '2019-04-03 23:47:25'),
+(97, '187.162.184.5', '1', 1, 'producto', '2019-04-03 23:47:44'),
+(98, '187.162.184.5', '1', 1, 'producto', '2019-04-03 23:49:00'),
+(99, '201.103.38.1', '1', 1, 'producto', '2019-04-03 23:49:15'),
+(100, '201.103.38.1', '1', 22, 'producto', '2019-04-04 00:19:07'),
+(101, '201.103.38.1', '1', 31, 'producto', '2019-04-04 00:23:04'),
+(102, '63.143.197.98', '1', 22, 'producto', '2019-04-05 02:17:37'),
+(103, '63.143.197.98', '1', 22, 'producto', '2019-04-05 02:17:46'),
+(104, '63.143.197.98', '1', 22, 'producto', '2019-04-05 02:17:49'),
+(105, '63.143.197.98', '1', 27, 'producto', '2019-04-05 02:18:04'),
+(106, '63.143.197.98', '1', 27, 'producto', '2019-04-05 02:18:16'),
+(107, '63.143.197.98', '1', 27, 'producto', '2019-04-05 02:18:23'),
+(108, '63.143.197.98', '1', 22, 'producto', '2019-04-05 02:21:28'),
+(109, '63.143.197.98', '1', 29, 'producto', '2019-04-05 02:22:26'),
+(110, '63.143.197.98', '1', 29, 'producto', '2019-04-05 02:22:30'),
+(111, '63.143.197.98', '1', 33, 'producto', '2019-04-05 02:22:56'),
+(112, '63.143.197.98', '1', 33, 'producto', '2019-04-05 02:23:44'),
+(113, '99.203.29.148', '1', 5, 'producto', '2019-04-05 23:06:05'),
+(114, '99.203.29.148', '1', 22, 'producto', '2019-04-05 23:06:43'),
+(115, '99.203.29.148', '1', 17, 'producto', '2019-04-05 23:07:21'),
+(116, '99.203.29.148', '1', 6, 'producto', '2019-04-05 23:10:03'),
+(117, '99.203.29.148', '1', 30, 'producto', '2019-04-05 23:32:58'),
+(118, '99.203.29.148', '1', 30, 'producto', '2019-04-05 23:34:03'),
+(119, '99.203.29.148', '1', 28, 'producto', '2019-04-05 23:34:08'),
+(120, '99.203.29.148', '1', 28, 'producto', '2019-04-05 23:36:45'),
+(121, '187.162.102.5', '1', 25, 'producto', '2019-04-06 18:19:11'),
+(122, '201.103.100.211', '1', 2, 'producto', '2019-04-08 22:31:33'),
+(123, '201.103.100.211', '1', 26, 'producto', '2019-04-09 20:25:38'),
+(124, '201.103.47.120', '1', 22, 'producto', '2019-04-09 22:53:19'),
+(125, '187.162.102.5', '1', 29, 'producto', '2019-04-10 14:24:08'),
+(126, '201.103.47.120', '1', 15, 'producto', '2019-04-12 00:24:27'),
+(127, '201.103.47.120', '1', 8, 'producto', '2019-04-12 00:24:43'),
+(128, '201.103.47.120', '1', 3, 'producto', '2019-04-12 00:24:53'),
+(129, '201.103.47.120', '1', 30, 'producto', '2019-04-12 00:28:46'),
+(130, '201.103.47.120', '1', 2, 'producto', '2019-04-12 00:29:10'),
+(131, '201.103.47.120', '1', 29, 'producto', '2019-04-12 00:29:25'),
+(132, '201.103.47.120', '1', 33, 'producto', '2019-04-12 00:43:02'),
+(133, '201.103.47.120', '1', 22, 'producto', '2019-04-12 00:44:12'),
+(134, '201.103.47.120', '1', 1, 'producto', '2019-04-12 00:45:36'),
+(135, '201.103.47.120', '1', 26, 'producto', '2019-04-12 00:45:48'),
+(136, '201.103.47.120', '1', 26, 'producto', '2019-04-12 00:48:13'),
+(137, '201.103.47.120', '1', 26, 'producto', '2019-04-12 00:48:33'),
+(138, '201.103.47.120', '1', 26, 'producto', '2019-04-12 00:48:47'),
+(139, '201.103.47.120', '1', 26, 'producto', '2019-04-12 00:49:04'),
+(140, '201.103.47.120', '1', 26, 'producto', '2019-04-12 00:49:45'),
+(141, '201.103.47.120', '1', 9, 'producto', '2019-04-12 00:50:05'),
+(142, '201.103.47.120', '1', 26, 'producto', '2019-04-12 00:50:15'),
+(143, '201.103.47.120', '1', 26, 'producto', '2019-04-12 00:50:33'),
+(144, '201.103.47.120', '1', 2, 'producto', '2019-04-12 00:50:41'),
+(145, '187.190.156.190', '1', 25, 'producto', '2019-04-12 08:57:45'),
+(146, '187.190.156.190', '1', 25, 'producto', '2019-04-12 08:59:48'),
+(147, '187.190.156.190', '1', 25, 'producto', '2019-04-12 09:00:38'),
+(148, '187.190.156.190', '1', 25, 'producto', '2019-04-12 09:01:14'),
+(149, '187.190.156.190', '1', 8, 'producto', '2019-04-12 09:01:50'),
+(150, '187.190.156.190', '1', 2, 'producto', '2019-04-12 09:01:55'),
+(151, '187.190.156.190', '1', 17, 'producto', '2019-04-13 05:00:09'),
+(152, '187.190.156.190', '1', 24, 'producto', '2019-04-13 05:47:20'),
+(153, '187.190.156.190', '1', 25, 'producto', '2019-04-13 05:52:06'),
+(154, '99.203.54.41', '1', 33, 'producto', '2019-04-13 23:51:53'),
+(155, '99.203.54.41', '1', 33, 'producto', '2019-04-13 23:52:12'),
+(156, '99.203.54.41', '1', 33, 'producto', '2019-04-13 23:53:04'),
+(157, '99.203.54.41', '1', 33, 'producto', '2019-04-13 23:55:27'),
+(158, '99.203.54.41', '1', 2, 'producto', '2019-04-13 23:56:32'),
+(159, '99.203.54.41', '1', 2, 'producto', '2019-04-13 23:57:03'),
+(160, '189.216.149.28', '1', 24, 'producto', '2019-04-15 02:12:12'),
+(161, '99.203.29.7', '1', 9, 'producto', '2019-04-15 17:42:15'),
+(162, '99.203.29.7', '1', 29, 'producto', '2019-04-15 17:44:26'),
+(163, '99.203.29.7', '1', 9, 'producto', '2019-04-15 17:45:30'),
+(164, '201.103.100.211', '1', 2, 'producto', '2019-04-15 17:51:56'),
+(165, '99.203.29.7', '1', 21, 'producto', '2019-04-15 17:52:17'),
+(166, '201.103.100.211', '1', 21, 'producto', '2019-04-15 18:23:41'),
+(167, '201.103.100.211', '1', 21, 'producto', '2019-04-15 18:23:54'),
+(168, '201.137.147.52', '1', 2, 'producto', '2019-04-16 01:17:07'),
+(169, '201.137.147.52', '1', 27, 'producto', '2019-04-16 01:21:59'),
+(170, '201.137.147.52', '1', 27, 'producto', '2019-04-16 01:24:36'),
+(171, '201.103.133.185', '1', 34, 'producto', '2019-04-17 18:13:09'),
+(172, '201.103.133.185', '1', 34, 'producto', '2019-04-17 18:19:35'),
+(173, '201.103.133.185', '1', 15, 'producto', '2019-04-17 18:29:00'),
+(174, '201.103.133.185', '1', 35, 'producto', '2019-04-17 18:57:55'),
+(175, '201.103.133.185', '1', 28, 'producto', '2019-04-17 19:02:36'),
+(176, '201.103.133.185', '1', 28, 'producto', '2019-04-17 19:04:38'),
+(177, '201.103.133.185', '1', 28, 'producto', '2019-04-17 19:04:41'),
+(178, '201.103.133.185', '1', 28, 'producto', '2019-04-17 19:05:36'),
+(179, '201.103.133.185', '1', 30, 'producto', '2019-04-17 19:12:35'),
+(180, '201.103.133.185', '1', 36, 'producto', '2019-04-17 19:15:39'),
+(181, '201.103.133.185', '1', 37, 'producto', '2019-04-17 19:20:23'),
+(182, '201.103.133.185', '1', 36, 'producto', '2019-04-17 19:20:42'),
+(183, '201.103.133.185', '1', 36, 'producto', '2019-04-17 19:23:00'),
+(184, '201.103.161.162', '1', 34, 'producto', '2019-04-22 17:27:43'),
+(185, '158.106.203.154', '1', 7, 'producto', '2019-04-22 19:12:56'),
+(186, '158.106.203.154', '1', 4, 'producto', '2019-04-22 19:13:03'),
+(187, '158.106.203.154', '1', 13, 'producto', '2019-04-22 19:15:22'),
+(188, '201.103.161.162', '1', 6, 'producto', '2019-04-22 19:15:53'),
+(189, '201.103.161.162', '1', 6, 'producto', '2019-04-22 19:16:02'),
+(190, '201.103.161.162', '1', 6, 'producto', '2019-04-22 19:16:08'),
+(191, '201.103.161.162', '1', 6, 'producto', '2019-04-22 19:16:14'),
+(192, '158.106.203.154', '1', 24, 'producto', '2019-04-22 19:16:35'),
+(193, '158.106.203.154', '1', 29, 'producto', '2019-04-22 19:17:20'),
+(194, '201.103.161.162', '1', 15, 'producto', '2019-04-22 19:18:12'),
+(195, '201.103.161.162', '1', 7, 'producto', '2019-04-22 19:18:46'),
+(196, '187.162.102.5', '1', 29, 'producto', '2019-04-22 20:07:32'),
+(197, '187.162.102.5', '1', 34, 'producto', '2019-04-22 20:08:16'),
+(198, '135.84.133.141', '1', 3, 'producto', '2019-04-22 20:09:02'),
+(199, '201.103.100.211', '1', 25, 'producto', '2019-04-22 20:54:27'),
+(200, '201.103.100.211', '1', 22, 'producto', '2019-04-22 20:54:34'),
+(201, '201.103.100.211', '1', 33, 'producto', '2019-04-22 21:28:25'),
+(202, '201.103.100.211', '1', 33, 'producto', '2019-04-22 21:28:50'),
+(203, '99.203.142.186', '1', 24, 'producto', '2019-04-22 21:30:34'),
+(204, '201.103.100.211', '1', 33, 'producto', '2019-04-22 21:34:29'),
+(205, '201.103.100.211', '1', 14, 'producto', '2019-04-22 21:54:20'),
+(206, '201.103.100.211', '1', 15, 'producto', '2019-04-22 22:12:59'),
+(207, '201.103.100.211', '1', 15, 'producto', '2019-04-22 22:13:03'),
+(208, '201.103.100.211', '1', 25, 'producto', '2019-04-22 22:24:34'),
+(209, '201.103.100.211', '1', 15, 'producto', '2019-04-22 22:32:44'),
+(210, '201.103.100.211', '1', 5, 'producto', '2019-04-22 22:32:49'),
+(211, '201.103.100.211', '1', 28, 'producto', '2019-04-22 23:23:13'),
+(212, '201.103.100.211', '1', 15, 'producto', '2019-04-22 23:42:07'),
+(213, '201.103.100.211', '1', 36, 'producto', '2019-04-22 23:51:42'),
+(214, '201.103.100.211', '1', 32, 'producto', '2019-04-23 16:28:45'),
+(215, '201.103.100.211', '1', 28, 'producto', '2019-04-23 16:29:04'),
+(216, '201.103.161.162', '1', 35, 'producto', '2019-04-25 17:04:03'),
+(217, '201.103.161.162', '1', 30, 'producto', '2019-04-25 17:55:43'),
+(218, '201.103.161.162', '1', 30, 'producto', '2019-04-25 17:57:50'),
+(219, '201.103.161.162', '1', 30, 'producto', '2019-04-25 17:58:47'),
+(220, '201.103.161.162', '1', 30, 'producto', '2019-04-25 17:59:01'),
+(221, '201.103.161.162', '1', 30, 'producto', '2019-04-25 17:59:45'),
+(222, '201.103.161.162', '1', 30, 'producto', '2019-04-25 18:00:15'),
+(223, '201.103.161.162', '1', 30, 'producto', '2019-04-25 18:00:44'),
+(224, '201.103.161.162', '1', 17, 'producto', '2019-04-25 20:41:50'),
+(225, '201.103.161.162', '1', 39, 'producto', '2019-04-25 20:43:48'),
+(226, '99.203.28.205', '1', 22, 'producto', '2019-04-26 02:42:32'),
+(227, '201.103.166.131', '1', 30, 'producto', '2019-04-26 23:24:46'),
+(228, '201.103.166.131', '1', 26, 'producto', '2019-04-26 23:25:03'),
+(229, '189.146.238.6', '1', 32, 'producto', '2019-04-29 20:14:29'),
+(230, '189.146.238.6', '1', 30, 'producto', '2019-04-29 20:18:20'),
+(231, '189.146.238.6', '1', 14, 'producto', '2019-04-29 20:21:55'),
+(232, '189.146.238.6', '1', 37, 'producto', '2019-04-29 20:47:53'),
+(233, '189.146.238.6', '1', 30, 'producto', '2019-04-29 20:57:30'),
+(234, '189.146.238.6', '1', 29, 'producto', '2019-04-29 21:00:57'),
+(235, '189.146.238.6', '1', 35, 'producto', '2019-04-29 21:02:34'),
+(236, '187.190.156.190', '1', 17, 'producto', '2019-04-30 13:29:08'),
+(237, '187.190.156.190', '1', 22, 'producto', '2019-04-30 13:50:20'),
+(238, '187.190.156.190', '1', 21, 'producto', '2019-04-30 15:02:42'),
+(239, '201.103.161.162', '1', 26, 'producto', '2019-04-30 17:32:28'),
+(240, '201.103.161.162', '1', 22, 'producto', '2019-04-30 18:20:37'),
+(241, '201.103.161.162', '1', 40, 'producto', '2019-04-30 18:33:51'),
+(242, '201.103.161.162', '1', 27, 'producto', '2019-04-30 19:09:59'),
+(243, '189.146.238.6', '1', 33, 'producto', '2019-04-30 19:55:21'),
+(244, '201.103.161.162', '1', 9, 'producto', '2019-04-30 21:54:54'),
+(245, '201.103.161.162', '1', 7, 'producto', '2019-04-30 21:55:16'),
+(246, '201.103.161.162', '1', 37, 'producto', '2019-05-01 00:16:01'),
+(247, '201.103.161.162', '1', 47, 'producto', '2019-05-01 00:16:10'),
+(248, '201.103.161.162', '1', 8, 'producto', '2019-05-01 00:23:36'),
+(249, '201.103.161.162', '1', 47, 'producto', '2019-05-01 00:23:45'),
+(250, '201.103.161.162', '1', 8, 'producto', '2019-05-01 00:23:51');
 
 --
 -- Índices para tablas volcadas
@@ -11214,6 +12468,12 @@ ALTER TABLE `preguntas_frecuentes`
   ADD PRIMARY KEY (`ID_PREGUNTA`);
 
 --
+-- Indices de la tabla `premios`
+--
+ALTER TABLE `premios`
+  ADD PRIMARY KEY (`ID_PREMIO`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -11330,7 +12590,7 @@ ALTER TABLE `vistas_generales`
 -- AUTO_INCREMENT de la tabla `adjuntos_usuarios`
 --
 ALTER TABLE `adjuntos_usuarios`
-  MODIFY `ID_ADJUNTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_ADJUNTO` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `calificaciones_productos`
 --
@@ -11340,17 +12600,17 @@ ALTER TABLE `calificaciones_productos`
 -- AUTO_INCREMENT de la tabla `calificaciones_servicios`
 --
 ALTER TABLE `calificaciones_servicios`
-  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_CALIFICACION` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=385;
+  MODIFY `ID_CATEGORIA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=394;
 --
 -- AUTO_INCREMENT de la tabla `categorias_productos`
 --
 ALTER TABLE `categorias_productos`
-  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 --
 -- AUTO_INCREMENT de la tabla `categorias_publicaciones`
 --
@@ -11360,27 +12620,27 @@ ALTER TABLE `categorias_publicaciones`
 -- AUTO_INCREMENT de la tabla `categorias_servicios`
 --
 ALTER TABLE `categorias_servicios`
-  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `conversaciones`
 --
 ALTER TABLE `conversaciones`
-  MODIFY `ID_CONVERSACION` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_CONVERSACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `conversaciones_mensajes`
 --
 ALTER TABLE `conversaciones_mensajes`
-  MODIFY `ID_MENSAJE` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_MENSAJE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `datos_curiosos`
 --
 ALTER TABLE `datos_curiosos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `direcciones`
 --
 ALTER TABLE `direcciones`
-  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `divisas`
 --
@@ -11395,17 +12655,17 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `ID_FAVORITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_FAVORITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `galeria_productos`
 --
 ALTER TABLE `galeria_productos`
-  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 --
 -- AUTO_INCREMENT de la tabla `galeria_servicios`
 --
 ALTER TABLE `galeria_servicios`
-  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `lenguajes`
 --
@@ -11430,12 +12690,12 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `ID_NOTIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID_NOTIFICACION` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `opciones`
 --
 ALTER TABLE `opciones`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT de la tabla `paises`
 --
@@ -11445,7 +12705,7 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_devoluciones`
 --
@@ -11460,22 +12720,22 @@ ALTER TABLE `pedidos_pagos`
 -- AUTO_INCREMENT de la tabla `pedidos_productos`
 --
 ALTER TABLE `pedidos_productos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_tiendas`
 --
 ALTER TABLE `pedidos_tiendas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `perfiles_servicios`
 --
 ALTER TABLE `perfiles_servicios`
-  MODIFY `ID_PERFIL` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_PERFIL` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `planes`
 --
 ALTER TABLE `planes`
-  MODIFY `ID_PLAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID_PLAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `planes_pagos`
 --
@@ -11485,22 +12745,27 @@ ALTER TABLE `planes_pagos`
 -- AUTO_INCREMENT de la tabla `planes_usuarios`
 --
 ALTER TABLE `planes_usuarios`
-  MODIFY `ID_PLAN_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_PLAN_USUARIO` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `preguntas_frecuentes`
 --
 ALTER TABLE `preguntas_frecuentes`
   MODIFY `ID_PREGUNTA` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `premios`
+--
+ALTER TABLE `premios`
+  MODIFY `ID_PREMIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `ID_PRODUCTO` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_PRODUCTO` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT de la tabla `productos_combinaciones`
 --
 ALTER TABLE `productos_combinaciones`
-  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `productos_rangos_mayoreo`
 --
@@ -11510,57 +12775,57 @@ ALTER TABLE `productos_rangos_mayoreo`
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `ID_PUBLICACION` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PUBLICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `puntos_registro`
 --
 ALTER TABLE `puntos_registro`
-  MODIFY `ID_PUNTO` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_PUNTO` bigint(6) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `rutas_abanico`
 --
 ALTER TABLE `rutas_abanico`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `seguridad_usuarios`
 --
 ALTER TABLE `seguridad_usuarios`
-  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `ID_SERVICIO` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID_SERVICIO` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `ID_SLIDER` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_SLIDER` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `slides`
 --
 ALTER TABLE `slides`
-  MODIFY `ID_SLIDE` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_SLIDE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `tiendas`
 --
 ALTER TABLE `tiendas`
-  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `traducciones`
 --
 ALTER TABLE `traducciones`
-  MODIFY `ID_TRADUCCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=237;
+  MODIFY `ID_TRADUCCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1236;
 --
 -- AUTO_INCREMENT de la tabla `transportistas`
 --
 ALTER TABLE `transportistas`
-  MODIFY `ID_TRANSPORTISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID_TRANSPORTISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `transportistas_rangos`
 --
 ALTER TABLE `transportistas_rangos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `variaciones_mayoreo`
 --
@@ -11575,7 +12840,7 @@ ALTER TABLE `variaciones_simples_productos`
 -- AUTO_INCREMENT de la tabla `vistas_generales`
 --
 ALTER TABLE `vistas_generales`
-  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;COMMIT;
+  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

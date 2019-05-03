@@ -148,9 +148,10 @@
                     <div class="col-12">
                       <form class="" action="<?php echo base_url('usuario/pedidos/subir_comprobante'); ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="IdPedido" value="<?php echo $pedido['ID_PEDIDO']; ?>">
+                        <input type="hidden" name="PedidoImporte" value="<?php echo $pedido['PEDIDO_IMPORTE_TOTAL']; ?>">
                         <input type="hidden" name="FormaPago" value="Transferencia Bancaria">
                         <input type="hidden" name="DescripcionPago" value="Comprobante de cliente">
-                        <input type="hidden" name="EstadoPago" value="Verificando">
+                        <input type="hidden" name="EstadoPago" value="Comprobante">
                         <div class="form-group">
                           <label for="FolioPago"><?php echo $this->lang->line('usuario_detalles_pago_folio'); ?></label>
                           <input type="text" class="form-control" name="FolioPago" value="">

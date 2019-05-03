@@ -115,7 +115,18 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PEDIDO_ESTADO_PEDIDO'=>$this->input->post('EstadoPedido'),
 				'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s')
 			);
+			// Actualizo Pedido
 			$this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros);
+			// Actualizo Pago si es que es "Pagado"
+			if($this->input->post('EstadoPedido')=='Pagado'){
+				$parametros_pago = array(
+					'PAGO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
+					'PAGO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+					'PAGO_ESTADO'=> $this->input->post('EstadoPedido'),
+				);
+
+				 $this->PagosPedidosModel->actualizar($this->input->post('IdPedido'),$parametros_pago);
+			}
 			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
       redirect(base_url('admin/pedidos/detalles?id_pedido=').$this->input->post('IdPedido'));
 	}

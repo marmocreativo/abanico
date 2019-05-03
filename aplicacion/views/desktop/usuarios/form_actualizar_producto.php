@@ -79,6 +79,16 @@
                                 </div>
                                 <div class="col">
                                   <div class="form-group">
+                                    <label for="DivisaDefaultProducto">-</label>
+                                    <select class="form-control" name="DivisaDefaultProducto">
+                                    <?php foreach($divisas_activas as $divisas){ ?>
+                                      <option value="<?php echo $divisas->DIVISA_ISO; ?>" <?php if($producto['PRODUCTO_DIVISA_DEFAULT']==$divisas->DIVISA_ISO){ echo 'selected'; } ?>><?php echo $divisas->DIVISA_ISO; ?></option>
+                                    <?php } ?>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
                                     <label for="PrecioProducto"><?php echo $this->lang->line('usuario_form_producto_precio_venta'); ?></label>
                                     <div class="input-group mb-2">
                                       <div class="input-group-prepend">
@@ -95,7 +105,7 @@
                                       <div class="input-group-prepend">
                                         <div class="input-group-text">$</div>
                                       </div>
-                                    <input type="text" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO_LISTA']; ?>">
+                                    <input type="number" step="0.01" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO_LISTA']; ?>">
                                     </div>
                                     <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> <?php echo $this->lang->line('usuario_form_producto_precio_lista_instrucciones'); ?></small>
                                   </div>
@@ -200,7 +210,15 @@
                                   <?php foreach($segundo_categorias as $segunda_categoria){ ?>
                                     <div class="col-4">
                                       <div class="border border-default p-3">
-                                      <h6 class="border-bottom pb-3"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h6>
+                                        <div class="custom-control custom-radio">
+                                          <input  type="radio"
+                                                  id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                                                  name="CategoriaProducto" class="custom-control-input"
+                                                  value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+
+                                                  >
+                                          <label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
+                                        </div>
                                       <?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                                       <ul class="list list-unstyled">
                                         <?php foreach($tercero_categorias as $tercera_categoria){ ?>

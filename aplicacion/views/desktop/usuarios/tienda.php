@@ -94,7 +94,7 @@
                       <div class="card-body">
                         <h4 class="h5"> <span class="fa fa-file-signature"></span> Plan activo | <b><?php echo $plan['PLAN_NOMBRE']; ?></b></h4>
                         <hr>
-                        <table class="table table-sm table-striped">
+                        <table class="table table-sm">
                           <tr>
                             <td>Mensualidad</td>
                             <td>$<?php echo $plan['PLAN_MENSUALIDAD']; ?></td>
@@ -104,29 +104,33 @@
                             <td><?php echo $plan['PLAN_COMISION']; ?>%</td>
                           </tr>
                           <tr>
-                            <td>Espacio de Almacenamiento</td>
-                            <td><?php echo $plan['PLAN_ESPACIO_ALMACENAMIENTO']; ?> M<sup>3</sup></td>
+                            <td>Espacio de almacenamiento</td>
+                            <td><?php echo $plan['PLAN_ESPACIO_ALMACENAMIENTO']; ?> m<sup>3</sup></td>
                           </tr>
                           <tr>
-                            <td>Costo de Almacenamiento</td>
-                            <td>$<?php echo $plan['PLAN_COSTO_ALMACENAMIENTO']; ?> x M<sup>3</sup></td>
+                            <td>Costo de almacenamiento</td>
+                            <td>$<?php echo $plan['PLAN_COSTO_ALMACENAMIENTO']; ?> x m<sup>3</sup></td>
                           </tr>
                           <tr>
-                            <td>Costo Manejo de producto</td>
+                            <td>Costo manejo de producto</td>
                             <td><?php echo $plan['PLAN_MANEJO_PRODUCTOS']; ?>%</td>
                           </tr>
                           <tr>
-                            <td>Envios Administrados por</td>
-                            <td><?php echo $plan['PLAN_ENVIO']; ?></td>
+                            <td>Apoyo para envío</td>
+                            <td><?php if($plan['PLAN_ENVIO']=='abanico'){ echo 'Guías disponibles'; } ; ?></td>
                           </tr>
                           <tr>
-                            <td>Servicios Financieros</td>
+                            <td>Servicios financieros</td>
                             <td><?php echo $plan['PLAN_SERVICIOS_FINANCIEROS']; ?>% + $<?php echo $plan['PLAN_SERVICIOS_FINANCIEROS_FIJO']; ?></td>
                           </tr>
                           <?php if($plan['PLAN_TIPO']=='productos'){ ?>
                           <tr>
-                            <td>Límite de Productos Activos</td>
-                            <td><?php echo $plan['PLAN_LIMITE_PRODUCTOS']; ?></td>
+                            <td>Límite de productos activos</td>
+                            <?php if($plan['PLAN_LIMITE_PRODUCTOS']==0){ ?>
+                              <td>Ilimitados</td>
+                            <?php }else{ ?>
+                              <td><?php echo $plan['PLAN_LIMITE_PRODUCTOS']; ?></td>
+                            <?php } ?>
                           </tr>
                           <tr>
                             <td>Límite fotografías por producto</td>
@@ -135,7 +139,7 @@
                           <?php } ?>
                           <?php if($plan['PLAN_TIPO']=='servicios'){ ?>
                           <tr>
-                            <td>Límite de Servicios Activos</td>
+                            <td>Límite de servicios activos</td>
                             <td><?php echo $plan['PLAN_LIMITE_SERVICIOS']; ?></td>
                           </tr>
                           <tr>
@@ -166,6 +170,43 @@
                             </div>
                           </div>
                         </div>
+                        <div class="row">
+                          <div class="col-12">
+                            <hr>
+                            <h4 class="h5"> <span class="fa fa-money-bill"></span> Pago del plan</b></h4>
+                          </div>
+                      <!--Permisos para pagar y cancelar -->
+                      <?php $pagos = $this->PlanesModel->lista_pagos($plan['ID_PLAN_USUARIO']); ?>
+                      <?php foreach($pagos as $pago){ ?>
+                        <?php if($pago->PAGO_ESTADO=='pendiente'){ ?>
+                          <div class="col-12">
+                            <form class="" action="<?php echo base_url('usuario/planes/subir_comprobante'); ?>" method="post" enctype="multipart/form-data">
+                              <input type="hidden" name="IdPago" value="<?php echo $pago->ID_PAGO; ?>">
+                              <input type="hidden" name="Origen" value="usuario/tienda">
+                              <div class="form-group">
+                                <label for="ArchivoPago"><?php echo $this->lang->line('usuario_detalles_pago_archivo'); ?></label>
+                                <input type="file" class="form-control" name="ArchivoPago" value="" required>
+                              </div>
+                              <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_detalles_pago_subir'); ?></button>
+                            </form>
+                          </div>
+                        <?php }// Si el Pago está pendientes y es por transferencia Bancaria ?>
+                        <?php if($pago->PAGO_ESTADO=='comprobante'){ ?>
+                          <div class="col-12">
+                            <div class="alert alert-success">
+                              <h6>Tu comprobante ha sido recibido, tu plan estará activo pronto.</h6>
+                            </div>
+                          </div>
+                        <?php }// Si se subió comprobante ?>
+                        <?php if($pago->PAGO_ESTADO=='pagado'){ ?>
+                          <div class="col-12">
+                            <div class="alert alert-success">
+                              <h6>Tu plan se encuentra <?php echo $pago->PAGO_ESTADO; ?></h6>
+                            </div>
+                          </div>
+                        <?php }// Si se subió comprobante ?>
+                      <?php }// Bucle de pagos ?>
+                        </div>
                       </div>
                       <div class="card-footer">
                         <div class="row">
@@ -173,7 +214,7 @@
                             <p>Estado del Pago: <b><?php echo $plan['PLAN_ESTADO']; ?></b></p>
                           </div>
                           <div class="col d-flex justify-content-end">
-                            <p>Fecha Límite de Pago: <b><?php echo date('Y-m-d',strtotime("+10 days",strtotime($plan['FECHA_INICIO']))); ?></b></p>
+                            <p>Fecha Límite de Pago: <b><?php echo date('d-m-Y',strtotime("+5 days",strtotime($plan['FECHA_INICIO']))); ?></b></p>
                           </div>
                         </div>
                       </div>

@@ -19,9 +19,15 @@
                    <div class="input-group-prepend">
                      <button class="btn btn-outline-primary boton-disminuir-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'>-</button>
                    </div>
-                     <input type="text" class="form-control form-cantidad-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>' value="<?php echo $producto['cantidad_producto'];  ?>">
+                     <input type="number" max="<?php echo $producto['cantidad_max']; ?>"
+                     class="form-control form-cantidad-carrito"
+                     data-id-producto = '<?php echo $producto['id_producto']; ?>'
+                     data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'
+                     data-cantidad-max='<?php echo $producto['cantidad_max']; ?>'
+                     value="<?php echo $producto['cantidad_producto'];  ?>"
+                     >
                    <div class="input-group-append">
-                     <button class="btn btn-outline-primary boton-incrementar-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'>+</button>
+                     <button class="btn btn-outline-primary boton-incrementar-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>' data-cantidad-max='<?php echo $producto['cantidad_max']; ?>'>+</button>
                    </div>
                  </div>
                  <button type="button" class="btn mt-2 mr-2 btnEliminar btn-danger btn-sm btn-block boton-eliminar-carrito" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'

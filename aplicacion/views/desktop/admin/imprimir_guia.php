@@ -7,13 +7,23 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
+    <style media="print">
+      h2{
+        font-size: 12px;
+      }
+      h4{
+        font-size: 11px;
+      }
+      p{
+        font-size: 9px;
+      }
+    </style>
     <title>Guia</title>
   </head>
-  <body>
+  <body style="width:500px;">
     <div class="container-fluid">
       <div class="row mt-3">
-        <div class="col-4 p-0">
+        <div class="col-12 p-0">
           <table class="table table-bordered">
             <tr>
               <td>
@@ -28,6 +38,9 @@
                 <p> <b>Dirección:</b> <br><?php echo $guia['GUIA_DIRECCION'] ?></p>
                 <p> <b>Teléfono:</b> <br><?php echo $guia['GUIA_TELEFONO'] ?></p>
                 <p> <b>Correo:</b> <br><?php echo $guia['GUIA_CORREO'] ?></p>
+                <h4>Remitente</h4>
+                <p> <b>Nombre:</b> <br>ABANICO SIEMPRE LO MEJOR </p>
+                <p> <b>Dirección:</b> <br>GREGORIO V GELATI 14 DEPTO.  5, COLONIA SAN MIGUEL CHAPULTEPEC, DELEGACIÓN MIGUEL HIDALGO, CP 11850, CIUDAD DE MÉXICO</p>
               </td>
             </tr>
             <tr>
@@ -37,7 +50,7 @@
             </tr>
           </table>
         </div>
-        <div class="col-4 p-0">
+        <div class="col-12 p-0">
           <table class="table table-bordered">
             <tr>
               <td>
@@ -52,6 +65,9 @@
                 <p> <b>Dirección:</b> <br><?php echo $guia['GUIA_DIRECCION'] ?></p>
                 <p> <b>Teléfono:</b> <br><?php echo $guia['GUIA_TELEFONO'] ?></p>
                 <p> <b>Correo:</b> <br><?php echo $guia['GUIA_CORREO'] ?></p>
+                <h4>Remitente</h4>
+                <p> <b>Nombre:</b> <br>ABANICO SIEMPRE LO MEJOR </p>
+                <p> <b>Dirección:</b> <br>GREGORIO V GELATI 14 DEPTO.  5, COLONIA SAN MIGUEL CHAPULTEPEC, DELEGACIÓN MIGUEL HIDALGO, CP 11850, CIUDAD DE MÉXICO</p>
               </td>
             </tr>
             <tr>
@@ -61,7 +77,7 @@
             </tr>
           </table>
         </div>
-        <div class="col-4 p-0">
+        <div class="col-12 p-0">
           <table class="table table-bordered">
             <tr>
               <td>
@@ -76,6 +92,9 @@
                 <p> <b>Dirección:</b> <br><?php echo $guia['GUIA_DIRECCION'] ?></p>
                 <p> <b>Teléfono:</b> <br><?php echo $guia['GUIA_TELEFONO'] ?></p>
                 <p> <b>Correo:</b> <br><?php echo $guia['GUIA_CORREO'] ?></p>
+                <h4>Remitente</h4>
+                <p> <b>Nombre:</b> <br>ABANICO SIEMPRE LO MEJOR </p>
+                <p> <b>Dirección:</b> <br>GREGORIO V GELATI 14 DEPTO.  5, COLONIA SAN MIGUEL CHAPULTEPEC, DELEGACIÓN MIGUEL HIDALGO, CP 11850, CIUDAD DE MÉXICO</p>
               </td>
             </tr>
             <tr>

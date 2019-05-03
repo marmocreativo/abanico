@@ -145,6 +145,43 @@
                         </div>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <hr>
+                        <h4 class="h5"> <span class="fa fa-money-bill"></span> Pago del plan</b></h4>
+                      </div>
+                  <!--Permisos para pagar y cancelar -->
+                  <?php $pagos = $this->PlanesModel->lista_pagos($plan['ID_PLAN_USUARIO']); ?>
+                  <?php foreach($pagos as $pago){ ?>
+                    <?php if($pago->PAGO_ESTADO=='pendiente'){ ?>
+                      <div class="col-12">
+                        <form class="" action="<?php echo base_url('usuario/planes/subir_comprobante'); ?>" method="post" enctype="multipart/form-data">
+                          <input type="hidden" name="IdPago" value="<?php echo $pago->ID_PAGO; ?>">
+                          <input type="hidden" name="Origen" value="usuario/perfil_servicios">
+                          <div class="form-group">
+                            <label for="ArchivoPago"><?php echo $this->lang->line('usuario_detalles_pago_archivo'); ?></label>
+                            <input type="file" class="form-control" name="ArchivoPago" value="" required>
+                          </div>
+                          <button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_detalles_pago_subir'); ?></button>
+                        </form>
+                      </div>
+                    <?php }// Si el Pago está pendientes y es por transferencia Bancaria ?>
+                    <?php if($pago->PAGO_ESTADO=='comprobante'){ ?>
+                      <div class="col-12">
+                        <div class="alert alert-success">
+                          <h6>Tu comprobante ha sido recibido, tu plan estará activo pronto.</h6>
+                        </div>
+                      </div>
+                    <?php }// Si se subió comprobante ?>
+                    <?php if($pago->PAGO_ESTADO=='pagado'){ ?>
+                      <div class="col-12">
+                        <div class="alert alert-success">
+                          <h6>Tu plan se encuentra <?php echo $pago->PAGO_ESTADO; ?></h6>
+                        </div>
+                      </div>
+                    <?php }// Si se subió comprobante ?>
+                  <?php }// Bucle de pagos ?>
+                    </div>
                   </div>
                   <div class="card-footer">
                     <div class="row">
@@ -152,7 +189,7 @@
                         <p>Estado del Pago: <b><?php echo $plan['PLAN_ESTADO']; ?></b></p>
                       </div>
                       <div class="col d-flex justify-content-end">
-                        <p>Fecha Límite de Pago: <b><?php echo date('Y-m-d',strtotime("+10 days",strtotime($plan['FECHA_INICIO']))); ?></b></p>
+                        <p>Fecha Límite de Pago: <b><?php echo date('d-m-Y',strtotime("+5 days",strtotime($plan['FECHA_INICIO']))); ?></b></p>
                       </div>
                     </div>
                   </div>
@@ -178,6 +215,76 @@
           </div>
         <?php } ?>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal de flujos -->
+
+<!-- Modal -->
+<div class="modal fade" id="ModalAyuda" tabindex="-1" role="dialog" aria-labelledby="ModalAyuda" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><i class="far fa-question-circle"></i> Ayuda</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+
+          <div class="linea-colores-delgada">
+            <div class="barra-color barra-azul"></div>
+            <div class="barra-color barra-rosa"></div>
+            <div class="barra-color barra-amarillo"></div>
+            <div class="barra-color barra-verde"></div>
+            <div class="barra-color barra-morado"></div>
+          </div>
+        <!-- Slider Ayuda-->
+        <div id="carouselAyuda" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselAyuda" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselAyuda" data-slide-to="1"></li>
+            <li data-target="#carouselAyuda" data-slide-to="2"></li>
+            <li data-target="#carouselAyuda" data-slide-to="3"></li>
+            <li data-target="#carouselAyuda" data-slide-to="4"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.1.png'); ?>" alt="Registro paso 1">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.2.png'); ?>" alt="Registro paso 2">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.3.png'); ?>" alt="Registro paso 3">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.4.png'); ?>" alt="Registro paso 3">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.5.png'); ?>" alt="Registro paso 3">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.6.png'); ?>" alt="Registro paso 3">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.7.png'); ?>" alt="Registro paso 4">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselAyuda" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselAyuda" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>

@@ -33,7 +33,7 @@ class PedidosProductosModel extends CI_Model {
       $this->db->or_like($parametros);
     }
     if(!empty($id_usuario)){
-      $this->db->where('ID_USUARIO',$id_usuario);
+      $this->db->where('ID_TIENDA',$id_usuario);
     }
     if(!empty($orden)){
       $this->db->order_by($orden);

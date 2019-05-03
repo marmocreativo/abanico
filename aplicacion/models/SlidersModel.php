@@ -11,9 +11,24 @@ class SlidersModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista(){
+  function lista($parametros,$orden,$limite){
+    if(!empty($parametros)){
+      $this->db->or_like($parametros);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
     $query = $this->db->get('sliders');
     return $query->result();
+  }
+  /*
+    * Obtengo todos los detalles de una sola entrada
+ */
+  function slide_nombre_lenguaje($nombre,$lenguaje){
+    return $this->db->get_where('sliders',array('SLIDER_NOMBRE'=>$nombre,'SLIDER_LENGUAJE'=>$lenguaje))->row_array();
   }
   /*
     * Obtengo todos los detalles de una sola entrada
@@ -27,6 +42,15 @@ class SlidersModel extends CI_Model {
   function crear($parametros){
     $this->db->insert('sliders',$parametros);
     return $this->db->insert_id();
+  }
+  /*
+    * Actualizo una entrada
+    * $id es el identificador de la entrada
+    * $parametros son los campos actualizados
+ */
+  function actualizar($id,$parametros){
+    $this->db->where('ID_SLIDER',$id);
+    return $this->db->update('sliders',$parametros);
   }
   /*
     * Borro una entrada
@@ -55,6 +79,19 @@ class SlidersModel extends CI_Model {
     }
     $this->db->where('ID_SLIDER',$id);
     return $this->db->update('sliders',array('SLIDER_ESTADO'=>$activo));
+  }
+
+  /*
+    * Creo el orden de los elementos
+    * $orden son los identificadores de las entradas en el orden en que quiero que aparezcan
+ */
+  function ordenar($orden){
+    $i = 0;
+    foreach($orden as $orden){
+      $this->db->where('ID_SLIDER',$orden);
+      return $this->db->update('sliders',array('ORDEN'=>$i));
+      ++$i;
+    }
   }
 
 }

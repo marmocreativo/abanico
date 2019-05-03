@@ -22,12 +22,23 @@ class PagosPedidosModel extends CI_Model {
   function detalles($id){
     return $this->db->get_where('pedidos_pagos',array('ID'=>$id))->row_array();
   }
+  function detalles_folio($folio){
+    return $this->db->get_where('pedidos_pagos',array('PAGO_FOLIO'=>$folio))->row_array();
+  }
   /*
     * Creo una nueva entrada usando los parámetros
  */
   function crear($parametros){
     $this->db->insert('pedidos_pagos',$parametros);
     return $this->db->insert_id();
+  }
+  function actualizar_oxxo($id,$parametros){
+    $this->db->where('PAGO_FOLIO',$id);
+    return $this->db->update('pedidos_pagos',$parametros);
+  }
+  function actualizar($id,$parametros){
+    $this->db->where('ID_PEDIDO',$id);
+    return $this->db->update('pedidos_pagos',$parametros);
   }
   /*
     * Borro una entrada

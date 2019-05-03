@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Pedido Abanico</title>
+    <title>Tu Pedido Abanico</title>
     <style>
       /* -------------------------------------
           GLOBAL RESETS
@@ -76,7 +76,7 @@
         /* padding: 20px; */
       }
       .head2 {
-        padding: 40px;
+        padding: 40px 0;
       }
       .articulos {
         border-bottom:1px solid lightgray;
@@ -130,7 +130,7 @@
         font-size: 14px;
         font-weight: normal;
         margin: 0;
-        /* margin-bottom: 15px; */
+        margin-bottom: 15px;
       }
         p li,
         ul li,
@@ -228,6 +228,15 @@
         border-bottom: 1px solid #f6f6f6;
         Margin: 20px 0;
       }
+      .head2{
+        font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;
+        text-align: center;
+        border-top: 1px solid lightgray;
+        background-image: url('<?php echo base_url('assets/global/img/pleca_mail_2.png'); ?>');
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position: top center;
+      }
       /* -------------------------------------
           RESPONSIVE AND MOBILE FRIENDLY STYLES
       ------------------------------------- */
@@ -270,6 +279,9 @@
           height: auto !important;
           max-width: 100% !important;
           width: auto !important;
+        }
+        .head2{
+          background-size:contain;
         }
       }
       /* -------------------------------------
@@ -326,30 +338,121 @@
                         <tbody>
                             <tr>
                                 <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px; text-align: center;">
-                                    <img src="<?php echo base_url('assets/global/img/logo.png'); ?>" alt="" width="100px">
+                                    <img src="<?php echo base_url('assets/global/img/logo_correo.png'); ?>" alt="" width="200px">
                                 </td>
                             </tr>
                             <tr>
-                                <td class="head2" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; text-align: center; border-top: 1px solid lightgray;background-position:top center;background-image: url('<?php echo base_url('assets/global/img/pleca_mail_3.png'); ?>')">
-                                  <h2 style="margin:0;color:#495057;"><strong>Mensaje desde Abanico</strong></h2>
+                                <td class="head2" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; text-align: center; border-top: 1px solid lightgray;background-image: url('<?php echo base_url('assets/global/img/pleca_mail.png'); ?>')">
+                                  <h2 style="margin:0;color:#495057;"><strong>Gracias por comprar con nosotros</strong></h2>
+                                  <h3 style="margin:0;color:#495057;">Este es tu pedido: #<strong><?php echo $pedido['PEDIDO_FOLIO']; ?></strong></h3>
                                 </td>
                             </tr>
                           </tbody>
                         </table>
-                      <table cellpadding="20" cellspacing="0" style="color: #495057; text-align:center; margin-bottom:20px;">
+                        <table role="presentation" border="0" cellpadding="5" cellspacing="15" style="margin:20px 20px;color:#495057;">
                         <tbody>
-                          <tr>
-                            <td colspan="1" style="vertical-align:middle; font-size:16px;">
-                            <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                            </td>
+                            <tr>
+                                <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;">
+                                    <span style="color:rgb(49, 52, 55);"><b><?php echo $pedido['PEDIDO_NOMBRE']; ?></b></span>
+                                </td>
+                                <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;">
+                                    <span style="color:rgb(49, 52, 55);"><b>Fecha:</b><?php echo $pedido['PEDIDO_FECHA_REGISTRO']; ?></span>
+                                </td>
+                            </tr>
+                            <tr>
+                              <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;">
+                                  <span style="color:rgb(49, 52, 55);"><b>E-mail:</b> <?php echo $pedido['PEDIDO_CORREO']; ?></span>
+                              </td>
+                              <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;">
+                                <span style="color:rgb(49, 52, 55);"><b>Tel:</b> <?php echo $pedido['PEDIDO_TELEFONO']; ?></span>
+                              </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;;">
+                                    <span style="color:rgb(49, 52, 55);"><b>Dir.:</b> <br><?php echo $pedido['PEDIDO_DIRECCION']; ?></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px;;">
+                                </td>
+                            </tr>
+                      </tbody>
+                      </table>
+                      <table cellpadding="2" cellspacing="0" style="width:96%; margin:2%;">
+                        <thead>
+                          <tr style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px; color: #495057;">
+                            <th style="width:10%; border-bottom: 1px solid lightgrey; padding:5px 0;"></th>
+                            <th style="width:40%; border-bottom: 1px solid lightgrey; padding:5px 0;">Producto</th>
+                            <th style="width:10%; border-bottom: 1px solid lightgrey; padding:5px 0; vertical-align:middle; text-align:center;">Cantidad</th>
+                            <th style="width:20%; border-bottom: 1px solid lightgrey; padding:5px 0; vertical-align:middle; text-align:center;">Precio Unit.</th>
+                            <th style="width:20%; border-bottom: 1px solid lightgrey; padding:5px 0; vertical-align:middle; text-align:center;">Importe</th>
                           </tr>
+                        </thead>
+                        <tbody>
+                          <?php foreach($productos as $producto){ ?>
+                            <tr>
+                              <td style="vertical-align:middle; font-size:16px;">
+                                  <img src="<?php echo $producto->PRODUCTO_IMAGEN; ?>" style="float:left; margin-right:15px;" width="70" alt="">
+                              </td>
+                              <td style="vertical-align:middle; font-size:16px;">
+                                <h5><?php echo $producto->PRODUCTO_NOMBRE; ?></h5>
+                                <p><?php echo $producto->PRODUCTO_DETALLES; ?></p>
+                              </td>
+                              <td style="vertical-align:middle; text-align:center; font-size:16px;">
+                                <?php echo $producto->CANTIDAD; ?>
+                              </td>
+                              <td style="vertical-align:middle; text-align:center; font-size:16px;">
+                                <small>$</small>
+                                <?php echo $producto->IMPORTE; ?>
+                                <small><?php echo $pedido['PEDIDO_DIVISA']; ?></small>
+                              </td>
+                              <td style="vertical-align:middle; text-align:center; font-size:16px;">
+                                <small>$</small>
+                                  <?php echo $producto->IMPORTE_TOTAL; ?>
+                                <small><?php echo $pedido['PEDIDO_DIVISA']; ?></small>
+                              </td>
+                            </tr>
+                          <?php } ?>
                           <tr>
-                            <td colspan="1" style="vertical-align:middle; font-size:16px;">
-                            <a href="#" target="_blank" style="width: 60%;height: 50px;background: #6fc8c9;color: white;padding: 20px;margin-bottom: 10px;text-decoration: none;"> <strong>Este es un Enlace</strong></a>
+                            <td colspan="5">
+                            <table border="0" cellpadding="2" cellspacing="0" align="right" style="width:96%; margin:2%; border-top: 1px solid lightgray;margin-top: 20px;color: #495057;">
+                                  <tr>
+                                    <td style="width:20%; text-align:right;"></td>
+                                    <td style="width:20%; text-align:right;"></td>
+                                    <td style="width:20%; text-align:right;"></td>
+                                      <td style="width:20%; text-align:right;"><h5>Importe Productos:</h5></td>
+                                      <td style="width:20%; text-align:right;"><h5>$<strong><?php echo number_format($pedido ['PEDIDO_IMPORTE_PRODUCTOS_TOTAL'],2); ?></strong><?php echo $pedido['PEDIDO_DIVISA']; ?></h5></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width:20%; text-align:right;"></td>
+                                    <td style="width:20%; text-align:right;"></td>
+                                    <td style="width:20%; text-align:right;"></td>
+                                      <td style="width:20%; text-align:right;"><h5>Envio:</h5></td>
+                                      <td style="width:20%; text-align:right;"><h5>$<strong><?php echo number_format($pedido ['PEDIDO_IMPORTE_ENVIO_TOTAL'],2); ?></strong><?php echo $pedido['PEDIDO_DIVISA']; ?></h5></td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="5" style="text-align:right;">
+                                      <p><?php echo $pedido['PEDIDO_NOMBRE_TRANSPORTISTA']; ?></p>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width:20%; text-align:right;"></td>
+                                    <td style="width:20%; text-align:right;"><h5></h5></td>
+                                    <td style="width:20%; text-align:right;"><h5></h5></td>
+                                      <td style="width:20%; text-align:right;"><h5>Total:</h5></td>
+                                      <td style="width:20%; text-align:right;"><h5>$<strong><?php echo number_format($pedido ['PEDIDO_IMPORTE_TOTAL'],2); ?></strong><?php echo $pedido['PEDIDO_DIVISA']; ?></h5></td>
+                                  </tr>
+                              </table>
                             </td>
                           </tr>
                         </tbody>
                       </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="background:#d0d6d8; border:none;text-align:center;">
+                        <img src="<?php echo base_url('assets/global/img/camion_envio.png'); ?>" alt="" width="120px">
+                        <h2 style="text-align:center; color:#495057;">¡Tu pedido estará pronto en camino!</h2>
                       </td>
                     </tr>
                   </table>
@@ -370,27 +473,6 @@
             <!-- END MAIN CONTENT AREA -->
             </table>
 
-            <!-- START FOOTER -->
-            <!--
-            <div class="footer">
-              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td class="content-block">
-                    <span class="apple-link">Company Inc, 3 Abbey Road, San Francisco CA 94102</span>
-                    <br> Don't like these emails? <a href="http://i.imgur.com/CScmqnj.gif">Unsubscribe</a>.
-                  </td>
-                </tr>
-                <tr>
-                  <td class="content-block powered-by">
-                    Powered by <a href="http://htmlemail.io">HTMLemail</a>.
-                  </td>
-                </tr>
-              </table>
-            </div>
-          -->
-            <!-- END FOOTER -->
-
-          <!-- END CENTERED WHITE CONTAINER -->
           </div>
         </td>
         <td>&nbsp;</td>

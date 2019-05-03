@@ -6,7 +6,46 @@
   <div class="barra-color barra-morado"></div>
 </div>
 <div class="footer">
-
+  <div class="container-fluid">
+    <div class="row p-3">
+      <div class="col-12">
+        <h5>Acerca de Abanico</h5>
+        <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'acerca'],'','');?>
+        <ul class="list-unstyled">
+        <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+        <?php } ?>
+        </ul>
+      </div>
+      <div class="col-12 mt-3 bordered-top">
+        <h5>Legales</h5>
+        <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'legales'],'','');?>
+        <ul class="list-unstyled">
+        <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+        <?php } ?>
+        </ul>
+      </div>
+      <div class="col-12 mt-3 bordered-top">
+        <h5>Concursos</h5>
+        <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'concursos'],'','');?>
+        <ul class="list-unstyled">
+        <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+        <?php } ?>
+        </ul>
+      </div>
+      <div class="col-12 mt-3 bordered-top">
+        <h5>Ayuda</h5>
+        <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'ayuda'],'','');?>
+        <ul class="list-unstyled">
+        <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+        <?php } ?>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="creditos">
 
@@ -26,9 +65,13 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" id="BotonVaciar" class="btn btn-sm btn-outline-danger float-left"> <i class="fa fa-trash"></i> <?php echo $this->lang->line('carrito_vaciar'); ?></button>
-        <button type="button" class="btn btn-sm btn-outline-primary" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i> <?php echo $this->lang->line('carrito_seguir_compranod'); ?></button>
-        <a href="<?php echo base_url('carrito'); ?>" id="BotonComprarAhora" class="btn btn-sm btn-primary"><i class="fa fa-money-bill"></i> <?php echo $this->lang->line('carrito_comprar_ahora'); ?></a>
+        <div class="container-fluid">
+          <div class="row">
+          <button type="button" id="BotonVaciar" class="btn btn-sm btn-outline-danger float-left"> <i class="fa fa-trash"></i> <?php echo $this->lang->line('carrito_vaciar'); ?></button>
+          <button type="button" class="btn btn-sm btn-outline-primary ml-2" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i> <?php echo $this->lang->line('carrito_seguir_compranod'); ?></button>
+          <a href="<?php echo base_url('carrito'); ?>" id="BotonComprarAhora" class="btn btn-block btn-sm btn-primary mt-3"><i class="fa fa-money-bill"></i> <?php echo $this->lang->line('carrito_comprar_ahora'); ?></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -41,6 +84,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/localization/messages_es.js"></script>
+  <script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/trumbowyg.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/plugins/cleanpaste/trumbowyg.cleanpaste.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/plugins/table/trumbowyg.table.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/tienda/js/starrr/starrr.js"></script>
   <script defer src="<?php echo base_url(); ?>assets/tienda/js/flexslider/jquery.flexslider.js"></script>
   <script defer src="<?php echo base_url(); ?>assets/global/js/jquery.sliderPro.min.js"></script>
@@ -100,6 +146,7 @@
    </script>
 
   <?php $this->load->view('scripts/scripts_tienda');  ?>
+  <?php $this->load->view('scripts/formularios_usuario');  ?>
 
 
 

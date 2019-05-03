@@ -16,6 +16,8 @@
       $descripcion_larga = $producto['PRODUCTO_DETALLES'];
     }
   }
+  // Variables de paquete
+  $paquete = $this->PlanesModel->plan_activo_usuario($producto['ID_USUARIO'],'productos');
 ?>
 
 <div class="contenido_principal">
@@ -28,15 +30,17 @@
               <li class="breadcrumb-item active <?php echo 'text'.$primary; ?>" aria-current="page"><?php echo $this->lang->line('pagina_producto_migas_producto'); ?></li>
             </ol>
           </nav>
+          <?php retro_alimentacion(); ?>
           <div class="row mb-5">
             <div class="col-7">
-              <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
-              <img src="<?php echo base_url($ruta_portada) ?>" class="img-fluid visor-galeria-producto" style="max-height:500px" alt="">
-              <div class="card-deck">
+              <div class="col-12 mb-3 slider-fotos d-flex align-items-center justify-content-center">
+                <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
+                <img src="<?php echo base_url($ruta_portada) ?>" class="img-fluid visor-galeria-producto" style="max-height:500px" alt="">
+              </div>
+              <div class="card-deck no-gutters">
                 <?php foreach($galerias as $galeria){ ?>
                   <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
-                <div class="card col-2">
-                  <img class="card-img-top imagen-galeria-producto" src="<?php echo base_url($ruta_galeria) ?>">
+                <div class="card col-2 mx-1 slider-thumbs deck-imagenes" style="background-image:url('<?php echo base_url($ruta_galeria) ?>'); background-size:cover; background-position:center;">
                 </div>
                 <?php } ?>
               </div>
@@ -46,12 +50,36 @@
               <hr>
               <?php echo $descripcion_corta; ?>
               <hr>
+              <!-- Solo muestro precio si el producto está en venta -->
+              <?php
+                if(
+                  !empty($paquete)&&
+                  $producto['PRODUCTO_CANTIDAD']>0&&
+                  $producto['PRODUCTO_ESTADO']=='activo'
+                ){ // Aquí se activa o desactiva la visibilidad del precio si el producto está a la venta
+                ?>
+                <?php
+                  // variables de precio
+                  if($producto['PRODUCTO_DIVISA_DEFAULT']!=$_SESSION['divisa']['iso']){
+                    $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto['PRODUCTO_DIVISA_DEFAULT']);
+                    if($producto['PRODUCTO_DIVISA_DEFAULT']!='MXN'){
+                      $precio_lista = $producto['PRODUCTO_PRECIO_LISTA']/$cambio_divisa_default['DIVISA_CONVERSION'];
+                      $precio_venta = $producto['PRODUCTO_PRECIO']/$cambio_divisa_default['DIVISA_CONVERSION'];
+                    }else{
+                      $precio_lista = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'];
+                      $precio_venta = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO'];
+                    }
+                  }else{
+                    $precio_lista = $producto['PRODUCTO_PRECIO_LISTA'];
+                    $precio_venta = $producto['PRODUCTO_PRECIO'];
+                  }
+                 ?>
               <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
-              <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'],2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
+              <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista ,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
               <?php } ?>
               <h2 class="product-price display-6" >
                 <small><?php echo $_SESSION['divisa']['signo']; ?></small>
-                  <span id="Precio_Producto" ><?php echo number_format($_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO'],2); ?></span>
+                  <span id="Precio_Producto" ><?php echo number_format( $precio_venta,2); ?></span>
                 <small><?php echo $_SESSION['divisa']['iso']; ?> </small>
               </h2>
               <div class="row my-3">
@@ -81,6 +109,10 @@
                   <button class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block" id="BotonComprar"
                       data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
                       data-nombre-producto='<?php echo $titulo; ?>'
+                      data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
+                      data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'
+                      data-divisa-default='<?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?>'
+                      data-contra-entrega='<?php echo $producto['PRODUCTO_CONTRA_ENTREGA']; ?>'
                       data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
                       data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
                       data-detalles-producto=''
@@ -96,6 +128,10 @@
                     <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonCompraRapida"
                         data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
                         data-nombre-producto='<?php echo $titulo; ?>'
+                        data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
+                        data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'
+                        data-divisa-default='<?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?>'
+                        data-contra-entrega='<?php echo $producto['PRODUCTO_CONTRA_ENTREGA']; ?>'
                         data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
                         data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
                         data-detalles-producto=''
@@ -107,6 +143,8 @@
                   </div>
                 <?php } ?>
               </div>
+
+              <?php } ?>
               <div class="card opiniones-serv">
                 <div class="card-body">
                   <?php $promedio_calificaciones = $promedio_calificaciones['CALIFICACION_ESTRELLAS']; $estrellas_restan= 5-$promedio_calificaciones; ?>
@@ -392,7 +430,7 @@
                     <section class="slider">
                     <div class="flexslider carousel">
                       <ul class="slides">
-                        <?php $productos_relacionados = $this->ProductosModel->lista(['ID_USUARIO'=>$producto['ID_USUARIO']],'','','10'); ?>
+                        <?php $productos_relacionados = $this->ProductosModel->lista_relacionados(['ID_PRODUCTO !='=>$producto['ID_PRODUCTO']],$producto['ID_USUARIO'],'','10'); ?>
 
                         <?php foreach($productos_relacionados as $producto_rel){ ?>
                           <?php
@@ -407,6 +445,13 @@
                               $titulo = $producto_rel->PRODUCTO_NOMBRE;
                             }
                           }
+                          // Variables de Paquete
+                          $paquete = $this->PlanesModel->plan_activo_usuario($producto['ID_USUARIO'],'productos');
+                          if($paquete==null){
+                            $visible = 'd-none';
+                          }else{
+                            $visible = '';
+                          }
                           ?>
                         <li>
                           <div class="cuadricula-productos">
@@ -420,7 +465,7 @@
                                   <?php if(!empty($producto_rel->PRODUCTO_PRECIO_LISTA)&&$producto_rel->PRODUCTO_PRECIO<$producto_rel->PRODUCTO_PRECIO_LISTA){ ?>
                                     <span class="etiqueta-3"><?php echo $this->lang->line('etiquetas_productos_oferta'); ?></span>
                                   <?php } ?>
-                                  <?php if($producto->PRODUCTO_ARTESANAL=='si'){ ?>
+                                  <?php if($producto_rel->PRODUCTO_ARTESANAL=='si'){ ?>
                                     <span class="etiqueta-artesanal"><img src="<?php echo base_url('assets/global/img/artesanal.png'); ?>"></span>
                                   <?php } ?>
                                 </div>
@@ -440,12 +485,26 @@
                                 <?php
                                 $promedio = $this->CalificacionesModel->promedio_calificaciones_producto($producto_rel->ID_PRODUCTO);
                                 $cantidad = $this->CalificacionesModel->conteo_calificaciones_producto($producto_rel->ID_PRODUCTO);
+                                // variables de precio
+                                if($producto_rel->PRODUCTO_DIVISA_DEFAULT!=$_SESSION['divisa']['iso']){
+                                  $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto_rel->PRODUCTO_DIVISA_DEFAULT);
+                                  if($producto_rel->PRODUCTO_DIVISA_DEFAULT!='MXN'){
+                                    $precio_lista = $producto_rel->PRODUCTO_PRECIO_LISTA/$cambio_divisa_default['DIVISA_CONVERSION'];
+                                    $precio_venta = $producto_rel->PRODUCTO_PRECIO/$cambio_divisa_default['DIVISA_CONVERSION'];
+                                  }else{
+                                    $precio_lista = $_SESSION['divisa']['conversion']*$producto_rel->PRODUCTO_PRECIO_LISTA;
+                                    $precio_venta = $_SESSION['divisa']['conversion']*$producto_rel->PRODUCTO_PRECIO;
+                                  }
+                                }else{
+                                  $precio_lista = $producto_rel->PRODUCTO_PRECIO_LISTA;
+                                  $precio_venta = $producto_rel->PRODUCTO_PRECIO;
+                                }
                                 ?>
                                   <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
                                   <?php if(!empty($producto_rel->PRODUCTO_PRECIO_LISTA)&&$producto_rel->PRODUCTO_PRECIO<$producto_rel->PRODUCTO_PRECIO_LISTA){ ?>
-                                    <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto_rel->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
+                                    <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
                                   <?php } ?>
-                                  <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($_SESSION['divisa']['conversion']*$producto_rel->PRODUCTO_PRECIO,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
+                                  <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_venta,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
                                   <ul class="rating">
                                     <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
                                     <?php for($i = 1; $i<=$estrellas; $i++){ ?>
@@ -470,4 +529,98 @@
         </div>
       </div>
   </div> <!-- /container -->
+</div>
+
+<!-- Modal de flujos -->
+
+<!-- Modal -->
+<div class="modal fade" id="ModalAyuda" tabindex="-1" role="dialog" aria-labelledby="ModalAyuda" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><i class="far fa-question-circle"></i> Ayuda</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-0">
+
+          <div class="linea-colores-delgada">
+            <div class="barra-color barra-azul"></div>
+            <div class="barra-color barra-rosa"></div>
+            <div class="barra-color barra-amarillo"></div>
+            <div class="barra-color barra-verde"></div>
+            <div class="barra-color barra-morado"></div>
+          </div>
+        <!-- Slider Ayuda-->
+        <div id="carouselAyuda" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselAyuda" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselAyuda" data-slide-to="1"></li>
+            <li data-target="#carouselAyuda" data-slide-to="2"></li>
+            <li data-target="#carouselAyuda" data-slide-to="3"></li>
+            <li data-target="#carouselAyuda" data-slide-to="4"></li>
+            <li data-target="#carouselAyuda" data-slide-to="5"></li>
+            <li data-target="#carouselAyuda" data-slide-to="6"></li>
+            <li data-target="#carouselAyuda" data-slide-to="7"></li>
+            <li data-target="#carouselAyuda" data-slide-to="8"></li>
+            <li data-target="#carouselAyuda" data-slide-to="9"></li>
+            <li data-target="#carouselAyuda" data-slide-to="10"></li>
+            <li data-target="#carouselAyuda" data-slide-to="11"></li>
+            <li data-target="#carouselAyuda" data-slide-to="12"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.1.png'); ?>" alt="Registro paso 1">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.2.png'); ?>" alt="Registro paso 2">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.3.png'); ?>" alt="Registro paso 3">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.4.png'); ?>" alt="Registro paso 4">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.5.png'); ?>" alt="Registro paso 5">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.6.png'); ?>" alt="Registro paso 6">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.7.png'); ?>" alt="Registro paso 7">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.8.png'); ?>" alt="Registro paso 8">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.9.png'); ?>" alt="Registro paso 9">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.10.png'); ?>" alt="Registro paso 10">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.11.png'); ?>" alt="Registro paso 11">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo7.12.png'); ?>" alt="Registro paso 12">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselAyuda" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselAyuda" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>

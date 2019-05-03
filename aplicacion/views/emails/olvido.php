@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Abanico, Contraseña Olvidada</title>
+    <title>Abanico | Contraseña Olvidada</title>
     <style>
       /* -------------------------------------
           GLOBAL RESETS
@@ -49,29 +49,37 @@
         display: block;
         Margin: 0 auto !important;
         /* makes it centered */
-        max-width: 580px;
+        max-width: 960px;
         padding: 10px;
-        width: 580px;
+        width: 960px;
       }
       /* This should also be a block element, so that it will fill 100% of the .container */
       .content {
         box-sizing: border-box;
         display: block;
         Margin: 0 auto;
-        max-width: 580px;
+        max-width: 960px;
         padding: 10px;
+      }
+      tbody {
       }
       /* -------------------------------------
           HEADER, FOOTER, MAIN
       ------------------------------------- */
       .main {
-        background: #ffffff;
+        background-color: rgb(236, 236, 239);
         border-radius: 3px;
         width: 100%;
       }
       .wrapper {
         box-sizing: border-box;
-        padding: 20px;
+        /* padding: 20px; */
+      }
+      .head2 {
+        padding: 40px;
+      }
+      .articulos {
+        border-bottom:1px solid lightgray;
       }
       .content-block {
         padding-bottom: 10px;
@@ -111,6 +119,10 @@
         text-align: center;
         text-transform: capitalize;
       }
+      h5 {
+        font-size: 12px;
+        margin: 0
+      }
       p,
       ul,
       ol {
@@ -118,7 +130,7 @@
         font-size: 14px;
         font-weight: normal;
         margin: 0;
-        margin-bottom: 15px;
+        /* margin-bottom: 15px; */
       }
         p li,
         ul li,
@@ -216,6 +228,15 @@
         border-bottom: 1px solid #f6f6f6;
         Margin: 20px 0;
       }
+      .head2{
+        font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;
+        text-align: center;
+        border-top: 1px solid lightgray;
+        background-image: url('<?php echo base_url('assets/global/img/pleca_mail_2.png'); ?>');
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position: top center;
+      }
       /* -------------------------------------
           RESPONSIVE AND MOBILE FRIENDLY STYLES
       ------------------------------------- */
@@ -258,6 +279,9 @@
           height: auto !important;
           max-width: 100% !important;
           width: auto !important;
+        }
+        .head2{
+          background-size:contain;
         }
       }
       /* -------------------------------------
@@ -310,30 +334,66 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <p>Hola, <?php echo $info['NOMBRE']; ?></p>
-                        <p>Parece que has olvidado tu contraseña, para restaurarla solo tienes que dar click en el siguiente enlace</p>
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                          <tbody>
+                        <table role="presentation" border="0" cellpadding="20" cellspacing="0">
+                        <tbody>
                             <tr>
-                              <td align="left">
-                                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                  <tbody>
-                                    <tr>
-                                      <td> <a href="<?php echo base_url('login/restaurar?id='.$info['ID'].'&clave='.$info['CLAVE']); ?>" target="_blank">Enlace Seguro</a> </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
+                                <td style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:16px; text-align: center;">
+                                    <img src="<?php echo base_url('assets/global/img/logo_correo.png'); ?>" alt="" width="200px">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="head2">
+                                  <h2 style="margin:0;color:#495057;"><strong>Hola, Parece que olvidaste tu contraseña</strong></h2>
+                                  <p style="margin:0;color:#495057;">Para restaurarla solo tienes que dar click en el siguiente enlace</p>
+                                </td>
                             </tr>
                           </tbody>
                         </table>
-                        <p>Si tienes problemas para dar click en el enlace puedes copiar y pegar la siguiente dirección en tu navegador</p>
-                        <p><?php echo base_url('login/restaurar?id='.$info['ID'].'&clave='.$info['CLAVE']); ?></p>
-                        <hr>
-                        <p>Si no has solicitado la restauración de la contraseña haz caso omiso de este mensaje.</p>
-                        <p>El enlace estará disponible durante 3 Hrs.</p>
+                      <table cellpadding="20" cellspacing="0" style="width:96%; margin:2%; color: #495057;">
+                        <tbody>
+                          <tr>
+                            <td style="vertical-align:middle; font-size:16px;">
+                              <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                                <tbody>
+                                  <tr>
+                                    <td align="center">
+                                      <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                          <tr>
+                                            <td> <a href="<?php echo base_url('login/restaurar?id='.$info['ID'].'&clave='.$info['CLAVE']); ?>" target="_blank">Enlace Seguro</a> </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <hr>
+                              <p>Si tienes problemas para dar click en el enlace puedes copiar y pegar la siguiente dirección en tu navegador</p>
+                              <p><?php echo base_url('login/restaurar?id='.$info['ID'].'&clave='.$info['CLAVE']); ?></p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>Si no has solicitado la restauración de la contraseña haz caso omiso de este mensaje.</p>
+                              <p>El enlace estará disponible durante 3 Hrs.</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                       </td>
                     </tr>
+                  </table>
+                  <table border="0" cellpadding="5" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td style="background:#73C8C8;"></td>
+                        <td style="background:#AD3692;"></td>
+                        <td style="background:#EEC830;"></td>
+                        <td style="background:#A5C845;"></td>
+                        <td style="background:#AD36F7;"></td>
+                      </tr>
+                    </tbody>
                   </table>
                 </td>
               </tr>

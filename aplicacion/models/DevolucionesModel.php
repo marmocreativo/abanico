@@ -23,7 +23,7 @@ class DevolucionesModel extends CI_Model {
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
   function todas_las_devoluciones($orden){
-    $this->db->join('pedidos', 'devoluciones.ID_PEDIDO = pedidos.ID_PEDIDO');
+    $this->db->join('pedidos', 'pedidos_devoluciones.ID_PEDIDO = pedidos.ID_PEDIDO');
     $this->db->order_by($orden);
     $query = $this->db->get('pedidos_devoluciones');
     return $query->result();
@@ -35,7 +35,7 @@ class DevolucionesModel extends CI_Model {
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
   function devoluciones_usuario($id_usuario,$orden){
-    $this->db->join('pedidos', 'devoluciones.ID_PEDIDO = pedidos.ID_PEDIDO');
+    $this->db->join('pedidos', 'pedidos_devoluciones.ID_PEDIDO = pedidos.ID_PEDIDO');
     $this->db->where('ID_USUARIO',$id_usuario);
     $this->db->order_by($orden);
     $query = $this->db->get('pedidos_devoluciones');

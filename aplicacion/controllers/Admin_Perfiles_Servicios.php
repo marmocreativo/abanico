@@ -245,7 +245,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
 			$this->data['perfil'] = $this->PerfilServiciosModel->detalles($_GET['id_perfil']);
 			$this->data['direccion_perfil_servicios'] = $this->DireccionesModel->detalles($this->data['perfil']['ID_DIRECCION']);
-			$this->data['plan'] = $this->PlanesModel->plan_activo_usuario($this->data['perfil']['ID_USUARIO'],'servicios');
+			$this->data['plan'] = $this->PlanesModel->plan_pendiente_usuario($this->data['perfil']['ID_USUARIO'],'servicios');
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_perfil_servicios',$this->data);

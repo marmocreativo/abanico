@@ -32,6 +32,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('CalificacionesServiciosModel');
 		$this->load->model('NotificacionesModel');
 		$this->load->model('TraduccionesModel');
+		$this->load->model('PublicacionesModel');
+		$this->load->model('PlanesModel');
+		$this->load->model('DivisasModel');
 
 		// Variables comunes
   }
@@ -41,10 +44,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
  	{
 		$parametros_or = array();
 		$parametros_and = array();
-		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
-			$parametros_or['PRODUCTO_NOMBRE'] = $_GET['Busqueda'];
-			$parametros_or['PRODUCTO_MODELO'] = $_GET['Busqueda'];
-		}
 		// Orden
 		if(isset($_GET['OrdenBusqueda'])&&!empty($_GET['OrdenBusqueda'])){
 			switch ($_GET['OrdenBusqueda']) {
@@ -110,6 +109,10 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	 $parametros_and['PRODUCTO_ARTESANAL'] = 'si';
  }
 
+ $this->data['parametros_or'] = $parametros_or;
+ $this->data['parametros_and'] = $parametros_and;
+  $this->data['orden'] = $orden;
+
 		if(isset($_GET['slug'])&&!empty($_GET['slug'])){
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
@@ -122,6 +125,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 		}else{
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+			$this->data['categorias_hijas'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
 			$this->data['productos'] = $this->ProductosModel->lista_activos($parametros_or,$parametros_and,'',$orden,'');
 			$this->data['origen_formulario'] = 'categoria';

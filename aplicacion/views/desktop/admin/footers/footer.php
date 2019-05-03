@@ -27,7 +27,9 @@
 <script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
 <!-- local -->
 <script src="<?php echo base_url(); ?>assets/administradores/js/widgets.js"></script>
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=y3nn7mnqo19xsacsvznxqarsmohkoz42yat38khcnolpk6bf"></script>
+<script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/trumbowyg.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/plugins/cleanpaste/trumbowyg.cleanpaste.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/plugins/table/trumbowyg.table.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/global/js/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.js"></script>

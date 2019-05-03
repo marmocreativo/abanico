@@ -35,6 +35,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('EstadisticasModel');
 		$this->load->model('NotificacionesModel');
 		$this->load->model('NotificacionesModel');
+		$this->load->model('PublicacionesModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-info";
@@ -92,17 +93,51 @@ public function favorito()
 				 );
 
 				$this->FavoritosModel->crear($parametros);
-			 }
+
 			 // Relleno Notificación
 			 $datos_servicio = $this->ServiciosModel->detalles($_GET['id']);
+			 $datos_usuario = $this->UsuariosModel->detalles($datos_servicio['ID_USUARIO']);
 			 $parametros_notificacion = array(
 				 'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
 				 'NOTIFICACION_CONTENIDO'=>'Alguien añadió tu servicio '.$datos_servicio['SERVICIO_NOMBRE'].' a Favoritos',
+				 'NOTIFICACION_TIPO'=>'general',
 				 'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 				 'NOTIFICACION_ESTADO'=>'no leido'
 			 );
 			 // Creo la notificación
 			 $id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
+
+			 // Datos para enviar por correo
+
+  				$config['protocol']    = 'smtp';
+  				$config['smtp_host']    = $this->data['op']['mailer_host'];
+  				$config['smtp_port']    = $this->data['op']['mailer_port'];
+  				$config['smtp_timeout'] = '7';
+  				$config['smtp_user']    = $this->data['op']['mailer_user'];
+  				$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+  				$config['charset']    = 'utf-8';
+  				$config['mailtype'] = 'html'; // or html
+  				$config['validation'] = TRUE; // bool whether to validate email or not
+
+
+  			$this->data['info'] = array();
+  			$this->data['info']['Titulo'] = 'Tu servicios '.$datos_servicio['SERVICIO_NOMBRE'].' fue añadido a favoritos';
+  			$this->data['info']['Nombre'] = $datos_usuario['USUARIO_NOMBRE'].' '.$datos_usuario['USUARIO_APELLIDOS'];
+  			$this->data['info']['Mensaje'] = '<p>Tu servicio llamó la atención y ha sido añadido a favoritos.</p>';
+  			$this->data['info']['TextoBoton'] = 'Ver tus servicios';
+  			$this->data['info']['EnlaceBoton'] = base_url('login');
+
+  			$mensaje = $this->load->view('emails/mensaje_general',$this->data,true);
+  			$this->email->initialize($config);
+
+  			$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+  			$this->email->to($datos_usuario['USUARIO_CORREO']);
+
+  			$this->email->subject('Tu servicio en Favoritos');
+  			$this->email->message($mensaje);
+				$this->email->send();
+
+		 	}
 			 // Redirecciono
 			 redirect(base_url('usuario/favoritos'));
 		}else{
@@ -145,6 +180,7 @@ public function favorito()
 		 $parametros_notificacion = array(
 			 'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
 			 'NOTIFICACION_CONTENIDO'=>'Alguien calificí tu servicio '.$datos_servicio['SERVICIO_NOMBRE'].' con '.$this->input->post('EstrellasCalificacion').' Estrellas',
+			 'NOTIFICACION_TIPO'=>'general',
 			 'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 			 'NOTIFICACION_ESTADO'=>'no leido'
 		 );
@@ -187,19 +223,52 @@ public function favorito()
 				'MENSAJE_ASUNTO'=>'Solicitud de Servicio',
 				'MENSAJE_TEXTO'=>$mensaje,
 				'MENSAJE_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
-				'MENSAJE_ESTADO'=>'no leido'
+				'MENSAJE_ESTADO_A'=>'no leido',
+				'MENSAJE_ESTADO_B'=>'no leido'
 			);
 			$mensaje_id = $this->ConversacionesMensajesModel->crear($parametros_mensaje);
 			// Relleno Notificación
-			$datos_servicio = $this->ServiciosModel->detalles($_GET['id']);
+			$datos_servicio = $this->ServiciosModel->detalles($this->input->post('IdServicio'));
+			$datos_usuario = $this->UsuariosModel->detalles($datos_servicio['ID_USUARIO']);
 			$parametros_notificacion = array(
-				'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
+				'ID_USUARIO'=>$datos_servicio['ID_USUARIO'],
 				'NOTIFICACION_CONTENIDO'=>'Tienes un nuevo mensaje sobre tu servicio'.$datos_servicio['SERVICIO_NOMBRE'],
+				'NOTIFICACION_TIPO'=>'mensaje',
 				'NOTIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 				'NOTIFICACION_ESTADO'=>'no leido'
 			);
 			// Creo la notificación
 			$id_notificacion = $this->NotificacionesModel->crear($parametros_notificacion);
+			// Datos para enviar por correo
+
+ 				$config['protocol']    = 'smtp';
+ 				$config['smtp_host']    = $this->data['op']['mailer_host'];
+ 				$config['smtp_port']    = $this->data['op']['mailer_port'];
+ 				$config['smtp_timeout'] = '7';
+ 				$config['smtp_user']    = $this->data['op']['mailer_user'];
+ 				$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+ 				$config['charset']    = 'utf-8';
+ 				$config['mailtype'] = 'html'; // or html
+ 				$config['validation'] = TRUE; // bool whether to validate email or not
+
+
+ 			$this->data['info'] = array();
+ 			$this->data['info']['Titulo'] = 'Hay preguntas sobre:  '.$datos_servicio['SERVICIO_NOMBRE'];
+ 			$this->data['info']['Nombre'] = 'Puedes contestar a esta pregunta en tu panel de usuario';
+ 			$this->data['info']['Mensaje'] = $mensaje;
+ 			$this->data['info']['TextoBoton'] = 'Bandeja de entrada';
+ 			$this->data['info']['EnlaceBoton'] = base_url('usuario/mensajes');
+
+ 			$mensaje = $this->load->view('emails/mensaje_general',$this->data,true);
+ 			$this->email->initialize($config);
+
+ 			$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+ 			$this->email->to($datos_usuario['USUARIO_CORREO']);
+
+ 			$this->email->subject('Pregunta sobre tus servicios');
+ 			$this->email->message($mensaje);
+ 			$this->email->send();
+
 			// Redirecciono
 			// Mensaje FeedBack
 			$this->session->set_flashdata('exito', 'Tu mensaje ha sido enviado, recibirás la respuesta en tu <a href="'.base_url('usuario/mensajes').'">Bandeja de Entrada</a>');

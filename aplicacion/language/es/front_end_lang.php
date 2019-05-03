@@ -6,8 +6,8 @@ $lang['header_atencion_clientes'] = 'Atención a clientes';
 $lang['header_menu_usuario_boton'] = 'Usuarios';
 $lang['header_menu_usuario_saludo'] = 'Hola';
 $lang['header_menu_usuario_boton_perfil'] = 'Perfil';
-$lang['header_menu_usuario_boton_cerrar_sesion'] = 'Cerrar Sesión';
-$lang['header_menu_usuario_boton_iniciar_sesion'] = 'Inicio de Sesión';
+$lang['header_menu_usuario_boton_cerrar_sesion'] = 'Cerrar sesión';
+$lang['header_menu_usuario_boton_iniciar_sesion'] = 'Inicio de sesión';
 $lang['header_menu_usuario_boton_registro'] = 'Registro';
 /*
 * Header Principal Tienda
@@ -19,9 +19,9 @@ $lang['header_categorias_servicios_boton'] = 'Servicios';
 $lang['header_categorias_servicios_todos'] = 'Todos los servicios';
 $lang['header_categorias_servicios_todas'] = 'Categorias de servicios';
 
-$lang['header_formulario_busqueda_buscar'] = 'Busca lo Mejor';
-$lang['header_formulario_busqueda_en_productos'] = 'En Productos';
-$lang['header_formulario_busqueda_en_servicios'] = 'En Servicios';
+$lang['header_formulario_busqueda_buscar'] = 'Busca lo mejor';
+$lang['header_formulario_busqueda_en_productos'] = 'En productos';
+$lang['header_formulario_busqueda_en_servicios'] = 'En servicios';
 
 $lang['header_boton_favoritos'] = 'Favoritos';
 $lang['header_boton_carrito'] = 'Carrito';
@@ -34,10 +34,11 @@ $lang['inicio_menu_destacados_servicios'] = 'Servicios';
 $lang['inicio_menu_destacados_productos'] = 'Productos';
 $lang['inicio_menu_destacados_unete'] = 'Únete';
 
-$lang['inicio_productos_destacados_titulo'] = 'Productos Destacados';
+$lang['inicio_productos_destacados_titulo'] = 'Productos destacados';
 $lang['inicio_productos_mas_vendidos_titulo'] = 'Productos más vendidos';
 $lang['inicio_productos_mas_populares_titulo'] = 'Productos más populares';
-$lang['inicio_productos_relacionados_titulo'] = 'Productos Relacionados';
+$lang['inicio_productos_relacionados_titulo'] = 'Productos relacionados';
+$lang['inicio_productos_recientes_titulo'] = 'Productos recientes';
 
 /*
 * Página categoria Productos
@@ -111,10 +112,21 @@ $lang['categoria_servicios_migas_inicio'] = 'Inicio';
 */
 
 $lang['pagina_servicio_migas_inicio'] = 'Inicio';
+
+$lang['filtro_categoria_servicios_ordenar_por'] = 'Ordenar Por';
+$lang['filtro_categoria_servicios_alfabetico_asc'] = 'A-Z';
+$lang['filtro_categoria_servicios_alfabetico_desc'] = 'Z-A';
+$lang['filtro_categoria_servicios_calificacion_desc'] = 'Mejor Calificados';
+
+$lang['filtro_categoria_servicios_tipo'] = 'Tipo Servicio';
+$lang['filtro_categoria_servicios_presenciales'] = 'Presenciales';
+$lang['filtro_categoria_servicios_digitales'] = 'Digitales';
+$lang['filtro_categoria_servicios_filtrar_por'] = 'Filtrar por';
+
 $lang['pagina_servicio_migas_servicio'] = 'Servicio';
 $lang['pagina_servicio_descripcion_titulo'] = 'Descripción';
 $lang['pagina_servicio_adjuntos_titulo'] = 'Adjuntos';
-$lang['pagina_servicio_zona_trabajo'] = 'Zona de Trabajo';
+$lang['pagina_servicio_zona_trabajo'] = 'Zona de trabajo';
 $lang['pagina_servicio_zona_trabajo_pais'] = 'Pais';
 $lang['pagina_servicio_zona_trabajo_estado'] = 'Pais';
 $lang['pagina_servicio_zona_servicio'] = 'Zona de Servicio';
@@ -167,7 +179,7 @@ $lang['proceso_pago_2_continuar'] = 'Continuar';
 
 $lang['proceso_pago_3_cambiar_direccion'] = 'Cambiar Dirección';
 $lang['proceso_pago_3_fecha'] = 'Fecha';
-$lang['proceso_pago_3_exeden_peso'] = 'Los productos Exceden el peso máximo o tu dirección no está disponible para envíos. Por favor contacta con nosotros para ofrecerte opciones.';
+$lang['proceso_pago_3_exeden_peso'] = 'No se pudo calcular el envío automáticamente, este pedido podría generar gastos de envío extra.';
 $lang['proceso_pago_3_envio_de_productos_otro'] = 'Envio de productos de';
 $lang['proceso_pago_3_envio_de_abanico'] = 'Productos enviados por Abanico, el costo de Envío aparecerá en la parte inferior.';
 $lang['proceso_pago_3_importe_productos'] = 'Importe Productos';
@@ -179,6 +191,7 @@ $lang['proceso_pago_3_total'] = 'Total';
 
 $lang['proceso_pago_3_transferencia'] = 'Transferencia Bancaria';
 $lang['proceso_pago_3_paypal'] = 'Pagar con PayPal';
+$lang['proceso_pago_3_oxxo'] = 'Pagar en OXXO';
 $lang['proceso_pago_3_transferencia_instrucciones'] = 'Depósito/Transferencia Bancaria';
 $lang['proceso_pago_3_numero_cuenta'] = 'No. Cuenta';
 $lang['proceso_pago_3_monto_a_pagar'] = 'Monto a Pagar';

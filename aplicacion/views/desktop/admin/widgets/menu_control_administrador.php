@@ -7,6 +7,7 @@
         <ul class="sub-menu children dropdown-menu">
           <li><i class="fa fa-shopping-bag"></i><a href="<?php echo base_url('admin/pedidos'); ?>">Pedidos</a></li>
           <li><i class="fa fa-undo"></i><a href="<?php echo base_url('admin/pedidos/devoluciones'); ?>">Devoluciones</a></li>
+          <li><i class="fa fa-file-invoice"></i><a href="<?php echo base_url('admin/corte_vendedores'); ?>">Corte Vendedores</a></li>
         </ul>
     </li>
     <li class="menu-item-has-children dropdown">
@@ -29,10 +30,19 @@
         </ul>
     </li>
     <li class="menu-item-has-children dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file"></i>Publicaciones</a>
+        <ul class="sub-menu children dropdown-menu">
+          <li><i class="fa fa-info-circle"></i><a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=acerca'); ?>">Acerca de Abanico</a></li>
+          <li><i class="fa fa-map-marker"></i><a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=legales'); ?>">Legales</a></li>
+          <li><i class="fa fa-map-marker"></i><a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=concursos'); ?>">Concursos</a></li>
+          <li><i class="fa fa-map-marker"></i><a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=ayuda'); ?>">Ayuda</a></li>
+        </ul>
+    </li>
+    <li class="menu-item-has-children dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tools"></i>Servicios</a>
         <ul class="sub-menu children dropdown-menu">
           <li><i class="fa fa-user-tie"></i><a href="<?php echo base_url('admin/perfiles_servicios'); ?>"> Perfiles</a></li>
-          <li><a href="<?php echo base_url('admin/servicios'); ?>"><i class="menu-icon fa fa-tools"></i> Servicios</a></li>
+          <li><i class="menu-icon fa fa-tools"></i><a href="<?php echo base_url('admin/servicios'); ?>"> Servicios</a></li>
           <li><i class="fa fa-envelope"></i><a href="<?php echo base_url('admin/servidores_mensajes'); ?>"> Mensajes</a></li>
         </ul>
     </li>
@@ -65,12 +75,15 @@
           <li><i class="fa fa-language"></i><a href="<?php echo base_url('admin/lenguajes'); ?>">Lenguajes</a></li>
         </ul>
     </li>
-    <!--
+
     <li class="menu-item-has-children dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-list"></i>Sliders</a>
         <ul class="sub-menu children dropdown-menu">
           <li><a href="<?php echo base_url('admin/sliders'); ?>">Sliders</a></li>
         </ul>
     </li>
-  -->
+    <li>
+        <a href="<?php echo base_url('admin/premios'); ?>"><i class="menu-icon fa fa-gift"></i>Premios </a>
+    </li>
+
 </ul>

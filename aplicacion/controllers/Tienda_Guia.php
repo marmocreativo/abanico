@@ -32,6 +32,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('RutasGuiasModel');
 		$this->load->model('PuntosRegistroModel');
 		$this->load->model('NotificacionesModel');
+		$this->load->model('PublicacionesModel');
   }
 
 	public function index()

@@ -63,6 +63,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function busqueda()
 	{
+		// Tipo de Producto
+		if(!isset($_GET['tipo_producto'])||empty($_GET['tipo_producto'])){ $this->data['tipo_producto']='normal'; }else{ $this->data['tipo_producto']=$_GET['tipo_producto']; }
 		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
 			$parametros = array(
 				'PRODUCTO_NOMBRE'=>$_GET['Busqueda'],
@@ -105,11 +107,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		if($this->form_validation->run())
     {
 			// Verifico URL
-			$url = url_title($this->input->post('NombreProducto'),'-',TRUE);
+			$titulo = convert_accented_characters($this->input->post('NombreProducto'));
+			$url = url_title($titulo,'-',TRUE);
 			if($this->ProductosModel->verificar_uri($url)){
-				$url = url_title($this->input->post('NombreProducto'),'-',TRUE).'-'.uniq_slug(3);
+				$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
 				if($this->ProductosModel->verificar_uri($url)){
-					$url = url_title($this->input->post('NombreProducto'),'-',TRUE).'-'.uniq_slug(3);
+					$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
 				}
 			}
 			// Parametros del producto
