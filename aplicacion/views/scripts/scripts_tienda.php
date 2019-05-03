@@ -564,8 +564,9 @@ GALERIA
 -----------------
 */
 jQuery(function(){
-  jQuery('.imagen-galeria-producto').mouseover(function(){
-    var nuevaImagen = jQuery(this).attr('src');
+  jQuery('.deck-imagenes').mouseover(function(){
+    var nuevaImagen = jQuery(this).css('background-image');
+    nuevaImagen = nuevaImagen.replace('url(','').replace(')','').replace(/\"/gi, "");
       jQuery('.visor-galeria-producto').attr('src',nuevaImagen);
   });
 });
