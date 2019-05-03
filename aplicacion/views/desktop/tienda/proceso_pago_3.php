@@ -83,7 +83,7 @@
                     ?>
                     <?php if($paquete_tienda['PLAN_ENVIO']=='abanico'){ ?>
                     <div class="container-fluid tienda-proceso-pago py-3 mt-3">
-                    <h5> <i class="fa fa-store"></i> <?php echo $datos_tienda['TIENDA_NOMBRE'];?></h5>
+                    <h5> <i class="fa fa-store"></i> <?php echo $datos_tienda['TIENDA_NOMBRE'];?> (A)</h5>
                     <table class="table">
                       <thead>
                         <tr>
@@ -185,9 +185,9 @@
                     data-id-tienda='<?php echo $datos_tienda['ID_TIENDA'];?>'
                     data-nombre-tienda='<?php echo $datos_tienda['TIENDA_NOMBRE'];?>'
                     data-importe-productos ='<?php echo $suma_tienda; ?>'
-                    data-id-transportista ='0'
-                    data-nombre-transportista ='0'
-                    data-importe-transportista ='0'
+                    data-id-transportista ='<?php echo $mejor_envio_abanico['ID_TRANSPORTISTA']; ?>'
+                    data-nombre-transportista ='<?php echo $mejor_envio_abanico['TRANSPORTISTA_NOMBRE']; ?>'
+                    data-importe-transportista ='<?php echo $mejor_envio_abanico['IMPORTE']; ?>'
                     data-comision-venta ='<?php echo $paquete_tienda['PLAN_COMISION']; ?>'
                     data-comision-manejo ='<?php echo $paquete_tienda['PLAN_MANEJO_PRODUCTOS']; ?>'
                     >
@@ -429,7 +429,7 @@
 
       </div>
       <div class="row justify-content-center">
-        <div class="col-8 mb-3 p-3 bg-primary-6" id="PedidoAjax"
+        <div class="col-10 mb-3 p-3 bg-primary-6" id="PedidoAjax"
           data-id-direccion='<?php echo $detalles_direccion['ID_DIRECCION']; ?>'
           data-importe-pedido-parcial='<?php echo $importe_pedido_abanico; ?>'
           data-importe-pedido-total='<?php echo $importe_pedido_total; ?>'

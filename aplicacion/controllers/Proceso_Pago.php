@@ -281,7 +281,13 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$comision_manejo = $tienda->importe_producto*($tienda->comision_manejo/100);
 				$comision_servicios_financieros = ($importe_tienda*($ComisionServicioFinancieroPorcentaje/100))+$ComisionServicioFinancieroFijo;
 				$deducciones = $comision_venta+$comision_manejo+$comision_servicios_financieros;
-				$importe_a_liquidar = $importe_tienda-$deducciones;
+				// Importe de liquidación
+				if($tienda->importe_transportista==$ImporteEnvioParcial){
+					// Si el importe del transportista de la tienda y el Importe parcial es el mismo significa que la tienda es administrada por abanico así que al importe a liquidar le quito el costo del envio al importe total
+					$importe_a_liquidar = $tienda->importe_producto-$deducciones;
+				}else{
+					$importe_a_liquidar = $importe_tienda-$deducciones;
+				}
 				$parametros_tienda = array(
 					'ID_PEDIDO'=>$pedido_id,
 					'ID_TIENDA'=>$tienda->id_tienda,

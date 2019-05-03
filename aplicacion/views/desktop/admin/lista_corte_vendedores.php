@@ -180,12 +180,22 @@
                           <div class="collapse" id="detalles_<?php echo $pedido->ID_PEDIDO; ?>">
                             <table class="table table-bordered table-sm">
                               <tr>
-                                <td colspan="3" style="text-align:right">Importe Tienda:</td>
+                                <td colspan="3" style="text-align:right">Importe productos:</td>
                                 <td>$<b><?php echo $pedido->PEDIDO_TIENDA_IMPORTE_PRODUCTOS; ?></b></td>
                               </tr>
                               <tr>
-                                <td colspan="3" style="text-align:right">Envio:</td>
+                                <td colspan="3" style="text-align:right">Importe envio:</td>
                                 <td>$<b><?php echo $pedido->PEDIDO_TIENDA_IMPORTE_ENVIO; ?></b></td>
+                              </tr>
+                              <tr>
+                                <td colspan="3" style="text-align:right">Envio Administrado por:</td>
+                                <?php if($pedido->PEDIDO_TIENDA_IMPORTE_ENVIO==$pedido->PEDIDO_IMPORTE_ENVIO_PARCIAL){ $administra_envio = 'Abanico'; }else{ $administra_envio = 'Tienda'; } ?>
+                                <td><b><?php echo $administra_envio; ?></b></td>
+                              </tr>
+                              <tr>
+                                <td colspan="3" style="text-align:right">Pago por Envio:</td>
+                                <?php if($pedido->PEDIDO_TIENDA_IMPORTE_ENVIO==$pedido->PEDIDO_IMPORTE_ENVIO_PARCIAL){ $pago_envio = 0.00; }else{ $pago_envio = $pedido->PEDIDO_TIENDA_IMPORTE_ENVIO; } ?>
+                                <td>$<b><?php echo $pago_envio; ?></b></td>
                               </tr>
                               <tr>
                                 <td colspan="3" style="text-align:right">Comisión Venta (<b><?php echo $pedido->PORCENTAJE_COMISION_VENTA; ?></b>%):</td>
@@ -196,7 +206,7 @@
                                 <td>-$<b><?php echo $pedido->COMISION_MANEJO; ?></b></td>
                               </tr>
                               <tr>
-                                <td colspan="3" style="text-align:right">Comisión <?php echo $pedido->PAGO_FORMA ?> (<b><?php echo $pedido->	PORCENTAJE_SERVICIOS_FINANCIEROS; ?></b>%):</td>
+                                <td colspan="3" style="text-align:right">Comisión <?php echo $pedido->PAGO_FORMA ?> (<b><?php echo $pedido->PORCENTAJE_SERVICIOS_FINANCIEROS; ?></b>%):</td>
                                 <td>-$<b><?php echo $pedido->COMISION_SERVICIOS_FINANCIEROS; ?></b></td>
                               </tr>
                               <tr>
@@ -262,7 +272,7 @@
             <div class="card">
               <div class="card-body">
                 <div class="btn-group pull-right" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-info"> <i class="fa fa-print"></i> Imprimir</button>
+                  <a href="<?php echo base_url('admin/corte_vendedores/imprimir?MesCorte='.$mes.'&AnioCorte='.$anio.'&IdTienda='.$idtienda) ?>" target="_blank" class="btn btn-info"> <i class="fa fa-print"></i> Imprimir</a>
                   <button type="submit" class="btn btn-success"> <i class="fa fa-upload"></i> Guardar Folios de Pago</button>
                 </div>
               </div>

@@ -87,6 +87,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['guia'] = $this->GuiasPedidosModel->detalles($_GET['guia']);
 			$this->load->view($this->data['dispositivo'].'/admin/imprimir_guia',$this->data);
 	}
+	public function imprimir_limpia()
+	{
+			$this->data['pedido_tienda'] = $this->PedidosTiendasModel->detalles($_GET['id_pedido'],$_GET['id_tienda']);
+			$this->data['pedido'] = $this->PedidosModel->detalles($this->data['pedido_tienda']['ID_PEDIDO']);
+			$this->load->view($this->data['dispositivo'].'/admin/imprimir_guia_limpia',$this->data);
+	}
 	public function ruta()
 	{
 		$this->form_validation->set_rules('Guia', 'Número de Guía', 'required', array('required' => 'Debes escribir tu %s.'));

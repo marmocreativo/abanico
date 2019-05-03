@@ -189,7 +189,7 @@
                         <p>Estado del Pago: <b><?php echo $plan['PLAN_ESTADO']; ?></b></p>
                       </div>
                       <div class="col d-flex justify-content-end">
-                        <p>Fecha Límite de Pago: <b><?php echo date('Y-m-d',strtotime("+10 days",strtotime($plan['FECHA_INICIO']))); ?></b></p>
+                        <p>Fecha Límite de Pago: <b><?php echo date('d-m-Y',strtotime("+5 days",strtotime($plan['FECHA_INICIO']))); ?></b></p>
                       </div>
                     </div>
                   </div>

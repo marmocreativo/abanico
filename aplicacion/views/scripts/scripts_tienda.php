@@ -76,6 +76,7 @@ jQuery( document ).ready(function(){
       'comision_manejo': comision_manejo,
     };
   });
+  console.log(pedidos_tienda);
   // Vuelvo a leer todas las tiendas y cargo los datos en el pedido
   var datos = unescape(encodeURIComponent(JSON.stringify(pedidos_tienda)));
   var encodedData = window.btoa(datos);
@@ -123,6 +124,7 @@ jQuery('.selector-transportista-abanico').on('click', function(){
       'comision_manejo': comision_manejo,
     };
   });
+  console.log(pedidos_tienda);
   // Vuelvo a leer todas las tiendas y cargo los datos en el pedido
   var datos = unescape(encodeURIComponent(JSON.stringify(pedidos_tienda)));
   var encodedData = window.btoa(datos);
@@ -180,7 +182,7 @@ jQuery('.selector-transportista-tienda').on('click', function(){
       'comision_manejo': comision_manejo,
     };
   });
-
+  console.log(pedidos_tienda);
 
   // Vuelvo a leer todas las tiendas y cargo los datos en el pedido
   var datos = unescape(encodeURIComponent(JSON.stringify(pedidos_tienda)));
