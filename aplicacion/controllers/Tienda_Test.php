@@ -60,4 +60,10 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->data['pedido_tienda']['GUIA_PAQUETERIA']='';
 		$this->load->view($this->data['dispositivo'].'/admin/imprimir_guia_limpia',$this->data);
 	}
+	public function barcode(){
+		require_once(APPPATH.'libraries/barcode/BarcodeGenerator.php');
+		require_once(APPPATH.'libraries/barcode/BarcodeGeneratorHTML.php');
+		$generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+		echo $generator->getBarcode('081231723897', $generator::TYPE_CODE_128);
+	}
 }

@@ -46,6 +46,12 @@
             <tr>
               <td>
               <h4><b>No.</b> <?php echo $guia['GUIA_CODIGO']; ?></h4>
+              <?php
+              require_once(APPPATH.'libraries/barcode/BarcodeGenerator.php');
+          		require_once(APPPATH.'libraries/barcode/BarcodeGeneratorHTML.php');
+          		$generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+          		echo $generator->getBarcode($guia['GUIA_CODIGO'], $generator::TYPE_CODE_128);
+              ?>
             </td>
             </tr>
           </table>
@@ -73,6 +79,12 @@
             <tr>
               <td>
               <h4><b>No.</b> <?php echo $guia['GUIA_CODIGO']; ?></h4>
+              <?php
+              require_once(APPPATH.'libraries/barcode/BarcodeGenerator.php');
+          		require_once(APPPATH.'libraries/barcode/BarcodeGeneratorHTML.php');
+          		$generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+          		echo $generator->getBarcode($guia['GUIA_CODIGO'], $generator::TYPE_CODE_128);
+              ?>
             </td>
             </tr>
           </table>
@@ -100,6 +112,12 @@
             <tr>
               <td>
               <h4><b>No.</b> <?php echo $guia['GUIA_CODIGO']; ?></h4>
+              <?php
+              require_once(APPPATH.'libraries/barcode/BarcodeGenerator.php');
+          		require_once(APPPATH.'libraries/barcode/BarcodeGeneratorHTML.php');
+          		$generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+          		echo $generator->getBarcode($guia['GUIA_CODIGO'], $generator::TYPE_CODE_128);
+              ?>
             </td>
             </tr>
           </table>
