@@ -212,12 +212,54 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 						'DEVOLUCION_ESTADO'=>'Solicitud'
 					);
 					$parametros_pedido = array(
-						'PEDIDO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
-						'PEDIDO_ESTADO_PEDIDO'=> 'Solicitud Devolucion',
+						'PEDIDO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s')
 					);
 				// Creo el Servicio
 				$adjunto_id = $this->DevolucionesModel->crear($parametros);
 				$adjunto_id = $this->PedidosModel->actualizar($this->input->post('IdPedido'),$parametros_pedido);
+
+				// Preparo correo de revisión
+				$datos_pedido = $this->PedidosMOdel->detalles($this->input->post('IdPedido'));
+
+				$this->data['info'] = array();
+
+				$this->data['info']['Titulo'] = 'Solicitud de devolución | '.$datos_pedido['PEDIDO_FOLIO'];
+				$this->data['info']['Nombre'] = 'Por favor revisa que el mensaje y la fotografía';
+				$this->data['info']['Mensaje'] = '<p>Puedes revisar los detalles de la solicitud en el administrador</p>';
+				$this->data['info']['TextoBoton'] = 'Iniciar sesión';
+				$this->data['info']['EnlaceBoton'] = base_url('admin/pedidos/detalles?id_pedido='.$datos_pedido['ID_PEDIDO']);
+				// Pedido General
+				$mensaje_abanico = $this->load->view('emails/mensaje_general',$this->data,true);
+
+				// Envio correos Generales
+				// Datos para enviar por correo
+				// Config General
+
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = $this->data['op']['mailer_host'];
+				$config['smtp_port']    = $this->data['op']['mailer_port'];
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = $this->data['op']['mailer_user'];
+				$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+				$config['charset']    = 'utf-8';
+				$config['mailtype'] = 'html'; // or html
+				$config['validation'] = TRUE; // bool whether to validate email or not
+
+				$this->email->initialize($config);
+
+				// Envio correo comprobante
+				$this->email->clear();
+				$this->email->from($this->data['op']['mailer_user'], 'Abanico Siempre lo Mejor');
+				$this->email->to($this->data['op']['correo_sitio']);
+
+
+				$this->email->subject('Solicitud devolución '.$datos_pedido['PEDIDO_FOLIO']);
+				$this->email->message($mensaje_abanico);
+				// envio el correo
+
+				$this->email->send();
+
+
 				$this->session->set_flashdata('exito', 'Comprobante cargado correctamente');
 				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
 			}else{

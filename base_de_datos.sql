@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 30-04-2019 a las 21:07:04
+-- Tiempo de generación: 09-05-2019 a las 17:13:10
 -- Versión del servidor: 5.6.40-84.0-log
 -- Versión de PHP: 5.6.30
 
@@ -449,7 +449,6 @@ CREATE TABLE `categorias_productos` (
 --
 
 INSERT INTO `categorias_productos` (`ID`, `ID_CATEGORIA`, `ID_PRODUCTO`) VALUES
-(132, 384, 25),
 (134, 383, 26),
 (143, 384, 24),
 (148, 144, 29),
@@ -467,14 +466,17 @@ INSERT INTO `categorias_productos` (`ID`, `ID_CATEGORIA`, `ID_PRODUCTO`) VALUES
 (161, 144, 32),
 (162, 391, 21),
 (165, 144, 27),
-(167, 392, 5),
 (171, 144, 22),
 (172, 144, 2),
 (177, 144, 9),
 (178, 144, 7),
 (179, 144, 8),
 (182, 144, 1),
-(184, 144, 39);
+(184, 144, 39),
+(185, 392, 6),
+(186, 392, 5),
+(187, 392, 4),
+(192, 384, 25);
 
 -- --------------------------------------------------------
 
@@ -621,7 +623,8 @@ INSERT INTO `direcciones` (`ID_DIRECCION`, `ID_USUARIO`, `ID_TIENDA`, `DIRECCION
 (9, '5cb3e89a74a543.21168150', 0, 'envio', '11, 2DDDDD', 'México', 'Ciudad de México', 'CDMX', 'La Magdalena Contreras', '11, 2DDDDD', '11, 2DDDDD\r\n2DDDDD', '10400', '11, 2DDDDD\r\n2DDDDD', '2019-04-15 02:13:25', '2019-04-15 02:13:25'),
 (10, '5c0653d43d92e7.75019474', 3, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '-', '2019-04-15 18:09:22', '2019-04-15 18:09:22'),
 (11, '5c0653d43d92e7.75019474', 4, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Avenida 561 No. 148', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '-', '2019-04-22 21:16:35', '2019-04-22 21:16:35'),
-(12, '5cbf2af567b4e4.45277430', 0, 'envio', 'Casa', 'México', 'Ciudad de México', '', 'Cuauhtémoc', 'Tlatelolco', 'Manuel Gonzalez 380', '06900', '', '2019-04-30 20:16:58', '2019-04-30 20:16:58');
+(12, '5cbf2af567b4e4.45277430', 0, 'envio', 'Casa', 'México', 'Ciudad de México', '', 'Cuauhtémoc', 'Tlatelolco', 'Manuel Gonzalez 380', '06900', '', '2019-04-30 20:16:58', '2019-04-30 20:16:58'),
+(13, '5ca7fc2217e2c3.68837078', 5, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', 'Ciudad de México', 'Gustavo A. Madero', 'San Juan de Aragón II', 'Avenida 561 No. 148', '07969', '-', '2019-05-09 19:52:54', '2019-05-09 19:52:54');
 
 -- --------------------------------------------------------
 
@@ -890,7 +893,10 @@ INSERT INTO `galeria_productos` (`ID_GALERIA`, `ID_PRODUCTO`, `GALERIA_ARCHIVO`,
 (95, 48, 'producto-5cc89c266cc22.jpg', 'no', 'activo', 1),
 (96, 49, 'producto-5cc89c7bbb180.jpg', 'si', 'activo', 1),
 (97, 27, 'producto-5cc89cfc3a72f.jpg', 'si', 'activo', 1),
-(98, 27, 'producto-5cc89d0707fdd.jpg', 'no', 'activo', 1);
+(98, 27, 'producto-5cc89d0707fdd.jpg', 'no', 'activo', 1),
+(99, 25, 'producto-5cd4879ca1010.jpg', 'no', 'activo', 1),
+(100, 25, 'producto-5cd489dac22af.jpg', 'no', 'activo', 1),
+(101, 25, 'producto-5cd48a08d8c73.jpg', 'no', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -9762,6 +9768,18 @@ CREATE TABLE `notificaciones` (
   `NOTIFICACION_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `notificaciones`
+--
+
+INSERT INTO `notificaciones` (`ID_NOTIFICACION`, `ID_USUARIO`, `NOTIFICACION_CONTENIDO`, `NOTIFICACION_TIPO`, `NOTIFICACION_FECHA_REGISTRO`, `NOTIFICACION_ESTADO`) VALUES
+(1, '5c0653d43d92e7.75019474', 'Gracias por comprar', 'compra', '2019-05-01 02:53:51', 'leido'),
+(2, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-05-03 22:27:43', 'leido'),
+(3, '5c0653d43d92e7.75019474', 'Gracias por comprar', 'compra', '2019-05-01 02:53:51', 'leido'),
+(4, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-05-03 22:27:43', 'leido'),
+(5, '5c0653d43d92e7.75019474', 'Gracias por comprar', 'compra', '2019-05-03 20:56:23', 'no leido'),
+(6, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-05-03 22:27:43', 'leido');
+
 -- --------------------------------------------------------
 
 --
@@ -9877,6 +9895,15 @@ CREATE TABLE `pedidos` (
   `PEDIDO_FECHA_ACTUALIZACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`ID_PEDIDO`, `PEDIDO_FOLIO`, `ID_USUARIO`, `PEDIDO_NOMBRE`, `PEDIDO_CORREO`, `PEDIDO_TELEFONO`, `ID_DIRECCION`, `PEDIDO_DIRECCION`, `PEDIDO_DIVISA`, `PEDIDO_CONVERSION`, `PEDIDO_IMPORTE_PRODUCTOS_PARCIAL`, `PEDIDO_IMPORTE_PRODUCTOS_TOTAL`, `PEDIDO_IMPORTE_ENVIO_PARCIAL`, `PEDIDO_IMPORTE_ENVIO_TOTAL`, `PEDIDO_ID_TRANSPORTISTA`, `PEDIDO_NOMBRE_TRANSPORTISTA`, `PEDIDO_RECIBE`, `PEDIDO_COMENTARIOS`, `PEDIDO_IMPORTE_DESCUENTO`, `PEDIDO_DESCUENTO_DESCRIPCION`, `PEDIDO_IMPORTE_TOTAL`, `PEDIDO_FORMA_PAGO`, `PEDIDO_ESTADO_PAGO`, `PEDIDO_ESTADO_PEDIDO`, `PEDIDO_FECHA_REGISTRO`, `PEDIDO_FECHA_ACTUALIZACION`) VALUES
+(1, 'MXEQ5X', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335    ', 2, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, CDMX, Ciudad de México, 07969, México', 'MXN', '1.000', '471.70', '471.70', '40.00', '40.00', 3, 'Correos de México', NULL, NULL, NULL, NULL, '511.70', 'Transferencia Bancaria', 'Comprobante', 'Entregado', '2019-05-09 20:46:03', '2019-05-09 20:46:03'),
+(2, 'J94FEW', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335    ', 2, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, CDMX, Ciudad de México, 07969, México', 'MXN', '1.000', '126.00', '126.00', '40.00', '40.00', 3, 'Correos de México', NULL, NULL, NULL, NULL, '166.00', 'OXXO', 'Pendiente', 'Pagado', '2019-05-01 02:25:00', '2019-05-01 02:25:00'),
+(3, 'CINNLE', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335    ', 2, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, CDMX, Ciudad de México, 07969, México', 'MXN', '1.000', '126.00', '126.00', '40.00', '40.00', 3, 'Correos de México', NULL, NULL, NULL, NULL, '166.00', 'OXXO', 'Pagado', 'Pagado', '2019-05-03 21:37:01', '2019-05-03 21:37:01');
+
 -- --------------------------------------------------------
 
 --
@@ -9912,6 +9939,15 @@ CREATE TABLE `pedidos_pagos` (
   `PAGO_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `pedidos_pagos`
+--
+
+INSERT INTO `pedidos_pagos` (`ID`, `ID_PEDIDO`, `PAGO_FORMA`, `PAGO_FOLIO`, `PAGO_ARCHIVO`, `PAGO_DESCRIPCION`, `PAGO_IMPORTE`, `PAGO_FECHA_REGISTRO`, `PAGO_FECHA_ACTUALIZACION`, `PAGO_ESTADO`) VALUES
+(1, 1, 'Transferencia Bancaria', '3333333', 'pago-5cc902cf7e02b.png', 'Comprobante de cliente', '511.70', '2019-05-01 02:22:45', '2019-05-01 02:22:45', 'Pagado'),
+(2, 2, 'oxxo', 'ord_2kZ9n2DThQJksXFty', '', '98000002257049', '166.00', '2019-05-01 02:25:00', '2019-05-01 02:25:00', 'Pagado'),
+(3, 3, 'oxxo', 'ord_2ka4LopGCbJLw3dkr', '', '98000002273913', '166.00', '2019-05-03 21:01:40', '2019-05-03 21:01:40', 'Pagado');
+
 -- --------------------------------------------------------
 
 --
@@ -9930,6 +9966,15 @@ CREATE TABLE `pedidos_productos` (
   `IMPORTE` decimal(10,2) DEFAULT NULL,
   `IMPORTE_TOTAL` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pedidos_productos`
+--
+
+INSERT INTO `pedidos_productos` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `ID_PRODUCTO`, `PRODUCTO_NOMBRE`, `PRODUCTO_DETALLES`, `PRODUCTO_IMAGEN`, `CANTIDAD`, `IMPORTE`, `IMPORTE_TOTAL`) VALUES
+(1, 1, 1, 48, 'Soporte para cartucho ', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5cc89c15ce3a1.jpg', 1, '471.70', '471.70'),
+(2, 2, 1, 17, 'Conejo porta bolsas de té', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c9c2d274df94.jpg', 1, '126.00', '126.00'),
+(3, 3, 1, 17, 'Conejo porta bolsas de té', '', 'https://abanicoytu.com/demo/contenido/img/productos/completo/producto-5c9c2d274df94.jpg', 1, '126.00', '126.00');
 
 -- --------------------------------------------------------
 
@@ -9959,6 +10004,15 @@ CREATE TABLE `pedidos_tiendas` (
   `URL_RASTREO` varchar(255) NOT NULL,
   `PEDIDO_TIENDA_ESTADO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pedidos_tiendas`
+--
+
+INSERT INTO `pedidos_tiendas` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `PEDIDO_TIENDA_IMPORTE_PRODUCTOS`, `PEDIDO_TIENDA_IMPORTE_ENVIO`, `PORCENTAJE_COMISION_VENTA`, `PORCENTAJE_COMISION_MANEJO`, `PORCENTAJE_SERVICIOS_FINANCIEROS`, `COMISION_FIJA_SERVICIOS_FINANCIEROS`, `COMISION_VENTA`, `COMISION_MANEJO`, `COMISION_SERVICIOS_FINANCIEROS`, `PEDIDO_TIENDA_LIQUIDADO`, `IMPORTE_A_LIQUIDAR`, `FOLIO_LIQUIDAR`, `ID_TRANSPORTISTA`, `TRANSPORTISTA_NOMBRE`, `GUIA_PAQUETERIA`, `URL_RASTREO`, `PEDIDO_TIENDA_ESTADO`) VALUES
+(1, 1, 1, '471.70', '0.00', '7.00', '8.00', '0.00', '0.00', '33.02', '37.74', '0.00', 'no', '400.94', '', 0, '0', '51398732', '#', 'Enviado'),
+(2, 2, 1, '126.00', '0.00', '7.00', '8.00', '4.60', '0.00', '8.82', '10.08', '7.64', 'no', '99.46', '', 3, 'Correos de México', NULL, '', 'Espera Pago'),
+(3, 3, 1, '126.00', '40.00', '7.00', '8.00', '4.60', '0.00', '8.82', '10.08', '7.64', 'no', '99.46', '', 3, 'Correos de México', '222555444666', 'https://www.correosdemexico.gob.mx/SSLServicios/SeguimientoEnvio/Seguimiento.aspx', 'Enviado');
 
 -- --------------------------------------------------------
 
@@ -10050,6 +10104,14 @@ CREATE TABLE `planes_pagos` (
   `PAGO_ESTADO` varchar(255) NOT NULL DEFAULT 'pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `planes_pagos`
+--
+
+INSERT INTO `planes_pagos` (`ID_PAGO`, `ID_PLAN_USUARIO`, `PAGO_CONCEPTO`, `PAGO_FOLIO`, `PAGO_FORMA`, `PAGO_IMPORTE`, `PAGO_DIVISA`, `PAGO_CONVERSION`, `FECHA_LIMITE`, `FECHA_PAGO`, `PAGO_ARCHIVO`, `PAGO_ESTADO`) VALUES
+(1, 1, 'Vendedor regular | apoyo para envío', 'OUNN1U', 'Transferencia Bancaria', '180.00', 'MXN', '1.00', '2019-05-10', '2019-04-30', 'pago-5cc90045e75ba.png', 'pagado'),
+(2, 5, 'Vendedor regular | básico', 'XDWFU4', 'Transferencia Bancaria', '180.00', 'MXN', '1.00', '2019-05-19', '2019-05-09', 'pago-5cd4810e3eba0.png', 'pagado');
+
 -- --------------------------------------------------------
 
 --
@@ -10081,6 +10143,17 @@ CREATE TABLE `planes_usuarios` (
   `FECHA_TERMINO` date NOT NULL DEFAULT '0000-00-00',
   `AUTO_RENOVAR` varchar(255) NOT NULL DEFAULT 'si'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `planes_usuarios`
+--
+
+INSERT INTO `planes_usuarios` (`ID_PLAN_USUARIO`, `ID_PLAN`, `ID_USUARIO`, `PLAN_NOMBRE`, `PLAN_MENSUALIDAD`, `PLAN_ESPACIO_ALMACENAMIENTO`, `PLAN_COSTO_ALMACENAMIENTO`, `PLAN_COMISION`, `PLAN_MANEJO_PRODUCTOS`, `PLAN_ENVIO`, `PLAN_SERVICIOS_FINANCIEROS`, `PLAN_SERVICIOS_FINANCIEROS_FIJO`, `PLAN_TIPO`, `PLAN_LIMITE_PRODUCTOS`, `PLAN_LIMITE_SERVICIOS`, `PLAN_FOTOS_PRODUCTOS`, `PLAN_FOTOS_SERVICIOS`, `PLAN_NIVEL`, `PLAN_ESTADO`, `PLAN_NOTAS`, `FECHA_INICIO`, `FECHA_TERMINO`, `AUTO_RENOVAR`) VALUES
+(1, 3, '5c0653d43d92e7.75019474', 'Vendedor regular | apoyo para envío', '180.00', '0.00', '0.00', '7.00', '0.00', 'abanico', '6.00', '5.00', 'productos', 0, 0, 5, 5, 3, 'cancelado', '', '2019-04-30', '2019-05-30', 'si'),
+(2, 4, '5c9c1ff62ce0c3.78174962', 'Vendedor regular | envío y almacen', '180.00', '0.25', '210.00', '7.00', '8.00', 'abanico', '6.00', '5.00', 'productos', 0, 0, 5, 5, 5, 'pagado', '', '2019-04-30', '2019-05-30', 'si'),
+(3, 4, '5c08a9dc2cb096.56391251', 'Vendedor regular | envío y almacen', '180.00', '0.25', '210.00', '7.00', '8.00', 'abanico', '6.00', '5.00', 'productos', 0, 0, 5, 5, 4, 'pendiente', '', '2019-04-30', '2019-05-30', 'si'),
+(4, 6, '5ca4043cde1435.48493149', 'Anúnciate con nosotros', '200.00', '0.00', '0.00', '0.00', '0.00', 'tienda', '0.00', '0.00', 'servicios', 1, 2, 1, 1, 4, 'pagado', '', '2019-05-09', '2019-06-09', 'si'),
+(5, 2, '5c0653d43d92e7.75019474', 'Vendedor regular | básico', '180.00', '0.00', '0.00', '7.00', '0.00', 'tienda', '6.00', '5.00', 'productos', 0, 0, 5, 5, 2, 'pagado', '', '2019-05-09', '2019-06-09', 'si');
 
 -- --------------------------------------------------------
 
@@ -10177,20 +10250,20 @@ INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOM
 (1, '5c9c1ff62ce0c3.78174962', '1', 'Tijeras de cocina ', 'tijeras-de-cocina', 'Tijeras de cocina multiusos con abre nueces integrado. ', '<p>Tijeras de acero inoxidable de 20 centímetros de excelente calidad. Muy resistentes y de larga duración.&nbsp;</p><p>Cuentan con un abre nueces y un abridor de botellas o tarros. Son aptas para ser lavadas en lavavajillas.&nbsp;<br></p>', '', 'Otro', 'no', '', '', '', '', '', '', '90.00', '0.00', 'MXN', 'no', 2, 1, 1, 'No disponible para la venta', '2019-04-30 22:18:17', '2019-04-30 22:18:17', '2019-04-30 22:18:17', '12.00', '18.00', '2.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (2, '5c9c1ff62ce0c3.78174962', '1', 'Juego de tijeras para cocina', 'juego-de-tijeras-para-cocina', 'Versátiles tijeras para la cocina, la oficina y el hogar. Con mangos recubiertos para mejor agarre y máxima seguridad. ', '\r\n\r\n\r\n<p>Este juego de tijeras es uno de los favoritos en el mercado.&nbsp;</p><p>Su suave recubrimiento en el mango permite un máximo agarre al momento de cortar y su cuerpo de acero inoxidable lo hace muy resistente y de larga duración. El set incluye 1 par de tijeras de 21.6 cm y 2 pares de 13 cm. Garantía de fabricación de por vida.&nbsp;</p>\r\n\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '220.00', '0.00', 'MXN', 'no', 2, 1, 1, 'No disponible para la venta', '2019-04-30 21:21:40', '2019-04-30 21:21:40', '2019-04-30 21:21:40', '12.70', '12.70', '20.30', '0.14', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (3, '5c9c1ff62ce0c3.78174962', '1', 'Pinzas para alimentos', 'pinzas-para-alimentos', 'Pinza para alimentos con puntas de silicon grado alimenticio. Excelentes para el manejo de alimentos calientes o para servir las ensaladas.  ', '<p>Versatil pinza para alimentos con puntas de silicon. Esta practica pinza cuenta con un sistema que le permite mantenerse cerrada lo que evita que se atore en los cajones de la cocina. Sus puntas de silicon resisten altas temperaturas sin quemarse ni volverve blandas. Cuerpo de acero inoxidable. Los lados estas recubiertos con silicon antiderrapante que permite un excelente agarre de la pinza aun cuando este caliente.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '107.00', '0.00', 'MXN', 'no', 31, 1, 1, 'No disponible para la venta', '2019-04-25 17:47:24', '2019-04-25 17:47:24', '2019-04-25 17:47:24', '4.00', '4.00', '27.50', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(4, '5c9c1ff62ce0c3.78174962', '1', 'Reloj para caballero  Mitaki-Japan®', 'reloj-para-caballero', 'Reloj deportivo digital para hombre marca Mitaki-Japan®', '<h3 class=\"product-subtitle\" style=\"box-sizing: border-box; font-family: Raleway, sans-serif; font-weight: 400; line-height: 18px; color: #949494; margin: 0px 0px 14px; font-size: 14px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; vertical-align: baseline; text-size-adjust: none; text-align: justify;\">Excelente reloj para usarlo cuando haces ejercicio o en un dia informal. Sus caracteristicas principales incluyen funcion de fecha, alarma, se ilumina al marcarse la hora y luz. Su resistente banda de poliuretano es hipoalergenica y de alta resistencia.&nbsp;</h3>', '', 'Otro', 'no', '', '', '', '', '', '', '650.00', '0.00', 'MXN', 'no', 2, 1, 1, 'No disponible para la venta', '2019-04-22 19:15:27', '2019-04-22 19:15:27', '2019-04-22 19:15:27', '2.00', '5.00', '181.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(5, '5c9c1ff62ce0c3.78174962', '1', 'Reloj digital deportivo para caballero marca Mitaki-Japan® modelo Super', 'reloj-para-caballero-rcx', 'Practico y resistente reloj digital para caballero de la marca Mitaki-Japan®', '<ul style=\"box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Raleway, sans-serif; vertical-align: baseline; text-size-adjust: none; list-style: none; color: #808080;\">\r\n<li style=\"box-sizing: border-box; margin: 0px; padding: 4px 0px 4px 10px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; text-size-adjust: none;\"><strong>Este excelente reloj cuenta con funciones de luz, cronometro, fecha y es resistente al agua hasta los 30 metros. Tu compañero ideal para hacer ejercicio todos los días. Muy liviano y resistente.&nbsp;</strong></li>\r\n</ul>', '', 'Otro', 'no', '', '', '', '', '', '', '650.00', '680.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 19:20:11', '2019-04-30 19:20:11', '2019-04-30 19:20:11', '5.00', '2.00', '18.00', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(6, '5c9c1ff62ce0c3.78174962', '1', 'Reloj para dama  Mitaki-Japan® Ladies\' Digital Sport Watch', 'reloj-para-dama', 'Practico y cómodo reloj deportivo digital de la marca Mitaki-Japan®. Utilízalo para ir al gimnasio, a correr e incluso a nadar ya que es resistente al agua. ', '<ul style=\"box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Raleway, sans-serif; vertical-align: baseline; text-size-adjust: none; list-style: none; color: #808080;\">\r\n<li style=\"box-sizing: border-box; margin: 0px; padding: 4px 0px 4px 10px; border: 0px; font: inherit; vertical-align: baseline; text-size-adjust: none;\">Este excelente reloj incluye funciones de fecha, luz y alarma. Es resistente al agua hasta los 30 metros de profundidad.</li>\r\n<li style=\"box-sizing: border-box; margin: 0px; padding: 4px 0px 4px 10px; border: 0px; font: inherit; vertical-align: baseline; text-size-adjust: none;\">&nbsp;</li>\r\n</ul>', '', 'Otro', 'no', '', '', '', '', '', '', '280.00', '0.00', 'MXN', 'no', 2, 1, 1, 'No disponible para la venta', '2019-04-30 22:25:18', '2019-04-30 22:25:18', '2019-04-30 22:25:18', '1.00', '5.00', '18.00', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(4, '5c9c1ff62ce0c3.78174962', '1', 'Reloj para caballero  Mitaki-Japan®', 'reloj-para-caballero', 'Reloj deportivo digital para hombre marca Mitaki-Japan®', '<h3 class=\"product-subtitle\" style=\"box-sizing: border-box; font-family: Raleway, sans-serif; font-weight: 400; line-height: 18px; color: #949494; margin: 0px 0px 14px; font-size: 14px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; vertical-align: baseline; text-size-adjust: none; text-align: justify;\">Excelente reloj para usarlo cuando haces ejercicio o en un dia informal. Sus caracteristicas principales incluyen funcion de fecha, alarma, se ilumina al marcarse la hora y luz. Su resistente banda de poliuretano es hipoalergenica y de alta resistencia.&nbsp;</h3>', '', 'Otro', 'no', '', '', '', '', '', '', '650.00', '0.00', 'MXN', 'no', 2, 1, 1, 'No disponible para la venta', '2019-05-09 19:32:24', '2019-05-09 19:32:24', '2019-05-09 19:32:24', '2.00', '5.00', '181.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(5, '5c9c1ff62ce0c3.78174962', '1', 'Reloj digital deportivo para caballero marca Mitaki-Japan® modelo Super', 'reloj-para-caballero-rcx', 'Practico y resistente reloj digital para caballero de la marca Mitaki-Japan®', '<ul style=\"box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Raleway, sans-serif; vertical-align: baseline; text-size-adjust: none; list-style: none; color: #808080;\">\r\n<li style=\"box-sizing: border-box; margin: 0px; padding: 4px 0px 4px 10px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; text-size-adjust: none;\"><strong>Este excelente reloj cuenta con funciones de luz, cronometro, fecha y es resistente al agua hasta los 30 metros. Tu compañero ideal para hacer ejercicio todos los días. Muy liviano y resistente.&nbsp;</strong></li>\r\n</ul>', '', 'Otro', 'no', '', '', '', '', '', '', '650.00', '680.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-05-09 19:32:22', '2019-05-09 19:32:22', '2019-05-09 19:32:22', '5.00', '2.00', '18.00', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(6, '5c9c1ff62ce0c3.78174962', '1', 'Reloj para dama  Mitaki-Japan® Ladies\' Digital Sport Watch', 'reloj-para-dama', 'Practico y cómodo reloj deportivo digital de la marca Mitaki-Japan®. Utilízalo para ir al gimnasio, a correr e incluso a nadar ya que es resistente al agua. ', '<ul style=\"box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Raleway, sans-serif; vertical-align: baseline; text-size-adjust: none; list-style: none; color: #808080;\">\r\n<li style=\"box-sizing: border-box; margin: 0px; padding: 4px 0px 4px 10px; border: 0px; font: inherit; vertical-align: baseline; text-size-adjust: none;\">Este excelente reloj incluye funciones de fecha, luz y alarma. Es resistente al agua hasta los 30 metros de profundidad.</li>\r\n<li style=\"box-sizing: border-box; margin: 0px; padding: 4px 0px 4px 10px; border: 0px; font: inherit; vertical-align: baseline; text-size-adjust: none;\">&nbsp;</li>\r\n</ul>', '', 'Otro', 'no', '', '', '', '', '', '', '280.00', '0.00', 'MXN', 'no', 2, 1, 1, 'No disponible para la venta', '2019-05-09 19:32:20', '2019-05-09 19:32:20', '2019-05-09 19:32:20', '1.00', '5.00', '18.00', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (7, '5c9c1ff62ce0c3.78174962', '1', 'Vaso termo ', 'vaso-termo', 'Vaso térmico de doble pared y tapa transparente para que tu bebida viaje contigo a cualquier lado. ', '<p>Con este vaso térmico puedes llevar tus bebidas favoritas contigo a cualquier lado.&nbsp;</p><p>Totalmente fabricado con una doble pared de acero inoxidable al vacío, con tapa de rosca antiderrames y transparente. El acero inoxidable hace que la limpieza sea muy fácil y jamás guardara aromas o sabores desagradables.&nbsp;</p><p>Capacidad de 473 mililitros.</p>', '', 'Otro', 'no', '', '', '', '', '', '', '220.00', '0.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 22:02:48', '2019-04-30 22:02:48', '2019-04-30 22:02:48', '0.00', '0.00', '0.00', '0.33', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (8, '5c9c1ff62ce0c3.78174962', '1', 'Botella de vidrio con proteccion ', 'botella-de-vidrio-con-proteccion', 'Botella de vidrio de 473 mililitros de capacidad con envoltura de silicon negra y tapa abatible.', '<p><span style=\"font-size: 1rem;\">Para ti que eres respetuoso con el ambiente y estas disminuyendo el uso de plásticos te recomendamos esta práctica botella para llevar tus bebidas favoritas a donde vayas. El vidrio es de borosilicato altamente resistente a los golpes. La envoltura de silicón permite un mayor agarre por su efecto antideslizante. La tapa es anti-derrames. Puedes usar tu botella todo el tiempo y lavarla fácilmente. NO introducir en lavavajillas.&nbsp;</span><br></p>', '', 'Otro', 'no', '', '', '', '', '', '', '250.00', '0.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 22:08:52', '2019-05-01 00:24:08', '2019-04-30 22:08:52', '0.00', '0.00', '0.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (9, '5c9c1ff62ce0c3.78174962', '1', 'Termo con recubrimiento para máximo agarre', 'termo-con-recubrimiento-de-agarre', 'Practico termo de doble pared ideal para trasladar tus líquidos sin derrames. ', '<p>Esta botella de doble pared mantiene tus bebidas favoritas calientes o frías durante horas.</p><p>Con su envoltura de silicón es muy fácil de sujetarla, mientras que su tapa abre fácil permite que abrirla y cerrarla sea pan comido. El vaso esta totalmente hecho de acero inoxidable 18/8 lo que lo hace altamente resistente a la corroción y fácil de limpiar.</p><p>No tendrás que preocuparte por olores desagradables o sabores que queden impregnados. </p><pre><br></pre>', '', 'Otro', 'no', '', '', '', '', '', '', '280.00', '0.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 22:02:32', '2019-04-30 22:02:32', '2019-04-30 22:02:32', '0.00', '0.00', '0.00', '0.35', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (13, '5c9c1ff62ce0c3.78174962', '1', 'Infusor para te en forma de fresa', 'infusor-para-te-en-forma-de-fresa', 'Lindo infusor para preparar té con hoja suelta en forma de fresa ', '\r\n\r\n\r\n\r\n<p>Fabricado con silicon grado alimenticio, este infusor resulta muy seguro para su uso ya que el material es totalmente adecuado para su uso en alimentos. No desprenderá sabores en el agua y es muy fácil de lavar. Más fácil de lavar que un infusor metálico. Es un adecuado compañero en las largas horas laborales o en los viajes de fin de semana.&nbsp;</p>\r\n\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '75.00', '0.00', 'MXN', 'no', 25, 1, 1, 'No disponible para la venta', '2019-04-25 18:11:57', '2019-04-25 18:11:57', '2019-04-25 18:11:57', '0.00', '0.00', '0.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (14, '5c9c1ff62ce0c3.78174962', '1', 'Infusor de té en forma de T-Rex', 'infusor-de-té-en-forma-de-t-rex', 'Infusiona tus hierbas de forma divertida con este lindo dinosaurio. ', '\r\n\r\n\r\n\r\n\r\n<p>Fabricado con silicón grado alimenticio, este verde amigo es una opción refrescante para preparar tu té todos los días. Puedes llenar el cuerpo y la cabeza para obtener la concentración que más te gusta. Resistente y durable, fácil de lavar.&nbsp;</p>\r\n\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '114.00', '0.00', 'MXN', 'no', 24, 1, 1, 'No disponible para la venta', '2019-04-25 18:12:26', '2019-04-29 20:22:06', '2019-04-25 18:12:26', '0.00', '0.00', '0.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (15, '5c9c1ff62ce0c3.78174962', '1', 'Marcadores para copas de emojis', 'marcadores-para-vaso-o-copas-de-emojis', 'Set de 8  marcadores para copas de emojis. ', '<p>Divertidas caras de emojis para marcar tus copas durante tus fiestas. No correrás más el riesgo de que alguien se tome tu bebida, solo marca tu copa y disfruta de la fiesta.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '166.00', '0.00', 'MXN', 'no', 22, 1, 1, 'No disponible para la venta', '2019-04-25 17:47:53', '2019-04-25 17:47:53', '2019-04-25 17:47:53', '5.00', '5.00', '5.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(17, '5c9c1ff62ce0c3.78174962', '1', 'Conejo porta bolsas de té', 'conejo-porta-bolsas-de-té', 'Mantén seco y limpio tu plato mientras disfrutas de tu taza de te con estos  4 prácticos conejos de silicón.', '\r\n\r\n\r\n\r\n\r\n<p>No te quemes los dedos \"pescando\" tu bolsita de té. Con este práctico conejo olvidate de las bolsas que se mojan y de buscar donde ponerlas una vez que tu té esté listo. Simplemente coloca el conejo en la orilla de la taza, enrolla el cordón de tu bolsa y espera a que se desprenda todo el sabor y el olor. Una vez listo tu té simplemente baja el conejo y utilizalo como plato para depositar tu bolsita mojada. Te encantarán!</p>\r\n<p>Fabricados con silicón grado alimenticio aprobado por la FDA.&nbsp;</p>\r\n\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '126.00', '0.00', 'MXN', 'no', 5, 1, 1, 'No disponible para la venta', '2019-04-25 18:13:04', '2019-04-30 13:29:51', '2019-04-25 18:13:04', '0.00', '0.00', '0.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(17, '5c9c1ff62ce0c3.78174962', '1', 'Conejo porta bolsas de té', 'conejo-porta-bolsas-de-té', 'Mantén seco y limpio tu plato mientras disfrutas de tu taza de te con estos  4 prácticos conejos de silicón.', '\r\n\r\n\r\n\r\n\r\n<p>No te quemes los dedos \"pescando\" tu bolsita de té. Con este práctico conejo olvidate de las bolsas que se mojan y de buscar donde ponerlas una vez que tu té esté listo. Simplemente coloca el conejo en la orilla de la taza, enrolla el cordón de tu bolsa y espera a que se desprenda todo el sabor y el olor. Una vez listo tu té simplemente baja el conejo y utilizalo como plato para depositar tu bolsita mojada. Te encantarán!</p>\r\n<p>Fabricados con silicón grado alimenticio aprobado por la FDA.&nbsp;</p>\r\n\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '126.00', '0.00', 'MXN', 'no', 3, 1, 1, 'No disponible para la venta', '2019-04-25 18:13:04', '2019-05-03 20:56:23', '2019-04-25 18:13:04', '0.00', '0.00', '0.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (21, '5c9c1ff62ce0c3.78174962', '1', 'Joyero de madera hecho a mano', 'joyero-de-madera-hecho-a-mano', 'Hermosa caja de madera hecha a mano con cerradura totalmente funcional.', '<p>Esta linda caja de madera esta totalmente hecha a mano por un artesano veracruzano. El trabajo se encuentra perfectamente detallado y los acabados muy bien cuidados. La cerradura es de primera calidad y es totalmente funcional. Incluye dos llaves. Al adquirir esta caja estarás apoyando a un joven artesano que lucha dia tras dia para ofrecer su trabajo con la mejor calidad.&nbsp;</p>', '', 'México', 'si', '', '', '', '', '', '', '200.00', '240.00', 'MXN', 'no', 7, 1, 1, 'No disponible para la venta', '2019-04-30 19:07:17', '2019-04-30 19:07:17', '2019-04-30 19:07:17', '17.50', '13.00', '18.00', '0.75', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (22, '5c9c1ff62ce0c3.78174962', '1', 'Set de 6 piezas de tapas de silicón elásticas que se adaptan a cualquier contenedor de 6.5 a 20 cm. ', 'tapas-de-silicón', 'Prácticas y resistentes tapas de silicón, grado alimenticio, para conservar tus alimentos por mayor tiempo en el refrigerador. Set de 6 piezas de 20 cm, 17 cm, 15 cm, 12 cm, 10 cm y  6.5 cm. ', '<p style=\"text-align: justify; \">Set de 6 piezas de tapas elásticas de silicona grado alimenticio, aprobado por la FDA, el cual es totalmente seguro para uso con alimentos ya que es un material inocuo que no libera ningún tipo de gas, olor o residuo.</p><p style=\"text-align: justify;\">Las tapas miden 20 cm, 17 cm, 15 cm, 12 cm, 10 cm y 6.5 cm. Son ideales para aquellos moldes plásticos que se han quedado sin su tapa, para cubrir frutas y verduras y almacenarlos en el refrigerador e incluso puedes utilizarse para cubrir una taza con sobrantes líquidos. Su resistente material les permite amoldarse a cualquier forma, sellando herméticamente el borde del recipiente, lo que evita derramamientos en el refrigerador si la taza o el vaso llegara a voltearse.</p><p style=\"text-align: justify; \">Crean un cierre hermético cuando se colocan sobre un recipiente para maximizar el tiempo que tu comida permanece fresca sin dejar que el aire entre en el interior.<br></p>', '', 'Otro', 'no', '', '', '', '', '', '', '144.00', '170.00', 'MXN', 'no', 47, 1, 1, 'No disponible para la venta', '2019-04-30 21:05:01', '2019-04-30 21:05:01', '2019-04-30 21:05:01', '19.00', '3.00', '3.00', '0.22', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (24, '5c9c1ff62ce0c3.78174962', '1', 'Cartucho de fibra de coco para filtro encima del fregadero', 'cartucho-de-fibra-de-coco', 'Cartucho de fibra de coco para filtros sobre el fregadero.', '<p>Cartucho de excelente calidad. Hecho 100% con fibra de coco que es uno de los mejores materiales para la purificación del agua. Practico y muy resiste. Dura hasta 6 meses.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '400.00', '0.00', 'MXN', 'no', 99, 1, 1, 'No disponible para la venta', '2019-04-22 22:44:00', '2019-04-22 22:44:00', '2019-04-22 22:44:00', '7.00', '25.00', '10.50', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(25, '5c9c1ff62ce0c3.78174962', '1', 'Cartucho de carbón activado para filtros sobre y bajo el fregadero', 'cartucho-royal', 'Cartucho para filtros sobre y debajo del fregadero. ', '<p>Repuesto de cartucho para filtro sobre y debajo del fregadero. Ideal para los filtros Eclipse y Royal. Cuerpo de carbon activado de la mejor calidad.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '100.00', '0.00', 'USD', 'no', 49, 1, 1, 'No disponible para la venta', '2019-04-22 19:14:46', '2019-04-22 19:14:46', '2019-04-22 19:14:46', '12.00', '20.00', '1.00', '1.00', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(25, '5c9c1ff62ce0c3.78174962', '1', 'Cartucho de carbón activado para filtros sobre y bajo el fregadero', 'cartucho-royal', 'Cartucho para filtros sobre y debajo del fregadero. ', '<p>Repuesto de cartucho para filtro sobre y debajo del fregadero. Ideal para los filtros Eclipse y Royal. Cuerpo de carbon activado de la mejor calidad.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '100.00', '0.00', 'USD', 'no', 49, 1, 1, 'No disponible para la venta', '2019-05-09 20:14:06', '2019-05-09 20:14:06', '2019-05-09 20:14:06', '12.00', '20.00', '1.00', '1.00', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (26, '5c9c1ff62ce0c3.78174962', '1', 'Manguera con válvula para filtro sobre el fregadero', 'manguera-con-válvula-para-filtro-sobre-el-fregadero', 'Válvula y manguera para filtro encima del fregadero. ', '\r\n\r\n\r\n\r\n\r\n<p>Válvula y manguera de respuesto para los filtros de agua instalados arriba del fregadero. La válvula está fabricada en acero inoxidable y la manguera es de alta calidad, con un metro de longitud para facilitar el acomodo del filtro en cualquier area del fregadero.&nbsp;</p>\r\n\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '35.00', '0.00', 'USD', 'no', 0, 1, 1, 'No disponible para la venta', '2019-04-22 19:15:02', '2019-04-22 19:15:02', '2019-04-22 19:15:02', '0.00', '0.00', '0.00', '0.50', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (27, '5c9c1ff62ce0c3.78174962', '1', 'Set de 4 tazas para medir alimentos marca Chef\'s Secret® en acero inoxidable', 'chefs-secret-4pc-t304-stainless-steel-measuring-cup-set', 'Set de 4 tazas para medición de la marca Chef\'s Secret® en acero inoxidable. ', '<p style=\"box-sizing: border-box; line-height: 22px; margin: 0px 0px 15px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; vertical-align: baseline; text-size-adjust: none;\">Útil y práctico set de 4 tazas para medición de alimentos. No vuelvas a adivinar si estas usando la cantidad correcta de tus ingredientes al preparar tus recetas favoritas. Con estas tazas medidoras tendrás el control total para preparar esos exquisitos platillos que a tu familia les encantan.&nbsp;</p><p style=\"box-sizing: border-box; line-height: 22px; margin: 0px 0px 15px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; vertical-align: baseline; text-size-adjust: none;\">Este set viene con un anillo para mantener las tazas juntas. Los mangos gruesos están soldados al cuerpo de la taza por lo que no existe riesgo que se desprendan. La capacidad de cada taza, 1 taza, 1/2 taza, 1/3 taza y 1/4 taza, está grabada en el mango. El exterior presenta un acabado espejo mientras que el interior es satinado.</p>\r\n\r\n<ul style=\"box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; line-height: inherit; font-family: Raleway, sans-serif; vertical-align: baseline; text-size-adjust: none; list-style: none; color: #808080;\">\r\n<li style=\"box-sizing: border-box; margin: 0px; padding: 4px 0px 4px 10px; border: 0px; font: inherit; vertical-align: baseline; text-size-adjust: none;\">&nbsp;</li>\r\n</ul>', '', 'Otro', 'no', '', '', '', '', '', '', '280.00', '320.00', 'MXN', 'no', 0, 1, 1, 'No disponible para la venta', '2019-04-30 19:09:48', '2019-04-30 19:09:48', '2019-04-30 19:09:48', '6.00', '6.00', '15.00', '0.20', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (28, '5c9c1ff62ce0c3.78174962', '1', 'Divertidas moldes para hotcakes o huevo', 'divertidas-moldes-para-hotcakes-o-huevo', 'Prepara hotcakes en forma de conejo, buho o un radiante sol con estos moldes de silicon grado alimenticio. ', '<p>Divierte a tus niños cada mañana preparando un divertido desayuno. Nuestros moldes de silicón en forma de sol con nube, conejo o buho harán del desayuno una nueva experiencia. Hechos con silicón grado alimenticio puedes estar segura que tus desayunos solo serán divertidos y nutritivos.&nbsp;</p>', '', 'Otro', 'no', '', '', '', '', '', '', '106.00', '0.00', 'MXN', 'no', 35, 1, 1, 'No disponible para la venta', '2019-04-25 17:49:45', '2019-04-25 17:49:45', '2019-04-25 17:49:45', '0.00', '0.00', '0.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
@@ -10211,7 +10284,7 @@ INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOM
 (45, '5c9c1ff62ce0c3.78174962', '1', 'a', 'a', '', '', '', 'México', 'no', '', '', '', '', '', '', '1.00', '0.00', 'MXN', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 19:00:47', '2019-04-30 19:00:47', '2019-04-30 19:00:47', '1.00', '1.00', '1.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (46, '5c9c1ff62ce0c3.78174962', '1', 'Prefiltro', 'prefiltro', '', '', '', 'México', 'no', '', '', '', '', '', '', '2.00', '2.00', 'USD', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 19:02:16', '2019-04-30 19:02:16', '2019-04-30 19:02:16', '2.00', '2.00', '2.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (47, '5c9c1ff62ce0c3.78174962', '1', 'Válvula de paso ', 'válvula-de-paso', '', '', '', 'México', 'no', '', '', '', '', '', '', '10.00', '0.00', 'USD', 'no', 0, 1, 1, 'No disponible para la venta', '2019-04-30 19:03:02', '2019-05-01 00:16:26', '2019-04-30 19:03:02', '4.00', '4.00', '4.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(48, '5c9c1ff62ce0c3.78174962', '1', 'Soporte para cartucho ', 'soporte-para-cartucho', '', '', '', 'México', 'no', '', '', '', '', '', '', '25.00', '0.00', 'USD', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 19:04:06', '2019-04-30 19:04:06', '2019-04-30 19:04:06', '6.00', '10.00', '2.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(48, '5c9c1ff62ce0c3.78174962', '1', 'Soporte para cartucho ', 'soporte-para-cartucho', '', '', '', 'México', 'no', '', '', '', '', '', '', '25.00', '0.00', 'USD', 'no', 0, 1, 1, 'No disponible para la venta', '2019-04-30 19:04:06', '2019-05-01 02:20:52', '2019-04-30 19:04:06', '6.00', '10.00', '2.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (49, '5c9c1ff62ce0c3.78174962', '1', 'Válvula para filtro sobre el fregadero', 'válvula-para-filtro-sobre-el-fregadero', '', '', '', 'México', 'no', '', '', '', '', '', '', '25.00', '0.00', 'USD', 'no', 1, 1, 1, 'No disponible para la venta', '2019-04-30 19:05:31', '2019-04-30 19:05:31', '2019-04-30 19:05:31', '8.00', '6.00', '4.00', '0.01', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1);
 
 -- --------------------------------------------------------
@@ -11954,7 +12027,7 @@ INSERT INTO `usuarios` (`ID_USUARIO`, `USUARIO_NOMBRE`, `USUARIO_APELLIDOS`, `US
 ('5c08a9dc2cb096.56391251', 'JORGE', 'CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', '0000-00-00', '$2y$10$PUEif7/5WRJ22jQguwxq4uHoY1yL9nyuhOI3hfCm.t8Abg5qnnpfa', '2018-12-06 04:47:24', '2019-03-25 20:57:18', 'adm-6', 'si', 'activo'),
 ('5c9c1ff62ce0c3.78174962', 'ABANICO', 'SLM', 'tienda@abanicoytu.com', NULL, '0000-00-00', '$2y$10$XD53mwS1Zij.rhmtzNr/3eJ.OqVSeh8AZFOg3FtRi5Lfjl0QqQHSu', '2019-03-28 00:14:30', '2019-04-02 17:51:14', 'vnd-2', 'si', 'activo'),
 ('5ca4043cde1435.48493149', 'P', 'RP', 'peroplix@hotmail.com', NULL, '0000-00-00', '$2y$10$SuZUuccnVZEQsHGGwFagruoSGKYjE97YYy8PwaIIfzJnGlq/L2wDO', '2019-04-02 23:54:20', '2019-04-04 01:43:32', 'vns-4', 'si', 'activo'),
-('5ca7fc2217e2c3.68837078', 'Franco', 'Martínez Pérez', 'stmarmo@hotmail.com', NULL, '0000-00-00', '$2y$10$RHfxVLnxPlCq3K2zrErQ.eSqJooH1A9NX2DyWFFDp4w5SBZsXz8Yu', '2019-04-06 00:08:50', '2019-04-06 00:08:50', 'usr-1', 'si', 'activo'),
+('5ca7fc2217e2c3.68837078', 'Franco', 'Martínez Pérez', 'stmarmo@hotmail.com', NULL, '0000-00-00', '$2y$10$RHfxVLnxPlCq3K2zrErQ.eSqJooH1A9NX2DyWFFDp4w5SBZsXz8Yu', '2019-04-06 00:08:50', '2019-05-09 19:52:54', 'vnd-2', 'si', 'activo'),
 ('5cb3e89a74a543.21168150', 'AAAAAAA', 'EEEEEEE', 'ejemplo@conekta.com', '5555555555', '0000-00-00', '$2y$10$jHfp.iJs1S60GUqupRKTjOrtN003kEMfrcyvUEUvuemkyENgJgB/.', '2019-04-15 02:12:42', '2019-04-15 02:12:42', 'usr-1', 'si', 'activo'),
 ('5cbf2af567b4e4.45277430', 'Andres', 'Ruelas', 'pixelbiff@gmail.com', NULL, '0000-00-00', '$2y$10$Yr.RtgyBH2bw2i59plL3BeW./uEac6mae/z7DX3uNr/9i26c58iay', '2019-04-23 15:10:45', '2019-04-23 15:10:45', 'usr-1', 'si', 'activo');
 
@@ -12257,7 +12330,82 @@ INSERT INTO `vistas_generales` (`ID_VISTA`, `VISTA_IP`, `VISTA_CANTIDAD`, `ID_OB
 (247, '201.103.161.162', '1', 47, 'producto', '2019-05-01 00:16:10'),
 (248, '201.103.161.162', '1', 8, 'producto', '2019-05-01 00:23:36'),
 (249, '201.103.161.162', '1', 47, 'producto', '2019-05-01 00:23:45'),
-(250, '201.103.161.162', '1', 8, 'producto', '2019-05-01 00:23:51');
+(250, '201.103.161.162', '1', 8, 'producto', '2019-05-01 00:23:51'),
+(251, '201.103.161.162', '1', 48, 'producto', '2019-05-01 02:20:16'),
+(252, '201.103.161.162', '1', 17, 'producto', '2019-05-01 02:24:15'),
+(253, '201.103.161.162', '1', 22, 'producto', '2019-05-01 02:54:19'),
+(254, '201.103.161.162', '1', 22, 'producto', '2019-05-01 02:54:37'),
+(255, '201.103.161.162', '1', 22, 'producto', '2019-05-01 02:54:46'),
+(256, '201.103.161.162', '1', 7, 'producto', '2019-05-01 02:55:08'),
+(257, '201.103.161.162', '1', 7, 'producto', '2019-05-01 02:55:19'),
+(258, '187.190.156.190', '1', 26, 'producto', '2019-05-01 21:11:24'),
+(259, '187.190.156.190', '1', 26, 'producto', '2019-05-01 21:11:45'),
+(260, '187.190.156.190', '1', 26, 'producto', '2019-05-01 21:11:50'),
+(261, '187.190.156.190', '1', 26, 'producto', '2019-05-01 21:13:43'),
+(262, '187.190.156.190', '1', 26, 'producto', '2019-05-01 21:13:56'),
+(263, '187.190.156.190', '1', 26, 'producto', '2019-05-02 00:11:31'),
+(264, '189.146.238.6', '1', 27, 'producto', '2019-05-03 18:01:14'),
+(265, '189.146.238.6', '1', 40, 'producto', '2019-05-03 18:02:09'),
+(266, '189.146.238.6', '1', 17, 'producto', '2019-05-03 20:56:06'),
+(267, '189.146.238.6', '1', 40, 'producto', '2019-05-03 21:32:47'),
+(268, '189.146.238.6', '1', 40, 'producto', '2019-05-03 21:49:09'),
+(269, '189.146.238.6', '1', 40, 'producto', '2019-05-03 21:49:23'),
+(270, '189.146.238.6', '1', 40, 'producto', '2019-05-03 21:49:29'),
+(271, '189.146.238.6', '1', 40, 'producto', '2019-05-03 21:49:42'),
+(272, '189.146.238.6', '1', 47, 'producto', '2019-05-03 21:49:44'),
+(273, '189.146.238.6', '1', 28, 'producto', '2019-05-03 21:49:48'),
+(274, '189.146.238.6', '1', 34, 'producto', '2019-05-03 21:49:55'),
+(275, '189.146.238.6', '1', 22, 'producto', '2019-05-03 21:50:05'),
+(276, '189.146.238.6', '1', 40, 'producto', '2019-05-03 21:50:24'),
+(277, '189.146.238.6', '1', 7, 'producto', '2019-05-03 21:54:50'),
+(278, '189.146.238.6', '1', 40, 'producto', '2019-05-03 21:56:24'),
+(279, '189.146.238.6', '1', 40, 'producto', '2019-05-03 21:59:02'),
+(280, '189.146.238.6', '1', 40, 'producto', '2019-05-03 21:59:06'),
+(281, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:04:06'),
+(282, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:10:37'),
+(283, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:14:04'),
+(284, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:16:27'),
+(285, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:16:32'),
+(286, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:19:19'),
+(287, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:21:10'),
+(288, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:22:11'),
+(289, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:23:32'),
+(290, '189.146.238.6', '1', 5, 'producto', '2019-05-03 22:24:15'),
+(291, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:24:26'),
+(292, '189.146.238.6', '1', 2, 'producto', '2019-05-03 22:24:29'),
+(293, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:24:30'),
+(294, '189.146.238.6', '1', 3, 'producto', '2019-05-03 22:24:33'),
+(295, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:24:35'),
+(296, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:25:58'),
+(297, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:26:32'),
+(298, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:26:37'),
+(299, '189.146.238.6', '1', 40, 'producto', '2019-05-03 22:27:11'),
+(300, '189.146.238.6', '1', 7, 'producto', '2019-05-03 22:27:57'),
+(301, '189.146.238.6', '1', 5, 'producto', '2019-05-03 22:28:09'),
+(302, '189.146.238.6', '1', 8, 'producto', '2019-05-03 22:28:19'),
+(303, '189.146.238.6', '1', 14, 'producto', '2019-05-03 22:28:31'),
+(304, '189.146.238.6', '1', 24, 'producto', '2019-05-03 22:30:53'),
+(305, '187.178.95.76', '1', 14, 'producto', '2019-05-04 21:39:54'),
+(306, '68.197.93.106', '1', 25, 'producto', '2019-05-09 18:31:48'),
+(307, '68.197.93.106', '1', 25, 'producto', '2019-05-09 18:32:42'),
+(308, '187.170.181.158', '1', 25, 'producto', '2019-05-09 18:33:29'),
+(309, '187.170.181.158', '1', 46, 'producto', '2019-05-09 18:52:12'),
+(310, '187.170.181.158', '1', 14, 'producto', '2019-05-09 18:52:25'),
+(311, '187.170.181.158', '1', 27, 'producto', '2019-05-09 18:58:41'),
+(312, '187.170.181.158', '1', 43, 'producto', '2019-05-09 19:00:45'),
+(313, '187.170.181.158', '1', 1, 'servicio', '2019-05-09 19:23:34'),
+(314, '187.170.181.158', '1', 1, 'servicio', '2019-05-09 19:24:57'),
+(315, '187.170.181.158', '1', 1, 'servicio', '2019-05-09 19:25:40'),
+(316, '187.170.181.158', '1', 1, 'servicio', '2019-05-09 19:26:30'),
+(317, '187.170.181.158', '1', 1, 'servicio', '2019-05-09 19:26:34'),
+(318, '187.170.181.158', '1', 1, 'servicio', '2019-05-09 19:27:40'),
+(319, '187.170.181.158', '1', 15, 'producto', '2019-05-09 19:30:02'),
+(320, '187.170.181.158', '1', 1, 'servicio', '2019-05-09 19:30:46'),
+(321, '187.170.181.158', '1', 40, 'producto', '2019-05-09 19:42:11'),
+(322, '187.170.181.158', '1', 25, 'producto', '2019-05-09 20:05:56'),
+(323, '187.170.181.158', '1', 25, 'producto', '2019-05-09 20:08:42'),
+(324, '187.170.181.158', '1', 25, 'producto', '2019-05-09 20:14:24'),
+(325, '187.170.181.158', '1', 25, 'producto', '2019-05-09 20:30:25');
 
 --
 -- Índices para tablas volcadas
@@ -12610,7 +12758,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `categorias_productos`
 --
 ALTER TABLE `categorias_productos`
-  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 --
 -- AUTO_INCREMENT de la tabla `categorias_publicaciones`
 --
@@ -12640,7 +12788,7 @@ ALTER TABLE `datos_curiosos`
 -- AUTO_INCREMENT de la tabla `direcciones`
 --
 ALTER TABLE `direcciones`
-  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `divisas`
 --
@@ -12655,12 +12803,12 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `ID_FAVORITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_FAVORITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `galeria_productos`
 --
 ALTER TABLE `galeria_productos`
-  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 --
 -- AUTO_INCREMENT de la tabla `galeria_servicios`
 --
@@ -12690,7 +12838,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `ID_NOTIFICACION` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_NOTIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `opciones`
 --
@@ -12705,7 +12853,7 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_devoluciones`
 --
@@ -12715,17 +12863,17 @@ ALTER TABLE `pedidos_devoluciones`
 -- AUTO_INCREMENT de la tabla `pedidos_pagos`
 --
 ALTER TABLE `pedidos_pagos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_productos`
 --
 ALTER TABLE `pedidos_productos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_tiendas`
 --
 ALTER TABLE `pedidos_tiendas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `perfiles_servicios`
 --
@@ -12740,12 +12888,12 @@ ALTER TABLE `planes`
 -- AUTO_INCREMENT de la tabla `planes_pagos`
 --
 ALTER TABLE `planes_pagos`
-  MODIFY `ID_PAGO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PAGO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `planes_usuarios`
 --
 ALTER TABLE `planes_usuarios`
-  MODIFY `ID_PLAN_USUARIO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PLAN_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `preguntas_frecuentes`
 --
@@ -12810,7 +12958,7 @@ ALTER TABLE `slides`
 -- AUTO_INCREMENT de la tabla `tiendas`
 --
 ALTER TABLE `tiendas`
-  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_TIENDA` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `traducciones`
 --
@@ -12840,7 +12988,7 @@ ALTER TABLE `variaciones_simples_productos`
 -- AUTO_INCREMENT de la tabla `vistas_generales`
 --
 ALTER TABLE `vistas_generales`
-  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;COMMIT;
+  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=326;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

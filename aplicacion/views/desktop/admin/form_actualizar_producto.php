@@ -189,45 +189,46 @@
                     </div>
                     <div class="tab-pane fade <?php if($tab=='categoria'){ echo 'show active'; } ?> p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
                       <div class="row">
-                          <?php $i = 1; foreach($categorias as $categoria){ ?>
-                              <div class="col-12 border border-default p-3">
-                                <div class="card-header" id="headingOne">
-                                  <h5 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                      <h6 class="border-bottom pb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
-                                      <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
-                                    </button>
-                                  </h5>
-                                </div>
+                        <?php $i=1; foreach($categorias as $categoria){ ?>
+                            <div class="col-12 border border-default p-3">
+                              <h6 class="border-bottom pb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
+                              <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
+                              <div class="row">
+                              <?php foreach($segundo_categorias as $segunda_categoria){ ?>
+                                <div class="col-4">
+                                  <div class="border border-default p-3">
+                                    <div class="custom-control custom-radio">
+                                      <input  type="radio"
+                                              id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                                              name="CategoriaProducto" class="custom-control-input"
+                                              value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
 
-                                <div class="row collapse show" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <?php foreach($segundo_categorias as $segunda_categoria){ ?>
-                                  <div class="col-4">
-                                    <div class="border border-default p-3">
-                                    <h6 class="border-bottom pb-3"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h6>
-                                    <?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
-                                    <ul class="list list-unstyled">
-                                      <?php foreach($tercero_categorias as $tercera_categoria){ ?>
-                                      <li>
-                                        <div class="custom-control custom-radio">
-                                          <input  type="radio"
-                                                  id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                                  name="CategoriaProducto" class="custom-control-input"
-                                                  value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                                  <?php if($relacion_categorias['ID_CATEGORIA']==$tercera_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
-
-                                                  >
-                                          <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
-                                        </div>
-                                      </li>
-                                    <?php } ?>
-                                    </ul>
+                                              >
+                                      <label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
                                     </div>
+                                  <?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
+                                  <ul class="list list-unstyled">
+                                    <?php foreach($tercero_categorias as $tercera_categoria){ ?>
+                                    <li>
+                                      <div class="custom-control custom-radio">
+                                        <input  type="radio"
+                                                id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
+                                                name="CategoriaProducto" class="custom-control-input"
+                                                value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
+                                                <?php if($relacion_categorias['ID_CATEGORIA']==$tercera_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
+
+                                                >
+                                        <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
+                                      </div>
+                                    </li>
+                                  <?php } ?>
+                                  </ul>
                                   </div>
-                                <?php } ?>
                                 </div>
+                              <?php } ?>
                               </div>
-                          <?php ++$i; } ?>
+                            </div>
+                        <?php ++$i; } ?>
                       </div>
                     </div>
                     <div class="tab-pane fade <?php if($tab=='datos'){ echo 'show active'; } ?> p-3" id="datos" role="tabpanel" aria-labelledby="datos-tab">

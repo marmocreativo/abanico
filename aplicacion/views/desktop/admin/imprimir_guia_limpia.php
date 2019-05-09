@@ -49,6 +49,12 @@
             <tr>
               <td colspan="2">
               <h4><b>No.</b> <?php echo $pedido_tienda['GUIA_PAQUETERIA']; ?></h4>
+              <?php
+              require_once(APPPATH.'libraries/barcode/BarcodeGenerator.php');
+          		require_once(APPPATH.'libraries/barcode/BarcodeGeneratorHTML.php');
+          		$generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+          		echo $generator->getBarcode($pedido_tienda['GUIA_PAQUETERIA'], $generator::TYPE_CODE_128);
+              ?>
             </td>
             </tr>
           </table>
