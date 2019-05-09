@@ -721,8 +721,8 @@ color: #FF6600;
 | -------------------------------------------------------------------------
 */
 .serv-profile .jumbotron{
-  min-height: 250px;
-  background-size: cover;
+  min-height: 150px;
+  background-size: contain;
   background-image: url(https://images.pexels.com/photos/15964/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
 }
 .card-desc-servicio {
