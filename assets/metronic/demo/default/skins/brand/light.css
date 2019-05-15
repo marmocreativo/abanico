@@ -17,19 +17,19 @@
     .kt-header__topbar--mobile-on .kt-header-mobile {
       -webkit-box-shadow: none;
       box-shadow: none; }
-    .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler span {
+    .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toggler span {
       background: #b4b8ce; }
-      .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler span::before, .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler span::after {
+      .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toggler span::before, .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toggler span::after {
         background: #b4b8ce; }
-    .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler:hover span {
+    .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toggler:hover span {
       background: #5d78ff; }
-      .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler:hover span::before, .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler:hover span::after {
+      .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toggler:hover span::before, .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toggler:hover span::after {
         background: #5d78ff; }
-    .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler.kt-header-mobile__toolbar-toggler--active span {
+    .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toggler.kt-header-mobile__toggler--active span {
       background: #5d78ff; }
-      .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler.kt-header-mobile__toolbar-toggler--active span::before, .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler.kt-header-mobile__toolbar-toggler--active span::after {
+      .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toggler.kt-header-mobile__toggler--active span::before, .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toggler.kt-header-mobile__toggler--active span::after {
         background: #5d78ff; }
-    .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-topbar-toggler i {
+    .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__topbar-toggler i {
       color: #b4b8ce; }
-    .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-topbar-toggler.kt-header-mobile__toolbar-topbar-toggler--active i, .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-topbar-toggler:hover i {
+    .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__topbar-toggler.kt-header-mobile__topbar-toggler--active i, .kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__topbar-toggler:hover i {
       color: #5d78ff; } }
