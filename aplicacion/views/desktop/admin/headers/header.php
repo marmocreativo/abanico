@@ -1,97 +1,187 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Administradores Abanico</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="es">
 
-    <link rel="apple-touch-icon" href="<?php echo base_url(); ?>assets/global/img/favicon.png">
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/global/img/favicon.png">
+	<!-- begin::Head -->
+	<head>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/bootstrap.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/js/trumbowyg/ui/trumbowyg.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/administradores/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/administradores/css/style.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/estilos_abanico_administrador.css">
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-</head>
-<body>
-  <!-- Left Panel -->
-    <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
-              <?php $this->load->view('desktop/admin/widgets/menu_control_administrador'); ?>
+		<!--begin::Base Path (base relative path for assets of this page) -->
+		<base href="../">
 
-            </div><!-- /.navbar-collapse -->
-        </nav>
-    </aside>
-    <!-- Right Panel -->
-    <div id="right-panel" class="right-panel">
-        <!-- Header-->
-        <header id="header" class="header">
-            <div class="top-left">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="<?php echo base_url('admin'); ?>"><img src="<?php echo base_url(); ?>assets/administradores/images/logo.png" alt="Logo"></a>
-                    <a class="navbar-brand hidden" href="<?php echo base_url('admin'); ?>"><img src="<?php echo base_url(); ?>assets/administradores/images/logo.png" alt="Logo"></a>
-                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
-                </div>
-            </div>
-            <div class="top-right">
-                <div class="header-menu">
-                    <div class="header-left">
-                      <!--
-                        <div class="dropdown for-notification">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-bell"></i>
-                                <span class="count bg-danger">3</span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="notification">
-                                <p class="red">You have 3 Notification</p>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-check"></i>
-                                    <p>Server #1 overloaded.</p>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-info"></i>
-                                    <p>Server #2 overloaded.</p>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <i class="fa fa-warning"></i>
-                                    <p>Server #3 overloaded.</p>
-                                </a>
-                            </div>
-                        </div>
-                      -->
-                      <a href="<?php echo base_url(); ?>" class="btn btn-outline-primary btn-sm mt-2"><i class="fa fa-shopping-bag"></i> Volver a la tienda Principal</a>
-                      <a href="<?php echo base_url('usuario'); ?>" class="btn btn-outline-primary btn-sm mt-2"><i class="fa fa-user"></i> Panel de Control Usuario</a>
-                    </div>
+		<!--end::Base Path -->
+		<meta charset="utf-8" />
+		<title>Administrador | <?php echo $op['titulo_sitio'] ?></title>
+		<meta name="description" content="Latest updates and statistic charts">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="<?php echo base_url(); ?>assets/global/img/usuario_default.png" alt="Avatar">
-                        </a>
+		<!--begin::Fonts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+		<script>
+			WebFont.load({
+				google: {
+					"families": ["Poppins:300,400,500,600,700", "Asap+Condensed:500"]
+				},
+				active: function() {
+					sessionStorage.fonts = true;
+				}
+			});
+		</script>
 
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="<?php echo base_url('admin/usuarios/perfil?id_usuario='.$_SESSION['usuario']['id']);?>"><i class="fa fa- user"></i>Mi Perfil</a>
+		<!--end::Fonts -->
 
-                            <a class="nav-link" href="<?php echo base_url('login/cerrar');?>"><i class="fa fa-power -off"></i>Cerrar Sesión</a>
-                        </div>
-                    </div>
+		<!--begin::Page Vendors Styles(used by this page) -->
 
-                </div>
-            </div>
-        </header>
-        <!-- /#header -->
-        <!-- Content -->
-        <div class="content">
-            <!-- .animated -->
+		<!--end::Page Vendors Styles -->
+
+		<!--begin:: Global Mandatory Vendors -->
+		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
+
+		<!--end:: Global Mandatory Vendors -->
+
+		<!--begin:: Global Optional Vendors -->
+    <link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/iconpicker/dist/css/fontawesome-iconpicker.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/custom/jquery-ui/jquery-ui.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/summernote/dist/summernote.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/animate.css/animate.min.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/sweetalert2/dist/sweetalert2.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/custom/vendors/flaticon/flaticon.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/custom/vendors/flaticon2/flaticon.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+		<!--end:: Global Optional Vendors -->
+
+		<!--begin::Global Theme Styles(used by all pages) -->
+		<link href="<?php echo base_url('assets/metronic/'); ?>demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+
+		<!--end::Global Theme Styles -->
+
+		<!--begin::Layout Skins(used by all pages) -->
+
+		<!--end::Layout Skins -->
+		<link rel="shortcut icon" href="<?php echo base_url('assets/global/'); ?>img/favicon.png" />
+	</head>
+
+	<!-- end::Head -->
+
+	<!-- begin::Body -->
+	<body style="background-image: url(<?php echo base_url('assets/metronic/'); ?>media/demos/demo8/bg-1.jpg)" class="kt-page--fluid kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-page--loading">
+
+		<!-- begin:: Page -->
+
+		<!-- begin:: Header Mobile -->
+		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
+			<div class="kt-header-mobile__logo">
+				<a href="<?php echo base_url('admin'); ?>">
+					<img alt="Logo" src="<?php echo base_url('assets/metronic/'); ?>media/logos/logo-8-sm.png" />
+				</a>
+			</div>
+			<div class="kt-header-mobile__toolbar">
+				<button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button>
+				<button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more-1"></i></button>
+			</div>
+		</div>
+
+		<!-- end:: Header Mobile -->
+		<div class="kt-grid kt-grid--hor kt-grid--root">
+			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+
+					<!-- begin:: Header -->
+					<div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed " data-ktheader-minimize="on">
+						<div class="kt-header__top">
+							<div class="kt-container">
+
+								<!-- begin:: Brand -->
+								<div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
+									<div class="kt-header__brand-logo">
+										<a href="<?php echo base_url('admin'); ?>">
+											<img alt="Logo" src="<?php echo base_url('assets/metronic/'); ?>media/logos/logo-8.png" class="kt-header__brand-logo-default" />
+											<img alt="Logo" src="<?php echo base_url('assets/metronic/'); ?>media/logos/logo-8-inverse.png" class="kt-header__brand-logo-sticky" />
+										</a>
+									</div>
+								</div>
+
+								<!-- end:: Brand -->
+
+								<!-- begin:: Header Topbar -->
+								<div class="kt-header__topbar">
+                  <a href="<?php echo base_url(); ?>" class="btn btn-outline-light btn-sm mt-2"><i class="fa fa-shopping-bag"></i> Volver a la tienda Principal</a>
+                  <a href="<?php echo base_url('usuario'); ?>" class="btn btn-outline-light btn-sm mt-2"><i class="fa fa-user"></i> Panel de Control Usuario</a>
+									<?php $this->load->view('desktop/admin/widgets/widget_notificaciones'); ?>
+
+
+
+									<!--begin: User bar -->
+									<div class="kt-header__topbar-item kt-header__topbar-item--user">
+										<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,10px">
+											<img alt="Pic" src="<?php echo base_url('assets/'); ?>global/img/usuario_default.png" />
+											<span class="kt-header__topbar-icon kt-bg-brand kt-font-lg kt-font-bold kt-font-light kt-hidden">S</span>
+											<span class="kt-header__topbar-icon kt-hidden"><i class="flaticon2-user-outline-symbol"></i></span>
+										</div>
+										<div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
+
+											<!--begin: Head -->
+											<div class="kt-user-card kt-user-card--skin-light kt-notification-item-padding-x">
+												<div class="kt-user-card__avatar">
+													<img class="kt-hidden-" alt="Pic" src="<?php echo base_url('assets/'); ?>global/img/usuario_default.png" />
+
+													<!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+													<span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold kt-hidden">S</span>
+												</div>
+												<div class="kt-user-card__name">
+													<?php echo $_SESSION['usuario']['nombre']; ?>
+												</div>
+											</div>
+
+											<!--end: Head -->
+
+											<!--begin: Navigation -->
+											<div class="kt-notification">
+												<a href="<?php echo base_url('admin/usuarios/perfil?id_usuario='.$_SESSION['usuario']['id']); ?>" class="kt-notification__item">
+													<div class="kt-notification__item-icon">
+														<i class="flaticon2-calendar-3 kt-font-success"></i>
+													</div>
+													<div class="kt-notification__item-details">
+														<div class="kt-notification__item-title kt-font-bold">
+															Mi Perfil
+														</div>
+														<div class="kt-notification__item-time">
+															Datos personales y contraseña
+														</div>
+													</div>
+												</a>
+												<div class="kt-notification__custom kt-space-between">
+													<a href="<?php echo base_url('login/cerrar'); ?>" target="_blank" class="btn btn-clean btn-sm btn-bold">Cerrar Sesión</a>
+												</div>
+											</div>
+
+											<!--end: Navigation -->
+										</div>
+									</div>
+
+									<!--end: User bar -->
+
+								</div>
+
+								<!-- end:: Header Topbar -->
+							</div>
+						</div>
+						<div class="kt-header__bottom">
+							<div class="kt-container">
+
+								<!-- begin: Header Menu -->
+								<button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+								<div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
+									<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile ">
+										<?php $this->load->view('desktop/admin/widgets/menu_control_administrador'); ?>
+									</div>
+								</div>
+
+								<!-- end: Header Menu -->
+							</div>
+						</div>
+					</div>
+
+					<!-- end:: Header -->

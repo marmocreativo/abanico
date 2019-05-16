@@ -1,32 +1,81 @@
-</div>
-<!-- /.content -->
-<div class="clearfix"></div>
-<!-- Footer -->
-<footer class="site-footer">
-    <div class="footer-inner bg-white">
-        <div class="row">
-            <div class="col-sm-6">
-                Copyright &copy; 2019 Abanico
-            </div>
-        </div>
+<!-- begin:: Footer -->
+<div class="kt-footer kt-grid__item" id="kt_footer">
+  <div class="kt-container">
+    <div class="kt-footer__wrapper">
+      <div class="kt-footer__copyright">
+        2019&nbsp;&copy;&nbsp;<a href="<?php echo base_url(); ?>" target="_blank" class="kt-link">Abanico</a>
+      </div>
     </div>
-</footer>
-<!-- /.site-footer -->
+  </div>
 </div>
 
-<!-- Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/administradores/js/main.js"></script>
+<!-- end:: Footer -->
+</div>
+</div>
+</div>
+
+<!-- end:: Page -->
+
+
+
+<!-- begin::Scrolltop -->
+<div id="kt_scrolltop" class="kt-scrolltop">
+<i class="fa fa-arrow-up"></i>
+</div>
+
+<!-- end::Scrolltop -->
+
+
+<!-- begin::Global Config(global config for global JS sciprts) -->
+<script>
+var KTAppOptions = {
+"colors": {
+"state": {
+  "brand": "#716aca",
+  "light": "#ffffff",
+  "dark": "#282a3c",
+  "primary": "#5867dd",
+  "success": "#34bfa3",
+  "info": "#36a3f7",
+  "warning": "#ffb822",
+  "danger": "#fd3995"
+},
+"base": {
+  "label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
+  "shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
+}
+}
+};
+</script>
+
+<!-- end::Global Config -->
+
+<!--begin:: Global Mandatory Vendors -->
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/jquery/dist/jquery.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/custom/jquery-ui/jquery-ui.bundle.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/popper.js/dist/umd/popper.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/perfect-scrollbar/dist/perfect-scrollbar.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/sticky-js/dist/sticky.min.js" type="text/javascript"></script>
+
+<!--end:: Global Mandatory Vendors -->
+
+<!--begin:: Global Optional Vendors -->
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/iconpicker/dist/js/fontawesome-iconpicker.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/summernote/dist/summernote.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/summernote/lang/summernote-es-ES.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/custom/components/vendors/bootstrap-datepicker/init.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/dropzone/dist/dropzone.js" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/sweetalert2/dist/sweetalert2.min.js" type="text/javascript"></script>
+
+<!--end:: Global Optional Vendors -->
 <!--  Chart js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
-<!--Flot Chart-->
-<script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
-<!-- local -->
-<script src="<?php echo base_url(); ?>assets/administradores/js/widgets.js"></script>
+
+<!--begin::Global Theme Bundle(used by all pages) -->
+<script src="<?php echo base_url('assets/metronic/'); ?>demo/default/base/scripts.bundle.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/trumbowyg.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/plugins/cleanpaste/trumbowyg.cleanpaste.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/plugins/table/trumbowyg.table.min.js"></script>
@@ -39,5 +88,17 @@
 <?php $this->load->view('scripts/formularios_usuario');  ?>
 <?php $this->load->view('scripts/alertas_usuario');  ?>
 <?php $this->load->view('scripts/scripts_admin');  ?>
+
+<!--end::Global Theme Bundle -->
+
+<!--begin::Page Vendors(used by this page) -->
+
+<!--end::Page Vendors -->
+
+<!--begin::Page Scripts(used by this page) -->
+
+<!--end::Page Scripts -->
 </body>
+
+<!-- end::Body -->
 </html>
