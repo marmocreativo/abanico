@@ -130,16 +130,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		if($this->form_validation->run())
 		{
-			// URI
-			// Quito los acentos
-			$titulo = convert_accented_characters($this->input->post('TituloPublicacion'));
-			$url = url_title($titulo,'-',TRUE);
-			if($this->PublicacionesModel->verificar_uri($url)){
-				$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
-				if($this->PublicacionesModel->verificar_uri($url)){
-					$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
-				}
-			}
 			/*
 			PROCESO DE LA IMAGEN
 			*/
@@ -161,7 +151,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			// Parametros de la dirección
 			$parametros = array(
 				'PUBLICACION_TITULO' => $this->input->post('TituloPublicacion'),
-				'PUBLICACION_URL' => $url,
+				'PUBLICACION_URL' => $this->input->post('UrlPublicacion'),
 				'PUBLICACION_RESUMEN' => $this->input->post('ResumenPublicacion'),
 				'PUBLICACION_CONTENIDO' => $this->input->post('ContenidoPublicacion'),
 				'PUBLICACION_IMAGEN' => $imagen,

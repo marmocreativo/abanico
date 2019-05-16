@@ -158,6 +158,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PLAN_LIMITE_SERVICIOS' => $this->input->post('LimiteServiciosPlan'),
 				'PLAN_FOTOS_PRODUCTOS' => $this->input->post('FotosProductosPlan'),
 				'PLAN_FOTOS_SERVICIOS' => $this->input->post('FotosProductosPlan'),
+				'FECHA_INICIO' => $this->input->post('FechaInicio'),
+				'FECHA_FINAL' => $this->input->post('FechaFInal'),
 			);
 
 			$this->PlanesModel->actualizar_plan_usuario( $this->input->post('Identificador'),$parametros);

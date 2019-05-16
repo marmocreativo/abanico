@@ -147,7 +147,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				// Envio correo comprobante
 				$this->email->clear();
 				$this->email->from($this->data['op']['mailer_user'], 'Abanico Siempre lo Mejor');
-				$this->email->to($this->data['op']['correo_sitio']);
+				$this->email->to('pagos@abanicoytu.com');
 
 
 				$this->email->subject('Comprobante de pago '.$datos_pedido['PEDIDO_FOLIO']);
