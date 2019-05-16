@@ -299,7 +299,7 @@
               </div>
               <div class="nombre-ganador">
                 <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
-                Regístrate, Compra y Gana.<br>
+                Regístrate y Gana.<br>
                 <!--
                 <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
                 Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
@@ -339,7 +339,7 @@
                     Por Inauguración
                   </div>
                   <div class="nombre-ganador">
-                    Regístrate, Compra y Gana.<br>
+                    Regístrate y Gana.<br>
                     <!--
                     <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
                     Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b>

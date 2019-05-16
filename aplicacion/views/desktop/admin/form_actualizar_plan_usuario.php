@@ -214,6 +214,20 @@
                 </div>
               </div>
             </div>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+		              <label for="FechaInicio">Fecha Inicio</label>
+		              <input type="date" class="form-control" name="FechaInicio" id="FechaInicio" placeholder=""  value="<?php echo $plan['FECHA_INICIO'] ?>">
+		            </div>
+							</div>
+							<div class="col">
+								<div class="form-group">
+		              <label for="FechaTermino">Fecha Término</label>
+		              <input type="date" class="form-control" name="FechaTermino" id="FechaTermino" placeholder=""  value="<?php echo $plan['FECHA_TERMINO'] ?>">
+		            </div>
+							</div>
+						</div>
             <div class="row">
               <div class="col-12">
                 <div class="form-group">

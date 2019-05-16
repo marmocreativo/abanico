@@ -213,18 +213,6 @@
                 </div>
               </div>
             </div>
-						<div class="row">
-						 <div class="col-xs-6">
-							 <div class="form-group">
-	               <label for="FechaInicio">Fecha de inicio</label>
-	               <input type="date" class="form-control" name="FechaInicio"  placeholder=""  value="<?php echo $plan['FECHA_INICIO'] ?>">
-	             </div>
-							 <div class="form-group">
-	               <label for="FechaFinal">Fecha vigencia </label>
-	               <input type="date" class="form-control" name="FechaFinal"  placeholder=""  value="<?php echo $plan['FECHA_TERMINO'] ?>">
-	             </div>
-						 </div>
-						</div>
             <hr>
             <button type="submit" class="btn btn<?php echo $primary; ?> float-right" name="button"> <span class="fa fa-save"></span> Guardar</button>
           </form>
