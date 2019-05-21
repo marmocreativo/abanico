@@ -566,6 +566,36 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			);
 				// Creo el Servicio
 				$adjunto_id = $this->PagosPedidosModel->crear($parametros_pago);
+
+				// Preparo correo de revisión
+
+				$this->data['info'] = array();
+
+				$this->data['info']['Titulo'] = 'Se ha realizado un pago con PayPal | '.$folio;
+				$this->data['info']['Nombre'] = 'Por favor revisa que el comprobante sea valido y actualiza el estado del pedido a pagado';
+				$this->data['info']['Mensaje'] = '<p>Puedes revisar los detalles del plan en el administrador</p>';
+				$this->data['info']['TextoBoton'] = 'Iniciar sesión';
+				$this->data['info']['EnlaceBoton'] = base_url('admin/pedidos/detalles?id_pedido='.$pedido_id);
+				// Pedido General
+				$mensaje_abanico = $this->load->view('emails/mensaje_general',$this->data,true);
+
+				// Envio correos Generales
+				// Datos para enviar por correo
+				// Config General
+
+				$this->email->initialize($config);
+
+				// Envio correo comprobante
+				$this->email->clear();
+				$this->email->from($this->data['op']['mailer_user'], 'Abanico Siempre lo Mejor');
+				$this->email->to('pagos@abanicoytu.com');
+
+
+				$this->email->subject('Comprobante de pago '.$folio);
+				$this->email->message($mensaje_abanico);
+				// envio el correo
+
+				$this->email->send();
 			}
 
 			// Correos por tienda

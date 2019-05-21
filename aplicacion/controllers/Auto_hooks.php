@@ -51,6 +51,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		if($datos->data->object->payment_status=='paid'){
 		$folio = $datos->data->object->id;
 		$pago = $this->PagosPedidosModel->detalles_folio($folio);
+		$pedido = $this->PedidosModel->detalles($pago['ID_PEDIDO']);
 		$parametros_pago = array(
 			'PAGO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 			'PAGO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
@@ -64,6 +65,46 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s')
 		);
 		$this->PedidosModel->actualizar($pago['ID_PEDIDO'],$parametros_pedido);
+
+		// Preparo correo de revisión
+
+		$this->data['info'] = array();
+
+		$this->data['info']['Titulo'] = 'Se ha realizado un pago con OXXO | Pedido '.$pedido['PEDIDO_FOLIO'];
+		$this->data['info']['Nombre'] = 'Por favor revisa que el comprobante sea valido y actualiza el estado del pedido a pagado';
+		$this->data['info']['Mensaje'] = '<p>Puedes revisar los detalles del plan en el administrador</p>';
+		$this->data['info']['TextoBoton'] = 'Iniciar sesión';
+		$this->data['info']['EnlaceBoton'] = base_url('admin/pedidos/detalles?id_pedido='.$pedido['ID_PEDIDO']);
+		// Pedido General
+		$mensaje_abanico = $this->load->view('emails/mensaje_general',$this->data,true);
+
+		// Envio correos Generales
+		// Datos para enviar por correo
+		// Config General
+
+		$config['protocol']    = 'smtp';
+		$config['smtp_host']    = $this->data['op']['mailer_host'];
+		$config['smtp_port']    = $this->data['op']['mailer_port'];
+		$config['smtp_timeout'] = '7';
+		$config['smtp_user']    = $this->data['op']['mailer_user'];
+		$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+		$config['charset']    = 'utf-8';
+		$config['mailtype'] = 'html'; // or html
+		$config['validation'] = TRUE; // bool whether to validate email or not
+
+		$this->email->initialize($config);
+
+		// Envio correo comprobante
+		$this->email->clear();
+		$this->email->from($this->data['op']['mailer_user'], 'Abanico Siempre lo Mejor');
+		$this->email->to('pagos@abanicoytu.com');
+
+
+		$this->email->subject('Comprobante de pago '.$pedido['PEDIDO_FOLIO']);
+		$this->email->message($mensaje_abanico);
+		// envio el correo
+
+		$this->email->send();
 	}
 
 	}

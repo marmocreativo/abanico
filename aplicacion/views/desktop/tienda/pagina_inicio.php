@@ -294,17 +294,23 @@
                   <?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
                 </div>
                 <div class="titulo-ganador">
-                  Nuestro Ganador Mensual
+                  Por Inauguración
                 </div>
               </div>
               <div class="nombre-ganador">
                 <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
+                Regístrate y Gana.<br>
+                <!--
                 <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
                 Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
+                <-->
                 <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
               </div>
               <div class="premio-ganador text-primary">
+                Premios en Efectivo
+                <!--
                 Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
+              -->
               </div>
             </div>
           </div>
@@ -330,14 +336,20 @@
                     <span><?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?></span> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
                   </div>
                   <div class="titulo-ganador">
-                    Nuestro Ganador Mensual
+                    Por Inauguración
                   </div>
                   <div class="nombre-ganador">
+                    Regístrate y Gana.<br>
+                    <!--
                     <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
                     Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b>
+                  -->
                   </div>
                   <div class="premio-ganador">
+                    Premios en Efectivo
+                    <!--
                     Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
+                  -->
                   </div>
                 </div>
               </div>

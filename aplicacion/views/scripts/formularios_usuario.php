@@ -2,22 +2,22 @@
 // Popover
 jQuery('[data-toggle="popover"]').popover();
 // Editor Tinymce para todas las clases .Editor
-jQuery('.Editor').trumbowyg({
-  btns: [
-        ['viewHTML'],
-        ['undo', 'redo'], // Only supported in Blink browsers
-        ['formatting'],
-        ['strong', 'em', 'del'],
-        ['superscript', 'subscript'],
-        ['link'],
-        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-        ['unorderedList', 'orderedList'],
-        ['horizontalRule'],
-        ['removeformat'],
-        ['fullscreen'],
-        ['table']
+jQuery('.Editor').summernote({
+    lang: 'es-ES', // default: 'en-US'
+    height: 300,                 // set editor height
+    minHeight: null,             // set minimum height of editor
+    maxHeight: null,             // set maximum height of editor
+    focus: true,                  // set focus to editable area after initializing summernote
+    toolbar: [
+      // [groupName, [list of button]]
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['font', ['strikethrough', 'superscript', 'subscript']],
+      ['fontsize', ['fontsize']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['misc',['fullscreen','codeview']]
     ]
-});
+  });
 //
 // Cargo Los Paises
 jQuery.ajax({

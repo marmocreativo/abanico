@@ -1,3 +1,29 @@
+<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-grid--stretch">
+  <div class="kt-container kt-body kt-grid kt-grid--ver" id="kt_body">
+    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+
+      <!-- begin:: Subheader -->
+      <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-subheader__main">
+        </div>
+        <div class="kt-subheader__toolbar">
+        </div>
+      </div>
+
+      <!-- end:: Subheader -->
+
+      <!-- begin:: Content -->
+      <div class="kt-content kt-grid__item kt-grid__item--fluid" id="kt_content">
+
+        <!--Begin::Dashboard 8-->
+
+        <!--Begin::Section-->
+        <div class="row mb-3">
+          <div class="col-xl-12">
+
+            <!--begin:: Widgets/Trends-->
+            <div class="kt-portlet kt-portlet--head--noborder kt-portlet--height-fluid">
+              <div class="kt-portlet__body">
 <?php if(isset($_GET['id_usuario'])){ ?>
   <div class="row">
     <div class="col">
@@ -69,7 +95,7 @@
           <table class="table table-hover table-striped">
             <thead class="text-light bg<?php echo $primary; ?>">
               <tr>
-                <th class="text-center">Nombre</th>
+                <th class="text-left">Nombre</th>
                 <th class="text-center">Modelo</th>
                 <th class="text-center">Precio</th>
                 <th class="text-center">Estado</th>
@@ -79,7 +105,7 @@
             <tbody>
               <?php foreach($productos as $producto){ ?>
               <tr>
-                <td class="text-center"><?php echo $producto->PRODUCTO_NOMBRE; ?></td>
+                <td class="text-left"><?php echo $producto->PRODUCTO_NOMBRE; ?></td>
                 <td class="text-center"><?php echo $producto->PRODUCTO_MODELO; ?></td>
                 <td class="text-center">$<?php echo $producto->PRODUCTO_PRECIO; ?> <small>MXN</small></td>
                 <td class="text-center">
@@ -103,3 +129,18 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+
+<!--end:: Widgets/Trends-->
+</div>
+</div>
+<!--End::Section-->
+
+<!--End::Dashboard 8-->
+</div>
+
+<!-- end:: Content -->
+</div>
+</div>
+</div>

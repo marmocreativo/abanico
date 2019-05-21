@@ -91,6 +91,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					'PEDIDO_TIENDA_ESTADO'=> 'Enviado',
 				);
 				$parametros_pedido = array(
+					'PEDIDO_ESTADO_PEDIDO'=> 'Enviado',
 					'PEDIDO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
 				);
 				// Creo el Servicio
