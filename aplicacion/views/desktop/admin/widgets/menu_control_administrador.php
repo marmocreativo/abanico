@@ -117,6 +117,10 @@
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
           <a href="<?php echo base_url('admin/guias'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-file"></i></i><span class="kt-menu__link-text">Guías Abanico</span></a>
         </li>
+        <div class="dropdown-divider"></div>
+        <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+          <a href="<?php echo base_url('admin/planes'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-file"></i></i><span class="kt-menu__link-text">Planes Generales</span></a>
+        </li>
       </ul>
     </div>
   </li>

@@ -61,6 +61,21 @@ class PlanesModel extends CI_Model {
     $query = $this->db->get('planes_pagos');
     return $query->result();
   }
+  function lista_pagos_mes($id,$inicio,$fin){
+    $this->db->select('usuarios.*,planes_pagos.*,planes_usuarios.*');
+    $this->db->join('planes_usuarios','planes_pagos.ID_PLAN_USUARIO = planes_usuarios.ID_PLAN_USUARIO');
+    $this->db->join('usuarios','planes_usuarios.ID_USUARIO = usuarios.ID_USUARIO');
+    $this->db->group_start();
+    if(!empty($id)){
+      $this->db->where('planes_usuarios.ID_USUARIO',$id);
+    }
+    $this->db->where('planes_pagos.FECHA_PAGO >=',$inicio);
+    $this->db->where('planes_pagos.FECHA_PAGO <',$fin);
+    $this->db->where('planes_pagos.PAGO_ESTADO','pagado');
+    $this->db->group_end();
+    $query = $this->db->get('planes_pagos');
+    return $query->result();
+  }
   /*
     * Creo una nueva entrada usando los parámetros
  */

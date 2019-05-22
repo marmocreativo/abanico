@@ -12,6 +12,8 @@
           <h5>Acerca de Abanico</h5>
           <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'acerca'],'','');?>
           <ul class="list-unstyled">
+              <li> <a href="<?php echo base_url('planes'); ?>">Planes Vendedores</a> </li>
+                <li> <a href="<?php echo base_url('planes?tipo=servicios'); ?>">Planes Servicios</a> </li>
           <?php foreach($publicaciones_acerca as $publicacion){ ?>
             <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
           <?php } ?>
