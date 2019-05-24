@@ -63,15 +63,10 @@
                             <option value="Espera Pago" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Espera Pago'){ echo 'selected';} ?>>Espera Pago</option>
                             <option value="Pagado" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Pagado'){ echo 'selected';} ?>>Pagado</option>
                             <option value="Error Pago" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Error Pago'){ echo 'selected';} ?>>Error Pago</option>
-                            <option value="Pago Aceptado" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Pago Aceptado'){ echo 'selected';} ?>>Pago Aceptado</option>
-                            <option value="Preparacion" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Preparacion'){ echo 'selected';} ?>>Preparacion</option>
                             <option value="Envio Parcial" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Envio Parcial'){ echo 'selected';} ?>>Envio Parcial</option>
                             <option value="Enviado" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Enviado'){ echo 'selected';} ?>>Enviado</option>
                             <option value="Entregado" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Entregado'){ echo 'selected';} ?>>Entregado</option>
                             <option value="Cancelado" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Cancelado'){ echo 'selected';} ?>>Cancelado</option>
-                            <option value="Solicitud Devolucion" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Solicitud Devolucion'){ echo 'selected';} ?>>Solicitud Devolucion</option>
-                            <option value="Devolucion" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Devolucion'){ echo 'selected';} ?>>Devolucion</option>
-                            <option value="Devolucion Denegada" <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='Devolucion Denegada'){ echo 'selected';} ?>>Devolucion Denegada</option>
                           </select>
                       </div>
                       <div class="col-3">

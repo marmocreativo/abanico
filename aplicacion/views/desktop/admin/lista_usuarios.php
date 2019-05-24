@@ -52,7 +52,7 @@
             <table class="table table-hover table-striped">
               <thead class="text-light bg<?php echo $primary; ?>">
                 <tr>
-                  <th class="text-center">Nombre</th>
+                  <th class="text-left">Nombre</th>
                   <th class="text-center">Correo</th>
                   <th class="text-center">Estado</th>
                   <th class="text-right">Controles</th>
@@ -61,7 +61,7 @@
               <tbody>
                 <?php foreach($usuarios as $usuario){ ?>
                 <tr>
-                  <td class="text-center"><?php echo $usuario->USUARIO_NOMBRE.' '.$usuario->USUARIO_APELLIDOS; ?></td>
+                  <td class="text-left"><?php echo $usuario->USUARIO_NOMBRE.' '.$usuario->USUARIO_APELLIDOS; ?></td>
                   <td class="text-center"><?php echo $usuario->USUARIO_CORREO; ?></td>
                   <td class="text-center">
                       <?php
