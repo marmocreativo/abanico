@@ -95,8 +95,8 @@
           <table class="table table-hover table-striped">
             <thead class="text-light bg<?php echo $primary; ?>">
               <tr>
-                <th class="text-center">Nombre</th>
-                <th class="text-center">Servicio</th>
+                <th class="text-left">Nombre</th>
+                <th class="text-left">Servicio</th>
                 <th class="text-center">Estado</th>
                 <th class="text-right">Controles</th>
               </tr>
@@ -104,8 +104,8 @@
             <tbody>
               <?php foreach($servicios as $servicio){ ?>
               <tr>
-                <td class="text-center"><?php echo $servicio->USUARIO_NOMBRE; ?></td>
-                <td class="text-center"><?php echo $servicio->SERVICIO_NOMBRE; ?></td>
+                <td class="text-left"><?php echo $servicio->USUARIO_NOMBRE; ?></td>
+                <td class="text-left"><?php echo $servicio->SERVICIO_NOMBRE; ?></td>
                 <td class="text-center">
                   <?php if($servicio->SERVICIO_ESTADO=='activo'){ ?>
                     <a href="<?php echo base_url('admin/servicios/activar')."?id=".$servicio->ID_SERVICIO."&estado=".$servicio->SERVICIO_ESTADO."&id_usuario=".$servicio->ID_USUARIO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>

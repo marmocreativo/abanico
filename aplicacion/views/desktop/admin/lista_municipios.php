@@ -54,7 +54,7 @@
           <table class="table table-hover table-striped">
             <thead class="text-light bg<?php echo $primary; ?>">
               <tr>
-                <th class="text-center">Nombre</th>
+                <th class="text-left">Nombre</th>
                 <th class="text-center">Estado</th>
                 <th class="text-center">Municipio</th>
                 <th class="text-right">Controles</th>
@@ -63,7 +63,7 @@
             <tbody>
               <?php foreach($municipios as $municpio){ ?>
               <tr>
-                <td class="text-center"><?php echo $municpio->MUNICIPIO_NOMBRE; ?></td>
+                <td class="text-left"><?php echo $municpio->MUNICIPIO_NOMBRE; ?></td>
                 <td class="text-center"><?php echo $municpio->ESTADO_NOMBRE; ?></td>
                 <td class="text-center">
                   <?php if($municpio->MUNICIPIO_ESTADO=='activo'){ ?>

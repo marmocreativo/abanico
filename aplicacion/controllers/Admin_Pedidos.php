@@ -50,10 +50,10 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			// Reviso si hay id del usuario
 			if(isset($_GET['id_usuario'])){
-				$this->data['pedidos'] = $this->PedidosModel->lista_usuario('',$_GET['id_usuario'],'PEDIDO_FECHA_REGISTRO DESC','');
+				$this->data['pedidos'] = $this->PedidosModel->lista_usuario('',$_GET['id_usuario'],'ID_PEDIDO DESC','');
 				$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
 			}else{
-				$this->data['pedidos'] = $this->PedidosModel->lista('','PEDIDO_FECHA_REGISTRO DESC','');
+				$this->data['pedidos'] = $this->PedidosModel->lista('','ID_PEDIDO DESC','50');
 			}
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_pedidos',$this->data);
@@ -120,7 +120,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			// Actualizo Pago si es que es "Pagado"
 			if($this->input->post('EstadoPedido')=='Pagado'){
 				$parametros_pago = array(
-					'PAGO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 					'PAGO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
 					'PAGO_ESTADO'=> $this->input->post('EstadoPedido'),
 				);

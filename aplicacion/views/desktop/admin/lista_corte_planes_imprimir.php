@@ -49,57 +49,8 @@
     <div class="col">
       <?php retro_alimentacion(); ?>
       <div class="card">
-        <div class="card-header d-flex justify-content-between">
-          <form class="" action="<?php echo base_url('admin/corte_planes'); ?>" method="get">
-            <div class="titulo">
-              <h1 class="h6"> <span class="fa fa-box"></span> Corte Planes</h1>
-            </div>
-            <div class="formulario form-inline">
-              <div class="form-group mx-2">
-                <label for="MesCorte"> Mes </label>
-                <select class="form-control" name="MesCorte">
-                  <?php if(isset($_GET['MesCorte'])&&!empty($_GET['MesCorte'])){ $mes = $_GET['MesCorte']; }else{ $mes = date('m');}?>
-                  <option value="01" <?php if($mes=='01'){ echo 'selected'; } ?>>Enero</option>
-                  <option value="02" <?php if($mes=='02'){ echo 'selected'; } ?>>Febrero</option>
-                  <option value="03" <?php if($mes=='03'){ echo 'selected'; } ?>>Marzo</option>
-                  <option value="04" <?php if($mes=='04'){ echo 'selected'; } ?>>Abril</option>
-                  <option value="05" <?php if($mes=='05'){ echo 'selected'; } ?>>Mayo</option>
-                  <option value="06" <?php if($mes=='06'){ echo 'selected'; } ?>>Junio</option>
-                  <option value="07" <?php if($mes=='07'){ echo 'selected'; } ?>>Julio</option>
-                  <option value="08" <?php if($mes=='08'){ echo 'selected'; } ?>>Agosto</option>
-                  <option value="09" <?php if($mes=='09'){ echo 'selected'; } ?>>Septiembre</option>
-                  <option value="10" <?php if($mes=='10'){ echo 'selected'; } ?>>Octubre</option>
-                  <option value="11" <?php if($mes=='11'){ echo 'selected'; } ?>>Noviembre</option>
-                  <option value="12" <?php if($mes=='12'){ echo 'selected'; } ?>>Diciembre</option>
-                </select>
-              </div>
-              <div class="form-group mx-2">
-                <label for="AnioCorte"> Año </label>
-                <select class="form-control" name="AnioCorte">
-                  <?php if(isset($_GET['AnioCorte'])&&!empty($_GET['AnioCorte'])){ $anio = $_GET['AnioCorte']; }else{ $anio = date('Y');}?>
-                  <option value="2019" <?php if($anio=='2019'){ echo 'selected'; } ?>>2019</option>
-                  <option value="2020" <?php if($anio=='2020'){ echo 'selected'; } ?>>2020</option>
-                  <option value="2021" <?php if($anio=='2021'){ echo 'selected'; } ?>>2021</option>
-                  <option value="2022" <?php if($anio=='2022'){ echo 'selected'; } ?>>2022</option>
-                  <option value="2023" <?php if($anio=='2023'){ echo 'selected'; } ?>>2023</option>
-                </select>
-              </div>
-                <button type="submit" class="btn btn-primary btn-sm"> <i class="fa fa-search"></i> Buscar</button>
-            </div>
-          </form>
-        </div>
         <div class="card-body">
 
-            <input type="hidden" name="MesCorte" value="<?php echo $mes; ?>">
-            <input type="hidden" name="AnioCorte" value="<?php echo $anio; ?>">
-            <div class="card">
-              <div class="card-body">
-                <div class="btn-group pull-right" role="group" aria-label="Basic example">
-                  <a href="<?php echo base_url('admin/corte_planes/imprimir?MesCorte='.$mes.'&AnioCorte='.$anio) ?>" target="_blank" class="btn btn-info"> <i class="fa fa-print"></i> Imprimir</a>
-
-                </div>
-              </div>
-            </div>
             <?php
               // Variables generales (Fechas)
                 if(isset($_GET['MesCorte'])&&!empty($_GET['MesCorte'])&&isset($_GET['AnioCorte'])&&!empty($_GET['AnioCorte'])){
@@ -155,13 +106,6 @@
             <div class="card">
               <div class="card-body">
                 <h4>Depósitos totales: <b>$<?php echo $suma; ?></b></h4>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <div class="btn-group pull-right" role="group" aria-label="Basic example">
-                  <a href="<?php echo base_url('admin/corte_planes/imprimir?MesCorte='.$mes.'&AnioCorte='.$anio) ?>" target="_blank" class="btn btn-info"> <i class="fa fa-print"></i> Imprimir</a>
-                </div>
               </div>
             </div>
         </div>

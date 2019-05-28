@@ -132,7 +132,7 @@
     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
       <ul class="kt-menu__subnav">
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-          <a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=acerca'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-images"></i></i><span class="kt-menu__link-text">Sliders</span></a>
+          <a href="<?php echo base_url('admin/sliders'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-images"></i></i><span class="kt-menu__link-text">Sliders</span></a>
         </li>
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
           <a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=acerca'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-file"></i></i><span class="kt-menu__link-text">Acerca de Abanico</span></a>
