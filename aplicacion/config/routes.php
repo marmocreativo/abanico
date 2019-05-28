@@ -17,6 +17,8 @@ $route['translate_uri_dashes'] = FALSE;
 */
 
 // Rutas de Administrador
+$route['admin/corte_planes'] = 'Admin_CortePlanes';
+$route['admin/corte_planes/(:any)'] = 'Admin_CortePlanes/$1';
 $route['admin/corte_vendedores'] = 'Admin_CorteVendedores';
 $route['admin/corte_vendedores/(:any)'] = 'Admin_CorteVendedores/$1';
 $route['admin/premios'] = 'Admin_Premios';
@@ -114,6 +116,8 @@ $route['login'] = 'Autenticacion';
 $route['login/(:any)'] = 'Autenticacion/$1';
 
 // Rutas de tienda
+$route['planes'] = 'Tienda_Planes';
+$route['planes/(:any)'] = 'Tienda_Planes/$1';
 $route['premios'] = 'Tienda_Premios';
 $route['premios/(:any)'] = 'Tienda_Premios/vista/$1';
 $route['publicacion/(:any)'] = 'Tienda_Publicaciones/index/$1';

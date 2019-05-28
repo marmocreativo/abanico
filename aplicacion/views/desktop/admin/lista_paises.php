@@ -51,7 +51,7 @@
           <table class="table table-hover table-striped">
             <thead class="text-light bg<?php echo $primary; ?>">
               <tr>
-                <th class="text-center">Nombre</th>
+                <th class="text-left">Nombre</th>
                 <th class="text-center">Iso</th>
                 <th class="text-center">Estado</th>
                 <th class="text-right">Controles</th>
@@ -60,7 +60,7 @@
             <tbody>
               <?php foreach($paises as $pais){ ?>
               <tr>
-                <td class="text-center"><?php echo $pais->PAIS_NOMBRE; ?></td>
+                <td class="text-left"><?php echo $pais->PAIS_NOMBRE; ?></td>
                 <td class="text-center"><?php echo $pais->PAIS_ISO; ?></td>
                 <td class="text-center">
                   <?php if($pais->PAIS_ESTADO=='activo'){ ?>

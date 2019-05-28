@@ -42,7 +42,7 @@
         <table class="table table-sm table-hover table-striped">
           <thead class="text-light bg<?php echo $primary; ?>">
             <tr>
-              <th class="text-center">Nombre</th>
+              <th class="text-left">Nombre</th>
               <th class="text-center">Tipo</th>
               <th class="text-center">Mensualidad</th>
               <th class="text-center">Comisión</th>
@@ -53,7 +53,7 @@
           <tbody>
             <?php foreach($planes as $plan){ ?>
             <tr>
-              <td class="text-center"><?php echo $plan->PLAN_NOMBRE; ?></td>
+              <td class="text-left"><?php echo $plan->PLAN_NOMBRE; ?></td>
               <td class="text-center"><?php echo $plan->PLAN_TIPO; ?></td>
               <td class="text-center">$<?php echo $plan->PLAN_MENSUALIDAD; ?></td>
               <td class="text-center"><?php echo $plan->PLAN_COMISION; ?>%</td>
