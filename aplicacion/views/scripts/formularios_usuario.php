@@ -2,6 +2,7 @@
 // Popover
 jQuery('[data-toggle="popover"]').popover();
 // Editor Tinymce para todas las clases .Editor
+/*
 jQuery('.Editor').summernote({
     lang: 'es-ES', // default: 'en-US'
     height: 300,                 // set editor height
@@ -18,6 +19,12 @@ jQuery('.Editor').summernote({
       ['misc',['fullscreen','codeview']]
     ]
   });
+  */
+  $(function(){
+    $('.Editor').each(function(e){
+        CKEDITOR.replace( this.id, { customConfig: '/jblog/ckeditor/config_Large.js' });
+    });
+});
 //
 // Cargo Los Paises
 jQuery.ajax({

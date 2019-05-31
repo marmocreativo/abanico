@@ -64,8 +64,11 @@ var KTAppOptions = {
 <script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/iconpicker/dist/js/fontawesome-iconpicker.min.js" type="text/javascript"></script>
+<!--
 <script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/summernote/dist/summernote.js" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/summernote/lang/summernote-es-ES.js" type="text/javascript"></script>
+-->
+<script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
 <script src="<?php echo base_url('assets/metronic/'); ?>vendors/custom/components/vendors/bootstrap-datepicker/init.js" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/dropzone/dist/dropzone.js" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/sweetalert2/dist/sweetalert2.min.js" type="text/javascript"></script>
