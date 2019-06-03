@@ -167,9 +167,11 @@
                     data-id-tienda='<?php echo $datos_tienda['ID_TIENDA'];?>'
                     data-nombre-tienda='<?php echo $datos_tienda['TIENDA_NOMBRE'];?>'
                     data-importe-productos ='<?php echo $suma_tienda; ?>'
-                    data-id-transportista ='0'
-                    data-nombre-transportista ='0'
-                    data-importe-transportista ='0'
+                    data-id-transportista ='<?php echo $mejor_envio_abanico['ID_TRANSPORTISTA']; ?>'
+                    data-nombre-transportista ='<?php echo $mejor_envio_abanico['TRANSPORTISTA_NOMBRE']; ?>'
+                    data-importe-transportista ='<?php echo $mejor_envio_abanico['IMPORTE']; ?>'
+                    data-comision-venta ='<?php echo $paquete_tienda['PLAN_COMISION']; ?>'
+                    data-comision-manejo ='<?php echo $paquete_tienda['PLAN_MANEJO_PRODUCTOS']; ?>'
                     >
                   </span>
                     <?php
@@ -359,6 +361,8 @@
                     data-id-transportista ='<?php echo $mejor_envio_tiendas['ID_TRANSPORTISTA']; ?>'
                     data-nombre-transportista ='<?php echo $mejor_envio_tiendas['TRANSPORTISTA_NOMBRE']; ?>'
                     data-importe-transportista ='<?php echo $mejor_envio_tiendas['IMPORTE']; ?>'
+                    data-comision-venta ='<?php echo $paquete_tienda['PLAN_COMISION']; ?>'
+                    data-comision-manejo ='<?php echo $paquete_tienda['PLAN_MANEJO_PRODUCTOS']; ?>'
                     >
                   </span>
                     <?php } // Condicion Tiendas Abanico ?>

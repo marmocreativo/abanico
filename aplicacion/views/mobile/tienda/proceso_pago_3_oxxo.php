@@ -420,6 +420,8 @@
                 $_SESSION['pedido']['ImporteEnvioParcial'] = $_POST['ImporteEnvioParcial'];
                 $_SESSION['pedido']['ImporteEnvioTotal'] = $_POST['ImporteEnvioTotal'];
                 $_SESSION['pedido']['PedidosTiendas'] = $_POST['PedidosTiendas'];
+                $_SESSION['pedido']['ComisionServicioFinancieroPorcentaje'] = $_POST['ComisionServicioFinancieroPorcentaje'];
+                $_SESSION['pedido']['ComisionServicioFinancieroFijo'] = $_POST['ComisionServicioFinancieroFijo'];
                 $_SESSION['pedido']['ImporteTotal'] = $_POST['ImporteTotal'];
                 $_SESSION['pedido']['IdTransportista'] = $_POST['IdTransportista'];
                 $_SESSION['pedido']['NombreTransportista'] = $_POST['NombreTransportista'];
