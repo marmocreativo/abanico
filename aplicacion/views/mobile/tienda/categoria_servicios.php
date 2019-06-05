@@ -148,6 +148,12 @@
                 <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
               </ul>
               <h3 class="title text<?php echo $primary; ?>"><?php echo $titulo; ?> </h3>
+              <?php if($servicio->SERVICIO_TIPO=='digital'){ ?>
+                <span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span>
+              <?php }else{ ?>
+                <span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span>
+              <?php } ?>
+              <hr>
               <div class="">
                 <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
                   <a href="<?php echo base_url('servicio/favorito?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-outline-primary" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
@@ -188,6 +194,13 @@
                       ?>
                       <div class="border-top mt-3 pt-3">
                         <?php echo $descripcion_corta; ?>
+                      </div>
+                      <div class="pt-2 border-top">
+                        <?php if($servicio->SERVICIO_TIPO=='digital'){ ?>
+                          <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?></p>
+                        <?php }else{ ?>
+                          <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?></p>
+                        <?php } ?>
                       </div>
                       <hr>
                       <a href="<?php echo base_url('servicio/contacto?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-primary btn-block"> <i class="fa fa-paper-plane"></i> Contactar</a>
