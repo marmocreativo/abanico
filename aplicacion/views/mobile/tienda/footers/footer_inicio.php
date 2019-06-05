@@ -71,7 +71,11 @@
           <div class="row">
           <button type="button" id="BotonVaciar" class="btn btn-sm btn-outline-danger float-left"> <i class="fa fa-trash"></i> <?php echo $this->lang->line('carrito_vaciar'); ?></button>
           <button type="button" class="btn btn-sm btn-outline-primary ml-2" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i> <?php echo $this->lang->line('carrito_seguir_compranod'); ?></button>
-          <a href="<?php echo base_url('carrito'); ?>" id="BotonComprarAhora" class="btn btn-block btn-sm btn-primary mt-3"><i class="fa fa-money-bill"></i> <?php echo $this->lang->line('carrito_comprar_ahora'); ?></a>
+          <?php if($op['permitir_compra']=='si'){ ?>
+            <a href="<?php echo base_url('carrito'); ?>" id="BotonComprarAhora" class="btn btn-block btn-sm btn-primary mt-3" disabled><i class="fa fa-money-bill"></i> <?php echo $this->lang->line('carrito_comprar_ahora'); ?></a>
+          <?php }else{ ?>
+            <button type="button" class="btn btn-outline-primary-17" name="button" disabled>Compra próximamente</button>
+          <?php } ?>
           </div>
         </div>
       </div>

@@ -57,7 +57,8 @@
                 if(
                   !empty($paquete)&&
                   $producto['PRODUCTO_CANTIDAD']>0&&
-                  $producto['PRODUCTO_ESTADO']=='activo'
+                  $producto['PRODUCTO_ESTADO']=='activo'&&
+                  $op['permitir_compra']=='si'
                 ){ // Aquí se activa o desactiva la visibilidad del precio si el producto está a la venta
                 ?>
                 <?php
@@ -146,7 +147,12 @@
                 <?php } ?>
               </div>
 
-              <?php } ?>
+            <?php }else{ ?>
+              <div class="p-4 my-3 text-center border <?php echo 'border'.$primary.' '.'text'.$primary; ?>">
+                Compra próximamente
+              </div>
+            <?php } ?>
+
               <div class="card opiniones-serv">
                 <div class="card-body">
                   <?php $promedio_calificaciones = $promedio_calificaciones['CALIFICACION_ESTRELLAS']; $estrellas_restan= 5-$promedio_calificaciones; ?>

@@ -148,9 +148,9 @@
                           </div>
                           <div class="text-center">
                             <?php if($servicio->SERVICIO_TIPO=='digital'){ ?>
-                              <span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span>
+                              <h5><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span></h5>
                             <?php }else{ ?>
-                              <span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span>
+                              <h5><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span></h5>
                             <?php } ?>
                           </div>
                       </div>
