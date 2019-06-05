@@ -39,6 +39,13 @@
                 </nav>
                 <h2><?php echo $titulo; ?></h2>
                 <h6><?php echo $servicio['USUARIO_NOMBRE']; ?></h6>
+                <div class="pt-2 border-top">
+                  <?php if($servicio['SERVICIO_TIPO']=='digital'){ ?>
+                    <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?></p>
+                  <?php }else{ ?>
+                    <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?></p>
+                  <?php } ?>
+                </div>
             </div>
           </div>
           <div class="row mb-5">
