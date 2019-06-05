@@ -183,8 +183,7 @@
           <!-- /CUADRICULA PRODUCTOS -->
         <?php if(!$hay_productos){ ?>
           <div class="border border-default p-3 text-center">
-            <h3>No hemos encontrado productos.</h3>
-            <a href="<?php echo base_url('usuario/registrar'); ?>">Se el primero en ofrecer un producto en esta categoría</a>
+            <a href="<?php echo base_url('usuario/registrar'); ?>"><h3>Sé el primero en ofrecer productos en esta categoría.</h3></a>
           </div>
         <?php } ?>
 

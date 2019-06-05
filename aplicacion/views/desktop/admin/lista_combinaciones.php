@@ -101,6 +101,12 @@
                                 </div>
                               </div>
                             </div>
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="CantidadCombinacion">Cantidad en Existencia </label>
+                                <input type="number" class="form-control" id="CantidadCombinacion" name="CantidadCombinacion" required placeholder="" value="1">
+                              </div>
+                            </div>
                           </div>
                           <div class="row">
                             <div class="col">
@@ -148,6 +154,21 @@
                               </div>
                             </div>
                           </div>
+                          <div class="row">
+                            <div class="col-12">
+                              <label for="">Imagen</label>
+                            </div>
+                            <?php $i =0; foreach($galerias as $galeria){ ?>
+                              <div class="col-1 text-center">
+                                <label for="ImagenCombinacion-<?php echo $galeria->ID_GALERIA; ?>">
+                                  <img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO) ?>" class="img-fluid" alt="">
+                                  <hr>
+                                  <input class="form-check-input" type="radio" name="ImagenCombinacion" id="ImagenCombinacion-<?php echo $galeria->ID_GALERIA; ?>" <?php if($i==0){echo 'checked';} ?> value="<?php echo $galeria->GALERIA_ARCHIVO; ?>">
+                                </label>
+                              </div>
+                            <?php $i ++; } ?>
+                          </div>
+                          <hr>
                           <div class="row pt-3">
                             <div class="col">
                               <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> Agregar Combinación</button>
@@ -161,7 +182,9 @@
                           <tr>
                             <th>Grupo</th>
                             <th>Opción</th>
+                            <th>Cantidad</th>
                             <th>Precio</th>
+                            <th>Imagen</th>
                             <th class="text-right">Controles</th>
                           </tr>
                         </thead>
@@ -170,7 +193,9 @@
                           <tr>
                             <td><?php echo $combinacion->COMBINACION_GRUPO; ?></td>
                             <td><?php echo $combinacion->COMBINACION_OPCION; ?></td>
-                            <td><?php echo $combinacion->COMBINACION_PRECIO; ?></td>
+                            <td><?php echo $combinacion->COMBINACION_CANTIDAD; ?></td>
+                            <td>$<?php echo $combinacion->COMBINACION_PRECIO; ?></td>
+                            <td><img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$combinacion->COMBINACION_IMAGEN) ?>" width="100px;"></td>
                             <td>
                               <div class="btn-group float-right">
                                 <a href="<?php echo base_url('admin/productos_combinaciones/actualizar?id='.$combinacion->ID_COMBINACION); ?>" class="btn btn-sm btn-warning" title="Editar Combinacion"> <span class="fa fa-pencil-alt"></span> </a>

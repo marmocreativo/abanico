@@ -59,6 +59,12 @@
                                       </div>
                                     </div>
                                   </div>
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="CantidadCombinacion">Cantidad en Existencia </label>
+                                        <input type="number" class="form-control" id="CantidadCombinacion" name="CantidadCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_CANTIDAD']; ?>">
+                                    </div>
+                                  </div>
                                 </div>
                                 <div class="row">
                                   <div class="col">
@@ -106,6 +112,21 @@
                                     </div>
                                   </div>
                                 </div>
+                                <div class="row">
+                                  <div class="col-12">
+                                    <label for="">Imagen</label>
+                                  </div>
+                                  <?php foreach($galerias as $galeria){ ?>
+                                    <div class="col-1 text-center">
+                                      <label for="ImagenCombinacion-<?php echo $galeria->ID_GALERIA; ?>">
+                                        <img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO) ?>" class="img-fluid" alt="">
+                                        <hr>
+                                        <input class="form-check-input" type="radio" name="ImagenCombinacion" id="ImagenCombinacion-<?php echo $galeria->ID_GALERIA; ?>" <?php if($galeria->GALERIA_ARCHIVO==$combinacion['COMBINACION_IMAGEN']){ echo 'checked'; } ?> value="<?php echo $galeria->GALERIA_ARCHIVO; ?>">
+                                      </label>
+                                    </div>
+                                  <?php } ?>
+                                </div>
+                                <hr>
                                 <div class="row pt-3">
                                   <div class="col">
                                     <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> <?php echo $this->lang->line('usuario_form_producto_combinaciones_actualizar'); ?></button>
