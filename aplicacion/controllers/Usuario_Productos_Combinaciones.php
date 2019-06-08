@@ -24,6 +24,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->model('TiendasModel');
 			$this->load->model('ProductosCombinacionesModel');
 			$this->load->model('NotificacionesModel');
+			$this->load->model('GaleriasModel');
   }
 
 	public function index()
@@ -37,6 +38,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		if(!empty($this->data['tienda'])){
 				$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
 				$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'','');
+				$this->data['galerias'] = $this->GaleriasModel->lista($this->data['producto']['ID_PRODUCTO'],'','');
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/lista_combinaciones',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
@@ -64,6 +66,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					'COMBINACION_GRUPO'=> $this->input->post('GrupoCombinacion'),
 					'COMBINACION_OPCION'=> $this->input->post('OpcionCombinacion'),
 					'COMBINACION_PRECIO'=> $this->input->post('PrecioCombinacion'),
+					'COMBINACION_CANTIDAD'=> $this->input->post('CantidadCombinacion'),
+					'COMBINACION_IMAGEN'=> $this->input->post('ImagenCombinacion'),
 					'COMBINACION_ANCHO'=> $this->input->post('AnchoCombinacion'),
 					'COMBINACION_ALTO'=> $this->input->post('AltoCombinacion'),
 					'COMBINACION_PROFUNDO'=> $this->input->post('ProfundoCombinacion'),
@@ -82,6 +86,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				if(!empty($this->data['tienda'])){
 						$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
 						$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'','');
+						$this->data['galerias'] = $this->GaleriasModel->lista($this->data['producto']['ID_PRODUCTO'],'','');
 						$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 						$this->load->view($this->data['dispositivo'].'/usuarios/lista_combinaciones',$this->data);
 						$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
@@ -112,6 +117,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 						'COMBINACION_GRUPO'=> $this->input->post('GrupoCombinacion'),
 						'COMBINACION_OPCION'=> $this->input->post('OpcionCombinacion'),
 						'COMBINACION_PRECIO'=> $this->input->post('PrecioCombinacion'),
+						'COMBINACION_CANTIDAD'=> $this->input->post('CantidadCombinacion'),
+						'COMBINACION_IMAGEN'=> $this->input->post('ImagenCombinacion'),
 						'COMBINACION_ANCHO'=> $this->input->post('AnchoCombinacion'),
 						'COMBINACION_ALTO'=> $this->input->post('AltoCombinacion'),
 						'COMBINACION_PROFUNDO'=> $this->input->post('ProfundoCombinacion'),
@@ -130,6 +137,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					if(!empty($this->data['tienda'])){
 							$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
 							$this->data['combinacion'] = $this->ProductosCombinacionesModel->detalles($_GET['id']);
+							$this->data['galerias'] = $this->GaleriasModel->lista($this->data['producto']['ID_PRODUCTO'],'','');
 							$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 							$this->load->view($this->data['dispositivo'].'/usuarios/form_actualizar_combinaciones',$this->data);
 							$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);

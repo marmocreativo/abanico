@@ -36,6 +36,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('NotificacionesModel');
 		$this->load->model('NotificacionesModel');
 		$this->load->model('PublicacionesModel');
+		$this->load->model('TraduccionesModel');
 
 		// Variables comunes
 		$this->data['primary'] = "-info";

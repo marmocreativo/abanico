@@ -53,6 +53,8 @@
     <input type="hidden" name="ImporteEnvioParcial" value="<?php echo $envio_pedido_abanico ; ?>">
     <input type="hidden" name="ImporteEnvioTotal" value="<?php echo $envio_pedido_total ; ?>">
     <input type="hidden" name="PedidosTiendas" value="<?php echo $pedido_tienda ; ?>">
+    <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="0">
+    <input type="hidden" name="ComisionServicioFinancieroFijo" value="0">
     <input type="hidden" name="ImporteTotal" value="<?php echo $importe_total ; ?>">
     <input type="hidden" name="IdTransportista" value="<?php echo $id_transportista_abanico ; ?>">
     <input type="hidden" name="NombreTransportista" value="<?php echo $nombre_transportista_abanico ; ?>">
@@ -76,6 +78,13 @@
     <input type="hidden" name="ImporteEnvioParcial" value="<?php echo $envio_pedido_abanico ; ?>">
     <input type="hidden" name="ImporteEnvioTotal" value="<?php echo $envio_pedido_total ; ?>">
     <input type="hidden" name="PedidosTiendas" value="<?php echo $pedido_tienda ; ?>">
+
+    <?php
+      $porcentaje_servicio_financiero = 4.6;
+      $fijo_servicio_financiero = 0;
+    ?>
+    <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="<?php echo $porcentaje_servicio_financiero; ?>">
+    <input type="hidden" name="ComisionServicioFinancieroFijo" value="<?php echo $fijo_servicio_financiero; ?>">
     <input type="hidden" name="ImporteTotal" value="<?php echo $importe_total ; ?>">
     <input type="hidden" name="IdTransportista" value="<?php echo $id_transportista_abanico ; ?>">
     <input type="hidden" name="NombreTransportista" value="<?php echo $nombre_transportista_abanico ; ?>">
@@ -98,6 +107,12 @@
     <input type="hidden" name="ImporteEnvioParcial" value="<?php echo $envio_pedido_abanico ; ?>">
     <input type="hidden" name="ImporteEnvioTotal" value="<?php echo $envio_pedido_total ; ?>">
     <input type="hidden" name="PedidosTiendas" value="<?php echo $pedido_tienda ; ?>">
+    <?php
+      $porcentaje_servicio_financiero = 4.6;
+      $fijo_servicio_financiero = 4;
+    ?>
+    <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="<?php echo $porcentaje_servicio_financiero; ?>">
+    <input type="hidden" name="ComisionServicioFinancieroFijo" value="<?php echo $fijo_servicio_financiero; ?>">
     <input type="hidden" name="ImporteTotal" value="<?php echo $importe_total ; ?>">
     <input type="hidden" name="IdTransportista" value="<?php echo $id_transportista_abanico ; ?>">
     <input type="hidden" name="NombreTransportista" value="<?php echo $nombre_transportista_abanico ; ?>">

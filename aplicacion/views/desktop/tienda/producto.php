@@ -37,10 +37,12 @@
                 <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
                 <img src="<?php echo base_url($ruta_portada) ?>" class="img-fluid visor-galeria-producto" style="max-height:500px" alt="">
               </div>
-              <div class="card-deck no-gutters">
+              <div class="row">
                 <?php foreach($galerias as $galeria){ ?>
                   <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
-                <div class="card col-2 mx-1 slider-thumbs deck-imagenes" style="background-image:url('<?php echo base_url($ruta_galeria) ?>'); background-size:cover; background-position:center;">
+                  <div class="col-2 mb-2 px-1">
+                  <div class="card slider-thumbs deck-imagenes" style="background-image:url('<?php echo base_url($ruta_galeria) ?>'); background-size:contain; background-position:center; background-repeat:no-repeat;">
+                  </div>
                 </div>
                 <?php } ?>
               </div>
@@ -55,7 +57,8 @@
                 if(
                   !empty($paquete)&&
                   $producto['PRODUCTO_CANTIDAD']>0&&
-                  $producto['PRODUCTO_ESTADO']=='activo'
+                  $producto['PRODUCTO_ESTADO']=='activo'&&
+                  $op['permitir_compra']=='si'
                 ){ // Aquí se activa o desactiva la visibilidad del precio si el producto está a la venta
                 ?>
                 <?php
@@ -144,7 +147,12 @@
                 <?php } ?>
               </div>
 
-              <?php } ?>
+            <?php }else{ ?>
+              <div class="p-4 my-3 text-center border <?php echo 'border'.$primary.' '.'text'.$primary; ?>">
+                Compra con nosotros a partir de julio del 2019.
+              </div>
+            <?php } ?>
+
               <div class="card opiniones-serv">
                 <div class="card-body">
                   <?php $promedio_calificaciones = $promedio_calificaciones['CALIFICACION_ESTRELLAS']; $estrellas_restan= 5-$promedio_calificaciones; ?>

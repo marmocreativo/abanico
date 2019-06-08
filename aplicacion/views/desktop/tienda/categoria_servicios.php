@@ -146,6 +146,13 @@
                               <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$servicio->ID_SERVICIO)); ?>" class="btn btn-outline<?php echo $primary; ?>" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
                             <?php } ?>
                           </div>
+                          <div class="text-center">
+                            <?php if($servicio->SERVICIO_TIPO=='digital'){ ?>
+                              <h5><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span></h5>
+                            <?php }else{ ?>
+                              <h5><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span></h5>
+                            <?php } ?>
+                          </div>
                       </div>
                   </div>
                 </a>
@@ -177,6 +184,13 @@
                                 <div class="border-top mt-3 pt-3">
                                   <?php echo $descripcion_corta; ?>
                                 </div>
+                                <div class="pt-2 border-top">
+                                  <?php if($servicio->SERVICIO_TIPO=='digital'){ ?>
+                                    <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?></p>
+                                  <?php }else{ ?>
+                                    <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?></p>
+                                  <?php } ?>
+                                </div>
                                 <hr>
                                 <a href="<?php echo base_url('servicio/contacto?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-primary btn-block"> <i class="fa fa-paper-plane"></i> Contactar</a>
                               </div>
@@ -191,8 +205,7 @@
           </div>
             <?php if(!$hay_servicios){ ?>
               <div class="border border-default p-3 text-center">
-                <h3>No hemos encontrado servicios.</h3>
-                <a href="<?php echo base_url('usuario/registrar'); ?>">Se el primero en ofrecer un servicio en esta categoría</a>
+                <a href="<?php echo base_url('usuario/registrar'); ?>"><h3>Sé el primero en ofrecer servicios en esta categoría.</h3></a>
               </div>
             <?php } ?>
         </div>

@@ -94,6 +94,12 @@
                                       </div>
                                     </div>
                                   </div>
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="CantidadCombinacion">Cantidad en Existencia </label>
+                                      <input type="number" class="form-control" id="CantidadCombinacion" name="CantidadCombinacion" required placeholder="" value="1">
+                                    </div>
+                                  </div>
                                 </div>
                                 <div class="row">
                                   <div class="col">
@@ -141,6 +147,21 @@
                                     </div>
                                   </div>
                                 </div>
+                                <div class="row">
+                                  <div class="col-12">
+                                    <label for="">Imagen</label>
+                                  </div>
+                                  <?php $i =0; foreach($galerias as $galeria){ ?>
+                                    <div class="col-1 text-center">
+                                      <label for="ImagenCombinacion-<?php echo $galeria->ID_GALERIA; ?>">
+                                        <img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO) ?>" class="img-fluid" alt="">
+                                        <hr>
+                                        <input class="form-check-input" type="radio" name="ImagenCombinacion" id="ImagenCombinacion-<?php echo $galeria->ID_GALERIA; ?>" <?php if($i==0){echo 'checked';} ?> value="<?php echo $galeria->GALERIA_ARCHIVO; ?>">
+                                      </label>
+                                    </div>
+                                  <?php $i ++; } ?>
+                                </div>
+                                <hr>
                                 <div class="row pt-3">
                                   <div class="col">
                                     <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> <?php echo $this->lang->line('usuario_form_producto_combinaciones_agregar'); ?></button>
@@ -149,31 +170,35 @@
                               </form>
                             </div>
                             <h5> <i class="fa fa-sitemap"></i> <?php echo $this->lang->line('usuario_form_producto_combinaciones_actuales'); ?></h5>
-                            <table class="table table-sm">
-                              <thead>
-                                <tr>
-                                  <th><?php echo $this->lang->line('usuario_form_producto_combinaciones_grupo'); ?></th>
-                                  <th><?php echo $this->lang->line('usuario_form_producto_combinaciones_opcion'); ?></th>
-                                  <th><?php echo $this->lang->line('usuario_form_producto_combinaciones_precio'); ?></th>
-                                  <th class="text-right"><?php echo $this->lang->line('usuario_listas_generales_controles'); ?></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <?php foreach($combinaciones as $combinacion){ ?>
-                                <tr>
-                                  <td><?php echo $combinacion->COMBINACION_GRUPO; ?></td>
-                                  <td><?php echo $combinacion->COMBINACION_OPCION; ?></td>
-                                  <td><?php echo $combinacion->COMBINACION_PRECIO; ?></td>
-                                  <td>
-                                    <div class="btn-group float-right">
-                                      <a href="<?php echo base_url('usuario/productos_combinaciones/actualizar?id='.$combinacion->ID_COMBINACION); ?>" class="btn btn-sm btn-warning" title="<?php echo $this->lang->line('usuario_listas_generales_editar'); ?> <?php echo $this->lang->line('usuario_lista_combinaciones_singular'); ?>"> <span class="fa fa-pencil-alt"></span> </a>
-                                      <button data-enlace='<?php echo base_url('usuario/productos_combinaciones/borrar?id='.$combinacion->ID_COMBINACION); ?>' class="btn btn-sm btn-danger borrar_entrada" title="<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> <?php echo $this->lang->line('usuario_lista_combinaciones_singular'); ?>"> <span class="fa fa-trash"></span> </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                              <?php } ?>
-                              </tbody>
-                            </table>
+                          <table class="table table-sm">
+                            <thead>
+                              <tr>
+                                <th><?php echo $this->lang->line('usuario_form_producto_combinaciones_grupo'); ?></th>
+                                <th><?php echo $this->lang->line('usuario_form_producto_combinaciones_opcion'); ?></th>
+                                <th>Cantidad</th>
+                                <th><?php echo $this->lang->line('usuario_form_producto_combinaciones_precio'); ?></th>
+                                <th>Imagen</th>
+                                <th class="text-right"><?php echo $this->lang->line('usuario_listas_generales_controles'); ?></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php foreach($combinaciones as $combinacion){ ?>
+                              <tr>
+                                <td><?php echo $combinacion->COMBINACION_GRUPO; ?></td>
+                                <td><?php echo $combinacion->COMBINACION_OPCION; ?></td>
+                                <td><?php echo $combinacion->COMBINACION_CANTIDAD; ?></td>
+                                <td>$<?php echo $combinacion->COMBINACION_PRECIO; ?></td>
+                                <td><img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$combinacion->COMBINACION_IMAGEN) ?>" width="100px;"></td>
+                                <td>
+                                  <div class="btn-group float-right">
+                                    <a href="<?php echo base_url('admin/productos_combinaciones/actualizar?id='.$combinacion->ID_COMBINACION); ?>" class="btn btn-sm btn-warning" title="Editar Combinacion"> <span class="fa fa-pencil-alt"></span> </a>
+                                    <button data-enlace='<?php echo base_url('admin/productos_combinaciones/borrar?id='.$combinacion->ID_COMBINACION); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Combinacion"> <span class="fa fa-trash"></span> </button>
+                                  </div>
+                                </td>
+                              </tr>
+                            <?php } ?>
+                            </tbody>
+                          </table>
                           </div>
                         </div>
                       </div>

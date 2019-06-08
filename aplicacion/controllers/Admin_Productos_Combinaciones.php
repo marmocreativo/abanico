@@ -25,6 +25,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('ProductosModel');
 		$this->load->model('UsuariosModel');
 		$this->load->model('ProductosCombinacionesModel');
+		$this->load->model('GaleriasModel');
 		$this->load->model('EstadisticasModel');
 		$this->load->model('NotificacionesModel');
 
@@ -47,6 +48,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
 			$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'','');
+			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_combinaciones',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
@@ -86,6 +88,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'COMBINACION_GRUPO'=> $this->input->post('GrupoCombinacion'),
 				'COMBINACION_OPCION'=> $this->input->post('OpcionCombinacion'),
 				'COMBINACION_PRECIO'=> $this->input->post('PrecioCombinacion'),
+				'COMBINACION_CANTIDAD'=> $this->input->post('CantidadCombinacion'),
+				'COMBINACION_IMAGEN'=> $this->input->post('ImagenCombinacion'),
 				'COMBINACION_ANCHO'=> $this->input->post('AnchoCombinacion'),
 				'COMBINACION_ALTO'=> $this->input->post('AltoCombinacion'),
 				'COMBINACION_PROFUNDO'=> $this->input->post('ProfundoCombinacion'),
@@ -99,13 +103,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			// Redirección
 			redirect(base_url('admin/productos_combinaciones?id='.$this->input->post('IdProducto')));
     }else{
-			if(!isset($_GET['tipo_producto'])||empty($_GET['tipo_producto'])){ $this->data['tipo_producto']='normal'; }else{ $this->data['tipo_producto']=$_GET['tipo_producto']; }
-			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
-			$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_GET['id_usuario']);
-			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
-			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
-			$this->load->view($this->data['dispositivo'].'/admin/form_producto',$this->data);
-			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+			$this->session->set_flashdata('alerta', 'Combinación No creada');
+			redirect(base_url('admin/productos_combinaciones?id='.$this->input->post('IdProducto')));
 		}
 	}
 
@@ -124,6 +123,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					'COMBINACION_GRUPO'=> $this->input->post('GrupoCombinacion'),
 					'COMBINACION_OPCION'=> $this->input->post('OpcionCombinacion'),
 					'COMBINACION_PRECIO'=> $this->input->post('PrecioCombinacion'),
+					'COMBINACION_CANTIDAD'=> $this->input->post('CantidadCombinacion'),
+					'COMBINACION_IMAGEN'=> $this->input->post('ImagenCombinacion'),
 					'COMBINACION_ANCHO'=> $this->input->post('AnchoCombinacion'),
 					'COMBINACION_ALTO'=> $this->input->post('AltoCombinacion'),
 					'COMBINACION_PROFUNDO'=> $this->input->post('ProfundoCombinacion'),
@@ -141,6 +142,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['combinacion'] = $this->ProductosCombinacionesModel->detalles($_GET['id']);
 			$this->data['producto'] = $this->ProductosModel->detalles($this->data['combinacion']['ID_PRODUCTO']);
 			$this->data['usuario_producto'] = $this->UsuariosModel->detalles($this->data['producto']['ID_USUARIO']);
+			$this->data['galerias'] = $this->GaleriasModel->lista($this->data['producto']['ID_PRODUCTO'],'','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_combinaciones',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
@@ -149,48 +151,19 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function borrar()
 	{
-		$producto = $this->ProductosModel->detalles($_GET['id']);
+		$combinacion = $this->ProductosCombinacionesModel->detalles($_GET['id']);
 
         // check if the institucione exists before trying to delete it
-        if(isset($producto['ID_PRODUCTO']))
+        if(isset($combinacion['ID_COMBINACION']))
         {
-            $this->ProductosModel->borrar($_GET['id']);
+            $this->ProductosCombinacionesModel->borrar($_GET['id']);
 						// Mensaje de Feedback
-						$this->session->set_flashdata('exito', 'Producto Borrado');
+						$this->session->set_flashdata('exito', 'Combinación Borrada');
 						// Redirección
-            redirect(base_url('admin/productos?id_usuario=').$_GET['id_usuario']);
+            redirect(base_url('admin/productos_combinaciones?id=').$combinacion['ID_PRODUCTO']);
         } else {
-
 	         	show_error('La entrada que deseas borrar no existe');
 				}
-	}
-	public function borrar_galeria()
-	{
-		$galeria = $this->GaleriasModel->detalles($_GET['id']);
-				// check if the institucione exists before trying to delete it
-				if(isset($galeria['ID_GALERIA']))
-				{
-						$this->GaleriasModel->borrar($_GET['id']);
-						redirect(base_url('admin/productos/actualizar?id=').$_GET['id_producto']);
-				} else {
 
-						show_error('La entrada que deseas borrar no existe');
-				}
-	}
-	public function portada()
-	{
-		$this->GaleriasModel->portada($_GET['id_producto'],$_GET['id']);
-		redirect(base_url('admin/productos/actualizar?id=').$_GET['id_producto']);
-	}
-	public function activar()
-	{
-		$this->ProductosModel->activar($_GET['id'],$_GET['estado']);
-		redirect(base_url('admin/productos/usuario?id_usuario='.$_GET['id_usuario']));
-	}
-	public function estado()
-	{
-	}
-	public function orden()
-	{
 	}
 }

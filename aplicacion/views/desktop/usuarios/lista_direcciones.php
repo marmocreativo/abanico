@@ -34,7 +34,8 @@
                     <td><?php echo $direccion->DIRECCION_TIPO; ?></td>
                     <td>
                       <div class="btn-group float-right">
-                        <a href="<?php echo base_url('usuario/direcciones/actualizar?id='.$direccion->ID_DIRECCION); ?>" class="btn btn-sm btn-warning" title="<?php echo $this->lang->line('usuario_listas_generales_editar'); ?> <?php echo $this->lang->line('usuario_lista_direcciones_singular'); ?>"> <span class="fa fa-pencil-alt"></span> </a>
+                        <!--
+                        <a href="<?php echo base_url('usuario/direcciones/actualizar?id='.$direccion->ID_DIRECCION); ?>" class="btn btn-sm btn-warning" title="<?php echo $this->lang->line('usuario_listas_generales_editar'); ?> <?php echo $this->lang->line('usuario_lista_direcciones_singular'); ?>"> <span class="fa fa-pencil-alt"></span> </a>-->
                         <button data-enlace='<?php echo base_url('usuario/direcciones/borrar?id='.$direccion->ID_DIRECCION); ?>' class="btn btn-sm btn-danger borrar_entrada" title="<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> <?php echo $this->lang->line('usuario_lista_direcciones_singular'); ?>"> <span class="fa fa-trash"></span> </button>
                       </div>
                     </td>

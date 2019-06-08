@@ -54,6 +54,7 @@
 
 		<!--begin::Global Theme Styles(used by all pages) -->
 		<link href="<?php echo base_url('assets/metronic/'); ?>demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/metronic/'); ?>demo/default/base/custom.css?v=<?php echo date('U'); ?>" rel="stylesheet" type="text/css" />
 
 		<!--end::Global Theme Styles -->
 
@@ -74,7 +75,7 @@
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
 				<a href="<?php echo base_url('admin'); ?>">
-					<img alt="Logo" src="<?php echo base_url('assets/metronic/'); ?>media/logos/logo-8-sm.png" />
+					<img alt="Logo" src="<?php echo base_url('assets/metronic/'); ?>media/logos/logo-8.png" />
 				</a>
 			</div>
 			<div class="kt-header-mobile__toolbar">

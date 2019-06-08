@@ -318,7 +318,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['usuarios'] = $this->UsuariosModel->lista([ 'USUARIO_ESTADO'=>'activo' ],'','','');
 			$this->data['usuario_producto'] = $this->UsuariosModel->detalles($this->data['producto']['ID_USUARIO']);
 			$this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['usuario_producto']['ID_USUARIO']);
-			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'','5');
+			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'','');
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 			$this->data['relacion_categorias'] = $this->CategoriasProductoModel->lista($_GET['id']);
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
@@ -330,19 +330,20 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function borrar()
 	{
 		$producto = $this->ProductosModel->detalles($_GET['id']);
+		// check if the institucione exists before trying to delete it
+		 if(isset($producto['ID_PRODUCTO']))
+		{
+			$parametros = array( 'PRODUCTO_ESTADO' => 'borrado');
+			$this->ProductosModel->actualizar( $_GET['id'],$parametros);
 
-        // check if the institucione exists before trying to delete it
-        if(isset($producto['ID_PRODUCTO']))
-        {
-            $this->ProductosModel->borrar($_GET['id']);
-						// Mensaje de Feedback
-						$this->session->set_flashdata('exito', 'Producto Borrado');
-						// Redirección
-            redirect(base_url('admin/productos?id_usuario=').$_GET['id_usuario']);
-        } else {
+			$this->session->set_flashdata('exito', 'Producto borrado');
+			// redirección
+			 redirect(base_url('admin/productos?id_usuario=').$_GET['id_usuario']);
+		} else {
 
-	         	show_error('La entrada que deseas borrar no existe');
-				}
+				show_error('La entrada que deseas borrar no existe');
+		}
+
 	}
 	public function borrar_galeria()
 	{

@@ -24,6 +24,7 @@ class PerfilServiciosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
+    $this->db->where('PERFIL_ESTADO !=','borrado');
     $query = $this->db->get('perfiles_servicios');
     return $query->result();
   }

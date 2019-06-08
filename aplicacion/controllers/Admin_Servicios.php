@@ -314,20 +314,21 @@ public function borrar_adjunto()
 
 	public function borrar()
 	{
-		$servicio = $this->ServiciosModel->detalles($_GET['id']);
+		$Servicio = $this->ServiciosModel->detalles($_GET['id']);
+		// check if the institucione exists before trying to delete it
+		 if(isset($Servicio['ID_SERVICIO']))
+		{
+			$parametros = array( 'SERVICIO_ESTADO' => 'borrado');
+			$this->ServiciosModel->actualizar( $_GET['id'],$parametros);
 
-        // check if the institucione exists before trying to delete it
-        if(isset($servicio['ID_SERVICIO']))
-        {
-            $this->ServiciosModel->borrar($_GET['id']);
-						// Mensaje de Feedback
-						$this->session->set_flashdata('exito', 'Servicio Borrado');
-						// Redirección
-            redirect(base_url('admin/servicios?id_usuario=').$_GET['id_usuario']);
-        } else {
+			$this->session->set_flashdata('exito', 'Servicio borrado');
+			// redirección
+			 redirect(base_url('admin/servicios?id_usuario=').$_GET['id_usuario']);
+		} else {
 
-	         	show_error('La entrada que deseas borrar no existe');
-				}
+				show_error('La entrada que deseas borrar no existe');
+		}
+
 	}
 	public function borrar_galeria()
 	{

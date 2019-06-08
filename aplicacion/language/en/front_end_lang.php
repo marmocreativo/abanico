@@ -126,11 +126,15 @@ $lang['filtro_categoria_servicios_filtrar_por'] = 'Filter by';
 $lang['pagina_servicio_migas_servicio'] = 'Service';
 $lang['pagina_servicio_descripcion_titulo'] = 'Description';
 $lang['pagina_servicio_adjuntos_titulo'] = 'Attachment';
-$lang['pagina_servicio_zona_trabajo'] = 'Work Zone';
+$lang['pagina_servicio_zona_trabajo'] = 'Location';
 $lang['pagina_servicio_zona_trabajo_pais'] = 'Country';
 $lang['pagina_servicio_zona_trabajo_estado'] = 'State';
-$lang['pagina_servicio_zona_servicio'] = 'Work Zone';
+$lang['pagina_servicio_zona_servicio'] = 'Service Zone';
 $lang['pagina_servicio_boton_contactar'] = 'Contact';
+$lang['pagina_servicio_profesional'] = 'On-site';
+$lang['pagina_servicio_digital'] = 'Remote service';
+$lang['pagina_servicio_profesional_descripcion'] = 'This service is provided at the place where it is required';
+$lang['pagina_servicio_digital_descripcion'] = 'This service can be provided online';
 
 $lang['pagina_servicio_calificaciones_promedio'] = 'Rate';
 $lang['pagina_servicio_calificaciones_opiniones'] = 'User Opinions';

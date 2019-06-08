@@ -348,9 +348,30 @@
       </div>
 
       <div class="col-12 mt-3 pt-3 border-top">
-        <h3>Datos Curiosos</h3>
-        <a href="https://twitter.com/intent/tweet?button_hashtag=AbanicoSiempreLoMejor&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #AbanicoSiempreLoMejor</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        <a class="twitter-timeline" href="https://twitter.com/stMaRmO/timelines/1106610018290417664?ref_src=twsrc%5Etfw">AbanicoDatosCuriosos - Curated tweets by stMaRmO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <div class="col d-flex align-items-center">
+        <div class="contenedor-ganador text-center">
+          <div class="container-fluid head-ganador">
+            <div class="titulo-ganador">
+              Próximamente
+            </div>
+          </div>
+          <div class="nombre-ganador">
+            <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
+            Concursos en redes sociales<br>
+            <!--
+            <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
+            Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
+            <-->
+            <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
+          </div>
+          <div class="premio-ganador text-primary">
+
+            <!--
+            Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
+          -->
+          </div>
+        </div>
+      </div>
       </div>
 
     </div>

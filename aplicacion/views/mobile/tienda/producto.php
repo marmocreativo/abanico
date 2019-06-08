@@ -45,7 +45,8 @@
           if(
             !empty($paquete)&&
             $producto['PRODUCTO_CANTIDAD']>0&&
-            $producto['PRODUCTO_ESTADO']=='activo'
+            $producto['PRODUCTO_ESTADO']=='activo'&&
+            $op['permitir_compra']=='si'
           ){ // Aquí se activa o desactiva la visibilidad del precio si el producto está a la venta
           ?>
           <?php
@@ -134,7 +135,11 @@
             </div>
           <?php } ?>
         </div>
-        <?php } ?>
+      <?php }else{ ?>
+        <div class="p-4 my-3 text-center border <?php echo 'border'.$primary.' '.'text'.$primary; ?>">
+          Compra con nosotros a partir de julio del 2019.
+        </div>
+      <?php } ?>
       </div>
 
       <div class="col-12">

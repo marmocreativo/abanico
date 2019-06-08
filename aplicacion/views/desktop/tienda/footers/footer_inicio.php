@@ -69,7 +69,11 @@
       <div class="modal-footer">
         <button type="button" id="BotonVaciar" class="btn btn-link float-left"><i class="fas fa-trash text-primary-17"></i> <?php echo $this->lang->line('carrito_vaciar'); ?></button>
         <button type="button" class="btn btn-link" data-dismiss="modal" aria-label="Close"><i class="fas fa-check-circle text-primary-17"></i> <?php echo $this->lang->line('carrito_seguir_compranod'); ?></button>
+        <?php if($op['permitir_compra']=='si'){ ?>
         <a href="<?php echo base_url('carrito'); ?>" id="BotonComprarAhora" class="btn btn-primary-17 text-white" aria-disabled="false"><?php echo $this->lang->line('carrito_comprar_ahora'); ?></a>
+        <?php }else{ ?>
+          <button type="button" class="btn btn-outline-primary-17" name="button" disabled>Compra próximamente</button>
+        <?php } ?>
       </div>
     </div>
   </div>

@@ -55,15 +55,15 @@
              <h6><span class="fa fa-file-invoice"></span> <?php echo $this->lang->line('usuario_form_tienda_datos_fiscales'); ?></h6>
              <div class="form-group">
                 <label for="RazonSocialTienda"><?php echo $this->lang->line('usuario_vista_tienda_razon'); ?></label>
-               <input type="text" class="form-control form-control-sm" id="RazonSocialTienda" name="RazonSocialTienda" required="" placeholder="" value="">
+               <input type="text" class="form-control form-control-sm" id="RazonSocialTienda" name="RazonSocialTienda"  placeholder="" value="">
              </div>
              <div class="form-group">
                <label for="RfcTienda"><?php echo $this->lang->line('usuario_vista_tienda_rfc'); ?></label>
-               <input type="text" class="form-control form-control-sm" id="RfcTienda" name="RfcTienda" required="" placeholder="" value="">
+               <input type="text" class="form-control form-control-sm" id="RfcTienda" name="RfcTienda" placeholder="" value="">
              </div>
              <div class="form-group">
                 <label for="TelefonoTienda"><?php echo $this->lang->line('usuario_vista_tienda_telefono'); ?></label>
-               <input type="text" class="form-control form-control-sm" id="TelefonoTienda" name="TelefonoTienda" required="" placeholder="" value="">
+               <input type="text" class="form-control form-control-sm" id="TelefonoTienda" name="TelefonoTienda" placeholder="" value="">
              </div>
              <h6> <span class="fa fa-building"></span> <?php echo $this->lang->line('usuario_vista_tienda_direccion_fiscal'); ?></h6>
              <input type="hidden" name="TipoDireccion" value="fiscal">

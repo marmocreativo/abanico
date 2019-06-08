@@ -76,9 +76,9 @@
               <td class="text-right">
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <a href="<?php echo base_url('admin/divisas/actualizar')."?id=".$divisa->ID_DIVISA; ?>" class="btn btn-sm btn-warning" title="Editar Divisa"> <span class="fa fa-pencil-alt"></span> </a>
-                  <?php if($divisa->ID_DIVISA!=$op['divisa_predeterminada']){ ?>
+                  <!--
                     <button type="button" class="btn btn-danger btn-sm borrar_entrada" data-enlace="<?php echo base_url('admin/divisas/borrar')."?id=".$divisa->ID_DIVISA; ?>" title="Eliminar Divisa"><span class="fa fa-trash"></span></button>
-                  <?php } ?>
+                  -->
                 </div>
               </td>
             </tr>

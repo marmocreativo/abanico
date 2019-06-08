@@ -27,6 +27,14 @@
       <div class="col-12 mb-4">
         <h4 class="h4 product-title mb-2"><?php echo $titulo; ?> </h4>
         <?php echo $servicio['USUARIO_NOMBRE']; ?>
+        <div class="pt-2 border-top">
+          <?php if($servicio['SERVICIO_TIPO']=='digital'){ ?>
+            <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?></p>
+          <?php }else{ ?>
+            <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?></p>
+          <?php } ?>
+        </div>
+        <hr>
         <hr>
         <div class="row">
           <div class="col">
@@ -36,64 +44,60 @@
       </div>
 
       <div class="col-12 mb-4">
-        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Detalles</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Acerca del Responsable</a>
-          </li>
-        </ul>
-
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="">
-              <p class="h6 py-3">
-                <strong><?php echo $descripcion_corta; ?></strong>
-              <p>
+        <div class="row mb-5">
+          <div class="col-12">
+            <div class="card card-desc-servicio">
+              <div class="card-header">
+                <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_descripcion_titulo'); ?></h5>
+              </div>
+              <div class="card-body fila-gris">
                 <div class="row">
-                  <div class="col">
-                    <div class="card-group">
-                      <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_zona_trabajo'); ?></h5>
-                          <p class="card-text"><?php echo $this->lang->line('pagina_servicio_zona_trabajo_pais'); ?>: <?php echo $servicio['SERVICIO_PAIS']; ?></p>
-                          <p class="card-text"><?php echo $this->lang->line('pagina_servicio_zona_trabajo_estado'); ?>: <?php echo $servicio['SERVICIO_ESTADO_DIR']; ?></p>
-                        </div>
-                        <!--
-                        <div class="card-footer">
-                          <small class="text-muted">Horario de trabajo: 10:00 a 18:00</small>
-                        </div>
-                      -->
-                      </div>
-                      <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_zona_servicio'); ?></h5>
-                          <?php echo $servicio['SERVICIO_ZONA_TRABAJO']; ?>
-                        </div>
-                      </div>
-                      <?php if(!empty($adjuntos)){ ?>
-                        <div class="card border-primary">
-                          <h6 class="card-header bg-primary-15"><?php echo $this->lang->line('pagina_servicio_adjuntos_titulo'); ?></h6>
-                          <div class="card-body text-primary">
-                            <div class="list-group">
-                              <?php foreach($adjuntos as $adjunto){ ?>
-                              <a href="<?php echo base_url('contenido/adjuntos/servicios/'.$adjunto->ADJUNTO_ARCHIVO); ?>" class="list-group-item list-group-item-action" target="_blank">
-                                <i class="far fa-file-alt"></i>
-                                <span class="border-right mx-2"></span>
-                                <?php echo $adjunto->ADJUNTO_NOMBRE; ?>
-                              </a>
-                            <?php } ?>
-                            </div>
-                          </div>
-                        </div>
-                      <?php } ?>
-                    </div>
+                  <div class="card-text col-12">
+                    <?php echo $descripcion_corta; ?>
                   </div>
+                  <div class="col-12">
+                  <?php if(!empty($adjuntos)){ ?>
+                    <div class="card border-primary">
+                      <h6 class="card-header bg-primary-15"><?php echo $this->lang->line('pagina_servicio_adjuntos_titulo'); ?></h6>
+                      <div class="card-body text-primary">
+                        <div class="list-group">
+                          <?php foreach($adjuntos as $adjunto){ ?>
+                          <a href="<?php echo base_url('contenido/adjuntos/servicios/'.$adjunto->ADJUNTO_ARCHIVO); ?>" class="list-group-item list-group-item-action" target="_blank">
+                            <i class="far fa-file-alt"></i>
+                            <span class="border-right mx-2"></span>
+                            <?php echo $adjunto->ADJUNTO_NOMBRE; ?>
+                          </a>
+                        <?php } ?>
+                        </div>
+                      </div>
+                    </div>
+                  <?php } ?>
+
+                  </div>
+              </div>
+              </div>
+            </div>
+            <div class="card-group">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_zona_trabajo'); ?></h5>
+                  <p class="card-text"><?php echo $this->lang->line('pagina_servicio_zona_trabajo_pais'); ?>: <?php echo $servicio['SERVICIO_PAIS']; ?></p>
+                  <p class="card-text"><?php echo $this->lang->line('pagina_servicio_zona_trabajo_estado'); ?>: <?php echo $servicio['SERVICIO_ESTADO_DIR']; ?></p>
                 </div>
+                <!--
+                <div class="card-footer">
+                  <small class="text-muted">Horario de trabajo: 10:00 a 18:00</small>
+                </div>
+              -->
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_zona_servicio'); ?></h5>
+                  <?php echo $servicio['SERVICIO_ZONA_TRABAJO']; ?>
+                </div>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
 
