@@ -26,6 +26,7 @@ class serviciosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
+    $this->db->where('SERVICIO_ESTADO !=','borrado');
     $query = $this->db->get('servicios');
     return $query->result();
   }
@@ -48,6 +49,7 @@ class serviciosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
+    $this->db->where('SERVICIO_ESTADO !=','borrado');
     $query = $this->db->get('servicios');
     return $query->result();
   }

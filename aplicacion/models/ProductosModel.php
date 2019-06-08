@@ -26,6 +26,7 @@ class ProductosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
+    $this->db->where('PRODUCTO_ESTADO !=','borrado');
     $query = $this->db->get('productos');
     return $query->result();
   }
@@ -150,6 +151,7 @@ class ProductosModel extends CI_Model {
   function conteo_productos_usuario($id_usuario){
 
     $this->db->where('ID_USUARIO',$id_usuario);
+    $this->db->where('PRODUCTO_ESTADO !=','borrado');
     $query = $this->db->count_all_results('productos');
     return $query;
   }

@@ -129,11 +129,21 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
-			$this->DireccionesModel->borrar($_GET['id']);
-			// Mensaje de feedback
+		
+		$direccion = $this->DireccionesModel->detalles($_GET['id']);
+		// check if the institucione exists before trying to delete it
+		if(isset($direccion['ID_DIRECCION']))
+		{
+			$parametros = array( 'DIRECCION_TIPO' => 'borrada');
+			$this->DireccionesModel->actualizar( $_GET['id'],$parametros);
+
 			$this->session->set_flashdata('exito', 'Dirección eliminada');
 			// redirección
 			redirect(base_url('usuario/direcciones'));
+		} else {
+
+				show_error('La entrada que deseas borrar no existe');
+		}
 
 	// Login Form
 	}

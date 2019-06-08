@@ -204,16 +204,19 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function borrar()
 	{
 		$usuario = $this->UsuariosModel->detalles($_GET['id']);
+		// check if the institucione exists before trying to delete it
+		  if(isset($usuario['ID_USUARIO']))
+		{
+			$parametros = array( 'USUARIO_ESTADO' => 'borrado');
 
-        // check if the institucione exists before trying to delete it
-        if(isset($usuario['ID_USUARIO']))
-        {
-            $this->UsuariosModel->borrar($_GET['id']);
-            redirect(base_url('admin/usuarios?tipo_usuario='.$this->input->post('TipoUsuario')));
-        } else {
+			$this->UsuariosModel->actualizar( $_GET['id'],$parametros);
 
-	         	show_error('La entrada que deseas borrar no existe');
-				}
+				$this->session->set_flashdata('exito', 'Usuario borrado');
+				redirect(base_url('admin/usuarios?tipo_usuario='.$usuario['USUARIO_TIPO']));
+		} else {
+
+		   	show_error('La entrada que deseas borrar no existe');
+		}
 	}
 	public function activar()
 	{
@@ -224,9 +227,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 		$this->UsuariosModel->estado($_GET['id'],$_GET['estado']);
 		redirect(base_url('admin/usuarios?tipo_usuario='.$_GET['tipo_usuario']));
-	}
-	public function orden()
-	{
 	}
 		/*
 		*

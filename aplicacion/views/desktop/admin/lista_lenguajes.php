@@ -71,9 +71,9 @@
               <td class="text-right">
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <a href="<?php echo base_url('admin/lenguajes/actualizar')."?id=".$lenguaje->ID_LENGUAJE; ?>" class="btn btn-sm btn-warning" title="Editar Lenguaje"> <span class="fa fa-pencil-alt"></span> </a>
-                  <?php if($lenguaje->LENGUAJE_ISO!=$op['lenguaje_predeterminado']){ ?>
+                  <!--
                     <button type="button" class="btn btn-danger btn-sm borrar_entrada" data-enlace="<?php echo base_url('admin/lenguajes/borrar')."?id=".$lenguaje->ID_LENGUAJE; ?>" title="Eliminar Lenguaje"><span class="fa fa-trash"></span></button>
-                  <?php } ?>
+                  -->
                 </div>
               </td>
             </tr>

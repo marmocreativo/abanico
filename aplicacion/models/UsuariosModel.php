@@ -24,6 +24,7 @@ class UsuariosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
+    $this->db->where('USUARIO_ESTADO !=','borrado');
     $query = $this->db->get('usuarios');
     return $query->result();
   }

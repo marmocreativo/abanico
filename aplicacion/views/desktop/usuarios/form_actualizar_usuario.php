@@ -80,14 +80,6 @@
               <a href="<?php echo base_url('usuario/pass');?>"><?php echo $this->lang->line('usuario_form_usuario_pass_boton'); ?></a>
             </div>
           </div>
-          <div class="card border-danger text-center  mb-4">
-            <div class="card-header bg-danger text-white">
-              <h4 class="h5"> <span class="fa fa-trash"></span> <?php echo $this->lang->line('usuario_form_usuario_borrar_cuenta'); ?></h4>
-            </div>
-            <div class="card-body">
-              <button type="button" id="borrar_perfil" class="btn btn-link borrar_entrada" data-enlace="<?php echo base_url('usuario/borrar');?>"><?php echo $this->lang->line('usuario_form_usuario_borrar_cuenta_boton'); ?></button>
-            </div>
-          </div>
         </div>
       </div>
     </div>

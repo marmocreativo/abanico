@@ -75,7 +75,9 @@
                   <div class="btn-group" role="group" aria-label="Basic example">
                     <a href="<?php echo base_url('admin/municipios')."?pais=".$estado->ID_PAIS.'&estado='.$estado->ESTADO_NOMBRE; ?>" class="btn btn-sm btn-success" title="Ver Municipios"> <span class="fa fa-globe-americas"></span> Municipios</a>
                     <a href="<?php echo base_url('admin/estados/actualizar')."?id=".$estado->ID_ESTADO."&pais=".$estado->ID_PAIS; ?>" class="btn btn-sm btn-warning" title="Editar Estado"> <span class="fa fa-pencil-alt"></span> </a>
+                    <!--
                     <a href="<?php echo base_url('admin/estados/borrar')."?id=".$estado->ID_ESTADO."&pais=".$estado->ID_PAIS; ?>" class="btn btn-sm btn-danger" title="Borrar Estado"><span class="fa fa-trash-alt"></span></a>
+                  -->
                   </div>
                 </td>
               </tr>

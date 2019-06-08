@@ -330,19 +330,20 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function borrar()
 	{
 		$producto = $this->ProductosModel->detalles($_GET['id']);
+		// check if the institucione exists before trying to delete it
+		 if(isset($producto['ID_PRODUCTO']))
+		{
+			$parametros = array( 'PRODUCTO_ESTADO' => 'borrado');
+			$this->ProductosModel->actualizar( $_GET['id'],$parametros);
 
-        // check if the institucione exists before trying to delete it
-        if(isset($producto['ID_PRODUCTO']))
-        {
-            $this->ProductosModel->borrar($_GET['id']);
-						// Mensaje de Feedback
-						$this->session->set_flashdata('exito', 'Producto Borrado');
-						// Redirección
-            redirect(base_url('admin/productos?id_usuario=').$_GET['id_usuario']);
-        } else {
+			$this->session->set_flashdata('exito', 'Producto borrado');
+			// redirección
+			 redirect(base_url('admin/productos?id_usuario=').$_GET['id_usuario']);
+		} else {
 
-	         	show_error('La entrada que deseas borrar no existe');
-				}
+				show_error('La entrada que deseas borrar no existe');
+		}
+
 	}
 	public function borrar_galeria()
 	{

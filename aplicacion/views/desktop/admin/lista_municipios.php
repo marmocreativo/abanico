@@ -75,7 +75,9 @@
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">
                     <a href="<?php echo base_url('admin/municipios/actualizar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS; ?>" class="btn btn-sm btn-warning" title="Editar Municipio"> <span class="fa fa-pencil-alt"></span> </a>
+                    <!--
                     <a href="<?php echo base_url('admin/municipios/borrar')."?id=".$municpio->ID_MUNICIPIO."&pais=".$municpio->ID_PAIS; ?>" class="btn btn-sm btn-danger" title="Borrar Municipio"><span class="fa fa-trash-alt"></span></a>
+                  -->
                   </div>
                 </td>
               </tr>

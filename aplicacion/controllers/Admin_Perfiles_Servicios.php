@@ -257,16 +257,20 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 		$perfil = $this->PerfilServiciosModel->detalles($_GET['id']);
 
-        // check if the institucione exists before trying to delete it
-        if(isset($perfil['ID_PERFIL']))
-        {
-            $this->PerfilServiciosModel->borrar($_GET['id']);
-						$this->session->set_flashdata('exito', 'Perfil Eliminado');
-            redirect(base_url('admin/perfiles_servicios'));
-        } else {
+		// check if the institucione exists before trying to delete it
+		if(isset($perfil['ID_PERFIL']))
+		{
+			$parametros = array( 'PERFIL_ESTADO' => 'borrado');
 
-	         	show_error('La entrada que deseas borrar no existe');
-				}
+			$this->PerfilServiciosModel->actualizar( $_GET['id'],$parametros);
+
+				$this->session->set_flashdata('exito', 'Perfil borrado');
+				redirect(base_url('admin/perfiles_servicios'));
+		} else {
+
+		   	show_error('La entrada que deseas borrar no existe');
+		}
+
 	}
 	public function activar()
 	{

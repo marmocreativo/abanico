@@ -263,15 +263,20 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 		$tienda = $this->TiendasModel->detalles($_GET['id']);
 
-        // check if the institucione exists before trying to delete it
-        if(isset($tienda['ID_TIENDA']))
-        {
-            $this->TiendasModel->borrar($_GET['id']);
-            redirect(base_url('admin/tiendas'));
-        } else {
+		// check if the institucione exists before trying to delete it
+		if(isset($tienda['ID_TIENDA']))
+		{
+			$parametros = array( 'TIENDA_ESTADO' => 'borrada');
 
-	         	show_error('La entrada que deseas borrar no existe');
-				}
+			$this->TiendasModel->actualizar( $_GET['id'],$parametros);
+
+				$this->session->set_flashdata('exito', 'Tienda borrada');
+				redirect(base_url('admin/tiendas'));
+		} else {
+
+		   	show_error('La entrada que deseas borrar no existe');
+		}
+
 	}
 	public function activar()
 	{

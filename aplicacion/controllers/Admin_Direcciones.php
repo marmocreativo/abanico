@@ -146,16 +146,17 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function borrar()
 	{
 		$direccion = $this->DireccionesModel->detalles($_GET['id']);
+		// check if the institucione exists before trying to delete it
+		if(isset($direccion['ID_DIRECCION']))
+		{
+			$parametros = array( 'DIRECCION_TIPO' => 'borrada');
+			$this->DireccionesModel->actualizar( $_GET['id'],$parametros);
 
-        // check if the institucione exists before trying to delete it
-        if(isset($direccion['ID_DIRECCION']))
-        {
-            $this->DireccionesModel->borrar($_GET['id']);
-						$this->session->set_flashdata('exito', 'Dirección eliminada');
-            redirect(base_url('admin/direcciones?id_usuario='.$direccion['ID_USUARIO']));
-        } else {
+				$this->session->set_flashdata('exito', 'Dirección eliminada');
+		    redirect(base_url('admin/direcciones?id_usuario='.$direccion['ID_USUARIO']));
+		} else {
 
-	         	show_error('La entrada que deseas borrar no existe');
-				}
+		   	show_error('La entrada que deseas borrar no existe');
+		}
 	}
 }

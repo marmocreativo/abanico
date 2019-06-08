@@ -24,6 +24,7 @@ class DireccionesModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
+    $this->db->where('DIRECCION_TIPO !=', 'borrada');
     $query = $this->db->get('direcciones');
     return $query->result();
   }
@@ -34,6 +35,7 @@ class DireccionesModel extends CI_Model {
     $this->db->where('ID_USUARIO', $id_usuario);
     $this->db->where('DIRECCION_TIPO !=', 'fiscal');
     $this->db->where('DIRECCION_TIPO !=', 'perfil');
+    $this->db->where('DIRECCION_TIPO !=', 'borrada');
     $query = $this->db->get('direcciones');
     return $query->result();
   }

@@ -94,14 +94,6 @@
         </div>
       </div>
 
-      <div class="card border-danger text-center  mb-3">
-        <div class="card-header bg-danger text-white">
-          <h4 class="h5 pt-2"> <span class="fa fa-trash"></span> Borrar mi cuenta</h4>
-        </div>
-        <div class="card-body">
-          <button type="button" id="borrar_perfil" class="btn btn-link borrar_entrada" data-enlace="<?php echo base_url('usuario/borrar');?>">Borrar tu cuenta</button>
-        </div>
-      </div>
 
     </div>
   </div>

@@ -24,6 +24,7 @@ class TiendasModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
+    $this->db->where('TIENDA_ESTADO !=','borrada');
     $query = $this->db->get('tiendas');
     return $query->result();
   }
