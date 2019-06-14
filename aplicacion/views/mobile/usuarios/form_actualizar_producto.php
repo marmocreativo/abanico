@@ -168,7 +168,16 @@
                   <h6 class="mb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
                   <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
                     <?php foreach($segundo_categorias as $segunda_categoria){ ?>
-                    <h6 class="border-bottom pb-3"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h6>
+                      <div class="custom-control custom-radio">
+                        <input  type="radio"
+                                id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
+                                name="CategoriaProducto" class="custom-control-input"
+                                value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                                <?php if($relacion_categorias['ID_CATEGORIA']==$segunda_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
+
+                                >
+                        <label class="custom-control-label" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
+                      </div>
                     <?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                       <ul class="list list-unstyled">
                         <?php foreach($tercero_categorias as $tercera_categoria){ ?>

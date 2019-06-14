@@ -20,6 +20,9 @@
 <div class="bxInfoContent bxDetalle pb-4">
   <div class="container">
     <div class="row">
+      <div style="width:100%; height:100px; background-image:url('<?php echo base_url('assets/global/img/bg-servicios.jpg'); ?>'); background-position: center; background-size:cover;">
+
+      </div>
       <div class="col mb-4">
         <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
         <img src="<?php echo base_url($ruta_portada) ?>" class="img-thumbnail img-fluid" alt="Profile image example">
