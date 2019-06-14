@@ -97,6 +97,11 @@
                 </div>
                 <?php } ?>
             </div>
+            <div class="row">
+              <div class="col">
+                <p class="p-3 border border-warning"> <i class=" fa fa-exclamation"></i> Para anunciar vehículos o bienes raíces por favor comunícate con nosotros</p>
+              </div>
+            </div>
         </div>
       </div>
     </div>

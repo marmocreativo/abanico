@@ -23,7 +23,6 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col">
-            <a href="#" class="btn btn-link"> <span class="fa fa-phone"></span> <?php echo $this->lang->line('header_atencion_clientes'); ?> <?php echo $op['telefono_sitio'] ?></a>
           </div>
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">

@@ -146,6 +146,43 @@ class ProductosModel extends CI_Model {
     return $query->result();
   }
   /*
+    * Enlisto todas las entradas
+    * $parametros Debe ser un array de Columnas y Valores, Busco usando la función LIKE
+    * $orden indicará la Columna y si es ascendente o descendente
+    * $limite Solo se usará si hay una cantidad limite de productos a mostrar
+ */
+  function lista_no_categoria_activos($parametros_or,$parametros_and,$id_categorias,$orden,$limite){
+    // Join
+    $this->db->join('categorias_productos', 'productos.ID_PRODUCTO = categorias_productos.ID_PRODUCTO');
+    // Parametros
+    if(!empty($parametros_or)){
+      $this->db->group_start();
+      $this->db->or_like($parametros_or);
+      $this->db->group_end();
+    }
+    if(!empty($parametros_and)){
+      $this->db->group_start();
+      $this->db->where($parametros_and);
+      $this->db->group_end();
+    }
+    if(!empty($id_categorias)){
+      $this->db->group_start();
+      foreach($id_categorias as $id){
+        $this->db->where('ID_CATEGORIA !=',$id);
+      }
+      $this->db->group_end();
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $this->db->where('PRODUCTO_ESTADO', 'activo');
+    $query = $this->db->get('productos');
+    return $query->result();
+  }
+  /*
     * Conteo de productos
  */
   function conteo_productos_usuario($id_usuario){
