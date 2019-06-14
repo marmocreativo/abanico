@@ -28,16 +28,30 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('GaleriasModel');
 		$this->load->model('CategoriasProductoModel');
 		$this->load->model('CalificacionesModel');
-		$this->load->model('GuiasPedidosModel');
-		$this->load->model('RutasGuiasModel');
-		$this->load->model('PuntosRegistroModel');
+		$this->load->model('ServiciosModel');
+		$this->load->model('CategoriasModel');
+		$this->load->model('GaleriasServiciosModel');
+		$this->load->model('CalificacionesServiciosModel');
 		$this->load->model('NotificacionesModel');
+		$this->load->model('TraduccionesModel');
+		$this->load->model('SlidersModel');
+		$this->load->model('SlidesModel');
+		$this->load->model('PremiosModel');
+		$this->load->model('UsuariosModel');
+		$this->load->model('PedidosModel');
 		$this->load->model('PublicacionesModel');
 		$this->load->model('PlanesModel');
+		$this->load->model('DivisasModel');
   }
 
 	public function index()
 	{
+
+		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+		$this->data['productos'] = $this->ProductosModel->lista_activos(['ID_USUARIO'=>$this->data['op']['id_usuario_destacado']],'','','',10);
+		$this->data['productos_recientes'] = $this->ProductosModel->lista_activos('','','','PRODUCTO_FECHA_REGISTRO DESC',10);
+		$this->data['servicios'] = $this->ServiciosModel->lista_activos('','','','','');
 
 		if(!empty($_GET['tipo'])){
 			$tipo = $_GET['tipo'];
