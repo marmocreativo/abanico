@@ -170,7 +170,7 @@
                     <?php foreach($segundo_categorias as $segunda_categoria){ ?>
                       <div class="custom-control custom-radio">
                         <input  type="radio"
-                                id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
+                                id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
                                 name="CategoriaProducto" class="custom-control-input"
                                 value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
                                 <?php if($relacion_categorias['ID_CATEGORIA']==$segunda_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
