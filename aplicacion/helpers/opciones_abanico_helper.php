@@ -144,3 +144,241 @@ if ( ! function_exists('folio_pedido'))
       return $randomString;
     }
 }
+
+// Alerta Plan
+if ( ! function_exists('alerta_plan'))
+{
+    function alerta_plan()
+    {
+      $CI =& get_instance();
+      $CI->load->model('PlanesModel');
+      $CI->load->model('TiendasModel');
+      $CI->load->model('PerfilServiciosModel');
+      switch ($_SESSION['usuario']['tipo_usuario']) {
+        case 'vnd-2':
+          // Busco un plan activo de vendedor
+          $plan_vendedor = $CI->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'productos');
+          // Si no hay un plan activo Busco un plan pendiente
+          if(empty($plan_vendedor)){
+            $plan_vendedor = $CI->PlanesModel->plan_pendiente_usuario($_SESSION['usuario']['id'],'productos');
+            // Si hay un plan pendiente mando una alerta amarilla
+            if(!empty($plan_vendedor)){
+              echo '<div class="alert alert-warning alert-dismissible fade show">';
+              echo '<h5 class="alert-heading"><i class="fa fa-check"></i>';
+              echo ' <small>Tu <b>plan de vendedor</b> está en proceso de activación. Pronto nos comunicaremos contigo, puedes consultar el estado en <a class="text-warning" href="'.base_url('usuario/tienda').'">tu panel de vendedor</a></small></h5>';
+              echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>';
+              echo '</div>';
+            }else{
+              // Si tampoco hay un plan pendiente mando alerta roja
+              echo '<div class="alert alert-danger alert-dismissible fade show">';
+              echo '<h5 class="alert-heading"><i class="fa fa-exclamation-circle"></i>';
+              echo ' <small>No olvides <a class="text-danger" href="'.base_url('usuario/planes/lista_planes?tipo=productos').'">solicitar la activación de tu plan de vendedor</a></small></h5>';
+              echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>';
+              echo '</div>';
+            }
+          }else{
+            // Mando un mensaje verde
+            echo '<div class="alert alert-success alert-dismissible fade show">';
+            echo '<h5 class="alert-heading"><i class="fa fa-check-circle"></i>';
+            echo ' <small>Tu <b>plan de vendedor</b> está activo. Puedes consultar la vigencia en <a class="text-primary" href="'.base_url('usuario/tienda').'">tu panel de vendedor</a></small></h5>';
+            echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>';
+            echo '</div>';
+          }
+          // Termina la verificación
+
+          break;
+        case 'ser-3':
+            // Busco un plan activo de vendedor
+            $plan_servicios = $CI->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'servicios');
+            // Si no hay un plan activo Busco un plan pendiente
+            if(empty($plan_servicios)){
+              $plan_servicios = $CI->PlanesModel->plan_pendiente_usuario($_SESSION['usuario']['id'],'servicios');
+              // Si hay un plan pendiente mando una alerta amarilla
+              if(!empty($plan_servicios)){
+                echo '<div class="alert alert-warning alert-dismissible fade show">';
+                echo '<h5 class="alert-heading"><i class="fa fa-check"></i>';
+                echo ' <small>Tu <b>plan de servicios</b> está en proceso de activación. Pronto nos comunicaremos contigo, puedes consultar el estado en <a class="text-warning" href="'.base_url('usuario/perfil_servicios').'">tu panel de servicios</a></small></h5>';
+                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>';
+                echo '</div>';
+              }else{
+                // Si tampoco hay un plan pendiente mando alerta roja
+                echo '<div class="alert alert-danger alert-dismissible fade show">';
+                echo '<h5 class="alert-heading"><i class="fa fa-exclamation-circle"></i>';
+                echo ' <small>No olvides <a class="text-danger" href="'.base_url('usuario/planes/lista_planes?tipo=servicios').'">solicitar la activación de tu plan de servicios</a></small></h5>';
+                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>';
+                echo '</div>';
+              }
+            }else{
+              // Mando un mensaje verde
+              echo '<div class="alert alert-success alert-dismissible fade show">';
+              echo '<h5 class="alert-heading"><i class="fa fa-check-circle"></i>';
+              echo ' <small>Tu <b>plan de servicios</b> está activo. Puedes consultar la vigencia en <a class="text-success" href="'.base_url('usuario/tienda').'">tu panel de servicios</a></small></h5>';
+              echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>';
+              echo '</div>';
+            }
+        // Termina la verificación
+          break;
+        case 'vens-4':
+        // Busco un plan activo de vendedor
+        $plan_vendedor = $CI->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'productos');
+        // Si no hay un plan activo Busco un plan pendiente
+        if(empty($plan_vendedor)){
+          $plan_vendedor = $CI->PlanesModel->plan_pendiente_usuario($_SESSION['usuario']['id'],'productos');
+          // Si hay un plan pendiente mando una alerta amarilla
+          if(!empty($plan_vendedor)){
+            echo '<div class="alert alert-warning alert-dismissible fade show">';
+            echo '<h5 class="alert-heading"><i class="fa fa-check"></i>';
+            echo ' <small>Tu <b>plan de vendedor</b> está en proceso de activación. Pronto nos comunicaremos contigo, puedes consultar el estado en <a class="text-warning" href="'.base_url('usuario/tienda').'">tu panel de vendedor</a></small></h5>';
+            echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>';
+            echo '</div>';
+          }else{
+            // Si tampoco hay un plan pendiente mando alerta roja
+            echo '<div class="alert alert-danger alert-dismissible fade show">';
+            echo '<h5 class="alert-heading"><i class="fa fa-exclamation-circle"></i>';
+            echo ' <small>No olvides <a class="text-danger" href="'.base_url('usuario/planes/lista_planes?tipo=productos').'">solicitar la activación de tu plan de vendedor</a></small></h5>';
+            echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>';
+            echo '</div>';
+          }
+        }else{
+          // Mando un mensaje verde
+          echo '<div class="alert alert-success alert-dismissible fade show">';
+          echo '<h5 class="alert-heading"><i class="fa fa-check-circle"></i>';
+          echo ' <small>Tu <b>plan de vendedor</b> está activo. Puedes consultar la vigencia en <a class="text-success" href="'.base_url('usuario/tienda').'">tu panel de vendedor</a></small></h5>';
+          echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>';
+          echo '</div>';
+        }
+        // Servicios
+        // Busco un plan activo de vendedor
+        $plan_servicios = $CI->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'servicios');
+        // Si no hay un plan activo Busco un plan pendiente
+        if(empty($plan_servicios)){
+          $plan_servicios = $CI->PlanesModel->plan_pendiente_usuario($_SESSION['usuario']['id'],'servicios');
+          // Si hay un plan pendiente mando una alerta amarilla
+          if(!empty($plan_servicios)){
+            echo '<div class="alert alert-warning alert-dismissible fade show">';
+            echo '<h5 class="alert-heading"><i class="fa fa-check"></i>';
+            echo ' <small>Tu <b>plan de servicios</b> está en proceso de activación. Pronto nos comunicaremos contigo, puedes consultar el estado en <a class="text-warning" href="'.base_url('usuario/perfil_servicios').'">tu panel de servicios</a></small></h5>';
+            echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>';
+            echo '</div>';
+          }else{
+            // Si tampoco hay un plan pendiente mando alerta roja
+            echo '<div class="alert alert-danger alert-dismissible fade show">';
+            echo '<h5 class="alert-heading"><i class="fa fa-exclamation-circle"></i>';
+            echo ' <small>No olvides <a class="text-danger" href="'.base_url('usuario/planes/lista_planes?tipo=servicios').'">solicitar la activación de tu plan de servicios</a></small></h5>';
+            echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>';
+            echo '</div>';
+          }
+        }else{
+            // Mando un mensaje verde
+            echo '<div class="alert alert-success alert-dismissible fade show">';
+            echo '<h5 class="alert-heading"><i class="fa fa-check-circle"></i>';
+            echo ' <small>Tu <b>plan de servicios</b> está activo. Puedes consultar la vigencia en <a class="text-success" href="'.base_url('usuario/tienda').'">tu panel de servicios</a></small></h5>';
+            echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>';
+            echo '</div>';
+          }
+          break;
+          default:
+          $tienda = $CI->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
+          if(!empty($tienda)){
+
+            // Busco un plan activo de vendedor
+            $plan_vendedor = $CI->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'productos');
+            // Si no hay un plan activo Busco un plan pendiente
+            if(empty($plan_vendedor)){
+              $plan_vendedor = $CI->PlanesModel->plan_pendiente_usuario($_SESSION['usuario']['id'],'productos');
+              // Si hay un plan pendiente mando una alerta amarilla
+              if(!empty($plan_vendedor)){
+                echo '<div class="alert alert-warning alert-dismissible fade show">';
+                echo '<h5 class="alert-heading"><i class="fa fa-check"></i>';
+                echo ' <small>Tu <b>plan de vendedor</b> está en proceso de activación. Pronto nos comunicaremos contigo, puedes consultar el estado en <a class="text-warning" href="'.base_url('usuario/tienda').'">tu panel de vendedor</a></small></h5>';
+                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>';
+                echo '</div>';
+              }else{
+                // Si tampoco hay un plan pendiente mando alerta roja
+                echo '<div class="alert alert-danger alert-dismissible fade show">';
+                echo '<h5 class="alert-heading"><i class="fa fa-exclamation-circle"></i>';
+                echo ' <small>No olvides <a class="text-danger" href="'.base_url('usuario/planes/lista_planes?tipo=productos').'">solicitar la activación de tu plan de vendedor</a></small></h5>';
+                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>';
+                echo '</div>';
+              }
+            }else{
+              // Mando un mensaje verde
+              echo '<div class="alert alert-success alert-dismissible fade show">';
+              echo '<h5 class="alert-heading"><i class="fa fa-check-circle"></i>';
+              echo ' <small>Tu <b>plan de vendedor</b> está activo. Puedes consultar la vigencia en <a class="text-success" href="'.base_url('usuario/tienda').'">tu panel de vendedor</a></small></h5>';
+              echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>';
+              echo '</div>';
+            }
+          }
+          $perfil = $CI->PerfilServiciosModel->perfil_usuario($_SESSION['usuario']['id']);;
+          if(!empty($perfil)){
+            // Servicios
+            // Busco un plan activo de vendedor
+            $plan_servicios = $CI->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'servicios');
+            // Si no hay un plan activo Busco un plan pendiente
+            if(empty($plan_servicios)){
+              $plan_servicios = $CI->PlanesModel->plan_pendiente_usuario($_SESSION['usuario']['id'],'servicios');
+              // Si hay un plan pendiente mando una alerta amarilla
+              if(!empty($plan_servicios)){
+                echo '<div class="alert alert-warning alert-dismissible fade show">';
+                echo '<h5 class="alert-heading"><i class="fa fa-check"></i>';
+                echo ' <small>Tu <b>plan de servicios</b> está en proceso de activación. Pronto nos comunicaremos contigo, puedes consultar el estado en <a class="text-warning" href="'.base_url('usuario/perfil_servicios').'">tu panel de servicios</a></small></h5>';
+                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>';
+                echo '</div>';
+              }else{
+                // Si tampoco hay un plan pendiente mando alerta roja
+                echo '<div class="alert alert-danger alert-dismissible fade show">';
+                echo '<h5 class="alert-heading"><i class="fa fa-exclamation-circle"></i>';
+                echo ' <small>No olvides <a class="text-danger" href="'.base_url('usuario/planes/lista_planes?tipo=servicios').'">solicitar la activación de tu plan de servicios</a></small></h5>';
+                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>';
+                echo '</div>';
+              }
+            }else{
+                // Mando un mensaje verde
+                echo '<div class="alert alert-success alert-dismissible fade show">';
+                echo '<h5 class="alert-heading"><i class="fa fa-check-circle"></i>';
+                echo ' <small>Tu <b>plan de servicios</b> está activo. Puedes consultar la vigencia en <a class="text-success" href="'.base_url('usuario/tienda').'">tu panel de servicios</a></small></h5>';
+                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>';
+                echo '</div>';
+              }
+          }
+          break;
+      }
+    }
+}

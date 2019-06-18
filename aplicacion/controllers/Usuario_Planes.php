@@ -152,7 +152,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$this->email->send();
 
-			$this->session->set_flashdata('exito', 'Plan activado');
+			$this->session->set_flashdata('exito', 'Se ha solicitado la activación del plan, pronto nos comunicaremos contigo');
 			if($plan['PLAN_TIPO']=='productos'){
 				redirect('usuario/tienda');
 			}

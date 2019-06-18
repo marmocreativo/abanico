@@ -6,6 +6,7 @@
           <?php $this->load->view('desktop/usuarios/widgets/menu_control_usuario'); ?>
         </div>
         <div class="col">
+          <?php alerta_plan(); ?>
           <?php retro_alimentacion(); ?>
           <div class="row no-gutters" id="dash-1">
               <div class="col-12 justify-content-left cont-perfil">

@@ -6,6 +6,7 @@
           <?php $this->load->view('desktop/usuarios/widgets/menu_control_usuario'); ?>
         </div>
         <div class="col">
+          <?php alerta_plan(); ?>
           <?php retro_alimentacion(); ?>
           <div class="card">
             <div class="card-header d-flex justify-content-between">
