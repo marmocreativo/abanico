@@ -23,18 +23,18 @@
       <div style="width:100%; height:100px; background-image:url('<?php echo base_url('assets/global/img/bg-servicios.jpg'); ?>'); background-position: center; background-size:cover;">
 
       </div>
-      <div class="col mb-4">
+      <div class="col my-4 d-flex justify-content-center">
         <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
-        <img src="<?php echo base_url($ruta_portada) ?>" class="img-thumbnail img-fluid" alt="Profile image example">
+        <div class="border rounded-circle" style="width:70%; padding-top:70%; background-position: center; background-repeat: no-repeat; background-size: contain; background-image:url(<?php echo base_url($ruta_portada) ?>);"></div>
       </div>
       <div class="col-12 mb-4">
         <h4 class="h4 product-title mb-2"><?php echo $titulo; ?> </h4>
         <?php echo $servicio['USUARIO_NOMBRE']; ?>
         <div class="pt-2 border-top">
           <?php if($servicio['SERVICIO_TIPO']=='digital'){ ?>
-            <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?></p>
+            <p><span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?></p>
           <?php }else{ ?>
-            <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?></p>
+            <p><span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?></p>
           <?php } ?>
         </div>
         <hr>

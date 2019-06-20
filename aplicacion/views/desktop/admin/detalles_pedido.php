@@ -80,6 +80,7 @@
             <div class="card">
               <div class="card-header">
                 <h6><i class="fa fa-money-bill"></i>Pagos:</h6>
+								<p>Forma de pago: <b><?php echo $pedido['PEDIDO_FORMA_PAGO'] ?></b> | Divisa: <b><?php echo $pedido['PEDIDO_DIVISA'] ?></b> | Tipo de Cambio: <b><?php echo $pedido['PEDIDO_CONVERSION'] ?></b></p>
               </div>
               <div class="card-body">
                 <table class="table table-sm table-bordered">

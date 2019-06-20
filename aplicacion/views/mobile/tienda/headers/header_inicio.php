@@ -107,7 +107,7 @@
                 }
               }
             ?>
-          <a class="nav-link" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" href="<?php echo base_url('categoria?slug='.$categoria->CATEGORIA_URL); ?>">
+          <a class="nav-link text<?php echo $categoria->CATEGORIA_COLOR; ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" href="<?php echo base_url('categoria?slug='.$categoria->CATEGORIA_URL); ?>">
             <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $titulo; ?>
           </a>
           <?php ++$i;  } ?>

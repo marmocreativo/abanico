@@ -88,7 +88,6 @@
                     <td>Servicios financieros</td>
                     <td><?php echo $plan['PLAN_SERVICIOS_FINANCIEROS']; ?>% + $<?php echo $plan['PLAN_SERVICIOS_FINANCIEROS_FIJO']; ?></td>
                   </tr>
-                  <?php if($plan['PLAN_TIPO']=='productos'){ ?>
                   <tr>
                     <td>Límite de productos activos</td>
                     <?php if($plan['PLAN_LIMITE_PRODUCTOS']==0){ ?>
@@ -101,17 +100,6 @@
                     <td>Límite fotografías por producto</td>
                     <td><?php echo $plan['PLAN_FOTOS_PRODUCTOS']; ?></td>
                   </tr>
-                  <?php } ?>
-                  <?php if($plan['PLAN_TIPO']=='servicios'){ ?>
-                  <tr>
-                    <td>Límite de servicios activos</td>
-                    <td><?php echo $plan['PLAN_LIMITE_SERVICIOS']; ?></td>
-                  </tr>
-                  <tr>
-                    <td>Límite de fotografías por servicio</td>
-                    <td><?php echo $plan['PLAN_FOTOS_SERVICIOS']; ?></td>
-                  </tr>
-                  <?php } ?>
                 </table>
                 <div class="row p-3">
                   <div class="col-12 p-3">

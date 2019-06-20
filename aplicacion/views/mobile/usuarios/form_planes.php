@@ -107,15 +107,7 @@
                       </table>
                     </div>
                     <div class="card-body p-0">
-                      <?php if($plan->PLAN_TIPO == 'productos'){ ?>
-                      <?php if($plan->PLAN_NIVEL>=4){ ?>
-                        <p class="text-center">Comunícate con nosotros para activar este plan</p>
-                      <?php }else{ ?>
-                        <a href="<?php echo base_url('usuario/planes/activar?id='.$plan->ID_PLAN); ?>" class="btn btn-primary btn-block rounded-0">Activar plan</a>
-                      <?php } // Termina condicional Nivel ?>
-                    <?php }else{// Termina condicional tipo ?>
-                      <a href="<?php echo base_url('usuario/planes/activar?id='.$plan->ID_PLAN); ?>" class="btn btn-primary btn-block rounded-0">Activar plan</a>
-                    <?php } ?>
+                      <a href="<?php echo base_url('usuario/planes/activar?id='.$plan->ID_PLAN); ?>" class="btn btn-primary btn-block rounded-0">Solicitar activación de plan</a>
                     </div>
                 </div>
             </div>
