@@ -28,7 +28,7 @@
             <li><?php echo $this->lang->line('usuario_form_perfil_servicio_beneficios_2'); ?></li>
           </ul>
           <form class="" action="<?php echo base_url('usuario/perfil_servicios/crear');?>" method="post" enctype="multipart/form-data">
-             <input type="hidden" name="IdUsuario" value="">
+             <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id'] ?>">
              <img src="<?php echo base_url('contenido/img/tiendas/completo/default.jpg') ?>" alt="" style="width:150px" class="img-fluid d-block mx-auto mb-3 img-thumbnail rounded-circle">
              <div class="custom-file file-sm mb-3">
                <input type="file" class="custom-file-input" id="ImagenPerfil" name="ImagenPerfil" placeholder="" value="">
