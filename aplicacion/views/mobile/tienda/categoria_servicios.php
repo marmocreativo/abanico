@@ -16,13 +16,18 @@
         <div class="col-12">
           <ol class="breadcrumb vistaMovil">
             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><?php echo $this->lang->line('categoria_productos_migas_inicio'); ?></a></li>
-            <li class="breadcrumb-item active text-primary " aria-current="page"><?php echo $categoria['CATEGORIA_NOMBRE']; ?></li>
+            <li class="breadcrumb-item active text-primary " aria-current="page"><?php if(!empty($categoria)){ echo $categoria['CATEGORIA_NOMBRE']; } ?></li>
           </ol>
         </div>
       </div>
       <div class="col-12 mb-3">
+        <?php if(!empty($categoria)&&isset($categoria)){ ?>
         <h3><?php echo $categoria['CATEGORIA_NOMBRE']; ?></h3>
+      <?php }else{ ?>
+        <h3>Todos los servicios</h3>
+      <?php } ?>
         <div class="card" style="background-color:transparent;">
+          <?php if(!empty($categoria)&&isset($categoria)){ ?>
           <?php   $sub_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria['ID_CATEGORIA']],$categoria['CATEGORIA_TIPO'],'','');?>
           <?php if(!empty($sub_categorias)){ ?>
             <button class="btn btn-outline<?php echo $categoria['CATEGORIA_COLOR']; ?> btn-sm" type="button" data-toggle="collapse" data-target="#collapseCategorias" aria-expanded="false" aria-controls="collapseExample">
@@ -51,6 +56,7 @@
                </div>
             </div>
             <hr>
+          <?php } ?>
           <?php } ?>
 
           <button class="btn btnFiltros btn<?php echo $primary; ?> btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">

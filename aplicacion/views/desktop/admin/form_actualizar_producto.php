@@ -214,6 +214,10 @@
                     </div>
                     <div class="tab-pane fade <?php if($tab=='categoria'){ echo 'show active'; } ?> p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
                       <div class="row">
+                        <?php $categorias_producto = $this->CategoriasProductoModel->lista($producto['ID_PRODUCTO']);;
+                        $categorias_seleccionadas = array();
+                          $categorias_seleccionadas[] = $categorias_producto['ID_CATEGORIA'];
+                        ?>
                         <?php $i=1; foreach($categorias as $categoria){ ?>
                             <div class="col-12 border border-default p-3">
                               <h6 class="border-bottom pb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
@@ -227,6 +231,7 @@
                                               id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
                                               name="CategoriaProducto" class="custom-control-input"
                                               value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                                              <?php if(in_array($segunda_categoria->ID_CATEGORIA,$categorias_seleccionadas)){ echo 'checked'; } ?>
 
                                               >
                                       <label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
@@ -240,7 +245,7 @@
                                                 id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                                                 name="CategoriaProducto" class="custom-control-input"
                                                 value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                                <?php if($relacion_categorias['ID_CATEGORIA']==$tercera_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
+                                                <?php if(in_array($tercera_categoria->ID_CATEGORIA,$categorias_seleccionadas)){ echo 'checked'; } ?>
 
                                                 >
                                         <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>

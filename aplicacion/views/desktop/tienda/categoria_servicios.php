@@ -46,11 +46,11 @@
               <option value=""><?php echo $this->lang->line('usuario_form_direcciones_pais_selecciona'); ?></option>
             </select>
             <hr>
-            <select class="custom-select filtro-sel" name="EstadoDireccion" id="EstadoDireccion" data-valor-anterior="<?php if(isset($_GET['EstadoDireccion'])){ echo $_GET['EstadoDireccion']; }; ?>" >
+            <select class="custom-select filtro-sel" style="font-size:14px;" name="EstadoDireccion" id="EstadoDireccion" data-valor-anterior="<?php if(isset($_GET['EstadoDireccion'])){ echo $_GET['EstadoDireccion']; }; ?>" >
               <option value=""><?php echo $this->lang->line('usuario_form_direcciones_estado_selecciona'); ?></option>
             </select>
             <hr>
-            <select class="custom-select filtro-sel" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php if(isset($_GET['MunicipioDireccion'])){ echo $_GET['MunicipioDireccion']; }; ?>">
+            <select class="custom-select filtro-sel" style="font-size:13px;" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php if(isset($_GET['MunicipioDireccion'])){ echo $_GET['MunicipioDireccion']; }; ?>">
               <option value=""><?php echo $this->lang->line('usuario_form_direcciones_municipio_selecciona'); ?></option>
             </select>
           <hr>

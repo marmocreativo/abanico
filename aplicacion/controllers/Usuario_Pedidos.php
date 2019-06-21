@@ -154,10 +154,15 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$this->email->message($mensaje_abanico);
 				// envio el correo
 
-				$this->email->send();
+				if($this->email->send()){
+					$this->session->set_flashdata('exito', 'Comprobante cargado correctamente');
+					redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+				}else{
+					$this->session->set_flashdata('exito', 'Comprobante cargado correctamente, no se pudo enviar la notificación por correo');
+					redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+				}
 
-				$this->session->set_flashdata('exito', 'Comprobante cargado correctamente');
-				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
+
 			}else{
 				$this->session->set_flashdata('alerta', 'No se pudo subir el archivo');
 				redirect(base_url('usuario/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
