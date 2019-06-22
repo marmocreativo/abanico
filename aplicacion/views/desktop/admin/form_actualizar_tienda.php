@@ -45,7 +45,7 @@
             <input type="hidden" name="IdUsuario" value="<?php echo $usuario['ID_USUARIO']; ?>">
             <input type="hidden" name="ImagenAnteriorTienda" value="<?php echo $tienda['TIENDA_IMAGEN']; ?>">
             <div class="row">
-              <div class="col-8">
+              <div class="col-6">
                 <img src="<?php echo base_url('contenido/img/tiendas/completo/'.$tienda['TIENDA_IMAGEN']) ?>" alt="" class="img-fluid img-thumbnail rounded-circle">
                 <hr>
                 <div class="custom-file">
@@ -204,9 +204,9 @@
 											<div class="card-body p-2">
 												<?php if($plan['AUTO_RENOVAR']=='si'){ ?>
 												<p class="mb-1"> <b>Auto renovar:</b> <?php echo $plan['FECHA_TERMINO']; ?></p>
-													<a href="<?php echo base_url('usuario/planes/auto_renovar?id='.$plan['ID_PLAN_USUARIO'].'&estado=no'); ?>" class="btn btn-sm btn-block btn-outline-primary"> <i class="fa fa-ban"></i> Cancelar Auto Renovación </a>
+													<a href="<?php echo base_url('admin/planes/auto_renovar?id='.$plan['ID_PLAN_USUARIO'].'&estado=no'); ?>" class="btn btn-sm btn-block btn-outline-primary"> <i class="fa fa-ban"></i> Cancelar Auto Renovación </a>
 												<?php }else{ ?>
-													<a href="<?php echo base_url('usuario/planes/auto_renovar?id='.$plan['ID_PLAN_USUARIO'].'&estado=si'); ?>" class="btn btn-sm btn-block btn-primary"> <i class="fa fa-check"></i> Activar Auto Renovación </a>
+													<a href="<?php echo base_url('admin/planes/auto_renovar?id='.$plan['ID_PLAN_USUARIO'].'&estado=si'); ?>" class="btn btn-sm btn-block btn-primary"> <i class="fa fa-check"></i> Activar Auto Renovación </a>
 												<?php } ?>
 											</div>
 										</div>
@@ -271,7 +271,7 @@
 					<div class="card-body">
 						<h4 class="h5"> <span class="fa fa-file-signature"></span> No has solicitado ningún plan</b></h4>
 						<hr>
-						<a href="<?php echo base_url('usuario/planes/lista_planes?tipo=productos'); ?>" class="btn btn-primary"> <i class="fa fa-plus"></i> Solicitar activación de plan</a>
+						<a href="<?php echo base_url('admin/planes/lista_planes?tipo=productos&id_usuario='.$tienda['ID_USUARIO']); ?>" class="btn btn-primary"> <i class="fa fa-plus"></i> Solicitar activación de plan</a>
 					</div>
 				</div>
 			<?php } ?>

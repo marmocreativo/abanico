@@ -368,6 +368,23 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->view($this->data['dispositivo'].'/admin/form_planes',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
+	public function lista_planes_usuarios()
+	{
+			// Obtengo los datos de mi tiendas
+			$parametros = array();
+			if(!empty($_GET['Tipo'])){
+				$parametros['PLAN_TIPO']=$_GET['Tipo'];
+			}else{
+				$parametros['PLAN_TIPO']='productos';
+			}
+			if(!empty($_GET['Estado'])){
+				$parametros['PLAN_ESTADO']=$_GET['Estado'];
+			}
+			$this->data['planes'] = $this->PlanesModel->lista_planes_usuarios($parametros);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/lista_planes_usuarios',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+	}
 	public function activar()
 	{
 			// Debo redireccionar

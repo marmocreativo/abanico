@@ -45,7 +45,7 @@
             <input type="hidden" name="IdUsuario" value="<?php echo $usuario['ID_USUARIO']; ?>">
             <input type="hidden" name="ImagenAnteriorPerfil" value="<?php echo $perfil['PERFIL_IMAGEN']; ?>">
             <div class="row">
-              <div class="col-8">
+              <div class="col-6">
                 <img src="<?php echo base_url('contenido/img/perfiles/completo/'.$perfil['PERFIL_IMAGEN']) ?>" alt="" class="img-fluid img-thumbnail rounded-circle">
                 <hr>
                 <div class="custom-file">
@@ -240,7 +240,7 @@
 						<div class="card-body">
 							<h4 class="h5"> <span class="fa fa-file-signature"></span> No has solicitado ningún plan</b></h4>
 							<hr>
-							<a href="<?php echo base_url('usuario/planes/lista_planes?tipo=servicios'); ?>" class="btn btn-primary"> <i class="fa fa-plus"></i> Solicitar activación de plan</a>
+							<a href="<?php echo base_url('admin/planes/lista_planes?tipo=servicios&id_usuario='.$perfil['ID_USUARIO']); ?>" class="btn btn-primary"> <i class="fa fa-plus"></i> Solicitar activación de plan</a>
 						</div>
 					</div>
 				<?php } ?>
