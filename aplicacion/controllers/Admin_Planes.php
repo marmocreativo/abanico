@@ -293,7 +293,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 						$estado_plan = 'espera pago';
 					break;
 				case 'comprobante':
-						$estado_plan = 'espera pago';
+						$estado_plan = 'verificando';
 					break;
 				case 'pagado':
 						$estado_plan = 'pagado';

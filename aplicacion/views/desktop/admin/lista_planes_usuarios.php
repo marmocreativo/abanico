@@ -137,6 +137,16 @@
                     }
                   ?>
                   <span class="badge badge-<?php echo $color; ?>"><?php echo $plan->PLAN_ESTADO; ?></span>
+                  <?php $pagos = $this->PlanesModel->lista_pagos($plan->ID_PLAN_USUARIO);
+                  if(!empty($pagos)){
+                    $comprobante = false;
+                    foreach($pagos as $pago){
+                      if($pago->PAGO_ESTADO=='comprobante'){
+                        echo '<i class="fa fa-exclamation"></i>';
+                      }
+                    }
+                  }
+                  ?>
                 </td>
                 <td>
                   <div class="btn-group float-right">
