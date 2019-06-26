@@ -146,6 +146,13 @@
             <li data-target="#carouselAyuda" data-slide-to="2"></li>
             <li data-target="#carouselAyuda" data-slide-to="3"></li>
             <li data-target="#carouselAyuda" data-slide-to="4"></li>
+            <li data-target="#carouselAyuda" data-slide-to="5"></li>
+            <li data-target="#carouselAyuda" data-slide-to="6"></li>
+            <li data-target="#carouselAyuda" data-slide-to="7"></li>
+            <li data-target="#carouselAyuda" data-slide-to="8"></li>
+            <li data-target="#carouselAyuda" data-slide-to="9"></li>
+            <li data-target="#carouselAyuda" data-slide-to="10"></li>
+            <li data-target="#carouselAyuda" data-slide-to="11"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -168,6 +175,21 @@
             </div>
             <div class="carousel-item">
               <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo2.7.png'); ?>" alt="Registro paso 4">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo2.8.png'); ?>" alt="Registro paso 4">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo2.9.png'); ?>" alt="Registro paso 4">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo2.10.png'); ?>" alt="Registro paso 4">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo2.11.png'); ?>" alt="Registro paso 4">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo2.12.png'); ?>" alt="Registro paso 4">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselAyuda" role="button" data-slide="prev">

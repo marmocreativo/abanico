@@ -40,6 +40,9 @@
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
           <a href="<?php echo base_url('admin/tiendas'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-store"></i></i><span class="kt-menu__link-text">Tiendas Vendedores</span></a>
         </li>
+        <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+          <a href="<?php echo base_url('admin/planes/lista_planes_usuarios?tipo=productos'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-file-signature"></i></i><span class="kt-menu__link-text">Planes vendedores</span></a>
+        </li>
       </ul>
     </div>
   </li>
@@ -58,6 +61,9 @@
         </li>
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
           <a href="<?php echo base_url('admin/perfiles_servicios'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-user-tie"></i></i><span class="kt-menu__link-text">Perfiles Servicios</span></a>
+        </li>
+        <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+          <a href="<?php echo base_url('admin/planes/lista_planes_usuarios?tipo=servicios'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-file-signature"></i></i><span class="kt-menu__link-text">Planes servicios</span></a>
         </li>
       </ul>
     </div>

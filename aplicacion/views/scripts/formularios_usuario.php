@@ -20,11 +20,11 @@ jQuery('.Editor').summernote({
     ]
   });
   */
-  $(function(){
-    $('.Editor').each(function(e){
-        CKEDITOR.replace( this.id, { customConfig: '/jblog/ckeditor/config_Large.js' });
-    });
-});
+  jQuery(function(){
+      jQuery('.Editor').each(function(e){
+          CKEDITOR.replace( this.id, { customConfig: '/jblog/ckeditor/config_Large.js' });
+      });
+  });
 //
 // Cargo Los Paises
 jQuery.ajax({
