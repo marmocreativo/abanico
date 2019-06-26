@@ -16,12 +16,48 @@
       <div class="col-12">
         <ol class="breadcrumb vistaMovil">
           <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><?php echo $this->lang->line('categoria_productos_migas_inicio'); ?></a></li>
-          <li class="breadcrumb-item active text-primary " aria-current="page">Todos los productos</li>
+          <li class="breadcrumb-item active text-primary " aria-current="page"><?php if(!empty($categoria)){ echo $categoria['CATEGORIA_NOMBRE']; } ?></li>
         </ol>
       </div>
 
       <div class="col-12 mb-3">
-        <div class="card">
+        <?php if(!empty($categoria)&&isset($categoria)){ ?>
+        <h3><?php echo $categoria['CATEGORIA_NOMBRE']; ?></h3>
+      <?php }else{ ?>
+        <h3>Todos los productos</h3>
+      <?php } ?>
+        <div class="card" style="background-color:transparent;">
+          <?php if(!empty($categoria)&&isset($categoria)){ ?>
+          <?php   $sub_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria['ID_CATEGORIA']],$categoria['CATEGORIA_TIPO'],'','');?>
+          <?php if(!empty($sub_categorias)){ ?>
+            <button class="btn btn-outline<?php echo $categoria['CATEGORIA_COLOR']; ?> btn-sm" type="button" data-toggle="collapse" data-target="#collapseCategorias" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fas fa-th mr-2"></i>Subcategorias
+            </button>
+            <div class="collapse" id="collapseCategorias">
+              <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <?php $i=0; foreach($sub_categorias as $sub_categoria){ ?>
+                    <?php
+                      // Variables de traducción
+                      if($_SESSION['lenguaje']['iso']=='es'){
+                        $titulo = $sub_categoria->CATEGORIA_NOMBRE;
+                      }else{
+                        $traduccion = $this->TraduccionesModel->lista($sub_categoria->ID_CATEGORIA,'categoria',$_SESSION['lenguaje']['iso']);
+                        if(!empty($traduccion['TITULO'])){
+                          $titulo = $traduccion['TITULO'];
+                        }else{
+                          $titulo = $sub_categoria->CATEGORIA_NOMBRE;
+                        }
+                      }
+                    ?>
+                  <a class="nav-link text<?php echo $sub_categoria->CATEGORIA_COLOR; ?>" id="menu-categoria-<?php echo $sub_categoria->ID_CATEGORIA; ?>" href="<?php echo base_url('categoria?slug='.$sub_categoria->CATEGORIA_URL); ?>">
+                  <?php echo $titulo; ?>
+                  </a>
+                  <?php ++$i;  } ?>
+               </div>
+            </div>
+            <hr>
+          <?php } ?>
+          <?php } ?>
 
           <button class="btn btnFiltros btn<?php echo $primary; ?> btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="fas fa-sliders-h mr-2"></i>Filtros

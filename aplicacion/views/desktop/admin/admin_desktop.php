@@ -36,7 +36,7 @@
 								<div class="kt-portlet__body">
 									<!--begin: CONTENIDO -->
 									<div class="row mb-4">
-									  <div class="col-3">
+									  <div class="col-6 col-md-3">
 									      <div class="card">
 									        <div class="card-body">
 									          <div class="stat-widget-five">
@@ -54,7 +54,7 @@
 									        </div>
 									      </div>
 									  </div>
-									  <div class="col-3">
+									  <div class="col-6 col-md-3">
 									      <div class="card">
 									        <div class="card-body">
 									          <div class="stat-widget-five">
@@ -72,7 +72,7 @@
 									        </div>
 									      </div>
 									  </div>
-									  <div class="col-3">
+									  <div class="col-6 col-md-3">
 									      <div class="card">
 									        <div class="card-body">
 									          <div class="stat-widget-five">
@@ -90,7 +90,7 @@
 									        </div>
 									      </div>
 									  </div>
-									  <div class="col-3">
+									  <div class="col-6 col-md-3">
 									      <div class="card">
 									        <div class="card-body">
 									          <div class="stat-widget-five">

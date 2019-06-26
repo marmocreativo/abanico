@@ -18,6 +18,14 @@ class PlanesModel extends CI_Model {
     $query = $this->db->get('planes');
     return $query->result();
   }
+  function lista_planes_usuarios($parametros){
+    if(!empty($parametros)){
+      $this->db->where($parametros);
+    }
+    $this->db->order_by('ID_PLAN_USUARIO DESC');
+    $query = $this->db->get('planes_usuarios');
+    return $query->result();
+  }
   /*
     * Obtengo todos los detalles de una sola entrada
  */

@@ -25,9 +25,10 @@
         <div class="container">
           <div class="row mb-5">
             <div class="col-3">
-              <div class="cont-foto-servicio img-thumbnail align-center">
+
                 <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
-                <img src="<?php echo base_url($ruta_portada) ?>" class="image-profile" width="180" alt="Profile image example">
+              <div class="cont-foto-servicio img-thumbnail align-center" style="width:90%; padding-top:90%; background-position: center; background-repeat: no-repeat; background-size: contain; background-image:url(<?php echo base_url($ruta_portada) ?>);">
+
               </div>
             </div>
             <div class="col-9">
@@ -41,9 +42,9 @@
                 <h6><?php echo $servicio['USUARIO_NOMBRE']; ?></h6>
                 <div class="pt-2 border-top">
                   <?php if($servicio['SERVICIO_TIPO']=='digital'){ ?>
-                    <h4><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?></h4>
+                    <h4><span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?></h4>
                   <?php }else{ ?>
-                    <h4><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?></h4>
+                    <h4><span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?></h4>
                   <?php } ?>
                 </div>
             </div>

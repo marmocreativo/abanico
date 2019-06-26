@@ -622,5 +622,18 @@ Slider Productos
     });
   });
   <?php } ?>
+  /*
+  -----------------
+ Color Etiquetas
+  -----------------
+  */
+  jQuery( document ).ready(function( $ ) {
+    var color_etiquetas = jQuery(".badge<?php echo $primary; ?>").css('background-color');
+    var box_shadow = '0px 0px 0px 2px '+color_etiquetas;
+    jQuery('.etiqueta-servicio').css(
+      'box-shadow',box_shadow
+    );
+    //console.log(color_etiquetas);
+  });
 
 </script>

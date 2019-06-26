@@ -83,41 +83,6 @@
                             <td>$<?php echo $plan['PLAN_MENSUALIDAD']; ?></td>
                           </tr>
                           <tr>
-                            <td>Comisión por venta</td>
-                            <td><?php echo $plan['PLAN_COMISION']; ?>%</td>
-                          </tr>
-                          <tr>
-                            <td>Costo de almacenamiento</td>
-                            <td>$<?php echo $plan['PLAN_COSTO_ALMACENAMIENTO']; ?> x m<sup>3</sup></td>
-                          </tr>
-                          <tr>
-                            <td>Costo manejo de producto</td>
-                            <td><?php echo $plan['PLAN_MANEJO_PRODUCTOS']; ?>%</td>
-                          </tr>
-                          <tr>
-                            <td>Apoyo para envío</td>
-                            <td><?php if($plan['PLAN_ENVIO']=='abanico'){ echo 'Guías disponibles'; } ; ?></td>
-                          </tr>
-                          <tr>
-                            <td>Servicios financieros</td>
-                            <td><?php echo $plan['PLAN_SERVICIOS_FINANCIEROS']; ?>% + $<?php echo $plan['PLAN_SERVICIOS_FINANCIEROS_FIJO']; ?></td>
-                          </tr>
-                          <?php if($plan['PLAN_TIPO']=='productos'){ ?>
-                          <tr>
-                            <td>Límite de productos activos</td>
-                            <?php if($plan['PLAN_LIMITE_PRODUCTOS']==0){ ?>
-                              <td>Ilimitados</td>
-                            <?php }else{ ?>
-                              <td><?php echo $plan['PLAN_LIMITE_PRODUCTOS']; ?></td>
-                            <?php } ?>
-                          </tr>
-                          <tr>
-                            <td>Límite fotografías por producto</td>
-                            <td><?php echo $plan['PLAN_FOTOS_PRODUCTOS']; ?></td>
-                          </tr>
-                          <?php } ?>
-                          <?php if($plan['PLAN_TIPO']=='servicios'){ ?>
-                          <tr>
                             <td>Límite de servicios activos</td>
                             <td><?php echo $plan['PLAN_LIMITE_SERVICIOS']; ?></td>
                           </tr>
@@ -125,7 +90,6 @@
                             <td>Límite de fotografías por servicio</td>
                             <td><?php echo $plan['PLAN_FOTOS_SERVICIOS']; ?></td>
                           </tr>
-                          <?php } ?>
                         </table>
                         <div class="row p-3">
                           <div class="col-12 p-3">
