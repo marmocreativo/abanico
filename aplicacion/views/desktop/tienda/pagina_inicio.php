@@ -715,7 +715,7 @@ Estructuras Originales
                 <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
               </div>
               <div class="premio-ganador text-primary">
-                Premios en Efectivo
+                Premio en efectivo
                 <!--
                 Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
               -->
@@ -754,7 +754,7 @@ Estructuras Originales
                   -->
                   </div>
                   <div class="premio-ganador">
-                    Premios en Efectivo
+                    Premio en efectivo
                     <!--
                     Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
                   -->

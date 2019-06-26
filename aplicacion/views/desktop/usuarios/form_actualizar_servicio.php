@@ -25,6 +25,23 @@
                         <?php echo validation_errors(); ?>
                       </div>
                     <?php } ?>
+                    <?php
+                      $productos_activo = null;
+                      $fotografias_producto = null;
+                      $servicios_activos = null;
+                      $fotografias_servicios = null;
+                      $anexos = false;
+                      $plan = $this->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'servicios');
+                      if(!empty($plan)){
+                        $productos_activo = $plan['PLAN_LIMITE_PRODUCTOS'];
+                        $fotografias_producto = $plan['PLAN_FOTOS_PRODUCTOS'];
+                        $servicios_activos = $plan['PLAN_LIMITE_SERVICIOS'];
+                        $fotografias_servicios = $plan['PLAN_FOTOS_SERVICIOS'];
+                        if($plan['PLAN_NIVEL']>1){
+                          $anexos = true;
+                        }
+                      }
+                    ?>
                     <form class="" action="<?php echo base_url('usuario/servicios/actualizar');?>" method="post" enctype="multipart/form-data">
                       <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id'] ?>">
                       <input type="hidden" name="Identificador" value="<?php echo $_GET['id'] ?>">
@@ -167,10 +184,17 @@
                             <div class="tab-pane fade <?php if($tab=='galeria'){ echo 'show active'; } ?> p-3" id="galeria" role="tabpanel" aria-labelledby="extras-tab">
                               <div class="row">
                                 <div class="col">
+                                  <?php
+                                    $cantidad_imagenes = count($galerias);
+                                  ?>
+                                  <?php if($fotografias_servicios!=null&&($fotografias_servicios>$cantidad_imagenes||$fotografias_producto==0)){ ?>
                                   <div class="form-group">
                                     <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
                                     <input type="file" class="form-control" id="ImagenServicio" name="ImagenServicio">
                                   </div>
+                                <?php }else{ ?>
+                                  <p class="text-danger">Límite de imágenes alcanzado</p>
+                                <?php } ?>
                                   <table class="table table-bordered table-sm">
                                     <thead>
                                       <tr>
@@ -216,6 +240,7 @@
                 <div class="col-4">
                   <div class="card border">
                     <div class="card-body">
+                      <?php if($anexos){ ?>
                       <h6> <i class="fa fa-file"></i> <?php echo $this->lang->line('usuario_form_servicio_anexos_titulo'); ?></h6>
                       <p class="text-muted"><?php echo $this->lang->line('usuario_form_servicio_anexos_instrucciones'); ?></p>
                       <table class="table">
@@ -243,19 +268,29 @@
                         </tbody>
                       </table>
                       <hr>
-                      <form class="" action="<?php echo base_url('usuario/servicios/subir_adjunto'); ?>" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id'] ?>">
-                        <input type="hidden" name="IdObjeto" value="<?php echo $_GET['id'] ?>">
-                        <div class="form-group">
-                          <label for="NombreAdjunto"><?php echo $this->lang->line('usuario_form_servicio_anexos_nombre_descripcion'); ?></label>
-                          <textarea name="NombreAdjunto" class="form-control" rows="4" required></textarea>
-                        </div>
-                        <div class="form-group">
-                          <label for="ArchivoAdjunto"><?php echo $this->lang->line('usuario_form_servicio_anexos_archivo'); ?> <small><?php echo $this->lang->line('usuario_form_servicio_anexos_archivo_instrucciones'); ?></small></label>
-                          <input type="file" class="form-control" name="ArchivoAdjunto" value="">
-                        </div>
-                        <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_form_servicio_anexos_archivo_subir'); ?></button>
-                      </form>
+                      <?php
+                        $cantidad_anexos = count($adjuntos);
+                      ?>
+                      <?php if($fotografias_servicios!=null&&($fotografias_servicios>$cantidad_anexos||$fotografias_producto==0)){ ?>
+                        <form class="" action="<?php echo base_url('usuario/servicios/subir_adjunto'); ?>" method="post" enctype="multipart/form-data">
+                          <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id'] ?>">
+                          <input type="hidden" name="IdObjeto" value="<?php echo $_GET['id'] ?>">
+                          <div class="form-group">
+                            <label for="NombreAdjunto"><?php echo $this->lang->line('usuario_form_servicio_anexos_nombre_descripcion'); ?></label>
+                            <textarea name="NombreAdjunto" class="form-control" rows="4" required></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label for="ArchivoAdjunto"><?php echo $this->lang->line('usuario_form_servicio_anexos_archivo'); ?> <small><?php echo $this->lang->line('usuario_form_servicio_anexos_archivo_instrucciones'); ?></small></label>
+                            <input type="file" class="form-control" name="ArchivoAdjunto" value="">
+                          </div>
+                          <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_form_servicio_anexos_archivo_subir'); ?></button>
+                        </form>
+                      <?php }else{ ?>
+                        <p class="text-danger">Límite de anexos alcanzado</p>
+                      <?php } ?>
+                    <?php }else{ ?>
+                      <p class="text-danger">Tu plan no permite subir anexos</p>
+                    <?php } ?>
                     </div>
                   </div>
                 </div>

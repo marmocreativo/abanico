@@ -19,6 +19,23 @@
             <?php echo validation_errors(); ?>
           </div>
         <?php } ?>
+        <?php
+          $productos_activo = null;
+          $fotografias_producto = null;
+          $servicios_activos = null;
+          $fotografias_servicios = null;
+          $anexos = false;
+          $plan = $this->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'servicios');
+          if(!empty($plan)){
+            $productos_activo = $plan['PLAN_LIMITE_PRODUCTOS'];
+            $fotografias_producto = $plan['PLAN_FOTOS_PRODUCTOS'];
+            $servicios_activos = $plan['PLAN_LIMITE_SERVICIOS'];
+            $fotografias_servicios = $plan['PLAN_FOTOS_SERVICIOS'];
+            if($plan['PLAN_NIVEL']>1){
+              $anexos = true;
+            }
+          }
+        ?>
       <form class="" action="<?php echo base_url('usuario/servicios/actualizar');?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id'] ?>">
         <input type="hidden" name="Identificador" value="<?php echo $_GET['id'] ?>">
@@ -26,7 +43,7 @@
           <div class="card-body">
               <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio['ID_SERVICIO']); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
               <div class="text-center">
-                <span style="width: 50px" class="portada-servicios img-fluid img-thumbnail rounded-circle" style="background-image:url('<?php echo base_url($ruta_portada); ?>');"> </span>
+                <span class="portada-servicios img-fluid img-thumbnail rounded-circle" style="display:block; width:150px; height:150px; background-size: cover; margin: 0 auto; background-image:url('<?php echo base_url($ruta_portada); ?>');"> </span>
               </div>
               <hr>
                <div class="form-group">
@@ -89,7 +106,7 @@
                   </button>
                 </h2>
               </div>
-              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
                   <?php foreach($categorias as $categoria){ ?>
                   <div class="mb-3 pb-2">
@@ -156,18 +173,27 @@
             <div class="card">
               <div class="card-header" id="headingTwo">
                 <h2 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     <span class="fa fa-file-alt"></span> <?php echo $this->lang->line('usuario_form_servicio_galeria'); ?>
                   </button>
                 </h2>
               </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                 <div class="card-body">
+                  <?php
+                    $cantidad_imagenes = count($galerias);
+                  ?>
+                  <?php if($fotografias_servicios!=null&&($fotografias_servicios>$cantidad_imagenes||$fotografias_producto==0)){ ?>
+
                   <div class="form-group">
                     <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
                     <input type="file" class="form-control" id="ImagenServicio" name="ImagenServicio">
                   </div>
-                  <table class="table table-bordered table-sm table-responsive">
+
+                <?php }else{ ?>
+                  <p class="text-danger">Límite de imágenes alcanzado</p>
+                <?php } ?>
+                  <table class="table table-bordered table-sm">
                     <thead>
                       <tr>
                         <th class="text-center"><?php echo $this->lang->line('usuario_form_producto_lista_imagen_id'); ?></th>
@@ -214,6 +240,7 @@
         </form>
         <div class="card mb-3">
           <div class="card-body">
+            <?php if($anexos){ ?>
             <h6> <i class="fa fa-file"></i> <?php echo $this->lang->line('usuario_form_servicio_anexos_titulo'); ?></h6>
             <p class="text-muted"><?php echo $this->lang->line('usuario_form_servicio_anexos_instrucciones'); ?></p>
             <hr>
@@ -241,6 +268,10 @@
               <?php } ?>
               </tbody>
             </table>
+            <?php
+              $cantidad_anexos = count($adjuntos);
+            ?>
+            <?php if($fotografias_servicios!=null&&($fotografias_servicios>$cantidad_anexos||$fotografias_producto==0)){ ?>
             <hr>
             <form class="" action="<?php echo base_url('usuario/servicios/subir_adjunto'); ?>" method="post" enctype="multipart/form-data">
               <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id'] ?>">
@@ -255,6 +286,12 @@
               </div>
               <button type="submit" class="btn btn-sm btn-primary float-right"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_form_servicio_anexos_archivo_subir'); ?></button>
             </form>
+          <?php }else{ ?>
+            <p class="text-danger">Límite de anexos alcanzado</p>
+          <?php } ?>
+        <?php }else{ ?>
+          <p class="text-danger">Tu plan no permite subir anexos</p>
+        <?php } ?>
           </div>
         </div>
       </div>

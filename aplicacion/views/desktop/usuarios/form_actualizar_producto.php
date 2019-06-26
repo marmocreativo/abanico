@@ -24,6 +24,25 @@
                   </div>
                   <hr>
                 <?php } ?>
+
+                <?php
+                  $productos_activo = null;
+                  $fotografias_producto = null;
+                  $servicios_activos = null;
+                  $fotografias_servicios = null;
+                  $anexos = false;
+                  $plan = $this->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'productos');
+                  if(!empty($plan)){
+                    $productos_activo = $plan['PLAN_LIMITE_PRODUCTOS'];
+                    $fotografias_producto = $plan['PLAN_FOTOS_PRODUCTOS'];
+                    $servicios_activos = $plan['PLAN_LIMITE_SERVICIOS'];
+                    $fotografias_servicios = $plan['PLAN_FOTOS_SERVICIOS'];
+                    if($plan['PLAN_NIVEL']>1){
+                      $anexos = true;
+                    }
+                  }
+                ?>
+
               <form class="" action="<?php echo base_url('usuario/productos/actualizar'); ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="TipoProducto" value="<?php echo $tipo_producto; ?>">
                 <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id']; ?>">
@@ -327,9 +346,17 @@
                                 <img src="<?php echo base_url('contenido/img/productos/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
                               </div>
                               <div class="col">
+                                <?php
+                                  $cantidad_imagenes = count($galerias);
+                                ?>
                                 <div class="form-group">
+
+                                <?php if($fotografias_producto!=null&&($fotografias_producto>$cantidad_imagenes||$fotografias_producto==0)){ ?>
                                   <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
                                   <input type="file" class="form-control" id="ImagenProducto" name="ImagenProducto">
+                                <?php }else{ ?>
+                                  <p class="text-danger">Límite de imágenes alcanzado</p>
+                                <?php } ?>
                                 </div>
                               </div>
                             </div>
@@ -343,6 +370,7 @@
                                 </tr>
                               </thead>
                               <tbody>
+
                                 <?php foreach($galerias as $galeria){ ?>
                                   <tr>
                                     <td class="text-center"><?php echo $galeria->ID_GALERIA; ?></td>

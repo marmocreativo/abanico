@@ -262,5 +262,25 @@
         </div>
       </div>
     </div>
-
+    <?php
+    $CI =& get_instance();
+    $CI->load->model('ConcursosModel');
+    $concurso = $CI->ConcursosModel->activo();
+    $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
+    $frase_concurso = explode(' ',$concurso['FRASE']);
+    shuffle($frase_concurso);
+    ?>
+    <?php if(!empty($concurso)){ ?>
+      <div>
+        <div class="container">
+        <div class="row py-4" style="min-height:50px" id="sortable">
+          <?php foreach($frase_concurso as $palabra){ ?>
+          <div class="col p-3 border border-primary" >
+            <?php echo $palabra; ?>
+          </div>
+          <?php } ?>
+        </div>
+        </div>
+      </div>
+    <?php } ?>
     <!-- Termina Header -->
