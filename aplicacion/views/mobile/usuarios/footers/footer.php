@@ -23,6 +23,7 @@
     <script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/plugins/cleanpaste/trumbowyg.cleanpaste.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/global/js/trumbowyg/plugins/table/trumbowyg.table.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/global/js/sweetalert2/sweetalert2.all.min.js"></script>
+    <?php $this->load->view('scripts/scripts_tienda');  ?>
     <?php $this->load->view('scripts/formularios_usuario');  ?>
     <?php $this->load->view('scripts/alertas_usuario');  ?>
   </body>

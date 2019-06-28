@@ -154,7 +154,5 @@
   <?php $this->load->view('scripts/scripts_tienda');  ?>
   <?php $this->load->view('scripts/formularios_usuario');  ?>
 
-
-
 </body>
 </html>

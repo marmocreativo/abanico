@@ -14,17 +14,6 @@
   <div class="row">
     <div class="col-12">
 
-      <div class="card card-info mb-3">
-        <div class="card-body">
-          <h5><?php echo $this->lang->line('usuario_form_servicio_reglas'); ?></h5>
-          <ul>
-            <li><?php echo $this->lang->line('usuario_form_servicio_regla_1'); ?></li>
-            <li><?php echo $this->lang->line('usuario_form_servicio_regla_2'); ?></li>
-            <li><?php echo $this->lang->line('usuario_form_servicio_regla_3'); ?></li>
-          </ul>
-        </div>
-      </div>
-
       <?php if(!empty(validation_errors())){ ?>
         <div class="alert alert-danger">
           <?php echo validation_errors(); ?>
