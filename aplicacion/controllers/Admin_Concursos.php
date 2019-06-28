@@ -40,13 +40,10 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function index()
 	{
-		if(isset($_GET['id_usuario'])){
-			$this->data['direcciones'] = $this->DireccionesModel->lista_direcciones($_GET['id_usuario']);
-		}else{
-			$this->data['direcciones'] = $this->DireccionesModel->lista('','','','');
-		}
+			$this->data['concursos'] = $this->ConcursosModel->lista('','','','');
+
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
-			$this->load->view($this->data['dispositivo'].'/admin/lista_direcciones',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/lista_concurso',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
 	public function crear()
@@ -69,7 +66,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$concurso_id = $this->ConcursosModel->crear($parametros);
 			$this->session->set_flashdata('exito', 'Concurso creado correctamente');
-      redirect(base_url('admin/concursos');
+      redirect(base_url('admin/concursos'));
     }else{
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_concurso',$this->data);
@@ -116,7 +113,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->ConcursosModel->borrar( $_GET['id']);
 
 				$this->session->set_flashdata('exito', 'Concurso eliminado');
-		    redirect(base_url('admin/direcciones?id_usuario='.$direccion['ID_USUARIO']));
+		    redirect(base_url('admin/concursos'));
 		} else {
 
 		   	show_error('La entrada que deseas borrar no existe');

@@ -282,6 +282,16 @@
               <div class="tab-content fila-gris" id="contProductos">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div class="p-3">
+                    <?php
+                    $CI =& get_instance();
+                    $CI->load->model('ConcursosModel');
+                    $concurso = $CI->ConcursosModel->activo();
+                    $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
+                    $frase_concurso = explode(' ',$concurso['FRASE']);
+                    if(in_array ($producto['ID_PRODUCTO'],$productos_concurso)){
+                      echo '<h3 class="text-danger">Aquí debe haber una palabra oculta</h3>';
+                    };
+                    ?>
                     <h5><?php echo $this->lang->line('pagina_producto_tab_detalles_titulo'); ?></h5>
                     <?php echo $descripcion_larga; ?>
                   </div>

@@ -30,11 +30,10 @@
       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <div class="titulo">
-            <h2 class="h6 mb-0"> <span class="fa fa-map-marker-alt"></span> Tus Direcciones</h2>
+            <h2 class="h6 mb-0"> <span class="fa fa-map-marker-alt"></span> Concursos</h2>
           </div>
           <div class="opciones">
-            <a href="<?php echo base_url('admin/usuarios/perfil?id_usuario='.$_GET['id_usuario']); ?>" class="btn btn-outline-default btn-sm"> <span class="fa fa-chevron-left"></span> volver al perfil </a>
-              <a href="<?php echo base_url('admin/direcciones/crear?id_usuario='.$_GET['id_usuario']); ?>" class="btn btn-success btn-sm"> <span class="fa fa-plus"></span> Nueva Dirección </a>
+              <a href="<?php echo base_url('admin/concursos/crear'); ?>" class="btn btn-success btn-sm"> <span class="fa fa-plus"></span> Nuevo Concurso </a>
           </div>
         </div>
         <div class="card-body py-0">
@@ -42,22 +41,27 @@
             <thead>
               <tr>
                 <th>Frase</th>
+                <th>Productos</th>
                 <th>Ganador</th>
                 <th>Fecha Inicio</th>
+                <th>Fecha Ganador</th>
                 <th>Fecha Fin</th>
                 <th class="text-right">Controles</th>
               </tr>
             </thead>
             <tbody>
-              <?php foreach($direcciones as $direccion){ ?>
+              <?php foreach($concursos as $concurso){ ?>
               <tr>
-                <td><?php echo $direccion->DIRECCION_ALIAS; ?></td>
-                <td><?php echo $this->DireccionesModel->direccion_formateada($direccion->ID_DIRECCION); ?></td>
-                <td><?php echo $direccion->DIRECCION_TIPO; ?></td>
+                <td><?php echo $concurso->FRASE; ?></td>
+                <td><?php echo $concurso->PRODUCTOS; ?></td>
+                <td><?php echo $concurso->ID_GANADOR; ?></td>
+                <td><?php echo $concurso->FECHA_INICIO; ?></td>
+                <td><?php echo $concurso->FECHA_GANADOR; ?></td>
+                <td><?php echo $concurso->FECHA_FIN; ?></td>
                 <td>
                   <div class="btn-group float-right">
-                    <a href="<?php echo base_url('admin/direcciones/actualizar?id='.$direccion->ID_DIRECCION); ?>" class="btn btn-sm btn-warning" title="Editar Dirección"> <span class="fa fa-pencil-alt"></span> </a>
-                    <button data-enlace='<?php echo base_url('admin/direcciones/borrar?id='.$direccion->ID_DIRECCION); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Dirección"> <span class="fa fa-trash"></span> </button>
+                    <a href="<?php echo base_url('admin/concursos/actualizar?id='.$concurso->ID); ?>" class="btn btn-sm btn-warning" title="Editar Dirección"> <span class="fa fa-pencil-alt"></span> </a>
+                    <button data-enlace='<?php echo base_url('admin/concursos/borrar?id='.$concurso->ID); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Dirección"> <span class="fa fa-trash"></span> </button>
                   </div>
                 </td>
               </tr>

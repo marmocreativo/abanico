@@ -31,6 +31,12 @@ class ConcursosModel extends CI_Model {
   function detalles($id){
     return $this->db->get_where('concurso',array('ID'=>$id))->row_array();
   }
+  function activo(){
+    return $this->db->get_where('concurso',array(
+      'FECHA_INICIO <='=>date('Y-m-d H:i:s'),
+      'FECHA_FIN >='=>date('Y-m-d H:i:s')
+    ))->row_array();
+  }
 
   /*
     * Creo una nueva entrada usando los parámetros

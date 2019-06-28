@@ -143,28 +143,50 @@
             <li data-target="#carouselAyuda" data-slide-to="2"></li>
             <li data-target="#carouselAyuda" data-slide-to="3"></li>
             <li data-target="#carouselAyuda" data-slide-to="4"></li>
+            <li data-target="#carouselAyuda" data-slide-to="5"></li>
+            <li data-target="#carouselAyuda" data-slide-to="6"></li>
+            <li data-target="#carouselAyuda" data-slide-to="7"></li>
+            <li data-target="#carouselAyuda" data-slide-to="8"></li>
+            <li data-target="#carouselAyuda" data-slide-to="9"></li>
+            <li data-target="#carouselAyuda" data-slide-to="10"></li>
+            <li data-target="#carouselAyuda" data-slide-to="11"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.1.png'); ?>" alt="Registro paso 1">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo31.png'); ?>" alt="Registro paso 1">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.2.png'); ?>" alt="Registro paso 2">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo32.png'); ?>" alt="Registro paso 2">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.3.png'); ?>" alt="Registro paso 3">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo33.png'); ?>" alt="Registro paso 3">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.4.png'); ?>" alt="Registro paso 3">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo34.png'); ?>" alt="Registro paso 3">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.5.png'); ?>" alt="Registro paso 3">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo35.png'); ?>" alt="Registro paso 3">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.6.png'); ?>" alt="Registro paso 3">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo36.png'); ?>" alt="Registro paso 3">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo3.7.png'); ?>" alt="Registro paso 4">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo37.png'); ?>" alt="Registro paso 4">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo38.png'); ?>" alt="Registro paso 4">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo39.png'); ?>" alt="Registro paso 4">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo310.png'); ?>" alt="Registro paso 4">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo311.png'); ?>" alt="Registro paso 4">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url('assets/global/img/flujos/flujo312.png'); ?>" alt="Registro paso 4">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselAyuda" role="button" data-slide="prev">
