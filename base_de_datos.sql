@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 26-06-2019 a las 13:35:30
+-- Tiempo de generación: 01-07-2019 a las 08:24:51
 -- Versión del servidor: 5.6.40-84.0-log
 -- Versión de PHP: 5.6.30
 
@@ -459,7 +459,6 @@ INSERT INTO `categorias_productos` (`ID`, `ID_CATEGORIA`, `ID_PRODUCTO`) VALUES
 (281, 41, 56),
 (288, 396, 51),
 (289, 329, 50),
-(291, 144, 22),
 (292, 179, 40),
 (297, 383, 49),
 (299, 383, 46),
@@ -497,7 +496,8 @@ INSERT INTO `categorias_productos` (`ID`, `ID_CATEGORIA`, `ID_PRODUCTO`) VALUES
 (374, 144, 29),
 (375, 394, 52),
 (376, 144, 53),
-(377, 394, 54);
+(377, 394, 54),
+(378, 144, 22);
 
 -- --------------------------------------------------------
 
@@ -533,7 +533,7 @@ INSERT INTO `categorias_servicios` (`ID`, `ID_CATEGORIA`, `ID_SERVICIO`) VALUES
 (3, 233, 4),
 (6, 233, 5),
 (7, 360, 6),
-(12, 364, 7);
+(14, 364, 7);
 
 -- --------------------------------------------------------
 
@@ -551,6 +551,13 @@ CREATE TABLE `concurso` (
   `FECHA_FIN` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `MOSTRAR_FRASE` varchar(255) NOT NULL DEFAULT 'no'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `concurso`
+--
+
+INSERT INTO `concurso` (`ID`, `FRASE`, `PRODUCTOS`, `ID_GANADOR`, `FECHA_INICIO`, `FECHA_GANADOR`, `FECHA_FIN`, `MOSTRAR_FRASE`) VALUES
+(1, 'cuando te anuncias con nosotros ganas mucho dinero ', '22 2 6 14 38 12 27 33', '', '2019-06-26 16:00:00', '0000-00-00 00:00:00', '2019-06-26 18:00:00', 'no');
 
 -- --------------------------------------------------------
 
@@ -712,7 +719,9 @@ INSERT INTO `direcciones` (`ID_DIRECCION`, `ID_USUARIO`, `ID_TIENDA`, `DIRECCION
 (33, '5c08a9dc2cb096.56391251', 0, 'perfil', 'Direccion Perfil', 'Estados Unidos', 'New York', '', 'Livingston County', '', '2801', '11226', '-', '2019-06-20 20:51:32', '2019-06-20 20:51:32'),
 (34, '5d126bcf19c1a6.18130926', 10, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', '', 'Miguel Hidalgo', '', 'Gelati', '11850', '-', '2019-06-25 18:53:34', '2019-06-25 18:53:34'),
 (35, '5d126bcf19c1a6.18130926', 0, 'perfil', 'Direccion Perfil', 'México', 'Ciudad de México', '', 'Iztacalco', '', 'Gelati', '11850', '-', '2019-06-25 19:12:06', '2019-06-25 19:12:06'),
-(36, '5d08199aa1f433.62917938', 11, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', '', 'Venustiano Carranza', '', 'Catarinas 89', '10021', '-', '2019-06-26 18:02:58', '2019-06-26 18:02:58');
+(36, '5d08199aa1f433.62917938', 11, 'fiscal', 'Direccion Tienda', 'México', 'Ciudad de México', '', 'Venustiano Carranza', '', 'Catarinas 89', '10021', '-', '2019-06-26 18:02:58', '2019-06-26 18:02:58'),
+(37, '5d1627c9aa43f4.65841338', 0, 'perfil', 'Direccion Perfil', 'Estados Unidos', 'New York', '', 'New York County', 'New york', '115 Knickerbocker Ave, Brooklyn, New York 11237', '10005', '-', '2019-06-28 15:02:27', '2019-06-28 15:02:27'),
+(38, '5d1627c9aa43f4.65841338', 0, 'envio', '', 'México', 'Aguascalientes', '', 'Aguascalientes', 'a', '345', '10119', 'junto a parque', '2019-06-28 15:18:00', '2019-06-28 15:18:00');
 
 -- --------------------------------------------------------
 
@@ -1046,7 +1055,8 @@ INSERT INTO `galeria_servicios` (`ID_GALERIA`, `ID_SERVICIO`, `GALERIA_ARCHIVO`,
 (1, 1, 'Servicio-5ca56226f2dda.jpg', 'si', 'activo', 1),
 (3, 2, 'Servicio-5cfef4c0d26aa.jpg', 'si', 'activo', 1),
 (4, 5, 'Servicio-5d0acba024fc7.jpg', 'si', 'activo', 1),
-(5, 6, 'Servicio-5d0c026812db1.jpg', 'si', 'activo', 1);
+(5, 6, 'Servicio-5d0c026812db1.jpg', 'si', 'activo', 1),
+(6, 7, 'Servicio-5d13df494c9f9.jpg', 'si', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -9911,17 +9921,19 @@ INSERT INTO `notificaciones` (`ID_NOTIFICACION`, `ID_USUARIO`, `NOTIFICACION_CON
 (30, '5c0653d43d92e7.75019474', 'Gracias por comprar', 'compra', '2019-06-20 22:41:32', 'leido'),
 (31, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-21 16:16:56', 'leido'),
 (32, '5c0653d43d92e7.75019474', 'Gracias por comprar', 'compra', '2019-06-24 23:46:24', 'leido'),
-(33, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-24 23:02:11', 'no leido'),
+(33, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-26 21:50:25', 'leido'),
 (34, '5c0653d43d92e7.75019474', 'Gracias por comprar', 'compra', '2019-06-24 23:46:24', 'leido'),
-(35, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-24 23:06:54', 'no leido'),
+(35, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-26 21:50:25', 'leido'),
 (36, '5c0653d43d92e7.75019474', 'Gracias por comprar', 'compra', '2019-06-24 23:46:24', 'leido'),
-(37, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-24 23:11:43', 'no leido'),
-(38, '5c0653d43d92e7.75019474', 'Gracias por comprar', 'compra', '2019-06-25 20:45:54', 'no leido'),
-(39, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-25 20:45:54', 'no leido'),
+(37, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-26 21:50:25', 'leido'),
+(38, '5c0653d43d92e7.75019474', 'Gracias por comprar', 'compra', '2019-06-26 22:01:11', 'leido'),
+(39, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-26 21:50:25', 'leido'),
 (40, '5ca4043cde1435.48493149', 'Tienes un nuevo mensaje sobre tu servicioTraducción de textos Inglés-español-inglés', 'mensaje', '2019-06-26 17:47:08', 'no leido'),
-(41, '5c9c1ff62ce0c3.78174962', 'Alguien ha hecho una pregunta sobre tu producto Bolsas de vacío para almacenar ropa', 'mensaje', '2019-06-26 17:48:05', 'no leido'),
-(42, '5c08a9dc2cb096.56391251', 'Gracias por comprar', 'compra', '2019-06-26 17:53:13', 'no leido'),
-(43, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-26 17:53:13', 'no leido');
+(41, '5c9c1ff62ce0c3.78174962', 'Alguien ha hecho una pregunta sobre tu producto Bolsas de vacío para almacenar ropa', 'mensaje', '2019-06-26 21:50:25', 'leido'),
+(42, '5c08a9dc2cb096.56391251', 'Gracias por comprar', 'compra', '2019-06-26 18:45:23', 'leido'),
+(43, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-26 21:50:25', 'leido'),
+(44, '5c9c1ff62ce0c3.78174962', 'Gracias por comprar', 'compra', '2019-06-28 18:01:51', 'leido'),
+(45, '5c9c1ff62ce0c3.78174962', 'Felicidades alguien te ha hecho una compra', 'venta', '2019-06-28 18:01:51', 'leido');
 
 -- --------------------------------------------------------
 
@@ -10070,7 +10082,8 @@ INSERT INTO `pedidos` (`ID_PEDIDO`, `PEDIDO_FOLIO`, `ID_USUARIO`, `PEDIDO_NOMBRE
 (24, '2VBYZP', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335    ', 2, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, CDMX, Ciudad de México, 07969, México', 'MXN', '1.000', '285.00', '285.00', '87.00', '87.00', 3, 'Mexpost', NULL, NULL, NULL, NULL, '372.00', 'OXXO', 'Pagado', 'Pagado', '2019-06-24 23:16:12', '2019-06-24 23:16:12'),
 (25, 'M2WBHN', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335    ', 2, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, CDMX, Ciudad de México, 07969, México', 'MXN', '1.000', '345.00', '345.00', '40.00', '40.00', 3, 'Correos de México', NULL, NULL, NULL, NULL, '385.00', 'OXXO', 'Pagado', 'Pagado', '2019-06-24 23:16:29', '2019-06-24 23:16:29'),
 (26, 'SD74BC', '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'marmocreativo@gmail.com', ' 26032335    ', 2, 'Avenida 561 No. 148, San Juan de Aragón II, Gustavo A. Madero, CDMX, Ciudad de México, 07969, México', 'MXN', '1.000', '106.00', '106.00', '40.00', '40.00', 3, 'Correos de México', NULL, NULL, NULL, NULL, '146.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-06-25 20:45:54', '2019-06-25 20:45:54'),
-(27, '2PKJAB', '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', 5, 'a, a, Cuauhtémoc, , Ciudad de México, 11850, México', 'MXN', '1.000', '1500.00', '1500.00', '53.00', '53.00', 3, 'Correos de México', NULL, NULL, NULL, NULL, '1553.00', 'OXXO', 'Pagado', 'Pagado', '2019-06-26 17:53:53', '2019-06-26 17:53:53');
+(27, '2PKJAB', '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', 'jopecaro6374@hotmail.com', '     34567890', 5, 'a, a, Cuauhtémoc, , Ciudad de México, 11850, México', 'MXN', '1.000', '1500.00', '1500.00', '53.00', '53.00', 3, 'Correos de México', NULL, NULL, NULL, NULL, '1553.00', 'OXXO', 'Pagado', 'Pagado', '2019-06-26 17:53:53', '2019-06-26 17:53:53'),
+(28, '15LDHB', '5c9c1ff62ce0c3.78174962', 'ABANICO SLM', 'tienda@abanicoytu.com', '', 4, 'GELATI 14 DEPTO 5 , SAN MIGUEL CHAPULTEPEC, Miguel Hidalgo, CDMX, Ciudad de México, 11850, México', 'MXN', '1.000', '1350.00', '1350.00', '83.00', '83.00', 3, 'Mexpost', NULL, NULL, NULL, NULL, '1433.00', 'Transferencia Bancaria', 'Pendiente', 'Espera Pago', '2019-06-28 18:01:16', '2019-06-28 18:01:16');
 
 -- --------------------------------------------------------
 
@@ -10170,7 +10183,10 @@ INSERT INTO `pedidos_productos` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `ID_PRODUCTO`, 
 (19, 24, 1, 34, 'Set de moldes para hielo de Star wars ', '', 'https://abanicoytu.com/contenido/img/productos/completo/producto-5cb76b7e82c38.jpg', 1, '285.00', '285.00'),
 (20, 25, 1, 7, 'Vaso termo ', 'Color-Negro', 'https://abanicoytu.com/contenido/img/productos/completo/producto-5c9c26d0623a8.jpg', 1, '345.00', '345.00'),
 (21, 26, 1, 28, 'Divertidas moldes para hotcakes o huevo', '', 'https://abanicoytu.com/contenido/img/productos/completo/producto-5cb778b2e6b1e.jpg', 1, '106.00', '106.00'),
-(22, 27, 1, 40, 'Coloridas sombrilla de papel ideales para protegerte de los rayos del sol', 'Modelo-Volcán', 'https://abanicoytu.com/contenido/img/productos/completo/producto-5cf56712b0b88.jpg', 10, '150.00', '1500.00');
+(22, 27, 1, 40, 'Coloridas sombrilla de papel ideales para protegerte de los rayos del sol', 'Modelo-Volcán', 'https://abanicoytu.com/contenido/img/productos/completo/producto-5cf56712b0b88.jpg', 10, '150.00', '1500.00'),
+(23, 28, 1, 40, 'Coloridas sombrilla de papel ideales para protegerte de los rayos del sol', 'Modelo-Lago', 'https://abanicoytu.com/contenido/img/productos/completo/producto-5cf56712b0b88.jpg', 1, '150.00', '150.00'),
+(24, 28, 1, 40, 'Coloridas sombrilla de papel ideales para protegerte de los rayos del sol', 'Modelo-Volcán', 'https://abanicoytu.com/contenido/img/productos/completo/producto-5cf56712b0b88.jpg', 3, '150.00', '450.00'),
+(25, 28, 1, 40, 'Coloridas sombrilla de papel ideales para protegerte de los rayos del sol', 'Modelo-Otoño', 'https://abanicoytu.com/contenido/img/productos/completo/producto-5cf56712b0b88.jpg', 5, '150.00', '750.00');
 
 -- --------------------------------------------------------
 
@@ -10225,7 +10241,8 @@ INSERT INTO `pedidos_tiendas` (`ID`, `ID_PEDIDO`, `ID_TIENDA`, `PEDIDO_TIENDA_IM
 (17, 24, 1, '285.00', '87.00', '7.00', '8.00', '4.60', '0.00', '19.95', '22.80', '17.11', 'no', '225.14', '', 6, 'Mexpost', NULL, '', 'Espera Pago'),
 (18, 25, 1, '345.00', '40.00', '7.00', '8.00', '4.60', '0.00', '24.15', '27.60', '17.71', 'no', '275.54', '', 3, 'Correos de México', NULL, '', 'Espera Pago'),
 (19, 26, 1, '106.00', '40.00', '7.00', '8.00', '0.00', '0.00', '7.42', '8.48', '0.00', 'no', '90.10', '', 3, 'Correos de México', NULL, '', 'Espera Pago'),
-(20, 27, 1, '1500.00', '53.00', '7.00', '8.00', '4.60', '0.00', '105.00', '120.00', '71.44', 'no', '1203.56', '', 3, 'Correos de México', NULL, '', 'Espera Pago');
+(20, 27, 1, '1500.00', '53.00', '7.00', '8.00', '4.60', '0.00', '105.00', '120.00', '71.44', 'no', '1203.56', '', 3, 'Correos de México', NULL, '', 'Espera Pago'),
+(21, 28, 1, '1350.00', '83.00', '7.00', '8.00', '0.00', '0.00', '94.50', '108.00', '0.00', 'no', '1147.50', '', 6, 'Mexpost', NULL, '', 'Espera Pago');
 
 -- --------------------------------------------------------
 
@@ -10259,7 +10276,8 @@ INSERT INTO `perfiles_servicios` (`ID_PERFIL`, `ID_USUARIO`, `PERFIL_NOMBRE`, `P
 (13, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', '', '', '26032335', 25, 'perfil_servicios-5d07e91b80c04.jpg', '2019-06-17 19:25:16', '2019-06-17 19:25:16', 'activo'),
 (18, '5d0ab3549fe593.01622310', 'Margarita', '', '', '9988776655', 31, 'perfil_servicios-5d0ac8fe0ab1d.jpg', '2019-06-19 23:45:03', '2019-06-19 23:45:03', 'activo'),
 (19, '5c08a9dc2cb096.56391251', 'JORGE CARRASCO', '', '', '9176542379', 33, 'default.jpg', '2019-06-20 20:51:32', '2019-06-20 20:51:32', 'activo'),
-(20, '5d126bcf19c1a6.18130926', 'Penelope RP', '', '', '5513003000', 35, 'perfil_servicios-5d1272065dfe7.jpg', '2019-06-25 19:12:06', '2019-06-25 19:12:06', 'activo');
+(20, '5d126bcf19c1a6.18130926', 'Penelope RP', '', '', '5513003000', 35, 'perfil_servicios-5d1272065dfe7.jpg', '2019-06-25 19:12:06', '2019-06-25 19:12:06', 'activo'),
+(21, '5d1627c9aa43f4.65841338', 'FRANKLIN AVILA', 'Hosting Vale', '', '593987150801', 37, 'default.jpg', '2019-06-28 15:02:27', '2019-06-28 15:02:27', 'activo');
 
 -- --------------------------------------------------------
 
@@ -10501,7 +10519,7 @@ INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOM
 (14, '5c9c1ff62ce0c3.78174962', 1, 'Infusor de té en forma de T-Rex', 'infusor-de-té-en-forma-de-t-rex', 'Infusiona tus hierbas de forma divertida con este lindo dinosaurio. ', '<ul>\r\n	<li>Fabricado con silic&oacute;n grado alimenticio, este verde amigo es una opci&oacute;n refrescante para preparar tu t&eacute; todos los d&iacute;as.</li>\r\n	<li>Puedes llenar el cuerpo y la cabeza para obtener la concentraci&oacute;n que m&aacute;s te gusta.</li>\r\n	<li>Resistente y durable, f&aacute;cil de lavar.&nbsp;</li>\r\n</ul>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '112.00', '0.00', 'MXN', 'no', 25, 1, 1, 'No disponible para la venta', '2019-06-21 18:11:04', '2019-06-21 18:11:04', '2019-06-21 18:11:04', '0.00', '0.00', '0.00', '0.05', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (15, '5c9c1ff62ce0c3.78174962', 1, 'Marcadores para copas de emojis', 'marcadores-para-vaso-o-copas-de-emojis', 'Set de 8  marcadores para copas de emojis. ', '<ul>\r\n	<li>Divertidas caras de emojis para marcar tus copas durante tus fiestas.</li>\r\n	<li>No correr&aacute;s m&aacute;s el riesgo de que alguien se tome tu bebida, solo marca tu copa y disfruta de la fiesta.&nbsp;</li>\r\n	<li>Ocho diferentes dise&ntilde;os, ligeros, y se adhiere a botellas, vasos y copas de vidrio.</li>\r\n</ul>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '164.00', '0.00', 'MXN', 'no', 25, 1, 1, 'No disponible para la venta', '2019-06-21 18:03:38', '2019-06-21 18:03:38', '2019-06-21 18:03:38', '5.00', '5.00', '5.00', '0.05', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (21, '5c9c1ff62ce0c3.78174962', 1, 'Joyero de madera hecho a mano', 'joyero-de-madera-hecho-a-mano', 'Hermosa joyero de madera hecho a mano con cerradura totalmente funcional.', '<ul>\r\n	<li>﻿﻿Esta linda caja de madera esta totalmente hecha a mano en madera de pino por un artesano veracruzano.</li>\r\n	<li>El trabajo se encuentra perfectamente detallado y los acabados muy bien cuidados.</li>\r\n	<li>La cerradura es de primera calidad y es totalmente funcional. Incluye dos llaves.&nbsp;</li>\r\n</ul>\r\n\r\n<p>Gracias a su terminado natural es posible decorarlo o pintarlo al gusto de la persona, permitiendo a ni&ntilde;as y adultos personalizarlos y tener un lugar privado en donde guardar sus secretos.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n', '', 'México', 'si', '', '', '', '', '', '', '160.00', '240.00', 'MXN', 'no', 10, 1, 1, 'No disponible para la venta', '2019-06-21 17:57:59', '2019-06-21 17:57:59', '2019-06-21 17:57:59', '17.50', '13.00', '18.00', '0.85', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(22, '5c9c1ff62ce0c3.78174962', 1, 'Set de 6 piezas de tapas de silicón elásticas que se adaptan a cualquier contenedor de 6.5 a 20 cm. ', 'tapas-de-silicón', 'Prácticas y resistentes tapas de silicón, grado alimenticio, para conservar tus alimentos por mayor tiempo en el refrigerador. Set de 6 piezas de 20 cm, 17 cm, 15 cm, 12 cm, 10 cm y  6.5 cm. ', '<ul>\r\n	<li>Set de 6 piezas de tapas el&aacute;sticas de silicon grado alimenticio, aprobado por la FDA,&nbsp; totalmente seguro para uso con alimentos ya que es un material inocuo que no libera ning&uacute;n tipo de gas, olor o residuo.</li>\r\n	<li>Las tapas miden 20 cm, 17 cm, 15 cm, 12 cm, 10 cm y 6.5 cm.</li>\r\n	<li>Ideales para cubrir cualquier recipiente. Son a prueba de fugas.&nbsp;</li>\r\n	<li>Pueden usarse para cubrir frutas y verduras directamente ya que son muy manejables y suaves.&nbsp;</li>\r\n	<li>Mantienen los alimentos frescos dentro y fuera del refrigerador.&nbsp;</li>\r\n	<li>F&aacute;cil de usar y lavar. Ecol&oacute;gicas y reusables.&nbsp;</li>\r\n	<li>Vienen en tres diferentes grados de resistencia, para que todos en la familia puedan usarlas facilmente.&nbsp;</li>\r\n	<li>La calidad del producto esta relacionada con su peso en gramos. A mayor cantidad de gramos mayor calidad, resistencia&nbsp;y durabilidad.&nbsp;</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '144.00', '170.00', 'MXN', 'no', 47, 1, 1, 'No disponible para la venta', '2019-06-17 23:38:49', '2019-06-17 23:38:49', '2019-06-17 23:38:49', '19.00', '3.00', '3.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(22, '5c9c1ff62ce0c3.78174962', 1, 'Set de 6 piezas de tapas de silicón elásticas que se adaptan a cualquier contenedor de 6.5 a 20 cm. ', 'tapas-de-silicón', 'Prácticas y resistentes tapas de silicón, grado alimenticio, para conservar tus alimentos por mayor tiempo en el refrigerador. Set de 6 piezas de 20 cm, 17 cm, 15 cm, 12 cm, 10 cm y  6.5 cm. ', '<ul>\r\n	<li>Set de 6 piezas de tapas el&aacute;sticas de silicon grado alimenticio, aprobado por la FDA,&nbsp; totalmente seguro para uso con alimentos ya que es un material inocuo que no libera ning&uacute;n tipo de gas, olor o residuo.</li>\r\n	<li>Las tapas miden 20 cm, 17 cm, 15 cm, 12 cm, 10 cm y 6.5 cm.</li>\r\n	<li>Ideales para cubrir cualquier recipiente. Son a prueba de fugas.&nbsp;</li>\r\n	<li>Pueden usarse para cubrir frutas y verduras directamente ya que son muy manejables y suaves.&nbsp;</li>\r\n	<li>Mantienen los alimentos frescos dentro y fuera del refrigerador.&nbsp;</li>\r\n	<li>F&aacute;cil de usar y lavar. Ecol&oacute;gicas y reusables.&nbsp;</li>\r\n	<li>Vienen en tres diferentes grados de resistencia, para que todos en la familia puedan usarlas facilmente.&nbsp;</li>\r\n	<li>La calidad del producto esta relacionada con su peso en gramos. A mayor cantidad de gramos mayor calidad, resistencia&nbsp;y durabilidad.&nbsp;</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '144.00', '170.00', 'MXN', 'no', 47, 1, 1, 'No disponible para la venta', '2019-06-28 17:36:41', '2019-06-28 17:36:41', '2019-06-28 17:36:41', '19.00', '3.00', '3.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (24, '5c9c1ff62ce0c3.78174962', 1, 'Cartucho de fibra de coco para filtro encima del fregadero', 'cartucho-de-fibra-de-coco', 'Cartucho de fibra de coco para filtros sobre el fregadero.', '<p>Cartucho de excelente calidad. Hecho 100% con fibra de coco que es uno de los mejores materiales para la purificaci&oacute;n del agua. Practico y muy resiste. Dura hasta 6 meses.&nbsp;</p>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '400.00', '0.00', 'MXN', 'no', 99, 1, 1, 'No disponible para la venta', '2019-06-17 23:52:21', '2019-06-17 23:52:21', '2019-06-17 23:52:21', '7.00', '25.00', '10.50', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (25, '5c9c1ff62ce0c3.78174962', 1, 'Cartucho de carbón activado para filtros sobre y bajo el fregadero', 'cartucho-royal', 'Cartucho para filtros sobre y debajo del fregadero. ', '<p>Repuesto de cartucho para filtro sobre y debajo del fregadero. Ideal para los filtros Eclipse y Royal. Cuerpo de carbon activado de la mejor calidad.&nbsp;</p>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '100.00', '0.00', 'USD', 'no', 49, 1, 1, 'No disponible para la venta', '2019-06-03 21:52:32', '2019-06-04 15:56:12', '2019-06-03 21:52:32', '12.00', '20.00', '1.00', '1.00', 'normal', 'nuevo', 0, '0.00', 'es', 'inactivo', 1),
 (26, '5c9c1ff62ce0c3.78174962', 1, 'Manguera con válvula para filtro sobre el fregadero', 'manguera-con-válvula-para-filtro-sobre-el-fregadero', 'Válvula y manguera para filtro encima del fregadero. ', '<p>V&aacute;lvula y manguera de respuesto para los filtros de agua instalados arriba del fregadero. La v&aacute;lvula est&aacute; fabricada en acero inoxidable y la manguera es de alta calidad, con un metro de longitud para facilitar el acomodo del filtro en cualquier area del fregadero.&nbsp;</p>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '35.00', '0.00', 'USD', 'no', 0, 1, 1, 'No disponible para la venta', '2019-06-17 23:56:41', '2019-06-17 23:56:41', '2019-06-17 23:56:41', '0.00', '0.00', '0.00', '0.50', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
@@ -10516,7 +10534,7 @@ INSERT INTO `productos` (`ID_PRODUCTO`, `ID_USUARIO`, `ID_TIENDA`, `PRODUCTO_NOM
 (36, '5c9c1ff62ce0c3.78174962', 1, 'Set de 12 marcadores en forma de animales para copas o vasos', 'set-de-marcadores-para-copas-o-vasos', 'Divertidos y prácticos marcadores para copas y vasos en forma de animales. ', '<ul>\r\n	<li>12 marcadores en colores y figuras variadas.</li>\r\n	<li>Ideales para tus fiestas para que tus invitados puedan marcar sus bebidas y recordar f&aacute;cilmente cual es la suya.&nbsp;</li>\r\n	<li>Ligeros y pr&aacute;cticos. Se adhieren a vasos, botellas y copas de vidrio.&nbsp;</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '110.00', '0.00', 'MXN', 'no', 25, 1, 1, 'No disponible para la venta', '2019-06-21 18:13:11', '2019-06-21 18:13:11', '2019-06-21 18:13:11', '10.00', '10.00', '10.00', '0.05', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (37, '5c9c1ff62ce0c3.78174962', 1, 'Set de 6 marcadores en forma de pequeños hombres para copas y vasos', 'set-de-6-marcadores-en-forma-de-pequeños-hombres-para-copas-y-vasos', 'Marcadores para vasos y copas en forma de hombre con 6 diferentes colores. ', '<ul>\r\n	<li>Divertidos marcadores ideales para usar en tus fiestas.&nbsp;</li>\r\n	<li>Tus invitados podr&aacute;n marcar de forma clara sus bebidas y no perderlas de vista durante la noche.&nbsp;</li>\r\n	<li>6 colores diferentes.</li>\r\n	<li>Ligeros y pr&aacute;cticos.&nbsp;</li>\r\n</ul>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '93.00', '0.00', 'MXN', 'no', 20, 1, 1, 'No disponible para la venta', '2019-06-21 18:12:37', '2019-06-21 18:12:37', '2019-06-21 18:12:37', '10.00', '10.00', '10.00', '0.05', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (39, '5c9c1ff62ce0c3.78174962', 1, 'Infusores para té en forma de caracol ', 'infusores-para-té-en-forma-de-caracol', 'Adorables caracoles para sostener tu bolsita de té en la taza y evitar que se hunda. 6 piezas de colores surtidos. ', '<ul>\r\n	<li>Hechos de silic&oacute;n grado alimenticio, estos adorable caracoles son totalmente seguros para usarlos en tus bebidas.&nbsp;</li>\r\n	<li>Solo enrolla la tira de tu bolsita de te en el cuerpo del caracol y vierte el agua. Olv&iacute;date de introducir los dedos en el agua para sacar la bolsa de t&eacute; cuando esta se va hacia adentro de la taza o cuando tu bebida est&aacute; en el punto exacto.&nbsp;&nbsp;</li>\r\n	<li>Set de 6 caracoles en colores surtidos. Ligeros, durables y f&aacute;ciles de usar.&nbsp;</li>\r\n	<li>El regalo ideal para los amantes del t&eacute;.</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '81.00', '0.00', 'MXN', 'no', 20, 1, 1, 'No disponible para la venta', '2019-06-21 18:06:07', '2019-06-21 18:06:07', '2019-06-21 18:06:07', '0.50', '0.50', '0.50', '0.02', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
-(40, '5c9c1ff62ce0c3.78174962', 1, 'Coloridas sombrilla de papel ideales para protegerte de los rayos del sol', 'fabulosa-sombrilla-de-papel-ideal-para-protegerte-del-sol', 'Sombrilla de papel totalmente hecha a mano y decorada con patrones orientales.', '<ul>\r\n	<li>﻿Excepcional parasol de papel con&nbsp;10 hermosos dise&ntilde;os.</li>\r\n	<li>Totalmente realizado a mano. Con patrones cl&aacute;sicos orientales.</li>\r\n	<li>Ideal para protegerse de los rayos solares en estos d&iacute;as de calor intenso. O para adornar una fiesta, recamara o estancia.</li>\r\n	<li>Alta calidad. Con mango de madera durable y resistente.&nbsp;</li>\r\n</ul>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '150.00', '0.00', 'MXN', 'no', 80, 1, 1, 'No disponible para la venta', '2019-06-17 23:39:28', '2019-06-26 17:53:13', '2019-06-17 23:39:28', '83.00', '42.00', '0.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
+(40, '5c9c1ff62ce0c3.78174962', 1, 'Coloridas sombrilla de papel ideales para protegerte de los rayos del sol', 'fabulosa-sombrilla-de-papel-ideal-para-protegerte-del-sol', 'Sombrilla de papel totalmente hecha a mano y decorada con patrones orientales.', '<ul>\r\n	<li>﻿Excepcional parasol de papel con&nbsp;10 hermosos dise&ntilde;os.</li>\r\n	<li>Totalmente realizado a mano. Con patrones cl&aacute;sicos orientales.</li>\r\n	<li>Ideal para protegerse de los rayos solares en estos d&iacute;as de calor intenso. O para adornar una fiesta, recamara o estancia.</li>\r\n	<li>Alta calidad. Con mango de madera durable y resistente.&nbsp;</li>\r\n</ul>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '150.00', '0.00', 'MXN', 'no', 71, 1, 1, 'No disponible para la venta', '2019-06-17 23:39:28', '2019-06-28 18:01:16', '2019-06-17 23:39:28', '83.00', '42.00', '0.00', '0.30', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (41, '5c9c1ff62ce0c3.78174962', 1, 'Útiles cucharas medidoras de acero inoxidable', 'Útiles-cucharas-medidoras-de-acero-inoxidable', 'Cucharas medidoras de acero inoxidable. ', '<ul>\r\n	<li>&Uacute;til y pr&aacute;ctico set de 4 cucharas para medici&oacute;n de alimentos.&nbsp;</li>\r\n	<li>No vuelvas a adivinar si estas usando la cantidad correcta de tus ingredientes al preparar tus recetas favoritas. Con estas cucharas&nbsp;medidoras tendr&aacute;s el control&nbsp;total para preparar exquisitos platillos que a tu familia les encantar&aacute;n.</li>\r\n	<li>Este set viene con un anillo para mantener las cucharas juntas.</li>\r\n	<li>La capacidad es de 1 cucharada, 1/2 cucharada, 1/4 cucharada y 1/8 de cucharada la cual est&aacute; grabada en el mango.&nbsp;</li>\r\n	<li>Las cucharas tienen un acabado espejo.&nbsp;</li>\r\n</ul>\r\n', '', 'Otro', 'no', '', '', '', '', '', '', '179.00', '0.00', 'MXN', 'no', 0, 1, 1, 'No disponible para la venta', '2019-06-18 04:25:30', '2019-06-24 23:02:11', '2019-06-18 04:25:30', '2.00', '12.00', '2.00', '0.10', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (42, '5c9c1ff62ce0c3.78174962', 1, 'Cartucho alcalino', 'cartucho-alcalino', '', '', '', 'Otro', 'no', '', '', '', '', '', '', '120.00', '0.00', 'USD', 'no', 1, 1, 1, 'No disponible para la venta', '2019-06-17 23:46:47', '2019-06-17 23:46:47', '2019-06-17 23:46:47', '8.00', '30.00', '0.00', '1.00', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
 (43, '5c9c1ff62ce0c3.78174962', 1, 'Cartucho inline', 'cartucho-inline', '', '', '', 'Otro', 'no', '', '', '', '', '', '', '60.00', '0.00', 'USD', 'no', 1, 1, 1, 'No disponible para la venta', '2019-06-17 23:46:03', '2019-06-17 23:46:03', '2019-06-17 23:46:03', '6.00', '30.00', '5.00', '0.40', 'normal', 'nuevo', 0, '0.00', 'es', 'activo', 1),
@@ -10559,9 +10577,9 @@ CREATE TABLE `productos_combinaciones` (
 --
 
 INSERT INTO `productos_combinaciones` (`ID_COMBINACION`, `ID_PRODUCTO`, `COMBINACION_GRUPO`, `COMBINACION_OPCION`, `COMBINACION_PRECIO`, `COMBINACION_CANTIDAD`, `COMBINACION_IMAGEN`, `COMBINACION_ANCHO`, `COMBINACION_ALTO`, `COMBINACION_PROFUNDO`, `COMBINACION_PESO`) VALUES
-(1, 22, 'Calidad', '165 gramos', '132.00', 1, '', '19.00', '3.00', '3.00', '0.17'),
-(2, 22, 'Calidad', '135 gramos', '125.00', 1, '', '19.00', '3.00', '3.00', '0.22'),
-(3, 22, 'Calidad', '220 gramos', '148.00', 1, '', '19.00', '3.00', '3.00', '0.22'),
+(1, 22, 'Calidad', '165 gramos', '148.00', 1, '', '19.00', '3.00', '3.00', '0.17'),
+(2, 22, 'Calidad', '135 gramos', '140.00', 1, '', '19.00', '3.00', '3.00', '0.22'),
+(3, 22, 'Calidad', '220 gramos', '165.00', 1, '', '19.00', '3.00', '3.00', '0.22'),
 (4, 30, 'Forma', 'Embudo redondo-esponja ovalada', '98.00', 1, '', '0.00', '0.00', '0.00', '0.08'),
 (5, 30, 'Forma', 'Embudo cuadrado-esponja redonda', '98.00', 1, '', '0.00', '0.00', '0.00', '0.08'),
 (6, 35, 'Color', 'Gris', '112.00', 1, '', '6.00', '10.00', '4.00', '0.10'),
@@ -10574,12 +10592,18 @@ INSERT INTO `productos_combinaciones` (`ID_COMBINACION`, `ID_PRODUCTO`, `COMBINA
 (13, 9, 'Color', 'Gris', '280.00', 1, '', '0.00', '0.00', '0.00', '0.30'),
 (15, 51, 'Tamaño', '500 gramos', '190.00', 1, '', '15.00', '22.00', '8.00', '0.50'),
 (16, 51, 'Tamaño', '250 gramos', '190.00', 1, '', '15.00', '22.00', '8.00', '0.50'),
-(18, 40, 'dibujo', 'Hojitas', '150.00', 1, 'producto-5cf56712b0b88.jpg', '83.00', '42.00', '0.00', '0.30'),
 (19, 40, 'Modelo', 'Volcán', '150.00', 9, 'producto-5cf56712b0b88.jpg', '83.00', '42.00', '0.00', '0.30'),
-(20, 40, 'Modelo ', 'Rosa', '150.00', 9, 'producto-5cf5672dbb674.jpg', '83.00', '42.00', '0.00', '0.30'),
+(20, 40, 'Modelo ', 'Flores rosadas', '150.00', 9, 'producto-5cf5672dbb674.jpg', '83.00', '42.00', '0.00', '0.30'),
 (21, 40, 'Modelo', 'Pavoreal', '150.00', 8, 'producto-5cf5673d655e9.jpg', '83.00', '42.00', '0.00', '0.30'),
 (22, 27, 'Modelo', 'Mango plano', '279.00', 1, 'producto-5cc89d0707fdd.jpg', '6.00', '6.00', '15.00', '0.30'),
-(23, 27, 'Modelo', 'Mango tubular', '379.00', 1, 'producto-5cc89cfc3a72f.jpg', '6.00', '6.00', '15.00', '0.30');
+(23, 27, 'Modelo', 'Mango tubular', '379.00', 1, 'producto-5cc89cfc3a72f.jpg', '6.00', '6.00', '15.00', '0.30'),
+(25, 40, 'Modelo', 'Tulipanes', '150.00', 1, 'producto-5cf56749d1433.jpg', '83.00', '42.00', '0.00', '0.30'),
+(27, 40, 'Modelo', 'Rosas', '150.00', 1, 'producto-5cf5671e2e9d1.jpg', '83.00', '42.00', '0.00', '0.30'),
+(28, 40, 'Modelo', 'Lago', '150.00', 1, 'producto-5cf5675d267fb.jpg', '83.00', '42.00', '0.00', '0.30'),
+(29, 40, 'Modelo', 'Cerezos en boton', '150.00', 1, 'producto-5cf567690f25f.jpg', '83.00', '42.00', '0.00', '0.30'),
+(31, 40, 'Modelo', 'Flores rojas', '150.00', 1, 'producto-5cf56777d0aa1.jpg', '83.00', '42.00', '0.00', '0.30'),
+(32, 40, 'Modelo', 'Otoño', '150.00', 1, 'producto-5cf5678a846d7.jpg', '83.00', '42.00', '0.00', '0.30'),
+(33, 40, 'Modelo', 'Lago y cerezo', '150.00', 1, 'producto-5cf567af706f0.jpg', '83.00', '42.00', '0.00', '0.30');
 
 -- --------------------------------------------------------
 
@@ -10705,7 +10729,8 @@ INSERT INTO `seguridad_usuarios` (`ID`, `ID_USUARIO`, `CLAVE`, `FECHA_REGISTRO`,
 (3, '5c0653d43d92e7.75019474', 'XmfURaSG3D', '2019-04-04 00:00:16', 'activo'),
 (4, '5ce5ab20347a44.04396747', '3eXaWCcizx', '2019-06-18 19:17:56', 'activo'),
 (5, '5ca4043cde1435.48493149', 'BzoCEp8DMA', '2019-06-18 19:30:28', 'inactivo'),
-(6, '5d08199aa1f433.62917938', 'UmkNuye75g', '2019-06-26 18:00:23', 'inactivo');
+(6, '5d08199aa1f433.62917938', 'UmkNuye75g', '2019-06-26 18:00:23', 'inactivo'),
+(7, '5d126bcf19c1a6.18130926', 'BL0LXwjx0Z', '2019-06-28 19:13:42', 'inactivo');
 
 -- --------------------------------------------------------
 
@@ -10748,7 +10773,7 @@ INSERT INTO `servicios` (`ID_SERVICIO`, `ID_USUARIO`, `USUARIO_NOMBRE`, `SERVICI
 (4, '5ca4043cde1435.48493149', 'P RP', 'Instalacion de sistemas de filtracion de agua. ', 'Se instalan sistemas de filtración domésticos arriba y abajo del fregadero. Tambien instalamos sistemas de osmosis inversa y de cartuchos multiples. ', '', 'México', 'Ciudad de México', 'Benito Juárez', 'Damos servicio en toda la Ciudad. ', 'default.jpg', 'default.jpg', 0, '0.00', '2019-06-17 22:27:16', '2019-06-17 22:27:16', '2019-06-17 22:27:16', 'profesional', 'es', 'activo', 1),
 (5, '5d0ab3549fe593.01622310', 'Margarita Pliego', 'Demostración e instalación de equipos para filtración de agua.', 'Te explicamos como funcionan los diferentes sistemas de filtracion de agua y si te interesa adquirir uno o ya tienes el tuyo, nosotros te lo instalamos.', 'Te mostramos cual es el funcionamiento de los diferentes tipos de filtros de agua y te aconsejamospara que encuentres el mas adecuado para ti. Si ya tienes el tuyo, nosotros podemos encargarnos de su instalación y/o mantenimiento.', 'México', 'Ciudad de México', 'Gustavo A. Madero', 'Toda la Ciudad de México.', 'default.jpg', 'default.jpg', 0, '0.00', '2019-06-19 23:56:16', '2019-06-20 00:12:37', '2019-06-19 23:56:16', 'profesional', 'es', 'activo', 1),
 (6, '5c0653d43d92e7.75019474', 'Manuel Marmolejo Martínez', 'Diseño Gráfico', 'Flyers lonas ', '', 'México', 'Ciudad de México', 'Gustavo A. Madero', 'En todo México, servicio por internet', 'default.jpg', 'default.jpg', 0, '0.00', '2019-06-20 22:02:16', '2019-06-20 22:02:16', '2019-06-20 22:02:16', 'digital', 'es', 'activo', 1),
-(7, '5d126bcf19c1a6.18130926', 'Penelope Rodriguez ', 'Clases de tejido', 'Charlemos y tejamos hermosas creaciones. Te envio las instrucciones para esos proyectos de tejido que siempre quisiste hacer y por videoconferencia revisamos las dudas y los avances.', '', 'México', '-', '-', 'Todo el país ', 'default.jpg', 'default.jpg', 0, '0.00', '2019-06-25 23:59:41', '2019-06-26 13:36:52', '2019-06-25 23:59:41', 'digital', 'es', 'activo', 1);
+(7, '5d126bcf19c1a6.18130926', 'Penelope Rodriguez ', 'Clases de tejido', 'Charlemos y tejamos hermosas creaciones. Te envio las instrucciones para esos proyectos de tejido que siempre quisiste hacer y por videoconferencia revisamos las dudas y los avances.', '', 'México', '-', '-', 'Todo el país ', 'default.jpg', 'default.jpg', 0, '0.00', '2019-06-25 23:59:41', '2019-06-26 21:10:33', '2019-06-25 23:59:41', 'digital', 'es', 'activo', 1);
 
 -- --------------------------------------------------------
 
@@ -10803,7 +10828,7 @@ INSERT INTO `slides` (`ID_SLIDE`, `ID_SLIDER`, `SLIDE_IMAGEN`, `SLIDE_IMAGEN_MOV
 (2, 1, 'slide-5c9eea33ad908.jpg', 'slide_movil_5c9eea410df5f.jpg', 'REGISTRATE Y GANA ', 'nuestro espectacular premio por inauguración', 'todos los detalles muy pronto aquí ', 'https://abanicoytu.com/categoria', 'activo', NULL),
 (3, 2, 'slide-5c9eebaf5d368.jpg', 'slide_movil_5c9eebaf767fe.jpg', 'Grand opening coming soon', '', '', 'https://abanicoytu.com/categoria', 'activo', NULL),
 (4, 2, 'slide-5c9eebe345b87.jpg', 'slide_movil_5c9eebe360a28.jpg', 'Sign up and win!', '', '', 'https://abanicoytu.com/categoria', 'activo', NULL),
-(5, 1, 'slide-5d12a832f2894.jpg', 'slide_movil_5d12a83317122.jpg', 'Compra con nosotros a partir del día 12 de julio del 2019', 'o comunícate hoy mismo si quieres vender o anunciar un servicio con nosotros', '', '#', 'activo', NULL);
+(5, 1, 'slide-5d12a832f2894.jpg', 'slide_movil_5d12a83317122.jpg', 'Adquiere nuestros productos partir del día 15 de julio del 2019', 'o comunícate con nosotros hoy mismo si quieres vender o anunciar un servicio.', '', '#', 'activo', NULL);
 
 -- --------------------------------------------------------
 
@@ -12317,7 +12342,8 @@ INSERT INTO `usuarios` (`ID_USUARIO`, `USUARIO_NOMBRE`, `USUARIO_APELLIDOS`, `US
 ('5d059b878b1456.56657800', 'MARIBEL', 'CARRASCO', 'mary_cp1987@hotmail.com', NULL, '0000-00-00', '$2y$10$PmGDv3EpNR3osFHKGITC7OSjajlnGrZfyQlzNfTzdbbak4bF8h/xK', '2019-06-16 01:29:43', '2019-06-16 01:29:43', 'usr-1', 'si', 'activo'),
 ('5d08199aa1f433.62917938', 'LILIA', 'NAVARRETE', 'peropli@gmail.com', NULL, '0000-00-00', '$2y$10$0n1Za3fj2sfRc4fh0G3BBOfDZqAkfCnTVuBSergGUH23X.nZzlzXG', '2019-06-17 22:52:10', '2019-06-26 18:02:58', 'vnd-2', 'si', 'activo'),
 ('5d0ab3549fe593.01622310', 'Margarita', 'Pliego', 'marantci@gmail.com', NULL, '0000-00-00', '$2y$10$IwrcMpmoHFgQINdX0EC8R.wfjwou0RkyPkwnp1WntG861mlrVqCbW', '2019-06-19 22:12:36', '2019-06-19 23:45:03', 'vns-4', 'si', 'activo'),
-('5d126bcf19c1a6.18130926', 'Penelope', 'Rodriguez ', 'peroplix@hotmail.com', NULL, '0000-00-00', '$2y$10$w.rjidgxrsBFPcx8Ax42pOPEcFXdQvUCH9gwbVU0hQhhAZMTBBOzK', '2019-06-25 18:45:35', '2019-06-25 19:12:06', 'vns-4', 'si', 'activo');
+('5d126bcf19c1a6.18130926', 'Penelope', 'Rodriguez ', 'peroplix@hotmail.com', NULL, '0000-00-00', '$2y$10$q3T7Zi0IZKwgXkGQ8BK2Fe4VGY7o9CO/0myKMyPgo5/9d0nV0KytO', '2019-06-25 18:45:35', '2019-06-28 19:13:42', 'vns-4', 'si', 'activo'),
+('5d1627c9aa43f4.65841338', 'FRANKLIN', 'AVILA', 'luisavila@hostingvale.com', NULL, '0000-00-00', '$2y$10$uHPxw0c1I/VRr1Cyv4nRx.y03oEHIPXnJi66r9Wf3s5okA.bykTt6', '2019-06-28 14:44:25', '2019-06-28 15:02:27', 'ser-3', 'si', 'activo');
 
 -- --------------------------------------------------------
 
@@ -13378,7 +13404,64 @@ INSERT INTO `vistas_generales` (`ID_VISTA`, `VISTA_IP`, `VISTA_CANTIDAD`, `ID_OB
 (1036, '146.66.70.57', '1', 54, 'producto', '2019-06-26 17:48:05'),
 (1037, '146.66.70.57', '1', 40, 'producto', '2019-06-26 17:48:46'),
 (1038, '189.146.246.146', '1', 40, 'producto', '2019-06-26 18:11:22'),
-(1039, '189.146.246.146', '1', 40, 'producto', '2019-06-26 18:12:27');
+(1039, '189.146.246.146', '1', 40, 'producto', '2019-06-26 18:12:27'),
+(1040, '54.36.148.104', '1', 36, 'producto', '2019-06-26 18:36:35'),
+(1041, '189.146.246.146', '1', 40, 'producto', '2019-06-26 18:48:50'),
+(1042, '201.105.216.72', '1', 7, 'producto', '2019-06-26 20:00:44'),
+(1043, '54.36.149.25', '1', 50, 'producto', '2019-06-26 20:33:05'),
+(1044, '54.36.148.162', '1', 28, 'producto', '2019-06-26 21:23:21'),
+(1045, '189.146.246.146', '1', 53, 'producto', '2019-06-26 21:52:16'),
+(1046, '146.66.70.57', '1', 54, 'producto', '2019-06-26 21:53:39'),
+(1047, '189.146.246.146', '1', 53, 'producto', '2019-06-26 21:56:37'),
+(1048, '189.146.246.146', '1', 22, 'producto', '2019-06-26 22:08:40'),
+(1049, '146.66.70.57', '1', 22, 'producto', '2019-06-26 22:08:41'),
+(1050, '189.146.246.146', '1', 28, 'producto', '2019-06-26 22:09:28'),
+(1051, '189.146.246.146', '1', 27, 'producto', '2019-06-26 22:13:37'),
+(1052, '189.146.246.146', '1', 22, 'producto', '2019-06-26 22:13:43'),
+(1053, '189.146.246.146', '1', 22, 'producto', '2019-06-26 22:14:42'),
+(1054, '146.66.70.57', '1', 22, 'producto', '2019-06-26 22:15:06'),
+(1055, '189.146.246.146', '1', 22, 'producto', '2019-06-26 22:19:53'),
+(1056, '189.146.246.146', '1', 22, 'producto', '2019-06-26 22:21:11'),
+(1057, '189.146.246.146', '1', 22, 'producto', '2019-06-26 22:22:04'),
+(1058, '189.146.246.146', '1', 22, 'producto', '2019-06-26 22:22:12'),
+(1059, '189.146.246.146', '1', 22, 'producto', '2019-06-26 22:22:16'),
+(1060, '189.146.246.146', '1', 22, 'producto', '2019-06-26 22:22:28'),
+(1061, '54.36.148.164', '1', 44, 'producto', '2019-06-26 22:39:51'),
+(1062, '54.36.149.30', '1', 13, 'producto', '2019-06-27 00:13:20'),
+(1063, '54.36.148.152', '1', 5, 'producto', '2019-06-27 00:50:14'),
+(1064, '54.36.150.87', '1', 6, 'producto', '2019-06-27 01:15:57'),
+(1065, '200.85.80.112', '1', 14, 'producto', '2019-06-28 00:55:39'),
+(1066, '181.199.50.22', '1', 50, 'producto', '2019-06-28 01:00:19'),
+(1067, '54.36.148.54', '1', 30, 'producto', '2019-06-28 11:00:37'),
+(1068, '190.152.44.254', '1', 9, 'producto', '2019-06-28 15:15:51'),
+(1069, '146.66.70.57', '1', 40, 'producto', '2019-06-28 17:38:15'),
+(1070, '146.66.70.57', '1', 40, 'producto', '2019-06-28 17:57:44'),
+(1071, '146.66.70.57', '1', 40, 'producto', '2019-06-28 17:59:46'),
+(1072, '54.36.148.127', '1', 29, 'producto', '2019-06-29 01:05:11'),
+(1073, '66.249.75.174', '1', 35, 'producto', '2019-06-29 10:37:05'),
+(1074, '54.36.148.244', '1', 57, 'producto', '2019-06-29 10:40:09'),
+(1075, '54.36.148.234', '1', 15, 'producto', '2019-06-29 19:04:34'),
+(1076, '54.36.150.108', '1', 29, 'producto', '2019-06-29 21:42:40'),
+(1077, '54.36.148.214', '1', 30, 'producto', '2019-06-30 03:13:44'),
+(1078, '54.36.149.54', '1', 53, 'producto', '2019-06-30 06:13:32'),
+(1079, '54.36.150.127', '1', 14, 'producto', '2019-06-30 12:28:02'),
+(1080, '99.203.55.114', '1', 5, 'producto', '2019-06-30 17:59:26'),
+(1081, '54.36.150.18', '1', 21, 'producto', '2019-06-30 19:59:28'),
+(1082, '99.203.119.134', '1', 51, 'producto', '2019-06-30 22:56:49'),
+(1083, '99.203.119.134', '1', 51, 'producto', '2019-06-30 22:57:31'),
+(1084, '99.203.119.134', '1', 51, 'producto', '2019-06-30 22:57:45'),
+(1085, '99.203.119.134', '1', 51, 'producto', '2019-06-30 22:57:58'),
+(1086, '99.203.119.134', '1', 51, 'producto', '2019-06-30 22:58:00'),
+(1087, '99.203.119.134', '1', 51, 'producto', '2019-06-30 22:58:32'),
+(1088, '54.36.148.38', '1', 34, 'producto', '2019-06-30 23:23:13'),
+(1089, '99.203.54.76', '1', 8, 'producto', '2019-06-30 23:51:16'),
+(1090, '54.36.150.29', '1', 3, 'servicio', '2019-07-01 00:11:17'),
+(1091, '54.36.150.27', '1', 43, 'producto', '2019-07-01 03:23:29'),
+(1092, '99.203.55.114', '1', 5, 'producto', '2019-07-01 03:25:38'),
+(1093, '54.36.150.110', '1', 4, 'servicio', '2019-07-01 04:49:54'),
+(1094, '54.36.148.43', '1', 26, 'producto', '2019-07-01 07:57:03'),
+(1095, '54.36.148.82', '1', 3, 'producto', '2019-07-01 09:26:07'),
+(1096, '54.36.148.119', '1', 24, 'producto', '2019-07-01 10:01:14');
 
 --
 -- Índices para tablas volcadas
@@ -13777,7 +13860,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `categorias_productos`
 --
 ALTER TABLE `categorias_productos`
-  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=378;
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=379;
 --
 -- AUTO_INCREMENT de la tabla `categorias_publicaciones`
 --
@@ -13787,12 +13870,12 @@ ALTER TABLE `categorias_publicaciones`
 -- AUTO_INCREMENT de la tabla `categorias_servicios`
 --
 ALTER TABLE `categorias_servicios`
-  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `concurso`
 --
 ALTER TABLE `concurso`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `concurso_participantes`
 --
@@ -13817,7 +13900,7 @@ ALTER TABLE `datos_curiosos`
 -- AUTO_INCREMENT de la tabla `direcciones`
 --
 ALTER TABLE `direcciones`
-  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `ID_DIRECCION` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT de la tabla `divisas`
 --
@@ -13842,7 +13925,7 @@ ALTER TABLE `galeria_productos`
 -- AUTO_INCREMENT de la tabla `galeria_servicios`
 --
 ALTER TABLE `galeria_servicios`
-  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_GALERIA` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `lenguajes`
 --
@@ -13857,7 +13940,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `ID_NOTIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `ID_NOTIFICACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT de la tabla `opciones`
 --
@@ -13872,7 +13955,7 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ID_PEDIDO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_devoluciones`
 --
@@ -13887,17 +13970,17 @@ ALTER TABLE `pedidos_pagos`
 -- AUTO_INCREMENT de la tabla `pedidos_productos`
 --
 ALTER TABLE `pedidos_productos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `pedidos_tiendas`
 --
 ALTER TABLE `pedidos_tiendas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `perfiles_servicios`
 --
 ALTER TABLE `perfiles_servicios`
-  MODIFY `ID_PERFIL` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID_PERFIL` bigint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `planes`
 --
@@ -13932,7 +14015,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `productos_combinaciones`
 --
 ALTER TABLE `productos_combinaciones`
-  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID_COMBINACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT de la tabla `productos_rangos_mayoreo`
 --
@@ -13957,7 +14040,7 @@ ALTER TABLE `rutas_abanico`
 -- AUTO_INCREMENT de la tabla `seguridad_usuarios`
 --
 ALTER TABLE `seguridad_usuarios`
-  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `servicios`
 --
@@ -13997,7 +14080,7 @@ ALTER TABLE `transportistas_rangos`
 -- AUTO_INCREMENT de la tabla `vistas_generales`
 --
 ALTER TABLE `vistas_generales`
-  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1040;COMMIT;
+  MODIFY `ID_VISTA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1097;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

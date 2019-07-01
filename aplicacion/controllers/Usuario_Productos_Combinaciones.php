@@ -135,8 +135,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					// reviso si el usuario tiene una tienda
 					$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 					if(!empty($this->data['tienda'])){
-							$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
 							$this->data['combinacion'] = $this->ProductosCombinacionesModel->detalles($_GET['id']);
+							$this->data['producto'] = $this->ProductosModel->detalles($this->data['combinacion']['ID_PRODUCTO']);
 							$this->data['galerias'] = $this->GaleriasModel->lista($this->data['producto']['ID_PRODUCTO'],'','');
 							$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 							$this->load->view($this->data['dispositivo'].'/usuarios/form_actualizar_combinaciones',$this->data);

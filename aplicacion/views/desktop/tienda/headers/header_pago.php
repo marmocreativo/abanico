@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/fonts/fontawesome/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/estilos_abanico_desktop.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/barrating/themes/fontawesome-stars.css">
     <title>Pago | <?php echo $op['titulo_sitio'] ?></title>

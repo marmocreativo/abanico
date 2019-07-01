@@ -86,20 +86,32 @@ jQuery('#EstadoDireccion').on('change',function(e){
     data: { id_pais : pais, estado : estado_seleccionado},
     success : function(texto)
      {
-       var response = texto;
-       jQuery('#MunicipioDireccion').html('<option value="-" >Selecciona tu Municipio / Alcaldía</option>');
-       response.forEach(function(fila) {
-         jQuery('#MunicipioDireccion').append('<option value="'+fila['MUNICIPIO_NOMBRE']+'" >'+fila['MUNICIPIO_NOMBRE']+'</option>');
-      });
-      var valor_anterior =  jQuery('#MunicipioDireccion').data('valor-anterior');
-      if(valor_anterior){
-        if(jQuery("#MunicipioDireccion[value='"+valor_anterior+"']")){
-          jQuery('#MunicipioDireccion').val(valor_anterior);
+       // Obtengo la respuesta
+       //console.log(texto);
+        var response = texto;
+        jQuery('#MunicipioDireccion').html('<option value="-" >Selecciona tu Municipio / Alcaldía</option>');
+        var municipios = 0;
+        response.forEach(function(fila) {
+          jQuery('#MunicipioDireccion').append('<option value="'+fila['MUNICIPIO_NOMBRE']+'" >'+fila['MUNICIPIO_NOMBRE']+'</option>');
+          municipios++;
+        });
+        if(municipios>0){
+          var valor_anterior =  jQuery('#MunicipioDireccion').data('valor-anterior');
+          if(valor_anterior){
+            if(jQuery("#MunicipioDireccion[value='"+valor_anterior+"']")){
+              jQuery('#MunicipioDireccion').val(valor_anterior);
+            }
+          }else{
+            jQuery('#MunicipioDireccion').val('');
+          }
+        }else{
+          jQuery('#MunicipioDireccion').replaceWith('<input type="text" id="MunicipioDireccion" name="MunicipioDireccion" class="form-control"  value="">');
+          //console.log('Vacio');
         }
-      }else{
-        jQuery('#MunicipioDireccion').val('');
-      }
+        // Obtengo valor anterior
+
      }
+
   });
 
 });

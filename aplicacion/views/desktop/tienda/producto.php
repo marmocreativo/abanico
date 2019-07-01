@@ -94,6 +94,7 @@
                       <?php foreach($combinaciones as $combinacion){?>
                         <option value="<?php echo  $combinacion->COMBINACION_OPCION; ?>"
                           data-precio-producto='<?php echo $combinacion->COMBINACION_PRECIO; ?>'
+                          data-imagen-producto='<?php echo $combinacion->COMBINACION_IMAGEN; ?>'
                           data-precio-visible-producto='<?php echo number_format($_SESSION['divisa']['conversion']*$combinacion->COMBINACION_PRECIO,2); ?>'
                           data-detalles-producto='<?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?>'
                           ><?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?></option>
