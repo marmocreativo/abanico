@@ -125,6 +125,12 @@
        });
      });
 
+     $('.CombinacionProducto').on('change',function(e){
+        var imagen = $('.CombinacionProducto').find(':selected').attr('data-imagen-producto');
+        var index = $('.slides li').index($('.slides li[data-imagen="'+imagen+'"]'));
+        $('.slideBxProducto').flexslider(index);
+     });
+
    </script>
 
    <script>

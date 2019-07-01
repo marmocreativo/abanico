@@ -27,7 +27,7 @@
         <ul class="slides">
           <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
           <?php foreach($galerias as $galeria){ ?>
-          <li>
+          <li data-imagen='<?php echo $galeria->GALERIA_ARCHIVO; ?>'>
               <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
             <img src="<?php echo base_url($ruta_galeria) ?>" alt="">
           </li>
@@ -83,6 +83,7 @@
               <?php foreach($combinaciones as $combinacion){?>
                 <option value="<?php echo  $combinacion->COMBINACION_OPCION; ?>"
                   data-precio-producto='<?php echo $combinacion->COMBINACION_PRECIO; ?>'
+                  data-imagen-producto='<?php echo $combinacion->COMBINACION_IMAGEN; ?>'
                   data-precio-visible-producto='<?php echo number_format($_SESSION['divisa']['conversion']*$combinacion->COMBINACION_PRECIO,2); ?>'
                   data-detalles-producto='<?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?>'
                   ><?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?></option>

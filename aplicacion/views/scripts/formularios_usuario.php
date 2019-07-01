@@ -22,7 +22,12 @@ jQuery('.Editor').summernote({
   */
   jQuery(function(){
       jQuery('.Editor').each(function(e){
-          CKEDITOR.replace( this.id, { customConfig: '/jblog/ckeditor/config_Large.js' });
+          CKEDITOR.replace( this.id,{
+            disableNativeSpellChecker: false,
+            scayt_disableOptionsStorage: 'lang',
+            scayt_sLang: 'es_ES',
+            scayt_autoStartup: true,
+          });
       });
   });
 //

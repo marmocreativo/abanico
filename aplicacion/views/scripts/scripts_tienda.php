@@ -76,7 +76,7 @@ jQuery( document ).ready(function(){
       'comision_manejo': comision_manejo,
     };
   });
-  console.log(pedidos_tienda);
+  //console.log(pedidos_tienda);
   // Vuelvo a leer todas las tiendas y cargo los datos en el pedido
   var datos = unescape(encodeURIComponent(JSON.stringify(pedidos_tienda)));
   var encodedData = window.btoa(datos);
@@ -124,7 +124,7 @@ jQuery('.selector-transportista-abanico').on('click', function(){
       'comision_manejo': comision_manejo,
     };
   });
-  console.log(pedidos_tienda);
+  //console.log(pedidos_tienda);
   // Vuelvo a leer todas las tiendas y cargo los datos en el pedido
   var datos = unescape(encodeURIComponent(JSON.stringify(pedidos_tienda)));
   var encodedData = window.btoa(datos);
@@ -182,7 +182,7 @@ jQuery('.selector-transportista-tienda').on('click', function(){
       'comision_manejo': comision_manejo,
     };
   });
-  console.log(pedidos_tienda);
+  //console.log(pedidos_tienda);
 
   // Vuelvo a leer todas las tiendas y cargo los datos en el pedido
   var datos = unescape(encodeURIComponent(JSON.stringify(pedidos_tienda)));
@@ -298,7 +298,7 @@ jQuery('#BotonComprar').on('click',function(e){
   var id_tienda = jQuery(this).attr('data-id-tienda');
   var nombre_tienda = jQuery(this).attr('data-nombre-tienda');
 
-  console.log(detalles_producto);
+  //console.log(detalles_producto);
 
   // Envio la información por ajax
   jQuery.ajax({
@@ -591,12 +591,14 @@ Calificación Estrellas
 -----------------
 */
 jQuery(function() {
- jQuery('.estrellas').starrr({
-   emptyClass: 'far fa-star',
-  change: function(e, value){
-    jQuery('#EstrellasCalificacion').val(value)
-   }
- });
+  if(jQuery('.estrellas').lenght>0){
+   jQuery('.estrellas').starrr({
+     emptyClass: 'far fa-star',
+    change: function(e, value){
+      jQuery('#EstrellasCalificacion').val(value)
+     }
+   });
+  }
 });
 
    // CARRITO
@@ -606,14 +608,16 @@ Slider Productos
  -----------------
  */
  	jQuery( document ).ready(function( $ ) {
- 		jQuery( '#my-slider' ).sliderPro({
-      thumbnailsPosition: 'right',
-      thumbnailPointer: true,
-      buttons: false,
-      width: '100%',
-      fade: true,
-      autoHeight: true,
-    });
+    if(jQuery('#my-slider').lenght>0){
+   		jQuery( '#my-slider' ).sliderPro({
+        thumbnailsPosition: 'right',
+        thumbnailPointer: true,
+        buttons: false,
+        width: '100%',
+        fade: true,
+        autoHeight: true,
+      });
+    }
  	});
   /*
   -----------------
