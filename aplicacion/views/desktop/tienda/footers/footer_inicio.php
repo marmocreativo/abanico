@@ -87,8 +87,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/localization/messages_es.js"></script>
-    <script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/summernote/dist/summernote.js" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/summernote/lang/summernote-es-ES.js" type="text/javascript"></script>
+    <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
     <script src="<?php echo base_url(); ?>assets/global/js/Chart.bundle.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/tienda/js/starrr/starrr.js"></script>
     <script defer src="<?php echo base_url(); ?>assets/tienda/js/flexslider/jquery.flexslider.js"></script>
@@ -106,14 +105,6 @@
            }
          });
          $( "#sortable" ).sortable();
-         var intervalID = window.setInterval(miFuncion, 1000);
-         function miFuncion() {
-           var d = new Date();
-            $('#verificacion').html(d.getSeconds());
-            if(d.getSeconds()==25){
-              $('#juego').html('Ganaste!!!');
-            }
-          }
        });
      </script>
     <?php $this->load->view('scripts/scripts_tienda');  ?>
