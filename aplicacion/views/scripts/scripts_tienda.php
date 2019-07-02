@@ -524,30 +524,35 @@ VARIACIONES
 -----------------
 */
 // Al cargar
+
 var precio = $('.CombinacionProducto').find(':selected').attr('data-precio-producto');
-var imagen = $('.CombinacionProducto').find(':selected').attr('data-imagen-producto');
 var detalles = $('.CombinacionProducto').find(':selected').attr('data-detalles-producto');
 var precio_visible = $('.CombinacionProducto').find(':selected').attr('data-precio-visible-producto');
 // Cambiar Imagen
-var nuevaImagen = '<?php echo base_url('contenido/img/productos/completo/'); ?>'+imagen;
-jQuery('.visor-galeria-producto').attr('src',nuevaImagen);
+
+var imagen = $('.CombinacionProducto').find(':selected').attr('data-imagen-producto');
+if(imagen){
+  var nuevaImagen = '<?php echo base_url('contenido/img/productos/completo/'); ?>'+imagen;
+  jQuery('.visor-galeria-producto').attr('src',nuevaImagen);
+}
 // Cambiar datos del boton
 jQuery('#Precio_Producto').html(precio_visible);
 jQuery('#BotonComprar').attr('data-precio-producto',precio);
 jQuery('#BotonComprar').attr('data-detalles-producto',detalles);
 jQuery('#BotonCompraRapida').attr('data-precio-producto',precio);
 jQuery('#BotonCompraRapida').attr('data-detalles-producto',detalles);
-
-  jQuery('.visor-galeria-producto').attr('src',nuevaImagen);
 // Al cambiar
 jQuery('.CombinacionProducto').on('change',function(e){
   var precio = jQuery(this).find(':selected').attr('data-precio-producto');
-  var imagen = $('.CombinacionProducto').find(':selected').attr('data-imagen-producto');
   var detalles = jQuery(this).find(':selected').attr('data-detalles-producto');
   var precio_visible = jQuery(this).find(':selected').attr('data-precio-visible-producto');
   // Cambiar Imagen
-  var nuevaImagen = '<?php echo base_url('contenido/img/productos/completo/'); ?>'+imagen;
-  jQuery('.visor-galeria-producto').attr('src',nuevaImagen);
+
+  var imagen = $('.CombinacionProducto').find(':selected').attr('data-imagen-producto');
+  if(imagen){
+    var nuevaImagen = '<?php echo base_url('contenido/img/productos/completo/'); ?>'+imagen;
+    jQuery('.visor-galeria-producto').attr('src',nuevaImagen);
+  }
   // Cambiar datos del boton
   jQuery('#Precio_Producto').html(precio_visible);
   jQuery('#BotonComprar').attr('data-precio-producto',precio);
