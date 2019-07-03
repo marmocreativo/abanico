@@ -12,11 +12,11 @@
         <h5>Acerca de Abanico</h5>
         <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'acerca'],'','');?>
         <ul class="list-unstyled">
+          <li> <a href="<?php echo base_url('publicacion/quienes-somos'); ?>">Quienes somos</a> </li>
           <li> <a href="<?php echo base_url('planes'); ?>">Planes Vendedores</a> </li>
-            <li> <a href="<?php echo base_url('planes?tipo=servicios'); ?>">Planes Servicios</a> </li>
-        <?php foreach($publicaciones_acerca as $publicacion){ ?>
-          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
-        <?php } ?>
+          <li> <a href="<?php echo base_url('planes?tipo=servicios'); ?>">Planes Servicios</a> </li>
+          <li> <a href="<?php echo base_url('publicacion/contacto'); ?>">Contacto</a> </li>
+          <li> <a href="<?php echo base_url('publicacion/metodos-de-pago'); ?>">Métodos de pago</a> </li>
         </ul>
       </div>
       <div class="col-12 mt-3 bordered-top">
@@ -32,9 +32,12 @@
         <h5>Ayuda</h5>
         <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'ayuda'],'','');?>
         <ul class="list-unstyled">
-        <?php foreach($publicaciones_acerca as $publicacion){ ?>
-          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
-        <?php } ?>
+          <li> <a href="<?php echo base_url('publicacion/como-registrarme'); ?>">Como registrarme</a> </li>
+          <li> <a href="<?php echo base_url('publicacion/como-comprar'); ?>">Como comprar</a> </li>
+          <li> <a href="<?php echo base_url('publicacion/vender-en-abanico'); ?>">Vender en Abanico</a> </li>
+          <li> <a href="<?php echo base_url('publicacion/publicar-un-producto'); ?>">Publicar un producto</a> </li>
+          <li> <a href="<?php echo base_url('publicacion/ofrecer-servicios-en-abanico'); ?>">Ofrecer servicios en Abanico</a> </li>
+          <li> <a href="<?php echo base_url('publicacion/ofrecer-servicios'); ?>">Publicar un servicio</a> </li>
         </ul>
       </div>
       <div class="col-12 mt-3 bordered-top">

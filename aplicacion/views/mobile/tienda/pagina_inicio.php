@@ -608,22 +608,31 @@
         <div class="row">
           <div class="col-12 d-flex align-items-center">
             <div class="contenedor-ganador text-center">
-              <div class="container-fluid head-ganador"  style="margin-top:50px;">
-                <div class="fecha-ganador">
-                  <?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
-                </div>
+              <div class="container-fluid head-ganador">
                 <div class="titulo-ganador">
-                  Nuestro Ganador Mensual
+                  Por Inauguración
                 </div>
               </div>
-              <div class="nombre-ganador">
+              <div class="nombre-ganador" style="font-size:1em; line-height:1.5em;">
                 <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
+                <i class="fa fa-check"> </i> Regístrate del 8 de julio al 19 de agosto de 2019.<br>
+                <i class="fa fa-check"> </i> El 20 de agosto inicia sesión. <br>
+                <i class="fa fa-check"> </i> Encuentra las palabras escondidas dentro de la descripción de los productos.<br>
+                <i class="fa fa-check"> </i> Da doble click en las palabras y júntalas en la parte superior de la pantalla<br>
+                <i class="fa fa-check"> </i> Ordena las palabras que encontraste hasta formar la frase correcta<br>
+                <i class="fa fa-check"> </i> ¡ LISTO ! TU puedes ser el ganador de los $10,000.00 MN<br>
+                UNO NUNCA SABE<br>
+
+                <!--
                 <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
                 Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
+                <-->
                 <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
               </div>
               <div class="premio-ganador text-primary">
+                <!--
                 Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
+              -->
               </div>
             </div>
           </div>
