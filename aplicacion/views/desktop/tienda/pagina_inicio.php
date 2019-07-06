@@ -704,13 +704,15 @@ Estructuras Originales
               </div>
               <div class="nombre-ganador" style="font-size:1em; line-height:1.5em;">
                 <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
-                <i class="fa fa-check"> </i> Regístrate del 8 de julio al 19 de agosto de 2019.<br>
-                <i class="fa fa-check"> </i> El 20 de agosto inicia sesión. <br>
-                <i class="fa fa-check"> </i> Encuentra las palabras escondidas dentro de la descripción de los productos.<br>
-                <i class="fa fa-check"> </i> Da doble click en las palabras y júntalas en la parte superior de la pantalla<br>
-                <i class="fa fa-check"> </i> Ordena las palabras que encontraste hasta formar la frase correcta<br>
-                <i class="fa fa-check"> </i> ¡ LISTO ! TU puedes ser el ganador de los $10,000.00 MN<br>
-                UNO NUNCA SABE<br>
+                <div style="text-align:left; line-height:2.5em;">
+                  <i class="fa fa-check"> </i> Regístrate del 8 de julio al 19 de agosto de 2019.<br>
+                  <i class="fa fa-check"> </i> El 20 de agosto inicia sesión. <br>
+                  <i class="fa fa-check"> </i> Encuentra las palabras escondidas dentro de la descripción de los productos.<br>
+                  <i class="fa fa-check"> </i> Da doble click en las palabras y júntalas en la parte superior de la pantalla<br>
+                  <i class="fa fa-check"> </i> Ordena las palabras que encontraste hasta formar la frase correcta<br>
+                  <i class="fa fa-check"> </i> ¡ LISTO ! TU puedes ser el ganador de los $10,000.00 MN<br>
+                </div>
+                <h4>UNO NUNCA SABE</h4>
 
                 <!--
                 <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
