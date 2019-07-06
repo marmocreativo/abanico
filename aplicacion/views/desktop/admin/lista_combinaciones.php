@@ -45,19 +45,19 @@
             <div class="col">
               <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('usuario/productos/actualizar?id='.$_GET['id'].'&tab='); ?>"> <span class="fa fa-list"></span> Datos Básicos</a>
+                  <a class="nav-link" href="<?php echo base_url('admin/productos/actualizar?id='.$_GET['id'].'&tab='); ?>"> <span class="fa fa-list"></span> Datos Básicos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('usuario/productos/actualizar?id='.$_GET['id'].'&tab=categoria'); ?>"> <span class="fa fa-list"></span> Categorias</a>
+                  <a class="nav-link" href="<?php echo base_url('admin/productos/actualizar?id='.$_GET['id'].'&tab=categoria'); ?>"> <span class="fa fa-list"></span> Categorias</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('usuario/productos/actualizar?id='.$_GET['id'].'&tab=datos'); ?>"> <span class="fa fa-file-alt"></span> Descripción</a>
+                  <a class="nav-link" href="<?php echo base_url('admin/productos/actualizar?id='.$_GET['id'].'&tab=datos'); ?>"> <span class="fa fa-file-alt"></span> Descripción</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('usuario/productos/actualizar?id='.$_GET['id'].'&tab=galeria'); ?>"> <span class="fa fa-image"></span> Galeria</a>
+                  <a class="nav-link" href="<?php echo base_url('admin/productos/actualizar?id='.$_GET['id'].'&tab=galeria'); ?>"> <span class="fa fa-image"></span> Galeria</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="<?php echo base_url('usuario/productos/actualizar?id='.$_GET['id']); ?>" > <span class="fa fa-sitemap"></span> Combinaciones</a>
+                  <a class="nav-link active" href="<?php echo base_url('admin/productos/actualizar?id='.$_GET['id']); ?>" > <span class="fa fa-sitemap"></span> Combinaciones</a>
                 </li>
               </ul>
               <div class="tab-content" id="myTabContent">

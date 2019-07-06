@@ -9,10 +9,25 @@
       <?php $i = 0; foreach($slides as $slide){ ?>
       <div class="carousel-item <?php if($i==0){ echo 'active'; } ?>">
         <div class="contenedor-texto-slide">
-          <div class="texto-slide">
-            <h1><?php echo $slide->SLIDE_TITULO; ?></h1>
-            <h2><?php echo $slide->SLIDE_SUBTITULO; ?></h2>
-            <h3><?php echo $slide->SLIDE_BOTON; ?></h3>
+          <div class="texto-slide row align-items-center mx-0">
+            <?php if(!empty($slide->SLIDE_TITULO)){ ?>
+              <div class="col-12">
+
+              <h1><?php echo $slide->SLIDE_TITULO; ?></h1>
+              </div>
+          <?php } ?>
+            <?php if(!empty($slide->SLIDE_SUBTITULO)){ ?>
+              <div class="col-12">
+
+              <h2><?php echo $slide->SLIDE_SUBTITULO; ?></h2>
+              </div>
+          <?php } ?>
+            <?php if(!empty($slide->SLIDE_BOTON)){ ?>
+              <div class="col-12">
+
+              <h3><?php echo $slide->SLIDE_BOTON; ?></h3>
+              </div>
+          <?php } ?>
           </div>
         </div>
         <img class="d-block w-100" src="contenido/img/slider/<?php echo $slide->SLIDE_IMAGEN_MOVIL; ?>">
@@ -61,7 +76,338 @@
 </div>
 
 <!-- Inicia el cuerpo del texto -->
+<?php
+  $categorias_específicas = [
+    'cubiertos-y-cuchillos'=>'10',
+    'repostería'=>'10',
+    'ollas-y-sartenes'=>'10',
+    'accesorios-de-cocina'=>'10'
+  ];
+ ?>
+ <div class="fila fila-gris py-4 pb-5">
+   <div class="container">
+     <div class="row">
+       <div class="col-12">
+         <h2 class="h4 text-center pb-3">Accesorios de cocina</h2>
+       </div>
+     </div>
+   </div>
+    <div class="sliderProductos">
+      <ul class="slides">
+        <?php foreach($categorias_específicas as $slug => $limite){ ?>
+          <?php
+          $categoria = $this->CategoriasModel->detalles_slug($slug);
+          $productos = $this->ProductosModel->lista_categoria_activos('','',$categoria['ID_CATEGORIA'],'',$limite);
+          ?>
+        <?php foreach($productos as $producto){ ?>
+          <?php
+          // Variables de Traducción
+          if($_SESSION['lenguaje']['iso']==$producto->LENGUAJE){
+            $titulo = $producto->PRODUCTO_NOMBRE;
+          }else{
+            $traduccion = $this->TraduccionesModel->lista($producto->ID_PRODUCTO,'producto',$_SESSION['lenguaje']['iso']);
+            if(!empty($traduccion)){
+              $titulo = $traduccion['TITULO'];
+            }else{
+              $titulo = $producto->PRODUCTO_NOMBRE;
+            }
+          }
+          // Variables de Paquete
+          $paquete = $this->PlanesModel->plan_activo_usuario($producto->ID_USUARIO,'productos');
+          if($paquete==null){
+            $visible = 'd-none';
+          }else{
+            $visible = '';
+          }
+          ?>
+        <li>
+          <div class="card">
+            <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
+              <div class="imagen-producto">
+                <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+                <img class="spanImg" src="<?php echo base_url($ruta_portada); ?>"></img>
+                <div class="contenedor-etiquetas">
+                  <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
+                    <span class="etiqueta-1">Méx</span>
+                  <?php } ?>
+                  <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                    <span class="etiqueta-3">Oferta</span>
+                  <?php } ?>
+                </div>
+              </div>
+              <div class="product-content text-center py-3">
+                <?php
+                $promedio = $this->CalificacionesModel->promedio_calificaciones_producto($producto->ID_PRODUCTO);
+                $cantidad = $this->CalificacionesModel->conteo_calificaciones_producto($producto->ID_PRODUCTO);
+                // variables de precio
+                if($producto->PRODUCTO_DIVISA_DEFAULT!=$_SESSION['divisa']['iso']){
+                  $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto->PRODUCTO_DIVISA_DEFAULT);
+                  if($producto->PRODUCTO_DIVISA_DEFAULT!='MXN'){
+                    $precio_lista = $producto->PRODUCTO_PRECIO_LISTA/$cambio_divisa_default['DIVISA_CONVERSION'];
+                    $precio_venta = $producto->PRODUCTO_PRECIO/$cambio_divisa_default['DIVISA_CONVERSION'];
+                  }else{
+                    $precio_lista = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA;
+                    $precio_venta = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO;
+                  }
+                }else{
+                  $precio_lista = $producto->PRODUCTO_PRECIO_LISTA;
+                  $precio_venta = $producto->PRODUCTO_PRECIO;
+                }
+                ?>
+                <ul class="rating">
+                  <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
+                  <?php for($i = 1; $i<=$estrellas; $i++){ ?>
+                    <li class="fa fa-star"></li>
+                  <?php } ?>
+                  <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+                    <li class="far fa-star"></li>
+                  <?php } ?>
+                  <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
+                </ul>
+                <h4 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h4>
+                <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                  <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
+                <?php } ?>
+                <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_venta,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
+              </div>
+            </a>
+            <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+            <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+            <?php }else{ ?>
+              <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$producto->ID_PRODUCTO)); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+            <?php } ?>
+          </div>
+        </li>
+        <?php } ?>
+      <?php }// Bucle de categoria ?>
+      </ul>
+    </div>
+ </div>
+ <?php
+   $categorias_omitidas = [
+     'cocina'=>'10',
+   ];
+  ?>
+  <?php foreach($categorias_omitidas as $slug => $limite){ ?>
+    <?php
+    $categoria = $this->CategoriasModel->detalles_slug($slug);
+    $id_categorias = array();
+    $id_categorias[] = $categoria['ID_CATEGORIA'];
+    $categorias_segundo_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria['ID_CATEGORIA']],'productos','','');
+     foreach ($categorias_segundo_nivel as $categoria_segunda){
+       $id_categorias[] = $categoria_segunda->ID_CATEGORIA;
+       $categorias_tercer_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria_segunda->ID_CATEGORIA],'productos','','');
+       foreach ($categorias_tercer_nivel as $categoria_tercera){
+         $id_categorias[] = $categoria_tercera->ID_CATEGORIA;
+       }
+     }
+    $productos = $this->ProductosModel->lista_no_categoria_activos('','',$id_categorias,'',$limite);
+    ?>
+    <div class="fila fila-gris py-4 pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="h4 text-center pb-3">Otros productos</h2>
+          </div>
+        </div>
+      </div>
+       <div class="sliderProductos">
+         <ul class="slides">
 
+           <?php foreach($productos as $producto){ ?>
+             <?php
+             // Variables de Traducción
+             if($_SESSION['lenguaje']['iso']==$producto->LENGUAJE){
+               $titulo = $producto->PRODUCTO_NOMBRE;
+             }else{
+               $traduccion = $this->TraduccionesModel->lista($producto->ID_PRODUCTO,'producto',$_SESSION['lenguaje']['iso']);
+               if(!empty($traduccion)){
+                 $titulo = $traduccion['TITULO'];
+               }else{
+                 $titulo = $producto->PRODUCTO_NOMBRE;
+               }
+             }
+             // Variables de Paquete
+             $paquete = $this->PlanesModel->plan_activo_usuario($producto->ID_USUARIO,'productos');
+             if($paquete==null){
+               $visible = 'd-none';
+             }else{
+               $visible = '';
+             }
+             ?>
+           <li>
+             <div class="card">
+               <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
+                 <div class="imagen-producto">
+                   <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+                   <img class="spanImg" src="<?php echo base_url($ruta_portada); ?>"></img>
+                   <div class="contenedor-etiquetas">
+                     <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
+                       <span class="etiqueta-1">Méx</span>
+                     <?php } ?>
+                     <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                       <span class="etiqueta-3">Oferta</span>
+                     <?php } ?>
+                   </div>
+                 </div>
+                 <div class="product-content text-center py-3">
+                   <?php
+                   $promedio = $this->CalificacionesModel->promedio_calificaciones_producto($producto->ID_PRODUCTO);
+                   $cantidad = $this->CalificacionesModel->conteo_calificaciones_producto($producto->ID_PRODUCTO);
+                   // variables de precio
+                   if($producto->PRODUCTO_DIVISA_DEFAULT!=$_SESSION['divisa']['iso']){
+                     $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto->PRODUCTO_DIVISA_DEFAULT);
+                     if($producto->PRODUCTO_DIVISA_DEFAULT!='MXN'){
+                       $precio_lista = $producto->PRODUCTO_PRECIO_LISTA/$cambio_divisa_default['DIVISA_CONVERSION'];
+                       $precio_venta = $producto->PRODUCTO_PRECIO/$cambio_divisa_default['DIVISA_CONVERSION'];
+                     }else{
+                       $precio_lista = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA;
+                       $precio_venta = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO;
+                     }
+                   }else{
+                     $precio_lista = $producto->PRODUCTO_PRECIO_LISTA;
+                     $precio_venta = $producto->PRODUCTO_PRECIO;
+                   }
+                   ?>
+                   <ul class="rating">
+                     <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
+                     <?php for($i = 1; $i<=$estrellas; $i++){ ?>
+                       <li class="fa fa-star"></li>
+                     <?php } ?>
+                     <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+                       <li class="far fa-star"></li>
+                     <?php } ?>
+                     <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
+                   </ul>
+                   <h4 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h4>
+                   <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                     <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
+                   <?php } ?>
+                   <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_venta,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
+                 </div>
+               </a>
+               <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+               <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+               <?php }else{ ?>
+                 <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$producto->ID_PRODUCTO)); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+               <?php } ?>
+             </div>
+           </li>
+           <?php } ?>
+
+         </ul>
+       </div>
+    </div>
+    <?php }// Bucle de categrias omitidas ?>
+    <?php
+      $categorias_específicas = [
+        'filtros-de-agua'=>'10',
+        'accesorios-para-filtros-de-agua'=>'10',
+        'cartuchos-para-filtros-de-agua'=>'10'
+      ];
+     ?>
+     <div class="fila fila-gris py-4 pb-5">
+       <div class="container">
+         <div class="row">
+           <div class="col-12">
+             <h2 class="h4 text-center pb-3">Filtración de agua</h2>
+           </div>
+         </div>
+       </div>
+        <div class="sliderProductos">
+          <ul class="slides">
+            <?php foreach($categorias_específicas as $slug => $limite){ ?>
+              <?php
+              $categoria = $this->CategoriasModel->detalles_slug($slug);
+              $productos = $this->ProductosModel->lista_categoria_activos('','',$categoria['ID_CATEGORIA'],'',$limite);
+              ?>
+            <?php foreach($productos as $producto){ ?>
+              <?php
+              // Variables de Traducción
+              if($_SESSION['lenguaje']['iso']==$producto->LENGUAJE){
+                $titulo = $producto->PRODUCTO_NOMBRE;
+              }else{
+                $traduccion = $this->TraduccionesModel->lista($producto->ID_PRODUCTO,'producto',$_SESSION['lenguaje']['iso']);
+                if(!empty($traduccion)){
+                  $titulo = $traduccion['TITULO'];
+                }else{
+                  $titulo = $producto->PRODUCTO_NOMBRE;
+                }
+              }
+              // Variables de Paquete
+              $paquete = $this->PlanesModel->plan_activo_usuario($producto->ID_USUARIO,'productos');
+              if($paquete==null){
+                $visible = 'd-none';
+              }else{
+                $visible = '';
+              }
+              ?>
+            <li>
+              <div class="card">
+                <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
+                  <div class="imagen-producto">
+                    <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+                    <img class="spanImg" src="<?php echo base_url($ruta_portada); ?>"></img>
+                    <div class="contenedor-etiquetas">
+                      <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
+                        <span class="etiqueta-1">Méx</span>
+                      <?php } ?>
+                      <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                        <span class="etiqueta-3">Oferta</span>
+                      <?php } ?>
+                    </div>
+                  </div>
+                  <div class="product-content text-center py-3">
+                    <?php
+                    $promedio = $this->CalificacionesModel->promedio_calificaciones_producto($producto->ID_PRODUCTO);
+                    $cantidad = $this->CalificacionesModel->conteo_calificaciones_producto($producto->ID_PRODUCTO);
+                    // variables de precio
+                    if($producto->PRODUCTO_DIVISA_DEFAULT!=$_SESSION['divisa']['iso']){
+                      $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto->PRODUCTO_DIVISA_DEFAULT);
+                      if($producto->PRODUCTO_DIVISA_DEFAULT!='MXN'){
+                        $precio_lista = $producto->PRODUCTO_PRECIO_LISTA/$cambio_divisa_default['DIVISA_CONVERSION'];
+                        $precio_venta = $producto->PRODUCTO_PRECIO/$cambio_divisa_default['DIVISA_CONVERSION'];
+                      }else{
+                        $precio_lista = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA;
+                        $precio_venta = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO;
+                      }
+                    }else{
+                      $precio_lista = $producto->PRODUCTO_PRECIO_LISTA;
+                      $precio_venta = $producto->PRODUCTO_PRECIO;
+                    }
+                    ?>
+                    <ul class="rating">
+                      <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
+                      <?php for($i = 1; $i<=$estrellas; $i++){ ?>
+                        <li class="fa fa-star"></li>
+                      <?php } ?>
+                      <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+                        <li class="far fa-star"></li>
+                      <?php } ?>
+                      <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
+                    </ul>
+                    <h4 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h4>
+                    <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                      <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
+                    <?php } ?>
+                    <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_venta,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
+                  </div>
+                </a>
+                <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+                <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+                <?php }else{ ?>
+                  <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$producto->ID_PRODUCTO)); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+                <?php } ?>
+              </div>
+            </li>
+            <?php } ?>
+          <?php }// Bucle de categoria ?>
+          </ul>
+        </div>
+     </div>
+
+<?php
+/*
 <div class="fila fila-gris py-4 pb-5">
   <div class="container">
     <div class="row">
@@ -70,7 +416,6 @@
       </div>
     </div>
   </div>
-
    <div class="sliderProductos">
      <ul class="slides">
 
@@ -251,7 +596,8 @@
      </ul>
    </div>
 </div>
-
+*/
+?>
 <!--datos Curiosos-->
 
 <div class="fila py-4" id="Concursos">
@@ -262,22 +608,33 @@
         <div class="row">
           <div class="col-12 d-flex align-items-center">
             <div class="contenedor-ganador text-center">
-              <div class="container-fluid head-ganador"  style="margin-top:50px;">
-                <div class="fecha-ganador">
-                  <?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
-                </div>
+              <div class="container-fluid head-ganador">
                 <div class="titulo-ganador">
-                  Nuestro Ganador Mensual
+                  Por Inauguración
                 </div>
               </div>
-              <div class="nombre-ganador">
+              <div class="nombre-ganador" style="font-size:1em; line-height:1.5em;">
                 <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
+                <div style="text-align:left; line-height:2.5em;">
+                <i class="fa fa-check"> </i> Regístrate del 8 de julio al 19 de agosto de 2019.<br>
+                <i class="fa fa-check"> </i> El 20 de agosto inicia sesión. <br>
+                <i class="fa fa-check"> </i> Encuentra las palabras escondidas dentro de la descripción de los productos.<br>
+                <i class="fa fa-check"> </i> Da doble click en las palabras y júntalas en la parte superior de la pantalla<br>
+                <i class="fa fa-check"> </i> Ordena las palabras que encontraste hasta formar la frase correcta<br>
+                <i class="fa fa-check"> </i> ¡ LISTO ! TU puedes ser el ganador de los $10,000.00 MN<br>
+              </div>
+              <h4>UNO NUNCA SABE</h4>
+
+                <!--
                 <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
                 Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
+                <-->
                 <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
               </div>
               <div class="premio-ganador text-primary">
+                <!--
                 Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
+              -->
               </div>
             </div>
           </div>

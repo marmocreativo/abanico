@@ -46,11 +46,11 @@
               <option value=""><?php echo $this->lang->line('usuario_form_direcciones_pais_selecciona'); ?></option>
             </select>
             <hr>
-            <select class="custom-select filtro-sel" name="EstadoDireccion" id="EstadoDireccion" data-valor-anterior="<?php if(isset($_GET['EstadoDireccion'])){ echo $_GET['EstadoDireccion']; }; ?>" >
+            <select class="custom-select filtro-sel" style="font-size:14px;" name="EstadoDireccion" id="EstadoDireccion" data-valor-anterior="<?php if(isset($_GET['EstadoDireccion'])){ echo $_GET['EstadoDireccion']; }; ?>" >
               <option value=""><?php echo $this->lang->line('usuario_form_direcciones_estado_selecciona'); ?></option>
             </select>
             <hr>
-            <select class="custom-select filtro-sel" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php if(isset($_GET['MunicipioDireccion'])){ echo $_GET['MunicipioDireccion']; }; ?>">
+            <select class="custom-select filtro-sel" style="font-size:13px;" name="MunicipioDireccion" id="MunicipioDireccion" data-valor-anterior="<?php if(isset($_GET['MunicipioDireccion'])){ echo $_GET['MunicipioDireccion']; }; ?>">
               <option value=""><?php echo $this->lang->line('usuario_form_direcciones_municipio_selecciona'); ?></option>
             </select>
           <hr>
@@ -148,9 +148,9 @@
                           </div>
                           <div class="text-center">
                             <?php if($servicio->SERVICIO_TIPO=='digital'){ ?>
-                              <h5><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span></h5>
+                              <h5><span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio" style="padding:5px;"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span></h5>
                             <?php }else{ ?>
-                              <h5><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span></h5>
+                              <h5><span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio" style="padding:5px;"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span></h5>
                             <?php } ?>
                           </div>
                       </div>
@@ -164,31 +164,18 @@
                           <div class="modal-body">
                             <div class="row">
                               <div class="col-3">
-                                <div class="portada-servicios img-thumbnail rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>)"> </div>
+                                <div class="img-thumbnail rounded-circle" style="width:100%; padding-top:100%; background-image:url(<?php echo base_url($ruta_portada); ?>); background-size:contain; background-repeat:no-repeat; background-position: center;"> </div>
                               </div>
                               <div class="col">
                                 <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
-                                <?php
-                                  switch ($servicio->SERVICIO_TIPO) {
-                                    case 'profesional':
-                                      echo $this->lang->line('usuario_form_servicio_tipo_presencial');
-                                      break;
-                                    case 'digital':
-                                      echo $this->lang->line('usuario_form_servicio_tipo_distancia');
-                                      break;
-                                    default:
-                                      // code...
-                                      break;
-                                  }
-                                ?>
                                 <div class="border-top mt-3 pt-3">
                                   <?php echo $descripcion_corta; ?>
                                 </div>
                                 <div class="pt-2 border-top">
                                   <?php if($servicio->SERVICIO_TIPO=='digital'){ ?>
-                                    <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?></p>
+                                    <h5><span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio" style="padding:5px;"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?></h5>
                                   <?php }else{ ?>
-                                    <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?></p>
+                                    <h5><span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio" style="padding:5px;"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?></h5>
                                   <?php } ?>
                                 </div>
                                 <hr>

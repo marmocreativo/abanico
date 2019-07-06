@@ -13,11 +13,34 @@
 <div class="container py-3 mb-3">
   <div class="row">
     <div class="col-12">
-
+      <?php alerta_plan(); ?>
+      <?php retro_alimentacion(); ?>
+      <?php
+        $productos_activo = null;
+        $fotografias_producto = null;
+        $servicios_activos = null;
+        $fotografias_servicios = null;
+        $anexos = false;
+        $plan = $this->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'productos');
+        if(!empty($plan)){
+          $productos_activo = $plan['PLAN_LIMITE_PRODUCTOS'];
+          $fotografias_producto = $plan['PLAN_FOTOS_PRODUCTOS'];
+          $servicios_activos = $plan['PLAN_LIMITE_SERVICIOS'];
+          $fotografias_servicios = $plan['PLAN_FOTOS_SERVICIOS'];
+          if($plan['PLAN_NIVEL']>1){
+            $anexos = true;
+          }
+        }
+        $cantidad_productos = count($productos);
+      ?>
       <div class="card mb-3">
         <div class="card-header d-flex justify-content-between">
           <h2 class="h5 mb-0 pt-1"> <span class="fa fa-box"></span> <?php echo $this->lang->line('usuario_lista_productos_titulo'); ?></h2>
+          <?php if($productos_activo!=null&&($productos_activo>$cantidad_productos||$productos_activo==0)){ ?>
           <a href="<?php echo base_url('usuario/productos/crear'); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span></a>
+        <?php }else{ ?>
+          <p class="text-danger">Límite de productos alcanzado</p>
+        <?php } ?>
         </div>
         <div class="card-body pb-1">
           <form class="form-inline" action="<?php echo base_url('usuario/productos/busqueda');?>" method="get">

@@ -16,12 +16,48 @@
         <div class="col-12">
           <ol class="breadcrumb vistaMovil">
             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><?php echo $this->lang->line('categoria_productos_migas_inicio'); ?></a></li>
-            <li class="breadcrumb-item active text-primary " aria-current="page">Todos los servicios</li>
+            <li class="breadcrumb-item active text-primary " aria-current="page"><?php if(!empty($categoria)){ echo $categoria['CATEGORIA_NOMBRE']; } ?></li>
           </ol>
         </div>
       </div>
       <div class="col-12 mb-3">
-        <div class="card">
+        <?php if(!empty($categoria)&&isset($categoria)){ ?>
+        <h3><?php echo $categoria['CATEGORIA_NOMBRE']; ?></h3>
+      <?php }else{ ?>
+        <h3>Todos los servicios</h3>
+      <?php } ?>
+        <div class="card" style="background-color:transparent;">
+          <?php if(!empty($categoria)&&isset($categoria)){ ?>
+          <?php   $sub_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria['ID_CATEGORIA']],$categoria['CATEGORIA_TIPO'],'','');?>
+          <?php if(!empty($sub_categorias)){ ?>
+            <button class="btn btn-outline<?php echo $categoria['CATEGORIA_COLOR']; ?> btn-sm" type="button" data-toggle="collapse" data-target="#collapseCategorias" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fas fa-th mr-2"></i>Subcategorias
+            </button>
+            <div class="collapse" id="collapseCategorias">
+              <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <?php $i=0; foreach($sub_categorias as $sub_categoria){ ?>
+                    <?php
+                      // Variables de traducción
+                      if($_SESSION['lenguaje']['iso']=='es'){
+                        $titulo = $sub_categoria->CATEGORIA_NOMBRE;
+                      }else{
+                        $traduccion = $this->TraduccionesModel->lista($sub_categoria->ID_CATEGORIA,'categoria',$_SESSION['lenguaje']['iso']);
+                        if(!empty($traduccion['TITULO'])){
+                          $titulo = $traduccion['TITULO'];
+                        }else{
+                          $titulo = $sub_categoria->CATEGORIA_NOMBRE;
+                        }
+                      }
+                    ?>
+                  <a class="nav-link text<?php echo $sub_categoria->CATEGORIA_COLOR; ?>" id="menu-categoria-<?php echo $sub_categoria->ID_CATEGORIA; ?>" href="<?php echo base_url('categoria?slug='.$sub_categoria->CATEGORIA_URL); ?>">
+                  <?php echo $titulo; ?>
+                  </a>
+                  <?php ++$i;  } ?>
+               </div>
+            </div>
+            <hr>
+          <?php } ?>
+          <?php } ?>
 
           <button class="btn btnFiltros btn<?php echo $primary; ?> btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i class="fas fa-sliders-h mr-2"></i>Filtros
@@ -143,15 +179,15 @@
                 <li class="fa fa-star"></li>
               <?php } ?>
               <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
-                <li class="fa fa-star"></li>
+                <li class="far fa-star"></li>
               <?php } ?>
                 <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
               </ul>
               <h3 class="title text<?php echo $primary; ?>"><?php echo $titulo; ?> </h3>
               <?php if($servicio->SERVICIO_TIPO=='digital'){ ?>
-                <span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span>
+                <span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span>
               <?php }else{ ?>
-                <span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span>
+                <span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span>
               <?php } ?>
               <hr>
               <div class="">
@@ -174,32 +210,19 @@
                 </div>
                 <div class="modal-body">
                   <div class="row">
-                    <div class="col-12">
-                      <div class="portada-servicios img-thumbnail rounded-circle" style="background-image:url(<?php echo base_url($ruta_portada); ?>); background-size: cover; background-repeat: no-repeat; height:250px;"> </div>
+                    <div class="col-12 my-4 d-flex justify-content-center">
+                      <div class="border rounded-circle" style="width:70%; padding-top:70%; background-position: center; background-repeat: no-repeat; background-size: contain; background-image:url(<?php echo base_url($ruta_portada) ?>);"></div>
                     </div>
                     <div class="col">
                       <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
-                      <?php
-                        switch ($servicio->SERVICIO_TIPO) {
-                          case 'profesional':
-                            echo $this->lang->line('usuario_form_servicio_tipo_presencial');
-                            break;
-                          case 'digital':
-                            echo $this->lang->line('usuario_form_servicio_tipo_distancia');
-                            break;
-                          default:
-                            // code...
-                            break;
-                        }
-                      ?>
                       <div class="border-top mt-3 pt-3">
                         <?php echo $descripcion_corta; ?>
                       </div>
                       <div class="pt-2 border-top">
                         <?php if($servicio->SERVICIO_TIPO=='digital'){ ?>
-                          <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?></p>
+                          <span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio"><?php echo $this->lang->line('pagina_servicio_digital'); ?></span> <?php echo $this->lang->line('pagina_servicio_digital_descripcion'); ?>
                         <?php }else{ ?>
-                          <p><span class="badge <?php echo 'badge'.$primary; ?>"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?></p>
+                          <span class="badge <?php echo 'badge'.$primary; ?> etiqueta-servicio"><?php echo $this->lang->line('pagina_servicio_profesional'); ?></span> <?php echo $this->lang->line('pagina_servicio_profesional_descripcion'); ?>
                         <?php } ?>
                       </div>
                       <hr>

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/fonts/fontawesome/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/starrr/starrr.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/flexslider/flexslider.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/slider-pro-master/css/slider-pro.css?ver=<?php echo date('U'); ?>" type="text/css" media="screen" />
@@ -23,7 +24,6 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col">
-            <a href="#" class="btn btn-link"> <span class="fa fa-phone"></span> <?php echo $this->lang->line('header_atencion_clientes'); ?> <?php echo $op['telefono_sitio'] ?></a>
           </div>
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
@@ -263,5 +263,25 @@
         </div>
       </div>
     </div>
-
+    <?php
+    $CI =& get_instance();
+    $CI->load->model('ConcursosModel');
+    $concurso = $CI->ConcursosModel->activo();
+    $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
+    $frase_concurso = explode(' ',$concurso['FRASE']);
+    shuffle($frase_concurso);
+    ?>
+    <?php if(!empty($concurso)){ ?>
+      <div>
+        <div class="container">
+        <div class="row py-4" style="min-height:50px" id="sortable">
+          <?php foreach($frase_concurso as $palabra){ ?>
+          <div class="col p-3 border border-primary" >
+            <?php echo $palabra; ?>
+          </div>
+          <?php } ?>
+        </div>
+        </div>
+      </div>
+    <?php } ?>
     <!-- Termina Header -->

@@ -27,6 +27,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->model('TiendasModel');
 			$this->load->model('DireccionesModel');
 			$this->load->model('NotificacionesModel');
+			$this->load->model('PlanesModel');
   }
 
 	public function index()

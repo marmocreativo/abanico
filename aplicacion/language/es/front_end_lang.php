@@ -120,7 +120,7 @@ $lang['filtro_categoria_servicios_calificacion_desc'] = 'Mejor Calificados';
 
 $lang['filtro_categoria_servicios_tipo'] = 'Tipo Servicio';
 $lang['filtro_categoria_servicios_presenciales'] = 'Presenciales';
-$lang['filtro_categoria_servicios_digitales'] = 'Digitales';
+$lang['filtro_categoria_servicios_digitales'] = 'A distancia';
 $lang['filtro_categoria_servicios_filtrar_por'] = 'Filtrar por';
 
 $lang['pagina_servicio_migas_servicio'] = 'Servicio';

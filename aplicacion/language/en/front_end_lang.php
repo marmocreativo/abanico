@@ -119,8 +119,8 @@ $lang['filtro_categoria_servicios_alfabetico_desc'] = 'Z-A';
 $lang['filtro_categoria_servicios_calificacion_desc'] = 'Best Rated';
 
 $lang['filtro_categoria_servicios_tipo'] = 'Service Type';
-$lang['filtro_categoria_servicios_presenciales'] = 'On-site';
-$lang['filtro_categoria_servicios_digitales'] = 'Remote';
+$lang['filtro_categoria_servicios_presenciales'] = 'On-site service';
+$lang['filtro_categoria_servicios_digitales'] = 'Remote service';
 $lang['filtro_categoria_servicios_filtrar_por'] = 'Filter by';
 
 $lang['pagina_servicio_migas_servicio'] = 'Service';
@@ -131,7 +131,7 @@ $lang['pagina_servicio_zona_trabajo_pais'] = 'Country';
 $lang['pagina_servicio_zona_trabajo_estado'] = 'State';
 $lang['pagina_servicio_zona_servicio'] = 'Service Zone';
 $lang['pagina_servicio_boton_contactar'] = 'Contact';
-$lang['pagina_servicio_profesional'] = 'On-site';
+$lang['pagina_servicio_profesional'] = 'On-site service';
 $lang['pagina_servicio_digital'] = 'Remote service';
 $lang['pagina_servicio_profesional_descripcion'] = 'This service is provided at the place where it is required';
 $lang['pagina_servicio_digital_descripcion'] = 'This service can be provided online';

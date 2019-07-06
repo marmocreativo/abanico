@@ -30,6 +30,23 @@
         </div>
         <hr>
       <?php } ?>
+      <?php
+        $productos_activo = null;
+        $fotografias_producto = null;
+        $servicios_activos = null;
+        $fotografias_servicios = null;
+        $anexos = false;
+        $plan = $this->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'productos');
+        if(!empty($plan)){
+          $productos_activo = $plan['PLAN_LIMITE_PRODUCTOS'];
+          $fotografias_producto = $plan['PLAN_FOTOS_PRODUCTOS'];
+          $servicios_activos = $plan['PLAN_LIMITE_SERVICIOS'];
+          $fotografias_servicios = $plan['PLAN_FOTOS_SERVICIOS'];
+          if($plan['PLAN_NIVEL']>1){
+            $anexos = true;
+          }
+        }
+      ?>
       <div class="card border-0 mb-3">
 
           <form class="" action="<?php echo base_url('usuario/productos/actualizar'); ?>" method="post" enctype="multipart/form-data">
@@ -164,11 +181,24 @@
 
                 <div id="collapseTwo" class="<?php if($tab!='categoria'){ echo 'collapse'; } ?>" aria-labelledby="headingTwo" data-parent="#accordionExample">
                   <div class="card-body">
+                    <?php $categorias_producto = $this->CategoriasProductoModel->lista($producto['ID_PRODUCTO']);;
+                    $categorias_seleccionadas = array();
+                      $categorias_seleccionadas[] = $categorias_producto['ID_CATEGORIA'];
+                    ?>
                     <?php $i=1; foreach($categorias as $categoria){ ?>
                   <h6 class="mb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
                   <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
                     <?php foreach($segundo_categorias as $segunda_categoria){ ?>
-                    <h6 class="border-bottom pb-3"><?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></h6>
+                      <div class="custom-control custom-radio">
+                        <input  type="radio"
+                                id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                                name="CategoriaProducto" class="custom-control-input"
+                                value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                                <?php if(in_array($segunda_categoria->ID_CATEGORIA,$categorias_seleccionadas)){ echo 'checked'; } ?>
+
+                                >
+                        <label class="custom-control-label" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
+                      </div>
                     <?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                       <ul class="list list-unstyled">
                         <?php foreach($tercero_categorias as $tercera_categoria){ ?>
@@ -178,7 +208,7 @@
                                     id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                                     name="CategoriaProducto" class="custom-control-input"
                                     value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                    <?php if($relacion_categorias['ID_CATEGORIA']==$tercera_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
+                                    <?php if(in_array($tercera_categoria->ID_CATEGORIA,$categorias_seleccionadas)){ echo 'checked'; } ?>
 
                                     >
                             <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
@@ -273,10 +303,17 @@
                   <div class="card-body">
                     <hr>
                     <img src="<?php echo base_url('contenido/img/productos/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
+                    <?php
+                      $cantidad_imagenes = count($galerias);
+                    ?>
+                    <?php if($fotografias_producto!=null&&($fotografias_producto>$cantidad_imagenes||$fotografias_producto==0)){ ?>
                     <div class="form-group">
                       <input type="file" class="form-control" id="ImagenProducto" name="ImagenProducto" placeholder="" value="">
                       <label class="" for=""><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
                     </div>
+                  <?php }else{ ?>
+                    <p class="text-danger">Límite de imágenes alcanzado</p>
+                  <?php } ?>
                     <?php foreach($galerias as $galeria){ ?>
                     <div class="mb-2">
                       <div class="row">

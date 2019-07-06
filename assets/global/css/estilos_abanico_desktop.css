@@ -1086,3 +1086,12 @@ border-top: solid 9px #980500;
 .modal-xl {
     max-width: 80%;
 }
+
+.etiqueta-servicio{
+  display: block;
+  margin:10px;
+    -webkit-box-shadow: 0px 0px 0px 2px;
+    -moz-box-shadow: 0px 0px 0px 2px;
+    box-shadow: 0px 0px 0px 2px;
+    border: 1px dashed;
+}

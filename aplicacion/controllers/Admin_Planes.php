@@ -159,7 +159,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PLAN_FOTOS_PRODUCTOS' => $this->input->post('FotosProductosPlan'),
 				'PLAN_FOTOS_SERVICIOS' => $this->input->post('FotosProductosPlan'),
 				'FECHA_INICIO' => $this->input->post('FechaInicio'),
-				'FECHA_FINAL' => $this->input->post('FechaTermino'),
+				'FECHA_TERMINO' => $this->input->post('FechaTermino'),
 			);
 
 			$this->PlanesModel->actualizar_plan_usuario( $this->input->post('Identificador'),$parametros);
@@ -293,7 +293,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 						$estado_plan = 'espera pago';
 					break;
 				case 'comprobante':
-						$estado_plan = 'espera pago';
+						$estado_plan = 'verificando';
 					break;
 				case 'pagado':
 						$estado_plan = 'pagado';
@@ -366,6 +366,23 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['planes'] = $this->PlanesModel->lista(['PLAN_TIPO'=>$tipo]);
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_planes',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+	}
+	public function lista_planes_usuarios()
+	{
+			// Obtengo los datos de mi tiendas
+			$parametros = array();
+			if(!empty($_GET['Tipo'])){
+				$parametros['PLAN_TIPO']=$_GET['Tipo'];
+			}else{
+				$parametros['PLAN_TIPO']='productos';
+			}
+			if(!empty($_GET['Estado'])){
+				$parametros['PLAN_ESTADO']=$_GET['Estado'];
+			}
+			$this->data['planes'] = $this->PlanesModel->lista_planes_usuarios($parametros);
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/lista_planes_usuarios',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
 	public function activar()

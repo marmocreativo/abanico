@@ -24,6 +24,25 @@
                   </div>
                   <hr>
                 <?php } ?>
+
+                <?php
+                  $productos_activo = null;
+                  $fotografias_producto = null;
+                  $servicios_activos = null;
+                  $fotografias_servicios = null;
+                  $anexos = false;
+                  $plan = $this->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'productos');
+                  if(!empty($plan)){
+                    $productos_activo = $plan['PLAN_LIMITE_PRODUCTOS'];
+                    $fotografias_producto = $plan['PLAN_FOTOS_PRODUCTOS'];
+                    $servicios_activos = $plan['PLAN_LIMITE_SERVICIOS'];
+                    $fotografias_servicios = $plan['PLAN_FOTOS_SERVICIOS'];
+                    if($plan['PLAN_NIVEL']>1){
+                      $anexos = true;
+                    }
+                  }
+                ?>
+
               <form class="" action="<?php echo base_url('usuario/productos/actualizar'); ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="TipoProducto" value="<?php echo $tipo_producto; ?>">
                 <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id']; ?>">
@@ -202,6 +221,10 @@
                       </div>
                       <div class="tab-pane fade <?php if($tab=='categoria'){ echo 'show active'; } ?> p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
                         <div class="row">
+                          <?php $categorias_producto = $this->CategoriasProductoModel->lista($producto['ID_PRODUCTO']);;
+                          $categorias_seleccionadas = array();
+                            $categorias_seleccionadas[] = $categorias_producto['ID_CATEGORIA'];
+                          ?>
                             <?php $i=1; foreach($categorias as $categoria){ ?>
                                 <div class="col-12 border border-default p-3">
                                   <h6 class="border-bottom pb-3"><?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
@@ -215,6 +238,7 @@
                                                   id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
                                                   name="CategoriaProducto" class="custom-control-input"
                                                   value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                                                  <?php if(in_array($segunda_categoria->ID_CATEGORIA,$categorias_seleccionadas)){ echo 'checked'; } ?>
 
                                                   >
                                           <label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
@@ -228,7 +252,7 @@
                                                     id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
                                                     name="CategoriaProducto" class="custom-control-input"
                                                     value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                                    <?php if($relacion_categorias['ID_CATEGORIA']==$tercera_categoria->ID_CATEGORIA){ echo 'checked'; } ?>
+                                                    <?php if(in_array($tercera_categoria->ID_CATEGORIA,$categorias_seleccionadas)){ echo 'checked'; } ?>
 
                                                     >
                                             <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
@@ -322,9 +346,17 @@
                                 <img src="<?php echo base_url('contenido/img/productos/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
                               </div>
                               <div class="col">
+                                <?php
+                                  $cantidad_imagenes = count($galerias);
+                                ?>
                                 <div class="form-group">
+
+                                <?php if($fotografias_producto!=null&&($fotografias_producto>$cantidad_imagenes||$fotografias_producto==0)){ ?>
                                   <label for="ImagenProducto"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
                                   <input type="file" class="form-control" id="ImagenProducto" name="ImagenProducto">
+                                <?php }else{ ?>
+                                  <p class="text-danger">Límite de imágenes alcanzado</p>
+                                <?php } ?>
                                 </div>
                               </div>
                             </div>
@@ -338,6 +370,7 @@
                                 </tr>
                               </thead>
                               <tbody>
+
                                 <?php foreach($galerias as $galeria){ ?>
                                   <tr>
                                     <td class="text-center"><?php echo $galeria->ID_GALERIA; ?></td>

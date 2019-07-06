@@ -30,6 +30,7 @@ class TransportistasRangosModel extends CI_Model {
     $this->db->join('transportistas', 'transportistas.ID_TRANSPORTISTA = transportistas_rangos.ID_TRANSPORTISTA');
     $this->db->join('transportistas_disponibilidad', 'transportistas_disponibilidad.ID_TRANSPORTISTA = transportistas_rangos.ID_TRANSPORTISTA');
     $this->db->where('transportistas.PLAN_NIVEL <=',$nivel);
+    $this->db->where('transportistas.TRANSPORTISTA_ESTADO','activo');
     $this->db->where('transportistas_rangos.PESO_MAX >=',$peso);
     $this->db->where('transportistas_rangos.IMPORTE_MIN <=',$importe);
     $this->db->where('transportistas_disponibilidad.TRANSPORTISTA_PAIS',$pais);
@@ -44,6 +45,7 @@ class TransportistasRangosModel extends CI_Model {
       $this->db->join('transportistas', 'transportistas.ID_TRANSPORTISTA = transportistas_rangos.ID_TRANSPORTISTA');
       $this->db->join('transportistas_disponibilidad', 'transportistas_disponibilidad.ID_TRANSPORTISTA = transportistas_rangos.ID_TRANSPORTISTA');
       $this->db->where('transportistas.PLAN_NIVEL <=',$nivel);
+      $this->db->where('transportistas.TRANSPORTISTA_ESTADO','activo');
       $this->db->where('transportistas_rangos.PESO_MAX >=',$peso);
       $this->db->where('transportistas_rangos.IMPORTE_MIN <=',$importe);
       $this->db->where('transportistas_disponibilidad.TRANSPORTISTA_PAIS',$pais);

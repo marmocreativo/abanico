@@ -108,8 +108,8 @@
 
 								<!-- begin:: Header Topbar -->
 								<div class="kt-header__topbar">
-                  <a href="<?php echo base_url(); ?>" class="btn btn-outline-light btn-sm mt-2"><i class="fa fa-shopping-bag"></i> Volver a la tienda Principal</a>
-                  <a href="<?php echo base_url('usuario'); ?>" class="btn btn-outline-light btn-sm mt-2"><i class="fa fa-user"></i> Panel de Control Usuario</a>
+                  <a href="<?php echo base_url(); ?>" class="btn btn-outline-warning btn-sm mt-2"><i class="fa fa-shopping-bag"></i> Volver a la tienda Principal</a>
+                  <a href="<?php echo base_url('usuario'); ?>" class="btn btn-outline-warning btn-sm mt-2"><i class="fa fa-user"></i> Panel de Control Usuario</a>
 									<?php $this->load->view('desktop/admin/widgets/widget_notificaciones'); ?>
 
 

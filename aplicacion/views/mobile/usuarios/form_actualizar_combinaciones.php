@@ -90,6 +90,21 @@
                 </div>
               </div>
 
+              <div class="row">
+                <div class="col-12">
+                  <label for="">Imagen</label>
+                </div>
+                <?php foreach($galerias as $galeria){ ?>
+                  <div class="col-6 text-center mb-3 pb-3">
+                    <label for="ImagenCombinacion-<?php echo $galeria->ID_GALERIA; ?>">
+                      <img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO) ?>" class="img-fluid" alt="">
+                      <hr>
+                      <input class="form-check-input" type="radio" name="ImagenCombinacion" id="ImagenCombinacion-<?php echo $galeria->ID_GALERIA; ?>" <?php if($galeria->GALERIA_ARCHIVO==$combinacion['COMBINACION_IMAGEN']){ echo 'checked'; } ?> value="<?php echo $galeria->GALERIA_ARCHIVO; ?>">
+                    </label>
+                  </div>
+                <?php } ?>
+              </div>
+
               <div class="text-right">
                 <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> <?php echo $this->lang->line('usuario_form_producto_combinaciones_actualizar'); ?></button>
               </div>
