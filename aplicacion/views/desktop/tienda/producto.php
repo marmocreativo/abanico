@@ -150,7 +150,7 @@
 
             <?php }else{ ?>
               <div class="p-4 my-3 text-center border <?php echo 'border'.$primary.' '.'text'.$primary; ?>">
-                Compra con nosotros a partir de julio del 2019.
+                Compra con nosotros a partir del 15 julio del 2019.
               </div>
             <?php } ?>
 
