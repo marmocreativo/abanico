@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col">
-            <a href="#" class="btn btn-link"> <span class="fa fa-phone"></span> Atención a clientes 01 5555-5555</a>
+            <a href="tel:<?php echo $op['telefono_sitio']; ?>" class="btn btn-link"> <span class="fa fa-phone"></span> Atención a clientes <?php echo $op['telefono_sitio']; ?></a>
           </div>
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">

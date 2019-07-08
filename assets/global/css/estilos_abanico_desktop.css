@@ -169,6 +169,7 @@ html, body{
   margin:2%;
 }
 /*--- Slider ---*/
+
 .contenedor-texto-slide{
   position: absolute;
   top: 1%;
@@ -179,6 +180,13 @@ html, body{
   border: solid #ffffff 3px;
   margin: 2% 2%;
   padding: 2%;
+}
+.contenedor-texto-slide  a{
+  color:#000;
+  text-decoration: none;
+}
+.contenedor-texto-slide  a:hover{
+  text-decoration: none;
 }
 .texto-slide{
   background-color: rgba(255,255,255,0.7);

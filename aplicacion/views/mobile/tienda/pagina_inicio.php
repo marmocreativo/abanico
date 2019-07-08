@@ -9,6 +9,7 @@
       <?php $i = 0; foreach($slides as $slide){ ?>
       <div class="carousel-item <?php if($i==0){ echo 'active'; } ?>">
         <div class="contenedor-texto-slide">
+            <a href="<?php echo $slide->SLIDE_ENLACE; ?>">
           <div class="texto-slide row align-items-center mx-0">
             <?php if(!empty($slide->SLIDE_TITULO)){ ?>
               <div class="col-12">
@@ -29,6 +30,7 @@
               </div>
           <?php } ?>
           </div>
+          </a>
         </div>
         <img class="d-block w-100" src="contenido/img/slider/<?php echo $slide->SLIDE_IMAGEN_MOVIL; ?>">
       </div>
@@ -610,10 +612,11 @@
             <div class="contenedor-ganador text-center">
               <div class="container-fluid head-ganador">
                 <div class="titulo-ganador">
-                  Por Inauguración
+                  Gran concurso por inauguración
                 </div>
               </div>
               <div class="nombre-ganador" style="font-size:1em; line-height:1.5em;">
+                <a href="https://abanicoytu.com/publicacion/bases-concurso-inaugural">
                 <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
                 <div style="text-align:left; line-height:2.5em;">
                 <i class="fa fa-check"> </i> Regístrate del 8 de julio al 19 de agosto de 2019.<br>
@@ -630,6 +633,7 @@
                 Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
                 <-->
                 <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
+                </a>
               </div>
               <div class="premio-ganador text-primary">
                 <!--
