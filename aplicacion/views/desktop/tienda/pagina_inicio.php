@@ -33,7 +33,7 @@
           </div>
           </a>
         </div>
-        <img class="d-block w-100" src="contenido/img/slider/<?php echo $slide->SLIDE_IMAGEN; ?>">
+        <img class="d-block w-100" src="<?php echo base_url('contenido/img/slider/'.$slide->SLIDE_IMAGEN); ?>">
       </div>
     <?php ++$i; }  ?>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

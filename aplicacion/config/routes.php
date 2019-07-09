@@ -159,5 +159,11 @@ $route['proceso_pago_3'] = 'Proceso_Pago/paso3';
 $route['proceso_pago_2'] = 'Proceso_Pago/paso2';
 $route['proceso_pago_1'] = 'Proceso_Pago/paso1';
 $route['carrito'] = 'Proceso_Pago';
+// Sobreescribir demo
+
+$route['demo/(:any)/(:any)/(:any)'] = 'Tienda_Inicio';
+$route['demo/(:any)/(:any)'] = 'Tienda_Inicio';
+$route['demo/(:any)'] = 'Tienda_Inicio';
+$route['demo'] = 'Tienda_Inicio';
 // Ruta de Mantenimiento
 $route['mantenimiento'] = 'Mantenimiento';
