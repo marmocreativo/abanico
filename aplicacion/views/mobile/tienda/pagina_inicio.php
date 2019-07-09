@@ -710,6 +710,10 @@
 
       <div class="col-12 mt-3 pt-3 border-top">
         <div class="col d-flex align-items-center">
+          <div class="contenedor-ganador text-center">
+            <img src="<?php echo base_url('assets/global/img/borrego_03.jpg'); ?>" class="img-fluid" alt="">
+          </div>
+          <!--
         <div class="contenedor-ganador text-center">
           <div class="container-fluid head-ganador">
             <div class="titulo-ganador">
@@ -719,21 +723,22 @@
           <div class="nombre-ganador">
             <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
             Concursos en redes sociales<br>
-            <!--
+            <!- -
             <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
             Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
-            <-->
+            <- ->
             <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
           </div>
           <div class="premio-ganador text-primary">
 
-            <!--
+            <!- -
             Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
-          -->
+          - ->
           </div>
         </div>
       </div>
       </div>
+    -->
 
     </div>
   </div>

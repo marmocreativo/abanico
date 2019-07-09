@@ -81,6 +81,51 @@
     </div>
   </div>
 </div>
+
+<!-- MODAL PROMOCIONES -->
+<div class="modal fade" id="ModalPromociones" tabindex="-1" role="dialog" aria-labelledby="ModalPromociones" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php
+        $CI =& get_instance();
+        $CI->load->model('SlidersModel');
+        $CI->load->model('SlidesModel');
+        $slider_promo = $CI->SlidersModel->slide_nombre_lenguaje('promociones',$_SESSION['lenguaje']['iso']);
+        $promos = $CI->SlidesModel->lista(['ID_SLIDER'=>$slider_promo['ID_SLIDER']],'','');
+        ?>
+        <div id="carouselPromos" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+            <?php $i = 0; foreach($promos as $slide){ ?>
+              <li data-target="#carouselPromos" data-slide-to="<?php echo $i; ?>" class="<?php if($i==0){ echo 'active'; } ?>"></li>
+            <?php ++$i; }  ?>
+            </ol>
+            <div class="carousel-inner">
+              <?php $i = 0; foreach($promos as $slide){ ?>
+              <div class="carousel-item <?php if($i==0){ echo 'active'; } ?>">
+                <img class="d-block w-100" src="<?php echo base_url('contenido/img/slider/'.$slide->SLIDE_IMAGEN); ?>">
+              </div>
+            <?php ++$i; }  ?>
+            <a class="carousel-control-prev" href="#carouselPromos" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselPromos" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Siguiente</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -108,6 +153,11 @@
            }
          });
          $( "#sortable" ).sortable();
+         <?php if($op['mostrar_promociones_siempre']=='no'){ ?>
+           <?php if(!isset($_SESSION['promocion'])){   $_SESSION['promocion']=true; ?> $('#ModalPromociones').modal(); <?php } ?>
+         <?php }else{ ?>
+           $('#ModalPromociones').modal();
+         <?php } ?>
        });
      </script>
     <?php $this->load->view('scripts/scripts_tienda');  ?>

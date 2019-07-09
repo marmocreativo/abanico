@@ -270,9 +270,11 @@
                 <li class="nav-item">
                   <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php echo $this->lang->line('pagina_producto_tabs_producto_detalles'); ?></a>
                 </li>
+                <!--
                 <li class="nav-item">
                   <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><?php echo $this->lang->line('pagina_producto_tabs_producto_caracteristicas'); ?></a>
                 </li>
+              -->
                 <li class="nav-item">
                   <a class="nav-link" id="preguntas-tab" data-toggle="tab" href="#preguntas" role="tab" aria-controls="preguntas" aria-selected="false"><?php echo $this->lang->line('pagina_producto_tabs_producto_preguntas'); ?></a>
                 </li>
