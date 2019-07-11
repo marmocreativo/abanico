@@ -372,9 +372,10 @@
                                   <form class="d-flex justify-content-end" id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                                       <input type="hidden" name="cmd" value="_xclick">
                                       <!--
-                                      <input type="hidden" name="business" value="abanico0918@aol.com">
+                                        <input type="hidden" name="business" value="marmocreativo@gmail.com">
                                       -->
-                                      <input type="hidden" name="business" value="marmocreativo@gmail.com">
+
+                                      <input type="hidden" name="business" value="abanico0918@aol.com">
                                       <input type="hidden" name="item_name" value="Abanico <?php echo $_POST['Folio']; ?>">
                                       <input type="hidden" name="item_number" value="<?php echo $_POST['Folio']; ?>">
                                       <input type="hidden" name="amount" value="<?php echo $_POST['ImporteTotal']; ?>">

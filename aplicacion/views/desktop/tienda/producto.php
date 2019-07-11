@@ -289,14 +289,37 @@
                     $CI =& get_instance();
                     $CI->load->model('ConcursosModel');
                     $concurso = $CI->ConcursosModel->activo();
+
                     $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
                     $frase_concurso = explode(' ',$concurso['FRASE']);
-                    if(in_array ($producto['ID_PRODUCTO'],$productos_concurso)){
-                      echo '<h3 class="text-danger">Aquí debe haber una palabra oculta</h3>';
-                    };
+                    $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
+                    $relacion_palabras_productos = array();
+                    foreach($productos_concurso as $index => $producto_con){
+                      $relacion_palabras_productos[$producto_con]=$frase_concurso[$index];
+                    }
+                    if(in_array ($producto['ID_PRODUCTO'],$productos_concurso)&&$_SESSION['concurso']['palabras'][$relacion_palabras_productos[$producto['ID_PRODUCTO']]]=='no'){
+                      $palabra_escondida = '<span class="palabra_encontrada animated tada infinite" style="cursor: pointer; display:inline-block; animation-delay: 15s;" data-palabra="'.$relacion_palabras_productos[$producto['ID_PRODUCTO']].'">'.$relacion_palabras_productos[$producto['ID_PRODUCTO']].'</span>';
+                      //var_dump($relacion_palabras_productos);
+
                     ?>
+
                     <h5><?php echo $this->lang->line('pagina_producto_tab_detalles_titulo'); ?></h5>
+                    <?php if(!empty($concurso)){ ?>
+
+                        <?php
+                          $palabras_en_descripcion = explode(' ',$descripcion_larga);
+                          $numero_palabras_en_descripcion = count($palabras_en_descripcion);
+                          $aleatorio = rand(0,$numero_palabras_en_descripcion-1);
+                          $palabras_en_descripcion[$aleatorio]=$palabra_escondida;
+                          echo implode(" ",$palabras_en_descripcion);
+                        ?>
+                    <?php }else{ ?>
+
                     <?php echo $descripcion_larga; ?>
+                    <?php } ?>
+                  <?php }else{ ?>
+                    <?php echo $descripcion_larga; ?>
+                  <?php } ?>
                   </div>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

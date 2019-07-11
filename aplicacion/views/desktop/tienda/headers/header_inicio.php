@@ -10,6 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/fonts/fontawesome/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/starrr/starrr.css">
@@ -24,6 +25,11 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://www.facebook.com/abanicoytu/"> <i class="fab fa-facebook"></i> </a></li>
+              <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://twitter.com/abanicoytu"><i class="fab fa-twitter"></i></a></li>
+              <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://www.instagram.com/abanicoytu"><i class="fab fa-instagram"></i></a></li>
+            </ul>
           </div>
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
@@ -264,24 +270,7 @@
       </div>
     </div>
     <?php
-    $CI =& get_instance();
-    $CI->load->model('ConcursosModel');
-    $concurso = $CI->ConcursosModel->activo();
-    $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
-    $frase_concurso = explode(' ',$concurso['FRASE']);
-    shuffle($frase_concurso);
     ?>
-    <?php if(!empty($concurso)){ ?>
-      <div>
-        <div class="container">
-        <div class="row py-4" style="min-height:50px" id="sortable">
-          <?php foreach($frase_concurso as $palabra){ ?>
-          <div class="col p-3 border border-primary" >
-            <?php echo $palabra; ?>
-          </div>
-          <?php } ?>
-        </div>
-        </div>
+      <div id="contenedor_concurso">
       </div>
-    <?php } ?>
     <!-- Termina Header -->
