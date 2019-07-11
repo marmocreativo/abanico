@@ -110,6 +110,8 @@ $route['ajax/notificaciones/leidas'] = 'Ajax_Notificaciones/marcar_leidas';
 $route['ajax/municipios'] = 'Ajax_Municipios';
 $route['ajax/estados'] = 'Ajax_Estados';
 $route['ajax/paises'] = 'Ajax_Paises';
+$route['ajax/concurso/(:any)'] = 'Ajax_Concurso/$1';
+$route['ajax/concurso'] = 'Ajax_Concurso';
 $route['ajax/carrito'] = 'Ajax_Cargar_Carrito';
 $route['ajax/carrito/(:any)'] = 'Ajax_Cargar_Carrito/$1';
 

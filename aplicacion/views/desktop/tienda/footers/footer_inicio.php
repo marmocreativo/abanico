@@ -152,7 +152,6 @@
              $('body').removeClass('loading');
            }
          });
-         $( "#sortable" ).sortable();
          <?php if($op['mostrar_promociones_siempre']=='no'){ ?>
            <?php if(!isset($_SESSION['promocion'])){   $_SESSION['promocion']=true; ?> $('#ModalPromociones').modal(); <?php } ?>
          <?php }else{ ?>
@@ -160,6 +159,7 @@
          <?php } ?>
        });
      </script>
+     <?php $this->load->view('scripts/scripts_concurso');  ?>
     <?php $this->load->view('scripts/scripts_tienda');  ?>
     <?php $this->load->view('scripts/formularios_usuario');  ?>
 

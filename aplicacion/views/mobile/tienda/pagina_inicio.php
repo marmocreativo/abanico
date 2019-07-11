@@ -14,7 +14,7 @@
             <?php if(!empty($slide->SLIDE_TITULO)){ ?>
               <div class="col-12">
 
-              <h1><?php echo $slide->SLIDE_TITULO; ?></h1>
+              <h2><?php echo $slide->SLIDE_TITULO; ?></h2>
               </div>
           <?php } ?>
             <?php if(!empty($slide->SLIDE_SUBTITULO)){ ?>
@@ -25,10 +25,14 @@
           <?php } ?>
             <?php if(!empty($slide->SLIDE_BOTON)){ ?>
               <div class="col-12">
-
-              <h3><?php echo $slide->SLIDE_BOTON; ?></h3>
+              <h2><?php echo $slide->SLIDE_BOTON; ?></h2>
               </div>
           <?php } ?>
+          <?php if(!empty($slide->SLIDE_ENLACE)){ ?>
+            <div class="col-12">
+              <a href="<?php echo $slide->SLIDE_ENLACE; ?>" class="btn btn-outline-dark btn-sm"> Leer más</a>
+            </div>
+        <?php } ?>
           </div>
           </a>
         </div>

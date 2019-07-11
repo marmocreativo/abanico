@@ -10,12 +10,11 @@
       <?php $i = 0; foreach($slides as $slide){ ?>
       <div class="carousel-item <?php if($i==0){ echo 'active'; } ?>">
         <div class="contenedor-texto-slide align-middle">
-          <a href="<?php echo $slide->SLIDE_ENLACE; ?>">
           <div class="texto-slide row align-items-center mx-0">
             <?php if(!empty($slide->SLIDE_TITULO)){ ?>
               <div class="col-12">
 
-              <h1><?php echo $slide->SLIDE_TITULO; ?></h1>
+              <h2><?php echo $slide->SLIDE_TITULO; ?></h2>
               </div>
           <?php } ?>
             <?php if(!empty($slide->SLIDE_SUBTITULO)){ ?>
@@ -30,8 +29,12 @@
               <h3><?php echo $slide->SLIDE_BOTON; ?></h3>
               </div>
           <?php } ?>
+          <?php if(!empty($slide->SLIDE_ENLACE)){ ?>
+            <div class="col-12">
+              <a href="<?php echo $slide->SLIDE_ENLACE; ?>" class="btn btn-outline-dark"> Leer más</a>
+            </div>
+        <?php } ?>
           </div>
-          </a>
         </div>
         <img class="d-block w-100" src="<?php echo base_url('contenido/img/slider/'.$slide->SLIDE_IMAGEN); ?>">
       </div>
