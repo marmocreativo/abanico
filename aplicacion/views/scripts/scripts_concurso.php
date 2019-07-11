@@ -33,6 +33,7 @@ jQuery('.palabra_encontrada').click(function(){
      {
        console.log(msg);
       cargar_concurso();
+      $(this).hide();
      }
   });
 });

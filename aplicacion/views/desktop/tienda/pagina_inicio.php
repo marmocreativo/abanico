@@ -23,15 +23,9 @@
               <h2><?php echo $slide->SLIDE_SUBTITULO; ?></h2>
               </div>
           <?php } ?>
-            <?php if(!empty($slide->SLIDE_BOTON)){ ?>
-              <div class="col-12">
-
-              <h3><?php echo $slide->SLIDE_BOTON; ?></h3>
-              </div>
-          <?php } ?>
           <?php if(!empty($slide->SLIDE_ENLACE)){ ?>
             <div class="col-12">
-              <a href="<?php echo $slide->SLIDE_ENLACE; ?>" class="btn btn-outline-dark"> Leer más</a>
+              <a href="<?php echo $slide->SLIDE_ENLACE; ?>" class="btn btn-outline-dark"> <?php echo $slide->SLIDE_BOTON; ?></a>
             </div>
         <?php } ?>
           </div>

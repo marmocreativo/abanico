@@ -25,7 +25,6 @@ class Ajax_Concurso extends CI_Controller {
 						$fecha_inicio = date('Y-m-d H:i:s');
 						$palabras = $frase_concurso;
 						if(!isset($_SESSION['concurso'])){
-							echo 'volvi a escribir';
 							$_SESSION['concurso'] = array();
 							$_SESSION['concurso']['id'] = $id_participante;
 							$_SESSION['concurso']['fecha_inicio'] = $fecha_inicio;
@@ -38,15 +37,20 @@ class Ajax_Concurso extends CI_Controller {
 					echo
 					'<div class="row instrucciones">
 						<div class="col text-center pt-3">
-							<h4>Las palabras de esta frase se encuentran escondidas en las descripciones de algunos de nuestros productos</h4>
+							<h4>Hay <span class="animated tada infinite" style="display:inline-block">'.count($palabras).'</span> palabras escondidas en las descripciones de algunos de nuestros productos, sé el primero en encontrarlas, formar la frase y ganarás nuestro premio</h4>';
+							if($concurso['MOSTRAR_FRASE']=='si'){
+						echo '
 							<blockquote class="blockquote">
 								<h4 class="mb-0">"'.$concurso['FRASE'].'"</h4>
-							</blockquote>
-						</div>
+							</blockquote>';
+						}
+						echo '<p>Las palabras estás escondidas en la descripción, las notarás por que el cursos cambiará al pasarlo por encima.</p>'
+						echo '</div>
 					</div>';
 					echo '<div class="row py-4" style="min-height:50px" id="concurso_sortable">';
-						foreach($_SESSION['concurso']['palabras'] as $palabra => $estado){
-							if($estado=='si'){
+						shuffle($palabras);
+						foreach($palabras as $palabra){
+							if($_SESSION['concurso']['palabras'][$palabra]=='si'){
 								echo '<div class="col p-3 border border-primary" >';
 									echo $palabra;
 								echo '</div>';
