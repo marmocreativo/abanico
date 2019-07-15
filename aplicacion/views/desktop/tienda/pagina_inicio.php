@@ -710,8 +710,8 @@ Estructuras Originales
                 <a href="https://abanicoytu.com/publicacion/bases-concurso-inaugural">
                 <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
                 <div style="text-align:left; line-height:2.5em;">
-                  <i class="fa fa-check"> </i> Regístrate del 8 de julio al 19 de agosto de 2019.<br>
-                  <i class="fa fa-check"> </i> El 20 de agosto inicia sesión. <br>
+                  <i class="fa fa-check"> </i> Regístrate del 8 de julio al 23 de septiembre de 2019.<br>
+                  <i class="fa fa-check"> </i> El 24 de semptiembre inicia sesión. <br>
                   <i class="fa fa-check"> </i> Encuentra las palabras escondidas dentro de la descripción de los productos.<br>
                   <i class="fa fa-check"> </i> Da doble click en las palabras y júntalas en la parte superior de la pantalla<br>
                   <i class="fa fa-check"> </i> Ordena las palabras que encontraste hasta formar la frase correcta<br>
