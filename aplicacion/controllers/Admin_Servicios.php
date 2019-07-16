@@ -152,7 +152,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			if(!isset($_GET['tipo_servicio'])||empty($_GET['tipo_servicio'])){ $this->data['tipo_servicio']='normal'; }else{ $this->data['tipo_servicio']=$_GET['tipo_servicio']; }
 			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
 			$this->data['perfil'] = $this->PerfilServiciosModel->perfil_usuario($_GET['id_usuario']);
-			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_servicio',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
@@ -237,7 +237,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['usuario_servicio'] = $this->UsuariosModel->detalles($this->data['servicio']['ID_USUARIO']);
 			$this->data['perfil'] = $this->PerfilServiciosModel->perfil_usuario($this->data['usuario_servicio']['ID_USUARIO']);
 			$this->data['galerias'] = $this->GaleriasServiciosModel->lista($_GET['id'],'','5');
-			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 			$this->data['relacion_categorias'] = $this->CategoriasServiciosModel->lista($_GET['id']);
 			$this->data['adjuntos'] = $this->AdjuntosUsuariosModel->lista_archivos_adjuntos($_SESSION['usuario']['id'],$_GET['id'],'servicio');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);

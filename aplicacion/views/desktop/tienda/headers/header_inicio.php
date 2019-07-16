@@ -18,6 +18,17 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/tienda/js/slider-pro-master/css/slider-pro.css?ver=<?php echo date('U'); ?>" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/estilos_abanico_desktop.css?ver=<?php echo date('U'); ?>">
     <title><?php echo $op['titulo_sitio']; ?></title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143900653-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-143900653-1');
+    </script>
+
   </head>
   <body>
     <!-- Header -->
@@ -29,6 +40,7 @@
               <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://www.facebook.com/abanicoytu/"> <i class="fab fa-facebook"></i> </a></li>
               <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://twitter.com/abanicoytu"><i class="fab fa-twitter"></i></a></li>
               <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://www.instagram.com/abanicoytu"><i class="fab fa-instagram"></i></a></li>
+              <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="tel:<?php echo $op['telefono_sitio']; ?>"><i class="fa fa-phone"></i> <?php echo $op['telefono_sitio']; ?></a></li>
             </ul>
           </div>
           <div class="col">
@@ -122,7 +134,7 @@
                 <div class="tab-pane fade <?php if($i==0){ echo 'active show';} ?>" id="cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tabpanel" aria-labelledby="v-pills-1-tab">
                   <div class="row">
                     <div class="col-9">
-                      <?php   $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
+                      <?php   $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA,'CATEGORIA_ESTADO'=>'activo'],$categoria->CATEGORIA_TIPO,'',''); ?>
                       <div class="row">
                         <?php foreach($segundo_categorias as $segunda_categoria){ ?>
                           <?php
@@ -142,7 +154,7 @@
                             <h4><a href="<?php echo base_url('categoria?slug='.$segunda_categoria->CATEGORIA_URL); ?>" class="text<?php echo $segunda_categoria->CATEGORIA_COLOR; ?>">
                               <?php echo $titulo_segundo; ?>
                             </a></h4>
-                            <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
+                            <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA,'CATEGORIA_ESTADO'=>'activo'],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                             <ul class="list list-unstyled">
                               <?php foreach($tercero_categorias as $tercera_categoria){ ?>
                                 <?php
@@ -213,7 +225,7 @@
                 <div class="tab-pane fade <?php if($i==0){ echo 'active show';} ?>" id="cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tabpanel" aria-labelledby="v-pills-1-tab">
                   <div class="row">
                     <div class="col-9">
-                      <?php   $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
+                      <?php   $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA,'CATEGORIA_ESTADO'=>'activo'],$categoria->CATEGORIA_TIPO,'',''); ?>
                       <div class="row">
                         <?php foreach($segundo_categorias as $segunda_categoria){ ?>
                           <?php
@@ -233,7 +245,7 @@
                             <h4><a href="<?php echo base_url('categoria/servicios?slug='.$segunda_categoria->CATEGORIA_URL); ?>" class="text<?php echo $segunda_categoria->CATEGORIA_COLOR; ?>">
                               <?php echo $titulo_segundo; ?>
                             </a></h4>
-                            <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
+                            <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA,'CATEGORIA_ESTADO'=>'activo'],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
                             <ul class="list list-unstyled">
                               <?php foreach($tercero_categorias as $tercera_categoria){ ?>
                                 <?php

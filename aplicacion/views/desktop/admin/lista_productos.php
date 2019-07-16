@@ -105,9 +105,9 @@
             <tbody>
               <?php foreach($productos as $producto){ ?>
               <tr>
-                <td class="text-left"><?php echo $producto->PRODUCTO_NOMBRE; ?></td>
-                <td class="text-center"><?php echo $producto->PRODUCTO_MODELO; ?></td>
-                <td class="text-center">$<?php echo $producto->PRODUCTO_PRECIO; ?> <small>MXN</small></td>
+                <td class="text-left"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo $producto->PRODUCTO_NOMBRE; ?></span></td>
+                <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo $producto->PRODUCTO_MODELO; ?></span></td>
+                <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> $<?php echo $producto->PRODUCTO_PRECIO; ?> <small>MXN</small></span></td>
                 <td class="text-center">
                   <?php if($producto->PRODUCTO_ESTADO=='activo'){ ?>
                     <a href="<?php echo base_url('admin/productos/activar')."?id=".$producto->ID_PRODUCTO."&estado=".$producto->PRODUCTO_ESTADO."&id_usuario=".$producto->ID_USUARIO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>

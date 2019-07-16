@@ -51,8 +51,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['servicio']['ID_USUARIO']);
 		$direccion_fiscal = $this->DireccionesModel->direccion_fiscal($this->data['servicio']['ID_USUARIO']);
 		$this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($direccion_fiscal['ID_DIRECCION']);
-		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
-		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
+		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 
 		// Calificaciones
 		$this->data['cantidad_calificaciones']= $this->CalificacionesServiciosModel->conteo_calificaciones_producto($_GET['id']);
@@ -281,8 +281,8 @@ public function favorito()
 		 $this->data['portada'] = $this->GaleriasServiciosModel->galeria_portada($_GET['id']);
 		 $this->data['galerias'] = $this->GaleriasServiciosModel->galeria_servicio($_GET['id']);
 		 $this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['servicio']['ID_USUARIO']);
-		 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
- 		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+		 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
+ 		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 
 		 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		 $this->load->view($this->data['dispositivo'].'/tienda/servicio_form_contacto',$this->data);

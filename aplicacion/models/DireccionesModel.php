@@ -28,6 +28,23 @@ class DireccionesModel extends CI_Model {
     $query = $this->db->get('direcciones');
     return $query->result();
   }
+
+  function lista_admin($parametros,$id_usuario,$orden,$limite){
+    if(!empty($parametros)){
+      $this->db->or_like($parametros);
+    }
+    if(!empty($id_usuario)){
+      $this->db->where('ID_USUARIO', $id_usuario);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $query = $this->db->get('direcciones');
+    return $query->result();
+  }
   /*
     * Lista Básica de las direcciones excepto dirección Fiscal
  */
@@ -36,6 +53,11 @@ class DireccionesModel extends CI_Model {
     $this->db->where('DIRECCION_TIPO !=', 'fiscal');
     $this->db->where('DIRECCION_TIPO !=', 'perfil');
     $this->db->where('DIRECCION_TIPO !=', 'borrada');
+    $query = $this->db->get('direcciones');
+    return $query->result();
+  }
+  function lista_direcciones_admin($id_usuario){
+    $this->db->where('ID_USUARIO', $id_usuario);
     $query = $this->db->get('direcciones');
     return $query->result();
   }

@@ -285,9 +285,11 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
         // check if the institucione exists before trying to delete it
         if(isset($categoria['ID_CATEGORIA']))
         {
-            $this->CategoriasModel->borrar($_GET['id']);
+					$parametros = array( 'CATEGORIA_ESTADO' => 'borrada');
+					$this->CategoriasModel->actualizar( $_GET['id'],$parametros);
+
 						// Mensaje Feedback
-						$this->session->set_flashdata('exito', 'Categorías borradas');
+						$this->session->set_flashdata('exito', 'Categoría borrada');
 						//  Redirecciono
             redirect(base_url('admin/categorias?tipo_categoria='.$_GET['tipo_categoria'].'&tab=collapse'.$_GET['tab']));
         } else {

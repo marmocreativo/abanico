@@ -42,7 +42,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}else{
 			$guia = '';
 		}
-		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
+		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
 		$this->data['guia'] = $this->GuiasPedidosModel->detalles($guia);
 		$this->data['ubicaciones'] = $this->RutasGuiasModel->lista_rutas($this->data['guia']['GUIA_CODIGO']);
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);

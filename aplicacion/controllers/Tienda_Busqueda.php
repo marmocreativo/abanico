@@ -122,8 +122,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		 	 $parametros_and['PRODUCTO_ARTESANAL'] = 'si';
 		  }
 
-			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
-			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
+			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 			$this->data['productos'] = $this->ProductosModel->busqueda($parametros_or,$parametros_and,$orden,'');
 			$this->data['origen_formulario'] = 'busqueda';
 			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
@@ -191,8 +191,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			  $this->data['parametros_and'] = $parametros_and;
 			   $this->data['orden'] = $orden;
 
-				 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
-				 $this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+				 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
+				 $this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 				 $this->data['servicios'] = $this->ServiciosModel->busqueda($parametros_or,$parametros_and,$orden,'');
 				 $this->data['origen_formulario'] = 'busqueda';
 				 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);

@@ -6,7 +6,7 @@
   ** Pedidos
   -->
   <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open-dropdown" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
-    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Pedidos</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
+    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text text-white">Pedidos</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
       <ul class="kt-menu__subnav">
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
@@ -28,7 +28,7 @@
   ** Productos
   -->
   <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open-dropdown" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
-    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Productos</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
+    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text text-white">Productos</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
       <ul class="kt-menu__subnav">
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
@@ -50,7 +50,7 @@
   ** Servicios
   -->
   <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open-dropdown" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
-    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Servicios</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
+    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text text-white">Servicios</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
       <ul class="kt-menu__subnav">
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
@@ -73,7 +73,7 @@
   ** Usuarios
   -->
   <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open-dropdown" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
-    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Usuarios</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
+    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text text-white">Usuarios</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
       <ul class="kt-menu__subnav">
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
@@ -101,7 +101,7 @@
   ** Envios
   -->
   <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open-dropdown" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
-    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Sistemas</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
+    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text text-white">Sistemas</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
       <ul class="kt-menu__subnav">
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
@@ -138,7 +138,7 @@
   ** Publicaciones
   -->
   <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open-dropdown" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
-    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Publicaciones</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
+    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text text-white">Publicaciones</span><i class="kt-menu__hor-arrow fa fa-chevron-down"></i><i class="kt-menu__ver-arrow fa fa-chevron-down"></i></a>
     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
       <ul class="kt-menu__subnav">
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">

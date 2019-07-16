@@ -31,6 +31,25 @@ class ProductosModel extends CI_Model {
     return $query->result();
   }
 
+  function lista_admin($parametros,$id_usuario,$orden,$limite){
+    if(!empty($parametros)){
+      $this->db->group_start();
+      $this->db->or_like($parametros);
+      $this->db->group_end();
+    }
+    if(!empty($id_usuario)){
+      $this->db->where('ID_USUARIO', $id_usuario);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $query = $this->db->get('productos');
+    return $query->result();
+  }
+
   function lista_relacionados($parametros,$id_usuario,$orden,$limite){
     if(!empty($parametros)){
       $this->db->group_start();

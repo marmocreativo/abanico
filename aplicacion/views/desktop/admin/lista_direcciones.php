@@ -51,7 +51,7 @@
               <?php foreach($direcciones as $direccion){ ?>
               <tr>
                 <td><?php echo $direccion->DIRECCION_ALIAS; ?></td>
-                <td><?php echo $this->DireccionesModel->direccion_formateada($direccion->ID_DIRECCION); ?></td>
+                <td><span style="<?php if($direccion->DIRECCION_TIPO=='borrada'){ echo 'text-decoration: line-through;';  } ?>"><?php echo $this->DireccionesModel->direccion_formateada($direccion->ID_DIRECCION); ?></span></td>
                 <td><?php echo $direccion->DIRECCION_TIPO; ?></td>
                 <td>
                   <div class="btn-group float-right">

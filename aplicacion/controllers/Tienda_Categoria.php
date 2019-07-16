@@ -114,8 +114,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
   $this->data['orden'] = $orden;
 
 		if(isset($_GET['slug'])&&!empty($_GET['slug'])){
-			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
-			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
+			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 			$this->data['categoria'] = $this->CategoriasModel->detalles_slug($_GET['slug']);
 			$this->data['origen_formulario'] = 'categoria';
 			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$this->data['categoria']['ID_CATEGORIA'],$orden,'');
@@ -124,9 +124,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 		}else{
-			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
-			$this->data['categorias_hijas'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','','');
-			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'servicios','','');
+			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
+			$this->data['categorias_hijas'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
+			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 			$this->data['productos'] = $this->ProductosModel->lista_activos($parametros_or,$parametros_and,'',$orden,'');
 			$this->data['origen_formulario'] = 'categoria';
 	 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);

@@ -41,7 +41,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function index()
 	{
 		if(isset($_GET['id_usuario'])){
-			$this->data['direcciones'] = $this->DireccionesModel->lista_direcciones($_GET['id_usuario']);
+			$this->data['direcciones'] = $this->DireccionesModel->lista_direcciones_admin($_GET['id_usuario']);
 		}else{
 			$this->data['direcciones'] = $this->DireccionesModel->lista('','','','');
 		}
@@ -58,7 +58,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'DIRECCION_RAZON_SOCIAL'=>$_GET['Busqueda'],
 				'DIRECCION_RFC'=>$_GET['Busqueda']
 			);
-			$this->data['direcciones'] = $this->DireccionesModel->lista($parametros,'','');
+			$this->data['direcciones'] = $this->DireccionesModel->lista_admin($parametros,'','');
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_direcciones',$this->data);

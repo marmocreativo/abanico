@@ -28,6 +28,22 @@ class UsuariosModel extends CI_Model {
     $query = $this->db->get('usuarios');
     return $query->result();
   }
+  function lista_admin($parametros,$tipo_usuario,$orden,$limite){
+    if(!empty($parametros)){
+      $this->db->or_like($parametros);
+    }
+    if(!empty($tipo_usuario)){
+      $this->db->where('USUARIO_TIPO', $tipo_usuario);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $query = $this->db->get('usuarios');
+    return $query->result();
+  }
   /*
     * Obtengo todos los detalles de una sola entrada
  */

@@ -50,11 +50,11 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			// Reviso si hay id del usuario
 			if(isset($_GET['id_usuario'])){
-				$this->data['productos'] = $this->ProductosModel->lista(['PRODUCTO_TIPO'=>$this->data['tipo_producto']],$_GET['id_usuario'],'PRODUCTO_FECHA_REGISTRO DESC','');
+				$this->data['productos'] = $this->ProductosModel->lista_admin(['PRODUCTO_TIPO'=>$this->data['tipo_producto']],$_GET['id_usuario'],'PRODUCTO_FECHA_REGISTRO DESC','');
 				$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
 				$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_GET['id_usuario']);
 			}else{
-				$this->data['productos'] = $this->ProductosModel->lista(['PRODUCTO_TIPO'=>$this->data['tipo_producto']],'','PRODUCTO_FECHA_REGISTRO DESC','');
+				$this->data['productos'] = $this->ProductosModel->lista_admin(['PRODUCTO_TIPO'=>$this->data['tipo_producto']],'','PRODUCTO_FECHA_REGISTRO DESC','');
 			}
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_productos',$this->data);
@@ -71,7 +71,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PRODUCTO_DESCRIPCION'=>$_GET['Busqueda'],
 				'PRODUCTO_MODELO'=>$_GET['Busqueda']
 			);
-			$this->data['productos'] = $this->ProductosModel->lista($parametros,'','','');
+			$this->data['productos'] = $this->ProductosModel->lista_admin($parametros,'','','');
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_productos',$this->data);
