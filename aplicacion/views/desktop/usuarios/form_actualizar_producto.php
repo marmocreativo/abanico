@@ -201,6 +201,19 @@
                                         <div class="input-group-text">Kg</div>
                                       </div>
                                     </div>
+                                    <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Peso estimado del producto para el envío, incluyendo caja, sobre, etc.</small>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-group">
+                                    <label for="PesoNetoProducto">Peso Neto</label>
+                                    <div class="input-group input-group-sm mb-2">
+                                    <input type="text" class="form-control" id="PesoNetoProducto" name="PesoNetoProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PESO_NETO']; ?>">
+                                      <div class="input-group-append">
+                                        <div class="input-group-text">Kg</div>
+                                      </div>
+                                    </div>
+        														<small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Peso neto del producto</small>
                                   </div>
                                 </div>
                               </div>

@@ -51,6 +51,16 @@
         </div>
       -->
       </div>
+      <div class="card <?php echo 'border'.$primary; ?> text-center  mb-4">
+        <div class="card-body">
+          <a href="<?php echo base_url('usuario/productos');?>"><i class="fa fa-box"></i> <?php echo $this->lang->line('usuario_vista_tienda_productos_catalogo_boton'); ?></a>
+        </div>
+      </div>
+      <div class="card <?php echo 'border'.$primary; ?> text-center  mb-4">
+        <div class="card-body">
+          <a href="<?php echo base_url('usuario/ventas');?>"><i class="fa fa-file-invoice-dollar"></i> <?php echo $this->lang->line('usuario_vista_tienda_ventas_boton'); ?></a>
+        </div>
+      </div>
 
     </div>
     <div class="col">
