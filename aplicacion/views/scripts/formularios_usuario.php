@@ -29,6 +29,18 @@ jQuery('.Editor').summernote({
             scayt_autoStartup: true,
           });
       });
+      jQuery('.SmallEditor').each(function(e){
+          CKEDITOR.replace( this.id,{
+            disableNativeSpellChecker: false,
+            scayt_disableOptionsStorage: 'lang',
+            scayt_sLang: 'es_ES',
+            scayt_autoStartup: true,
+            toolbar: [
+            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+            { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
+        ]
+          });
+      });
   });
 //
 // Cargo Los Paises

@@ -596,14 +596,13 @@ Calificación Estrellas
 -----------------
 */
 jQuery(function() {
-  if(jQuery('.estrellas').lenght>0){
    jQuery('.estrellas').starrr({
      emptyClass: 'far fa-star',
     change: function(e, value){
       jQuery('#EstrellasCalificacion').val(value)
      }
    });
-  }
+
 });
 
    // CARRITO

@@ -277,7 +277,7 @@
                     <div class="tab-pane fade <?php if($tab=='datos'){ echo 'show active'; } ?> p-3" id="datos" role="tabpanel" aria-labelledby="datos-tab">
                       <div class="form-group">
                         <label for="DescripcionProducto">Descripción corta</label>
-                        <textarea id="DescripcionProducto" name="DescripcionProducto" class="form-control" rows="3"><?php echo $producto['PRODUCTO_DESCRIPCION']; ?></textarea>
+                        <textarea id="DescripcionProducto" name="DescripcionProducto" class="form-control SmallEditor" rows="3"><?php echo $producto['PRODUCTO_DESCRIPCION']; ?></textarea>
                       </div>
                       <div class="form-group">
                         <label for="DetallesProducto">Detalles del producto</label>

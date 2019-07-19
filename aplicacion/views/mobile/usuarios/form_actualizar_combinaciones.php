@@ -89,6 +89,15 @@
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label for=""><label for="PesoNetoCombinacion">Peso Neto</label></label>
+                <div class="input-group input-group-sm mb-2">
+                <input type="text" class="form-control" id="PesoNetoCombinacion" name="PesoNetoCombinacion" placeholder="" value="<?php echo $combinacion['COMBINACION_PESO_NETO']; ?>">
+                  <div class="input-group-append">
+                    <div class="input-group-text">Kg</div>
+                  </div>
+                </div>
+              </div>
 
               <div class="row">
                 <div class="col-12">
@@ -100,6 +109,15 @@
                       <img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO) ?>" class="img-fluid" alt="">
                       <hr>
                       <input class="form-check-input" type="radio" name="ImagenCombinacion" id="ImagenCombinacion-<?php echo $galeria->ID_GALERIA; ?>" <?php if($galeria->GALERIA_ARCHIVO==$combinacion['COMBINACION_IMAGEN']){ echo 'checked'; } ?> value="<?php echo $galeria->GALERIA_ARCHIVO; ?>">
+                    </label>
+                  </div>
+                <?php } ?>
+                <?php if(empty($galeria)){ ?>
+                  <div class="col-1 text-center">
+                    <label for="ImagenCombinacion-0">
+                      <img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/default.jpg') ?>" class="img-fluid" alt="">
+                      <hr>
+                      <input class="form-check-input" type="radio" name="ImagenCombinacion" id="ImagenCombinacion-0" checked value="default.jpg">
                     </label>
                   </div>
                 <?php } ?>

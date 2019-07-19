@@ -1,5 +1,5 @@
 <script type="text/javascript">
-
+/*
 function cargar_concurso(){
   jQuery.ajax({
     method: "GET",
@@ -38,5 +38,5 @@ jQuery('.palabra_encontrada').click(function(){
   });
 });
 
-
+*/
 </script>

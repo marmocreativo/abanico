@@ -72,6 +72,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					'COMBINACION_ALTO'=> $this->input->post('AltoCombinacion'),
 					'COMBINACION_PROFUNDO'=> $this->input->post('ProfundoCombinacion'),
 					'COMBINACION_PESO'=> $this->input->post('PesoCombinacion'),
+					'COMBINACION_PESO_NETO'=> $this->input->post('PesoNetoCombinacion')
 				);
 				// Creo el Producto
 				$producto_id = $this->ProductosCombinacionesModel->crear($parametros);
@@ -123,6 +124,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 						'COMBINACION_ALTO'=> $this->input->post('AltoCombinacion'),
 						'COMBINACION_PROFUNDO'=> $this->input->post('ProfundoCombinacion'),
 						'COMBINACION_PESO'=> $this->input->post('PesoCombinacion'),
+						'COMBINACION_PESO_NETO'=> $this->input->post('PesoNetoCombinacion')
 					);
 					// Creo el Producto
 					$producto_id = $this->ProductosCombinacionesModel->actualizar($this->input->post('Identificador'),$parametros);

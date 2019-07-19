@@ -101,6 +101,15 @@
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label for="PesoNetoCombinacion">Peso Neto</label>
+                <div class="input-group input-group-sm mb-2">
+                <input type="text" class="form-control" id="PesoNetoCombinacion" name="PesoNetoCombinacion" placeholder="" value="<?php echo $producto['PRODUCTO_PESO_NETO']; ?>">
+                  <div class="input-group-append">
+                    <div class="input-group-text">Kg</div>
+                  </div>
+                </div>
+              </div>
 
               <div class="row">
                 <div class="col-12">
@@ -115,6 +124,15 @@
                     </label>
                   </div>
                 <?php $i ++; } ?>
+                <?php if(empty($galeria)){ ?>
+                  <div class="col-1 text-center">
+                    <label for="ImagenCombinacion-0">
+                      <img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/default.jpg') ?>" class="img-fluid" alt="">
+                      <hr>
+                      <input class="form-check-input" type="radio" name="ImagenCombinacion" id="ImagenCombinacion-0" checked value="default.jpg">
+                    </label>
+                  </div>
+                <?php } ?>
               </div>
 
               <div class="text-right">
