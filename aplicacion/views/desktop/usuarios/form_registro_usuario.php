@@ -56,6 +56,22 @@
                        </div>
                      </div>
                    </div>
+                   <div class="form-group">
+                     <label for="PrimerContacto">¿Cómo te enteraste de nosotros?</label>
+                     <select class="form-control" name="PrimerContacto" id="primer-contacto">
+                       <option value="">Selecciona una opción</option>
+                       <option value="recomendacion">Recomendación de un amigo o familiar</option>
+                       <option value="redes sociales">Redes sociales</option>
+                       <option value="busqueda">Buscando un producto en internet</option>
+                       <option value="otro">Otro</option>
+                     </select>
+                   </div>
+                   <div class="collapse" id="otro-seleccionado">
+                     <div class="form-group">
+                       <label for="OtroContacto">¿Puedes explicarnos cómo?</label>
+                       <input type="text" class="form-control" id="OtroContacto" name="OtroContacto" placeholder="" value="<?=!form_error('OtroContacto')?set_value('OtroContacto'):''?>">
+                     </div>
+                   </div>
                    <div class="form-check">
                      <input type="checkbox" class="form-check-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
                      <label class="form-check-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_formulario_registro_terminos_y_condiciones'); ?></label>

@@ -35,6 +35,8 @@ class Usuario extends CI_Controller {
 
 	public function registrar()
 	{
+		var_dump($_POST);
+		/*
 		$this->form_validation->set_rules('NombreUsuario', 'Nombre', 'required', array('required' => 'Debes escribir tu %s.'));
 		$this->form_validation->set_rules('ApellidosUsuario', 'Apellidos', 'required', array('required' => 'Debes escribir tus %s.'));
 		$this->form_validation->set_rules('CorreoUsuario', 'Correo Electrónico', 'required|valid_email|is_unique[usuarios.USUARIO_CORREO]', array(
@@ -59,6 +61,14 @@ class Usuario extends CI_Controller {
 
 			$pass = password_hash($this->input->post('PassUsuario'), PASSWORD_DEFAULT);
 
+			if($this->input->post('PrimerContacto')!='otro'){
+				$primer_contacto = $this->input->post('PrimerContacto');
+			}else{
+				$primer_contacto = $this->input->post('OtroContacto');
+			}
+
+			var_dump($_POST);
+
 			$parametros = array(
 				'ID_USUARIO' => $id_usuario,
 				'USUARIO_NOMBRE' => $this->input->post('NombreUsuario'),
@@ -68,16 +78,18 @@ class Usuario extends CI_Controller {
 				'USUARIO_PASSWORD' => $pass,
 				'USUARIO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 				'USUARIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+				'USUARIO_PRIMER_CONTACTO' => $primer_contacto,
 				'USUARIO_TIPO' => 'usr-1'
 			);
 
-			$usuario_id = $this->UsuariosModel->crear($parametros);
-			redirect(base_url('login?mensaje=registro_correcto'));
+			//$usuario_id = $this->UsuariosModel->crear($parametros);
+			//redirect(base_url('login?mensaje=registro_correcto'));
 		}else{
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/form_registro_usuario',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
 		}
+		*/
 	}
 
 

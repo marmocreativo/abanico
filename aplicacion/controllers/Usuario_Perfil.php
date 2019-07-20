@@ -101,6 +101,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$pass = password_hash($this->input->post('PassUsuario'), PASSWORD_DEFAULT);
 
+			if($this->input->post('PrimerContacto')!='otro'){
+				$primer_contacto = $this->input->post('PrimerContacto');
+			}else{
+				$primer_contacto = $this->input->post('OtroContacto');
+			}
+
 			$parametros = array(
 				'ID_USUARIO' => $id_usuario,
 				'USUARIO_NOMBRE' => $this->input->post('NombreUsuario'),
@@ -110,6 +116,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'USUARIO_PASSWORD' => $pass,
 				'USUARIO_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 				'USUARIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
+				'USUARIO_PRIMER_CONTACTO' => $primer_contacto,
 				'USUARIO_TIPO' => 'usr-1'
 			);
 

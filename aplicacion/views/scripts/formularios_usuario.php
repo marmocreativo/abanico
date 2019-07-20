@@ -63,6 +63,16 @@ jQuery.ajax({
       }
    }
 });
+// Formulario de registro, Mostrar Otro
+jQuery('#primer-contacto').on('change',function(e){
+  valor = jQuery(this).val();
+  if(valor=='otro'){
+    jQuery('#otro-seleccionado').removeClass('collapse');
+  }else{
+    jQuery('#otro-seleccionado').addClass('collapse');
+  }
+});
+
 // en cambio en PaisDireccion
 jQuery('#PaisDireccion').on('change',function(e){
   var pais = jQuery(this).find(':selected').data('id');
