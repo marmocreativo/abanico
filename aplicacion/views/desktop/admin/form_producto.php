@@ -209,6 +209,22 @@
                         <option value="inactivo">Borrador</option>
                       </select>
                     </div>
+										<div class="form-group">
+											<label for="ContraEntregaProducto">Pago a contra entrega</label>
+											<select class="form-control" id="ContraEntregaProducto" name="ContraEntregaProducto" placeholder="">
+												<option value="no" >No</option>
+												<option value="si" >Si</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="EnvioGratuitoProducto">Envio Gratuito con Transportista:</label>
+											<select class="form-control" name="EnvioGratuitoProducto">
+												<option value="no">Ninguno</option>
+												<?php foreach($transportistas as $transportista){ ?>
+													<option value="<?php echo $transportista->ID_TRANSPORTISTA; ?>" ><?php echo $transportista->TRANSPORTISTA_NOMBRE; ?></option>
+												<?php } ?>
+											</select>
+										</div>
                   </div>
                   </div>
                 </div>

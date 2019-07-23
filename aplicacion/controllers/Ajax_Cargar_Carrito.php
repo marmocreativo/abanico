@@ -51,6 +51,7 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 					'divisa_default' => $_POST['DivisaDefault'],
 					'contra_entrega' => $_POST['ContraEntrega'],
 					'contra_entrega_pagar' => 'si',
+					'envio_gratuito' => $_POST['EnvioGratuito'],
 					'cantidad_producto' => $_POST['CantidadProducto'],
 					'precio_producto'=> $_POST['PrecioProducto'],
 					'id_tienda' => $_POST['IdTienda'],

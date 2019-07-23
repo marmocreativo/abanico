@@ -30,6 +30,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('CategoriasProductoModel');
 		$this->load->model('EstadisticasModel');
 		$this->load->model('NotificacionesModel');
+		$this->load->model('TransportistasModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -134,6 +135,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PRODUCTO_MPN'=> $this->input->post('MpnProducto'),
 				'PRODUCTO_PRECIO'=> $this->input->post('PrecioProducto'),
 				'PRODUCTO_PRECIO_LISTA'=> $this->input->post('PrecioListaProducto'),
+				'PRODUCTO_DIVISA_DEFAULT'=> $this->input->post('DivisaDefaultProducto'),
+				'PRODUCTO_CONTRA_ENTREGA'=> $this->input->post('ContraEntregaProducto'),
+				'PRODUCTO_ENVIO_GRATUITO'=> $this->input->post('EnvioGratuitoProducto'),
 				'PRODUCTO_CANTIDAD'=> $this->input->post('CantidadProducto'),
 				'PRODUCTO_CANTIDAD_MINIMA'=> $this->input->post('CantidadMinimaProducto'),
 				'PRODUCTO_INVENTARIO'=> '1',
@@ -194,6 +198,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
 			$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_GET['id_usuario']);
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
+			$this->data['transportistas'] = $this->TransportistasModel->lista(['TRANSPORTISTA_ESTADO'=>'activo'],'','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_producto',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
@@ -254,6 +259,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PRODUCTO_MPN'=> $this->input->post('MpnProducto'),
 				'PRODUCTO_PRECIO'=> $this->input->post('PrecioProducto'),
 				'PRODUCTO_PRECIO_LISTA'=> $this->input->post('PrecioListaProducto'),
+				'PRODUCTO_DIVISA_DEFAULT'=> $this->input->post('DivisaDefaultProducto'),
+				'PRODUCTO_CONTRA_ENTREGA'=> $this->input->post('ContraEntregaProducto'),
+				'PRODUCTO_ENVIO_GRATUITO'=> $this->input->post('EnvioGratuitoProducto'),
 				'PRODUCTO_CANTIDAD'=> $this->input->post('CantidadProducto'),
 				'PRODUCTO_CANTIDAD_MINIMA'=> $this->input->post('CantidadMinimaProducto'),
 				'PRODUCTO_INVENTARIO'=> '1',
@@ -323,6 +331,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'','');
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 			$this->data['relacion_categorias'] = $this->CategoriasProductoModel->lista($_GET['id']);
+			$this->data['transportistas'] = $this->TransportistasModel->lista(['TRANSPORTISTA_ESTADO'=>'activo'],'','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_producto',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);

@@ -221,6 +221,22 @@
                               <option value="inactivo" <?php if($producto['PRODUCTO_ESTADO']=='inactivo'){ echo 'selected';} ?>>Borrador</option>
                             </select>
                           </div>
+                          <div class="form-group">
+                            <label for="ContraEntregaProducto">Pago a contra entrega</label>
+                            <select class="form-control" id="ContraEntregaProducto" name="ContraEntregaProducto" placeholder="">
+                              <option value="no" <?php if($producto['PRODUCTO_CONTRA_ENTREGA']=='no'){ echo 'selected';} ?> >No</option>
+                              <option value="si" <?php if($producto['PRODUCTO_CONTRA_ENTREGA']=='si'){ echo 'selected';} ?>>Si</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="EnvioGratuitoProducto">Envio Gratuito con Transportista:</label>
+                            <select class="form-control" name="EnvioGratuitoProducto">
+                              <option value="no">Ninguno</option>
+                              <?php foreach($transportistas as $transportista){ ?>
+                                <option value="<?php echo $transportista->ID_TRANSPORTISTA; ?>" <?php if($producto['PRODUCTO_ENVIO_GRATUITO']==$transportista->ID_TRANSPORTISTA){ echo 'selected';} ?>><?php echo $transportista->TRANSPORTISTA_NOMBRE; ?></option>
+                              <?php } ?>
+                            </select>
+                          </div>
                         </div>
                         </div>
                       </div>

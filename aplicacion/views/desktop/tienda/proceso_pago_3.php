@@ -71,6 +71,8 @@
                     $envio_pedido_total = 0;
                     // Inicio el array de tiendas de pedidos
                     $solo_productos_contra_entrega = true;
+                    $solo_productos_envio_gratuito = true;
+                    $transportista_gratuito = 3;
                     $pedidos_tienda = array();
                   ?>
                   <div class="col-12">
@@ -116,6 +118,9 @@
                                   //verifico que solo sea un producto a contra ContraEntrega
                                   if($producto['contra_entrega']!='si'){
                                     $solo_productos_contra_entrega = false;
+                                  }
+                                  if($producto['envio_gratuito']=='no'){
+                                    $solo_productos_envio_gratuito = false;
                                   }
                                 ?>
                             <tr>
@@ -213,7 +218,11 @@
                         $envio_abanico = $this->TransportistasRangosModel->lista_mejor_precio($peso_pedido_abanico,$importe_pedido_abanico,$detalles_direccion['DIRECCION_PAIS'],$detalles_direccion['DIRECCION_ESTADO'],5);
                         $mejor_envio_abanico = $this->TransportistasRangosModel->mejor_precio($peso_pedido_abanico,$importe_pedido_abanico,$detalles_direccion['DIRECCION_PAIS'],$detalles_direccion['DIRECCION_ESTADO'],5);
                       }
-                      $envio_pedido_abanico += $_SESSION['divisa']['conversion']*$mejor_envio_abanico['IMPORTE'];
+                      if($solo_productos_envio_gratuito&&$transportista_gratuito==$mejor_envio_abanico['ID_TRANSPORTISTA']){
+                        $envio_pedido_abanico += 0.00;
+                       }else{
+                         $envio_pedido_abanico += $_SESSION['divisa']['conversion']*$mejor_envio_abanico['IMPORTE'];
+                       }
                       $primer_radio_abanico = 0;
                     ?>
                     <?php if($solo_productos_contra_entrega&&$detalles_direccion['DIRECCION_PAIS']=='Estados Unidos'){ ?>
@@ -228,9 +237,9 @@
                                 data-id-tienda='0'
                                 data-id-transportista-abanico='<?php echo $rangos->ID_TRANSPORTISTA ?>'
                                 data-nombre-transportista-abanico='<?php echo $rangos->TRANSPORTISTA_NOMBRE ?>'
-                                data-importe-envio-parcial='<?php echo ($_SESSION['divisa']['conversion']*$rangos->IMPORTE) ?>'
+                                data-importe-envio-parcial='<?php if($solo_productos_envio_gratuito&&$transportista_gratuito==$rangos->ID_TRANSPORTISTA){ echo '0.00'; }else{ echo ($_SESSION['divisa']['conversion']*$rangos->IMPORTE); } ?>'
                                  <?php if($primer_radio_abanico==0){ echo 'checked'; } ?>>
-                            <?php echo $rangos->TRANSPORTISTA_NOMBRE;  ?> | <?php echo $rangos->TRANSPORTISTA_TIEMPO_ENTREGA;  ?> | $<?php echo ($_SESSION['divisa']['conversion']*$rangos->IMPORTE);  ?> </label>
+                            <?php echo $rangos->TRANSPORTISTA_NOMBRE;  ?> | <?php echo $rangos->TRANSPORTISTA_TIEMPO_ENTREGA;  ?> |  $<?php if($solo_productos_envio_gratuito&&$transportista_gratuito==$rangos->ID_TRANSPORTISTA){ echo '0.00 <small>Promoción Envío gratuito</small>'; }else{ echo ($_SESSION['divisa']['conversion']*$rangos->IMPORTE); }  ?> </label>
                           </div>
                         <?php $primer_radio_abanico++; } ?>
                       <?php }else{ ?>

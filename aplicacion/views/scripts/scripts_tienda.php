@@ -293,6 +293,7 @@ jQuery('#BotonComprar').on('click',function(e){
   var cantidad_max = jQuery(this).attr('data-cantidad-max');
   var divisa_default = jQuery(this).attr('data-divisa-default');
   var contra_entrega = jQuery(this).attr('data-contra-entrega');
+  var envio_gratuito = jQuery(this).attr('data-envio-gratuito');
   var cantidad_producto = jQuery('#CantidadProducto').val();
   var precio_producto = jQuery(this).attr('data-precio-producto');
   var id_tienda = jQuery(this).attr('data-id-tienda');
@@ -315,6 +316,7 @@ jQuery('#BotonComprar').on('click',function(e){
       CantidadMaxima: cantidad_max,
       DivisaDefault: divisa_default,
       ContraEntrega: contra_entrega,
+      EnvioGratuito: envio_gratuito,
       CantidadProducto: cantidad_producto,
       PrecioProducto: precio_producto,
       IdTienda: id_tienda,
@@ -341,6 +343,7 @@ jQuery('#BotonCompraRapida').on('click',function(e){
   var cantidad_max = jQuery(this).attr('data-cantidad-max');
   var divisa_default = jQuery(this).attr('data-divisa-default');
   var contra_entrega = jQuery(this).attr('data-contra-entrega');
+  var envio_gratuito = jQuery(this).attr('data-envio-gratuito');
   var cantidad_producto = jQuery('#CantidadProducto').val();
   var precio_producto = jQuery(this).attr('data-precio-producto');
   var id_tienda = jQuery(this).attr('data-id-tienda');
@@ -361,6 +364,7 @@ jQuery('#BotonCompraRapida').on('click',function(e){
       CantidadMaxima: cantidad_max,
       DivisaDefault: divisa_default,
       ContraEntrega: contra_entrega,
+      EnvioGratuito: envio_gratuito,
       CantidadProducto: cantidad_producto,
       PrecioProducto: precio_producto,
       IdTienda: id_tienda,
