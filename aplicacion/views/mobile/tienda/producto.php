@@ -56,13 +56,17 @@
               if($producto['PRODUCTO_DIVISA_DEFAULT']!='MXN'){
                 $precio_lista = $producto['PRODUCTO_PRECIO_LISTA']/$cambio_divisa_default['DIVISA_CONVERSION'];
                 $precio_venta = $producto['PRODUCTO_PRECIO']/$cambio_divisa_default['DIVISA_CONVERSION'];
+                $precio_display = $producto['PRODUCTO_PRECIO'];
               }else{
                 $precio_lista = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'];
                 $precio_venta = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO'];
+                $precio_display = $producto['PRODUCTO_PRECIO'];
               }
             }else{
               $precio_lista = $producto['PRODUCTO_PRECIO_LISTA'];
               $precio_venta = $producto['PRODUCTO_PRECIO'];
+              $precio_display = $producto['PRODUCTO_PRECIO'];
+
             }
            ?>
         <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
@@ -70,8 +74,8 @@
         <?php } ?>
         <h2 class="product-price display-6" >
           <small><?php echo $_SESSION['divisa']['signo']; ?></small>
-            <span id="Precio_Producto" ><?php echo number_format($precio_venta,2); ?></span>
-          <small><?php echo $_SESSION['divisa']['iso']; ?> </small>
+            <span id="Precio_Producto" ><?php echo number_format($precio_display,2); ?></span>
+          <small><?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?> </small>
         </h2>
         <hr>
         <div class="row">
@@ -81,10 +85,25 @@
               <label for="CombinacionProducto" class="sr-only"><?php echo $this->lang->line('pagina_producto_formulario_opciones'); ?></label>
               <select class="form-control CombinacionProducto" name="CombinacionProducto">
               <?php foreach($combinaciones as $combinacion){?>
+                <?php
+                  // variables de precio
+                  if($producto['PRODUCTO_DIVISA_DEFAULT']!=$_SESSION['divisa']['iso']){
+                    if($producto['PRODUCTO_DIVISA_DEFAULT']!='MXN'){
+                      $precio_venta_combinacion = $combinacion->COMBINACION_PRECIO/$cambio_divisa_default['DIVISA_CONVERSION'];
+                      $precio_display_combinacion = $combinacion->COMBINACION_PRECIO;
+                    }else{
+                      $precio_venta_combinacion = $_SESSION['divisa']['conversion']*$combinacion->COMBINACION_PRECIO;
+                      $precio_display_combinacion = $combinacion->COMBINACION_PRECIO;
+                    }
+                  }else{
+                    $precio_venta_combinacion = $combinacion->COMBINACION_PRECIO;
+                    $precio_display_combinacion = $combinacion->COMBINACION_PRECIO;
+                  }
+                 ?>
                 <option value="<?php echo  $combinacion->COMBINACION_OPCION; ?>"
                   data-precio-producto='<?php echo $combinacion->COMBINACION_PRECIO; ?>'
                   data-imagen-producto='<?php echo $combinacion->COMBINACION_IMAGEN; ?>'
-                  data-precio-visible-producto='<?php echo number_format($_SESSION['divisa']['conversion']*$combinacion->COMBINACION_PRECIO,2); ?>'
+                  data-precio-visible-producto='<?php echo number_format($precio_display_combinacion,2); ?>'
                   data-detalles-producto='<?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?>'
                   ><?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?></option>
               <?php } ?>

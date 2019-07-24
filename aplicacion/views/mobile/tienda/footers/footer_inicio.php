@@ -66,8 +66,23 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body p-0 CargarCarrito">
+      <div class="modal-body p-0">
+        <div class="CargarCarrito">
 
+        </div>
+        <div class="float-right">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-link" name="button">Cambiar divisa del pedido</button>
+            <button id="btnMenuDivisa" type="button" class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <?php echo $_SESSION['divisa']['iso']; ?>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnMenuDivisa">
+              <?php foreach($divisas_activas as $divisas){ ?>
+                <a class="dropdown-item" href="<?php echo base_url('divisas?iso='.$divisas->DIVISA_ISO.'&url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])); ?>"><?php echo $divisas->DIVISA_ISO; ?></a>
+              <?php } ?>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <div class="container-fluid">
