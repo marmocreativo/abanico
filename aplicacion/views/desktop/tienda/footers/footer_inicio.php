@@ -84,7 +84,7 @@
 
 <!-- MODAL PROMOCIONES -->
 <div class="modal fade" id="ModalPromociones" tabindex="-1" role="dialog" aria-labelledby="ModalPromociones" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header border-bottom-0">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -108,7 +108,34 @@
             <div class="carousel-inner">
               <?php $i = 0; foreach($promos as $slide){ ?>
               <div class="carousel-item <?php if($i==0){ echo 'active'; } ?>">
-                <img class="d-block w-100" src="<?php echo base_url('contenido/img/slider/'.$slide->SLIDE_IMAGEN); ?>">
+                <div class="row">
+                  <div class="col">
+                      <img class="d-block w-100" src="<?php echo base_url('contenido/img/slider/'.$slide->SLIDE_IMAGEN); ?>">
+                  </div>
+                  <div class="col">
+                    <div class="row align-items-center mx-0">
+                      <?php if(!empty($slide->SLIDE_TITULO)){ ?>
+                        <div class="col-12">
+
+                        <h2><?php echo $slide->SLIDE_TITULO; ?></h2>
+                        </div>
+                    <?php } ?>
+                      <?php if(!empty($slide->SLIDE_SUBTITULO)){ ?>
+                        <div class="col-12">
+
+                        <h2><?php echo $slide->SLIDE_SUBTITULO; ?></h2>
+                        </div>
+                    <?php } ?>
+                    <?php if(!empty($slide->SLIDE_ENLACE)){ ?>
+                      <div class="col-12">
+                        <a href="<?php echo $slide->SLIDE_ENLACE; ?>" class="btn btn-outline-dark"> <?php echo $slide->SLIDE_BOTON; ?></a>
+                      </div>
+                  <?php } ?>
+                    </div>
+                  </div>
+
+              </div>
+
               </div>
             <?php ++$i; }  ?>
             <a class="carousel-control-prev" href="#carouselPromos" role="button" data-slide="prev">

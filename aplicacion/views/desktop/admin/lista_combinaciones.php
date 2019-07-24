@@ -205,6 +205,7 @@
                             <th>Grupo</th>
                             <th>Opción</th>
                             <th>Cantidad</th>
+                            <th>Peso Total</th>
                             <th>Precio</th>
                             <th>Imagen</th>
                             <th class="text-right">Controles</th>
@@ -216,6 +217,7 @@
                             <td><?php echo $combinacion->COMBINACION_GRUPO; ?></td>
                             <td><?php echo $combinacion->COMBINACION_OPCION; ?></td>
                             <td><?php echo $combinacion->COMBINACION_CANTIDAD; ?></td>
+                            <td><?php echo $combinacion->COMBINACION_PESO; ?>Kg</td>
                             <td>$<?php echo $combinacion->COMBINACION_PRECIO; ?></td>
                             <td><img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$combinacion->COMBINACION_IMAGEN) ?>" width="100px;"></td>
                             <td>

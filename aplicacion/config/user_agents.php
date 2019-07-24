@@ -91,6 +91,7 @@ $browsers = array(
 );
 
 $mobiles = array(
+
 	// legacy array, old values commented out
 	'mobileexplorer'	=> 'Mobile Explorer',
 //  'openwave'			=> 'Open Wave',
@@ -112,7 +113,7 @@ $mobiles = array(
 	'nokia'			=> 'Nokia',
 	'palm'			=> 'Palm',
 	'iphone'		=> 'Apple iPhone',
-	'ipad'			=> 'iPad',
+	//'ipad'			=> 'iPad',
 	'ipod'			=> 'Apple iPod Touch',
 	'sony'			=> 'Sony Ericsson',
 	'ericsson'		=> 'Sony Ericsson',
@@ -179,7 +180,7 @@ $mobiles = array(
 	'o2'			=> 'O2',
 
 	// Fallback
-	'mobile'		=> 'Generic Mobile',
+	//'mobile'		=> 'Generic Mobile',
 	'wireless'		=> 'Generic Mobile',
 	'j2me'			=> 'Generic Mobile',
 	'midp'			=> 'Generic Mobile',
