@@ -192,35 +192,37 @@
                               </form>
                             </div>
                             <h5> <i class="fa fa-sitemap"></i> <?php echo $this->lang->line('usuario_form_producto_combinaciones_actuales'); ?></h5>
-                          <table class="table table-sm">
-                            <thead>
-                              <tr>
-                                <th><?php echo $this->lang->line('usuario_form_producto_combinaciones_grupo'); ?></th>
-                                <th><?php echo $this->lang->line('usuario_form_producto_combinaciones_opcion'); ?></th>
-                                <th>Cantidad</th>
-                                <th><?php echo $this->lang->line('usuario_form_producto_combinaciones_precio'); ?></th>
-                                <th>Imagen</th>
-                                <th class="text-right"><?php echo $this->lang->line('usuario_listas_generales_controles'); ?></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php foreach($combinaciones as $combinacion){ ?>
-                              <tr>
-                                <td><?php echo $combinacion->COMBINACION_GRUPO; ?></td>
-                                <td><?php echo $combinacion->COMBINACION_OPCION; ?></td>
-                                <td><?php echo $combinacion->COMBINACION_CANTIDAD; ?></td>
-                                <td>$<?php echo $combinacion->COMBINACION_PRECIO; ?></td>
-                                <td><img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$combinacion->COMBINACION_IMAGEN) ?>" width="100px;"></td>
-                                <td>
-                                  <div class="btn-group float-right">
-                                    <a href="<?php echo base_url('usuario/productos_combinaciones/actualizar?id='.$combinacion->ID_COMBINACION); ?>" class="btn btn-sm btn-warning" title="Editar Combinacion"> <span class="fa fa-pencil-alt"></span> </a>
-                                    <button data-enlace='<?php echo base_url('usuario/productos_combinaciones/borrar?id='.$combinacion->ID_COMBINACION); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Combinacion"> <span class="fa fa-trash"></span> </button>
-                                  </div>
-                                </td>
-                              </tr>
-                            <?php } ?>
-                            </tbody>
-                          </table>
+                            <table class="table table-sm">
+                              <thead>
+                                <tr>
+                                  <th>Grupo</th>
+                                  <th>Opción</th>
+                                  <th>Cantidad</th>
+                                  <th>Peso Total</th>
+                                  <th>Precio</th>
+                                  <th>Imagen</th>
+                                  <th class="text-right">Controles</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <?php foreach($combinaciones as $combinacion){ ?>
+                                <tr>
+                                  <td><?php echo $combinacion->COMBINACION_GRUPO; ?></td>
+                                  <td><?php echo $combinacion->COMBINACION_OPCION; ?></td>
+                                  <td><?php echo $combinacion->COMBINACION_CANTIDAD; ?></td>
+                                  <td><?php echo $combinacion->COMBINACION_PESO; ?>Kg</td>
+                                  <td>$<?php echo $combinacion->COMBINACION_PRECIO; ?></td>
+                                  <td><img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$combinacion->COMBINACION_IMAGEN) ?>" width="100px;"></td>
+                                  <td>
+                                    <div class="btn-group float-right">
+                                      <a href="<?php echo base_url('admin/productos_combinaciones/actualizar?id='.$combinacion->ID_COMBINACION); ?>" class="btn btn-sm btn-warning" title="Editar Combinacion"> <span class="fa fa-pencil-alt"></span> </a>
+                                      <button data-enlace='<?php echo base_url('admin/productos_combinaciones/borrar?id='.$combinacion->ID_COMBINACION); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Combinacion"> <span class="fa fa-trash"></span> </button>
+                                    </div>
+                                  </td>
+                                </tr>
+                              <?php } ?>
+                              </tbody>
+                            </table>
                           </div>
                         </div>
                       </div>

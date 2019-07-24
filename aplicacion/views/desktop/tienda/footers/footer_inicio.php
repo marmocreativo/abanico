@@ -72,7 +72,7 @@
         </div>
         <div class="float-right">
           <div class="btn-group" role="group">
-            <button type="button" class="btn btn-link" name="button">Cambiar divisa del pedido</button>
+            <button type="button" class="btn btn-link" name="button">¿Pagar en dolares o en pesos?</button>
             <button id="btnMenuDivisa" type="button" class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <?php echo $_SESSION['divisa']['iso']; ?>
             </button>

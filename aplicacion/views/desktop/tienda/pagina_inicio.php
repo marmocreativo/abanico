@@ -80,10 +80,10 @@
 <!-- Inicia el cuerpo del texto -->
 <?php
   $categorias_específicas = [
-    'cubiertos-y-cuchillos'=>'10',
-    'repostería'=>'10',
-    'ollas-y-sartenes'=>'10',
-    'accesorios-de-cocina'=>'10'
+    'cubiertos-y-cuchillos'=>'20',
+    'repostería'=>'20',
+    'ollas-y-sartenes'=>'20',
+    'accesorios-de-cocina'=>'20'
   ];
  ?>
 
@@ -199,7 +199,7 @@
 <!-- Fin de categorías específicas -->
 <?php
   $categorias_omitidas = [
-    'cocina'=>'10',
+    'cocina'=>'20',
   ];
  ?>
  <?php foreach($categorias_omitidas as $slug => $limite){ ?>
@@ -322,9 +322,9 @@
 <?php }// Bucle de categrias omitidas ?>
 <?php
   $categorias_específicas = [
-    'filtros-de-agua'=>'10',
-    'accesorios-para-filtros-de-agua'=>'10',
-    'cartuchos-para-filtros-de-agua'=>'10'
+    'filtros-de-agua'=>'20',
+    'accesorios-para-filtros-de-agua'=>'20',
+    'cartuchos-para-filtros-de-agua'=>'20'
   ];
  ?>
 

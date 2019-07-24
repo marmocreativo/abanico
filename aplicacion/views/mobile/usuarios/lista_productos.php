@@ -71,6 +71,7 @@
               }
             ?>
             <div class="btn-group float-right">
+              <a href="<?php echo base_url('producto/vista_previa'."?id=".$producto->ID_PRODUCTO); ?>" target="_blank" class="btn btn-sm btn-info" title="Vista Previa"> <span class="fa fa-eye"></span> </a>
               <a href="<?php echo base_url('usuario/productos/actualizar?id='.$producto->ID_PRODUCTO); ?>" class="btn btn-sm btn-warning" title="<?php echo $this->lang->line('usuario_listas_generales_editar'); ?> <?php echo $this->lang->line('usuario_lista_productos_singular'); ?>"> <span class="fa fa-pencil-alt"></span> </a>
               <button data-enlace='<?php echo base_url('usuario/productos/borrar?id='.$producto->ID_PRODUCTO); ?>' class="btn btn-sm btn-danger borrar_entrada" title="<?php echo $this->lang->line('usuario_listas_generales_eliminar'); ?> <?php echo $this->lang->line('usuario_lista_productos_singular'); ?>"> <span class="fa fa-trash"></span> </button>
             </div>

@@ -157,6 +157,7 @@
               <div class="col-8">
                 <h3 class="h6"><strong><?php echo $this->lang->line('usuario_form_producto_combinaciones_grupo'); ?>: </strong><?php echo $combinacion->COMBINACION_GRUPO; ?></h3>
                 <h3 class="h6"><strong><?php echo $this->lang->line('usuario_form_producto_combinaciones_opcion'); ?></strong>: <?php echo $combinacion->COMBINACION_OPCION; ?></h3>
+                <h3 class="h6"><strong>Peso:</strong> <?php echo $combinacion->COMBINACION_PESO; ?> Kg</h3>
                 <h3 class="h6"><strong><?php echo $this->lang->line('usuario_form_producto_combinaciones_precio'); ?>:</strong> $<?php echo $combinacion->COMBINACION_PRECIO; ?></h3>
               </div>
             </div>

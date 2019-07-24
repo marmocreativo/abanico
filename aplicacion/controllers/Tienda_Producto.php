@@ -86,6 +86,49 @@ class Tienda_Producto extends CI_Controller {
  		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 
  	}
+	public function vista_previa()
+ {
+	 $this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
+	 $this->data['portada'] = $this->GaleriasModel->galeria_portada($_GET['id']);
+	 $this->data['galerias'] = $this->GaleriasModel->galeria_producto($_GET['id']);
+	 $this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['producto']['ID_USUARIO']);
+	 $direccion_fiscal = $this->DireccionesModel->direccion_fiscal($this->data['producto']['ID_USUARIO']);
+	 $this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($direccion_fiscal['ID_DIRECCION']);
+	 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
+	 $this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
+	 $this->data['relacion_categoria_producto'] = $this->CategoriasProductoModel->lista($_GET['id']);
+	 $this->data['categoria_producto'] = $this->CategoriasModel->detalles($this->data['relacion_categoria_producto']['ID_CATEGORIA']);
+	 if(!null==$this->data['categoria_producto']){
+		 $this->data['primary'] = $this->data['categoria_producto']['CATEGORIA_COLOR'];
+	 }
+	 $this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'','');
+
+	 // Calificaciones
+	 $this->data['cantidad_calificaciones']= $this->CalificacionesModel->conteo_calificaciones_producto($_GET['id']);
+	 $this->data['promedio_calificaciones']= $this->CalificacionesModel->promedio_calificaciones_producto($_GET['id']);
+	 $estrellas = array();
+	 $estrellas['5']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],5);
+	 $estrellas['4']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],4);
+	 $estrellas['3']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],3);
+	 $estrellas['2']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],2);
+	 $estrellas['1']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],1);
+	 $this->data['estrellas'] = $estrellas;
+
+	 // Calificaciones
+	 // Reviso si ya lo calificó el usuario
+	 if(isset($_SESSION['usuario']['id'])&!empty($_SESSION['usuario']['id'])){
+		 $this->data['mi_calificacion']= $this->CalificacionesModel->ya_calificado($this->data['producto']['ID_PRODUCTO'],$_SESSION['usuario']['id']);
+		 $this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($_GET['id'],'');
+	 }else{
+			 $this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($_GET['id'],'');
+	 }
+	 // Estadísticas de Producto
+	 $this->EstadisticasModel->objeto_visto('producto',$this->data['producto']['ID_PRODUCTO']);
+	 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
+	 $this->load->view($this->data['dispositivo'].'/tienda/producto_previa',$this->data);
+	 $this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
+
+ }
 public function favorito()
  {
 	 if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){

@@ -117,6 +117,7 @@
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="<?php echo base_url('producto/vista_previa'."?id=".$producto->ID_PRODUCTO); ?>" target="_blank" class="btn btn-sm btn-info" title="Vista Previa"> <span class="fa fa-eye"></span> </a>
                     <a href="<?php echo base_url('admin/productos/actualizar'."?id=".$producto->ID_PRODUCTO."&tipo_producto=".$tipo_producto); ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
                     <button data-enlace='<?php echo base_url('admin/productos/borrar')."?id=".$producto->ID_PRODUCTO."&id_usuario=".$producto->ID_USUARIO; ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Producto"> <span class="fa fa-trash"></span> </button>
                   </div>
