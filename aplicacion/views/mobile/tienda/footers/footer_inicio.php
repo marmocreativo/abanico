@@ -12,41 +12,36 @@
         <h5>Acerca de Abanico</h5>
         <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'acerca'],'','');?>
         <ul class="list-unstyled">
-          <li> <a href="<?php echo base_url('publicacion/quienes-somos'); ?>">Quienes somos</a> </li>
-          <li> <a href="<?php echo base_url('planes'); ?>">Planes Vendedores</a> </li>
-          <li> <a href="<?php echo base_url('planes?tipo=servicios'); ?>">Planes Servicios</a> </li>
-          <li> <a href="<?php echo base_url('publicacion/contacto'); ?>">Contacto</a> </li>
-          <li> <a href="<?php echo base_url('publicacion/metodos-de-pago'); ?>">Métodos de pago</a> </li>
+          <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php if(empty($publicacion->PUBLICACION_URL_EXTERNA)){ echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); }else{ echo $publicacion->PUBLICACION_URL_EXTERNA; } ; ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+          <?php } ?>
         </ul>
       </div>
       <div class="col-12 mt-3 bordered-top">
         <h5>Concursos</h5>
         <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'concursos'],'','');?>
         <ul class="list-unstyled">
-        <?php foreach($publicaciones_acerca as $publicacion){ ?>
-          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
-        <?php } ?>
+          <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php if(empty($publicacion->PUBLICACION_URL_EXTERNA)){ echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); }else{ echo $publicacion->PUBLICACION_URL_EXTERNA; } ; ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+          <?php } ?>
         </ul>
       </div>
       <div class="col-12 mt-3 bordered-top">
         <h5>Ayuda</h5>
         <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'ayuda'],'','');?>
         <ul class="list-unstyled">
-          <li> <a href="<?php echo base_url('publicacion/como-registrarme'); ?>">Como registrarme</a> </li>
-          <li> <a href="<?php echo base_url('publicacion/como-comprar'); ?>">Como comprar</a> </li>
-          <li> <a href="<?php echo base_url('publicacion/vender-en-abanico'); ?>">Vender en Abanico</a> </li>
-          <li> <a href="<?php echo base_url('publicacion/publicar-un-producto'); ?>">Publicar un producto</a> </li>
-          <li> <a href="<?php echo base_url('publicacion/ofrecer-servicios-en-abanico'); ?>">Ofrecer servicios en Abanico</a> </li>
-          <li> <a href="<?php echo base_url('publicacion/ofrecer-servicios'); ?>">Publicar un servicio</a> </li>
+          <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php if(empty($publicacion->PUBLICACION_URL_EXTERNA)){ echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); }else{ echo $publicacion->PUBLICACION_URL_EXTERNA; } ; ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+          <?php } ?>
         </ul>
       </div>
       <div class="col-12 mt-3 bordered-top">
         <h5>Legales</h5>
         <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'legales'],'','');?>
         <ul class="list-unstyled">
-        <?php foreach($publicaciones_acerca as $publicacion){ ?>
-          <li> <a href="<?php echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
-        <?php } ?>
+          <?php foreach($publicaciones_acerca as $publicacion){ ?>
+          <li> <a href="<?php if(empty($publicacion->PUBLICACION_URL_EXTERNA)){ echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); }else{ echo $publicacion->PUBLICACION_URL_EXTERNA; } ; ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
+          <?php } ?>
         </ul>
       </div>
     </div>
@@ -115,7 +110,7 @@
         $CI->load->model('SlidersModel');
         $CI->load->model('SlidesModel');
         $slider_promo = $CI->SlidersModel->slide_nombre_lenguaje('promociones',$_SESSION['lenguaje']['iso']);
-        $promos = $CI->SlidesModel->lista(['ID_SLIDER'=>$slider_promo['ID_SLIDER']],'','');
+        $promos = $CI->SlidesModel->lista(['ID_SLIDER'=>$slider_promo['ID_SLIDER']],'ORDEN ASC','');
         ?>
         <div id="carouselPromos" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -126,7 +121,32 @@
             <div class="carousel-inner">
               <?php $i = 0; foreach($promos as $slide){ ?>
               <div class="carousel-item <?php if($i==0){ echo 'active'; } ?>">
-                <img class="d-block w-100" src="<?php echo base_url('contenido/img/slider/'.$slide->SLIDE_IMAGEN); ?>">
+                <div class="row">
+                  <div class="col-12">
+                    <img class="d-block w-100" src="<?php echo base_url('contenido/img/slider/'.$slide->SLIDE_IMAGEN); ?>">
+                  </div>
+                  <div class="col-12">
+                    <div class="row align-items-center mx-0">
+                      <?php if(!empty($slide->SLIDE_TITULO)){ ?>
+                        <div class="col-12 text-center">
+
+                        <h2><?php echo $slide->SLIDE_TITULO; ?></h2>
+                        </div>
+                    <?php } ?>
+                      <?php if(!empty($slide->SLIDE_SUBTITULO)){ ?>
+                        <div class="col-12 text-center">
+
+                        <h3><?php echo $slide->SLIDE_SUBTITULO; ?></h3>
+                        </div>
+                    <?php } ?>
+                    <?php if(!empty($slide->SLIDE_ENLACE)){ ?>
+                      <div class="col-12 text-center">
+                        <a href="<?php echo $slide->SLIDE_ENLACE; ?>" class="btn btn-outline-dark"> <?php echo $slide->SLIDE_BOTON; ?></a>
+                      </div>
+                  <?php } ?>
+                    </div>
+                  </div>
+                </div>
               </div>
             <?php ++$i; }  ?>
             <a class="carousel-control-prev" href="#carouselPromos" role="button" data-slide="prev">

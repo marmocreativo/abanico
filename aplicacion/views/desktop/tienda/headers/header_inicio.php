@@ -88,7 +88,15 @@
               </a>
             </li>
             <li class="nav-item">
-              <button type="button" class="btn btn-sm btn-carrito <?php echo 'btn-link'.$primary; ?> text-primary" data-toggle="modal" data-target="#ModalCarrito" style="background:transparent;"> <span class="fa fa-shopping-cart text-primary-1"></span> <?php echo $this->lang->line('header_boton_carrito'); ?></button>
+              <?php
+                $conteo_carrito = 0;
+                if(isset($_SESSION['carrito']['productos'])){
+                  foreach($_SESSION['carrito']['productos'] as $producto){
+                    $conteo_carrito += $producto['cantidad_producto'];
+                  }
+                }
+              ?>
+              <button type="button" class="btn btn-sm btn-carrito <?php echo 'btn-link'.$primary; ?> text-primary" data-toggle="modal" data-target="#ModalCarrito" style="background:transparent;"> <span class="fa fa-shopping-cart text-primary-1"></span> <?php echo $this->lang->line('header_boton_carrito'); ?> (<?php echo $conteo_carrito; ?>)</button>
             </li>
           </ul>
         </div>

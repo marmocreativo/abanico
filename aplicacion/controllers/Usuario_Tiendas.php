@@ -161,7 +161,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		 			$this->data['info'] = array();
 		 			$this->data['info']['Titulo'] = 'Vendedor en Abanico';
 		 			$this->data['info']['Nombre'] = 'La tienda <b>'.$this->input->post('NombreTienda').'</b>';
-		 			$this->data['info']['Mensaje'] = '<p>Ahora está registrada y podrás vender productos en nuestro sitio web</p>';
+		 			$this->data['info']['Mensaje'] = '<p>Ahora está registrada no olvides solicitar la activación de un plan para poder vender productos en nuestro sitio web</p>';
 		 			$this->data['info']['TextoBoton'] = 'Iniciar sesión';
 		 			$this->data['info']['EnlaceBoton'] = base_url('login');
 
@@ -170,15 +170,16 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		 			$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
 		 			$this->email->to($datos_usuario['USUARIO_CORREO']);
+					$this->email->cc($this->data['op']['correo_sitio']);
 
-		 			$this->email->subject('Vendedor en Abanico');
+		 			$this->email->subject('Registro Vendedor | '.$this->input->post('NombreTienda'));
 		 			$this->email->message($mensaje);
 		 			// envio el correo
 
 		 			$this->email->send();
 
 					 // Mensaje de Feedback
-					 $this->session->set_flashdata('exito', 'Se registró la tienda con éxito');
+					 $this->session->set_flashdata('exito', 'Registro exitoso, No olvides solicitar tu plan!');
 					 // Redirección
 			    redirect(base_url('usuario/tienda'));
 

@@ -50,9 +50,9 @@
                   <th class="text-right">Controles</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="ui-sortable" data-tabla="slides" data-columna="ID_SLIDE">
                 <?php foreach($slides as $slide){ ?>
-                <tr>
+                <tr id="item-<?php echo $slide->ID_SLIDE; ?>" class="ui-sortable-handle">
                   <td class="text-center">
                     <img src="<?php echo base_url($op['ruta_imagenes_slider'].'/'.$slide->SLIDE_IMAGEN); ?>" alt="" width="300">
                   </td>

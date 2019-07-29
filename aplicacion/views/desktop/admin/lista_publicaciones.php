@@ -59,11 +59,11 @@
                   <th class="text-right">Controles</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="ui-sortable" data-tabla="publicaciones" data-columna="ID_PUBLICACION">
                 <?php foreach($publicaciones as $publicacion){ ?>
-                <tr>
+                <tr id="item-<?php echo $publicacion->ID_PUBLICACION; ?>" class="ui-sortable-handle">
                   <td class="text-center">
-                    <img src="<?php echo base_url($op['ruta_imagenes_publicaciones'].'/'.$publicacion->PUBLICACION_IMAGEN); ?>" class="img-fluid" alt="">
+                    <img src="<?php echo base_url($op['ruta_imagenes_publicaciones'].'/'.$publicacion->PUBLICACION_IMAGEN); ?>" width="100" alt="">
                   </td>
                   <td class="text-center"><?php echo $publicacion->PUBLICACION_TITULO; ?></td>
                   <td class="text-center"><?php echo $publicacion->PUBLICACION_TIPO; ?></td>

@@ -52,7 +52,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->data['productos_recientes'] = $this->ProductosModel->lista_activos('','','','PRODUCTO_FECHA_REGISTRO DESC',10);
 		$this->data['servicios'] = $this->ServiciosModel->lista_activos('','','','','');
 		$this->data['slider'] = $this->SlidersModel->slide_nombre_lenguaje('inicio',$_SESSION['lenguaje']['iso']);
-		$this->data['slides'] = $this->SlidesModel->lista(['ID_SLIDER'=>$this->data['slider']['ID_SLIDER']],'','');
+		$this->data['slides'] = $this->SlidesModel->lista(['ID_SLIDER'=>$this->data['slider']['ID_SLIDER']],'ORDEN ASC','');
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/pagina_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

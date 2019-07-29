@@ -146,7 +146,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->email->to($this->data['op']['correo_sitio']);
 
 
-			$this->email->subject('Solicitud de Plan '.$this->data['plan']['PLAN_NOMBRE']);
+			$this->email->subject('Solicitud de Plan | '.$this->data['tienda']['TIENDA_NOMBRE']);
 			$this->email->message($mensaje_abanico);
 			// envio el correo
 
@@ -232,7 +232,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->email->to('pagos@abanicoytu.com');
 
 
-		$this->email->subject('Comprobante de pago '.$this->data['plan']['PLAN_NOMBRE']);
+		$this->email->subject('Comprobante de pago | '.$this->data['tienda']['TIENDA_NOMBRE']);
 		$this->email->message($mensaje_abanico);
 		// envio el correo
 

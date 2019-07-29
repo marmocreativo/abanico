@@ -377,6 +377,10 @@ jQuery('#BotonCompraRapida').on('click',function(e){
      }
   });
 });
+// Mostrar carrito si se solicita
+<?php if(isset($_SESSION['modal_carrito'])&&$_SESSION['modal_carrito']=='mostrar'){ ?>
+  jQuery('#ModalCarrito').modal();
+  <?php } ?>
 // Boton Incrementar
 jQuery('.CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
   // Leo las variables del botón

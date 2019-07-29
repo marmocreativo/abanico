@@ -136,6 +136,39 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			 // Actualizo el tipo de Usuario
 			 $this->UsuariosModel->permiso($usuario['ID_USUARIO'],$permiso);
 
+			 // Datos para enviar por correo
+
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = $this->data['op']['mailer_host'];
+				$config['smtp_port']    = $this->data['op']['mailer_port'];
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = $this->data['op']['mailer_user'];
+				$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+				$config['charset']    = 'utf-8';
+				$config['mailtype'] = 'html'; // or html
+				$config['validation'] = TRUE; // bool whether to validate email or not
+
+
+			$this->data['info'] = array();
+			$this->data['info']['Titulo'] = 'Perfil de servicios en Abanico';
+			$this->data['info']['Nombre'] = 'Tu perfil <b>'.$this->input->post('NombrePerfil').'</b>';
+			$this->data['info']['Mensaje'] = '<p>Ahora está registrado, no olvides solicitar la activación de un plan para poder ofrecer servicios en nuestro sitio web</p>';
+			$this->data['info']['TextoBoton'] = 'Iniciar sesión';
+			$this->data['info']['EnlaceBoton'] = base_url('login');
+
+			$mensaje = $this->load->view('emails/mensaje_general',$this->data,true);
+			$this->email->initialize($config);
+
+			$this->email->from($this->data['op']['correo_sitio'], 'Abanico Siempre lo Mejor');
+			$this->email->to($datos_usuario['USUARIO_CORREO']);
+			$this->email->cc($this->data['op']['correo_sitio']);
+
+			$this->email->subject('Registro Perfil Servicios | '.$this->input->post('NombrePerfil'));
+			$this->email->message($mensaje);
+			// envio el correo
+
+			$this->email->send();
+
 			 $this->session->set_flashdata('exito', 'Perfil Creado Correctamente');
 			  redirect(base_url('usuario/perfil_servicios'));
 

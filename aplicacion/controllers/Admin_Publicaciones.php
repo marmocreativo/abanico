@@ -56,7 +56,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PUBLICACION_RAZON_SOCIAL'=>$_GET['Busqueda'],
 				'PUBLICACION_RFC'=>$_GET['Busqueda']
 			);
-			$this->data['publicaciones'] = $this->PublicacionesModel->lista($parametros,'','');
+			$this->data['publicaciones'] = $this->PublicacionesModel->lista($parametros,'ORDEN ASC','');
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_publicaciones',$this->data);
@@ -108,6 +108,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PUBLICACION_RESUMEN' => $this->input->post('ResumenPublicacion'),
 				'PUBLICACION_CONTENIDO' => $this->input->post('ContenidoPublicacion'),
 				'PUBLICACION_IMAGEN' => $imagen,
+				'PUBLICACION_URL_EXTERNA' => $this->input->post('UrlExternaPublicacion'),
 				'PUBLICACION_TIPO' => $this->input->post('TipoPublicacion'),
 				'PUBLICACION_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 				'PUBLICACION_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
@@ -155,6 +156,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PUBLICACION_RESUMEN' => $this->input->post('ResumenPublicacion'),
 				'PUBLICACION_CONTENIDO' => $this->input->post('ContenidoPublicacion'),
 				'PUBLICACION_IMAGEN' => $imagen,
+				'PUBLICACION_URL_EXTERNA' => $this->input->post('UrlExternaPublicacion'),
 				'PUBLICACION_TIPO' => $this->input->post('TipoPublicacion'),
 				'PUBLICACION_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 				'PUBLICACION_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),

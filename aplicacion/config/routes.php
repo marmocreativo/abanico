@@ -106,6 +106,7 @@ $route['usuario/perfil_servicios/(:any)'] = 'Usuario_Perfiles_Servicios/$1';
 $route['usuario'] = 'Usuario_Perfil';
 $route['usuario/(:any)'] = 'Usuario_Perfil/$1';
 // Rutas de Ajax
+$route['ajax/reordenar/(:any)'] = 'Ajax_Reordenar/$1';
 $route['ajax/notificaciones/leidas'] = 'Ajax_Notificaciones/marcar_leidas';
 $route['ajax/municipios'] = 'Ajax_Municipios';
 $route['ajax/estados'] = 'Ajax_Estados';

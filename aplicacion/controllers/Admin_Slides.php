@@ -44,7 +44,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 
 		$this->data['lenguajes'] = $this->LenguajesModel->lista(['LENGUAJE_ESTADO'=>'activo'],'','');
-		$this->data['slides'] = $this->SlidesModel->lista(['ID_SLIDER'=>$_GET['slider']],'','');
+		$this->data['slides'] = $this->SlidesModel->lista(['ID_SLIDER'=>$_GET['slider']],'ORDEN ASC','');
 		$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 		$this->load->view($this->data['dispositivo'].'/admin/lista_slides',$this->data);
 		$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);

@@ -36,8 +36,11 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$_SESSION['divisa']['signo'] = $this->data['divisa']['DIVISA_SIGNO'];
 			$_SESSION['divisa']['iso'] = $this->data['divisa']['DIVISA_ISO'];
 		}
+		if(isset($_GET['carrito_modal'])&&$_GET['carrito_modal']=='mostrar'){
+			$this->session->set_flashdata('modal_carrito', 'mostrar');
+		}
 		if(isset($_GET['url_redirect'])&&!empty($_GET['url_redirect'])){
-		redirect($_GET['url_redirect']);
+			redirect($_GET['url_redirect']);
 		}else{
 			redirect(base_url());
 		}

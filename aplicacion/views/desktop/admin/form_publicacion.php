@@ -53,6 +53,10 @@
                   <label for="ContenidoPublicacion">Contenido de la publicación</label>
                   <textarea id="ContenidoPublicacion" name="ContenidoPublicacion" class="form-control Editor" rows="5"><?=!form_error('ContenidoPublicacion')?set_value('ContenidoPublicacion'):''?> </textarea>
                 </div>
+								<div class="form-group">
+                  <label for="UrlExternaPublicacion">URL Externa </label>
+                  <input type="text" name="UrlExternaPublicacion" class="form-control" value="<?=!form_error('UrlExternaPublicacion')?set_value('UrlExternaPublicacion'):''?>">
+                </div>
               </div>
               <div class="col-3">
                 <img src="<?php echo base_url('contenido/img/productos/completo/default.jpg') ?>" id="PrevisualizarImagen" alt="" class="img-fluid img-thumbnail rounded">
