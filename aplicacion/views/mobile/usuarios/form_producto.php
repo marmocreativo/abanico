@@ -131,13 +131,28 @@
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="PesoProducto"><?php echo $this->lang->line('usuario_form_producto_peso'); ?></label>
-                    <div class="input-group input-group-sm mb-2">
-                    <input type="text" class="form-control" id="PesoProducto" name="PesoProducto" required placeholder="" value="">
-                      <div class="input-group-append">
-                        <div class="input-group-text">Kg</div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="PesoProducto"><?php echo $this->lang->line('usuario_form_producto_peso'); ?></label>
+                      <div class="input-group input-group-sm mb-2">
+                      <input type="text" class="form-control" id="PesoProducto" name="PesoProducto" required placeholder="" value="">
+                        <div class="input-group-append">
+                          <div class="input-group-text">Kg</div>
+                        </div>
                       </div>
+                      <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Peso estimado del producto para el envío, incluyendo caja, sobre, etc.</small>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="PesoNetoProducto">Peso Neto</label>
+                      <div class="input-group input-group-sm mb-2">
+                      <input type="text" class="form-control" id="PesoNetoProducto" name="PesoNetoProducto" placeholder="" value="">
+                        <div class="input-group-append">
+                          <div class="input-group-text">Kg</div>
+                        </div>
+                      </div>
+                      <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Peso neto del producto</small>
                     </div>
                   </div>
                 </div>
@@ -201,7 +216,7 @@
 
                 <div class="form-group">
                   <label for="DescripcionProducto"><?php echo $this->lang->line('usuario_form_producto_descripcion_corta'); ?></label>
-                  <textarea id="DescripcionProducto" name="DescripcionProducto" class="form-control" rows="3"><?=!form_error('DescripcionProducto')?set_value('DescripcionProducto'):''?></textarea>
+                  <textarea id="DescripcionProducto" name="DescripcionProducto" class="form-control SmallEditor" rows="3"><?=!form_error('DescripcionProducto')?set_value('DescripcionProducto'):''?></textarea>
                 </div>
                 <div class="form-group">
                   <label for="DetallesProducto"><?php echo $this->lang->line('usuario_form_producto_detalles'); ?></label>

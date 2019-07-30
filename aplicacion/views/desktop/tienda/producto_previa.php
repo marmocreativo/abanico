@@ -130,7 +130,10 @@
                   </div>
                 </div>
                 <div class="col-12">
-                  <button class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block" id="BotonComprar"
+                  <div class="p-2 border border-danger mb-3">
+                    <p class="text-danger">Vista previa, este producto puede no estar a la venta</p>
+                  </div>
+                  <button disabled class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block" id=""
                       data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
                       data-nombre-producto='<?php echo $titulo; ?>'
                       data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
@@ -150,7 +153,7 @@
                 <?php if(isset($_SESSION['usuario']['id'])){ ?>
                   <div class="col-12">
                     <hr>
-                    <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonCompraRapida"
+                    <button disabled class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id=""
                         data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
                         data-nombre-producto='<?php echo $titulo; ?>'
                         data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
@@ -226,7 +229,7 @@
                               <label for="ComentarioCalificacion"><?php echo $this->lang->line('pagina_producto_formulario_calificaciones_comentario'); ?></label>
                               <textarea class="form-control" name="ComentarioCalificacion" rows="2" cols="80"></textarea>
                             </div>
-                            <button type="submit" class="btn <?php echo 'btn'.$primary; ?> btn-sm float-right" name="button"> <i class="fa fa-star"></i> <?php echo $this->lang->line('pagina_producto_formulario_calificaciones_calificar'); ?></button>
+                            <button type="submit" disabled class="btn <?php echo 'btn'.$primary; ?> btn-sm float-right" name="button"> <i class="fa fa-star"></i> <?php echo $this->lang->line('pagina_producto_formulario_calificaciones_calificar'); ?></button>
                           </form>
                         </div>
                     </div>
@@ -445,7 +448,7 @@
                         <label for="MensajeTexto"><?php echo $this->lang->line('pagina_producto_tab_preguntas_mensaje'); ?></label>
                         <textarea class="form-control" name="MensajeTexto" rows="8" required></textarea>
                       </div>
-                      <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> <?php echo $this->lang->line('pagina_producto_tab_preguntas_contactar'); ?></button>
+                      <button disabled class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> <?php echo $this->lang->line('pagina_producto_tab_preguntas_contactar'); ?></button>
                     </form>
                     <span class="clearfix"> </span>
                   <?php }else{ ?>

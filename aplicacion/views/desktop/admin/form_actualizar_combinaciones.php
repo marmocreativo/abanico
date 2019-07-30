@@ -128,13 +128,26 @@
                               </div>
                               <div class="col">
                                 <div class="form-group">
-                                  <label for="PesoCombinacion">Peso</label>
+                                  <label for="PesoCombinacion">Peso Total</label>
                                   <div class="input-group input-group-sm mb-2">
                                   <input type="text" class="form-control" id="PesoCombinacion" name="PesoCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_PESO']; ?>">
                                     <div class="input-group-append">
                                       <div class="input-group-text">Kg</div>
                                     </div>
                                   </div>
+                                  <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Peso estimado del producto para el envío, incluyendo caja, sobre, etc.</small>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="PesoNetoCombinacion">Peso Neto</label>
+                                  <div class="input-group input-group-sm mb-2">
+                                  <input type="text" class="form-control" id="PesoNetoCombinacion" name="PesoNetoCombinacion" placeholder="" value="<?php echo $combinacion['COMBINACION_PESO_NETO']; ?>">
+                                    <div class="input-group-append">
+                                      <div class="input-group-text">Kg</div>
+                                    </div>
+                                  </div>
+                                  <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Peso neto del producto</small>
                                 </div>
                               </div>
                             </div>
@@ -148,6 +161,15 @@
                                     <img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO) ?>" class="img-fluid" alt="">
                                     <hr>
                                     <input class="form-check-input" type="radio" name="ImagenCombinacion" id="ImagenCombinacion-<?php echo $galeria->ID_GALERIA; ?>" <?php if($galeria->GALERIA_ARCHIVO==$combinacion['COMBINACION_IMAGEN']){ echo 'checked'; } ?> value="<?php echo $galeria->GALERIA_ARCHIVO; ?>">
+                                  </label>
+                                </div>
+                              <?php } ?>
+                              <?php if(empty($galeria)){ ?>
+                                <div class="col-1 text-center">
+                                  <label for="ImagenCombinacion-0">
+                                    <img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/default.jpg') ?>" class="img-fluid" alt="">
+                                    <hr>
+                                    <input class="form-check-input" type="radio" name="ImagenCombinacion" id="ImagenCombinacion-0" checked value="default.jpg">
                                   </label>
                                 </div>
                               <?php } ?>

@@ -110,7 +110,7 @@
                     $visible = '';
                   }
                 ?>
-                <div class="col-xl-3 col-md-3 col-6 mb-3 <?php echo $visible; ?>">
+                <div class="<?php if($paquete['PLAN_NIVEL']>=2){ ?> col-md-4 <?php }else{ ?> col-md-3 <?php } ?>col-6 mb-3 <?php echo $visible; ?>">
                   <?php if($paquete['PLAN_NIVEL']>=2){ ?>
 
                       <a href="<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" >

@@ -101,6 +101,15 @@
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label for="PesoNetoCombinacion">Peso Neto</label>
+                <div class="input-group input-group-sm mb-2">
+                <input type="text" class="form-control" id="PesoNetoCombinacion" name="PesoNetoCombinacion" placeholder="" value="<?php echo $producto['PRODUCTO_PESO_NETO']; ?>">
+                  <div class="input-group-append">
+                    <div class="input-group-text">Kg</div>
+                  </div>
+                </div>
+              </div>
 
               <div class="row">
                 <div class="col-12">
@@ -115,6 +124,15 @@
                     </label>
                   </div>
                 <?php $i ++; } ?>
+                <?php if(empty($galeria)){ ?>
+                  <div class="col-1 text-center">
+                    <label for="ImagenCombinacion-0">
+                      <img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/default.jpg') ?>" class="img-fluid" alt="">
+                      <hr>
+                      <input class="form-check-input" type="radio" name="ImagenCombinacion" id="ImagenCombinacion-0" checked value="default.jpg">
+                    </label>
+                  </div>
+                <?php } ?>
               </div>
 
               <div class="text-right">
@@ -139,6 +157,7 @@
               <div class="col-8">
                 <h3 class="h6"><strong><?php echo $this->lang->line('usuario_form_producto_combinaciones_grupo'); ?>: </strong><?php echo $combinacion->COMBINACION_GRUPO; ?></h3>
                 <h3 class="h6"><strong><?php echo $this->lang->line('usuario_form_producto_combinaciones_opcion'); ?></strong>: <?php echo $combinacion->COMBINACION_OPCION; ?></h3>
+                <h3 class="h6"><strong>Peso:</strong> <?php echo $combinacion->COMBINACION_PESO; ?> Kg</h3>
                 <h3 class="h6"><strong><?php echo $this->lang->line('usuario_form_producto_combinaciones_precio'); ?>:</strong> $<?php echo $combinacion->COMBINACION_PRECIO; ?></h3>
               </div>
             </div>

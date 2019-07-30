@@ -61,8 +61,8 @@
               <tbody>
                 <?php foreach($usuarios as $usuario){ ?>
                 <tr>
-                  <td class="text-left"><?php echo $usuario->USUARIO_NOMBRE.' '.$usuario->USUARIO_APELLIDOS; ?></td>
-                  <td class="text-center"><?php echo $usuario->USUARIO_CORREO; ?></td>
+                  <td class="text-left"><span style="<?php if($usuario->USUARIO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"><?php echo $usuario->USUARIO_NOMBRE.' '.$usuario->USUARIO_APELLIDOS; ?></span></td>
+                  <td class="text-center"><span style="<?php if($usuario->USUARIO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"><?php echo $usuario->USUARIO_CORREO; ?></span></td>
                   <td class="text-center">
                       <?php
                         switch($usuario->USUARIO_ESTADO){
@@ -81,6 +81,12 @@
                             $color = 'warning';
                             $icono = 'fa-exclamation-circle';
                           break;
+                          case 'borrado':
+                          $estado_actual = 'Borrado';
+                            $color = 'default';
+                            $icono = 'fa-ban';
+                          break;
+
                         }
                       ?>
                     <div class="dropdown">

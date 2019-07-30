@@ -58,7 +58,7 @@
                     <div class="titulo">
                       <h5 class="mb-0">
                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $categoria->ID_CATEGORIA; ?>" aria-expanded="true" aria-controls="collapseOne">
-                          <span class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></span> <?php echo $categoria->CATEGORIA_NOMBRE; ?>
+                          <span class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></span> <span style="<?php if($categoria->CATEGORIA_ESTADO=='borrada'){echo 'text-decoration: line-through';} ?>"><?php echo $categoria->CATEGORIA_NOMBRE; ?></span>
                         </button>
                         <?php foreach($lenguajes as $lenguaje){ ?>
                           <?php if($lenguaje->LENGUAJE_ISO!='es'){ ?>
@@ -90,7 +90,7 @@
                               <div class="col-4 mb-3">
                                 <div class="border border-default p-2">
                                   <p class="h6">
-                                    <?php echo $segunda_categoria->CATEGORIA_NOMBRE  ?>
+                                    <span style="<?php if($segunda_categoria->CATEGORIA_ESTADO=='borrada'){echo 'text-decoration: line-through';} ?>" ><?php echo $segunda_categoria->CATEGORIA_NOMBRE  ?></span>
                                     <a href="<?php echo base_url('admin/categorias/actualizar?id='.$segunda_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>" class="btn btn-outline-warning btn-sm" title="Editar Categoría"> <span class="fa fa-pencil-alt"></span> </a>
                                     <button data-enlace='<?php echo base_url('admin/categorias/borrar?id='.$segunda_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>' class="btn btn-outline-danger btn-sm borrar_entrada" title="Eliminar Categoría"> <span class="fa fa-trash"></span> </button>
                                     <?php foreach($lenguajes as $lenguaje){ ?>
@@ -107,7 +107,7 @@
                                       foreach($tercero_categorias as $tercera_categoria){
                                     ?>
                                       <li class="list-group-item">
-                                        <?php echo $tercera_categoria->CATEGORIA_NOMBRE ?>
+                                        <span style="<?php if($tercera_categoria->CATEGORIA_ESTADO=='borrada'){echo 'text-decoration: line-through';} ?>" > <?php echo $tercera_categoria->CATEGORIA_NOMBRE ?></span>
                                         <a href="<?php echo base_url('admin/categorias/actualizar?id='.$tercera_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>" class="btn btn-outline-warning btn-sm"> <span class="fa fa-pencil-alt"></span> </a>
                                         <button data-enlace='<?php echo base_url('admin/categorias/borrar?id='.$tercera_categoria->ID_CATEGORIA.'&tipo_categoria='.$tipo_categoria.'&tab='.$categoria->ID_CATEGORIA); ?>' class="btn btn-outline-danger btn-sm borrar_entrada" title="Eliminar Categoría"> <span class="fa fa-trash"></span> </button>
                                         <?php foreach($lenguajes as $lenguaje){ ?>

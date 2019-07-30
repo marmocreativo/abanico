@@ -293,6 +293,7 @@ jQuery('#BotonComprar').on('click',function(e){
   var cantidad_max = jQuery(this).attr('data-cantidad-max');
   var divisa_default = jQuery(this).attr('data-divisa-default');
   var contra_entrega = jQuery(this).attr('data-contra-entrega');
+  var envio_gratuito = jQuery(this).attr('data-envio-gratuito');
   var cantidad_producto = jQuery('#CantidadProducto').val();
   var precio_producto = jQuery(this).attr('data-precio-producto');
   var id_tienda = jQuery(this).attr('data-id-tienda');
@@ -315,6 +316,7 @@ jQuery('#BotonComprar').on('click',function(e){
       CantidadMaxima: cantidad_max,
       DivisaDefault: divisa_default,
       ContraEntrega: contra_entrega,
+      EnvioGratuito: envio_gratuito,
       CantidadProducto: cantidad_producto,
       PrecioProducto: precio_producto,
       IdTienda: id_tienda,
@@ -341,6 +343,7 @@ jQuery('#BotonCompraRapida').on('click',function(e){
   var cantidad_max = jQuery(this).attr('data-cantidad-max');
   var divisa_default = jQuery(this).attr('data-divisa-default');
   var contra_entrega = jQuery(this).attr('data-contra-entrega');
+  var envio_gratuito = jQuery(this).attr('data-envio-gratuito');
   var cantidad_producto = jQuery('#CantidadProducto').val();
   var precio_producto = jQuery(this).attr('data-precio-producto');
   var id_tienda = jQuery(this).attr('data-id-tienda');
@@ -361,6 +364,7 @@ jQuery('#BotonCompraRapida').on('click',function(e){
       CantidadMaxima: cantidad_max,
       DivisaDefault: divisa_default,
       ContraEntrega: contra_entrega,
+      EnvioGratuito: envio_gratuito,
       CantidadProducto: cantidad_producto,
       PrecioProducto: precio_producto,
       IdTienda: id_tienda,
@@ -373,6 +377,10 @@ jQuery('#BotonCompraRapida').on('click',function(e){
      }
   });
 });
+// Mostrar carrito si se solicita
+<?php if(isset($_SESSION['modal_carrito'])&&$_SESSION['modal_carrito']=='mostrar'){ ?>
+  jQuery('#ModalCarrito').modal();
+  <?php } ?>
 // Boton Incrementar
 jQuery('.CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
   // Leo las variables del botón
@@ -526,6 +534,7 @@ VARIACIONES
 // Al cargar
 
 var precio = $('.CombinacionProducto').find(':selected').attr('data-precio-producto');
+var peso = $('.CombinacionProducto').find(':selected').attr('data-peso-producto');
 var detalles = $('.CombinacionProducto').find(':selected').attr('data-detalles-producto');
 var precio_visible = $('.CombinacionProducto').find(':selected').attr('data-precio-visible-producto');
 // Cambiar Imagen
@@ -538,12 +547,15 @@ if(imagen){
 // Cambiar datos del boton
 jQuery('#Precio_Producto').html(precio_visible);
 jQuery('#BotonComprar').attr('data-precio-producto',precio);
+jQuery('#BotonComprar').attr('data-peso-producto',peso);
 jQuery('#BotonComprar').attr('data-detalles-producto',detalles);
 jQuery('#BotonCompraRapida').attr('data-precio-producto',precio);
+jQuery('#BotonCompraRapida').attr('data-peso-producto',peso);
 jQuery('#BotonCompraRapida').attr('data-detalles-producto',detalles);
 // Al cambiar
 jQuery('.CombinacionProducto').on('change',function(e){
   var precio = jQuery(this).find(':selected').attr('data-precio-producto');
+  var peso = jQuery(this).find(':selected').attr('data-peso-producto');
   var detalles = jQuery(this).find(':selected').attr('data-detalles-producto');
   var precio_visible = jQuery(this).find(':selected').attr('data-precio-visible-producto');
   // Cambiar Imagen
@@ -556,8 +568,10 @@ jQuery('.CombinacionProducto').on('change',function(e){
   // Cambiar datos del boton
   jQuery('#Precio_Producto').html(precio_visible);
   jQuery('#BotonComprar').attr('data-precio-producto',precio);
+  jQuery('#BotonComprar').attr('data-peso-producto',peso);
   jQuery('#BotonComprar').attr('data-detalles-producto',detalles);
   jQuery('#BotonCompraRapida').attr('data-precio-producto',precio);
+  jQuery('#BotonCompraRapida').attr('data-peso-producto',peso);
   jQuery('#BotonCompraRapida').attr('data-detalles-producto',detalles);
 
 });
@@ -596,14 +610,13 @@ Calificación Estrellas
 -----------------
 */
 jQuery(function() {
-  if(jQuery('.estrellas').lenght>0){
    jQuery('.estrellas').starrr({
      emptyClass: 'far fa-star',
     change: function(e, value){
       jQuery('#EstrellasCalificacion').val(value)
      }
    });
-  }
+
 });
 
    // CARRITO

@@ -105,9 +105,9 @@
             <tbody>
               <?php foreach($productos as $producto){ ?>
               <tr>
-                <td class="text-left"><?php echo $producto->PRODUCTO_NOMBRE; ?></td>
-                <td class="text-center"><?php echo $producto->PRODUCTO_MODELO; ?></td>
-                <td class="text-center">$<?php echo $producto->PRODUCTO_PRECIO; ?> <small>MXN</small></td>
+                <td class="text-left"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo $producto->PRODUCTO_NOMBRE; ?></span></td>
+                <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo $producto->PRODUCTO_MODELO; ?></span></td>
+                <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> $<?php echo $producto->PRODUCTO_PRECIO; ?> <small>MXN</small></span></td>
                 <td class="text-center">
                   <?php if($producto->PRODUCTO_ESTADO=='activo'){ ?>
                     <a href="<?php echo base_url('admin/productos/activar')."?id=".$producto->ID_PRODUCTO."&estado=".$producto->PRODUCTO_ESTADO."&id_usuario=".$producto->ID_USUARIO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
@@ -117,6 +117,7 @@
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="<?php echo base_url('producto/vista_previa'."?id=".$producto->ID_PRODUCTO); ?>" target="_blank" class="btn btn-sm btn-info" title="Vista Previa"> <span class="fa fa-eye"></span> </a>
                     <a href="<?php echo base_url('admin/productos/actualizar'."?id=".$producto->ID_PRODUCTO."&tipo_producto=".$tipo_producto); ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
                     <button data-enlace='<?php echo base_url('admin/productos/borrar')."?id=".$producto->ID_PRODUCTO."&id_usuario=".$producto->ID_USUARIO; ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Producto"> <span class="fa fa-trash"></span> </button>
                   </div>

@@ -175,13 +175,26 @@
                         </div>
                         <div class="col">
                           <div class="form-group">
-                            <label for="PesoProducto">Peso</label>
+                            <label for="PesoProducto">Peso Total</label>
                             <div class="input-group input-group-sm mb-2">
                             <input type="text" class="form-control" id="PesoProducto" name="PesoProducto" required placeholder="" value="">
                               <div class="input-group-append">
                                 <div class="input-group-text">Kg</div>
                               </div>
                             </div>
+														<small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Peso estimado del producto para el envío, incluyendo caja, sobre, etc.</small>
+                          </div>
+                        </div>
+												<div class="col">
+                          <div class="form-group">
+                            <label for="PesoNetoProducto">Peso Neto</label>
+                            <div class="input-group input-group-sm mb-2">
+                            <input type="text" class="form-control" id="PesoNetoProducto" name="PesoNetoProducto" placeholder="" value="">
+                              <div class="input-group-append">
+                                <div class="input-group-text">Kg</div>
+                              </div>
+                            </div>
+														<small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Peso neto del producto</small>
                           </div>
                         </div>
                       </div>
@@ -196,6 +209,22 @@
                         <option value="inactivo">Borrador</option>
                       </select>
                     </div>
+										<div class="form-group">
+											<label for="ContraEntregaProducto">Pago a contra entrega</label>
+											<select class="form-control" id="ContraEntregaProducto" name="ContraEntregaProducto" placeholder="">
+												<option value="no" >No</option>
+												<option value="si" >Si</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="EnvioGratuitoProducto">Envio Gratuito con Transportista:</label>
+											<select class="form-control" name="EnvioGratuitoProducto">
+												<option value="no">Ninguno</option>
+												<?php foreach($transportistas as $transportista){ ?>
+													<option value="<?php echo $transportista->ID_TRANSPORTISTA; ?>" ><?php echo $transportista->TRANSPORTISTA_NOMBRE; ?></option>
+												<?php } ?>
+											</select>
+										</div>
                   </div>
                   </div>
                 </div>
@@ -247,7 +276,7 @@
               <div class="tab-pane fade p-3" id="datos" role="tabpanel" aria-labelledby="datos-tab">
                 <div class="form-group">
                   <label for="DescripcionProducto">Descripción corta</label>
-                  <textarea id="DescripcionProducto" name="DescripcionProducto" class="form-control" rows="3"><?=!form_error('DescripcionProducto')?set_value('DescripcionProducto'):''?></textarea>
+                  <textarea id="DescripcionProducto" name="DescripcionProducto" class="form-control SmallEditor" rows="3"><?=!form_error('DescripcionProducto')?set_value('DescripcionProducto'):''?></textarea>
                 </div>
                 <div class="form-group">
                   <label for="DetallesProducto">Detalles del producto</label>

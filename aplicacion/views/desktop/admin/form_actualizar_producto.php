@@ -117,7 +117,7 @@
                                     <div class="input-group-prepend">
                                       <div class="input-group-text">$</div>
                                     </div>
-                                  <input type="number" step="0.01" min="<?php echo $producto['PRODUCTO_PRECIO']+1; ?>" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO_LISTA']; ?>">
+                                  <input type="number" step="0.01" min="<?php echo $producto['PRODUCTO_PRECIO']+1; ?>" class="form-control" id="PrecioListaProducto" name="PrecioListaProducto" placeholder="" value="<?php if($producto['PRODUCTO_PRECIO_LISTA']!='0.00'){ echo $producto['PRODUCTO_PRECIO_LISTA']; }; ?>">
                                   </div>
                                   <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> <?php echo $this->lang->line('usuario_form_producto_precio_lista_instrucciones'); ?></small>
                                 </div>
@@ -187,13 +187,26 @@
                               </div>
                               <div class="col">
                                 <div class="form-group">
-                                  <label for="PesoProducto">Peso</label>
+                                  <label for="PesoProducto">Peso Total</label>
                                   <div class="input-group input-group-sm mb-2">
                                   <input type="text" class="form-control" id="PesoProducto" name="PesoProducto" required placeholder="" value="<?php echo $producto['PRODUCTO_PESO']; ?>">
                                     <div class="input-group-append">
                                       <div class="input-group-text">Kg</div>
                                     </div>
                                   </div>
+                                  <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Peso estimado del producto para el envío, incluyendo caja, sobre, etc.</small>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="PesoNetoProducto">Peso Neto</label>
+                                  <div class="input-group input-group-sm mb-2">
+                                  <input type="text" class="form-control" id="PesoNetoProducto" name="PesoNetoProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PESO_NETO']; ?>">
+                                    <div class="input-group-append">
+                                      <div class="input-group-text">Kg</div>
+                                    </div>
+                                  </div>
+      														<small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Peso neto del producto</small>
                                 </div>
                               </div>
                             </div>
@@ -206,6 +219,22 @@
                             <select class="form-control" id="EstadoProducto" name="EstadoProducto" placeholder="">
                               <option value="activo" <?php if($producto['PRODUCTO_ESTADO']=='activo'){ echo 'selected';} ?> >Publicado</option>
                               <option value="inactivo" <?php if($producto['PRODUCTO_ESTADO']=='inactivo'){ echo 'selected';} ?>>Borrador</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="ContraEntregaProducto">Pago a contra entrega</label>
+                            <select class="form-control" id="ContraEntregaProducto" name="ContraEntregaProducto" placeholder="">
+                              <option value="no" <?php if($producto['PRODUCTO_CONTRA_ENTREGA']=='no'){ echo 'selected';} ?> >No</option>
+                              <option value="si" <?php if($producto['PRODUCTO_CONTRA_ENTREGA']=='si'){ echo 'selected';} ?>>Si</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="EnvioGratuitoProducto">Envio Gratuito con Transportista:</label>
+                            <select class="form-control" name="EnvioGratuitoProducto">
+                              <option value="no">Ninguno</option>
+                              <?php foreach($transportistas as $transportista){ ?>
+                                <option value="<?php echo $transportista->ID_TRANSPORTISTA; ?>" <?php if($producto['PRODUCTO_ENVIO_GRATUITO']==$transportista->ID_TRANSPORTISTA){ echo 'selected';} ?>><?php echo $transportista->TRANSPORTISTA_NOMBRE; ?></option>
+                              <?php } ?>
                             </select>
                           </div>
                         </div>
@@ -264,7 +293,7 @@
                     <div class="tab-pane fade <?php if($tab=='datos'){ echo 'show active'; } ?> p-3" id="datos" role="tabpanel" aria-labelledby="datos-tab">
                       <div class="form-group">
                         <label for="DescripcionProducto">Descripción corta</label>
-                        <textarea id="DescripcionProducto" name="DescripcionProducto" class="form-control" rows="3"><?php echo $producto['PRODUCTO_DESCRIPCION']; ?></textarea>
+                        <textarea id="DescripcionProducto" name="DescripcionProducto" class="form-control SmallEditor" rows="3"><?php echo $producto['PRODUCTO_DESCRIPCION']; ?></textarea>
                       </div>
                       <div class="form-group">
                         <label for="DetallesProducto">Detalles del producto</label>

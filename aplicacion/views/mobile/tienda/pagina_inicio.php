@@ -9,11 +9,12 @@
       <?php $i = 0; foreach($slides as $slide){ ?>
       <div class="carousel-item <?php if($i==0){ echo 'active'; } ?>">
         <div class="contenedor-texto-slide">
+            <a href="<?php echo $slide->SLIDE_ENLACE; ?>">
           <div class="texto-slide row align-items-center mx-0">
             <?php if(!empty($slide->SLIDE_TITULO)){ ?>
               <div class="col-12">
 
-              <h1><?php echo $slide->SLIDE_TITULO; ?></h1>
+              <h2><?php echo $slide->SLIDE_TITULO; ?></h2>
               </div>
           <?php } ?>
             <?php if(!empty($slide->SLIDE_SUBTITULO)){ ?>
@@ -22,13 +23,13 @@
               <h2><?php echo $slide->SLIDE_SUBTITULO; ?></h2>
               </div>
           <?php } ?>
-            <?php if(!empty($slide->SLIDE_BOTON)){ ?>
-              <div class="col-12">
-
-              <h3><?php echo $slide->SLIDE_BOTON; ?></h3>
-              </div>
-          <?php } ?>
+          <?php if(!empty($slide->SLIDE_ENLACE)){ ?>
+            <div class="col-12">
+              <a href="<?php echo $slide->SLIDE_ENLACE; ?>" class="btn btn-outline-dark btn-sm"> <?php echo $slide->SLIDE_BOTON; ?></a>
+            </div>
+        <?php } ?>
           </div>
+          </a>
         </div>
         <img class="d-block w-100" src="contenido/img/slider/<?php echo $slide->SLIDE_IMAGEN_MOVIL; ?>">
       </div>
@@ -610,14 +611,15 @@
             <div class="contenedor-ganador text-center">
               <div class="container-fluid head-ganador">
                 <div class="titulo-ganador">
-                  Por Inauguración
+                  Gran concurso por inauguración
                 </div>
               </div>
               <div class="nombre-ganador" style="font-size:1em; line-height:1.5em;">
+                <a href="https://abanicoytu.com/publicacion/bases-concurso-inaugural">
                 <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
                 <div style="text-align:left; line-height:2.5em;">
-                <i class="fa fa-check"> </i> Regístrate del 8 de julio al 19 de agosto de 2019.<br>
-                <i class="fa fa-check"> </i> El 20 de agosto inicia sesión. <br>
+                <i class="fa fa-check"> </i> Regístrate del 8 de julio al 23 de septiembre de 2019.<br>
+                <i class="fa fa-check"> </i> El 24 de septiembre inicia sesión. <br>
                 <i class="fa fa-check"> </i> Encuentra las palabras escondidas dentro de la descripción de los productos.<br>
                 <i class="fa fa-check"> </i> Da doble click en las palabras y júntalas en la parte superior de la pantalla<br>
                 <i class="fa fa-check"> </i> Ordena las palabras que encontraste hasta formar la frase correcta<br>
@@ -630,6 +632,7 @@
                 Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
                 <-->
                 <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
+                </a>
               </div>
               <div class="premio-ganador text-primary">
                 <!--
@@ -706,6 +709,10 @@
 
       <div class="col-12 mt-3 pt-3 border-top">
         <div class="col d-flex align-items-center">
+          <div class="contenedor-ganador text-center">
+            <img src="<?php echo base_url('assets/global/img/borrego_03.jpg'); ?>" class="img-fluid" alt="">
+          </div>
+          <!--
         <div class="contenedor-ganador text-center">
           <div class="container-fluid head-ganador">
             <div class="titulo-ganador">
@@ -715,21 +722,22 @@
           <div class="nombre-ganador">
             <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
             Concursos en redes sociales<br>
-            <!--
+            <!- -
             <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
             Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
-            <-->
+            <- ->
             <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
           </div>
           <div class="premio-ganador text-primary">
 
-            <!--
+            <!- -
             Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
-          -->
+          - ->
           </div>
         </div>
       </div>
       </div>
+    -->
 
     </div>
   </div>

@@ -80,8 +80,8 @@
     <input type="hidden" name="PedidosTiendas" value="<?php echo $pedido_tienda ; ?>">
 
     <?php
-      $porcentaje_servicio_financiero = 4.6;
-      $fijo_servicio_financiero = 0;
+      $porcentaje_servicio_financiero = 6;
+      $fijo_servicio_financiero = 5;
     ?>
     <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="<?php echo $porcentaje_servicio_financiero; ?>">
     <input type="hidden" name="ComisionServicioFinancieroFijo" value="<?php echo $fijo_servicio_financiero; ?>">
@@ -108,8 +108,8 @@
     <input type="hidden" name="ImporteEnvioTotal" value="<?php echo $envio_pedido_total ; ?>">
     <input type="hidden" name="PedidosTiendas" value="<?php echo $pedido_tienda ; ?>">
     <?php
-      $porcentaje_servicio_financiero = 4.6;
-      $fijo_servicio_financiero = 4;
+      $porcentaje_servicio_financiero = 6;
+      $fijo_servicio_financiero = 5;
     ?>
     <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="<?php echo $porcentaje_servicio_financiero; ?>">
     <input type="hidden" name="ComisionServicioFinancieroFijo" value="<?php echo $fijo_servicio_financiero; ?>">
