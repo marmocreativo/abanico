@@ -211,9 +211,9 @@
                             <th class="text-right">Controles</th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="ui-sortable" data-tabla="productos_combinaciones" data-columna="ID_COMBINACION">
                           <?php foreach($combinaciones as $combinacion){ ?>
-                          <tr>
+                          <tr id="item-<?php echo $combinacion->ID_COMBINACION; ?>" class="ui-sortable-handle">
                             <td><?php echo $combinacion->COMBINACION_GRUPO; ?></td>
                             <td><?php echo $combinacion->COMBINACION_OPCION; ?></td>
                             <td><?php echo $combinacion->COMBINACION_CANTIDAD; ?></td>

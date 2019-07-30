@@ -24,6 +24,20 @@ class PublicacionesModel extends CI_Model {
     $query = $this->db->get('publicaciones');
     return $query->result();
   }
+  function lista_activos($parametros,$orden,$limite){
+    if(!empty($parametros)){
+      $this->db->or_like($parametros);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    $this->db->where('PUBLICACION_ESTADO','activo');
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $query = $this->db->get('publicaciones');
+    return $query->result();
+  }
   /*
     * Verificar URI
  */

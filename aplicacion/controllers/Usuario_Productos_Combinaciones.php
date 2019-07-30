@@ -37,7 +37,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 		if(!empty($this->data['tienda'])){
 				$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
-				$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'','');
+				$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'ORDEN ASC','');
 				$this->data['galerias'] = $this->GaleriasModel->lista($this->data['producto']['ID_PRODUCTO'],'','');
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/lista_combinaciones',$this->data);

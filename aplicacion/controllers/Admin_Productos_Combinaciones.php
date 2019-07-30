@@ -47,7 +47,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			if(!isset($_GET['tipo_producto'])||empty($_GET['tipo_producto'])){ $this->data['tipo_producto']='normal'; }else{ $this->data['tipo_producto']=$_GET['tipo_producto']; }
 
 			$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
-			$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'','');
+			$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'ORDEN ASC','');
 			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_combinaciones',$this->data);

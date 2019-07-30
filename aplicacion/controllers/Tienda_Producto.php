@@ -58,7 +58,7 @@ class Tienda_Producto extends CI_Controller {
 		if(!null==$this->data['categoria_producto']){
 			$this->data['primary'] = $this->data['categoria_producto']['CATEGORIA_COLOR'];
 		}
-		$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'','');
+		$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'ORDEN ASC','');
 
 		// Calificaciones
 		$this->data['cantidad_calificaciones']= $this->CalificacionesModel->conteo_calificaciones_producto($_GET['id']);

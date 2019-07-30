@@ -10,7 +10,7 @@
       <div class="row p-3">
         <div class="col-3">
           <h5>Acerca de Abanico</h5>
-          <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'acerca','PUBLICACION_ESTADO'=>'activo']],'ORDEN ASC','');?>
+          <?php $publicaciones_acerca = $this->PublicacionesModel->lista_activos(['PUBLICACION_TIPO'=>'acerca'],'ORDEN ASC','');?>
           <ul class="list-unstyled">
             <?php foreach($publicaciones_acerca as $publicacion){ ?>
             <li> <a href="<?php if(empty($publicacion->PUBLICACION_URL_EXTERNA)){ echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); }else{ echo $publicacion->PUBLICACION_URL_EXTERNA; } ; ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-3">
           <h5>Concursos</h5>
-          <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'concursos','PUBLICACION_ESTADO'=>'activo']],'ORDEN ASC','');?>
+          <?php $publicaciones_acerca = $this->PublicacionesModel->lista_activos(['PUBLICACION_TIPO'=>'concursos'],'ORDEN ASC','');?>
           <ul class="list-unstyled">
             <?php foreach($publicaciones_acerca as $publicacion){ ?>
             <li> <a href="<?php if(empty($publicacion->PUBLICACION_URL_EXTERNA)){ echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); }else{ echo $publicacion->PUBLICACION_URL_EXTERNA; } ; ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
@@ -28,7 +28,7 @@
         </div>
         <div class="col-3">
           <h5>Ayuda</h5>
-          <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'ayuda','PUBLICACION_ESTADO'=>'activo']],'ORDEN ASC','');?>
+          <?php $publicaciones_acerca = $this->PublicacionesModel->lista_activos(['PUBLICACION_TIPO'=>'ayuda'],'ORDEN ASC','');?>
           <ul class="list-unstyled">
             <?php foreach($publicaciones_acerca as $publicacion){ ?>
             <li> <a href="<?php if(empty($publicacion->PUBLICACION_URL_EXTERNA)){ echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); }else{ echo $publicacion->PUBLICACION_URL_EXTERNA; } ; ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
@@ -37,7 +37,7 @@
         </div>
         <div class="col-3">
           <h5>Legales</h5>
-          <?php $publicaciones_acerca = $this->PublicacionesModel->lista(['PUBLICACION_TIPO'=>'legales','PUBLICACION_ESTADO'=>'activo']],'ORDEN ASC','');?>
+          <?php $publicaciones_acerca = $this->PublicacionesModel->lista_activos(['PUBLICACION_TIPO'=>'legales'],'ORDEN ASC','');?>
           <ul class="list-unstyled">
             <?php foreach($publicaciones_acerca as $publicacion){ ?>
             <li> <a href="<?php if(empty($publicacion->PUBLICACION_URL_EXTERNA)){ echo base_url('publicacion/'.$publicacion->PUBLICACION_URL); }else{ echo $publicacion->PUBLICACION_URL_EXTERNA; } ; ?>"><?php echo $publicacion->PUBLICACION_TITULO; ?></a> </li>
