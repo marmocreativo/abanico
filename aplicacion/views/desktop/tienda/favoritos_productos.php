@@ -120,9 +120,9 @@
                       </ul>
                       <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
                       <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)){ ?>
-                        <div class="price-list"> $<?php echo $producto->PRODUCTO_PRECIO_LISTA; ?></div>
+                        <div class="price-list"> $<?php echo $producto->PRODUCTO_PRECIO_LISTA; ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small></div>
                       <?php } ?>
-                      <div class="price"> $<?php echo $producto->PRODUCTO_PRECIO; ?></div>
+                      <div class="price"> $<?php echo $producto->PRODUCTO_PRECIO; ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small></div>
                   </div>
               </div>
           </div>
