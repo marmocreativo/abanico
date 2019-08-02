@@ -48,7 +48,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
 			$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'ORDEN ASC','');
-			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'','');
+			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'ORDEN ASC','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_combinaciones',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);

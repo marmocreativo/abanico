@@ -186,6 +186,11 @@
                             <?php } ?>
                             <li class="fa text-dark">(<?php echo $cantidad; ?>)</li>
                           </ul>
+                          <?php if($producto->PRODUCTO_ENVIO_GRATUITO!='no'){ ?>
+                          <div class="p-1 border border-success rounded" style="border-style:dashed !important">
+                            <span style="font-size:12px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i></span>
+                          </div>
+                          <?php } ?>
                       </div>
                   </div>
               </div>

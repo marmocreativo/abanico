@@ -376,9 +376,9 @@
                                 <th class="text-right">Controles</th>
                               </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="ui-sortable" data-tabla="galeria_productos" data-columna="ID_GALERIA">
                               <?php foreach($galerias as $galeria){ ?>
-                                <tr>
+                                <tr id="item-<?php echo $galeria->ID_GALERIA; ?>" class="ui-sortable-handle">
                                   <td class="text-center"><?php echo $galeria->ID_GALERIA; ?></td>
                                   <td class="text-center">
                                     <img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO) ?>" alt="" width="50">

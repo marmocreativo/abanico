@@ -337,7 +337,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['usuarios'] = $this->UsuariosModel->lista([ 'USUARIO_ESTADO'=>'activo' ],'','','');
 			$this->data['usuario_producto'] = $this->UsuariosModel->detalles($this->data['producto']['ID_USUARIO']);
 			$this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['usuario_producto']['ID_USUARIO']);
-			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'','');
+			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'ORDEN ASC','');
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 			$this->data['relacion_categorias'] = $this->CategoriasProductoModel->lista($_GET['id']);
 			$this->data['transportistas'] = $this->TransportistasModel->lista(['TRANSPORTISTA_ESTADO'=>'activo'],'','');

@@ -40,6 +40,7 @@ class GaleriasModel extends CI_Model {
     * Obtengo todos los detalles de una sola entrada
  */
   function galeria_producto($id){
+    $this->db->order_by('ORDEN ASC');
     return $this->db->get_where('galeria_productos',array('ID_PRODUCTO'=>$id))->result();
   }
   /*
@@ -48,6 +49,15 @@ class GaleriasModel extends CI_Model {
   function crear($parametros){
     $this->db->insert('galeria_productos',$parametros);
     return $this->db->insert_id();
+  }
+  /*
+    * Actualizo una entrada
+    * $id es el identificador de la entrada
+    * $parametros son los campos actualizados
+ */
+  function actualizar($id,$parametros){
+    $this->db->where('ID_GALERIA',$id);
+    return $this->db->update('galeria_productos',$parametros);
   }
   /*
     * Borro una entrada

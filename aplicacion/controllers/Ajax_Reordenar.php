@@ -39,6 +39,21 @@ class Ajax_Reordenar extends CI_Controller {
 		   $i++;
 		}
 	}
+	public function galeria_productos()
+	{
+		$this->load->model('GaleriasModel');
+		$i = 0;
+		parse_str($_GET['objetos'],$objetos);
+		foreach ( $objetos['item'] as $identificador) {
+
+			$parametros = array(
+				'ORDEN' => $i,
+			);
+
+			$this->GaleriasModel->actualizar( $identificador,$parametros);
+		   $i++;
+		}
+	}
 	public function slides()
 	{
 		$this->load->model('SlidesModel');
