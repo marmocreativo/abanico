@@ -50,6 +50,7 @@ class TransportistasRangosModel extends CI_Model {
       $this->db->where('transportistas_rangos.IMPORTE_MIN <=',$importe);
       $this->db->where('transportistas_disponibilidad.TRANSPORTISTA_PAIS',$pais);
       $this->db->where('transportistas_disponibilidad.TRANSPORTISTA_ESTADO',$estado);
+      $this->db->where('transportistas_disponibilidad.TRANSPORTISTA_ESTADO',$estado);
       $this->db->group_by('transportistas_rangos.ID_TRANSPORTISTA');
       $this->db->order_by('IMPORTE ASC');
     $query = $this->db->get('transportistas_rangos');

@@ -39,7 +39,7 @@
             </div>
             <hr>
           <?php } ?>
-          <form class="" action="<?php echo base_url('admin/rangos/actualizar'); ?>" method="post">
+          <form class="" action="<?php echo base_url('admin/transportistas_rangos/actualizar'); ?>" method="post">
             <input type="hidden" name="Identificador" value="<?php echo $rango['ID']; ?>">
             <input type="hidden" name="IdTransportista" value="<?php echo $rango['ID_TRANSPORTISTA']; ?>">
             <div class="row">

@@ -43,7 +43,7 @@
           </div>
           <div class="opciones d-flex">
             <div class="btn-group btn-sm">
-              <a href="<?php echo base_url('admin/rangos/crear?id_transportista='.$_GET['id_transportista']); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span> Nuevo Rango </a>
+              <a href="<?php echo base_url('admin/transportistas_rangos/crear?id_transportista='.$_GET['id_transportista']); ?>" class="btn btn-sm btn-success"> <span class="fa fa-plus"></span> Nuevo Rango </a>
             </div>
 
           </div>
@@ -68,8 +68,8 @@
                 <td class="text-center">$<?php echo $rango->IMPORTE; ?></td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="<?php echo base_url('admin/rangos/actualizar')."?id=".$rango->ID.'&id_transportista='.$transportista['ID_TRANSPORTISTA']; ?>" class="btn btn-sm btn-warning" title="Editar Transportista"> <span class="fa fa-pencil-alt"></span> </a>
-                    <button data-enlace='<?php echo base_url('admin/rangos/borrar')."?id=".$rango->ID.'&id_transportista='.$transportista['ID_TRANSPORTISTA']; ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Transportista"> <span class="fa fa-trash"></span> </button>
+                    <a href="<?php echo base_url('admin/transportistas_rangos/actualizar')."?id=".$rango->ID.'&id_transportista='.$transportista['ID_TRANSPORTISTA']; ?>" class="btn btn-sm btn-warning" title="Editar Transportista"> <span class="fa fa-pencil-alt"></span> </a>
+                    <button data-enlace='<?php echo base_url('admin/transportistas_rangos/borrar')."?id=".$rango->ID.'&id_transportista='.$transportista['ID_TRANSPORTISTA']; ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Transportista"> <span class="fa fa-trash"></span> </button>
                   </div>
                 </td>
               </tr>

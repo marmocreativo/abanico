@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin_Rangos extends CI_Controller {
+class Admin_Transportistas_Rangos extends CI_Controller {
 
 	public function __construct(){
     parent::__construct();
@@ -45,7 +45,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['transportista'] = $this->TransportistasModel->detalles($_GET['id_transportista']);
 			$this->data['rangos'] = $this->TransportistasRangosModel->lista($_GET['id_transportista'],'transportistas_rangos.IMPORTE ASC','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
-			$this->load->view($this->data['dispositivo'].'/admin/lista_rangos',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/lista_transportista_rangos',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
 
@@ -58,11 +58,11 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['rangos'] = $this->TransportistasRangosModel->lista($parametros,'','');
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
-			$this->load->view($this->data['dispositivo'].'/admin/lista_rangos',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/lista_transportista_rangos',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 
 		}else{
-			redirect(base_url('admin/rangos'));
+			redirect(base_url('admin/transportistas_rangos'));
 		}
 	}
 	public function crear()
@@ -86,7 +86,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			// Mensaje Feedback
 			$this->session->set_flashdata('exito', 'Rango Creado correctamente');
 			// Redirecciono
-      redirect(base_url('admin/rangos?id_transportista='.$this->input->post('IdTransportista')));
+      redirect(base_url('admin/transportistas_rangos?id_transportista='.$this->input->post('IdTransportista')));
     }else{
 
 			$this->data['transportista'] = $this->TransportistasModel->detalles($_GET['id_transportista']);
@@ -116,7 +116,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->TransportistasRangosModel->actualizar($this->input->post('Identificador'),$parametros);
 			$this->session->set_flashdata('exito', 'Rango actualizado');
 			// Redirecciono
-      redirect(base_url('admin/rangos?id_transportista='.$this->input->post('IdTransportista')));
+      redirect(base_url('admin/transportistas_rangos?id_transportista='.$this->input->post('IdTransportista')));
     }else{
 			$this->data['rango'] = $this->TransportistasRangosModel->detalles($_GET['id']);
 			$this->data['transportista'] = $this->TransportistasModel->detalles($_GET['id_transportista']);
@@ -136,7 +136,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
         {
             $this->TransportistasRangosModel->borrar($rango['ID']);
 						$this->session->set_flashdata('exito', 'Rango Eliminado');
-            redirect(base_url('admin/rangos?id_transportista='.$rango['ID_TRANSPORTISTA']));
+            redirect(base_url('admin/transportistas_rangos?id_transportista='.$rango['ID_TRANSPORTISTA']));
         } else {
 
 	         	show_error('La entrada que deseas borrar no existe');
@@ -145,7 +145,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function activar()
 	{
 		$this->TransportistasRangosModel->activar($_GET['id'],$_GET['estado']);
-		redirect(base_url('admin/rangos'));
+		redirect(base_url('admin/transportistas_rangos'));
 	}
 	public function estado()
 	{

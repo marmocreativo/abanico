@@ -76,8 +76,9 @@
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="<?php echo base_url('admin/rangos')."?id_transportista=".$transportista->ID_TRANSPORTISTA; ?>" class="btn btn-sm btn-outline-primary" title="Editar Transportista"> <span class="fa fa-pencil-alt"></span> Rangos de Precios </a>
+                    <a href="<?php echo base_url('admin/transportistas_rangos')."?id_transportista=".$transportista->ID_TRANSPORTISTA; ?>" class="btn btn-sm btn-outline-primary" title="Editar Transportista"> <span class="fa fa-pencil-alt"></span> Rangos de Precios </a>
                     <a href="<?php echo base_url('admin/transportistas/actualizar')."?id=".$transportista->ID_TRANSPORTISTA; ?>" class="btn btn-sm btn-warning" title="Editar Transportista"> <span class="fa fa-pencil-alt"></span> </a>
+                    <a href="<?php echo base_url('admin/transportistas_restricciones')."?id=".$transportista->ID_TRANSPORTISTA; ?>" class="btn btn-sm btn-outline-danger" title="Restricciones Transportista"> <span class="fa fa-ban"></span> </a>
                     <button data-enlace='<?php echo base_url('admin/transportistas/borrar')."?id=".$transportista->ID_TRANSPORTISTA; ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Transportista"> <span class="fa fa-trash"></span> </button>
                   </div>
                 </td>
