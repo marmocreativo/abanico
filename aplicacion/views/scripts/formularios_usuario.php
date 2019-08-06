@@ -209,6 +209,52 @@ jQuery('#ImagenPerfil').change(function() {
   readURL(this);
 });
 
+// REORDENAR
+function activar_reordenar(){
+  if ( $( ".ui-sortable" ).length ) {
+
+    $('.ui-sortable').sortable({
+      scroll: true,
+       helper: function(event, ui){
+        var $clone =  $(ui).clone();
+        $clone .css('position','absolute');
+        return $clone.get(0);
+        },
+      start: function(){
+        $(this).data("startingScrollTop",$(this).parent().scrollTop());
+       },
+        update: function (event, ui) {
+        var objetos = $(this).sortable('serialize');
+        var columna =  $(this).attr('data-columna');
+        var tabla =  $(this).attr('data-tabla');
+        if(columna!=null&&tabla!=null){
+        // Llamada ajax
+        var request = $.ajax({
+            data: {
+              objetos : objetos,
+              tabla : tabla,
+              columna : columna
+            },
+            type: 'GET',
+            url: '<?php echo base_url('ajax/reordenar/'); ?>'+tabla,
+            dataType: "html",
+            success : function(respuesta)
+             {
+              var respuesta = respuesta;
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+              alert(xhr.status);
+              alert(thrownError);
+            }
+        });
+      }
+
+      }
+    });
+  }
+}
+activar_reordenar();
+
 // Prevenir enviar formulario dos veces.
 
 jQuery.validator.setDefaults({

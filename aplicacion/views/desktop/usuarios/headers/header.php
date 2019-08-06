@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
+    		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/custom/jquery-ui/jquery-ui.bundle.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/summernote/dist/summernote.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/estilos_abanico_desktop.css">
     <title>Usuarios | <?php echo $op['titulo_sitio']; ?></title>

@@ -332,7 +332,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
 					$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 					$this->data['relacion_categorias'] = $this->CategoriasProductoModel->lista($_GET['id']);
-					$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'','5');
+					$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'','');
 					$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 					$this->load->view($this->data['dispositivo'].'/usuarios/form_actualizar_producto',$this->data);
 					$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
