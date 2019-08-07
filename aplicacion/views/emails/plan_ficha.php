@@ -358,11 +358,13 @@
                               <td colspan="3" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
                                 <h4 style="margin:0;color:#495057;"><strong>Depósito o Transferencia Bancaria</strong></h4>
                                 <p>Scotiabank</p>
+                                <p>A nombre de: <strong>Abanico siempre lo mejor S.A. de C.V.</strong>
                                 <p>Cuenta: <strong>256 0000 0668</strong></p>
                                 <p>CLABE: <strong>0441 8025 6000 0066 82</strong></p>
+                                <p>Referencia numérica: <strong>18</strong></p>
                               </td>
                               <td colspan="2" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
-                                <h4 style="margin:0;color:#495057;border-bottom:solid 1px lightgrey"><strong>Referencia:</strong> <?php echo $pago['pago_folio']; ?></h5>
+                                <h4 style="margin:0;color:#495057;border-bottom:solid 1px lightgrey"><strong>Folio:</strong> <?php echo $pago['pago_folio']; ?></h5>
                                 <h3 style="margin:0;color:#af3193;"><strong>Monto a pagar</strong><br />$<?php echo $pago['pago_importe']; ?> <?php echo $pago['pago_divisa']; ?></h4>
                               </td>
                             </tr>
