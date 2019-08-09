@@ -372,16 +372,18 @@
               </div>
             </div>
 
+            <div class="card my-3 text-center">
+              <img src="<?php echo base_url('assets/global/img/formas_pago.jpg') ?>" width="100%" style="max-width:258px;"alt="">
+            </div>
+
             <div class="card vendedor mb-3">
               <div class="row p-3">
                 <div class="col-3 mb-3">
                     <img src="<?php echo base_url('contenido/img/tiendas/completo/'.$tienda['TIENDA_IMAGEN']) ?>" alt="" class="img-fluid img-thumbnail rounded-circle">
                 </div>
-                <div class="col-12">
-                  <h4>Vendedor</h4>
+                <div class="col-8">
+                  <h6>Vendido por:</h6>
                   <h5><?php echo $tienda['TIENDA_NOMBRE']; ?></h5>
-                  <p><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></p>
-                  <p><?php echo $tienda['TIENDA_RFC']; ?></p>
                 </div>
               </div>
             </div>
