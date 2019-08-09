@@ -32,7 +32,7 @@
           </nav>
           <?php retro_alimentacion(); ?>
           <div class="row mb-5">
-            <div class="col-7">
+            <div class="col-8">
               <div class="col-12 mb-3 slider-fotos d-flex align-items-center justify-content-center">
                 <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
                 <img src="<?php echo base_url($ruta_portada) ?>" class="img-fluid visor-galeria-producto" style="max-height:500px" alt="">
@@ -46,8 +46,193 @@
                 </div>
                 <?php } ?>
               </div>
+              <hr>
+              <div class="row mb-5">
+                <div class="col-12">
+                  <ul class="nav nav-tabs nav-fill fila-gris" id="tabProductos" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php echo $this->lang->line('pagina_producto_tabs_producto_detalles'); ?></a>
+                    </li>
+                    <!--
+                    <li class="nav-item">
+                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><?php echo $this->lang->line('pagina_producto_tabs_producto_caracteristicas'); ?></a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" id="preguntas-tab" data-toggle="tab" href="#preguntas" role="tab" aria-controls="preguntas" aria-selected="false"><?php echo $this->lang->line('pagina_producto_tabs_producto_preguntas'); ?></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><?php echo $this->lang->line('pagina_producto_tabs_producto_acerca_de'); ?></a>
+                    </li>
+                    -->
+                  </ul>
+                  <div class="tab-content fila-gris" id="contProductos">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                      <div class="p-3">
+                        <?php
+                        $CI =& get_instance();
+                        $CI->load->model('ConcursosModel');
+                        $concurso = $CI->ConcursosModel->activo();
+
+                        $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
+                        $frase_concurso = explode(' ',$concurso['FRASE']);
+                        $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
+                        $relacion_palabras_productos = array();
+                        foreach($productos_concurso as $index => $producto_con){
+                          $relacion_palabras_productos[$producto_con]=$frase_concurso[$index];
+                        }
+                        if(in_array ($producto['ID_PRODUCTO'],$productos_concurso)&&$_SESSION['concurso']['palabras'][$relacion_palabras_productos[$producto['ID_PRODUCTO']]]=='no'){
+                          $palabra_escondida = '<span class="palabra_encontrada animated tada infinite" style="cursor: pointer; display:inline-block; animation-delay: 15s;" data-palabra="'.$relacion_palabras_productos[$producto['ID_PRODUCTO']].'">'.$relacion_palabras_productos[$producto['ID_PRODUCTO']].'</span>';
+                          //var_dump($relacion_palabras_productos);
+
+                        ?>
+
+                        <h5><?php echo $this->lang->line('pagina_producto_tab_detalles_titulo'); ?></h5>
+                        <?php if(!empty($concurso)){ ?>
+
+                            <?php
+                              $palabras_en_descripcion = explode(' ',$descripcion_larga);
+                              $numero_palabras_en_descripcion = count($palabras_en_descripcion);
+                              $aleatorio = rand(0,$numero_palabras_en_descripcion-1);
+                              $palabras_en_descripcion[$aleatorio]=$palabra_escondida;
+                              echo implode(" ",$palabras_en_descripcion);
+                            ?>
+                        <?php }else{ ?>
+
+                        <?php echo $descripcion_larga; ?>
+                        <?php } ?>
+                      <?php }else{ ?>
+                        <?php echo $descripcion_larga; ?>
+                      <?php } ?>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                      <div class="p-3">
+                        <div class="row">
+                          <div class="col">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th colspan="2"><?php echo $this->lang->line('pagina_producto_tab_detalles_modelo_y_clave'); ?></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td><?php echo $this->lang->line('pagina_producto_tab_detalles_modelo'); ?></td>
+                                  <td><?php echo $producto['PRODUCTO_MODELO']; ?> </td>
+                                </tr>
+                                <tr>
+                                  <td><?php echo $this->lang->line('pagina_producto_tab_detalles_origen'); ?></td>
+                                  <td><?php echo $producto['PRODUCTO_ORIGEN']; ?> </td>
+                                </tr>
+                                <tr>
+                                  <td>SKU</td>
+                                  <td><?php echo $producto['PRODUCTO_SKU']; ?> </td>
+                                </tr>
+                                <tr>
+                                  <td>UPC</td>
+                                  <td><?php echo $producto['PRODUCTO_UPC']; ?> </td>
+                                </tr>
+                                <tr>
+                                  <td>EAN</td>
+                                  <td><?php echo $producto['PRODUCTO_EAN']; ?> </td>
+                                </tr>
+                                <tr>
+                                  <td>JAN</td>
+                                  <td><?php echo $producto['PRODUCTO_JAN']; ?> </td>
+                                </tr>
+                                <tr>
+                                  <td>ISBN</td>
+                                  <td><?php echo $producto['PRODUCTO_ISBN']; ?> </td>
+                                </tr>
+                                <tr>
+                                  <td>MPN</td>
+                                  <td><?php echo $producto['PRODUCTO_MPN']; ?> </td>
+                                </tr>
+                                <tr>
+                                  <td>EAN</td>
+                                  <td><?php echo $producto['PRODUCTO_EAN']; ?> </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th colspan="2"><?php echo $this->lang->line('pagina_producto_tab_detalles_dimensiones_y_peso'); ?></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td><?php echo $this->lang->line('pagina_producto_tab_detalles_ancho'); ?></td>
+                                  <td><?php echo number_format($producto['PRODUCTO_ANCHO'],2); ?> <small>cm</small> </td>
+                                </tr>
+                                <tr>
+                                  <td><?php echo $this->lang->line('pagina_producto_tab_detalles_alto'); ?></td>
+                                  <td><?php echo number_format($producto['PRODUCTO_ALTO'],2); ?> <small>cm</small> </td>
+                                </tr>
+                                <tr>
+                                  <td><?php echo $this->lang->line('pagina_producto_tab_detalles_profundo'); ?></td>
+                                  <td><?php echo number_format($producto['PRODUCTO_PROFUNDO'],2); ?> <small>cm</small> </td>
+                                </tr>
+                                <tr>
+                                  <td><?php echo $this->lang->line('pagina_producto_tab_detalles_peso'); ?></td>
+                                  <td><?php echo number_format($producto['PRODUCTO_PESO'],2); ?> <small>Kg</small> </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="preguntas" role="tabpanel" aria-labelledby="preguntas-tab">
+
+                    </div>
+                    <div class="tab-pane fade p-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <hr>
+              <div class="row mb-5">
+                <div class="col p-3">
+                  <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+                  <form class="" action="<?php echo base_url('producto/contacto'); ?>" method="post">
+                    <input type="hidden" name="IdReceptor" value="<?php echo $producto['ID_USUARIO']; ?>">
+                    <input type="hidden" name="IdRemitente" value="<?php echo $_SESSION['usuario']['id']; ?>">
+                    <input type="hidden" name="ProductoNombre" value="<?php echo $titulo; ?>">
+                    <input type="hidden" name="IdProducto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
+                    <div class="row">
+                      <table class="table">
+                        <tr>
+                          <td><strong><?php echo $this->lang->line('pagina_producto_tab_preguntas_remitente'); ?>:</strong></td>
+                          <td><?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']?></td>
+                        </tr>
+                      </table>
+                    </div>
+                    <p> <i class="fa fa-info-circle"></i> <?php echo $this->lang->line('pagina_producto_tab_preguntas_tienes_dudas'); ?></p>
+                    <div class="form-group">
+                      <label for="MensajeTexto"><?php echo $this->lang->line('pagina_producto_tab_preguntas_mensaje'); ?></label>
+                      <textarea class="form-control" name="MensajeTexto" rows="8" required></textarea>
+                    </div>
+                    <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> <?php echo $this->lang->line('pagina_producto_tab_preguntas_contactar'); ?></button>
+                  </form>
+                  <span class="clearfix"> </span>
+                <?php }else{ ?>
+                  <div class="card">
+                    <div class="card-body">
+                      <p><?php echo $this->lang->line('pagina_producto_tab_preguntas_para_preguntar'); ?>.</p>
+                      <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> <?php echo $this->lang->line('pagina_producto_tab_preguntas_inicia_sesion'); ?></a>
+                    </div>
+                  </div>
+                <?php } ?>
+                </div>
+              </div>
             </div>
-            <div class="col-5">
+            <div class="col-4">
               <h5><?php echo $titulo; ?></h5>
               <hr>
               <?php echo $descripcion_corta; ?>
@@ -147,34 +332,59 @@
                       >
                      <span class="fa fa-shopping-cart"></span> <?php echo $this->lang->line('pagina_producto_formulario_al_carrito'); ?></button>
                 </div>
-                <?php if(isset($_SESSION['usuario']['id'])){ ?>
-                  <div class="col-12">
-                    <hr>
-                    <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonCompraRapida"
-                        data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
-                        data-nombre-producto='<?php echo $titulo; ?>'
-                        data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
-                        data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'
-                        data-divisa-default='<?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?>'
-                        data-contra-entrega='<?php echo $producto['PRODUCTO_CONTRA_ENTREGA']; ?>'
-                        data-envio-gratuito='<?php echo $producto['PRODUCTO_ENVIO_GRATUITO']; ?>'
-                        data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
-                        data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
-                        data-detalles-producto=''
-                        data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
-                        data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
-                        data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
-                        >
-                       <span class="fa fa-shopping-cart"></span> <?php echo $this->lang->line('pagina_producto_formulario_comprar_ahora'); ?></button>
-                  </div>
-                <?php } ?>
+                  <?php if(isset($_SESSION['usuario']['id'])){ ?>
+                    <div class="col-12">
+                      <hr>
+                      <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonCompraRapida"
+                          data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
+                          data-nombre-producto='<?php echo $titulo; ?>'
+                          data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
+                          data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'
+                          data-divisa-default='<?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?>'
+                          data-contra-entrega='<?php echo $producto['PRODUCTO_CONTRA_ENTREGA']; ?>'
+                          data-envio-gratuito='<?php echo $producto['PRODUCTO_ENVIO_GRATUITO']; ?>'
+                          data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
+                          data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
+                          data-detalles-producto=''
+                          data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
+                          data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
+                          data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
+                          >
+                         <span class="fa fa-shopping-cart"></span> <?php echo $this->lang->line('pagina_producto_formulario_comprar_ahora'); ?></button>
+                    </div>
+                  <?php } ?>
               </div>
-
             <?php }else{ ?>
               <div class="p-4 my-3 text-center border <?php echo 'border'.$primary.' '.'text'.$primary; ?>">
                 Compra con nosotros a partir del 15 julio del 2019.
               </div>
             <?php } ?>
+
+            <div class="card medallas my-3">
+              <div class="row">
+                <div class="col">
+                  <?php if($producto['PRODUCTO_ENVIO_GRATUITO']!='no'){ ?>
+                  <div class="p-1 border border-success rounded" style="border-style:dashed !important">
+                    <span style="font-size:16px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i></span>
+                  </div>
+                  <?php } ?>
+                </div>
+              </div>
+            </div>
+
+            <div class="card vendedor mb-3">
+              <div class="row p-3">
+                <div class="col-3 mb-3">
+                    <img src="<?php echo base_url('contenido/img/tiendas/completo/'.$tienda['TIENDA_IMAGEN']) ?>" alt="" class="img-fluid img-thumbnail rounded-circle">
+                </div>
+                <div class="col-12">
+                  <h4>Vendedor</h4>
+                  <h5><?php echo $tienda['TIENDA_NOMBRE']; ?></h5>
+                  <p><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></p>
+                  <p><?php echo $tienda['TIENDA_RFC']; ?></p>
+                </div>
+              </div>
+            </div>
 
               <div class="card opiniones-serv">
                 <div class="card-body">
@@ -283,207 +493,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div class="row mb-5">
-            <div class="col-12">
-              <ul class="nav nav-tabs nav-fill fila-gris" id="tabProductos" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><?php echo $this->lang->line('pagina_producto_tabs_producto_detalles'); ?></a>
-                </li>
-                <!--
-                <li class="nav-item">
-                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><?php echo $this->lang->line('pagina_producto_tabs_producto_caracteristicas'); ?></a>
-                </li>
-              -->
-                <li class="nav-item">
-                  <a class="nav-link" id="preguntas-tab" data-toggle="tab" href="#preguntas" role="tab" aria-controls="preguntas" aria-selected="false"><?php echo $this->lang->line('pagina_producto_tabs_producto_preguntas'); ?></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><?php echo $this->lang->line('pagina_producto_tabs_producto_acerca_de'); ?></a>
-                </li>
-              </ul>
-              <div class="tab-content fila-gris" id="contProductos">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <div class="p-3">
-                    <?php
-                    $CI =& get_instance();
-                    $CI->load->model('ConcursosModel');
-                    $concurso = $CI->ConcursosModel->activo();
-
-                    $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
-                    $frase_concurso = explode(' ',$concurso['FRASE']);
-                    $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
-                    $relacion_palabras_productos = array();
-                    foreach($productos_concurso as $index => $producto_con){
-                      $relacion_palabras_productos[$producto_con]=$frase_concurso[$index];
-                    }
-                    if(in_array ($producto['ID_PRODUCTO'],$productos_concurso)&&$_SESSION['concurso']['palabras'][$relacion_palabras_productos[$producto['ID_PRODUCTO']]]=='no'){
-                      $palabra_escondida = '<span class="palabra_encontrada animated tada infinite" style="cursor: pointer; display:inline-block; animation-delay: 15s;" data-palabra="'.$relacion_palabras_productos[$producto['ID_PRODUCTO']].'">'.$relacion_palabras_productos[$producto['ID_PRODUCTO']].'</span>';
-                      //var_dump($relacion_palabras_productos);
-
-                    ?>
-
-                    <h5><?php echo $this->lang->line('pagina_producto_tab_detalles_titulo'); ?></h5>
-                    <?php if(!empty($concurso)){ ?>
-
-                        <?php
-                          $palabras_en_descripcion = explode(' ',$descripcion_larga);
-                          $numero_palabras_en_descripcion = count($palabras_en_descripcion);
-                          $aleatorio = rand(0,$numero_palabras_en_descripcion-1);
-                          $palabras_en_descripcion[$aleatorio]=$palabra_escondida;
-                          echo implode(" ",$palabras_en_descripcion);
-                        ?>
-                    <?php }else{ ?>
-
-                    <?php echo $descripcion_larga; ?>
-                    <?php } ?>
-                  <?php }else{ ?>
-                    <?php echo $descripcion_larga; ?>
-                  <?php } ?>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  <div class="p-3">
-                    <div class="row">
-                      <div class="col">
-                        <table class="table table-striped">
-                          <thead>
-                            <tr>
-                              <th colspan="2"><?php echo $this->lang->line('pagina_producto_tab_detalles_modelo_y_clave'); ?></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td><?php echo $this->lang->line('pagina_producto_tab_detalles_modelo'); ?></td>
-                              <td><?php echo $producto['PRODUCTO_MODELO']; ?> </td>
-                            </tr>
-                            <tr>
-                              <td><?php echo $this->lang->line('pagina_producto_tab_detalles_origen'); ?></td>
-                              <td><?php echo $producto['PRODUCTO_ORIGEN']; ?> </td>
-                            </tr>
-                            <tr>
-                              <td>SKU</td>
-                              <td><?php echo $producto['PRODUCTO_SKU']; ?> </td>
-                            </tr>
-                            <tr>
-                              <td>UPC</td>
-                              <td><?php echo $producto['PRODUCTO_UPC']; ?> </td>
-                            </tr>
-                            <tr>
-                              <td>EAN</td>
-                              <td><?php echo $producto['PRODUCTO_EAN']; ?> </td>
-                            </tr>
-                            <tr>
-                              <td>JAN</td>
-                              <td><?php echo $producto['PRODUCTO_JAN']; ?> </td>
-                            </tr>
-                            <tr>
-                              <td>ISBN</td>
-                              <td><?php echo $producto['PRODUCTO_ISBN']; ?> </td>
-                            </tr>
-                            <tr>
-                              <td>MPN</td>
-                              <td><?php echo $producto['PRODUCTO_MPN']; ?> </td>
-                            </tr>
-                            <tr>
-                              <td>EAN</td>
-                              <td><?php echo $producto['PRODUCTO_EAN']; ?> </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="col">
-                        <table class="table table-striped">
-                          <thead>
-                            <tr>
-                              <th colspan="2"><?php echo $this->lang->line('pagina_producto_tab_detalles_dimensiones_y_peso'); ?></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td><?php echo $this->lang->line('pagina_producto_tab_detalles_ancho'); ?></td>
-                              <td><?php echo number_format($producto['PRODUCTO_ANCHO'],2); ?> <small>cm</small> </td>
-                            </tr>
-                            <tr>
-                              <td><?php echo $this->lang->line('pagina_producto_tab_detalles_alto'); ?></td>
-                              <td><?php echo number_format($producto['PRODUCTO_ALTO'],2); ?> <small>cm</small> </td>
-                            </tr>
-                            <tr>
-                              <td><?php echo $this->lang->line('pagina_producto_tab_detalles_profundo'); ?></td>
-                              <td><?php echo number_format($producto['PRODUCTO_PROFUNDO'],2); ?> <small>cm</small> </td>
-                            </tr>
-                            <tr>
-                              <td><?php echo $this->lang->line('pagina_producto_tab_detalles_peso'); ?></td>
-                              <td><?php echo number_format($producto['PRODUCTO_PESO'],2); ?> <small>Kg</small> </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="preguntas" role="tabpanel" aria-labelledby="contact-tab">
-                  <div class="p-3">
-                    <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
-                    <form class="" action="<?php echo base_url('producto/contacto'); ?>" method="post">
-                      <input type="hidden" name="IdReceptor" value="<?php echo $producto['ID_USUARIO']; ?>">
-                      <input type="hidden" name="IdRemitente" value="<?php echo $_SESSION['usuario']['id']; ?>">
-                      <input type="hidden" name="ProductoNombre" value="<?php echo $titulo; ?>">
-                      <input type="hidden" name="IdProducto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
-                      <div class="row">
-                        <table class="table">
-                          <tr>
-                            <td><strong><?php echo $this->lang->line('pagina_producto_tab_preguntas_remitente'); ?>:</strong></td>
-                            <td><?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']?></td>
-                          </tr>
-                        </table>
-                      </div>
-                      <p> <i class="fa fa-info-circle"></i> <?php echo $this->lang->line('pagina_producto_tab_preguntas_tienes_dudas'); ?></p>
-                      <div class="form-group">
-                        <label for="MensajeTexto"><?php echo $this->lang->line('pagina_producto_tab_preguntas_mensaje'); ?></label>
-                        <textarea class="form-control" name="MensajeTexto" rows="8" required></textarea>
-                      </div>
-                      <button class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> <?php echo $this->lang->line('pagina_producto_tab_preguntas_contactar'); ?></button>
-                    </form>
-                    <span class="clearfix"> </span>
-                  <?php }else{ ?>
-                    <div class="card">
-                      <div class="card-body">
-                        <p><?php echo $this->lang->line('pagina_producto_tab_preguntas_para_preguntar'); ?>.</p>
-                        <a href="<?php echo base_url('login?url_redirect='.base_url('producto/?id='.$producto['ID_PRODUCTO'])); ?>" class="btn <?php echo 'btn-outline'.$primary; ?> btn-block"> <i class="fa fa-sign-in-alt"></i> <?php echo $this->lang->line('pagina_producto_tab_preguntas_inicia_sesion'); ?></a>
-                      </div>
-                    </div>
-                  <?php } ?>
-                  </div>
-                </div>
-                <div class="tab-pane fade p-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
-                  <div class="row">
-                    <div class="col-3">
-                        <img src="<?php echo base_url('contenido/img/tiendas/completo/'.$tienda['TIENDA_IMAGEN']) ?>" alt="" class="img-fluid img-thumbnail rounded-circle">
-                    </div>
-                    <div class="col-9">
-                      <table class="table table-sm table-borderless">
-                        <tr>
-                          <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_nombre'); ?></b></td>
-                          <td><?php echo $tienda['TIENDA_NOMBRE']; ?></td>
-                        </tr>
-                        <tr>
-                          <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_razon_social'); ?></b></td>
-                          <td><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></td>
-                        </tr>
-                        <tr>
-                          <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_rfc'); ?></b></td>
-                          <td><?php echo $tienda['TIENDA_RFC']; ?></td>
-                        </tr>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
 
