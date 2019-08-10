@@ -77,6 +77,8 @@ $route['admin/productos_combinaciones'] = 'Admin_Productos_Combinaciones';
 $route['admin/productos_combinaciones/(:any)'] = 'Admin_Productos_Combinaciones/$1';
 $route['admin'] = 'Admin_Desktop';
 // Rutas de Usuario
+$route['usuario/registro_rapido'] = 'Usuario_Registros_Rapidos';
+$route['usuario/registro_rapido/(:any)'] = 'Usuario_Registros_Rapidos/$1';
 $route['usuario/datos_curiosos'] = 'Usuario_Datos_Curiosos';
 $route['usuario/datos_curiosos/(:any)'] = 'Usuario_Datos_Curiosos/$1';
 $route['usuario/planes'] = 'Usuario_Planes';

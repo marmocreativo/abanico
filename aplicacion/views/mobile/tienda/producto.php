@@ -165,6 +165,27 @@
       </div>
 
       <div class="col-12">
+        <div class="col-12">
+          <div class="card medallas my-3">
+            <div class="row">
+              <div class="col text-center">
+                <?php if($producto['PRODUCTO_ENVIO_GRATUITO']!='no'){ ?>
+                <div class="p-1 border border-success rounded" style="border-style:dashed !important">
+                  <span style="font-size:16px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i></span>
+                </div>
+                <?php } ?>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card my-3 text-center">
+            <img src="<?php echo base_url('assets/global/img/formas_pago.jpg') ?>" width="100%" style="max-width:258px; margin:0 auto;"alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
         <div class="accordion mb-4" id="accordionExample">
           <div class="card">
             <div class="card-header" id="headingOne">
@@ -328,20 +349,8 @@
 
                 <img src="<?php echo base_url('contenido/img/tiendas/completo/'.$tienda['TIENDA_IMAGEN']) ?>" alt="" style="width:100px; height:100px" class="mb-3 m d-block img-thumbnail mx-auto rounded-circle">
 
-                <table class="table table-sm table-borderless">
-                  <tr>
-                    <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_nombre'); ?></b></td>
-                    <td><?php echo $tienda['TIENDA_NOMBRE']; ?></td>
-                  </tr>
-                  <tr>
-                    <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_razon_social'); ?></b></td>
-                    <td><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></td>
-                  </tr>
-                  <tr>
-                    <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_rfc'); ?></b></td>
-                    <td><?php echo $tienda['TIENDA_RFC']; ?></td>
-                  </tr>
-                </table>
+                <h6>Vendido por:</h6>
+                <h5><?php echo $tienda['TIENDA_NOMBRE']; ?></h5>
 
               </div>
             </div>

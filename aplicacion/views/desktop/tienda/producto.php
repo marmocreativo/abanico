@@ -362,7 +362,7 @@
 
             <div class="card medallas my-3">
               <div class="row">
-                <div class="col">
+                <div class="col text-center">
                   <?php if($producto['PRODUCTO_ENVIO_GRATUITO']!='no'){ ?>
                   <div class="p-1 border border-success rounded" style="border-style:dashed !important">
                     <span style="font-size:16px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i></span>
@@ -373,7 +373,7 @@
             </div>
 
             <div class="card my-3 text-center">
-              <img src="<?php echo base_url('assets/global/img/formas_pago.jpg') ?>" width="100%" style="max-width:258px;"alt="">
+              <img src="<?php echo base_url('assets/global/img/formas_pago.jpg') ?>" width="100%" style="max-width:258px; margin:0 auto;"alt="">
             </div>
 
             <div class="card vendedor mb-3">
