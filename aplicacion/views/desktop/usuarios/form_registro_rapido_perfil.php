@@ -1,13 +1,4 @@
 <div class="contenido_principal">
-  <div class="fila fila-titulo">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col">
-          <h1 class="h3"><?php echo $this->lang->line('usuario_formulario_registro_titulo'); ?></h1>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="fila">
     <div class="container">
       <div class="row justify-content-center">
@@ -20,11 +11,11 @@
                 </div>
                 <hr>
               <?php } ?>
-                <form class="" action="<?php echo base_url('usuario/registro_rapido/registro_usuario');?>" method="post">
-                  <input type="hidden" name="UrlRedirect" value="<?php echo base_url('categoria'); ?>">
+                <form class="" action="<?php echo base_url('usuario/registro_rapido/registro_perfil');?>" method="post">
                   <div class="row">
-                    <div class="col mb-3">
-                      <img src="<?php echo base_url('assets/global/img/registro_concurso.jpg'); ?>" class="img-fluid" alt="">
+                    <div class="col mb-3 text-center">
+                      <img src="<?php echo base_url('assets/global/img/logo.png'); ?>" width="200" alt="">
+                      <h2>Regístra un perfil de servicios</h2>
                     </div>
                   </div>
                   <div class="row">
@@ -53,19 +44,48 @@
                        </div>
                      </div>
                    </div>
+                   <hr>
+
+                   <div class="row">
+                     <div class="col-12">
+                        <div class="form-group">
+                          <label for="NombrePerfil"><?php echo $this->lang->line('usuario_vista_tienda_nombre'); ?></label>
+                          <input type="text" class="form-control" id="NombrePerfil" name="NombrePerfil" placeholder="" autocomplete="nope" value="<?php if(form_error('NombrePerfil') != NULL){echo set_value('NombrePerfil');}?>">
+                        </div>
+                        <hr>
+                        <h6 class="mb-3"><span class="fa fa-file-invoice"></span> <?php echo $this->lang->line('usuario_form_perfil_servicio_datos_contaco'); ?></h6>
+                        <div class="form-group">
+                          <label for="TelefonoPerfil"><?php echo $this->lang->line('usuario_vista_tienda_telefono'); ?></label>
+                          <input type="text" class="form-control" id="TelefonoPerfil" name="TelefonoPerfil" placeholder="" required value="<?php echo set_value('TelefonoPerfil'); ?>">
+                        </div>
+                        <hr>
+                        <h5>Plan</h5>
+                        <div class="form-group">
+                          <label for="IdPlan">Plan seleccionado</label>
+                          <select class="form-control" name="IdPlan">
+                            <?php foreach($planes as $plan){ ?>
+                              <option value="<?php echo $plan->ID_PLAN; ?>" <?php if($plan->ID_PLAN==$_GET['plan']){ echo 'selected'; } ?>><?php echo $plan->PLAN_NOMBRE; ?></option>
+                            <?php } ?>
+                          </select>
+                        </div>
+                     </div>
+                   </div>
+
+
                    <div class="form-check">
                      <input type="checkbox" class="form-check-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
                      <label class="form-check-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_formulario_registro_terminos_y_condiciones'); ?></label>
                    </div>
-                   <a href="<?php echo base_url('publicacion/terminos-y-condiciones-de-servicio-para-usuarios-nil'); ?>" target="_blank">Términos y condiciones</a>
+                   <a href="<?php echo base_url('publicacion/terminos-y-condiciones-de-servicio-para-usuarios-nil'); ?>" target="_blank">Términos y condiciones usuarios</a>
+                   <a href="<?php echo base_url('publicacion/terminos-y-condiciones-de-servicio-para-vendedores-y-prestadores-de-servicios-7oc'); ?>" target="_blank">Términos y condiciones vendedores y prestadores de servicios</a>
                    <hr>
                    <button type="submit" class="btn btn-primary btn-block"><?php echo $this->lang->line('usuario_formulario_registro_registrarme'); ?></button>
                  </form>
             </div>
             <div class="card-footer">
               <nav class="nav justify-content-center nav-fill">
-                <a class="nav-link" href="<?php echo base_url('login');?>"> <span class="fa fa-pen-square"></span> <?php echo $this->lang->line('usuario_formulario_registro_iniciar_sesion'); ?></a>
-                <a class="nav-link" href="<?php echo base_url('publicacion/bases-concurso-inaugural');?>"> <span class="fa fa-gift"></span> Más información sobre el concurso</a>
+                <a class="nav-link" href="<?php echo base_url('planes?tipo=servicios');?>"> <span class="fa fa-chevron-left"></span> Volver a los planes</a>
+                <a class="nav-link" href="<?php echo base_url('login');?>"> <span class="fa fa-pen-square"></span> ¿Ya estas registrado como usuario?</a>
               </nav>
             </div>
           </div>

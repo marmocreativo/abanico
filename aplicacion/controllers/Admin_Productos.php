@@ -129,6 +129,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$parametros = array(
 				'ID_USUARIO'=> $this->input->post('IdUsuario'),
 				'ID_TIENDA'=> $this->input->post('IdTienda'),
+				'META_TITULO'=> $this->input->post('MetaTitulo'),
+				'META_DESCRIPCION'=> $this->input->post('MetaDescripcion'),
+				'META_KEYWORDS'=> $this->input->post('MetaKeywords'),
 				'PRODUCTO_NOMBRE'=> $this->input->post('NombreProducto'),
 				'PRODUCTO_URL'=> $url,
 				'PRODUCTO_DESCRIPCION'=> $this->input->post('DescripcionProducto'),
@@ -253,6 +256,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$parametros = array(
 				'ID_USUARIO'=> $this->input->post('IdUsuario'),
 				'ID_TIENDA'=> $this->input->post('IdTienda'),
+				'META_TITULO'=> $this->input->post('MetaTitulo'),
+				'META_DESCRIPCION'=> $this->input->post('MetaDescripcion'),
+				'META_KEYWORDS'=> $this->input->post('MetaKeywords'),
 				'PRODUCTO_NOMBRE'=> $this->input->post('NombreProducto'),
 				'PRODUCTO_URL'=> $url,
 				'PRODUCTO_DESCRIPCION'=> $this->input->post('DescripcionProducto'),

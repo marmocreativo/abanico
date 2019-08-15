@@ -23,7 +23,8 @@ date_default_timezone_set('America/Mexico_City');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://www.abanicoytu.com/';
+$config['base_url'] = 'http://localhost/abanico-master/';
+//$config['base_url'] = 'https://www.abanicoytu.com/';
 
 /*
 |--------------------------------------------------------------------------

@@ -120,6 +120,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['origen_formulario'] = 'categoria';
 			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$this->data['categoria']['ID_CATEGORIA'],$orden,'');
 			$this->data['primary'] = $this->data['categoria']['CATEGORIA_COLOR'];
+
+			$this->data['titulo'] = $this->data['categoria']['CATEGORIA_NOMBRE'].'| Abanico siempre lo mejor';
+			$this->data['descripcion'] = $this->data['categoria']['CATEGORIA_DESCRIPCION'];
+			$this->data['keywords'] = $this->data['categoria']['META_KEYWORDS'];
+			$this->data['imagen'] = base_url('contenido/img/categorias/completo/'.$this->data['categoria']['CATEGORIA_IMAGEN']);
+
 	 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
@@ -129,6 +135,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 			$this->data['productos'] = $this->ProductosModel->lista_activos($parametros_or,$parametros_and,'',$orden,'');
 			$this->data['origen_formulario'] = 'categoria';
+
+			$this->data['titulo'] = 'Todos los productos | Abanico siempre lo mejor';
+			$this->data['descripcion'] = 'Compra y vende artículos por internet';
+			$this->data['keywords'] = '';
+			$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
 	 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

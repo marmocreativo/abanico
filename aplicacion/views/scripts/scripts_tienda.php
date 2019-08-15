@@ -534,6 +534,7 @@ VARIACIONES
 // Al cargar
 
 var precio = $('.CombinacionProducto').find(':selected').attr('data-precio-producto');
+var cantidad_max = $('.CombinacionProducto').find(':selected').attr('data-cantidad_max');
 var peso = $('.CombinacionProducto').find(':selected').attr('data-peso-producto');
 var detalles = $('.CombinacionProducto').find(':selected').attr('data-detalles-producto');
 var precio_visible = $('.CombinacionProducto').find(':selected').attr('data-precio-visible-producto');
@@ -547,14 +548,20 @@ if(imagen){
 // Cambiar datos del boton
 jQuery('#Precio_Producto').html(precio_visible);
 jQuery('#BotonComprar').attr('data-precio-producto',precio);
+jQuery('#BotonComprar').attr('data-cantidad-max',cantidad_max);
 jQuery('#BotonComprar').attr('data-peso-producto',peso);
 jQuery('#BotonComprar').attr('data-detalles-producto',detalles);
+jQuery('#BotonComprar').attr('data-imagen-producto',nuevaImagen);
+
 jQuery('#BotonCompraRapida').attr('data-precio-producto',precio);
+jQuery('#BotonCompraRapida').attr('data-cantidad-max',cantidad_max);
 jQuery('#BotonCompraRapida').attr('data-peso-producto',peso);
 jQuery('#BotonCompraRapida').attr('data-detalles-producto',detalles);
+jQuery('#BotonCompraRapida').attr('data-imagen-producto',nuevaImagen);
 // Al cambiar
 jQuery('.CombinacionProducto').on('change',function(e){
   var precio = jQuery(this).find(':selected').attr('data-precio-producto');
+  var cantidad_max = $('.CombinacionProducto').find(':selected').attr('data-cantidad_max');
   var peso = jQuery(this).find(':selected').attr('data-peso-producto');
   var detalles = jQuery(this).find(':selected').attr('data-detalles-producto');
   var precio_visible = jQuery(this).find(':selected').attr('data-precio-visible-producto');
@@ -568,11 +575,16 @@ jQuery('.CombinacionProducto').on('change',function(e){
   // Cambiar datos del boton
   jQuery('#Precio_Producto').html(precio_visible);
   jQuery('#BotonComprar').attr('data-precio-producto',precio);
+  jQuery('#BotonComprar').attr('data-cantidad-max',cantidad_max);
   jQuery('#BotonComprar').attr('data-peso-producto',peso);
   jQuery('#BotonComprar').attr('data-detalles-producto',detalles);
+  jQuery('#BotonComprar').attr('data-imagen-producto',nuevaImagen);
+
   jQuery('#BotonCompraRapida').attr('data-precio-producto',precio);
+  jQuery('#BotonCompraRapida').attr('data-cantidad-max',cantidad_max);
   jQuery('#BotonCompraRapida').attr('data-peso-producto',peso);
   jQuery('#BotonCompraRapida').attr('data-detalles-producto',detalles);
+  jQuery('#BotonCompraRapida').attr('data-imagen-producto',nuevaImagen);
 
 });
 /*

@@ -43,6 +43,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 		$this->data['productos'] = $this->ProductosModel->lista_activos('','','','',10);
 		$this->data['servicios'] = $this->ServiciosModel->lista_activos('','','','');
+
+		$this->data['titulo'] = 'Datos Curiosos | Abanico siempre lo mejor';
+		$this->data['descripcion'] = 'Compra y vende artículos por internet';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/pagina_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

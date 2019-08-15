@@ -53,6 +53,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->data['servicios'] = $this->ServiciosModel->lista_activos('','','','','');
 		$this->data['slider'] = $this->SlidersModel->slide_nombre_lenguaje('inicio',$_SESSION['lenguaje']['iso']);
 		$this->data['slides'] = $this->SlidesModel->lista(['ID_SLIDER'=>$this->data['slider']['ID_SLIDER']],'ORDEN ASC','');
+
+		$this->data['titulo'] = 'Abanico siempre lo mejor';
+		$this->data['descripcion'] = 'Compra y vende artículos por internet';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/pagina_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

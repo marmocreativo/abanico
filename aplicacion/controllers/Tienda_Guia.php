@@ -45,6 +45,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
 		$this->data['guia'] = $this->GuiasPedidosModel->detalles($guia);
 		$this->data['ubicaciones'] = $this->RutasGuiasModel->lista_rutas($this->data['guia']['GUIA_CODIGO']);
+
+		$this->data['titulo'] = 'Guias | Abanico siempre lo mejor';
+		$this->data['descripcion'] = 'Guías de rastreo';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/rastreo_guia',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

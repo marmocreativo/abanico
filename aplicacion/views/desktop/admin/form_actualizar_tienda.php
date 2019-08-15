@@ -71,11 +71,11 @@
                  <h5 class="mb-3"><span class="fa fa-file-invoice"></span> Datos Fiscales</h5>
                  <div class="form-group">
                    <label for="RazonSocialTienda">Razón social</label>
-                   <input type="text" class="form-control" id="RazonSocialTienda" name="RazonSocialTienda" placeholder="" value="<?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?>">
+                   <input type="text" class="form-control" id="RazonSocialTienda" required name="RazonSocialTienda" placeholder="" value="<?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?>">
                  </div>
                  <div class="form-group">
                    <label for="RfcTienda">R.F.C.</label>
-                   <input type="text" class="form-control" id="RfcTienda" name="RfcTienda" placeholder="" value="<?php echo $tienda['TIENDA_RFC']; ?>">
+                   <input type="text" class="form-control" id="RfcTienda" required name="RfcTienda" placeholder="" value="<?php echo $tienda['TIENDA_RFC']; ?>">
                  </div>
                  <div class="form-group">
                    <label for="TelefonoTienda">Teléfono</label>

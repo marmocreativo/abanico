@@ -126,6 +126,13 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 			$this->data['productos'] = $this->ProductosModel->busqueda($parametros_or,$parametros_and,$orden,'');
 			$this->data['origen_formulario'] = 'busqueda';
+
+			$this->data['titulo'] = 'Resultados Busqueda: '.html_escape($_GET['Busqueda']).' | Abanico siempre lo mejor';
+		 $this->data['descripcion'] = 'Resultados de busqueda';
+		 $this->data['keywords'] = '';
+		 $this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+
 			$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 			$this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);
 			$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
@@ -195,6 +202,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				 $this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 				 $this->data['servicios'] = $this->ServiciosModel->busqueda($parametros_or,$parametros_and,$orden,'');
 				 $this->data['origen_formulario'] = 'busqueda';
+
+				 $this->data['titulo'] = 'Resultados Busqueda: '.html_escape($_GET['Busqueda']).' | Abanico siempre lo mejor';
+	 			$this->data['descripcion'] = 'Resultados de busqueda';
+	 			$this->data['keywords'] = '';
+	 			$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
 				 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 				 $this->load->view($this->data['dispositivo'].'/tienda/categoria_servicios',$this->data);
 				 $this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

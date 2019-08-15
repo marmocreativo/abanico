@@ -11,6 +11,6 @@ class Ajax_Paises extends CI_Controller {
 
 	public function index()
 	{
-		echo json_encode($this->PaisesModel->lista('','','',''));
+		echo json_encode($this->PaisesModel->lista_activos());
 	}
 }

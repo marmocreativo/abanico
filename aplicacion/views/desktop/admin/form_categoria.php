@@ -49,8 +49,12 @@
                  <input type="text" class="form-control" id="NombreCategoria" name="NombreCategoria" placeholder="" value="" required>
                </div>
                <div class="form-group">
-                 <label class="sr-only" for="DescripcionCategoria">Descripción</label>
-                 <input type="hidden" class="form-control" id="DescripcionCategoria" name="DescripcionCategoria" placeholder="" value="">
+                 <label for="DescripcionCategoria">Descripción</label>
+								 <textarea id="DescripcionCategoria" name="DescripcionCategoria" class="form-control" rows="8"></textarea>
+               </div>
+							 <div class="form-group">
+                 <label for="MetaKeywords">Keywords</label>
+								 <textarea id="MetaKeywords" name="MetaKeywords" class="form-control" rows="8"></textarea>
                </div>
                <hr>
                <h5><span class="fas fa-paint-brush"></span> Apariencia</h5>

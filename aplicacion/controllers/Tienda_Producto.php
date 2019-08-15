@@ -81,6 +81,15 @@ class Tienda_Producto extends CI_Controller {
 		}
 		// Estadísticas de Producto
 		$this->EstadisticasModel->objeto_visto('producto',$this->data['producto']['ID_PRODUCTO']);
+
+		// Metadatos de Producto
+		$this->data['titulo'] = $this->data['producto']['PRODUCTO_NOMBRE'].'| Abanico siempre lo mejor';
+		if(!empty($this->data['producto']['META_TITULO'])){ $this->data['titulo'] = $this->data['producto']['META_TITULO'].'| Abanico siempre lo mejor'; }
+		$this->data['descripcion'] = $this->data['producto']['PRODUCTO_DESCRIPCION'];
+		if(!empty($this->data['producto']['META_DESCRIPCION'])){ $this->data['descripcion'] = $this->data['producto']['META_DESCRIPCION'].'| Abanico siempre lo mejor'; }
+		$this->data['keywords'] = $this->data['producto']['META_KEYWORDS'];
+		$this->data['imagen'] = base_url('contenido/img/productos/completo/'.$this->data['portada']['GALERIA_ARCHIVO']);
+
  		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/producto',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
@@ -124,6 +133,15 @@ class Tienda_Producto extends CI_Controller {
 	 }
 	 // Estadísticas de Producto
 	 $this->EstadisticasModel->objeto_visto('producto',$this->data['producto']['ID_PRODUCTO']);
+
+	 // Metadatos de Producto
+	 $this->data['titulo'] = $this->data['producto']['PRODUCTO_NOMBRE'].'| Abanico siempre lo mejor';
+	 if(!empty($this->data['producto']['META_TITULO'])){ $this->data['titulo'] = $this->data['producto']['META_TITULO'].'| Abanico siempre lo mejor'; }
+	 $this->data['descripcion'] = $this->data['producto']['PRODUCTO_DESCRIPCION'];
+	 if(!empty($this->data['producto']['META_DESCRIPCION'])){ $this->data['titulo'] = $this->data['producto']['META_DESCRIPCION'].'| Abanico siempre lo mejor'; }
+	 $this->data['keywords'] = $this->data['producto']['META_KEYWORDS'];
+	 $this->data['imagen'] = base_url('contenido/img/productos/completo/'.$this->data['portada']['GALERIA_ARCHIVO']);
+
 	 $this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 	 $this->load->view($this->data['dispositivo'].'/tienda/producto_previa',$this->data);
 	 $this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

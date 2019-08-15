@@ -54,7 +54,11 @@
                </div>
                <div class="form-group">
                  <label for="DescripcionCategoria">Descripción</label>
-                 <input type="text" class="form-control" id="DescripcionCategoria" name="DescripcionCategoria" placeholder="" value="<?php echo $categoria['CATEGORIA_DESCRIPCION']; ?>">
+								 <textarea id="DescripcionCategoria" name="DescripcionCategoria" class="form-control" rows="8"><?php echo $categoria['CATEGORIA_DESCRIPCION']; ?></textarea>
+               </div>
+							 <div class="form-group">
+                 <label for="MetaKeywords">Keywords</label>
+								 <textarea id="MetaKeywords" name="MetaKeywords" class="form-control" rows="8"><?php echo $categoria['META_KEYWORDS']; ?></textarea>
                </div>
                <hr>
                <h5><span class="fas fa-paint-brush"></span> Apariencia</h5>

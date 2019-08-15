@@ -74,6 +74,15 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$this->data['calificaciones'] = $this->CalificacionesServiciosModel->calificaciones_producto($_GET['id'],'');
 		}
 		$this->EstadisticasModel->objeto_visto('servicio',$this->data['servicio']['ID_SERVICIO']);
+
+		// Metadatos de Producto
+		$this->data['titulo'] = $this->data['servicio']['SERVICIO_NOMBRE'].'| Abanico siempre lo mejor';
+		if(!empty($this->data['servicio']['META_TITULO'])){ $this->data['titulo'] = $this->data['servicio']['META_TITULO'].'| Abanico siempre lo mejor'; }
+		$this->data['descripcion'] = $this->data['servicio']['SERVICIO_DESCRIPCION'];
+		if(!empty($this->data['servicio']['META_DESCRIPCION'])){ $this->data['descripcion'] = $this->data['servicio']['META_DESCRIPCION'].'| Abanico siempre lo mejor'; }
+		$this->data['keywords'] = $this->data['servicio']['META_KEYWORDS'];
+		$this->data['imagen'] = base_url('contenido/img/servicios/completo/'.$this->data['portada']['GALERIA_ARCHIVO']);
+
  		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/servicio',$this->data);
  		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

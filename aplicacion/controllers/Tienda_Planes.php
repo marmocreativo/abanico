@@ -58,7 +58,13 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}else{
 			$tipo = 'productos';
 		}
+		$this->data['tipo'] = $tipo;
 		$this->data['planes'] = $this->PlanesModel->lista(['PLAN_TIPO'=>$tipo]);
+
+		$this->data['titulo'] = 'Planes | Abanico siempre lo mejor';
+		$this->data['descripcion'] = 'Elije tu plan y vende con nosotros';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
 
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/lista_planes',$this->data);

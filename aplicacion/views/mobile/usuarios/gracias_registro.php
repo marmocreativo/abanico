@@ -1,72 +1,33 @@
 <div class="contenido_principal">
-  <div class="fila fila-titulo">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col">
-          <h1 class="h3"><?php echo $this->lang->line('usuario_formulario_registro_titulo'); ?></h1>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 my-3 mt-4">
+        <h5 class="text-center"><?php echo $this->lang->line('usuario_formulario_registro_titulo'); ?></h1>
       </div>
     </div>
   </div>
-  <div class="fila">
+
+  <div class="formMobile">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-12 col-sm-8">
-          <div class="card">
-            <div class="card-body">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-body text-center">
               <?php if(!empty(validation_errors())){ ?>
                 <div class="alert alert-danger">
                   <?php echo validation_errors(); ?>
                 </div>
                 <hr>
               <?php } ?>
-                <form class="" action="<?php echo base_url('usuario/registro_rapido/registro_usuario');?>" method="post">
-                  <input type="hidden" name="UrlRedirect" value="<?php echo base_url('categoria'); ?>">
-                  <div class="row">
-                    <div class="col mb-3">
-                      <img src="<?php echo base_url('assets/global/img/registro_concurso.jpg'); ?>" class="img-fluid" alt="">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                       <div class="form-group">
-                         <label for="NombreUsuario"><?php echo $this->lang->line('usuario_formulario_registro_nombre'); ?></label>
-                         <input type="text" class="form-control" id="NombreUsuario" name="NombreUsuario" placeholder="" value="<?=!form_error('NombreUsuario')?set_value('NombreUsuario'):''?>">
-                       </div>
-                    </div>
-                    <div class="col">
-                       <div class="form-group">
-                         <label for="ApellidosUsuario"><?php echo $this->lang->line('usuario_formulario_registro_apellidos'); ?></label>
-                         <input type="text" class="form-control" id="ApellidosUsuario" name="ApellidosUsuario" placeholder="" value="<?=!form_error('ApellidosUsuario')?set_value('ApellidosUsuario'):''?>">
-                       </div>
-                    </div>
-                  </div>
-                   <div class="form-group">
-                     <label for="CorreoUsuario"><?php echo $this->lang->line('usuario_formulario_registro_correo'); ?></label>
-                     <input type="email" class="form-control" id="CorreoUsuario" name="CorreoUsuario" placeholder="" value="<?=!form_error('CorreoUsuario')?set_value('CorreoUsuario'):''?>">
-                   </div>
-                   <div class="row">
-                     <div class="col">
-                       <div class="form-group">
-                         <label for="PassUsuario"><?php echo $this->lang->line('usuario_formulario_registro_pass'); ?></label>
-                         <input type="password" class="form-control" id="PassUsuario" name="PassUsuario" placeholder="">
-                       </div>
-                     </div>
-                   </div>
-                   <div class="form-check">
-                     <input type="checkbox" class="form-check-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                     <label class="form-check-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_formulario_registro_terminos_y_condiciones'); ?></label>
-                   </div>
-                   <a href="<?php echo base_url('publicacion/terminos-y-condiciones-de-servicio-para-usuarios-nil'); ?>" target="_blank">Términos y condiciones</a>
-                   <hr>
-                   <button type="submit" class="btn btn-primary btn-block"><?php echo $this->lang->line('usuario_formulario_registro_registrarme'); ?></button>
-                 </form>
-            </div>
-            <div class="card-footer">
-              <nav class="nav justify-content-center nav-fill">
-                <a class="nav-link" href="<?php echo base_url('login');?>"> <span class="fa fa-pen-square"></span> <?php echo $this->lang->line('usuario_formulario_registro_iniciar_sesion'); ?></a>
-                <a class="nav-link" href="<?php echo base_url('publicacion/bases-concurso-inaugural');?>"> <span class="fa fa-gift"></span> Más información sobre el concurso</a>
-              </nav>
+              <?php retro_alimentacion(); ?>
+              <div class="row">
+                <div class="col mb-3 text-center">
+                  <img src="<?php echo base_url('assets/global/img/logo.png'); ?>" width="200" alt="">
+                  <h2>Gracias por registrarte con nosotros. En breve nos comunicaremos contigo</h2>
+                  <hr>
+                  <a href="<?php echo base_url('login'); ?>" class="btn btn-primary">Iniciar Sesión</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -36,6 +36,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function index()
 	{
+
+		$this->data['titulo'] = 'Abanico siempre lo mejor';
+		$this->data['descripcion'] = 'Compra y vende artículos por internet';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/test',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
@@ -44,6 +50,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->data['pedido']['PEDIDO_NOMBRE']='Georgina Alcántar López';
 		$this->data['pedido']['PEDIDO_DIRECCION']='Bahía No. 51 depto 103 Ampli. Las Águilas. Álvaro Obregón. CDMX. CP. 01159';
 		$this->data['pedido_tienda']['GUIA_PAQUETERIA']='';
+
+		$this->data['titulo'] = 'Abanico siempre lo mejor';
+		$this->data['descripcion'] = 'Compra y vende artículos por internet';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+		
 		$this->load->view($this->data['dispositivo'].'/admin/imprimir_guia_limpia',$this->data);
 	}
 	public function barcode(){

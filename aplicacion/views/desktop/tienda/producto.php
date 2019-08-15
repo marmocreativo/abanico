@@ -35,16 +35,16 @@
             <div class="col-8">
               <div class="col-12 mb-3 slider-fotos d-flex align-items-center justify-content-center">
                 <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
-                <img src="<?php echo base_url($ruta_portada) ?>" class="img-fluid visor-galeria-producto" style="max-height:500px" alt="">
+                <img src="<?php echo base_url($ruta_portada) ?>" class="img-fluid visor-galeria-producto" style="max-height:500px" alt="<?php echo $titulo.'-portada' ?>" title="<?php echo $titulo.'-portada' ?>">
               </div>
               <div class="row">
-                <?php foreach($galerias as $galeria){ ?>
+                <?php $i=1; foreach($galerias as $galeria){ ?>
                   <?php $ruta_galeria = $op['ruta_imagenes_producto'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
                   <div class="col-2 mb-2 px-1">
-                  <div class="card slider-thumbs deck-imagenes" style="background-image:url('<?php echo base_url($ruta_galeria) ?>'); background-size:contain; background-position:center; background-repeat:no-repeat;">
+                  <div class="card slider-thumbs deck-imagenes" style="background-image:url('<?php echo base_url($ruta_galeria) ?>'); background-size:contain; background-position:center; background-repeat:no-repeat;" title="<?php echo $titulo.'-galeria-'.$i; ?>">
                   </div>
                 </div>
-                <?php } ?>
+                <?php $i++; } ?>
               </div>
               <hr>
               <div class="row mb-5">
@@ -300,9 +300,11 @@
                           data-precio-producto='<?php echo $combinacion->COMBINACION_PRECIO; ?>'
                           data-peso-producto='<?php echo $combinacion->COMBINACION_PESO; ?>'
                           data-imagen-producto='<?php echo $combinacion->COMBINACION_IMAGEN; ?>'
+                          data-cantidad-max='<?php echo $combinacion->COMBINACION_CANTIDAD; ?>'
                           data-precio-visible-producto='<?php echo number_format($precio_display_combinacion,2); ?>'
                           data-detalles-producto='<?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?>'
-                          ><?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?></option>
+                          <?php if($combinacion->COMBINACION_CANTIDAD==0){ echo 'disabled'; } ?>
+                          ><?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?> <?php if($combinacion->COMBINACION_CANTIDAD==0){ echo '- Agotado'; } ?></option>
                       <?php } ?>
                       </select>
                     </div>

@@ -103,6 +103,7 @@
                 <option value="<?php echo  $combinacion->COMBINACION_OPCION; ?>"
                   data-precio-producto='<?php echo $combinacion->COMBINACION_PRECIO; ?>'
                   data-imagen-producto='<?php echo $combinacion->COMBINACION_IMAGEN; ?>'
+                  data-cantidad-max='<?php echo $combinacion->COMBINACION_CANTIDAD; ?>'
                   data-precio-visible-producto='<?php echo number_format($precio_display_combinacion,2); ?>'
                   data-detalles-producto='<?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?>'
                   ><?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?></option>

@@ -95,6 +95,11 @@
                                     <label for="NombreProducto"><?php echo $this->lang->line('usuario_form_producto_nombre'); ?></label>
                                     <input type="text" class="form-control" id="NombreProducto" name="NombreProducto" placeholder="" value="<?php echo $producto['PRODUCTO_NOMBRE']; ?>">
                                   </div>
+                                  <div class="form-group">
+                                    <label for="MetaTitulo">Meta Título</label>
+                                    <input type="text" class="form-control" id="MetaTitulo" name="MetaTitulo" placeholder="" value="<?php echo $producto['META_TITULO']; ?>">
+                                    <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Para mejorar el posicionamiento en internet, un título corto menos de 70 caracteres</small>
+                                  </div>
                                 </div>
                                 <div class="col">
                                   <div class="form-group">
@@ -285,6 +290,16 @@
                         <div class="form-group">
                           <label for="DescripcionProducto"><?php echo $this->lang->line('usuario_form_producto_descripcion_corta'); ?></label>
                           <textarea id="DescripcionProducto" name="DescripcionProducto" class="form-control SmallEditor" rows="3"><?php echo $producto['PRODUCTO_DESCRIPCION']; ?></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="MetaDescripcion">Meta Descripción</label>
+                          <textarea class="form-control" name="MetaDescripcion" rows="3" cols="80"><?php echo $producto['META_DESCRIPCION']; ?></textarea>
+                          <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Para mejorar el posicionamiento en internet, un título corto menos de 140 caracteres</small>
+                        </div>
+                        <div class="form-MetaKeywords">
+                          <label for="MetaDescripcion">Meta Keywords</label>
+                          <textarea class="form-control" name="MetaKeywords" rows="3" cols="80"><?php echo $producto['META_KEYWORDS']; ?></textarea>
+                          <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Para mejorar el posicionamiento en internet, de 1 a 10 frases separadas por coma que describan tu servicio</small>
                         </div>
                         <div class="form-group">
                           <label for="DetallesProducto"><?php echo $this->lang->line('usuario_form_producto_detalles'); ?></label>

@@ -109,6 +109,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'CATEGORIA_URL' => $url,
 				'CATEGORIA_IMAGEN' => $imagen,
 				'CATEGORIA_DESCRIPCION' => $this->input->post('DescripcionCategoria'),
+				'META_KEYWORDS'=> $this->input->post('MetaKeywords'),
 				'CATEGORIA_COLOR' => $this->input->post('ColorCategoria'),
 				'CATEGORIA_ICONO' => $this->input->post('IconoCategoria'),
 				'CATEGORIA_PADRE' => $this->input->post('PadreCategoria'),

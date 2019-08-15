@@ -68,8 +68,23 @@
                            <input type="text" class="form-control" id="NombreServicio" name="NombreServicio" placeholder="" required value="<?php echo $servicio['SERVICIO_NOMBRE']; ?>">
                          </div>
                          <div class="form-group">
+                           <label for="MetaTitulo">Meta Título</label>
+                           <input type="text" class="form-control" id="MetaTitulo" name="MetaTitulo" placeholder="" value="<?php echo $servicio['META_TITULO']; ?>">
+                           <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Para mejorar el posicionamiento en internet, un título corto menos de 70 caracteres</small>
+                         </div>
+                         <div class="form-group">
                            <label for="DescripcionServicio">Descripción Corta</label>
                            <textarea class="form-control" name="DescripcionServicio" rows="3" cols="80" required><?php echo $servicio['SERVICIO_DESCRIPCION']; ?></textarea>
+                         </div>
+                         <div class="form-group">
+                           <label for="MetaDescripcion">Meta Descripción</label>
+                           <textarea class="form-control" name="MetaDescripcion" rows="3" cols="80"><?php echo $servicio['META_DESCRIPCION']; ?></textarea>
+                           <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Para mejorar el posicionamiento en internet, un título corto menos de 140 caracteres</small>
+                         </div>
+                         <div class="form-group">
+                           <label for="MetaKeywords">Meta Keywords</label>
+                           <textarea class="form-control" name="MetaKeywords" rows="3" cols="80"><?php echo $servicio['META_KEYWORDS']; ?></textarea>
+                           <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Para mejorar el posicionamiento en internet, de 1 a 10 frases separadas por coma que describan tu servicio</small>
                          </div>
                          <hr>
                          <div class="row">
