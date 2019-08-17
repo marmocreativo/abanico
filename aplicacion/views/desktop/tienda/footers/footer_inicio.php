@@ -189,11 +189,6 @@
              $('body').removeClass('loading');
            }
          });
-         <?php if($op['mostrar_promociones_siempre']=='no'){ ?>
-           <?php if(!isset($_SESSION['promocion'])){   $_SESSION['promocion']=true; ?> $('#ModalPromociones').modal(); <?php } ?>
-         <?php }else{ ?>
-           $('#ModalPromociones').modal();
-         <?php } ?>
        });
      </script>
      <?php $this->load->view('scripts/scripts_concurso');  ?>

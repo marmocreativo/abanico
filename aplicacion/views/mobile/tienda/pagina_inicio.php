@@ -173,6 +173,11 @@
                   <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small> </div>
                 <?php } ?>
                 <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_display,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small></div>
+                <?php if($producto->PRODUCTO_ENVIO_GRATUITO!='no'){ ?>
+                <div class="p-1 border border-success rounded" style="border-style:dashed !important">
+                  <span style="font-size:12px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i></span>
+                </div>
+                <?php } ?>
               </div>
             </a>
             <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
@@ -291,6 +296,11 @@
                      <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small> </div>
                    <?php } ?>
                    <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_display,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small></div>
+                   <?php if($producto->PRODUCTO_ENVIO_GRATUITO!='no'){ ?>
+                   <div class="p-1 border border-success rounded" style="border-style:dashed !important">
+                     <span style="font-size:12px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i></span>
+                   </div>
+                   <?php } ?>
                  </div>
                </a>
                <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
@@ -401,6 +411,11 @@
                       <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small> </div>
                     <?php } ?>
                     <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_display,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small></div>
+                    <?php if($producto->PRODUCTO_ENVIO_GRATUITO!='no'){ ?>
+                    <div class="p-1 border border-success rounded" style="border-style:dashed !important">
+                      <span style="font-size:12px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i></span>
+                    </div>
+                    <?php } ?>
                   </div>
                 </a>
                 <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>

@@ -322,6 +322,10 @@ jQuery('#BotonComprar').on('click',function(e){
       IdTienda: id_tienda,
       NombreTienda: nombre_tienda
     },
+
+    beforeSend: function(){
+      jQuery('.CargarCarrito').html('<div class="p4 text-center"><h3><i class="fa fa-spinner fa-pulse"></i> Por favor espere...</h3></div>');
+    },
     success : function(texto)
      {
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
@@ -370,6 +374,9 @@ jQuery('#BotonCompraRapida').on('click',function(e){
       IdTienda: id_tienda,
       NombreTienda: nombre_tienda
     },
+    beforeSend: function(){
+      jQuery('.CargarCarrito').html('<div class="p4 text-center"><h3><i class="fa fa-spinner fa-pulse"></i> Por favor espere...</h3></div>');
+    },
     success : function(texto)
      {
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
@@ -398,6 +405,9 @@ jQuery('.CargarCarrito').on('click', '.boton-incrementar-carrito', function() {
       DetallesProducto: detalles_producto,
       CantidadMaxima: cantidad_max
     },
+    beforeSend: function(){
+      jQuery('.CargarCarrito').html('<div class="p4 text-center"><h3><i class="fa fa-spinner fa-pulse"></i> Por favor espere...</h3></div>');
+    },
     success : function(texto)
      {
         jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
@@ -420,6 +430,9 @@ jQuery('.CargarCarrito').on('click', '.boton-disminuir-carrito', function() {
     data: {
       IdProducto: id_producto,
       DetallesProducto: detalles_producto
+    },
+    beforeSend: function(){
+      jQuery('.CargarCarrito').html('<div class="p4 text-center"><h3><i class="fa fa-spinner fa-pulse"></i> Por favor espere...</h3></div>');
     },
     success : function(texto)
      {
@@ -458,6 +471,9 @@ jQuery('.CargarCarrito').on('blur', '.form-cantidad-carrito', function() {
       CantidadProducto: cantidad_producto,
       CantidadMaxima: cantidad_max
     },
+    beforeSend: function(){
+      jQuery('.CargarCarrito').html('<div class="p4 text-center"><h3><i class="fa fa-spinner fa-pulse"></i> Por favor espere...</h3></div>');
+    },
     success : function(texto)
      {
        jQuery.ajax({
@@ -490,6 +506,9 @@ jQuery('.CargarCarrito').on('click', '.boton-eliminar-carrito', function() {
     data: {
       IdProducto: id_producto,
       DetallesProducto: detalles_producto
+    },
+    beforeSend: function(){
+      jQuery('.CargarCarrito').html('<div class="p4 text-center"><h3><i class="fa fa-spinner fa-pulse"></i> Por favor espere...</h3></div>');
     },
     success : function(texto)
      {

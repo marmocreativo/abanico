@@ -339,7 +339,11 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			redirect(base_url('admin/productos/actualizar?id=').$this->input->post('Identificador'));
     }else{
 
-			$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
+			if(isset($_POST['Identificador'])){
+				$this->data['producto'] = $this->ProductosModel->detalles($_POST['Identificador']);
+			}else{
+				$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
+			}
 			$this->data['usuarios'] = $this->UsuariosModel->lista([ 'USUARIO_ESTADO'=>'activo' ],'','','');
 			$this->data['usuario_producto'] = $this->UsuariosModel->detalles($this->data['producto']['ID_USUARIO']);
 			$this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['usuario_producto']['ID_USUARIO']);
