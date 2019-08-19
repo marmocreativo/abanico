@@ -33,7 +33,18 @@
             </div>
             <div class="formulario d-flex align-items-center">
               <form class="form-inline" action="<?php echo base_url('admin/usuarios/busqueda');?>" method="get">
-                <input type="hidden" name="tipo_usuario" value="<?php echo $tipo_usuario; ?>">
+                <div class="form-group">
+                  <label for="tipo_usuario">Tipo de Usuario</label>
+                  <select class="form-control form-control-sm" name="tipo_usuario">
+                    <option value="">Todos</option>
+                    <option value="usr-1" <?php if($tipo_usuario=='usr-1'){ echo 'selected'; } ?> >Clientes</option>
+                    <option value="vnd-2" <?php if($tipo_usuario=='vnd-2'){ echo 'selected'; } ?> >Vendedores</option>
+                    <option value="ser-3" <?php if($tipo_usuario=='ser-3'){ echo 'selected'; } ?> >Servidores</option>
+                    <option value="vns-4" <?php if($tipo_usuario=='vns-4'){ echo 'selected'; } ?> >Vendedores y Servidores</option>
+                    <option value="tec-5" <?php if($tipo_usuario=='tec-5'){ echo 'selected'; } ?> >Técnicos</option>
+                    <option value="adm-6" <?php if($tipo_usuario=='adm-6'){ echo 'selected'; } ?> >Administradores</option>
+                  </select>
+                </div>
                 <div class="form-group">
                   <label for="Busqueda" class="sr-only">Busqueda</label>
                   <input type="text" class="form-control form-control-sm" id="Busqueda" name="Busqueda" placeholder="Buscar">
@@ -54,6 +65,7 @@
                 <tr>
                   <th class="text-left">Nombre</th>
                   <th class="text-center">Correo</th>
+                  <th class="text-center">Tipo de Usuario</th>
                   <th class="text-center">Estado</th>
                   <th class="text-right">Controles</th>
                 </tr>
@@ -63,6 +75,34 @@
                 <tr>
                   <td class="text-left"><span style="<?php if($usuario->USUARIO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"><?php echo $usuario->USUARIO_NOMBRE.' '.$usuario->USUARIO_APELLIDOS; ?></span></td>
                   <td class="text-center"><span style="<?php if($usuario->USUARIO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"><?php echo $usuario->USUARIO_CORREO; ?></span></td>
+                    <td class="text-center">
+                        <?php
+                          switch($usuario->USUARIO_TIPO){
+                            case 'usr-1':
+                              $tipo = '<span class="badge badge-primary">Cliente</span>';
+                            break;
+                            case 'vnd-2':
+                              $tipo = '<span class="badge badge-success">Vendedor</span>';
+                            break;
+                            case 'ser-3':
+                              $tipo = '<span class="badge badge-warning">Servicios</span>';
+                            break;
+                            case 'vns-4':
+                              $tipo = '<span class="badge badge-success">Vendedores y Servicio</span>';
+                            break;
+                            case 'tec-5':
+                              $tipo = '<span class="badge badge-success">Técnico</span>';
+                            break;
+                            case 'adm-6':
+                              $tipo = '<span class="badge badge-danger">Administrador</span>';
+                            break;
+
+                          }
+                        ?>
+                      <div class="dropdown">
+                          <?php echo $tipo; ?>
+                      </div>
+                    </td>
                   <td class="text-center">
                       <?php
                         switch($usuario->USUARIO_ESTADO){

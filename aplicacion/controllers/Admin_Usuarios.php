@@ -48,7 +48,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function index()
 	{
 			// Tipo de Uusario por defecto
-			if(!isset($_GET['tipo_usuario'])||empty($_GET['tipo_usuario'])){ $this->data['tipo_usuario']='usr-1'; }else{ $this->data['tipo_usuario']=$_GET['tipo_usuario']; }
+			if(!isset($_GET['tipo_usuario'])||empty($_GET['tipo_usuario'])){ $this->data['tipo_usuario']=''; }else{ $this->data['tipo_usuario']=$_GET['tipo_usuario']; }
 			$this->data['usuarios'] = $this->UsuariosModel->lista_admin('',$this->data['tipo_usuario'],'','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_usuarios',$this->data);

@@ -48,9 +48,17 @@
                   <label for="TituloPublicacion">Título </label>
                   <input type="text" name="TituloPublicacion" class="form-control" value="<?php echo $publicacion['PUBLICACION_TITULO']; ?>">
                 </div>
+								<div class="form-group">
+                  <label for="MetaTitulo">Meta título </label>
+                  <input type="text" name="MetaTitulo" class="form-control" value="<?php echo $publicacion['META_TITULO']; ?>">
+                </div>
                 <div class="form-group">
                   <label for="ResumenPublicacion">Resumen de la publicación</label>
                   <textarea id="ResumenPublicacion" name="ResumenPublicacion" class="form-control" rows="5"><?php echo $publicacion['PUBLICACION_RESUMEN']; ?> </textarea>
+                </div>
+								<div class="form-group">
+                  <label for="MetaKeywords">Meta keywords</label>
+                  <textarea id="ResumenPublicacion" name="MetaKeywords" class="form-control" rows="5"><?php echo $publicacion['META_KEYWORDS']; ?> </textarea>
                 </div>
                 <div class="form-group">
                   <label for="ContenidoPublicacion">Contenido de la publicación</label>

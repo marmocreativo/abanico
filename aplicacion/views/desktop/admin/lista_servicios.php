@@ -112,6 +112,12 @@
                   <?php }else{ ?>
                     <a href="<?php echo base_url('admin/servicios/activar')."?id=".$servicio->ID_SERVICIO."&estado=".$servicio->SERVICIO_ESTADO."&id_usuario=".$servicio->ID_USUARIO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
                   <?php } ?>
+                  <?php $paquete = $this->PlanesModel->plan_activo_usuario($servicio->ID_USUARIO,'servicios'); ?>
+                  <?php if($paquete==null){ ?>
+                  <span class="badge badge-danger">Plan inactivo</span>
+                  <?php }else{ ?>
+                      <span class="badge badge-success">Plan activo</span>
+                  <?php } ?>
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">

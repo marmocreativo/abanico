@@ -31,6 +31,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('EstadisticasModel');
 		$this->load->model('NotificacionesModel');
 		$this->load->model('TransportistasModel');
+		$this->load->model('PlanesModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){

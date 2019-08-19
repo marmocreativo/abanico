@@ -77,6 +77,9 @@
     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
       <ul class="kt-menu__subnav">
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+          <a href="<?php echo base_url('admin/usuarios'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-user"></i></i><span class="kt-menu__link-text">Todos</span></a>
+        </li>
+        <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
           <a href="<?php echo base_url('admin/usuarios?tipo_usuario=usr-1'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-user"></i></i><span class="kt-menu__link-text">Clientes</span></a>
         </li>
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">

@@ -69,6 +69,12 @@
                   <?php }if($perfil->PERFIL_ESTADO=='pendiente'){ ?>
                     <button type="button" class="btn btn-warning" name="button">Pendiente</button>
                   <?php } ?>
+                  <?php $paquete = $this->PlanesModel->plan_activo_usuario($perfil->ID_USUARIO,'servicios'); ?>
+                  <?php if($paquete==null){ ?>
+                  <span class="badge badge-danger">Plan inactivo</span>
+                  <?php }else{ ?>
+                      <span class="badge badge-success">Plan activo</span>
+                  <?php } ?>
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">

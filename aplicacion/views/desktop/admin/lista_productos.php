@@ -95,6 +95,7 @@
           <table class="table table-hover table-striped">
             <thead class="text-light bg<?php echo $primary; ?>">
               <tr>
+                <th class="text-left">Imágen</th>
                 <th class="text-left">Nombre</th>
                 <th class="text-center">Modelo</th>
                 <th class="text-center">Precio</th>
@@ -105,7 +106,11 @@
             <tbody>
               <?php foreach($productos as $producto){ ?>
               <tr>
-                <td class="text-left"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo $producto->PRODUCTO_NOMBRE; ?></span></td>
+                <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+                <td class="text-left">
+                  <img src="<?php echo $ruta_portada; ?>" width="50">
+                </td>
+                <td class="text-left"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo word_limiter($producto->PRODUCTO_NOMBRE,10); ?></span></td>
                 <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo $producto->PRODUCTO_MODELO; ?></span></td>
                 <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> $<?php echo $producto->PRODUCTO_PRECIO; ?> <small>MXN</small></span></td>
                 <td class="text-center">
@@ -114,9 +119,16 @@
                   <?php }else{ ?>
                     <a href="<?php echo base_url('admin/productos/activar')."?id=".$producto->ID_PRODUCTO."&estado=".$producto->PRODUCTO_ESTADO."&id_usuario=".$producto->ID_USUARIO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
                   <?php } ?>
+                  <?php $paquete = $this->PlanesModel->plan_activo_usuario($producto->ID_USUARIO,'productos'); ?>
+                  <?php if($paquete==null){ ?>
+                  <span class="badge badge-danger">Plan inactivo</span>
+                  <?php }else{ ?>
+                      <span class="badge badge-success">Plan activo</span>
+                  <?php } ?>
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="<?php echo base_url('admin/productos'."?id_usuario=".$producto->ID_USUARIO); ?>" class="btn btn-sm btn-outline-success" title="Productos de la misma tienda"> <span class="fa fa-store"></span> De la misma tienda</a>
                     <a href="<?php echo base_url('producto/vista_previa'."?id=".$producto->ID_PRODUCTO); ?>" target="_blank" class="btn btn-sm btn-info" title="Vista Previa"> <span class="fa fa-eye"></span> </a>
                     <a href="<?php echo base_url('admin/productos/actualizar'."?id=".$producto->ID_PRODUCTO."&tipo_producto=".$tipo_producto); ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
                     <button data-enlace='<?php echo base_url('admin/productos/borrar')."?id=".$producto->ID_PRODUCTO."&id_usuario=".$producto->ID_USUARIO; ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Producto"> <span class="fa fa-trash"></span> </button>

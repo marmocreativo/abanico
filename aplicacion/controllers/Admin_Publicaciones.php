@@ -105,7 +105,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$parametros = array(
 				'PUBLICACION_TITULO' => $this->input->post('TituloPublicacion'),
 				'PUBLICACION_URL' => $url,
+				'META_TITULO' => $this->input->post('MetaTitulo'),
 				'PUBLICACION_RESUMEN' => $this->input->post('ResumenPublicacion'),
+				'META_KEYWORDS' => $this->input->post('MetaKeywords'),
 				'PUBLICACION_CONTENIDO' => $this->input->post('ContenidoPublicacion'),
 				'PUBLICACION_IMAGEN' => $imagen,
 				'PUBLICACION_URL_EXTERNA' => $this->input->post('UrlExternaPublicacion'),
@@ -153,7 +155,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$parametros = array(
 				'PUBLICACION_TITULO' => $this->input->post('TituloPublicacion'),
 				'PUBLICACION_URL' => $this->input->post('UrlPublicacion'),
+				'META_TITULO' => $this->input->post('MetaTitulo'),
 				'PUBLICACION_RESUMEN' => $this->input->post('ResumenPublicacion'),
+				'META_KEYWORDS' => $this->input->post('MetaKeywords'),
 				'PUBLICACION_CONTENIDO' => $this->input->post('ContenidoPublicacion'),
 				'PUBLICACION_IMAGEN' => $imagen,
 				'PUBLICACION_URL_EXTERNA' => $this->input->post('UrlExternaPublicacion'),

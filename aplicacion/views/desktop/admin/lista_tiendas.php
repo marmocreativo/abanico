@@ -66,6 +66,12 @@
                   <?php }else{ ?>
                     <a href="<?php echo base_url('admin/tiendas/activar')."?id=".$tienda->ID_TIENDA."&estado=".$tienda->TIENDA_ESTADO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
                   <?php } ?>
+                  <?php $paquete = $this->PlanesModel->plan_activo_usuario($tienda->ID_USUARIO,'productos'); ?>
+                  <?php if($paquete==null){ ?>
+                  <span class="badge badge-danger">Plan inactivo</span>
+                  <?php }else{ ?>
+                      <span class="badge badge-success">Plan activo</span>
+                  <?php } ?>
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">

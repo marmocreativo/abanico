@@ -45,10 +45,20 @@
                   <label for="TituloPublicacion">Título </label>
                   <input type="text" name="TituloPublicacion" class="form-control" value="<?=!form_error('TituloPublicacion')?set_value('TituloPublicacion'):''?>">
                 </div>
+								<div class="form-group">
+								 <label for="MetaTitulo">Meta Título</label>
+								 <input type="text" class="form-control" id="MetaTitulo" name="MetaTitulo" placeholder="" value="">
+								 <small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Para mejorar el posicionamiento en internet, un título corto menos de 70 caracteres</small>
+							 </div>
                 <div class="form-group">
-                  <label for="ResumenPublicacion">Resumen de la publicación</label>
+                  <label for="ResumenPublicacion">Resumen de la publicación <small>Se usa como meta descripción</small></label>
                   <textarea id="ResumenPublicacion" name="ResumenPublicacion" class="form-control" rows="5"><?=!form_error('ResumenPublicacion')?set_value('ResumenPublicacion'):''?> </textarea>
                 </div>
+								<div class="form-group">
+									<label for="MetaKeywords">Meta Keywords</label>
+									<textarea class="form-control" name="MetaKeywords" rows="3" cols="80"></textarea>
+									<small class="form-text text-muted"> <i class="fa fa-info-circle"></i> Para mejorar el posicionamiento en internet, de 1 a 10 frases separadas por coma que describan tu servicio</small>
+								</div>
                 <div class="form-group">
                   <label for="ContenidoPublicacion">Contenido de la publicación</label>
                   <textarea id="ContenidoPublicacion" name="ContenidoPublicacion" class="form-control Editor" rows="5"><?=!form_error('ContenidoPublicacion')?set_value('ContenidoPublicacion'):''?> </textarea>
