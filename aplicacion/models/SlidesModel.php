@@ -24,6 +24,22 @@ class SlidesModel extends CI_Model {
     $query = $this->db->get('slides');
     return $query->result();
   }
+
+  // Solo Activos
+  function lista_activos($parametros,$orden,$limite){
+    if(!empty($parametros)){
+      $this->db->or_like($parametros);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $this->db->where('SLIDE_ESTADO','activo');
+    $query = $this->db->get('slides');
+    return $query->result();
+  }
   /*
     * Verificar URI
  */

@@ -52,7 +52,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->data['productos_recientes'] = $this->ProductosModel->lista_activos('','','','PRODUCTO_FECHA_REGISTRO DESC',10);
 		$this->data['servicios'] = $this->ServiciosModel->lista_activos('','','','','');
 		$this->data['slider'] = $this->SlidersModel->slide_nombre_lenguaje('inicio',$_SESSION['lenguaje']['iso']);
-		$this->data['slides'] = $this->SlidesModel->lista(['ID_SLIDER'=>$this->data['slider']['ID_SLIDER']],'ORDEN ASC','');
+		$this->data['slides'] = $this->SlidesModel->lista_activos(['ID_SLIDER'=>$this->data['slider']['ID_SLIDER']],'ORDEN ASC','');
 
 		$this->data['titulo'] = 'Abanico siempre lo mejor';
 		$this->data['descripcion'] = 'Compra y vende artículos por internet';
