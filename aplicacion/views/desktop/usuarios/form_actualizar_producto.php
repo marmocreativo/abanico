@@ -49,6 +49,11 @@
                 <input type="hidden" name="IdTienda" value="<?php echo $tienda['ID_TIENDA']; ?>">
                 <input type="hidden" name="Identificador" value="<?php echo $_GET['id']; ?>">
                 <input type="hidden" name="UrlProducto" value="<?php echo $producto['PRODUCTO_URL']; ?>">
+                <div class="row border-top border-bottom my-1 py-1 bg-gray">
+                  <div class="col">
+                    <button type="submit" class="btn btn-primary btn-sm float-right"> <span class="fa fa-save"></span> Actualizar Producto</button>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col">
                     <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">

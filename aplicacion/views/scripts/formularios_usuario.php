@@ -189,6 +189,7 @@ jQuery('#ImagenServicio').change(function() {
 });
 jQuery('#ImagenProducto').change(function() {
   readURL(this);
+  jQuery('#ImagenProducto').after("<small class='form-text text-danger'>No olvides dar click en actualizar producto para guardar tu imágen.</small>");
 });
 jQuery('#ImagenPublicacion').change(function() {
   readURL(this);
