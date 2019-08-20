@@ -108,7 +108,7 @@
               <tr>
                 <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
                 <td class="text-left">
-                  <img src="<?php echo $ruta_portada; ?>" width="50">
+                  <img src="<?php echo base_url($ruta_portada); ?>" width="50">
                 </td>
                 <td class="text-left"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo word_limiter($producto->PRODUCTO_NOMBRE,10); ?></span></td>
                 <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo $producto->PRODUCTO_MODELO; ?></span></td>
@@ -128,7 +128,8 @@
                 </td>
                 <td class="text-right">
                   <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="<?php echo base_url('admin/productos'."?id_usuario=".$producto->ID_USUARIO); ?>" class="btn btn-sm btn-outline-success" title="Productos de la misma tienda"> <span class="fa fa-store"></span> De la misma tienda</a>
+                    <?php $tienda = $this->TiendasModel->detalles($producto->ID_TIENDA); ?>
+                    <a href="<?php echo base_url('admin/productos'."?id_usuario=".$producto->ID_USUARIO); ?>" class="btn btn-sm btn-outline-success" title="Productos de la misma tienda"> <span class="fa fa-store"></span> <b><?php echo $tienda['TIENDA_NOMBRE']; ?></b></a>
                     <a href="<?php echo base_url('producto/vista_previa'."?id=".$producto->ID_PRODUCTO); ?>" target="_blank" class="btn btn-sm btn-info" title="Vista Previa"> <span class="fa fa-eye"></span> </a>
                     <a href="<?php echo base_url('admin/productos/actualizar'."?id=".$producto->ID_PRODUCTO."&tipo_producto=".$tipo_producto); ?>" class="btn btn-sm btn-warning"> <span class="fa fa-pencil-alt"></span> </a>
                     <button data-enlace='<?php echo base_url('admin/productos/borrar')."?id=".$producto->ID_PRODUCTO."&id_usuario=".$producto->ID_USUARIO; ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Producto"> <span class="fa fa-trash"></span> </button>

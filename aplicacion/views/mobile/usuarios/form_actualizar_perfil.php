@@ -32,7 +32,7 @@
              </div>
              <div class="form-group">
                <label for="NombrePerfil"><?php echo $this->lang->line('usuario_vista_tienda_nombre'); ?></label>
-               <input type="text" class="form-control form-control-sm" id="NombrePerfil" name="NombrePerfil" placeholder="" autocomplete="nope" value="fernando gutierrez">
+               <input type="text" class="form-control form-control-sm" id="NombrePerfil" name="NombrePerfil" placeholder="" autocomplete="nope" value="<?php echo $perfil['PERFIL_NOMBRE']; ?>">
              </div>
 
              <hr>
@@ -40,11 +40,11 @@
              <h6 class="mb-3"><span class="fa fa-file-invoice"></span>  <?php echo $this->lang->line('usuario_form_tienda_datos_fiscales'); ?></h6>
              <div class="form-group">
                <label for="RazonSocialPerfil"><?php echo $this->lang->line('usuario_vista_tienda_razon'); ?></label>
-               <input type="text" class="form-control form-control-sm" id="RazonSocialPerfil" name="RazonSocialPerfil" placeholder="" value="">
+               <input type="text" class="form-control form-control-sm" id="RazonSocialPerfil" name="RazonSocialPerfil" placeholder="" value="<?php echo $perfil['PERFIL_RAZON_SOCIAL']; ?>">
              </div>
              <div class="form-group">
                <label for="RfcPerfil"><?php echo $this->lang->line('usuario_vista_tienda_rfc'); ?></label>
-               <input type="text" class="form-control form-control-sm" id="RfcPerfil" name="RfcPerfil" placeholder="" value="">
+               <input type="text" class="form-control form-control-sm" id="RfcPerfil" name="RfcPerfil" placeholder="" value="<?php echo $perfil['PERFIL_RFC']; ?>">
              </div>
 
              <hr>
@@ -52,7 +52,7 @@
             <h6 class="mb-3"><span class="fa fa-file-invoice"></span> <?php echo $this->lang->line('usuario_form_perfil_servicio_datos_contaco'); ?></h6>
              <div class="form-group">
                <label for="TelefonoPerfil"><?php echo $this->lang->line('usuario_vista_tienda_telefono'); ?></label>
-               <input type="text" class="form-control form-control-sm" id="TelefonoPerfil" name="TelefonoPerfil" placeholder="" value="">
+               <input type="text" class="form-control form-control-sm" id="TelefonoPerfil" name="TelefonoPerfil" placeholder="" value="<?php echo $perfil['PERFIL_TELEFONO']; ?>">
              </div>
 
              <hr>

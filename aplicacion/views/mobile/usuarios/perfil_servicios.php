@@ -37,11 +37,11 @@
           <h6><strong><?php echo $this->lang->line('usuario_vista_tienda_direccion_fiscal'); ?></strong></h6>
           <p><?php echo $direccion_formateada; ?></p>
         </div>
-        <!--
+
         <div class="card-footer">
           <a href="<?php echo base_url('usuario/perfil_servicios/actualizar'); ?>" class="btn btn-link btn-block"> <i class="fa fa-pencil-alt"></i> <?php echo $this->lang->line('usuario_listas_generales_editar'); ?></a>
         </div>
-      -->
+      
       </div>
 
     </div>
