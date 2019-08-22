@@ -40,7 +40,6 @@
 		<!--begin:: Global Optional Vendors -->
     <link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
-		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/iconpicker/dist/css/fontawesome-iconpicker.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/custom/jquery-ui/jquery-ui.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/general/summernote/dist/summernote.css" rel="stylesheet" type="text/css" />
@@ -49,12 +48,14 @@
 		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/custom/vendors/flaticon/flaticon.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/metronic/'); ?>vendors/custom/vendors/flaticon2/flaticon.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-iconpicker/1.10.0/css/bootstrap-iconpicker.min.css" />
 
 		<!--end:: Global Optional Vendors -->
 
 		<!--begin::Global Theme Styles(used by all pages) -->
 		<link href="<?php echo base_url('assets/metronic/'); ?>demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/metronic/'); ?>demo/default/base/custom.css?v=<?php echo date('U'); ?>" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/global/'); ?>css/estilos_abanico_administrador.css?v=<?php echo date('U'); ?>" rel="stylesheet" type="text/css" />
 
 		<!--end::Global Theme Styles -->
 

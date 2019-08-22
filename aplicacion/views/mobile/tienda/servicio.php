@@ -50,13 +50,12 @@
         <div class="row mb-5">
           <div class="col-12">
             <div class="card card-desc-servicio">
-              <div class="card-header">
-                <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_descripcion_titulo'); ?></h5>
-              </div>
               <div class="card-body fila-gris">
                 <div class="row">
                   <div class="card-text col-12">
                     <?php echo $descripcion_corta; ?>
+                    <hr>
+                    <?php echo $descripcion_larga; ?>
                   </div>
                   <div class="col-12">
                   <?php if(!empty($adjuntos)){ ?>
@@ -80,6 +79,17 @@
               </div>
               </div>
             </div>
+            <div class="slideBxProducto mb-4">
+              <ul class="slides">
+                <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
+                <?php foreach($galerias as $galeria){ ?>
+                <li data-imagen='<?php echo $galeria->GALERIA_ARCHIVO; ?>'>
+                    <?php $ruta_galeria = $op['ruta_imagenes_servicios'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
+                  <img src="<?php echo base_url($ruta_galeria) ?>" alt="">
+                </li>
+                <?php } ?>
+              </ul>
+            </div>
             <div class="card-group">
               <div class="card">
                 <div class="card-body">
@@ -97,6 +107,18 @@
                 <div class="card-body">
                   <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_zona_servicio'); ?></h5>
                   <?php echo $servicio['SERVICIO_ZONA_TRABAJO']; ?>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-body">
+                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                    <a class="a2a_button_facebook"></a>
+                    <a class="a2a_button_twitter"></a>
+                    <a class="a2a_button_whatsapp"></a>
+                    <a class="a2a_button_pinterest"></a>
+                    </div>
+                    <script async src="https://static.addtoany.com/menu/page.js"></script>
                 </div>
               </div>
             </div>

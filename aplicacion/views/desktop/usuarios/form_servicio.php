@@ -163,7 +163,7 @@
                           <div class="tab-pane fade p-3" id="datos" role="tabpanel" aria-labelledby="datos-tab">
                               <div class="form-group">
                                 <label for="DetallesServicio"><?php echo $this->lang->line('usuario_form_servicio_descripcion_detallada'); ?></label>
-                                <textarea class="form-control Editor" name="DetallesServicio" rows="5" cols="80"><?php echo set_value('DetallesServicio'); ?></textarea>
+                                <textarea id="DetallesServicio" class="form-control Editor" name="DetallesServicio" rows="5" cols="80"><?php echo set_value('DetallesServicio'); ?></textarea>
                               </div>
                           </div>
                         </div>
@@ -172,7 +172,7 @@
                    <hr>
                     <div class="custom-control custom-checkbox">
                        <input type="checkbox" class="custom-control-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
-                       <label class="custom-control-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_form_producto_nueva_imagen'); ?></label>
+                       <label class="custom-control-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_formulario_registro_terminos_y_condiciones'); ?></label>
                      </div>
                     <hr>
                     <button type="submit" class="btn btn-primary float-right"> <i class="fa fa-save"></i> <?php echo $this->lang->line('usuario_form_servicio_crear_servicio'); ?></button>

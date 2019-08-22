@@ -52,13 +52,12 @@
           <div class="row mb-5">
             <div class="col-12">
               <div class="card card-desc-servicio">
-                <div class="card-header">
-                  <h5 class="card-title"><?php echo $this->lang->line('pagina_servicio_descripcion_titulo'); ?></h5>
-                </div>
                 <div class="card-body fila-gris">
                   <div class="row">
                     <div class="card-text col-6">
                       <?php echo $descripcion_corta; ?>
+                      <hr>
+                      <?php echo $descripcion_larga; ?>
                     </div>
                     <div class="col-6">
                     <?php if(!empty($adjuntos)){ ?>
@@ -77,10 +76,29 @@
                         </div>
                       </div>
                     <?php } ?>
-
                     </div>
                 </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col-12 mb-3 slider-fotos d-flex align-items-center justify-content-center">
+                  <?php if(empty($portada)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$portada['GALERIA_ARCHIVO']; } ?>
+                  <img src="<?php echo base_url($ruta_portada) ?>" class="img-fluid visor-galeria-producto" style="max-height:500px" alt="<?php echo $titulo.'-portada' ?>" title="<?php echo $titulo.'-portada' ?>">
+                </div>
+              </div>
+              <div class="row">
+                <?php $i=1; foreach($galerias as $galeria){ ?>
+                  <?php $ruta_galeria = $op['ruta_imagenes_servicios'].'completo/'.$galeria->GALERIA_ARCHIVO; ?>
+                  <div class="col-2 mb-2 px-1">
+                  <div class="card slider-thumbs deck-imagenes" style="background-image:url('<?php echo base_url($ruta_galeria) ?>'); background-size:contain; background-position:center; background-repeat:no-repeat;" title="<?php echo $titulo.'-galeria-'.$i; ?>">
+                  </div>
+                </div>
+                <?php $i++; } ?>
               </div>
             </div>
           </div>
@@ -109,6 +127,18 @@
             </div>
             <div class="col-4">
               <a href="<?php echo base_url('servicio/contacto?id='.$servicio['ID_SERVICIO']); ?>" class="btn <?php echo 'btn'.$primary; ?> btn-lg btn-block btn-contacto"> <span class="fa fa-envelope"></span> <?php echo $this->lang->line('pagina_servicio_boton_contactar'); ?></a>
+              <hr>
+              <div class="card">
+                <div class="card-body">
+                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                    <a class="a2a_button_facebook"></a>
+                    <a class="a2a_button_twitter"></a>
+                    <a class="a2a_button_whatsapp"></a>
+                    <a class="a2a_button_pinterest"></a>
+                    </div>
+                    <script async src="https://static.addtoany.com/menu/page.js"></script>
+                </div>
+              </div>
             </div>
           </div>
           <div class="row mb-5">

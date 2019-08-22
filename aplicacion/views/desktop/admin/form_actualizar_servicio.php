@@ -47,14 +47,28 @@
                       <?php echo validation_errors(); ?>
                     </div>
                   <?php } ?>
+                  <?php
+                    $productos_activo = null;
+                    $fotografias_producto = null;
+                    $servicios_activos = null;
+                    $fotografias_servicios = null;
+                    $anexos = false;
+                    $plan = $this->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'servicios');
+                    if(!empty($plan)){
+                      $productos_activo = $plan['PLAN_LIMITE_PRODUCTOS'];
+                      $fotografias_producto = $plan['PLAN_FOTOS_PRODUCTOS'];
+                      $servicios_activos = $plan['PLAN_LIMITE_SERVICIOS'];
+                      $fotografias_servicios = $plan['PLAN_FOTOS_SERVICIOS'];
+                      if($plan['PLAN_NIVEL']>1){
+                        $anexos = true;
+                      }
+                    }
+                  ?>
                     <input type="hidden" name="IdUsuario" value="<?php echo $servicio['ID_USUARIO']; ?>">
                     <input type="hidden" name="Identificador" value="<?php echo $_GET['id'] ?>">
                     <div class="row">
                       <div class="col-3">
-                        <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio['ID_SERVICIO']);
-                          if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.png';
-                        }else{
-                          $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+                        <?php $galeria = $this->GaleriasServiciosModel->galeria_portada($servicio['ID_SERVICIO']); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
                         <span class="portada-servicios img-thumbnail rounded-circle" style="background-image:url('<?php echo base_url($ruta_portada); ?>');"> </span>
                         <hr>
                       </div>
@@ -139,13 +153,13 @@
                       <div class="col">
                         <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                           <li class="nav-item">
-                            <a class="nav-link active" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab" aria-controls="categoria" aria-selected="false"> <span class="fa fa-list"></span> Categorias</a>
+                            <a class="nav-link  <?php if($tab=='categoria'){ echo 'active'; } ?>" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab" aria-controls="categoria" aria-selected="false"> <span class="fa fa-list"></span> Categorias</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" id="datos-tab" data-toggle="tab" href="#datos" role="tab" aria-controls="datos" aria-selected="true"> <span class="fa fa-file-alt"></span> Descripción</a>
+                            <a class="nav-link <?php if($tab=='datos'){ echo 'active'; } ?>" id="datos-tab" data-toggle="tab" href="#datos" role="tab" aria-controls="datos" aria-selected="true"> <span class="fa fa-file-alt"></span> Descripción</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" id="galeria-tab" data-toggle="tab" href="#galeria" role="tab" aria-controls="galeria" aria-selected="true"> <span class="fa fa-picture"></span> Galeria</a>
+                            <a class="nav-link <?php if($tab=='galeria'){ echo 'active'; } ?>" id="galeria-tab" data-toggle="tab" href="#galeria" role="tab" aria-controls="galeria" aria-selected="true"> <span class="fa fa-picture"></span> Galeria</a>
                           </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -197,7 +211,7 @@
                           <div class="tab-pane fade p-3" id="datos" role="tabpanel" aria-labelledby="datos-tab">
                               <div class="form-group">
                                 <label for="DetallesServicio">Descripción Detallada</label>
-                                <textarea class="form-control Editor" name="DetallesServicio" rows="5" cols="80"><?php echo $servicio['SERVICIO_DETALLES']; ?></textarea>
+                                <textarea id="DetallesServicio" class="form-control Editor" name="DetallesServicio" rows="5" cols="80"><?php echo $servicio['SERVICIO_DETALLES']; ?></textarea>
                               </div>
                           </div>
                           <div class="tab-pane fade <?php if($tab=='galeria'){ echo 'show active'; } ?> p-3" id="galeria" role="tabpanel" aria-labelledby="extras-tab">

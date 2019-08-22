@@ -24,6 +24,7 @@
     <script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/summernote/dist/summernote.js" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/metronic/'); ?>vendors/general/summernote/lang/summernote-es-ES.js" type="text/javascript"></script>
     -->
+    <script src="<?php echo base_url(); ?>assets/tienda/js/starrr/starrr.js"></script>
     <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
     <script src="<?php echo base_url(); ?>assets/global/js/sweetalert2/sweetalert2.all.min.js"></script>
     <?php $this->load->view('scripts/scripts_tienda');  ?>

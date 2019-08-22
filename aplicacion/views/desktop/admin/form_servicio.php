@@ -186,7 +186,7 @@
                       <div class="tab-pane fade p-3" id="datos" role="tabpanel" aria-labelledby="datos-tab">
                           <div class="form-group">
                             <label for="DetallesServicio">Descripción Detallada</label>
-                            <textarea class="form-control Editor" name="DetallesServicio" rows="5" cols="80"><?php echo set_value('DetallesServicio'); ?></textarea>
+                            <textarea id="DetallesServicio" class="form-control Editor" name="DetallesServicio" rows="5" cols="80"><?php echo set_value('DetallesServicio'); ?></textarea>
                           </div>
                       </div>
                     </div>

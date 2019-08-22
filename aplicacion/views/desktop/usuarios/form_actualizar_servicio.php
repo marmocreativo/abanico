@@ -132,20 +132,20 @@
                         <div class="col">
                           <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                             <li class="nav-item">
-                              <a class="nav-link active" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab" aria-controls="categoria" aria-selected="false"> <span class="fa fa-list"></span> <?php echo $this->lang->line('usuario_form_servicio_categorias'); ?></a>
+                              <a class="nav-link <?php if($tab=='categoria'){ echo 'active'; } ?>" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab" aria-controls="categoria" aria-selected="false"> <span class="fa fa-list"></span> <?php echo $this->lang->line('usuario_form_servicio_categorias'); ?></a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" id="datos-tab" data-toggle="tab" href="#datos" role="tab" aria-controls="datos" aria-selected="true"> <span class="fa fa-file-alt"></span> <?php echo $this->lang->line('usuario_form_servicio_descripcion'); ?></a>
+                              <a class="nav-link <?php if($tab=='datos'){ echo 'active'; } ?>" id="datos-tab" data-toggle="tab" href="#datos" role="tab" aria-controls="datos" aria-selected="true"> <span class="fa fa-file-alt"></span> <?php echo $this->lang->line('usuario_form_servicio_descripcion'); ?></a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" id="galeria-tab" data-toggle="tab" href="#galeria" role="tab" aria-controls="galeria" aria-selected="true"> <span class="fa fa-images"></span> <?php echo $this->lang->line('usuario_form_servicio_galeria'); ?></a>
+                              <a class="nav-link <?php if($tab=='galeria'){ echo 'active'; } ?>" id="galeria-tab" data-toggle="tab" href="#galeria" role="tab" aria-controls="galeria" aria-selected="true"> <span class="fa fa-images"></span> <?php echo $this->lang->line('usuario_form_servicio_galeria'); ?></a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" href="<?php echo base_url('usuario/servicios_traducciones?id='.$_GET['id']); ?>" > <span class="fa fa-language"></span> Traducciones</a>
                             </li>
                           </ul>
                           <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active  p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
+                            <div class="tab-pane fade <?php if($tab=='categoria'){ echo 'show active'; } ?>  p-3" id="categoria" role="tabpanel" aria-labelledby="datos-tab">
                               <div class="row">
                                   <?php foreach($categorias as $categoria){ ?>
                                       <div class="col-12 border border-default p-3">
@@ -193,7 +193,7 @@
                             <div class="tab-pane fade p-3" id="datos" role="tabpanel" aria-labelledby="datos-tab">
                                 <div class="form-group">
                                   <label for="DetallesServicio"><?php echo $this->lang->line('usuario_form_servicio_descripcion_detallada'); ?></label>
-                                  <textarea class="form-control Editor" name="DetallesServicio" rows="5" cols="80"><?php echo $servicio['SERVICIO_DETALLES']; ?></textarea>
+                                  <textarea id="DetallesServicio" class="form-control Editor" name="DetallesServicio" rows="5" cols="80"><?php echo $servicio['SERVICIO_DETALLES']; ?></textarea>
                                 </div>
                             </div>
                             <div class="tab-pane fade <?php if($tab=='galeria'){ echo 'show active'; } ?> p-3" id="galeria" role="tabpanel" aria-labelledby="extras-tab">
