@@ -79,10 +79,10 @@
 <!-- Inicia el cuerpo del texto -->
 <?php
   $categorias_específicas = [
-    'cubiertos-y-cuchillos'=>'10',
-    'repostería'=>'10',
-    'ollas-y-sartenes'=>'10',
-    'accesorios-de-cocina'=>'10'
+    'cubiertos-y-cuchillos'=>'20',
+    'repostería'=>'20',
+    'ollas-y-sartenes'=>'20',
+    'accesorios-de-cocina'=>'20'
   ];
  ?>
  <div class="fila fila-gris py-4 pb-5">
@@ -122,7 +122,7 @@
           }
           ?>
         <li>
-          <div class="card">
+          <div class="card <?php echo $visible; ?>">
             <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
               <div class="imagen-producto">
                 <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
@@ -194,7 +194,7 @@
  </div>
  <?php
    $categorias_omitidas = [
-     'cocina'=>'10',
+     'cocina'=>'20',
    ];
   ?>
   <?php foreach($categorias_omitidas as $slug => $limite){ ?>
@@ -245,7 +245,7 @@
              }
              ?>
            <li>
-             <div class="card">
+             <div class="card <?php echo $visible; ?>">
                <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
                  <div class="imagen-producto">
                    <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
@@ -318,9 +318,9 @@
     <?php }// Bucle de categrias omitidas ?>
     <?php
       $categorias_específicas = [
-        'filtros-de-agua'=>'10',
-        'accesorios-para-filtros-de-agua'=>'10',
-        'cartuchos-para-filtros-de-agua'=>'10'
+        'filtros-de-agua'=>'20',
+        'accesorios-para-filtros-de-agua'=>'20',
+        'cartuchos-para-filtros-de-agua'=>'20'
       ];
      ?>
      <div class="fila fila-gris py-4 pb-5">
@@ -360,7 +360,7 @@
               }
               ?>
             <li>
-              <div class="card">
+              <div class="card <?php echo $visible; ?>">
                 <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
                   <div class="imagen-producto">
                     <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
