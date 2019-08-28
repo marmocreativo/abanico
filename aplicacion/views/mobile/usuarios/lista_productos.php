@@ -21,7 +21,7 @@
         $servicios_activos = null;
         $fotografias_servicios = null;
         $anexos = false;
-        $plan = $this->PlanesModel->plan_activo_usuario($_SESSION['usuario']['id'],'productos');
+        $plan = $this->PlanesModel->plan_pendiente_usuario($_SESSION['usuario']['id'],'productos');
         if(!empty($plan)){
           $productos_activo = $plan['PLAN_LIMITE_PRODUCTOS'];
           $fotografias_producto = $plan['PLAN_FOTOS_PRODUCTOS'];
