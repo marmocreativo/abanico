@@ -118,7 +118,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 			$this->data['categoria'] = $this->CategoriasModel->detalles_slug($_GET['slug']);
 			$this->data['origen_formulario'] = 'categoria';
-			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$this->data['categoria']['ID_CATEGORIA'],$orden,'');
+			$this->data['productos'] = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,[$this->data['categoria']['ID_CATEGORIA']],$orden,'');
 			$this->data['primary'] = $this->data['categoria']['CATEGORIA_COLOR'];
 
 			$this->data['titulo'] = $this->data['categoria']['CATEGORIA_NOMBRE'].'| Abanico siempre lo mejor';

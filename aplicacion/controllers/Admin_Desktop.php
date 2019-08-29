@@ -49,4 +49,45 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->view($this->data['dispositivo'].'/admin/admin_desktop',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
+	public function opciones()
+	{
+		$this->form_validation->set_rules('Opciones[titulo_sitio]', 'Titulo', 'required', array( 'required' => 'Debes designar el valor de la %s.' ));
+
+		if($this->form_validation->run())
+    {
+			foreach($_POST['Opciones'] as $opcion=>$valor){
+				$parametros = array(
+					'OPCION_VALOR'=>$valor
+				);
+
+				$this->opciones->actualizar($opcion,$parametros);
+			}
+
+			$this->session->set_flashdata('exito', 'Opciones guardadas exitosamente');
+			redirect(base_url('admin/opciones'));
+
+		}else{
+			$this->data['lista_opciones'] = $this->opciones->lista_opciones();
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/lista_opciones',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+		}
+
+	}
+	public function nueva_opcion()
+	{
+			echo 'Nueva Opcion';
+	}
+	public function carruseles()
+	{
+			echo 'Lista Carruseles';
+	}
+	public function nuevo_carrusel()
+	{
+			echo 'Nuevo Carrusel';
+	}
+	public function editar_carrusel()
+	{
+			echo 'Editar Carrusel';
+	}
 }

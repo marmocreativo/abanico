@@ -69,4 +69,20 @@ class Ajax_Reordenar extends CI_Controller {
 		   $i++;
 		}
 	}
+
+	public function carruseles()
+	{
+		$this->load->model('CarruselesModel');
+		$i = 0;
+		parse_str($_GET['objetos'],$objetos);
+		foreach ( $objetos['item'] as $identificador) {
+
+			$parametros = array(
+				'ORDEN' => $i,
+			);
+
+			$this->CarruselesModel->actualizar( $identificador,$parametros);
+		   $i++;
+		}
+	}
 }

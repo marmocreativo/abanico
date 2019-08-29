@@ -135,7 +135,7 @@ class ProductosModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista_categoria_activos($parametros_or,$parametros_and,$id_categoria,$orden,$limite){
+  function lista_categoria_activos($parametros_or,$parametros_and,$id_categorias,$orden,$limite){
     // Join
     $this->db->join('categorias_productos', 'productos.ID_PRODUCTO = categorias_productos.ID_PRODUCTO');
     // Parametros
@@ -149,9 +149,11 @@ class ProductosModel extends CI_Model {
       $this->db->where($parametros_and);
       $this->db->group_end();
     }
-    if(!empty($id_categoria)){
+    if(!empty($id_categorias)){
       $this->db->group_start();
-      $this->db->where('ID_CATEGORIA', $id_categoria);
+      foreach($id_categorias as $id){
+        $this->db->or_like('categorias_productos.ID_CATEGORIA',$id);
+      }
       $this->db->group_end();
     }
     if(!empty($orden)){

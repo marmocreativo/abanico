@@ -527,7 +527,7 @@
                       <?php foreach($categorias_específicas as $slug => $limite){ ?>
                         <?php
                         $categoria = $this->CategoriasModel->detalles_slug($slug);
-                        $productos = $this->ProductosModel->lista_categoria_activos('',['productos.ID_PRODUCTO !='=>$producto['ID_PRODUCTO']],$categoria['ID_CATEGORIA'],'',$limite);
+                        $productos = $this->ProductosModel->lista_categoria_activos('',['productos.ID_PRODUCTO !='=>$producto['ID_PRODUCTO']],[$categoria['ID_CATEGORIA']],'',$limite);
                         ?>
                       <?php foreach($productos as $producto){ ?>
                         <?php

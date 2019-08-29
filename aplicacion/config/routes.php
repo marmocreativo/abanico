@@ -27,6 +27,8 @@ $route['admin/premios'] = 'Admin_Premios';
 $route['admin/premios/(:any)'] = 'Admin_Premios/$1';
 $route['admin/slides'] = 'Admin_Slides';
 $route['admin/slides/(:any)'] = 'Admin_Slides/$1';
+$route['admin/carruseles'] = 'Admin_Carruseles';
+$route['admin/carruseles/(:any)'] = 'Admin_Carruseles/$1';
 $route['admin/sliders'] = 'Admin_Sliders';
 $route['admin/sliders/(:any)'] = 'Admin_Sliders/$1';
 $route['admin/publicaciones'] = 'Admin_Publicaciones';
@@ -76,6 +78,7 @@ $route['admin/productos/(:any)'] = 'Admin_Productos/$1';
 $route['admin/productos_combinaciones'] = 'Admin_Productos_Combinaciones';
 $route['admin/productos_combinaciones/(:any)'] = 'Admin_Productos_Combinaciones/$1';
 $route['admin'] = 'Admin_Desktop';
+$route['admin/(:any)'] = 'Admin_Desktop/$1';
 // Rutas de Usuario
 $route['usuario/registro_rapido'] = 'Usuario_Registros_Rapidos';
 $route['usuario/registro_rapido/(:any)'] = 'Usuario_Registros_Rapidos/$1';
