@@ -67,7 +67,7 @@
               <div class="col-6">
                 <!-- Start Blurb -->
 
-                <a href="<?php echo base_url('usuario/tienda'); ?>" class="">
+                <a href="<?php echo base_url('planes'); ?>" class="">
                   <div class="card border border-primary-11 card-p-usuario">
                     <div class="card-body">
                       <div class="row mb-2 no-gutters">
@@ -110,7 +110,7 @@
             <?php }else{ ?>
               <div class="col-6">
                 <!-- Start Blurb -->
-                <a href="<?php echo base_url('usuario/perfil_servicios'); ?>">
+                <a href="<?php echo base_url('planes?tipo=servicios'); ?>">
                 <div class="card border border-primary-3 card-p-usuario">
                   <div class="card-body">
                     <div class="row mb-2 no-gutters">

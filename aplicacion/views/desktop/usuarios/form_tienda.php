@@ -41,17 +41,22 @@
                   </div>
                   <div class="col-12 col-sm-9">
                     <h5> <span class="fa fa-store"></span> <?php echo $this->lang->line('usuario_form_tienda_datos_vendedor'); ?></h5>
-                    <div class="form-group">
-                      <label for="TipoTienda"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor'); ?> </label>
-                      <select class="form-control" name="TipoTienda">
-                        <option value="tienda"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor_tienda'); ?></option>
-                        <option value="vendedor"><?php echo $this->lang->line('usuario_form_tienda_tipo_vendedor_casual'); ?> </option>
-                      </select>
-                    </div>
+                    <input type="hidden" name="TipoTienda" value="tienda">
                      <div class="form-group">
                        <label for="NombreTienda"><?php echo $this->lang->line('usuario_vista_tienda_nombre'); ?> <small><?php echo $this->lang->line('usuario_vista_tienda_nombre_instrucciones'); ?></small> </label>
                        <input type="text" class="form-control" id="NombreTienda" name="NombreTienda" placeholder="" value="<?php echo set_value('NombreTienda'); ?>">
                      </div>
+                     <hr>
+                     <h5><span class="fa fa-file-signature"></span> Plan</h5>
+                     <div class="form-group">
+                       <label for="IdPlan">Plan seleccionado</label>
+                       <select class="form-control" name="IdPlan">
+                         <?php foreach($planes as $plan){ ?>
+                           <option value="<?php echo $plan->ID_PLAN; ?>" <?php if($plan->ID_PLAN==$_GET['plan']){ echo 'selected'; } ?>><?php echo $plan->PLAN_NOMBRE; ?></option>
+                         <?php } ?>
+                       </select>
+                     </div>
+                     <a class="nav-link" href="<?php echo base_url('planes/');?>"> <span class="fa fa-chevron-left"></span> Volver a los planes</a>
                      <hr>
                      <h6><span class="fa fa-file-invoice"></span> <?php echo $this->lang->line('usuario_form_tienda_datos_fiscales'); ?></h6>
                      <div class="form-group">

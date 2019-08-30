@@ -38,9 +38,18 @@
                <label for="NombrePerfil"><?php echo $this->lang->line('usuario_vista_tienda_nombre'); ?></label>
                <input type="text" class="form-control form-control-sm" id="NombrePerfil" name="NombrePerfil" placeholder="" autocomplete="nope" value="">
              </div>
-
              <hr>
-
+             <h5><span class="fa fa-file-signature"></span> Plan</h5>
+             <div class="form-group">
+               <label for="IdPlan">Plan seleccionado</label>
+               <select class="form-control" name="IdPlan">
+                 <?php foreach($planes as $plan){ ?>
+                   <option value="<?php echo $plan->ID_PLAN; ?>" <?php if($plan->ID_PLAN==$_GET['plan']){ echo 'selected'; } ?>><?php echo $plan->PLAN_NOMBRE; ?></option>
+                 <?php } ?>
+               </select>
+             </div>
+             <a class="nav-link" href="<?php echo base_url('planes?tipo=servicios');?>"> <span class="fa fa-chevron-left"></span> Volver a los planes</a>
+             <hr>
              <h6 class="mb-3"><span class="fa fa-file-invoice"></span> <?php echo $this->lang->line('usuario_form_tienda_datos_fiscales'); ?></h6>
              <div class="form-group">
               <label for="RazonSocialPerfil"><?php echo $this->lang->line('usuario_vista_tienda_razon'); ?></label>

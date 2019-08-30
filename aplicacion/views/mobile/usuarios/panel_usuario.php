@@ -50,7 +50,7 @@
       <div class="col text-center">
         <i class="fa fa-store text-primary fa-2x mt-3 mb-2"></i>
         <p class="text-dark"><strong><?php echo $this->lang->line('usuario_widgets_inicio_registro_tienda_titulo'); ?></p>
-        <a href="<?php echo base_url('usuario/tienda'); ?>" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-pencil-alt"></i> <?php echo $this->lang->line('usuario_widgets_inicio_registro_tienda_boton'); ?></a>
+        <a href="<?php echo base_url('planes'); ?>" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-pencil-alt"></i> <?php echo $this->lang->line('usuario_widgets_inicio_registro_tienda_boton'); ?></a>
       </div>
     </div>
   <?php } ?>
@@ -66,13 +66,11 @@
       </div>
     </div>
 <?php }else{ ?>
-
-
     <div class="col-12 mb-4">
       <div class="col text-center">
         <i class="fa fa-user-tie text-primary fa-2x mt-3 mb-2"></i>
         <p class="text-dark"><strong><?php echo $this->lang->line('usuario_widgets_inicio_registro_perfil_servicio_titulo'); ?></strong><br><?php echo $this->lang->line('usuario_widgets_inicio_registro_perfil_servicio_instrucciones'); ?></p>
-        <a href="<?php echo base_url('usuario/perfil_servicios'); ?>" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-pencil-alt"></i> <?php echo $this->lang->line('usuario_widgets_inicio_registro_perfil_servicio_boton'); ?> </a>
+        <a href="<?php echo base_url('planes?tipo=servicios'); ?>" class="btn btn-sm btn-outline-primary btn-block"> <i class="fa fa-pencil-alt"></i> <?php echo $this->lang->line('usuario_widgets_inicio_registro_perfil_servicio_boton'); ?> </a>
       </div>
     </div>
 <?php } ?>

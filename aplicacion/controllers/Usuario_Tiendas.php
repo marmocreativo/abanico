@@ -57,6 +57,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					$plan = $this->PlanesModel->plan_pendiente_usuario($_SESSION['usuario']['id'],'productos');
 				}
 				$this->data['plan'] = $plan;
+				$this->data['planes'] = $this->PlanesModel->lista(['PLAN_TIPO'=>'productos']);
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/'.$vista_tienda,$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
@@ -122,8 +123,39 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					 );
 					 $direccion_id = $this->DireccionesModel->crear($parametros_direccion);
 
+					 /*
+		 			+ REGISTRO DE PLAN
+		 			*/
+
+		 			$plan = $this->PlanesModel->detalles($this->input->post('IdPlan'));
+
+		 			$parametros = array(
+		 				'ID_PLAN'=>$plan['ID_PLAN'],
+		 				'ID_USUARIO'=>$this->input->post('IdUsuario'),
+		 				'PLAN_NOMBRE'=>$plan['PLAN_NOMBRE'],
+		 				'PLAN_MENSUALIDAD'=>$plan['PLAN_MENSUALIDAD'],
+		 				'PLAN_ESPACIO_ALMACENAMIENTO'=>0.25,
+		 				'PLAN_COSTO_ALMACENAMIENTO'=>$plan['PLAN_ALMACENAMIENTO'],
+		 				'PLAN_COMISION'=>$plan['PLAN_COMISION'],
+		 				'PLAN_MANEJO_PRODUCTOS'=>$plan['PLAN_MANEJO_PRODUCTOS'],
+		 				'PLAN_ENVIO'=>$plan['PLAN_ENVIO'],
+		 				'PLAN_SERVICIOS_FINANCIEROS'=>$plan['PLAN_SERVICIOS_FINANCIEROS'],
+		 				'PLAN_SERVICIOS_FINANCIEROS_FIJO'=>$plan['PLAN_SERVICIOS_FINANCIEROS_FIJO'],
+		 				'PLAN_TIPO'=>$plan['PLAN_TIPO'],
+		 				'PLAN_LIMITE_PRODUCTOS'=>$plan['PLAN_LIMITE_PRODUCTOS'],
+		 				'PLAN_LIMITE_SERVICIOS'=>$plan['PLAN_LIMITE_SERVICIOS'],
+		 				'PLAN_FOTOS_PRODUCTOS'=>$plan['PLAN_FOTOS_PRODUCTOS'],
+		 				'PLAN_FOTOS_SERVICIOS'=>$plan['PLAN_FOTOS_SERVICIOS'],
+		 				'PLAN_NIVEL'=>$plan['PLAN_NIVEL'],
+		 				'PLAN_ESTADO'=>'pendiente',
+		 				'FECHA_INICIO'=>date('Y-m-d'),
+		 				'FECHA_TERMINO'=>date('Y-m-d', strtotime("+1 month")),
+		 				'AUTO_RENOVAR'=>'si',
+		 			);
+		 			$this->PlanesModel->crear_plan_usuario($parametros);
+
 					 // Registro la dirección en la tienda
-					 $tienda_id = $this->TiendasModel->actualizar($tienda_id,array('ID_DIRECCION'=>$direccion_id));
+					 $this->TiendasModel->actualizar($tienda_id,array('ID_DIRECCION'=>$direccion_id));
 					 $datos_usuario = $this->UsuariosModel->detalles($this->input->post('IdUsuario'));
 					 // Reviso los permisos del Usuario
 					 $usuario = $this->UsuariosModel->detalles($this->input->post('IdUsuario'));
@@ -185,6 +217,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 				}else{
 					// Obtengo los datos de mi tiendas
+					$this->data['planes'] = $this->PlanesModel->lista(['PLAN_TIPO'=>'productos']);
 					$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 					$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 					$this->load->view($this->data['dispositivo'].'/usuarios/form_tienda',$this->data);
@@ -284,6 +317,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			}else{
 				// Obtengo los datos de mi tiendas
+				$this->data['planes'] = $this->PlanesModel->lista(['PLAN_TIPO'=>'productos']);
 				$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 				$this->data['direccion_tienda'] = $this->DireccionesModel->direccion_de_tienda($this->data['tienda']['ID_TIENDA']);
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);

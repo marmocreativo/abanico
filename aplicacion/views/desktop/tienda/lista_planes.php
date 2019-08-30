@@ -25,6 +25,15 @@
                         <div class="card-body p-3">
                           <?php echo $plan->PLAN_DESCRIPCION; ?>
                         </div>
+                        <?php if(isset($_SESSION['usuario']['id'])&&!empty($_SESSION['usuario']['id'])){ ?>
+                        <div class="card-footer">
+                          <?php if(!empty($_GET['tipo'])&&$_GET['tipo']=='servicios'){ ?>
+                            <a href="<?php echo base_url('usuario/perfil_servicios?plan='.$plan->ID_PLAN); ?>" class="btn btn-success btn-block">Solicitar este plan</a>
+                          <?php }else{ ?>
+                            <a href="<?php echo base_url('usuario/tienda?plan='.$plan->ID_PLAN); ?>" class="btn btn-success btn-block">Solicitar este plan</a>
+                          <?php } ?>
+                        </div>
+                      <?php }else{ ?>
                         <div class="card-footer">
                           <?php if(!empty($_GET['tipo'])&&$_GET['tipo']=='servicios'){ ?>
                             <a href="<?php echo base_url('usuario/registro_rapido/registro_perfil?plan='.$plan->ID_PLAN); ?>" class="btn btn-success btn-block">Solicitar este plan</a>
@@ -32,6 +41,7 @@
                             <a href="<?php echo base_url('usuario/registro_rapido/registro_tienda?plan='.$plan->ID_PLAN); ?>" class="btn btn-success btn-block">Solicitar este plan</a>
                           <?php } ?>
                         </div>
+                      <?php } ?>
                     </div>
                 </div>
                 <?php } ?>

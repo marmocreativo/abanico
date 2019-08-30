@@ -50,6 +50,14 @@
   <div class="menu-superior bg<?php echo $primary; ?>">
     <div class="container-fluid">
       <div class="row">
+        <div class="col-12">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://www.facebook.com/abanicoytu/"> <i class="fab fa-facebook"></i> </a></li>
+            <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://twitter.com/abanicoytu"><i class="fab fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://www.instagram.com/abanicoytu"><i class="fab fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="tel:<?php echo $op['telefono_sitio']; ?>"><i class="fa fa-phone"></i> <?php echo $op['telefono_sitio']; ?></a></li>
+          </ul>
+        </div>
         <div class="col">
           <div class="btn-group float-right text-white" role="group" aria-label="Button group with nested dropdown">
             <?php $this->load->view('desktop/tienda/widgets/menu_notificaciones'); ?>
