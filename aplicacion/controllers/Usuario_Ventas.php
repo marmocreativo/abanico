@@ -101,7 +101,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				//
 				$this->data['tienda'] = $this->TiendasModel->detalles($this->input->post('IdTienda'));
 				$this->data['pedido'] = $this->PedidosModel->detalles($this->input->post('IdPedido'));
-				$this->data['productos'] = $this->PedidosProductosModel->lista_tienda(['ID_PEDIDO'=>$_GET['id_pedido']],$this->data['tienda']['ID_TIENDA'],'','');
+				$this->data['productos'] = $this->PedidosProductosModel->lista_tienda(['ID_PEDIDO'=>$this->input->post('IdPedidoTienda')],$this->data['tienda']['ID_TIENDA'],'','');
 				$this->data['tiendas'] = $this->PedidosTiendasModel->lista_tiendas($_GET['id_pedido']);
 				$this->data['pedido_tienda'] = $this->PedidosTiendasModel->detalles($_GET['id_pedido'],$this->data['tienda']['ID_TIENDA']);
 				$this->data['guias_abanico'] = $this->GuiasPedidosModel->lista(['ID_PEDIDO'=>$_GET['id_pedido']],'','');

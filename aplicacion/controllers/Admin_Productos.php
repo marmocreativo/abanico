@@ -113,7 +113,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->form_validation->set_rules('NombreProducto', 'Nombre del producto', 'required', array( 'required' => 'Debes designar el %s'));
 		$this->form_validation->set_rules('PrecioProducto', 'Precio del producto', 'required', array( 'required' => 'Debes designar el %s'));
 		$this->form_validation->set_rules('CantidadProducto', 'Cantidad del producto', 'required', array( 'required' => 'Debes designar la %s'));
-		$this->form_validation->set_rules('CategoriaProducto', 'Categoría', 'required', array( 'required' => 'Debes elegir pot lo menos una %s'));
 
 		if($this->form_validation->run())
     {

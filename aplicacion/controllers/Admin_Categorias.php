@@ -114,6 +114,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'CATEGORIA_ICONO' => $this->input->post('IconoCategoria'),
 				'CATEGORIA_PADRE' => $this->input->post('PadreCategoria'),
 				'CATEGORIA_TIPO' => $this->input->post('TipoCategoria'),
+				'CATEGORIA_ADMIN' => $this->input->post('AdminCategoria'),
 				'CATEGORIA_ESTADO'=> 'activo'
       );
 			// Creo la categoría
@@ -180,6 +181,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'CATEGORIA_IMAGEN' => $imagen,
 				'CATEGORIA_PADRE' => $this->input->post('PadreCategoria'),
 				'CATEGORIA_TIPO' => $this->input->post('TipoCategoria'),
+				'CATEGORIA_ADMIN' => $this->input->post('AdminCategoria'),
 				'CATEGORIA_ESTADO'=> 'activo'
       );
 

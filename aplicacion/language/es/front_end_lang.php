@@ -428,8 +428,8 @@ $lang['usuario_form_producto_condicion_usuado'] = 'Usuado';
 $lang['usuario_form_producto_lista_imagen_id'] = 'id';
 $lang['usuario_form_producto_lista_imagen'] = 'Imagen';
 $lang['usuario_form_producto_lista_imagen_portada'] = 'Portada';
-$lang['usuario_form_producto_crear_producto'] = 'Crear Producto';
-$lang['usuario_form_producto_actualizar_producto'] = 'Actualizar Producto';
+$lang['usuario_form_producto_crear_producto'] = 'Guardar Producto';
+$lang['usuario_form_producto_actualizar_producto'] = 'Guardar Producto';
 
 $lang['usuario_lista_combinaciones_singular'] = 'Combinación';
 $lang['usuario_lista_combinaciones_plural'] = 'Combinaciones';
@@ -504,8 +504,8 @@ $lang['usuario_form_servicio_categorias'] = 'Categorias';
 $lang['usuario_form_servicio_descripcion'] = 'Descripción';
 $lang['usuario_form_servicio_galeria'] = 'Galeria';
 $lang['usuario_form_servicio_descripcion_detallada'] = 'Descripción Detallada';
-$lang['usuario_form_servicio_crear_servicio'] = 'Crear Servicio';
-$lang['usuario_form_servicio_actualizar_servicio'] = 'Actualizar Servicio';
+$lang['usuario_form_servicio_crear_servicio'] = 'Guardar Servicio';
+$lang['usuario_form_servicio_actualizar_servicio'] = 'Guardar Servicio';
 
 $lang['usuario_form_servicio_anexos_antes'] = 'Primero debes guardar tu servicio para poder Adjuntar Archivos';
 $lang['usuario_form_servicio_anexos_titulo'] = 'Archivos Anexos';

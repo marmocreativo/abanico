@@ -63,6 +63,15 @@
                <hr>
                <h5><span class="fas fa-paint-brush"></span> Apariencia</h5>
                <div class="row">
+								 <div class="col">
+                   <div class="form-group">
+                     <label for="AdminCategoria">Solo Administradores</label>
+                     <select class="form-control" id="AdminCategoria" name="AdminCategoria">
+                       <option value="si" <?php if($categoria['CATEGORIA_ADMIN']=='si'){ echo 'selected'; } ?>>Si</option>
+                       <option value="no" <?php if($categoria['CATEGORIA_ADMIN']=='no'){ echo 'selected'; } ?>>No</option>
+                     </select>
+                   </div>
+                 </div>
                  <div class="col">
                    <div class="form-group">
                      <label for="ColorCategoria">Color de Categoría</label>

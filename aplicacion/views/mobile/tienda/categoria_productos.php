@@ -201,13 +201,13 @@
                     <ul class="rating mb-1">
                       <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
                       <?php for($i = 1; $i<=$estrellas; $i++){ ?>
-                        <li class="fa fa-star <?php echo 'text'.$primary; ?>"></li>
+                        <li class="fa fa-star "></li>
                       <?php } ?>
                       <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
-                        <li class="far fa-star <?php echo 'text'.$primary; ?>"></li>
+                        <li class="far fa-star "></li>
                       <?php } ?>
                     </ul>
-                    <h4 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h4>
+                    <h4 class="title"><?php echo $titulo; ?></h4>
                     <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                       <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small> </div>
                     <?php } ?>

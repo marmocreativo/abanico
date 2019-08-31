@@ -61,6 +61,15 @@
                <div class="row">
                  <div class="col">
                    <div class="form-group">
+                     <label for="AdminCategoria">Solo Administradores</label>
+                     <select class="form-control" id="AdminCategoria" name="AdminCategoria">
+                       <option value="si">Si</option>
+                       <option value="no">No</option>
+                     </select>
+                   </div>
+                 </div>
+                 <div class="col">
+                   <div class="form-group">
                      <label for="ColorCategoria">Color de Categoría</label>
                      <select class="form-control" id="ColorCategoria" name="ColorCategoria">
                        <option value="-primary" class="bg-primary" <?php if($categoria_color=='-primary'){ echo 'selected'; } ?>>  Color 1</option>

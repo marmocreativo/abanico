@@ -179,10 +179,10 @@
                           <ul class="rating">
                             <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
                             <?php for($i = 1; $i<=$estrellas; $i++){ ?>
-                              <li class="fa fa-star <?php echo 'text'.$primary; ?>"></li>
+                              <li class="fa fa-star "></li>
                             <?php } ?>
                             <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
-                              <li class="far fa-star <?php echo 'text'.$primary; ?>"></li>
+                              <li class="far fa-star "></li>
                             <?php } ?>
                             <li class="fa text-dark">(<?php echo $cantidad; ?>)</li>
                           </ul>

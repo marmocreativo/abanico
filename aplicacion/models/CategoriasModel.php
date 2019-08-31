@@ -27,6 +27,24 @@ class CategoriasModel extends CI_Model {
     $query = $this->db->get('categorias');
     return $query->result();
   }
+  
+  function lista_no_admin($parametros,$tipo_categoria,$orden,$limite){
+    if(!empty($parametros)){
+      $this->db->where($parametros);
+    }
+    if(!empty($tipo_categoria)){
+      $this->db->where('CATEGORIA_TIPO', $tipo_categoria);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $this->db->where('CATEGORIA_ADMIN','no');
+    $query = $this->db->get('categorias');
+    return $query->result();
+  }
   /*
     * Obtengo todos los detalles de una sola entrada
  */

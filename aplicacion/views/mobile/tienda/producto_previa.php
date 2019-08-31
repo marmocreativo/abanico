@@ -41,130 +41,39 @@
         <hr>
         <?php echo $descripcion_corta; ?>
         <hr>
-        <?php
-          if(
-            !empty($paquete)&&
-            $producto['PRODUCTO_CANTIDAD']>0&&
-            $producto['PRODUCTO_ESTADO']=='activo'&&
-            $op['permitir_compra']=='si'
-          ){ // Aquí se activa o desactiva la visibilidad del precio si el producto está a la venta
-          ?>
-          <?php
-            // variables de precio
-            if($producto['PRODUCTO_DIVISA_DEFAULT']!=$_SESSION['divisa']['iso']){
-              $cambio_divisa_default = $this->DivisasModel->detalles_iso($producto['PRODUCTO_DIVISA_DEFAULT']);
-              if($producto['PRODUCTO_DIVISA_DEFAULT']!='MXN'){
-                $precio_lista = $producto['PRODUCTO_PRECIO_LISTA']/$cambio_divisa_default['DIVISA_CONVERSION'];
-                $precio_venta = $producto['PRODUCTO_PRECIO']/$cambio_divisa_default['DIVISA_CONVERSION'];
-                $precio_display = $producto['PRODUCTO_PRECIO'];
-              }else{
-                $precio_lista = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO_LISTA'];
-                $precio_venta = $_SESSION['divisa']['conversion']*$producto['PRODUCTO_PRECIO'];
-                $precio_display = $producto['PRODUCTO_PRECIO'];
-              }
-            }else{
-              $precio_lista = $producto['PRODUCTO_PRECIO_LISTA'];
-              $precio_venta = $producto['PRODUCTO_PRECIO'];
-              $precio_display = $producto['PRODUCTO_PRECIO'];
-
-            }
-           ?>
-        <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
-        <h3 class="product-price-descuento h6"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h3>
-        <?php } ?>
-        <h2 class="product-price display-6" >
-          <small><?php echo $_SESSION['divisa']['signo']; ?></small>
-            <span id="Precio_Producto" ><?php echo number_format($precio_display,2); ?></span>
-          <small><?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?> </small>
-        </h2>
-        <hr>
-        <div class="row">
-          <?php if(!empty($combinaciones)){ ?>
-          <div class="col-12">
-            <div class="form-group">
-              <label for="CombinacionProducto" class="sr-only"><?php echo $this->lang->line('pagina_producto_formulario_opciones'); ?></label>
-              <select class="form-control CombinacionProducto" name="CombinacionProducto">
-              <?php foreach($combinaciones as $combinacion){?>
-                <?php
-                  // variables de precio
-                  if($producto['PRODUCTO_DIVISA_DEFAULT']!=$_SESSION['divisa']['iso']){
-                    if($producto['PRODUCTO_DIVISA_DEFAULT']!='MXN'){
-                      $precio_venta_combinacion = $combinacion->COMBINACION_PRECIO/$cambio_divisa_default['DIVISA_CONVERSION'];
-                      $precio_display_combinacion = $combinacion->COMBINACION_PRECIO;
-                    }else{
-                      $precio_venta_combinacion = $_SESSION['divisa']['conversion']*$combinacion->COMBINACION_PRECIO;
-                      $precio_display_combinacion = $combinacion->COMBINACION_PRECIO;
-                    }
-                  }else{
-                    $precio_venta_combinacion = $combinacion->COMBINACION_PRECIO;
-                    $precio_display_combinacion = $combinacion->COMBINACION_PRECIO;
-                  }
-                 ?>
-                <option value="<?php echo  $combinacion->COMBINACION_OPCION; ?>"
-                  data-precio-producto='<?php echo $combinacion->COMBINACION_PRECIO; ?>'
-                  data-imagen-producto='<?php echo $combinacion->COMBINACION_IMAGEN; ?>'
-                  data-precio-visible-producto='<?php echo number_format($precio_display_combinacion,2); ?>'
-                  data-detalles-producto='<?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?>'
-                  ><?php echo $combinacion->COMBINACION_GRUPO.'-'.$combinacion->COMBINACION_OPCION; ?></option>
-              <?php } ?>
-              </select>
-            </div>
-          </div>
-          <?php } ?>
-          <div class="col">
-            <div class="form-group">
-              <label for="" class="sr-only"><?php echo $this->lang->line('pagina_producto_formulario_cantidad'); ?></label>
-              <input type="number" class="form-control" name="CantidadProducto" id="CantidadProducto" min="1" max="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>" value="<?php echo $producto['PRODUCTO_CANTIDAD_MINIMA']; ?>">
-            </div>
-          </div>
-          <div class="col">
-            <div class="p-2 border border-danger mb-3">
-              <p class="text-danger">Vista previa, este producto puede no estar a la venta</p>
-            </div>
-            <button disabled class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block" id=""
-              data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
-              data-nombre-producto='<?php echo $titulo; ?>'
-              data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
-              data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'
-              data-divisa-default='<?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?>'
-              data-contra-entrega='<?php echo $producto['PRODUCTO_CONTRA_ENTREGA']; ?>'
-              data-envio-gratuito='<?php echo $producto['PRODUCTO_ENVIO_GRATUITO']; ?>'
-              data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
-              data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
-              data-detalles-producto=''
-              data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
-              data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
-              data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
-                >
-               <span class="fa fa-shopping-cart"></span> <?php echo $this->lang->line('pagina_producto_formulario_al_carrito'); ?></button>
-          </div>
-          <?php if(isset($_SESSION['usuario']['id'])){ ?>
-            <div class="col-12">
-              <hr>
-              <button disabled class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id=""
-                data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
-                data-nombre-producto='<?php echo $titulo; ?>'
-                data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
-                data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'
-                data-divisa-default='<?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?>'
-                data-contra-entrega='<?php echo $producto['PRODUCTO_CONTRA_ENTREGA']; ?>'
-                data-envio-gratuito='<?php echo $producto['PRODUCTO_ENVIO_GRATUITO']; ?>'
-                data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
-                data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
-                data-detalles-producto=''
-                data-precio-producto='<?php echo $producto['PRODUCTO_PRECIO']; ?>'
-                data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
-                data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
-                  >
-                 <span class="fa fa-shopping-cart"></span> <?php echo $this->lang->line('pagina_producto_formulario_comprar_ahora'); ?></button>
-            </div>
-          <?php } ?>
-        </div>
-      <?php }else{ ?>
         <div class="p-4 my-3 text-center border <?php echo 'border'.$primary.' '.'text'.$primary; ?>">
-          Compra con nosotros a partir del 15 julio del 2019.
+          Vista previa del producto no se puede comprar
         </div>
-      <?php } ?>
+      </div>
+
+      <div class="col-12">
+        <div class="col-12">
+          <div class="card medallas my-3">
+            <div class="row">
+              <div class="col text-center">
+                <?php if($producto['PRODUCTO_ENVIO_GRATUITO']!='no'){ ?>
+                <div class="p-1 border border-success rounded" style="border-style:dashed !important">
+                  <span style="font-size:16px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i></span>
+                </div>
+                <?php } ?>
+              </div>
+              <div class="col-12 my-3">
+                <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                <a class="a2a_button_facebook"></a>
+                <a class="a2a_button_twitter"></a>
+                <a class="a2a_button_whatsapp"></a>
+                <a class="a2a_button_pinterest"></a>
+                </div>
+                <script async src="https://static.addtoany.com/menu/page.js"></script>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card my-3 text-center">
+            <img src="<?php echo base_url('assets/global/img/formas_pago.jpg') ?>" width="100%" style="max-width:258px; margin:0 auto;"alt="">
+          </div>
+        </div>
       </div>
 
       <div class="col-12">
@@ -285,26 +194,6 @@
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div class="card-body">
                 <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
-                <form class="" action="<?php echo base_url('producto/contacto'); ?>" method="post">
-                  <input type="hidden" name="IdReceptor" value="<?php echo $producto['ID_USUARIO']; ?>">
-                  <input type="hidden" name="IdRemitente" value="<?php echo $_SESSION['usuario']['id']; ?>">
-                  <input type="hidden" name="ProductoNombre" value="<?php echo $titulo; ?>">
-                  <input type="hidden" name="IdProducto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
-                  <div class="row">
-                    <table class="table">
-                      <tr>
-                        <td><strong><?php echo $this->lang->line('pagina_producto_tab_preguntas_remitente'); ?>:</strong></td>
-                        <td><?php echo $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']?></td>
-                      </tr>
-                    </table>
-                  </div>
-                  <p> <i class="fa fa-info-circle"></i> <?php echo $this->lang->line('pagina_producto_tab_preguntas_tienes_dudas'); ?></p>
-                  <div class="form-group">
-                    <label for="MensajeTexto"><?php echo $this->lang->line('pagina_producto_tab_preguntas_mensaje'); ?></label>
-                    <textarea class="form-control" name="MensajeTexto" rows="8" required></textarea>
-                  </div>
-                  <button disabled class="btn <?php echo 'btn'.$primary; ?> float-right"> <span class="fa fa-envelope"></span> <?php echo $this->lang->line('pagina_producto_tab_preguntas_contactar'); ?></button>
-                </form>
                 <span class="clearfix"> </span>
               <?php }else{ ?>
                 <div class="card">
@@ -331,20 +220,8 @@
 
                 <img src="<?php echo base_url('contenido/img/tiendas/completo/'.$tienda['TIENDA_IMAGEN']) ?>" alt="" style="width:100px; height:100px" class="mb-3 m d-block img-thumbnail mx-auto rounded-circle">
 
-                <table class="table table-sm table-borderless">
-                  <tr>
-                    <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_nombre'); ?></b></td>
-                    <td><?php echo $tienda['TIENDA_NOMBRE']; ?></td>
-                  </tr>
-                  <tr>
-                    <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_razon_social'); ?></b></td>
-                    <td><?php echo $tienda['TIENDA_RAZON_SOCIAL']; ?></td>
-                  </tr>
-                  <tr>
-                    <td><b><?php echo $this->lang->line('pagina_producto_tab_acerca_de_rfc'); ?></b></td>
-                    <td><?php echo $tienda['TIENDA_RFC']; ?></td>
-                  </tr>
-                </table>
+                <h6>Vendido por:</h6>
+                <h5><?php echo $tienda['TIENDA_NOMBRE']; ?></h5>
 
               </div>
             </div>
@@ -395,19 +272,7 @@
                   <?php if(empty($mi_calificacion)){ ?>
                   <div class="card">
                       <div class="card-body">
-                        <form class="" action="<?php echo base_url('producto/calificar'); ?>" method="post">
-                          <input type="hidden" name="IdProducto" value="<?php echo $producto['ID_PRODUCTO']; ?>">
-                          <input type="hidden" name="IdUsuario" value="<?php echo $producto['ID_USUARIO']; ?>">
-                          <input type="hidden" name="IdCalificador" value="<?php echo $_SESSION['usuario']['id'] ?>">
-                          <label for="EstrellasCalificacion"><?php echo $this->lang->line('pagina_producto_formulario_calificaciones_invita'); ?></label>
-                          <div class="estrellas"></div>
-                          <input type="hidden" id="EstrellasCalificacion" name="EstrellasCalificacion" value="1">
-                          <div class="form-group">
-                            <label for="ComentarioCalificacion"><?php echo $this->lang->line('pagina_producto_formulario_calificaciones_comentario'); ?></label>
-                            <textarea class="form-control" name="ComentarioCalificacion" rows="2" cols="80"></textarea>
-                          </div>
-                          <button disabled type="submit" class="btn <?php echo 'btn'.$primary; ?> btn-sm float-right" name="button"> <i class="fa fa-star"></i> <?php echo $this->lang->line('pagina_producto_formulario_calificaciones_calificar'); ?></button>
-                        </form>
+
                       </div>
                   </div>
                 <?php }else{ ?>
@@ -467,7 +332,7 @@
         <?php foreach($categorias_específicas as $slug => $limite){ ?>
           <?php
           $categoria = $this->CategoriasModel->detalles_slug($slug);
-          $productos = $this->ProductosModel->lista_categoria_activos('',['productos.ID_PRODUCTO !='=>$producto['ID_PRODUCTO']],$categoria['ID_CATEGORIA'],'',$limite);
+          $productos = $this->ProductosModel->lista_categoria_activos('',['productos.ID_PRODUCTO !='=>$producto['ID_PRODUCTO']],[$categoria['ID_CATEGORIA']],'',$limite);
           ?>
         <?php foreach($productos as $producto){ ?>
           <?php

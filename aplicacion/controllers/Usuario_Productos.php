@@ -197,7 +197,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				redirect(base_url('usuario/productos'));
 			}else{
 				$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
-				$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
+				$this->data['categorias'] = $this->CategoriasModel->lista_no_admin(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/form_producto',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
@@ -321,12 +321,13 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					$this->CategoriasProductoModel->borrar($this->input->post('Identificador'));
 					// Reviso si se envió información de categoria
 					if(!null==$this->input->post('CategoriaProducto')){
-						// Parametros Categoria
-						$parametros_relacion_categorias = array(
-							'ID_CATEGORIA'=>$this->input->post('CategoriaProducto'),
-							'ID_PRODUCTO'=>$this->input->post('Identificador')
-						);
-						$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
+							// Parametros Categoria
+							$parametros_relacion_categorias = array(
+								'ID_CATEGORIA'=>$this->input->post('CategoriaProducto'),
+								'ID_PRODUCTO'=>$this->input->post('Identificador')
+							);
+							$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
+
 					}
 
 					// Mensaje Feedback
@@ -336,7 +337,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				}else{
 					$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 					$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
-					$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
+					$this->data['categorias'] = $this->CategoriasModel->lista_no_admin(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
 					$this->data['relacion_categorias'] = $this->CategoriasProductoModel->lista($_GET['id']);
 					$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'','');
 					$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);

@@ -1,4 +1,7 @@
 <script>
+jQuery(window).on('load',function(e){
+  jQuery('.protector_formulario').slideUp('fast');
+});
 // Popover
 jQuery('[data-toggle="popover"]').popover();
 // Editor Tinymce para todas las clases .Editor
