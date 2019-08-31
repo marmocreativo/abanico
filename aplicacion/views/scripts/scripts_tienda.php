@@ -553,7 +553,7 @@ VARIACIONES
 // Al cargar
 
 var precio = $('.CombinacionProducto').find(':selected').attr('data-precio-producto');
-var cantidad_max = $('.CombinacionProducto').find(':selected').attr('data-cantidad_max');
+var cantidad_max = $('.CombinacionProducto').find(':selected').attr('data-cantidad-max');
 var peso = $('.CombinacionProducto').find(':selected').attr('data-peso-producto');
 var detalles = $('.CombinacionProducto').find(':selected').attr('data-detalles-producto');
 var precio_visible = $('.CombinacionProducto').find(':selected').attr('data-precio-visible-producto');
@@ -568,6 +568,7 @@ if(imagen){
 jQuery('#Precio_Producto').html(precio_visible);
 jQuery('#BotonComprar').attr('data-precio-producto',precio);
 jQuery('#BotonComprar').attr('data-cantidad-max',cantidad_max);
+jQuery('#CantidadProducto').attr('max',cantidad_max);
 jQuery('#BotonComprar').attr('data-peso-producto',peso);
 jQuery('#BotonComprar').attr('data-detalles-producto',detalles);
 jQuery('#BotonComprar').attr('data-imagen-producto',nuevaImagen);
