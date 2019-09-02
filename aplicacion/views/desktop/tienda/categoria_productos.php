@@ -79,7 +79,7 @@
               // Busco categorías hijas
         			$categorias_segundo_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria['ID_CATEGORIA']],'productos','','');
               foreach ($categorias_segundo_nivel as $categoria_segunda){
-                $productos_segundo = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$categoria_segunda->ID_CATEGORIA,$orden,'');
+                $productos_segundo = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,[$categoria_segunda->ID_CATEGORIA],$orden,'');
                 if(!empty($productos_segundo)) {
                   $hay_productos = true;
                   $productos = array_merge($productos, $productos_segundo);
@@ -88,7 +88,7 @@
                 $categorias_tercer_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria_segunda->ID_CATEGORIA],'productos','','');
 
                 foreach ($categorias_tercer_nivel as $categoria_tercera){
-                  $productos_tercer = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$categoria_tercera->ID_CATEGORIA,$orden,'');
+                  $productos_tercer = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,[$categoria_tercera->ID_CATEGORIA],$orden,'');
                   if(!empty($productos_tercer)) {
                     $hay_productos = true;
                     $productos = array_merge($productos, $productos_tercer);

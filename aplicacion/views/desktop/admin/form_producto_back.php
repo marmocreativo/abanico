@@ -244,7 +244,7 @@
 													<h5 class="mb-0">
 														<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse<?php echo $i; ?>">
 															<h5><?php echo $categoria->CATEGORIA_NOMBRE; ?></h5>
-															<?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
+															<?php $segundo_categorias = $this->CategoriasModel->lista_no_admin(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
 														</button>
 													</h5>
 												</div>
@@ -262,7 +262,7 @@
 																					>
 																	<label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
 																</div>
-															<?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
+															<?php $tercero_categorias = $this->CategoriasModel->lista_no_admin(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
 															<ul class="list list-unstyled">
 																<?php foreach($tercero_categorias as $tercera_categoria){ ?>
 																<li>

@@ -167,7 +167,7 @@
                             <?php if($plan['PLAN_ESTADO']=='pendiente'){ ?>
                             <div class="col-12">
                               <h4><span class="badge badge-pill badge-warning py-2"><i class="fa fa-pause-circle fa-lg"></i></span> Pendiente</h4>
-                              <p>Nos comunicaremos contigo via telefónica para comprobar tu identidad y ajustar tu plan en caso de que así te convenga.</p>
+                              <p>Nos comunicaremos contigo via telefónica para confirmar tu información y ajustar tu plan en caso necesario.</p>
                             </div>
                             <?php } ?>
                             <?php if($plan['PLAN_ESTADO']=='espera pago'){ ?>

@@ -53,6 +53,7 @@
 		<!--end:: Global Optional Vendors -->
 
 		<!--begin::Global Theme Styles(used by all pages) -->
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/global/css/bootstrap.css">
 		<link href="<?php echo base_url('assets/metronic/'); ?>demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/metronic/'); ?>demo/default/base/custom.css?v=<?php echo date('U'); ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/global/'); ?>css/estilos_abanico_administrador.css?v=<?php echo date('U'); ?>" rel="stylesheet" type="text/css" />
