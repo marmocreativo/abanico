@@ -162,6 +162,9 @@
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
           <a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=ayuda'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-file"></i></i><span class="kt-menu__link-text">Ayuda</span></a>
         </li>
+        <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+          <a href="<?php echo base_url('admin/publicaciones?tipo_publicacion=blog'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fas fa-newspaper"></i></i><span class="kt-menu__link-text">Blog</span></a>
+        </li>
         <div class="dropdown-divider"></div>
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
           <a href="<?php echo base_url('admin/premios'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-gift"></i></i><span class="kt-menu__link-text">Lista de Premios</span></a>

@@ -62,11 +62,18 @@
                 </div>
                 <div class="form-group">
                   <label for="ContenidoPublicacion">Contenido de la publicación</label>
-                  <textarea id="ContenidoPublicacion" name="ContenidoPublicacion" class="form-control Editor" rows="5"><?php echo $publicacion['PUBLICACION_CONTENIDO']; ?></textarea>
+                  <textarea id="ContenidoPublicacion" name="ContenidoPublicacion" class="form-control <?php if($publicacion['PUBLICACION_SOLO_CODIGO']=='no'){ echo 'Editor'; } ?>" rows="5"><?php echo $publicacion['PUBLICACION_CONTENIDO']; ?></textarea>
                 </div>
 								<div class="form-group">
                   <label for="UrlExternaPublicacion">URL Externa </label>
                   <input type="text" name="UrlExternaPublicacion" class="form-control" value="<?php echo $publicacion['PUBLICACION_URL_EXTERNA']; ?>">
+                </div>
+								<div class="form-group">
+                  <label for="SoloCodigoPublicacion">Editar como código</label>
+                  <select class="form-control" id="SoloCodigoPublicacion" name="SoloCodigoPublicacion" placeholder="">
+                    <option value="si" <?php if($publicacion['PUBLICACION_SOLO_CODIGO']=='si'){ echo 'selected'; } ?>>Si</option>
+                    <option value="no" <?php if($publicacion['PUBLICACION_SOLO_CODIGO']=='no'){ echo 'selected'; } ?>>No</option>
+                  </select>
                 </div>
               </div>
               <div class="col-3">

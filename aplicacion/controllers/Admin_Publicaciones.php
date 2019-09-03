@@ -52,9 +52,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
 			$parametros = array(
-				'PUBLICACION_NOMBRE'=>$_GET['Busqueda'],
-				'PUBLICACION_RAZON_SOCIAL'=>$_GET['Busqueda'],
-				'PUBLICACION_RFC'=>$_GET['Busqueda']
+				'PUBLICACION_TITULO'=>$_GET['Busqueda']
 			);
 			$this->data['publicaciones'] = $this->PublicacionesModel->lista($parametros,'ORDEN ASC','');
 
@@ -112,6 +110,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PUBLICACION_IMAGEN' => $imagen,
 				'PUBLICACION_URL_EXTERNA' => $this->input->post('UrlExternaPublicacion'),
 				'PUBLICACION_TIPO' => $this->input->post('TipoPublicacion'),
+				'PUBLICACION_SOLO_CODIGO' => 'si',
 				'PUBLICACION_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 				'PUBLICACION_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
 				'PUBLICACION_FECHA_PUBLICACION' => date('Y-m-d H:i:s'),
@@ -162,6 +161,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PUBLICACION_IMAGEN' => $imagen,
 				'PUBLICACION_URL_EXTERNA' => $this->input->post('UrlExternaPublicacion'),
 				'PUBLICACION_TIPO' => $this->input->post('TipoPublicacion'),
+				'PUBLICACION_SOLO_CODIGO' => $this->input->post('SoloCodigoPublicacion'),
 				'PUBLICACION_FECHA_REGISTRO' => date('Y-m-d H:i:s'),
 				'PUBLICACION_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
 				'PUBLICACION_FECHA_PUBLICACION' => date('Y-m-d H:i:s'),
