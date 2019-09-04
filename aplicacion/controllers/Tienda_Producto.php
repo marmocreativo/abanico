@@ -106,7 +106,7 @@ class Tienda_Producto extends CI_Controller {
 	 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
 	 $this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 	 $this->data['relacion_categoria_producto'] = $this->CategoriasProductoModel->lista($_GET['id']);
-	 $this->data['categoria_producto'] = $this->CategoriasModel->detalles($this->data['relacion_categoria_producto']['ID_CATEGORIA']);
+	 $this->data['categoria_producto'] = $this->CategoriasModel->detalles($this->data['relacion_categoria_producto'][0]->ID_CATEGORIA);
 	 if(!null==$this->data['categoria_producto']){
 		 $this->data['primary'] = $this->data['categoria_producto']['CATEGORIA_COLOR'];
 	 }
