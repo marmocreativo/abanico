@@ -287,5 +287,22 @@ jQuery.validator.setDefaults({
     });
   });
 
+// Mantener la pestaña activa
+
+jQuery('#basicos-tab').click(function(){
+  jQuery('#SeccionActiva').val('');
+});
+
+jQuery('#categoria-tab').click(function(){
+  jQuery('#SeccionActiva').val('categoria');
+});
+
+jQuery('#datos-tab').click(function(){
+  jQuery('#SeccionActiva').val('datos');
+});
+
+jQuery('#galeria-tab').click(function(){
+  jQuery('#SeccionActiva').val('galeria');
+});
 
 </script>

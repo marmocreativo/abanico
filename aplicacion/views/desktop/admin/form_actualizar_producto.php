@@ -58,6 +58,7 @@
               <input type="hidden" name="IdTienda" value="<?php echo $tienda['ID_TIENDA']; ?>">
               <input type="hidden" name="Identificador" value="<?php echo $_GET['id']; ?>">
               <input type="hidden" name="UrlProducto" value="<?php echo $producto['PRODUCTO_URL']; ?>">
+              <input type="hidden" name="SeccionActiva" id="SeccionActiva" value="">
               <div class="row border-top border-bottom my-1 py-1 bg-gray">
                 <div class="col">
                   <button type="submit" class="btn btn-primary btn-sm float-right"> <span class="fa fa-save"></span> Actualizar Producto</button>
@@ -257,41 +258,42 @@
                         <?php $categorias_producto = $this->CategoriasProductoModel->lista($producto['ID_PRODUCTO']);
 
                         $categorias_seleccionadas = array();
-                          $categorias_seleccionadas[] = $categorias_producto['ID_CATEGORIA'];
+                        foreach($categorias_producto as $cat_select){
+                          $categorias_seleccionadas[] = $cat_select->ID_CATEGORIA;
+                        }
+
                         ?>
                           <?php $i=1; foreach($categorias as $categoria){ ?>
                             <div class="col-12 card"> <!-- Título y botón de categoría -->
                               <div class="card-header" id="heading<?php echo $i; ?>">
-                                <h5 class="mb-0">
                                   <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse<?php echo $i; ?>">
-                                    <h5><?php echo $categoria->CATEGORIA_NOMBRE; ?></h5>
+                                    <h6><i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
                                     <?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
                                   </button>
-                                </h5>
                               </div>
                                 <div class="row collapse" id="collapse<?php echo $i; ?>" aria-labelledby="heading<?php echo $i; ?>">
                                 <?php foreach($segundo_categorias as $segunda_categoria){ ?>
                                   <div class="col-4">
                                     <div class="p-3">
-                                      <div class="custom-control custom-radio">
-                                        <input  type="radio"
+                                      <div class="custom-control custom-checkbox">
+                                        <input  type="checkbox"
                                                 id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
-                                                name="CategoriaProducto" class="custom-control-input"
+                                                name="CategoriaProducto[]" class="custom-control-input"
                                                 value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
                                                 <?php if(in_array($segunda_categoria->ID_CATEGORIA,$categorias_seleccionadas)){ echo 'checked'; } ?>
                                                 >
                                         <label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
                                       </div>
                                     <?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
-                                    <ul class="list list-unstyled">
+                                    <ul class="list list-unstyled ml-3">
                                       <?php foreach($tercero_categorias as $tercera_categoria){ ?>
                                       <li>
-                                        <div class="custom-control custom-radio">
-                                          <input  type="radio"
+                                        <div class="custom-control custom-checkbox">
+                                          <input  type="checkbox"
                                                   id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                                  name="CategoriaProducto" class="custom-control-input"
+                                                  name="CategoriaProducto[]" class="custom-control-input"
                                                   value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                                  <?php if(in_array($segunda_categoria->ID_CATEGORIA,$categorias_seleccionadas)){ echo 'checked'; } ?>
+                                                  <?php if(in_array($tercera_categoria->ID_CATEGORIA,$categorias_seleccionadas)){ echo 'checked'; } ?>
                                                   >
                                           <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
                                         </div>

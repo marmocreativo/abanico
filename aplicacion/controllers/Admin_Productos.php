@@ -194,12 +194,15 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			// Reviso si se envió información de categoria
 			if(!null==$this->input->post('CategoriaProducto')){
+				foreach($this->input->post('CategoriaProducto') as $id_categoria){
+					$parametros_relacion_categorias = array(
+						'ID_CATEGORIA'=>$id_categoria,
+						'ID_PRODUCTO'=>$producto_id
+					);
+					$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
+				}
 				// Parametros Categoria
-				$parametros_relacion_categorias = array(
-					'ID_CATEGORIA'=>$this->input->post('CategoriaProducto'),
-					'ID_PRODUCTO'=>$producto_id
-				);
-				$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
+
 			}
 			// Mensaje de feedback
 			$this->session->set_flashdata('exito', 'Tu producto se ha actualizado, puedes continuar añadiendo imagenes a la galería');
@@ -238,7 +241,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		if($this->form_validation->run())
     {
-			$tab='categoria';
+
+			$tab=$this->input->post('SeccionActiva');
 			// verifico la Url del Producto
 			if(empty($this->input->post('UrlProducto'))){
 				// Verifico URL
@@ -319,24 +323,27 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					'ORDEN'=>'1'
 				);
 				$galeria_id = $this->GaleriasModel->crear($parametros_galeria);
-				$tab='galeria';
 			}
 
 			// Borro la relación de categorias
 			$this->CategoriasProductoModel->borrar($this->input->post('Identificador'));
 			// Reviso si se envió información de categoria
 			if(!null==$this->input->post('CategoriaProducto')){
+				foreach($this->input->post('CategoriaProducto') as $id_categoria){
+					$parametros_relacion_categorias = array(
+						'ID_CATEGORIA'=>$id_categoria,
+						'ID_PRODUCTO'=>$this->input->post('Identificador')
+					);
+					$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
+				}
 				// Parametros Categoria
-				$parametros_relacion_categorias = array(
-					'ID_CATEGORIA'=>$this->input->post('CategoriaProducto'),
-					'ID_PRODUCTO'=>$this->input->post('Identificador')
-				);
-				$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
+
 			}
 			// Mensaje de Feedback
 			$this->session->set_flashdata('exito', 'Actualización correcta');
 			// Redirección
-			redirect(base_url('admin/productos/actualizar?id=').$this->input->post('Identificador'));
+			redirect(base_url('admin/productos/actualizar?id=').$this->input->post('Identificador').'&tab='.$tab);
+
     }else{
 
 			if(isset($_POST['Identificador'])){

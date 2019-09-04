@@ -30,6 +30,7 @@
         <input type="hidden" name="TipoProducto" value="<?php echo $tipo_producto; ?>">
         <input type="hidden" name="IdUsuario" value="<?php echo $_SESSION['usuario']['id']; ?>">
         <input type="hidden" name="IdTienda" value="<?php echo $tienda['ID_TIENDA']; ?>">
+        <input type="hidden" name="SeccionActiva" id="SeccionActiva" value="">
         <!-- menu de acordion -->
         <div class="accordion" id="accordionExample">
           <div class="card">
@@ -180,12 +181,10 @@
                 <?php $i = 1; foreach($categorias as $categoria){ ?>
                   <div class="col-12 card"> <!-- Título y botón de categoría -->
                     <div class="card-header" id="heading<?php echo $i; ?>">
-                      <h5 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse<?php echo $i; ?>">
-                          <h5><?php echo $categoria->CATEGORIA_NOMBRE; ?></h5>
+                          <h6><i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i>  <?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
                           <?php $segundo_categorias = $this->CategoriasModel->lista_no_admin(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
                         </button>
-                      </h5>
                     </div>
 
                       <div class="row collapse" id="collapse<?php echo $i; ?>" aria-labelledby="heading<?php echo $i; ?>">

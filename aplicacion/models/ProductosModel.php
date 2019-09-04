@@ -158,6 +158,8 @@ class ProductosModel extends CI_Model {
     }
     if(!empty($orden)){
       $this->db->order_by($orden);
+    }else{
+      $this->db->order_by('ID_PRODUCTO','RANDOM');
     }
     if(!empty($limite)){
       $this->db->limit($limite);

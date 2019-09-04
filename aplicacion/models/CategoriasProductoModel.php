@@ -9,7 +9,8 @@ class CategoriasProductoModel extends CI_Model {
     * Enlisto todas las entradas
  */
   function lista($id_producto){
-    return $this->db->get_where('categorias_productos',array('ID_PRODUCTO'=>$id_producto))->row_array();
+    $query = $this->db->get_where('categorias_productos',array('ID_PRODUCTO'=>$id_producto));
+    return $query->result();
   }
   /*
     * Creo una nueva entrada usando los parámetros

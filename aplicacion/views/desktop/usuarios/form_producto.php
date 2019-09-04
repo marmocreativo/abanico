@@ -201,46 +201,44 @@
                       <?php $i = 1; foreach($categorias as $categoria){ ?>
                         <div class="col-12 card"> <!-- Título y botón de categoría -->
                           <div class="card-header" id="heading<?php echo $i; ?>">
-                            <h5 class="mb-0">
                               <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse<?php echo $i; ?>">
-                                <h5><?php echo $categoria->CATEGORIA_NOMBRE; ?></h5>
+                                <h6><i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
                                 <?php $segundo_categorias = $this->CategoriasModel->lista_no_admin(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
                               </button>
-                            </h5>
                           </div>
 
                             <div class="row collapse" id="collapse<?php echo $i; ?>" aria-labelledby="heading<?php echo $i; ?>">
-                            <?php foreach($segundo_categorias as $segunda_categoria){ ?>
-                              <div class="col-4">
-                                <div class="p-3">
-                                  <div class="custom-control custom-radio">
-                                    <input  type="radio"
-                                            id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
-                                            name="CategoriaProducto" class="custom-control-input"
-                                            value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+                              <?php foreach($segundo_categorias as $segunda_categoria){ ?>
+    														<div class="col-4">
+    															<div class="p-3">
+    																<div class="custom-control custom-checkbox">
+    																	<input  type="checkbox"
+    																					id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+    																					name="CategoriaProducto[]" class="custom-control-input"
+    																					value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
 
-                                            >
-                                    <label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
-                                  </div>
-                                <?php $tercero_categorias = $this->CategoriasModel->lista_no_admin(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
-                                <ul class="list list-unstyled">
-                                  <?php foreach($tercero_categorias as $tercera_categoria){ ?>
-                                  <li>
-                                    <div class="custom-control custom-radio">
-                                      <input  type="radio"
-                                              id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
-                                              name="CategoriaProducto" class="custom-control-input"
-                                              value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
+    																					>
+    																	<label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
+    																</div>
+    															<?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
+    															<ul class="list list-unstyled ml-3">
+    																<?php foreach($tercero_categorias as $tercera_categoria){ ?>
+    																<li>
+    																	<div class="custom-control custom-checkbox">
+    																		<input  type="checkbox"
+    																						id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
+    																						name="CategoriaProducto[]" class="custom-control-input"
+    																						value="<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
 
-                                              >
-                                      <label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
-                                    </div>
-                                  </li>
-                                <?php } ?>
-                                </ul>
-                                </div>
-                              </div>
-                            <?php } ?>
+    																						>
+    																		<label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
+    																	</div>
+    																</li>
+    															<?php } ?>
+    															</ul>
+    															</div>
+    														</div>
+    													<?php } ?>
                             </div>
                           </div>
                       <?php $i ++; } ?>

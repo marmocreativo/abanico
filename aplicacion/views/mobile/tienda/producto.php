@@ -172,9 +172,13 @@
               <div class="col text-center">
                 <?php if($producto['PRODUCTO_ENVIO_GRATUITO']!='no'){ ?>
                 <div class="p-1 border border-success rounded" style="border-style:dashed !important">
-                  <span style="font-size:16px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i></span>
+                  <span style="font-size:16px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i> entrega segura</span>
                 </div>
-                <?php } ?>
+              <?php }else{ ?>
+                <div class="p-1 border border-info rounded" style="border-style:dashed !important">
+                  <span style="font-size:16px;" class="text-info"> <i class="fa fa-truck"></i> Entrega segura</span>
+                </div>
+              <?php } ?>
               </div>
               <div class="col-12 my-3">
                 <div class="a2a_kit a2a_kit_size_32 a2a_default_style">

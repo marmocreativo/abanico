@@ -184,12 +184,15 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 				// Reviso si se envió información de categoria
 				if(!null==$this->input->post('CategoriaProducto')){
+					foreach($this->input->post('CategoriaProducto') as $id_categoria){
+						$parametros_relacion_categorias = array(
+							'ID_CATEGORIA'=>$id_categoria,
+							'ID_PRODUCTO'=>$producto_id
+						);
+						$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
+					}
 					// Parametros Categoria
-					$parametros_relacion_categorias = array(
-						'ID_CATEGORIA'=>$this->input->post('CategoriaProducto'),
-						'ID_PRODUCTO'=>$producto_id
-					);
-					$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
+
 				}
 				// Mensaje Retroalimentación
 				$this->session->set_flashdata('exito', 'Producto Creado!');
@@ -235,7 +238,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 				if($this->form_validation->run())
 				{
-					$tab='categoria';
+					$tab=$this->input->post('SeccionActiva');
 					// verifico la Url del Producto
 					if(empty($this->input->post('UrlProducto'))){
 						// Verifico URL
@@ -314,26 +317,27 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 							'ORDEN'=>'1'
 						);
 						$galeria_id = $this->GaleriasModel->crear($parametros_galeria);
-						$tab='galeria';
 					}
 
 					// Borro la relación de categorias
 					$this->CategoriasProductoModel->borrar($this->input->post('Identificador'));
 					// Reviso si se envió información de categoria
 					if(!null==$this->input->post('CategoriaProducto')){
-							// Parametros Categoria
+						foreach($this->input->post('CategoriaProducto') as $id_categoria){
 							$parametros_relacion_categorias = array(
-								'ID_CATEGORIA'=>$this->input->post('CategoriaProducto'),
+								'ID_CATEGORIA'=>$id_categoria,
 								'ID_PRODUCTO'=>$this->input->post('Identificador')
 							);
 							$this->CategoriasProductoModel->crear($parametros_relacion_categorias);
+						}
+						// Parametros Categoria
 
 					}
 
 					// Mensaje Feedback
 						$this->session->set_flashdata('exito', 'Actualización correcta');
 					// Redirecciono
-					redirect(base_url('usuario/productos/actualizar?id='.$this->input->post('Identificador').'&tab='.$tab));
+					redirect(base_url('usuario/productos/actualizar?id=').$this->input->post('Identificador').'&tab='.$tab);
 				}else{
 					$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 					$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
