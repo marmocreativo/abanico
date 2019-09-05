@@ -23,6 +23,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		// Cargo el modelo
 		$this->load->model('CarruselesModel');
+		$this->load->model('CategoriasModel');
 		$this->load->model('LenguajesModel');
 		$this->load->model('EstadisticasModel');
 		$this->load->model('NotificacionesModel');
@@ -54,13 +55,27 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		if($this->form_validation->run())
 		{
+			$categorias = '';
+			if(isset($_POST['Categorias'])&&!empty($_POST['Categorias'])){
+				$i = 0;
+				$len = count($_POST['Categorias']);
+				foreach($_POST['Categorias'] as $categoria){
+					if($i != $len - 1){
+						$categorias .= $categoria.',';
+					}else{
+						$categorias .= $categoria;
+					}
+					$i ++;
+				}
+
+			}
 
 			// Parametros de la dirección
 			$parametros = array(
 				'TITULO' => $this->input->post('Titulo'),
 				'DESCRIPCION' => $this->input->post('Descripcion'),
 				'TIPO' => $this->input->post('Tipo'),
-				'CATEGORIAS' => $this->input->post('Categorias'),
+				'CATEGORIAS' => $categorias,
 				'ORIGEN' => $this->input->post('Origen'),
 				'ARTESANAL' => $this->input->post('Artesanal'),
 				'ORDEN_PRODUCTOS' => $this->input->post('OrdenProductos'),
@@ -72,6 +87,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->CarruselesModel->crear($parametros);
 			$this->session->set_flashdata('exito', 'Carrusel creado correctamente');
       redirect(base_url('admin/carruseles'));
+
     }else{
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
@@ -86,13 +102,27 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		if($this->form_validation->run())
 		{
 
+			$categorias = '';
+			if(isset($_POST['Categorias'])&&!empty($_POST['Categorias'])){
+				$i = 0;
+				$len = count($_POST['Categorias']);
+				foreach($_POST['Categorias'] as $categoria){
+					if($i != $len - 1){
+						$categorias .= $categoria.',';
+					}else{
+						$categorias .= $categoria;
+					}
+					$i ++;
+				}
+
+			}
 
 			// Parametros de la dirección
 			$parametros = array(
 				'TITULO' => $this->input->post('Titulo'),
 				'DESCRIPCION' => $this->input->post('Descripcion'),
 				'TIPO' => $this->input->post('Tipo'),
-				'CATEGORIAS' => $this->input->post('Categorias'),
+				'CATEGORIAS' => $categorias,
 				'ORIGEN' => $this->input->post('Origen'),
 				'ARTESANAL' => $this->input->post('Artesanal'),
 				'ORDEN_PRODUCTOS' => $this->input->post('OrdenProductos'),
@@ -120,6 +150,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 	public function borrar()
 	{
-
+		$this->CarruselesModel->borrar($_GET['id']);
+		redirect(base_url('admin/carruseles'));
 	}
 }

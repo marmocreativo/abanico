@@ -34,34 +34,52 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('PublicacionesModel');
   }
 
-	public function index()
+	public function url_productos()
 	{
-
-		$this->data['titulo'] = 'Abanico siempre lo mejor';
-		$this->data['descripcion'] = 'Compra y vende artículos por internet';
-		$this->data['keywords'] = '';
-		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
-
-		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/test',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
+		/*
+		$productos = $this->ProductosModel->lista('','','','');
+		foreach($productos as $producto){
+			if($producto->META_TITULO!=''){
+				$titulo = $producto->META_TITULO;
+			}else{
+				$titulo = $producto->PRODUCTO_NOMBRE;
+			}
+			$url = url_title(convert_accented_characters($titulo),'-',TRUE);
+			$unico = 'si';
+			$existe = $this->ProductosModel->lista_avanzada('',['ID_PRODUCTO !='=>$producto->ID_PRODUCTO, 'PRODUCTO_URL'=>$url],'','',1);
+			if(!empty($existe)){
+				$url = $url.'-'.url_title(easy_slug(2),'-',TRUE);
+				$unico = 'no';
+			}
+			echo $titulo.' | <b>'.$unico.'</b> | '.$url;
+			echo '<br>';
+			$parametros = array(
+				'PRODUCTO_URL'=>$url
+			);
+			$this->ProductosModel->actualizar($producto->ID_PRODUCTO,$parametros);
+		}
+		*/
 	}
-	public function guia(){
-		$this->data['pedido']['PEDIDO_NOMBRE']='Georgina Alcántar López';
-		$this->data['pedido']['PEDIDO_DIRECCION']='Bahía No. 51 depto 103 Ampli. Las Águilas. Álvaro Obregón. CDMX. CP. 01159';
-		$this->data['pedido_tienda']['GUIA_PAQUETERIA']='';
-
-		$this->data['titulo'] = 'Abanico siempre lo mejor';
-		$this->data['descripcion'] = 'Compra y vende artículos por internet';
-		$this->data['keywords'] = '';
-		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
-		
-		$this->load->view($this->data['dispositivo'].'/admin/imprimir_guia_limpia',$this->data);
-	}
-	public function barcode(){
-		require_once(APPPATH.'libraries/barcode/BarcodeGenerator.php');
-		require_once(APPPATH.'libraries/barcode/BarcodeGeneratorHTML.php');
-		$generator = new Picqer\Barcode\BarcodeGeneratorHTML();
-		echo $generator->getBarcode('081231723897', $generator::TYPE_CODE_128);
+	public function url_categorias()
+	{
+		/*
+		$categorias = $this->CategoriasModel->lista('','','','');
+		foreach($categorias as $categoria){
+			$titulo = $categoria->CATEGORIA_NOMBRE;
+			$url = url_title(convert_accented_characters($titulo),'-',TRUE);
+			$unico = 'si';
+			$existe = $this->CategoriasModel->lista_avanzada('',['ID_CATEGORIA !='=>$categoria->ID_CATEGORIA, 'CATEGORIA_URL'=>$url],'','',1);
+			if(!empty($existe)){
+				$url = $url.'-'.url_title(easy_slug(2),'-',TRUE);
+				$unico = 'no';
+			}
+			echo $titulo.' | <b>'.$unico.'</b> | '.$url;
+			echo '<br>';
+			$parametros = array(
+				'CATEGORIA_URL'=>$url
+			);
+			$this->CategoriasModel->actualizar($categoria->ID_CATEGORIA,$parametros);
+		}
+		*/
 	}
 }

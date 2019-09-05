@@ -42,7 +42,7 @@
               <div class="col-9">
 								<div class="form-group">
                   <label for="Titulo">Titulo </label>
-                  <input type="text" name="Titulo" class="form-control" value="<?=!form_error('Titulo')?set_value('Titulo'):''?>">
+                  <input type="text" name="Titulo" class="form-control" value="<?=!form_error('Titulo')?set_value('Titulo'):''?>" required>
                 </div>
 								<div class="form-group">
                   <label for="Descripcion">Descripción </label>
@@ -56,9 +56,56 @@
 										<option value="excluyente" >Excepto ciertas categorías</option>
                   </select>
                 </div>
-								<div class="form-group">
-                  <label for="Categorias">Categorías </label>
-									<textarea name="Categorias" class="form-control" rows="5"><?=!form_error('Categorias')?set_value('Categorias'):''?></textarea>
+								<div class="row">
+                    <!-- inicia categoria -->
+										<?php $categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','',''); ?>
+										<?php $i = 1; foreach($categorias as $categoria){ ?>
+											<div class="col-12 card"> <!-- Título y botón de categoría -->
+												<div class="card-header" id="heading<?php echo $i; ?>">
+													<h5 class="mb-0">
+														<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse<?php echo $i; ?>">
+															<h6><i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $categoria->CATEGORIA_NOMBRE; ?></h6>
+															<?php $segundo_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria->ID_CATEGORIA],$categoria->CATEGORIA_TIPO,'',''); ?>
+														</button>
+													</h5>
+												</div>
+
+													<div class="row collapse" id="collapse<?php echo $i; ?>" aria-labelledby="heading<?php echo $i; ?>">
+													<?php foreach($segundo_categorias as $segunda_categoria){ ?>
+														<div class="col-4">
+															<div class="p-3">
+																<div class="custom-control custom-checkbox">
+																	<input  type="checkbox"
+																					id="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
+																					name="Categorias[]" class="custom-control-input"
+																					value="<?php echo $segunda_categoria->CATEGORIA_URL; ?>"
+
+																					>
+																	<label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>
+																</div>
+															<?php $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
+															<ul class="list list-unstyled ml-3">
+																<?php foreach($tercero_categorias as $tercera_categoria){ ?>
+																<li>
+																	<div class="custom-control custom-checkbox">
+																		<input  type="checkbox"
+																						id="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>"
+																						name="Categorias[]" class="custom-control-input"
+																						value="<?php echo $tercera_categoria->CATEGORIA_URL; ?>"
+
+																						>
+																		<label class="custom-control-label" for="categoria-<?php echo $tercera_categoria->ID_CATEGORIA; ?>">-<?php echo $tercera_categoria->CATEGORIA_NOMBRE; ?></label>
+																	</div>
+																</li>
+															<?php } ?>
+															</ul>
+															</div>
+														</div>
+													<?php } ?>
+													</div>
+												</div>
+										<?php $i ++; } ?>
+                    <!-- termina categoria -->
                 </div>
 								<div class="form-group">
                   <label for="Artesanal">Artesanal </label>
@@ -87,7 +134,7 @@
                 </div>
 								<div class="form-group">
                   <label for="Limite">Limite </label>
-                  <input type="number" name="Limite" class="form-control" min="10" value="<?=!form_error('Limite')?set_value('Limite'):'10'?>">
+                  <input type="number" name="Limite" class="form-control" min="10" value="<?=!form_error('Limite')?set_value('Limite'):''?>" required>
                 </div>
 								<div class="form-group">
                   <label for="Enlace">Enlace </label>

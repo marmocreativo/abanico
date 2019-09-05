@@ -31,6 +31,31 @@ class ProductosModel extends CI_Model {
     return $query->result();
   }
 
+  function lista_avanzada($parametros_or,$parametros_and,$id_usuario,$orden,$limite){
+    if(!empty($parametros_or)){
+      $this->db->group_start();
+      $this->db->or_like($parametros_or);
+      $this->db->group_end();
+    }
+    if(!empty($parametros_and)){
+      $this->db->group_start();
+      $this->db->where($parametros_and);
+      $this->db->group_end();
+    }
+    if(!empty($id_usuario)){
+      $this->db->where('ID_USUARIO', $id_usuario);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $this->db->where('PRODUCTO_ESTADO !=','borrado');
+    $query = $this->db->get('productos');
+    return $query->result();
+  }
+
   function lista_admin($parametros,$id_usuario,$orden,$limite){
     if(!empty($parametros)){
       $this->db->group_start();
@@ -152,7 +177,7 @@ class ProductosModel extends CI_Model {
     if(!empty($id_categorias)){
       $this->db->group_start();
       foreach($id_categorias as $id){
-        $this->db->or_like('categorias_productos.ID_CATEGORIA',$id);
+        $this->db->or_where('categorias_productos.ID_CATEGORIA',$id);
       }
       $this->db->group_end();
     }
@@ -191,7 +216,7 @@ class ProductosModel extends CI_Model {
     if(!empty($id_categorias)){
       $this->db->group_start();
       foreach($id_categorias as $id){
-        $this->db->where('ID_CATEGORIA !=',$id);
+        $this->db->or_where('ID_CATEGORIA !=',$id);
       }
       $this->db->group_end();
     }
@@ -241,8 +266,8 @@ class ProductosModel extends CI_Model {
   /*
     * Obtengo todos los detalles de una sola entrada
   */
-   function detalles_slug($id){
-     return $this->db->get_where('productos',array('PRODUCTO_URL'=>$id))->row_array();
+   function detalles_slug($slug){
+     return $this->db->get_where('productos',array('PRODUCTO_URL'=>$slug))->row_array();
    }
    /*
      * Verificar URI

@@ -1,4 +1,4 @@
-<?php
+easy_slug<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_Productos extends CI_Controller {
@@ -117,12 +117,17 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		if($this->form_validation->run())
     {
 			// Verifico URL
-			$titulo = convert_accented_characters($this->input->post('NombreProducto'));
+			if(!empty($this->input->post('MetaTitulo'))){
+				$titulo = convert_accented_characters($this->input->post('MetaTitulo'));
+			}else{
+				$titulo = convert_accented_characters($this->input->post('NombreProducto'));
+			}
+
 			$url = url_title($titulo,'-',TRUE);
 			if($this->ProductosModel->verificar_uri($url)){
-				$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
+				$url = url_title($titulo,'-',TRUE).'-'.easy_slug(2);
 				if($this->ProductosModel->verificar_uri($url)){
-					$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
+					$url = url_title($titulo,'-',TRUE).'-'.easy_slug(2);
 				}
 			}
 			// Parametros del producto
@@ -243,18 +248,19 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
     {
 
 			$tab=$this->input->post('SeccionActiva');
-			// verifico la Url del Producto
-			if(empty($this->input->post('UrlProducto'))){
-				// Verifico URL
-				$url = url_title($this->input->post('NombreProducto'),'-',TRUE);
-				if($this->ProductosModel->verificar_uri($url)){
-					$url = url_title($this->input->post('NombreProducto'),'-',TRUE).'-'.uniq_slug(3);
-					if($this->ProductosModel->verificar_uri($url)){
-						$url = url_title($this->input->post('NombreProducto'),'-',TRUE).'-'.uniq_slug(3);
-					}
-				}
+			// Verifico URL
+			if(!empty($this->input->post('MetaTitulo'))){
+				$titulo = convert_accented_characters($this->input->post('MetaTitulo'));
 			}else{
-				$url = $this->input->post('UrlProducto');
+				$titulo = convert_accented_characters($this->input->post('NombreProducto'));
+			}
+
+			$url = url_title($titulo,'-',TRUE);
+			if($this->ProductosModel->verificar_uri($url)){
+				$url = url_title($titulo,'-',TRUE).'-'.easy_slug(2);
+				if($this->ProductosModel->verificar_uri($url)){
+					$url = url_title($titulo,'-',TRUE).'-'.easy_slug(2);
+				}
 			}
 			// Parametros del producto
 			$parametros = array(

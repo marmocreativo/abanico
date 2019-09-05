@@ -45,39 +45,51 @@ class Tienda_Producto extends CI_Controller {
   }
 	 public function index()
  	{
-		$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
-		$this->data['portada'] = $this->GaleriasModel->galeria_portada($_GET['id']);
-		$this->data['galerias'] = $this->GaleriasModel->galeria_producto($_GET['id']);
+		// Identifico el producto ya sea con id o con
+		if(isset($_GET['id'])){
+			$id_producto = $_GET['id'];
+			$datos_desde_id = $this->ProductosModel->detalles($id_producto);
+			redirect(base_url('producto/'.$datos_desde_id['PRODUCTO_URL']));
+		}else{
+			$datos_desde_slug = $this->ProductosModel->detalles_slug($this->uri->segment(2, 0));
+			$id_producto = $datos_desde_slug['ID_PRODUCTO'];
+		}
+
+
+		$this->data['producto'] = $this->ProductosModel->detalles($id_producto);
+
+		$this->data['portada'] = $this->GaleriasModel->galeria_portada($id_producto);
+		$this->data['galerias'] = $this->GaleriasModel->galeria_producto($id_producto);
 		$this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['producto']['ID_USUARIO']);
 		$direccion_fiscal = $this->DireccionesModel->direccion_fiscal($this->data['producto']['ID_USUARIO']);
 		$this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($direccion_fiscal['ID_DIRECCION']);
 		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
 		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
-		$this->data['relacion_categoria_producto'] = $this->CategoriasProductoModel->lista($_GET['id']);
+		$this->data['relacion_categoria_producto'] = $this->CategoriasProductoModel->lista($id_producto);
 		$this->data['categoria_producto'] = $this->CategoriasModel->detalles($this->data['relacion_categoria_producto'][0]->ID_CATEGORIA);
 		if(!null==$this->data['categoria_producto']){
 			$this->data['primary'] = $this->data['categoria_producto']['CATEGORIA_COLOR'];
 		}
-		$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'ORDEN ASC','');
+		$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($id_producto,'ORDEN ASC','');
 
 		// Calificaciones
-		$this->data['cantidad_calificaciones']= $this->CalificacionesModel->conteo_calificaciones_producto($_GET['id']);
-		$this->data['promedio_calificaciones']= $this->CalificacionesModel->promedio_calificaciones_producto($_GET['id']);
+		$this->data['cantidad_calificaciones']= $this->CalificacionesModel->conteo_calificaciones_producto($id_producto);
+		$this->data['promedio_calificaciones']= $this->CalificacionesModel->promedio_calificaciones_producto($id_producto);
 		$estrellas = array();
-		$estrellas['5']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],5);
-		$estrellas['4']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],4);
-		$estrellas['3']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],3);
-		$estrellas['2']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],2);
-		$estrellas['1']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],1);
+		$estrellas['5']= $this->CalificacionesModel->conteo_calificaciones_estrellas($id_producto,5);
+		$estrellas['4']= $this->CalificacionesModel->conteo_calificaciones_estrellas($id_producto,4);
+		$estrellas['3']= $this->CalificacionesModel->conteo_calificaciones_estrellas($id_producto,3);
+		$estrellas['2']= $this->CalificacionesModel->conteo_calificaciones_estrellas($id_producto,2);
+		$estrellas['1']= $this->CalificacionesModel->conteo_calificaciones_estrellas($id_producto,1);
 		$this->data['estrellas'] = $estrellas;
 
 		// Calificaciones
 		// Reviso si ya lo calificó el usuario
 		if(isset($_SESSION['usuario']['id'])&!empty($_SESSION['usuario']['id'])){
 			$this->data['mi_calificacion']= $this->CalificacionesModel->ya_calificado($this->data['producto']['ID_PRODUCTO'],$_SESSION['usuario']['id']);
-			$this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($_GET['id'],'');
+			$this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($id_producto,'');
 		}else{
-				$this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($_GET['id'],'');
+				$this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($id_producto,'');
 		}
 		// Estadísticas de Producto
 		$this->EstadisticasModel->objeto_visto('producto',$this->data['producto']['ID_PRODUCTO']);
@@ -97,39 +109,39 @@ class Tienda_Producto extends CI_Controller {
  	}
 	public function vista_previa()
  {
-	 $this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
-	 $this->data['portada'] = $this->GaleriasModel->galeria_portada($_GET['id']);
-	 $this->data['galerias'] = $this->GaleriasModel->galeria_producto($_GET['id']);
+	 $this->data['producto'] = $this->ProductosModel->detalles($id_producto);
+	 $this->data['portada'] = $this->GaleriasModel->galeria_portada($id_producto);
+	 $this->data['galerias'] = $this->GaleriasModel->galeria_producto($id_producto);
 	 $this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['producto']['ID_USUARIO']);
 	 $direccion_fiscal = $this->DireccionesModel->direccion_fiscal($this->data['producto']['ID_USUARIO']);
 	 $this->data['direccion_formateada'] = $this->DireccionesModel->direccion_formateada($direccion_fiscal['ID_DIRECCION']);
 	 $this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
 	 $this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
-	 $this->data['relacion_categoria_producto'] = $this->CategoriasProductoModel->lista($_GET['id']);
+	 $this->data['relacion_categoria_producto'] = $this->CategoriasProductoModel->lista($id_producto);
 	 $this->data['categoria_producto'] = $this->CategoriasModel->detalles($this->data['relacion_categoria_producto'][0]->ID_CATEGORIA);
 	 if(!null==$this->data['categoria_producto']){
 		 $this->data['primary'] = $this->data['categoria_producto']['CATEGORIA_COLOR'];
 	 }
-	 $this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'','');
+	 $this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($id_producto,'','');
 
 	 // Calificaciones
-	 $this->data['cantidad_calificaciones']= $this->CalificacionesModel->conteo_calificaciones_producto($_GET['id']);
-	 $this->data['promedio_calificaciones']= $this->CalificacionesModel->promedio_calificaciones_producto($_GET['id']);
+	 $this->data['cantidad_calificaciones']= $this->CalificacionesModel->conteo_calificaciones_producto($id_producto);
+	 $this->data['promedio_calificaciones']= $this->CalificacionesModel->promedio_calificaciones_producto($id_producto);
 	 $estrellas = array();
-	 $estrellas['5']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],5);
-	 $estrellas['4']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],4);
-	 $estrellas['3']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],3);
-	 $estrellas['2']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],2);
-	 $estrellas['1']= $this->CalificacionesModel->conteo_calificaciones_estrellas($_GET['id'],1);
+	 $estrellas['5']= $this->CalificacionesModel->conteo_calificaciones_estrellas($id_producto,5);
+	 $estrellas['4']= $this->CalificacionesModel->conteo_calificaciones_estrellas($id_producto,4);
+	 $estrellas['3']= $this->CalificacionesModel->conteo_calificaciones_estrellas($id_producto,3);
+	 $estrellas['2']= $this->CalificacionesModel->conteo_calificaciones_estrellas($id_producto,2);
+	 $estrellas['1']= $this->CalificacionesModel->conteo_calificaciones_estrellas($id_producto,1);
 	 $this->data['estrellas'] = $estrellas;
 
 	 // Calificaciones
 	 // Reviso si ya lo calificó el usuario
 	 if(isset($_SESSION['usuario']['id'])&!empty($_SESSION['usuario']['id'])){
 		 $this->data['mi_calificacion']= $this->CalificacionesModel->ya_calificado($this->data['producto']['ID_PRODUCTO'],$_SESSION['usuario']['id']);
-		 $this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($_GET['id'],'');
+		 $this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($id_producto,'');
 	 }else{
-			 $this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($_GET['id'],'');
+			 $this->data['calificaciones'] = $this->CalificacionesModel->calificaciones_producto($id_producto,'');
 	 }
 	 // Estadísticas de Producto
 	 $this->EstadisticasModel->objeto_visto('producto',$this->data['producto']['ID_PRODUCTO']);
@@ -151,18 +163,18 @@ public function favorito()
  {
 	 if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 		 // verifico si ya existe
-		 $es_favorito = $this->FavoritosModel->es_favorito($_GET['id'],$_SESSION['usuario']['id'],'producto');
+		 $es_favorito = $this->FavoritosModel->es_favorito($id_producto,$_SESSION['usuario']['id'],'producto');
 		 if(!$es_favorito){
 				 $parametros = array(
 					 'ID_USUARIO'=>$_SESSION['usuario']['id'],
-					 'ID_OBJETO'=>$_GET['id'],
+					 'ID_OBJETO'=>$id_producto,
 					 'FAVORITO_TIPO'=>'producto',
 					 'FAVORITO_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
 				 );
 
 				$this->FavoritosModel->crear($parametros);
 				// Relleno la notifiación
-				$datos_producto = $this->ProductosModel->detalles($_GET['id']);
+				$datos_producto = $this->ProductosModel->detalles($id_producto);
 				$datos_usuario = $this->UsuariosModel->detalles($datos_producto['ID_USUARIO']);
 				$parametros_notificacion = array(
 					'ID_USUARIO'=>$datos_producto['ID_USUARIO'],
@@ -216,9 +228,9 @@ public function favorito()
 	{
 		if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			// verifico si ya existe
-			$es_favorito = $this->FavoritosModel->es_favorito($_GET['id'],$_SESSION['usuario']['id'],'producto');
+			$es_favorito = $this->FavoritosModel->es_favorito($id_producto,$_SESSION['usuario']['id'],'producto');
 			if($es_favorito){
-				$favorito = $this->FavoritosModel->detalles($_GET['id'],$_SESSION['usuario']['id'],'producto');
+				$favorito = $this->FavoritosModel->detalles($id_producto,$_SESSION['usuario']['id'],'producto');
 
 			 $this->FavoritosModel->borrar($favorito['ID_FAVORITO']);
 			}

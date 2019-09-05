@@ -98,9 +98,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$titulo = convert_accented_characters($this->input->post('NombreCategoria'));
 			$url = url_title($titulo,'-',TRUE);
 			if($this->CategoriasModel->verificar_uri($url)){
-				$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
+				$url = url_title($titulo,'-',TRUE).'-'.easy_slug(2);
 				if($this->CategoriasModel->verificar_uri($url)){
-					$url = url_title($titulo,'-',TRUE).'-'.uniq_slug(3);
+					$url = url_title($titulo,'-',TRUE).'-'.easy_slug(2);
 				}
 			}
 			echo $imagen;
@@ -145,12 +145,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		if($this->form_validation->run())
     {
 
-				// Verifico URL
-				$url = url_title($this->input->post('NombreCategoria'),'-',TRUE);
+			$titulo = convert_accented_characters($this->input->post('NombreCategoria'));
+				$url = url_title($titulo,'-',TRUE);
 				if($this->CategoriasModel->verificar_uri($url)){
-					$url = url_title($this->input->post('NombreCategoria'),'-',TRUE).'-'.uniq_slug(3);
+					$url = url_title($titulo,'-',TRUE).'-'.easy_slug(2);
 					if($this->CategoriasModel->verificar_uri($url)){
-						$url = url_title($this->input->post('NombreCategoria'),'-',TRUE).'-'.uniq_slug(3);
+						$url = url_title($titulo,'-',TRUE).'-'.easy_slug(2);
 					}
 				}
 			/*

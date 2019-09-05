@@ -94,6 +94,7 @@
     if($carrusel->ARTESANAL!=''){
       $parametros_and['PRODUCTO_ARTESANAL'] = $carrusel->ARTESANAL;
     }
+
    ?>
 
   <div class="fila py-5 <?php if($no_carrusel % 2 == 0){ echo "fila-gris";  }else{ echo 'bg-light'; }  ?>">
@@ -145,7 +146,7 @@
               <li class="<?php echo $visible; ?>">
                 <div class="cuadricula-productos">
                   <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-                  <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="enlace-principal">
+                  <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL); ?>" class="enlace-principal">
                     <div class="imagen-producto">
                       <div class="contenedor-etiquetas">
                         <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
@@ -161,7 +162,7 @@
                         <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>
                         <div class="overlay-producto <?php echo 'bg'.$primary; ?>"></div>
                         <div class="boton-ver">
-                          <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
+                          <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
                         <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
                           <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
                         <?php }else{ ?>

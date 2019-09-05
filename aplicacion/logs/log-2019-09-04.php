@@ -1238,3 +1238,150 @@ DEBUG - 2019-09-04 17:07:23 --> Session: "sess_save_path" is empty; using "sessi
 DEBUG - 2019-09-04 17:07:23 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
 DEBUG - 2019-09-04 17:07:23 --> Total execution time: 0.0840
 DEBUG - 2019-09-04 17:07:23 --> Total execution time: 0.1137
+DEBUG - 2019-09-04 23:01:38 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:01:38 --> No URI present. Default controller set.
+DEBUG - 2019-09-04 23:01:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:01:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-04 23:01:42 --> Severity: Notice --> Undefined variable: premio C:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 254
+ERROR - 2019-09-04 23:01:42 --> Severity: Notice --> Undefined variable: premio C:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 262
+DEBUG - 2019-09-04 23:01:42 --> Total execution time: 4.4823
+DEBUG - 2019-09-04 23:01:44 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:01:44 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:01:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:01:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:01:44 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:01:44 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:01:44 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:01:44 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-04 23:01:44 --> 404 Page Not Found: Assets/global
+DEBUG - 2019-09-04 23:01:44 --> Total execution time: 0.2460
+DEBUG - 2019-09-04 23:01:45 --> Total execution time: 0.6377
+DEBUG - 2019-09-04 23:44:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:44:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:44:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:44:29 --> Total execution time: 1.4584
+DEBUG - 2019-09-04 23:44:30 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:44:30 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:44:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:44:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:44:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:44:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:44:30 --> Total execution time: 0.1024
+DEBUG - 2019-09-04 23:44:30 --> Total execution time: 0.1399
+DEBUG - 2019-09-04 23:47:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:47:11 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-04 23:47:11 --> 404 Page Not Found: Tienda_Producto/tijeras-de-cocina
+DEBUG - 2019-09-04 23:47:35 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:47:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:47:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:47:36 --> Total execution time: 0.3999
+DEBUG - 2019-09-04 23:47:36 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:47:36 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:47:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:47:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:47:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:47:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:47:37 --> Total execution time: 0.0891
+DEBUG - 2019-09-04 23:47:37 --> Total execution time: 0.1168
+DEBUG - 2019-09-04 23:47:54 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:47:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:47:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:47:54 --> Total execution time: 0.2931
+DEBUG - 2019-09-04 23:47:54 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:47:55 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:47:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:47:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:47:55 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:47:55 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:47:55 --> Total execution time: 0.1465
+DEBUG - 2019-09-04 23:47:55 --> Total execution time: 0.1946
+DEBUG - 2019-09-04 23:47:57 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:47:57 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-04 23:47:57 --> 404 Page Not Found: Producto/index
+DEBUG - 2019-09-04 23:47:58 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:47:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:47:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:47:58 --> Total execution time: 0.3120
+DEBUG - 2019-09-04 23:47:59 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:47:59 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:47:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:47:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:47:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:47:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:47:59 --> Total execution time: 0.1080
+DEBUG - 2019-09-04 23:47:59 --> Total execution time: 0.1289
+DEBUG - 2019-09-04 23:48:06 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:48:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:48:06 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:48:07 --> Total execution time: 0.3258
+DEBUG - 2019-09-04 23:48:07 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:48:07 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:48:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:48:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:48:07 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:48:07 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:48:07 --> Total execution time: 0.1054
+DEBUG - 2019-09-04 23:48:07 --> Total execution time: 0.1421
+DEBUG - 2019-09-04 23:48:16 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:48:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:48:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:48:16 --> Total execution time: 0.3090
+DEBUG - 2019-09-04 23:48:16 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:48:16 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:48:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:48:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:48:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:48:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:48:16 --> Total execution time: 0.1120
+DEBUG - 2019-09-04 23:48:16 --> Total execution time: 0.1377
+DEBUG - 2019-09-04 23:57:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:57:11 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-04 23:57:11 --> Severity: error --> Exception: syntax error, unexpected ')' C:\xampp\htdocs\abanico-master\aplicacion\controllers\Tienda_Producto.php 59
+DEBUG - 2019-09-04 23:57:12 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:57:12 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-04 23:57:12 --> Severity: error --> Exception: syntax error, unexpected ')' C:\xampp\htdocs\abanico-master\aplicacion\controllers\Tienda_Producto.php 59
+DEBUG - 2019-09-04 23:57:14 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:57:14 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-04 23:57:14 --> Severity: error --> Exception: syntax error, unexpected ')' C:\xampp\htdocs\abanico-master\aplicacion\controllers\Tienda_Producto.php 59
+DEBUG - 2019-09-04 23:57:21 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:57:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:57:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:57:21 --> Total execution time: 0.4605
+DEBUG - 2019-09-04 23:57:22 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:57:22 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:57:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:57:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:57:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:57:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:57:22 --> Total execution time: 0.1240
+DEBUG - 2019-09-04 23:57:22 --> Total execution time: 0.1589
+DEBUG - 2019-09-04 23:59:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:59:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:59:11 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:59:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:59:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:59:11 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-04 23:59:11 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\abanico-master\aplicacion\controllers\Tienda_Producto.php 69
+ERROR - 2019-09-04 23:59:11 --> Severity: Notice --> Trying to get property 'ID_CATEGORIA' of non-object C:\xampp\htdocs\abanico-master\aplicacion\controllers\Tienda_Producto.php 69
+ERROR - 2019-09-04 23:59:11 --> Severity: Notice --> Undefined index: concurso C:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\producto.php 84
+DEBUG - 2019-09-04 23:59:11 --> Total execution time: 0.3857
+DEBUG - 2019-09-04 23:59:12 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:59:12 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:59:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:59:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:59:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:59:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-04 23:59:12 --> Total execution time: 0.0930
+DEBUG - 2019-09-04 23:59:12 --> Total execution time: 0.1119
+DEBUG - 2019-09-04 23:59:59 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:59:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:59:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-04 23:59:59 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\abanico-master\aplicacion\controllers\Tienda_Producto.php 70
+ERROR - 2019-09-04 23:59:59 --> Severity: Notice --> Trying to get property 'ID_CATEGORIA' of non-object C:\xampp\htdocs\abanico-master\aplicacion\controllers\Tienda_Producto.php 70
+ERROR - 2019-09-04 23:59:59 --> Severity: Notice --> Undefined index: concurso C:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\producto.php 84
+DEBUG - 2019-09-04 23:59:59 --> Total execution time: 0.4288
+DEBUG - 2019-09-04 23:59:59 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:59:59 --> UTF-8 Support Enabled
+DEBUG - 2019-09-04 23:59:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:59:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-04 23:59:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.

@@ -77,6 +77,20 @@ if ( ! function_exists('uniq_slug'))
     }
 }
 
+if ( ! function_exists('easy_slug'))
+{
+    function easy_slug($length)
+    {
+      $characters = 'abcdefghijklmnopqrstuvwxyz';
+      $charactersLength = strlen($characters);
+      $randomString = '';
+      for ($i = 0; $i < $length; $i++) {
+          $randomString .= $characters[rand(0, $charactersLength - 1)];
+      }
+      return $randomString;
+    }
+}
+
 if ( ! function_exists('retro_alimentacion'))
 {
     function retro_alimentacion()

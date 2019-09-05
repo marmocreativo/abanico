@@ -27,7 +27,7 @@ class CategoriasModel extends CI_Model {
     $query = $this->db->get('categorias');
     return $query->result();
   }
-  
+
   function lista_no_admin($parametros,$tipo_categoria,$orden,$limite){
     if(!empty($parametros)){
       $this->db->where($parametros);
@@ -42,6 +42,26 @@ class CategoriasModel extends CI_Model {
       $this->db->limit($limite);
     }
     $this->db->where('CATEGORIA_ADMIN','no');
+    $query = $this->db->get('categorias');
+    return $query->result();
+  }
+
+  function lista_avanzada($parametros_or,$parametros_and,$tipo_categoria,$orden,$limite){
+    if(!empty($parametros_or)){
+      $this->db->or_like($parametros_or);
+    }
+    if(!empty($parametros_and)){
+      $this->db->where($parametros_and);
+    }
+    if(!empty($tipo_categoria)){
+      $this->db->where('CATEGORIA_TIPO', $tipo_categoria);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
     $query = $this->db->get('categorias');
     return $query->result();
   }

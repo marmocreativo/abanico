@@ -164,7 +164,7 @@
           <div class="card mb-2 vistaProductos <?php echo $visible; ?>">
               <div class="bx">
                 <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-                <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
+                <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL); ?>">
                   <div class="imagen-producto">
                     <img class="spanImg mr-1" src="<?php echo base_url($ruta_portada); ?>"></img>
                     <div class="contenedorEtiquetas">
@@ -260,7 +260,7 @@
 <div class="card mb-2 vistaProductos">
     <div class="bx">
       <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-      <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
+      <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL); ?>">
         <div class="imagen-producto">
           <img class="spanImg mr-1" src="<?php echo base_url($ruta_portada); ?>"></img>
           <div class="contenedorEtiquetas">

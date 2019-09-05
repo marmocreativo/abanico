@@ -25,7 +25,7 @@
        }
        ?>
       <div class="card datosFavoritos p-2 mb-2">
-        <a href="<?php echo base_url('producto?id='.$producto->ID_PRODUCTO); ?>">
+        <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL); ?>">
           <div class="row">
             <div class="col-3">
               <div class="bxImg">
