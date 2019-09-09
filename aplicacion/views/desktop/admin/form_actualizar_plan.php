@@ -57,7 +57,7 @@
             </div>
             <div class="form-group">
               <label for="DescripcionPlan">Descripción</label>
-              <textarea name="DescripcionPlan" class="form-control Editor" rows="8"><?php echo $plan['PLAN_DESCRIPCION'] ?></textarea>
+              <textarea name="DescripcionPlan" id="DescripcionPlan" class="form-control SmallEditor" rows="8"><?php echo $plan['PLAN_DESCRIPCION'] ?></textarea>
             </div>
             <div class="row">
               <div class="col-3">
