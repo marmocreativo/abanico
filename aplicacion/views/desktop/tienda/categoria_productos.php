@@ -123,7 +123,7 @@
                 <div class="col-xl-3 col-md-4 col-sm-4 col-6 mb-3 <?php echo $visible; ?>">
                   <div class="cuadricula-productos">
                     <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-                    <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL); ?>" class="enlace-principal">
+                    <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>" class="enlace-principal">
                       <div class="imagen-producto">
                         <div class="contenedor-etiquetas">
                           <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
@@ -139,7 +139,7 @@
                           <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>
                           <div class="overlay-producto <?php echo 'bg'.$primary; ?>"><div class="overlay-producto-in"></div></div>
                           <div class="boton-ver">
-                            <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
+                            <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
                           <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
                             <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
                           <?php }else{ ?>

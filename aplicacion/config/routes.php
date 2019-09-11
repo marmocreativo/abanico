@@ -150,6 +150,7 @@ $route['categoria'] = 'Tienda_Categoria';
 $route['categoria/(:any)'] = 'Tienda_Categoria/$1';
 $route['producto'] = 'Tienda_Producto';
 $route['producto/(:any)'] = 'Tienda_Producto';
+$route['producto/(:any)/(:num)'] = 'Tienda_Producto';
 $route['producto/vista_previa'] = 'Tienda_Producto/vista_previa';
 $route['servicio'] = 'Tienda_Servicio';
 $route['servicio/(:any)'] = 'Tienda_Servicio/$1';
@@ -176,5 +177,6 @@ $route['demo/(:any)/(:any)/(:any)'] = 'Tienda_Inicio';
 $route['demo/(:any)/(:any)'] = 'Tienda_Inicio';
 $route['demo/(:any)'] = 'Tienda_Inicio';
 $route['demo'] = 'Tienda_Inicio';
+$route['404'] = 'Tienda_Inicio/no_encontrada';
 // Ruta de Mantenimiento
 $route['mantenimiento'] = 'Mantenimiento';

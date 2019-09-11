@@ -49,10 +49,21 @@ class Tienda_Producto extends CI_Controller {
 		if(isset($_GET['id'])){
 			$id_producto = $_GET['id'];
 			$datos_desde_id = $this->ProductosModel->detalles($id_producto);
-			redirect(base_url('producto/'.$datos_desde_id['PRODUCTO_URL']));
+			echo 'producto con ID';
+			redirect(base_url('producto/'.$datos_desde_id['PRODUCTO_URL'].'/'.$datos_desde_id['ID_PRODUCTO']));
+		}
+		if(null !==$this->uri->segment(3, 0) ){
+			$id_producto = $this->uri->segment(3, 0);
+			$datos_desde_id = $this->ProductosModel->detalles($id_producto);
+			if(empty($id_producto)&&null !==$this->uri->segment(2, 0) ){
+				$datos_desde_slug = $this->ProductosModel->detalles_slug($this->uri->segment(2, 0));
+				$id_producto = $datos_desde_slug['ID_PRODUCTO'];
+			}
 		}else{
-			$datos_desde_slug = $this->ProductosModel->detalles_slug($this->uri->segment(2, 0));
-			$id_producto = $datos_desde_slug['ID_PRODUCTO'];
+			$id_producto = '';
+		}
+		if(empty($id_producto)){
+			redirect(base_url('404'));
 		}
 
 
@@ -66,7 +77,11 @@ class Tienda_Producto extends CI_Controller {
 		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
 		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 		$this->data['relacion_categoria_producto'] = $this->CategoriasProductoModel->lista($id_producto);
-		$this->data['categoria_producto'] = $this->CategoriasModel->detalles($this->data['relacion_categoria_producto'][0]->ID_CATEGORIA);
+		if(empty($this->data['relacion_categoria_producto'])){
+			$this->data['categoria_producto'] = null;
+		}else{
+			$this->data['categoria_producto'] = $this->CategoriasModel->detalles($this->data['relacion_categoria_producto'][0]->ID_CATEGORIA);
+		}
 		if(!null==$this->data['categoria_producto']){
 			$this->data['primary'] = $this->data['categoria_producto']['CATEGORIA_COLOR'];
 		}

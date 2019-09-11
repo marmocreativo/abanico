@@ -146,7 +146,7 @@
             ?>
           <li>
             <div class="card <?php echo $visible; ?>">
-              <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL); ?>">
+              <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>">
                 <div class="imagen-producto">
                   <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
                   <img class="spanImg" src="<?php echo base_url($ruta_portada); ?>"></img>
