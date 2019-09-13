@@ -96,7 +96,7 @@
                               <div class="col">
                                 <div class="form-group">
                                   <label for="AnchoCombinacion">Ancho</label>
-                                  <div class="input-group input-group-sm mb-2">
+                                  <div class="input-group mb-2">
                                     <input type="text" class="form-control" id="AnchoCombinacion" name="AnchoCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_ANCHO']; ?>">
                                     <div class="input-group-append">
                                       <div class="input-group-text">cm</div>
@@ -107,7 +107,7 @@
                               <div class="col">
                                 <div class="form-group">
                                   <label for="AltoCombinacion">Alto</label>
-                                  <div class="input-group input-group-sm mb-2">
+                                  <div class="input-group mb-2">
                                     <input type="text" class="form-control" id="AltoCombinacion" name="AltoCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_ALTO']; ?>">
                                     <div class="input-group-append">
                                       <div class="input-group-text">cm</div>
@@ -118,7 +118,7 @@
                               <div class="col">
                                 <div class="form-group">
                                   <label for="ProfundoCombinacion">Profundo</label>
-                                  <div class="input-group input-group-sm mb-2">
+                                  <div class="input-group mb-2">
                                   <input type="text" class="form-control" id="ProfundoCombinacion" name="ProfundoCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_PROFUNDO']; ?>">
                                     <div class="input-group-append">
                                       <div class="input-group-text">cm</div>
@@ -129,7 +129,7 @@
                               <div class="col">
                                 <div class="form-group">
                                   <label for="PesoCombinacion">Peso Total</label>
-                                  <div class="input-group input-group-sm mb-2">
+                                  <div class="input-group mb-2">
                                   <input type="text" class="form-control" id="PesoCombinacion" name="PesoCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_PESO']; ?>">
                                     <div class="input-group-append">
                                       <div class="input-group-text">Kg</div>
@@ -141,7 +141,7 @@
                               <div class="col">
                                 <div class="form-group">
                                   <label for="PesoNetoCombinacion">Peso Neto</label>
-                                  <div class="input-group input-group-sm mb-2">
+                                  <div class="input-group mb-2">
                                   <input type="text" class="form-control" id="PesoNetoCombinacion" name="PesoNetoCombinacion" placeholder="" value="<?php echo $combinacion['COMBINACION_PESO_NETO']; ?>">
                                     <div class="input-group-append">
                                       <div class="input-group-text">Kg</div>

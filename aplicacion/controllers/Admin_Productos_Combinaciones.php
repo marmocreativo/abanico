@@ -24,6 +24,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		// Cargo el modelo
 		$this->load->model('ProductosModel');
 		$this->load->model('UsuariosModel');
+		$this->load->model('TiendasModel');
 		$this->load->model('ProductosCombinacionesModel');
 		$this->load->model('GaleriasModel');
 		$this->load->model('EstadisticasModel');
@@ -47,6 +48,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			if(!isset($_GET['tipo_producto'])||empty($_GET['tipo_producto'])){ $this->data['tipo_producto']='normal'; }else{ $this->data['tipo_producto']=$_GET['tipo_producto']; }
 
 			$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
+			$this->data['usuario'] = $this->UsuariosModel->detalles($this->data['producto']['ID_USUARIO']);
+			$this->data['tienda'] = $this->TiendasModel->detalles($this->data['producto']['ID_TIENDA']);
 			$this->data['combinaciones'] = $this->ProductosCombinacionesModel->lista($_GET['id'],'ORDEN ASC','');
 			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'ORDEN ASC','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);

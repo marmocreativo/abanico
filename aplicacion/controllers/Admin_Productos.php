@@ -1,4 +1,4 @@
-easy_slug<?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_Productos extends CI_Controller {
@@ -212,7 +212,29 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			// Mensaje de feedback
 			$this->session->set_flashdata('exito', 'Tu producto se ha actualizado, puedes continuar añadiendo imagenes a la galería');
 			// redirección
-			redirect(base_url('admin/productos/actualizar?id='.$producto_id));
+
+			switch ($this->input->post('Guardar')) {
+				case 'guardar':
+					redirect(base_url('admin/productos/actualizar?id='.$producto_id));
+					break;
+
+				case 'salir':
+					redirect(base_url('admin/productos?tipo=normal'));
+					break;
+
+				case 'tienda':
+					redirect(base_url('admin/productos?id_usuario='.$this->input->post('IdUsuario')));
+					break;
+
+				case 'combinaciones':
+					redirect(base_url('admin/productos_combinaciones?id='.$producto_id));
+					break;
+
+				default:
+					redirect(base_url('admin/productos/actualizar?id='.$producto_id));
+					break;
+			}
+
     }else{
 			if(!isset($_GET['tipo_producto'])||empty($_GET['tipo_producto'])){ $this->data['tipo_producto']='normal'; }else{ $this->data['tipo_producto']=$_GET['tipo_producto']; }
 			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
@@ -348,7 +370,29 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			// Mensaje de Feedback
 			$this->session->set_flashdata('exito', 'Actualización correcta');
 			// Redirección
-			redirect(base_url('admin/productos/actualizar?id=').$this->input->post('Identificador').'&tab='.$tab);
+
+			switch ($this->input->post('Guardar')) {
+				case 'guardar':
+					redirect(base_url('admin/productos/actualizar?id='.$this->input->post('Identificador')));
+					break;
+
+				case 'salir':
+					redirect(base_url('admin/productos?tipo=normal'));
+					break;
+
+				case 'tienda':
+					redirect(base_url('admin/productos?id_usuario='.$this->input->post('IdUsuario')));
+					break;
+
+				case 'combinaciones':
+					redirect(base_url('admin/productos_combinaciones?id='.$this->input->post('Identificador')));
+					break;
+
+				default:
+					redirect(base_url('admin/productos/actualizar?id='.$this->input->post('Identificador')));
+					break;
+			}
+
 
     }else{
 

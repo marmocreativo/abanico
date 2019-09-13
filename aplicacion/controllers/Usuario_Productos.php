@@ -197,7 +197,24 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				// Mensaje Retroalimentación
 				$this->session->set_flashdata('exito', 'Producto Creado!');
 				// Redirección
-				redirect(base_url('usuario/productos'));
+				switch ($this->input->post('Guardar')) {
+					case 'continuar':
+						redirect(base_url('usuario/productos/actualizar?id='.$producto_id));
+						break;
+
+					case 'salir':
+						redirect(base_url('usuario/productos?tipo=normal'));
+						break;
+
+					case 'combinaciones':
+						redirect(base_url('usuario/productos_combinaciones?id='.$producto_id));
+						break;
+
+					default:
+						redirect(base_url('usuario/productos/actualizar?id='.$producto_id));
+						break;
+				}
+
 			}else{
 				$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 				$this->data['categorias'] = $this->CategoriasModel->lista_no_admin(['CATEGORIA_PADRE'=>0],$tipo_categoria,'','');
@@ -337,7 +354,25 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					// Mensaje Feedback
 						$this->session->set_flashdata('exito', 'Actualización correcta');
 					// Redirecciono
-					redirect(base_url('usuario/productos/actualizar?id=').$this->input->post('Identificador').'&tab='.$tab);
+					switch ($this->input->post('Guardar')) {
+						case 'continuar':
+							redirect(base_url('usuario/productos/actualizar?id='.$this->input->post('Identificador').'&tab='.$tab));
+							break;
+
+						case 'salir':
+							redirect(base_url('usuario/productos?tipo=normal'));
+							break;
+
+						case 'combinaciones':
+							redirect(base_url('usuario/productos_combinaciones?id='.$this->input->post('Identificador').'&tab='.$tab));
+							break;
+
+						default:
+							redirect(base_url('usuario/productos/actualizar?id='.$this->input->post('Identificador').'&tab='.$tab));
+							break;
+					}
+
+
 				}else{
 					$this->data['tienda'] = $this->TiendasModel->tienda_usuario($_SESSION['usuario']['id']);
 					$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);

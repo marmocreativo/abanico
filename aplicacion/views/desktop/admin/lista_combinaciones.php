@@ -24,45 +24,23 @@
             <!--begin:: Widgets/Trends-->
             <div class="kt-portlet kt-portlet--head--noborder kt-portlet--height-fluid">
               <div class="kt-portlet__body">
-  <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="card-header d-flex justify-content-between">
-          <div class="titulo">
-            <h1 class="h5"> <span class="fa fa-box"></span> Nuevo Producto</h1>
-          </div>
-        </div>
-        <div class="card-body">
-          <?php retro_alimentacion(); ?>
-          <?php if(!empty(validation_errors())){ ?>
-            <div class="alert alert-danger">
-              <?php echo validation_errors(); ?>
-            </div>
-            <hr>
-          <?php } ?>
 
-          <div class="row">
-            <div class="col">
-              <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('admin/productos/actualizar?id='.$_GET['id'].'&tab='); ?>"> <span class="fa fa-list"></span> Datos Básicos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('admin/productos/actualizar?id='.$_GET['id'].'&tab=categoria'); ?>"> <span class="fa fa-list"></span> Categorias</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('admin/productos/actualizar?id='.$_GET['id'].'&tab=datos'); ?>"> <span class="fa fa-file-alt"></span> Descripción</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('admin/productos/actualizar?id='.$_GET['id'].'&tab=galeria'); ?>"> <span class="fa fa-image"></span> Galeria</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="<?php echo base_url('admin/productos/actualizar?id='.$_GET['id']); ?>" > <span class="fa fa-sitemap"></span> Combinaciones</a>
-                </li>
-              </ul>
-              <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active p-3" id="galeria" role="tabpanel" aria-labelledby="extras-tab">
+                  <?php retro_alimentacion(); ?>
+                  <?php if(!empty(validation_errors())){ ?>
+                    <div class="alert alert-danger">
+                      <?php echo validation_errors(); ?>
+                    </div>
+                    <hr>
+                  <?php } ?>
+
                   <div class="row">
+                    <div class="col-12 border-top border-bottom my-1 mb-5 py-1 bg-gray">
+                      <div class="btn-group float-right">
+                        <a href="<?php echo base_url('admin/productos'); ?>" class="btn btn-outline-success btn-sm"><span class="fa fa-chevron-left"></span> <span class="fa fa-chevron-left"></span> Volver a todos los productos</a>
+                        <a href="<?php echo base_url('admin/productos?id_usuario='.$usuario['ID_USUARIO']); ?>" class="btn btn-success btn-sm"><span class="fa fa-chevron-left"></span>Volver a los productos de <b><?php echo $tienda['TIENDA_NOMBRE'];  ?></b></a>
+                        <a href="<?php echo base_url('admin/productos/actualizar?id='.$producto['ID_PRODUCTO']); ?>" class="btn btn-outline-success btn-sm"><span class="fa fa-pencil"></span> <span class="fa fa-chevron-left"></span> Volver al editor del producto</a>
+                      </div>
+                    </div>
                     <div class="col">
                       <div class="border p-3 mb-3">
                         <form class="" action="<?php echo base_url('admin/productos_combinaciones/crear'); ?>" method="post" enctype="multipart/form-data">
@@ -71,9 +49,7 @@
                           <div class="row">
                             <div class="col">
                                 <div class="border border-info p-3 mb-3">
-                                  <p> <i class="fas fa-info-circle"></i> Las combinaciones puedes usarlas para que los usuarios elijan características específicas de tu producto, por ejemplo Talle, Color, Capacidad, o Contenido.<br>
-                                    <i class="fas fa-info-circle"></i> En cada combinación puedes especificar Precio y dimensiones en caso de que tengan algún cambio con respecto al producto por defecto.
-                                  </p>
+                                  <p> <i class="fas fa-info-circle"></i> Las combinaciones muestran características específicas de tu producto, por ejemplo Talle, Color, Capacidad, o Contenido.</p>
                                 </div>
                             </div>
                           </div>
@@ -112,7 +88,7 @@
                             <div class="col">
                               <div class="form-group">
                                 <label for="AnchoCombinacion">Ancho</label>
-                                <div class="input-group input-group-sm mb-2">
+                                <div class="input-group mb-2">
                                   <input type="text" class="form-control" id="AnchoCombinacion" name="AnchoCombinacion" required placeholder="" value="<?php echo $producto['PRODUCTO_ANCHO']; ?>">
                                   <div class="input-group-append">
                                     <div class="input-group-text">cm</div>
@@ -123,7 +99,7 @@
                             <div class="col">
                               <div class="form-group">
                                 <label for="AltoCombinacion">Alto</label>
-                                <div class="input-group input-group-sm mb-2">
+                                <div class="input-group mb-2">
                                   <input type="text" class="form-control" id="AltoCombinacion" name="AltoCombinacion" required placeholder="" value="<?php echo $producto['PRODUCTO_ALTO']; ?>">
                                   <div class="input-group-append">
                                     <div class="input-group-text">cm</div>
@@ -134,7 +110,7 @@
                             <div class="col">
                               <div class="form-group">
                                 <label for="ProfundoCombinacion">Profundo</label>
-                                <div class="input-group input-group-sm mb-2">
+                                <div class="input-group mb-2">
                                 <input type="text" class="form-control" id="ProfundoCombinacion" name="ProfundoCombinacion" required placeholder="" value="<?php echo $producto['PRODUCTO_PROFUNDO']; ?>">
                                   <div class="input-group-append">
                                     <div class="input-group-text">cm</div>
@@ -145,7 +121,7 @@
                             <div class="col">
                               <div class="form-group">
                                 <label for="PesoCombinacion">Peso Total</label>
-                                <div class="input-group input-group-sm mb-2">
+                                <div class="input-group mb-2">
                                 <input type="text" class="form-control" id="PesoCombinacion" name="PesoCombinacion" required placeholder="" value="<?php echo $producto['PRODUCTO_PESO']; ?>">
                                   <div class="input-group-append">
                                     <div class="input-group-text">Kg</div>
@@ -157,7 +133,7 @@
                             <div class="col">
                               <div class="form-group">
                                 <label for="PesoNetoCombinacion">Peso Neto</label>
-                                <div class="input-group input-group-sm mb-2">
+                                <div class="input-group mb-2">
                                 <input type="text" class="form-control" id="PesoNetoCombinacion" name="PesoNetoCombinacion" placeholder="" value="<?php echo $producto['PRODUCTO_PESO']; ?>">
                                   <div class="input-group-append">
                                     <div class="input-group-text">Kg</div>
@@ -231,17 +207,16 @@
                         </tbody>
                       </table>
                     </div>
+                    <div class="col-12 border-top border-bottom my-1 mb-5 py-1 bg-gray">
+                      <div class="btn-group float-right">
+                        <a href="<?php echo base_url('admin/productos'); ?>" class="btn btn-outline-success btn-sm"><span class="fa fa-chevron-left"></span> <span class="fa fa-chevron-left"></span> Volver a todos los productos</a>
+                        <a href="<?php echo base_url('admin/productos?id_usuario='.$usuario['ID_USUARIO']); ?>" class="btn btn-success btn-sm"><span class="fa fa-chevron-left"></span>Volver a los productos de <b><?php echo $tienda['TIENDA_NOMBRE'];  ?></b></a>
+                        <a href="<?php echo base_url('admin/productos/actualizar?id='.$producto['ID_PRODUCTO']); ?>" class="btn btn-outline-success btn-sm"><span class="fa fa-pencil"></span> <span class="fa fa-chevron-left"></span> Volver al editor del producto</a>
+                      </div>
+                    </div>
                   </div>
-                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
 <!--end:: Widgets/Trends-->
 </div>

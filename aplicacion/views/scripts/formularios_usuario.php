@@ -305,4 +305,15 @@ jQuery('#galeria-tab').click(function(){
   jQuery('#SeccionActiva').val('galeria');
 });
 
+// Abrir Categorías
+
+jQuery(document).on('ready',function(){
+  jQuery('.abrir').each(function(){
+    var valor = jQuery(this).attr('data-padre');
+    jQuery('#'+valor).removeClass('collapse');
+
+  });
+});
+
+
 </script>
