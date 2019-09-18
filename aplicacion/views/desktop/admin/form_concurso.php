@@ -42,13 +42,16 @@
 
           <form class="" action="<?php echo base_url('admin/concursos/crear'); ?>" method="post">
             <div class="form-group">
-              <label for="Frase">Frase</label>
-              <input type="text" class="form-control" name="Frase" id="Frase" placeholder="" required value="<?=!form_error('Frase')?set_value('Frase'):''?>">
+              <label for="Titulo">Titulo</label>
+              <input type="text" class="form-control" name="Titulo" id="Titulo" placeholder="" required value="<?=!form_error('Titulo')?set_value('Titulo'):''?>">
             </div>
             <div class="form-group">
-              <label for="Productos">Productos</label>
-              <input type="text" class="form-control" name="Productos" id="Productos" placeholder="" required value="<?=!form_error('Productos')?set_value('Productos'):''?>">
-              <small class="text-info"> <span class="fa fa-info-circle"></span> Números de ID separados por espacios</small>
+              <label for="Instrucciones">Instrucciones</label>
+              <input type="text" class="form-control" name="Instrucciones" id="Instrucciones" placeholder="" value="<?=!form_error('Instrucciones')?set_value('Instrucciones'):''?>">
+            </div>
+            <div class="form-group">
+              <label for="Frase">Frase</label>
+              <input type="text" class="form-control" name="Frase" id="Frase" placeholder="" required value="<?=!form_error('Frase')?set_value('Frase'):''?>">
             </div>
             <div class="form-group">
               <label for="FechaInicio">Inicio</label>
@@ -60,7 +63,17 @@
             </div>
             <div class="form-group">
               <label for="MostrarFrase">Mostrar Frase</label>
-              <input type="text" class="form-control" name="MostrarFrase" id="MostrarFrase" placeholder="" required value="no">
+              <select class="form-control" name="MostrarFrase" id="MostrarFrase">
+                <option value="no">No</option>
+                <option value="si">Si</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="SoloAdmin">Solo Administradores</label>
+              <select class="form-control" name="SoloAdmin" id="SoloAdmin">
+                <option value="no">No</option>
+                <option value="si">Si</option>
+              </select>
             </div>
             <hr>
             <button type="submit" class="btn btn<?php echo $primary; ?> float-right" name="button"> <span class="fa fa-save"></span> Guardar</button>

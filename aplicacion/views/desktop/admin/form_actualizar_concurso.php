@@ -47,21 +47,38 @@
               <input type="text" class="form-control" name="Frase" id="Frase" placeholder="" required value="<?php echo $concurso['FRASE']; ?>">
             </div>
             <div class="form-group">
-              <label for="Productos">Productos</label>
-              <input type="text" class="form-control" name="Productos" id="Productos" placeholder="" required value="<?php echo $concurso['PRODUCTOS']; ?>">
-              <small class="text-info"> <span class="fa fa-info-circle"></span> Números de ID separados por espacios</small>
+              <label for="Titulo">Titulo</label>
+              <input type="text" class="form-control" name="Titulo" id="Titulo" placeholder="" required value="<?php echo $concurso['FRASE']; ?>">
+            </div>
+            <div class="form-group">
+              <label for="Instrucciones">Instrucciones</label>
+              <input type="text" class="form-control" name="Instrucciones" id="Instrucciones" placeholder="" value="<?php echo $concurso['FRASE']; ?>">
+            </div>
+            <div class="form-group">
+              <label for="Frase">Frase</label>
+              <input type="text" class="form-control" name="Frase" id="Frase" placeholder="" required value="<?php echo $concurso['FRASE']; ?>">
             </div>
             <div class="form-group">
               <label for="FechaInicio">Inicio</label>
-              <input type="datetime-local" class="form-control" name="FechaInicio" id="FechaInicio" placeholder="" required value="<?php echo date('c', strtotime($concurso['FECHA_INICIO'])); ?>">
+              <input type="datetime-local" class="form-control" name="FechaInicio" id="FechaInicio" placeholder="" required value="<?php echo $concurso['FRASE']; ?>">
             </div>
             <div class="form-group">
               <label for="FechaFin">Fin</label>
-              <input type="datetime-local" class="form-control" name="FechaFin" id="FechaFin" placeholder="" required value="<?php echo date('c', strtotime($concurso['FECHA_FIN'])); ?>">
+              <input type="datetime-local" class="form-control" name="FechaFin" id="FechaFin" placeholder="" required value="<?php echo $concurso['FRASE']; ?>">
             </div>
             <div class="form-group">
               <label for="MostrarFrase">Mostrar Frase</label>
-              <input type="text" class="form-control" name="MostrarFrase" id="MostrarFrase" placeholder="" required value="<?php echo $concurso['MOSTRAR_FRASE']; ?>">
+              <select class="form-control" name="MostrarFrase" id="MostrarFrase">
+                <option value="no" <?php if($concurso['MOSTRAR_FRASE']=='no'){ echo 'selected'; } ?>>No</option>
+                <option value="si" <?php if($concurso['MOSTRAR_FRASE']=='si'){ echo 'selected'; } ?>>Si</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="SoloAdmin">Solo Administradores</label>
+              <select class="form-control" name="SoloAdmin" id="SoloAdmin">
+                <option value="no" <?php if($concurso['SOLO_ADMIN']=='no'){ echo 'selected'; } ?>>No</option>
+                <option value="si" <?php if($concurso['SOLO_ADMIN']=='si'){ echo 'selected'; } ?>>Si</option>
+              </select>
             </div>
             <hr>
             <button type="submit" class="btn btn<?php echo $primary; ?> float-right" name="button"> <span class="fa fa-save"></span> Guardar</button>

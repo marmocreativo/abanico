@@ -74,17 +74,10 @@
                         $CI->load->model('ConcursosModel');
                         $concurso = $CI->ConcursosModel->activo();
 
-                        $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
-                        $frase_concurso = explode(' ',$concurso['FRASE']);
-                        $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
+                        $frase = unserialize($concurso['FRASE']);
                         $relacion_palabras_productos = array();
-                        foreach($productos_concurso as $index => $producto_con){
-                          $relacion_palabras_productos[$producto_con]=$frase_concurso[$index];
-                        }
-                        if(in_array ($producto['ID_PRODUCTO'],$productos_concurso)&&$_SESSION['concurso']['palabras'][$relacion_palabras_productos[$producto['ID_PRODUCTO']]]=='no'){
-                          $palabra_escondida = '<span class="palabra_encontrada animated tada infinite" style="cursor: pointer; display:inline-block; animation-delay: 15s;" data-palabra="'.$relacion_palabras_productos[$producto['ID_PRODUCTO']].'">'.$relacion_palabras_productos[$producto['ID_PRODUCTO']].'</span>';
-                          //var_dump($relacion_palabras_productos);
-
+                        if(!empty($concurso)&&array_key_exists($producto['ID_PRODUCTO'],$frase)){
+                          $palabra_escondida = '<span class="palabra_encontrada animated tada infinite" style="cursor: pointer; display:inline-block;" data-palabra="'.$frase[$producto['ID_PRODUCTO']].'">'.$frase[$producto['ID_PRODUCTO']].'</span>';
                         ?>
 
                         <h5><?php echo $this->lang->line('pagina_producto_tab_detalles_titulo'); ?></h5>
@@ -367,7 +360,7 @@
                 <div class="col text-center">
                   <?php if($producto['PRODUCTO_ENVIO_GRATUITO']!='no'){ ?>
                   <div class="p-1 border border-success rounded" style="border-style:dashed !important">
-                    <span style="font-size:16px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i> entrega segura</span>
+                    <span style="font-size:16px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i> Entrega segura</span>
                   </div>
                 <?php }else{ ?>
                   <div class="p-1 border border-info rounded" style="border-style:dashed !important">

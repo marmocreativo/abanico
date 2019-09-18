@@ -40,8 +40,8 @@
           <table class="table ">
             <thead>
               <tr>
+                <th>Titulo</th>
                 <th>Frase</th>
-                <th>Productos</th>
                 <th>Ganador</th>
                 <th>Fecha Inicio</th>
                 <th>Fecha Ganador</th>
@@ -52,8 +52,15 @@
             <tbody>
               <?php foreach($concursos as $concurso){ ?>
               <tr>
-                <td><?php echo $concurso->FRASE; ?></td>
-                <td><?php echo $concurso->PRODUCTOS; ?></td>
+                <td><?php echo $concurso->TITULO; ?></td>
+                <?php $frase = unserialize($concurso->FRASE); ?>
+                <td>
+                  <?php
+                  foreach($frase as $id=>$palabra){
+                    echo '<a href="'.base_url('producto?id='.$id).'" target="_blank">'.$palabra.'</a> | ';
+                  }
+                 ?>
+               </td>
                 <td><?php echo $concurso->ID_GANADOR; ?></td>
                 <td><?php echo $concurso->FECHA_INICIO; ?></td>
                 <td><?php echo $concurso->FECHA_GANADOR; ?></td>

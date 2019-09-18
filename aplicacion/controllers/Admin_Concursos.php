@@ -25,6 +25,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('ConcursosModel');
 		$this->load->model('EstadisticasModel');
 		$this->load->model('NotificacionesModel');
+		$this->load->model('ProductosModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -49,19 +50,30 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function crear()
 	{
 		$this->form_validation->set_rules('Frase', 'Frase del concurso requerida', 'required', array('required' => 'Debes escribir tu %s.'));
-		$this->form_validation->set_rules('Productos', 'Frase del concurso requerida', 'required', array('required' => 'Debes escribir tu %s.'));
 
 		if($this->form_validation->run())
 		{
 			$frase = $this->input->post('Frase');
-			$productos = $this->input->post('Productos');
+			$frase_array = preg_split('/\s+/', $frase);
+			$limite_productos = count($frase_array);
+			$productos = $this->ProductosModel->lista_activos('',['ID_TIENDA'=>1],'','',$limite_productos);
+
+			$array_final = array();
+			$i=0;
+			foreach($productos as $prod_id){
+				$array_final[$prod_id->ID_PRODUCTO]=$frase_array[$i];
+				$i++;
+			}
+
 			// Parametros de la dirección
 			$parametros = array(
-				'FRASE' => $frase,
-				'PRODUCTOS' => $productos,
+				'TITULO' => $this->input->post('Titulo'),
+				'INSTRUCCIONES' => $this->input->post('Instrucciones'),
+				'FRASE' => serialize($array_final),
 				'FECHA_INICIO' => $this->input->post('FechaInicio'),
 				'FECHA_FIN' => $this->input->post('FechaFin'),
-				'MOSTRAR_FRASE' => $this->input->post('MostrarFrase')
+				'MOSTRAR_FRASE' => $this->input->post('MostrarFrase'),
+				'SOLO_ADMIN' => $this->input->post('SoloAdmin')
 			);
 
 			$concurso_id = $this->ConcursosModel->crear($parametros);
@@ -76,14 +88,16 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function actualizar()
 	{
 		$this->form_validation->set_rules('Frase', 'Frase del concurso requerida', 'required', array('required' => 'Debes escribir tu %s.'));
-		$this->form_validation->set_rules('Productos', 'Frase del concurso requerida', 'required', array('required' => 'Debes escribir tu %s.'));
 
 		if($this->form_validation->run())
 		{
 			$frase = $this->input->post('Frase');
+			$frase_array = preg_split('/\s+/', $frase);
 			$productos = $this->input->post('Productos');
 			// Parametros de la dirección
 			$parametros = array(
+				'TITULO' => $this->input->post('Titulo'),
+				'INSTRUCCIONES' => $this->input->post('Instrucciones'),
 				'FRASE' => $frase,
 				'PRODUCTOS' => $productos,
 				'FECHA_INICIO' => $this->input->post('FechaInicio'),

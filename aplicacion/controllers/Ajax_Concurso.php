@@ -12,13 +12,19 @@ class Ajax_Concurso extends CI_Controller {
 	public function index()
 	{
     $concurso = $this->ConcursosModel->activo();
-    $productos_concurso = explode(' ',$concurso['PRODUCTOS']);
-    $frase_concurso = explode(' ',$concurso['FRASE']);
+    $frase_concurso = unserialize($concurso['FRASE']);
     $ganador = $concurso['ID_GANADOR'];
 
 		if(!empty($concurso)){
-			echo '<div class="container">';
+			echo '<div class="container my-3 border border-info" style="border-style:dashed !important">';
+				$mostrar_concurso = false;
 				if(isset($_SESSION['usuario']['id'])){
+					$mostrar_concurso = true;
+				}
+				if($concurso['SOLO_ADMIN']=='si'&&$_SESSION['usuario']['tipo_usuario']!='adm-6'){
+					$mostrar_concurso = false;
+				}
+				if($mostrar_concurso){
 
 						// inicia el concurso
 						$id_participante = $_SESSION['usuario']['id'];
@@ -35,32 +41,45 @@ class Ajax_Concurso extends CI_Controller {
 						//var_dump($_SESSION['concurso']);
 					// Escribo las instrucciones
 					echo
-					'<div class="row instrucciones">
+					'<div class="row  instrucciones" >
+						<div class="col-12 col-md-2 text-center">
+						<img src="'.base_url('assets/global/img/tesoro.png').'" class="img-fluid">
+						</div>
 						<div class="col text-center pt-3">
-							<h4>Hay <span class="animated tada infinite" style="display:inline-block">'.count($palabras).'</span> palabras escondidas en las descripciones de algunos de nuestros productos, sé el primero en encontrarlas, formar la frase y ganarás nuestro premio</h4>';
-							if($concurso['MOSTRAR_FRASE']=='si'){
-						echo '
-							<blockquote class="blockquote">
-								<h4 class="mb-0">"'.$concurso['FRASE'].'"</h4>
-							</blockquote>';
-						}
-						echo '<p>Las palabras estás escondidas en la descripción, las notarás por que el cursos cambiará al pasarlo por encima.</p>'
-						echo '</div>
-					</div>';
-					echo '<div class="row py-4" style="min-height:50px" id="concurso_sortable">';
-						shuffle($palabras);
+							<h3 class="mb-0">"'.$concurso['TITULO'].'"</h3>
+							<h5>1.- Busca las <span class="animated tada infinite" style="display:inline-block">'.count($palabras).' palabras</span>  escondidas  en las descripciones de algunos de nuestros productos y toca o da click en ellas.</h5>
+							<h5>2.- Cuando tengas las palabras ordénalas y forma la frase (sabrás que la palabra está en el orden correcto cuando cambie de <span class="text-info">color</span>)</h5>';
+						echo '</div>';
+						$palabras_encontradas = 0;
 						foreach($palabras as $palabra){
 							if($_SESSION['concurso']['palabras'][$palabra]=='si'){
-								echo '<div class="col p-3 border border-primary" >';
+								$palabras_encontradas ++;
+							}
+						}
+						echo '<div class="col-12 col-md-2 text-center pt-3">
+							<p>Palabras encontradas:</p>
+							<p class="display-4">'.$palabras_encontradas.'/'.count($palabras).'</p>
+						</div>';
+					echo '</div>';
+					echo '<div class="row py-4" style="min-height:50px" id="concurso_sortable">';
+						shuffle($palabras);
+						$i = 0;
+						foreach($palabras as $palabra){
+							if($_SESSION['concurso']['palabras'][$palabra]=='si'){
+								echo '<div class="col border border-info text-info p-3 text-center m-2 animated fadeInUp" style="border-style:dashed !important; cursor:pointer; background-color:rgba(230,230,230,1); animation-delay:'.$i.'00ms" >';
 									echo $palabra;
 								echo '</div>';
 							 }
+							 $i++;
 						 }
 					echo '</div>';
 				}else{
 					// Si no se ha iniciado sesión los invito a inciarla
 					echo '<div class="row py-4" style="min-height:50px">
-						<div class="col p-3 border border-primary text-center" >
+					<div class="col-2">
+					<img src="'.base_url('assets/global/img/tesoro.png').'" class="img-fluid">
+					</div>
+						<div class="col p-3 text-center" >
 							<h1>Hay un concurso en progreso!!!</h1>
 							<a href="'.base_url('login').'"> Inicia sesión para participar</a>
 						</div>
