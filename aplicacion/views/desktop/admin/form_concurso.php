@@ -46,10 +46,6 @@
               <input type="text" class="form-control" name="Titulo" id="Titulo" placeholder="" required value="<?=!form_error('Titulo')?set_value('Titulo'):''?>">
             </div>
             <div class="form-group">
-              <label for="Instrucciones">Instrucciones</label>
-              <input type="text" class="form-control" name="Instrucciones" id="Instrucciones" placeholder="" value="<?=!form_error('Instrucciones')?set_value('Instrucciones'):''?>">
-            </div>
-            <div class="form-group">
               <label for="Frase">Frase</label>
               <input type="text" class="form-control" name="Frase" id="Frase" placeholder="" required value="<?=!form_error('Frase')?set_value('Frase'):''?>">
             </div>
@@ -60,13 +56,6 @@
             <div class="form-group">
               <label for="FechaFin">Fin</label>
               <input type="datetime-local" class="form-control" name="FechaFin" id="FechaFin" placeholder="" required value="<?=!form_error('FechaFin')?set_value('FechaFin'):''?>">
-            </div>
-            <div class="form-group">
-              <label for="MostrarFrase">Mostrar Frase</label>
-              <select class="form-control" name="MostrarFrase" id="MostrarFrase">
-                <option value="no">No</option>
-                <option value="si">Si</option>
-              </select>
             </div>
             <div class="form-group">
               <label for="SoloAdmin">Solo Administradores</label>

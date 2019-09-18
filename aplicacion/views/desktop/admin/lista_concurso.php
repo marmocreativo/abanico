@@ -56,8 +56,8 @@
                 <?php $frase = unserialize($concurso->FRASE); ?>
                 <td>
                   <?php
-                  foreach($frase as $id=>$palabra){
-                    echo '<a href="'.base_url('producto?id='.$id).'" target="_blank">'.$palabra.'</a> | ';
+                  foreach($frase as $palabra){
+                    echo '<a href="'.base_url('producto?id='.$palabra['ID']).'" target="_blank">'.$palabra['PALABRA'].'</a> | ';
                   }
                  ?>
                </td>

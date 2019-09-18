@@ -34,7 +34,33 @@
           <?php } ?>
         </ul>
       </div>
+      <?php
+      $CI =& get_instance();
+      $CI->load->model('ConcursosModel');
+      $concurso = $CI->ConcursosModel->activo();
 
+      if(!empty($concurso)){
+      $frase = unserialize($concurso['FRASE']);
+      $relacion_palabras_productos = array();
+      $palabra_escondida = '';
+      foreach($frase as $palabra){
+        if($palabra['ID']==$producto['ID_PRODUCTO']){
+          if(isset($_SESSION['concurso'])){
+            foreach($_SESSION['concurso']['palabras'] as $palabras_sesion){
+              if($palabras_sesion['ID']==$palabra['ID']&&$palabras_sesion['ENCONTRADA']=='no'){
+                $palabra_escondida = '<span class="palabra_encontrada animated tada infinite" style="animation-delay: 2s; cursor: pointer; display:inline-block;" data-palabra="'.$palabra['PALABRA'].'" data-id="'.$palabra['ID'].'">'.$palabra['PALABRA'].'</span>';
+              }
+            }
+          }
+        }
+      }
+        $palabras_en_descripcion = explode(' ',$descripcion_corta);
+        $numero_palabras_en_descripcion = count($palabras_en_descripcion);
+        $aleatorio = rand(0,$numero_palabras_en_descripcion-1);
+        $palabras_en_descripcion[$aleatorio]=$palabra_escondida;
+        $descripcion_corta = implode(" ",$palabras_en_descripcion);
+      }
+      ?>
       <div class="col-12 mb-4">
         <p class="text-muted"><small><?php echo $producto['PRODUCTO_CANTIDAD']; ?> disponibles</small></p>
         <h4 class="product-title mb-2"><?php echo $titulo; ?></h4>

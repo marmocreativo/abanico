@@ -61,18 +61,20 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$array_final = array();
 			$i=0;
 			foreach($productos as $prod_id){
-				$array_final[$prod_id->ID_PRODUCTO]=$frase_array[$i];
+				$array_final[]=array(
+					'ORDEN'=>$i,
+					'ID'=>$prod_id->ID_PRODUCTO,
+					'PALABRA'=>$frase_array[$i]
+				);
 				$i++;
 			}
 
 			// Parametros de la dirección
 			$parametros = array(
 				'TITULO' => $this->input->post('Titulo'),
-				'INSTRUCCIONES' => $this->input->post('Instrucciones'),
 				'FRASE' => serialize($array_final),
 				'FECHA_INICIO' => $this->input->post('FechaInicio'),
 				'FECHA_FIN' => $this->input->post('FechaFin'),
-				'MOSTRAR_FRASE' => $this->input->post('MostrarFrase'),
 				'SOLO_ADMIN' => $this->input->post('SoloAdmin')
 			);
 
@@ -97,17 +99,15 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			// Parametros de la dirección
 			$parametros = array(
 				'TITULO' => $this->input->post('Titulo'),
-				'INSTRUCCIONES' => $this->input->post('Instrucciones'),
 				'FRASE' => $frase,
-				'PRODUCTOS' => $productos,
 				'FECHA_INICIO' => $this->input->post('FechaInicio'),
 				'FECHA_FIN' => $this->input->post('FechaFin'),
-				'MOSTRAR_FRASE' => $this->input->post('MostrarFrase')
+				'SOLO_ADMIN' => $this->input->post('SoloAdmin')
 			);
 
 			$this->ConcursosModel->actualizar( $this->input->post('Identificador'),$parametros);
 			$this->session->set_flashdata('exito', 'Concurso actualizado');
-      redirect(base_url('admin/direcciones?id_usuario='.$this->input->post('IdUsuario')));
+      redirect(base_url('admin/concursos'));
     }else{
 
 			$this->data['concurso'] = $this->ConcursosModel->detalles($_GET['id']);

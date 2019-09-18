@@ -74,29 +74,29 @@
                         $CI->load->model('ConcursosModel');
                         $concurso = $CI->ConcursosModel->activo();
 
+                        if(!empty($concurso)){
                         $frase = unserialize($concurso['FRASE']);
                         $relacion_palabras_productos = array();
-                        if(!empty($concurso)&&array_key_exists($producto['ID_PRODUCTO'],$frase)){
-                          $palabra_escondida = '<span class="palabra_encontrada animated tada infinite" style="cursor: pointer; display:inline-block;" data-palabra="'.$frase[$producto['ID_PRODUCTO']].'">'.$frase[$producto['ID_PRODUCTO']].'</span>';
+                        $palabra_escondida = '';
+                        foreach($frase as $palabra){
+                          if($palabra['ID']==$producto['ID_PRODUCTO']){
+                            foreach($_SESSION['concurso']['palabras'] as $palabras_sesion){
+                              if($palabras_sesion['ID']==$palabra['ID']&&$palabras_sesion['ENCONTRADA']=='no'){
+                                $palabra_escondida = '<span class="palabra_encontrada animated tada infinite" style="animation-delay: 2s; cursor: pointer; display:inline-block;" data-palabra="'.$palabra['PALABRA'].'" data-id="'.$palabra['ID'].'">'.$palabra['PALABRA'].'</span>';
+                              }
+                            }
+                          }
+                        }
+                          $palabras_en_descripcion = explode(' ',$descripcion_corta);
+                          $numero_palabras_en_descripcion = count($palabras_en_descripcion);
+                          $aleatorio = rand(0,$numero_palabras_en_descripcion-1);
+                          $palabras_en_descripcion[$aleatorio]=$palabra_escondida;
+                          $descripcion_corta = implode(" ",$palabras_en_descripcion);
+                        }
                         ?>
 
                         <h5><?php echo $this->lang->line('pagina_producto_tab_detalles_titulo'); ?></h5>
-                        <?php if(!empty($concurso)){ ?>
-
-                            <?php
-                              $palabras_en_descripcion = explode(' ',$descripcion_larga);
-                              $numero_palabras_en_descripcion = count($palabras_en_descripcion);
-                              $aleatorio = rand(0,$numero_palabras_en_descripcion-1);
-                              $palabras_en_descripcion[$aleatorio]=$palabra_escondida;
-                              echo implode(" ",$palabras_en_descripcion);
-                            ?>
-                        <?php }else{ ?>
-
                         <?php echo $descripcion_larga; ?>
-                        <?php } ?>
-                      <?php }else{ ?>
-                        <?php echo $descripcion_larga; ?>
-                      <?php } ?>
                       </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
