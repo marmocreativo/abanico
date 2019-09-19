@@ -3,6 +3,9 @@
 | ESTILOS GENERALES
 | -------------------------------------------------------------------------
 */
+html {
+  scroll-behavior: smooth;
+}
 html, body{
   overflow-x: hidden;
 }
@@ -401,8 +404,8 @@ color: #FF6600;
     padding-top: 0;
     margin: 0;
     position: absolute;
-    left: -13px;
-    top: -21px;
+    left: 0;
+    top: -10px;
     background: transparent;
     width: 65px;
     height: 65px;
