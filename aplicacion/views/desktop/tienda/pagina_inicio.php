@@ -203,7 +203,7 @@
                           <?php } ?>
                           <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
                         </ul>
-                        <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
+                        <h3 class="title <?php echo 'text'.$primary; ?>" title="<?php echo $titulo; ?>"><?php echo word_limiter($titulo,10); ?></h3>
                         <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                           <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small> </div>
                         <?php } ?>

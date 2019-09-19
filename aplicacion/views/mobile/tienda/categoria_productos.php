@@ -168,6 +168,9 @@
                   <div class="imagen-producto">
                     <img class="spanImg mr-1" src="<?php echo base_url($ruta_portada); ?>"></img>
                     <div class="contenedorEtiquetas">
+                      <?php if($producto->PRODUCTO_ARTESANAL=='si'){ ?>
+                        <span class="etiqueta-artesanal"><img src="<?php echo base_url('assets/global/img/artesanal.png'); ?>" class="img-fluid"></span>
+                      <?php } ?>
                       <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
                         <span class="etiqueta-1"><?php echo $this->lang->line('etiquetas_productos_mexico'); ?></span>
                       <?php } ?>

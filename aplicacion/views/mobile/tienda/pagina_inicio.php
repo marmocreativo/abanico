@@ -150,7 +150,10 @@
                 <div class="imagen-producto">
                   <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
                   <img class="spanImg" src="<?php echo base_url($ruta_portada); ?>"></img>
-                  <div class="contenedor-etiquetas">
+                  <div class="contenedorEtiquetas">
+                    <?php if($producto->PRODUCTO_ARTESANAL=='si'){ ?>
+                      <span class="etiqueta-artesanal"><img src="<?php echo base_url('assets/global/img/artesanal.png'); ?>" class="img-fluid"></span>
+                    <?php } ?>
                     <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
                       <span class="etiqueta-1">Méx</span>
                     <?php } ?>
@@ -191,7 +194,7 @@
                     <?php } ?>
                     <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
                   </ul>
-                  <h4 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h4>
+                  <h6 class="<?php echo 'text'.$primary; ?>"><?php echo word_limiter($titulo,10); ?></h6>
                   <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                     <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small> </div>
                   <?php } ?>

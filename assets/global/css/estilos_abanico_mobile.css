@@ -363,6 +363,17 @@ html, body{
   clip-path:polygon(10% 0,100% 0,100% 100%,0 100%)
 }
 
+.sliderProductos .contenedorEtiquetas .etiqueta-artesanal{
+  display: block;
+  max-width: 70px;
+  text-align: right;
+}
+.contenedorEtiquetas .etiqueta-artesanal{
+  display: block;
+  max-width: 30px;
+  text-align: right;
+}
+
 .sliderProductos.favoritos .contenedorEtiquetas .etiqueta-1,
 .sliderProductos.favoritos .contenedorEtiquetas .etiqueta-2,
 .sliderProductos.favoritos .contenedorEtiquetas .etiqueta-3{
