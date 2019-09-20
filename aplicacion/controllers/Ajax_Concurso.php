@@ -5,6 +5,12 @@ class Ajax_Concurso extends CI_Controller {
 
 	public function __construct(){
     parent::__construct();
+		$this->data['op'] = opciones_default();
+		sesion_default($this->data['op']);
+		$this->data['lenguajes_activos'] = $this->lenguajes_activos->get_lenguajes_activos();
+		$this->data['divisas_activas'] = $this->divisas_activas->get_divisas_activas();
+		// Cargo Lenguaje
+		$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		// Cargo el modelo
 		$this->load->model('ConcursosModel');
   }
@@ -12,11 +18,12 @@ class Ajax_Concurso extends CI_Controller {
 	public function index()
 	{
     $concurso = $this->ConcursosModel->activo();
+		$this->data['concurso'] = $concurso;
     $frase_concurso = unserialize($concurso['FRASE']);
     $ganador = $concurso['ID_GANADOR'];
-		// Hay un concurso
+		// Si no hay un concurso no muestro nada
 		if(!empty($concurso)){
-			// Por defecto no muestro el concurso
+			// Por defecto no muestro controles del concurso
 			$mostrar_concurso = false;
 			// Si hay sesión iniciada si lo muestro
 			if(isset($_SESSION['usuario']['id'])){
@@ -27,129 +34,76 @@ class Ajax_Concurso extends CI_Controller {
 					$mostrar_concurso = false;
 				}
 			}
-			// Si ya hay un ganador, NO MUESTRO EL CONCURSO
-			if(!empty($ganador)){
-				$mostrar_concurso = false;
-			}
-				if($mostrar_concurso){
+			// cargo las vistas de los concursos
+			if($mostrar_concurso){
+				// Aquí se cargan las vistas que tienen control de los concursos
+				$id_participante = $_SESSION['usuario']['id'];
+				$fecha_inicio = date('Y-m-d H:i:s');
+				$palabras = $frase_concurso;
+				$this->data['palabras']= $palabras;
 
-						// inicia el concurso
-						$id_participante = $_SESSION['usuario']['id'];
-						$fecha_inicio = date('Y-m-d H:i:s');
-						$palabras = $frase_concurso;
-						if(!isset($_SESSION['concurso'])){
-							$_SESSION['concurso'] = array();
-							$_SESSION['concurso']['id_concurso'] = $concurso['ID'];
-							$_SESSION['concurso']['id'] = $id_participante;
-							$_SESSION['concurso']['fecha_inicio'] = $fecha_inicio;
-							foreach($palabras as $palabra){
-								$_SESSION['concurso']['palabras'][]=array(
-									'ORDEN'=>$palabra['ORDEN'],
-									'ID'=>$palabra['ID'],
-									'PALABRA'=>$palabra['PALABRA'],
-									'ENCONTRADA'=>'no'
-								);
-							}
-						}
-						//var_dump($_SESSION['concurso']);
-					// Escribo las instrucciones
-					echo '<div class="container my-3 border border-info" style="border-style:dashed !important">';
-					echo
-					'<div class="row  instrucciones" >
-						<div class="col-12 col-md-2 text-center">
-						<img src="'.base_url('assets/global/img/tesoro.png').'" class="img-fluid">
-						</div>
-						<div class="col text-center pt-3">
-							<h3 class="mb-0">"'.$concurso['TITULO'].'"</h3>
-							<h5>1.- Busca las <span class="animated tada infinite" style="display:inline-block">'.count($palabras).' palabras</span>  escondidas  en las descripciones de algunos de nuestros productos y toca o da click en ellas.</h5>
-							<h5>2.- Cuando tengas las palabras ordénalas y forma la frase (sabrás que la palabra está en el orden correcto cuando cambie de <span class="text-info">color</span>)</h5>';
-						echo '</div>';
-						$palabras_encontradas = 0;
-						foreach($_SESSION['concurso']['palabras'] as $key => $palabra){
-							if($palabra['ENCONTRADA']=='si'){
-								$palabras_encontradas ++;
-							}
-						}
-						echo '<div class="col-12 col-md-2 text-center pt-3">
-							<p>Palabras encontradas:</p>
-							<p class="display-4">'.$palabras_encontradas.'/'.count($palabras).'</p>
-						</div>';
-					echo '</div>';
-					echo '<div class="row py-4" style="min-height:50px" id="concurso_sortable" data-numero-palabras="'.count($palabras).'">';
-						shuffle($_SESSION['concurso']['palabras']);
-						$i = 0;
-						//var_dump($_SESSION['concurso']['palabras']);
-						foreach($_SESSION['concurso']['palabras'] as $key => $palabra){
-
-							if($palabra['ENCONTRADA']=='si'){
-								if($key==$palabra['ORDEN']){
-									$clase_visible= 'border border-info bg-info text-white correcto';
-								}else{
-									$clase_visible= 'border border-info text-info incorrecto';
-								}
-
-								echo '<div class="col palabra_concurso p-3 text-center m-2 animated fadeInUp '.$clase_visible.'"
-								style="border-style:dashed !important; cursor:pointer; background-color:rgba(230,230,230,1); animation-delay:'.$i.'00ms"
-								data-orden="'.$palabra['ORDEN'].'"
-								data-id="'.$palabra['ID'].'"
-								data-palabra="'.$palabra['PALABRA'].'"
-								>';
-									echo $palabra['PALABRA'];
-								echo '</div>';
-							 }
-
-							 $i++;
-						 }
-					echo '</div>';
-
-					echo '</div>'; // Termina el contenedor Global
-				}else{
-					if(isset($_SESSION['usuario']['id'])){
-					if($concurso['SOLO_ADMIN']=='si'&&$_SESSION['usuario']['tipo_usuario']=='adm-6'){
-						echo '<div class="container my-3 border border-info" style="border-style:dashed !important">';
-						if(!isset($_SESSION['usuario']['id'])){
-							// Si no se ha iniciado sesión los invito a inciarla
-							echo '<div class="row py-4" style="min-height:50px">
-							<div class="col-2">
-							<img src="'.base_url('assets/global/img/tesoro.png').'" class="img-fluid">
-							</div>
-								<div class="col p-3 text-center" >
-									<h1>Hay un concurso en progreso!!!</h1>
-									<a href="'.base_url('login').'"> Inicia sesión para participar</a>
-								</div>
-							</div>';
-						}else{
-							if(!empty($concurso['ID_GANADOR'])&&$concurso['ID_GANADOR']==$_SESSION['usuario']['id']){
-								// Si no se ha iniciado sesión los invito a inciarla
-								echo '<div class="row py-4" style="min-height:50px">
-								<div class="col-12 col-md-2 text-center">
-								<img src="'.base_url('assets/global/img/tesoro.png').'" class="img-fluid">
-								</div>
-									<div class="col p-3 text-center" >
-										<h1>Has ganado!!!!</h1>
-										<h3>Muchas gracias por haber participado. pronto nos comunicaremos contigo</h3>
-									</div>
-								</div>';
-
-							}
-							if(!empty($concurso['ID_GANADOR'])&&$concurso['ID_GANADOR']!=$_SESSION['usuario']['id']){
-								// Si no se ha iniciado sesión los invito a inciarla
-								echo '<div class="row py-4" style="min-height:50px">
-								<div class="col-12 col-md-2 text-center">
-								<img src="'.base_url('assets/global/img/tesoro.png').'" class="img-fluid">
-								</div>
-									<div class="col p-3 text-center" >
-										<h1>Ya hay ganador!!!!</h1>
-										<h3>Muchas gracias por haber participado.</h3>
-									</div>
-								</div>';
-							}
-						}
-						echo '</div>'; // Termina el contenedor Global
-						}
+				// Inicializo las variables del concurso
+				if(!isset($_SESSION['concurso'])){
+					$_SESSION['concurso'] = array();
+					$_SESSION['concurso']['id_concurso'] = $concurso['ID'];
+					$_SESSION['concurso']['id'] = $id_participante;
+					$_SESSION['concurso']['fecha_inicio'] = $fecha_inicio;
+					foreach($palabras as $palabra){
+						$_SESSION['concurso']['palabras'][]=array(
+							'ORDEN'=>$palabra['ORDEN'],
+							'ID'=>$palabra['ID'],
+							'PALABRA'=>$palabra['PALABRA'],
+							'ENCONTRADA'=>'no'
+						);
 					}
 				}
 
+				// Reviso en que fase del concurso estamos
+				$palabras_faltantes = count($palabras);
+				if(isset($_SESSION['concurso']['palabras'])){
+					foreach($_SESSION['concurso']['palabras'] as $palabra_sesion){
+						if($palabra_sesion['ENCONTRADA']=='si'){ $palabras_faltantes --; }
+					}
+				}
+
+				if(empty($ganador)){
+					if($palabras_faltantes==0){
+						$this->load->view('concurso/concurso_ordenar',$this->data);
+					}else{
+						$this->load->view('concurso/concurso_buscar',$this->data);
+					}
+
+				}else{
+					// Ya hay un ganador, reviso si soy yo
+					if($ganador==$_SESSION['usuario']['id']){
+						$this->load->view('concurso/concurso_ganaste',$this->data);
+					}else{
+						// Si no soy el ganador
+						$this->load->view('concurso/concurso_perdiste',$this->data);
+					}
+				}
+
+
+			}else{
+				// Aquí se cargan las vistas que NO tienen control de los concursos
+
+					$mostrar_invitacion = false;
+
+					if($concurso['SOLO_ADMIN']=='no'){
+						$mostrar_invitacion = true;
+					}else{
+						if(isset($_SESSION['usuario']['id'])){
+							if($_SESSION['usuario']['tipo_usuario']=='adm-6'){
+								$mostrar_invitacion = true;
+							}
+						}
+					}
+					// Muestro la invitación si se cumplieron los requisitos
+					if($mostrar_invitacion){
+						$this->load->view('concurso/concurso_iniciar',$this->data);
+					}
+
+			}
 		}
 	}
 

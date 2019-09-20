@@ -75,3 +75,5 @@
       </nav>
     </div>
     <!-- Termina Header -->
+    <div class="contenedor_concurso d-none"  id="contenedor_concurso">
+    </div>

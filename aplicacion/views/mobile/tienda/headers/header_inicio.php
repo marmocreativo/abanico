@@ -181,6 +181,6 @@
 
     </div>
   </div>
-  <div id="contenedor_concurso">
+  <div  id="contenedor_concurso">
   </div>
   <!-- Termina Header -->

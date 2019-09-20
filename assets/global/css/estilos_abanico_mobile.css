@@ -1219,3 +1219,32 @@ color: #FF6600;
   right: 0;
   background-color: rgba(255,255,255,0.8);
 }
+
+/*ESTILOS DE CONCURSOS*/
+
+.contenedor_concurso{
+  min-height: 150px;
+  padding: 20px;
+  background-image: url('../img/concurso/fondo_concurso_movil.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.imagen_concurso{
+  width:100%;
+  background-image: url('../img/concurso/imagen_fondo_principal.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.titulo-concurso{
+  font-size: 1.5em;
+    font-weight: 600;
+    color: #800080;
+}
+.subtitulo-concurso{
+  font-size: 1.2em;
+    font-weight: 600;
+    color: #800080;
+}

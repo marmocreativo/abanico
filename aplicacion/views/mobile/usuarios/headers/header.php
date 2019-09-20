@@ -90,4 +90,6 @@
         </div>
       </div>
     </div>
+    <div class="contenedor_concurso d-none"  id="contenedor_concurso">
+    </div>
     <!-- Termina Header -->

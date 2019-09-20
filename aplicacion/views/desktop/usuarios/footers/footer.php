@@ -27,6 +27,7 @@
     <script src="<?php echo base_url(); ?>assets/tienda/js/starrr/starrr.js"></script>
     <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
     <script src="<?php echo base_url(); ?>assets/global/js/sweetalert2/sweetalert2.all.min.js"></script>
+    <?php $this->load->view('scripts/scripts_concurso');  ?>
     <?php $this->load->view('scripts/scripts_tienda');  ?>
     <?php $this->load->view('scripts/formularios_usuario');  ?>
     <?php $this->load->view('scripts/alertas_usuario');  ?>

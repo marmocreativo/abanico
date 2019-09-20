@@ -34,7 +34,7 @@ function cargar_concurso(){
             }
           });
           // Si todas las palabras están en orden
-          //console.log(incorrectas);
+          console.log(incorrectas);
           if(incorrectas==0){
             jQuery.ajax({
               method: "GET",
