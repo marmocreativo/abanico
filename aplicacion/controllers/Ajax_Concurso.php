@@ -14,19 +14,23 @@ class Ajax_Concurso extends CI_Controller {
     $concurso = $this->ConcursosModel->activo();
     $frase_concurso = unserialize($concurso['FRASE']);
     $ganador = $concurso['ID_GANADOR'];
+		// Hay un concurso
 		if(!empty($concurso)){
-			echo '<div class="container my-3 border border-info" style="border-style:dashed !important">';
-				$mostrar_concurso = false;
-				if(isset($_SESSION['usuario']['id'])){
-					$mostrar_concurso = true;
+			// Por defecto no muestro el concurso
+			$mostrar_concurso = false;
+			// Si hay sesión iniciada si lo muestro
+			if(isset($_SESSION['usuario']['id'])){
+				$mostrar_concurso = true;
 
-					if($concurso['SOLO_ADMIN']=='si'&&$_SESSION['usuario']['tipo_usuario']!='adm-6'){
-						$mostrar_concurso = false;
-					}
-				}
-				if(!empty($ganador)){
+				//Si el concurso es solo admin y no es administrador, vuelvo a ocultar el concurso
+				if($concurso['SOLO_ADMIN']=='si'&&$_SESSION['usuario']['tipo_usuario']!='adm-6'){
 					$mostrar_concurso = false;
 				}
+			}
+			// Si ya hay un ganador, NO MUESTRO EL CONCURSO
+			if(!empty($ganador)){
+				$mostrar_concurso = false;
+			}
 				if($mostrar_concurso){
 
 						// inicia el concurso
@@ -49,6 +53,7 @@ class Ajax_Concurso extends CI_Controller {
 						}
 						//var_dump($_SESSION['concurso']);
 					// Escribo las instrucciones
+					echo '<div class="container my-3 border border-info" style="border-style:dashed !important">';
 					echo
 					'<div class="row  instrucciones" >
 						<div class="col-12 col-md-2 text-center">
@@ -96,47 +101,55 @@ class Ajax_Concurso extends CI_Controller {
 							 $i++;
 						 }
 					echo '</div>';
-				}else{
-					if(!isset($_SESSION['usuario']['id'])){
-						// Si no se ha iniciado sesión los invito a inciarla
-						echo '<div class="row py-4" style="min-height:50px">
-						<div class="col-2">
-						<img src="'.base_url('assets/global/img/tesoro.png').'" class="img-fluid">
-						</div>
-							<div class="col p-3 text-center" >
-								<h1>Hay un concurso en progreso!!!</h1>
-								<a href="'.base_url('login').'"> Inicia sesión para participar</a>
-							</div>
-						</div>';
-					}else{
-						if(!empty($concurso['ID_GANADOR'])&&$concurso['ID_GANADOR']==$_SESSION['usuario']['id']){
-							// Si no se ha iniciado sesión los invito a inciarla
-							echo '<div class="row py-4" style="min-height:50px">
-							<div class="col-12 col-md-2 text-center">
-							<img src="'.base_url('assets/global/img/tesoro.png').'" class="img-fluid">
-							</div>
-								<div class="col p-3 text-center" >
-									<h1>Has ganado!!!!</h1>
-									<h3>Muchas gracias por haber participado. pronto nos comunicaremos contigo</h3>
-								</div>
-							</div>';
 
-						}
-						if(!empty($concurso['ID_GANADOR'])&&$concurso['ID_GANADOR']!=$_SESSION['usuario']['id']){
+					echo '</div>'; // Termina el contenedor Global
+				}else{
+					if(isset($_SESSION['usuario']['id'])){
+					if($concurso['SOLO_ADMIN']=='si'&&$_SESSION['usuario']['tipo_usuario']=='adm-6'){
+						echo '<div class="container my-3 border border-info" style="border-style:dashed !important">';
+						if(!isset($_SESSION['usuario']['id'])){
 							// Si no se ha iniciado sesión los invito a inciarla
 							echo '<div class="row py-4" style="min-height:50px">
-							<div class="col-12 col-md-2 text-center">
+							<div class="col-2">
 							<img src="'.base_url('assets/global/img/tesoro.png').'" class="img-fluid">
 							</div>
 								<div class="col p-3 text-center" >
-									<h1>Ya hay ganador!!!!</h1>
-									<h3>Muchas gracias por haber participado.</h3>
+									<h1>Hay un concurso en progreso!!!</h1>
+									<a href="'.base_url('login').'"> Inicia sesión para participar</a>
 								</div>
 							</div>';
+						}else{
+							if(!empty($concurso['ID_GANADOR'])&&$concurso['ID_GANADOR']==$_SESSION['usuario']['id']){
+								// Si no se ha iniciado sesión los invito a inciarla
+								echo '<div class="row py-4" style="min-height:50px">
+								<div class="col-12 col-md-2 text-center">
+								<img src="'.base_url('assets/global/img/tesoro.png').'" class="img-fluid">
+								</div>
+									<div class="col p-3 text-center" >
+										<h1>Has ganado!!!!</h1>
+										<h3>Muchas gracias por haber participado. pronto nos comunicaremos contigo</h3>
+									</div>
+								</div>';
+
+							}
+							if(!empty($concurso['ID_GANADOR'])&&$concurso['ID_GANADOR']!=$_SESSION['usuario']['id']){
+								// Si no se ha iniciado sesión los invito a inciarla
+								echo '<div class="row py-4" style="min-height:50px">
+								<div class="col-12 col-md-2 text-center">
+								<img src="'.base_url('assets/global/img/tesoro.png').'" class="img-fluid">
+								</div>
+									<div class="col p-3 text-center" >
+										<h1>Ya hay ganador!!!!</h1>
+										<h3>Muchas gracias por haber participado.</h3>
+									</div>
+								</div>';
+							}
+						}
+						echo '</div>'; // Termina el contenedor Global
 						}
 					}
 				}
-			echo '</div>';
+
 		}
 	}
 
