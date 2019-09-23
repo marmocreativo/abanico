@@ -9,7 +9,7 @@
       <div class="col-12 col-md-8 text-center">
         <div class="row align-items-center h-75">
           <div class="col-12">
-            <h1 class="titulo-concurso">Prepárate nuestro concurso inaugural empieza en:</h1>
+            <h1 class="titulo-concurso">Prepárate, nuestro concurso inaugural empieza en:</h1>
           </div>
           <div class="col-12">
             <h3 class="display-2" id="cuenta_regresiva"></h3>
