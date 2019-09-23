@@ -19,7 +19,7 @@
       <div class="col-6 col-md-2 d-flex h-100 align-items-center">
         <div class="row">
           <div class="col-12 my-3">
-            <a href="http://localhost/abanico-master/usuario/registrar" class="btn btn-primary-5 btn-block"> <i class="fa fa-pencil-alt"></i> Regístrate</a>
+            <a href="<?php echo base_url('usuario/registrar'); ?>" class="btn btn-primary-5 btn-block"> <i class="fa fa-pencil-alt"></i> Regístrate</a>
           </div>
           <div class="col-12">
             <button type="button" class="btn btn-primary-6 btn-block" name="button" data-toggle="modal" data-target="#como_participar"> <i class="fa fa-question-circle"></i> ¿Como participar?</button>
