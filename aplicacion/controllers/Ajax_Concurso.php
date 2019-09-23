@@ -104,6 +104,14 @@ class Ajax_Concurso extends CI_Controller {
 					}
 
 			}
+		}else{
+			//Cargar cuenta regresiva
+			$hoy = date('Y-m-d h:i:s');
+			$fecha_alerta = date('Y-m-d h:i:s', strtotime('2019-09-23 16:00:00'));
+			$fecha_concurso = date('Y-m-d h:i:s', strtotime('2019-09-24 17:00:00'));
+			if($hoy>$fecha_alerta&&$hoy<$fecha_concurso){
+				$this->load->view('concurso/cuenta_regresiva',$this->data);
+			}
 		}
 	}
 
