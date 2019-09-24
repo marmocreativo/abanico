@@ -80,6 +80,8 @@ $route['admin/productos_combinaciones/(:any)'] = 'Admin_Productos_Combinaciones/
 $route['admin'] = 'Admin_Desktop';
 $route['admin/(:any)'] = 'Admin_Desktop/$1';
 // Rutas de Usuario
+$route['usuario/concurso'] = 'Usuario_Concurso';
+$route['usuario/concurso/(:any)'] = 'Usuario_Concurso/$1';
 $route['usuario/registro_rapido'] = 'Usuario_Registros_Rapidos';
 $route['usuario/registro_rapido/(:any)'] = 'Usuario_Registros_Rapidos/$1';
 $route['usuario/datos_curiosos'] = 'Usuario_Datos_Curiosos';

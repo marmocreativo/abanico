@@ -1139,3 +1139,10 @@ border-top: solid 9px #980500;
     font-weight: 600;
     color: #800080;
 }
+
+.contenedor_palabra_encontrada{
+  text-align: center;
+  color: red;
+  border: dashed 1px red;
+  border-radius: 5px;
+}

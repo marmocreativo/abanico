@@ -41,7 +41,7 @@
                 $clase_visible= 'border border-info text-info incorrecto';
               }
             ?>
-          <div class="col palabra_concurso p-2 text-center m-2 animated fadeInUp <?php echo $clase_visible; ?>"
+          <div class="col-4 col-md palabra_concurso p-2 text-center my-2 animated fadeInUp <?php echo $clase_visible; ?>"
           style="border-style:dashed !important; cursor:pointer; background-color:rgba(230,230,230,1); animation-delay:<?php echo $i; ?>00ms"
           data-orden="<?php echo $palabra['ORDEN']; ?>"
           data-id="<?php echo $palabra['ID']; ?>"

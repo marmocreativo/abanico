@@ -43,12 +43,16 @@
       $frase = unserialize($concurso['FRASE']);
       $relacion_palabras_productos = array();
       $palabra_escondida = '';
+      $palabra_encontrada = false;
       foreach($frase as $palabra){
         if($palabra['ID']==$producto['ID_PRODUCTO']){
           if(isset($_SESSION['concurso'])){
             foreach($_SESSION['concurso']['palabras'] as $palabras_sesion){
               if($palabras_sesion['ID']==$palabra['ID']&&$palabras_sesion['ENCONTRADA']=='no'){
                 $palabra_escondida = '<span class="palabra_encontrada animated tada infinite" style="animation-delay: 2s; cursor: pointer; display:inline-block;" data-palabra="'.$palabra['PALABRA'].'" data-id="'.$palabra['ID'].'">'.$palabra['PALABRA'].'</span>';
+              }
+              if($palabras_sesion['ID']==$palabra['ID']&&$palabras_sesion['ENCONTRADA']=='si'){
+                $palabra_encontrada = true;
               }
             }
           }
@@ -581,6 +585,7 @@
                   <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
                 </ul>
                 <h4 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h4>
+                <?php if($palabra_encontrada){ echo '<div class="contenedor_palabra_encontrada animated tada">Ya has encontrado la palabra escondida en este produco :D</div>';}; ?>
                 <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                   <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
                 <?php } ?>

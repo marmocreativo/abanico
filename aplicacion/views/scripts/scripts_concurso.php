@@ -36,6 +36,7 @@ function cargar_concurso(){
           // Si todas las palabras están en orden
           console.log(incorrectas);
           if(incorrectas==0){
+            window.scrollTo(0, 0);
             jQuery.ajax({
               method: "GET",
               url: "<?php echo base_url('ajax/concurso/frase_completa'); ?>",
@@ -98,8 +99,11 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   // Display the result in the element with id="demo"
-  document.getElementById("cuenta_regresiva").innerHTML = hours + "h "
-  + minutes + "m " + seconds + "s ";
+  var contenedor_cuenta = document.getElementById("cuenta_regresiva");
+  if(contenedor_cuenta!=null){
+    document.getElementById("cuenta_regresiva").innerHTML = hours + "h "
+    + minutes + "m " + seconds + "s ";
+  }
 
   // If the count down is finished, write some text
   if (distance < 0) {

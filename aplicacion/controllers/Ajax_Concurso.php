@@ -56,6 +56,14 @@ class Ajax_Concurso extends CI_Controller {
 							'ENCONTRADA'=>'no'
 						);
 					}
+					// Genero el historial
+					$parametros = array(
+						'ID_CONCURSO'=>$concurso['ID'],
+						'ID_USUARIO' =>$id_participante,
+						'MOVIMIENTO'=>'Iniciaste sesión para empezar a concursar',
+						'PALABRAS' => serialize($_SESSION['concurso']['palabras'])
+					);
+					$this->ConcursosModel->crear_historial($parametros);
 				}
 
 				// Reviso en que fase del concurso estamos
@@ -106,9 +114,10 @@ class Ajax_Concurso extends CI_Controller {
 			}
 		}else{
 			//Cargar cuenta regresiva
-			$hoy = date('Y-m-d h:i:s');
-			$fecha_alerta = date('Y-m-d h:i:s', strtotime('2019-09-23 16:00:00'));
-			$fecha_concurso = date('Y-m-d h:i:s', strtotime('2019-09-24 17:00:00'));
+			$hoy = date('U');
+			$fecha_alerta = date('U', strtotime('2019-09-23 16:00:00'));
+			$fecha_concurso = date('U', strtotime('2019-09-24 17:00:00'));
+
 			if($hoy>$fecha_alerta&&$hoy<$fecha_concurso){
 				$this->load->view('concurso/cuenta_regresiva',$this->data);
 			}
@@ -126,6 +135,13 @@ class Ajax_Concurso extends CI_Controller {
 		foreach($_SESSION['concurso']['palabras'] as $key=>$palabras_sesion){
 			if($palabras_sesion['PALABRA']==$palabra_encontrada&&$palabras_sesion['ID']==$id_encontrada){
 				$_SESSION['concurso']['palabras'][$key]['ENCONTRADA']='si';
+				$parametros = array(
+					'ID_CONCURSO'=>$_SESSION['concurso']['id_concurso'],
+					'ID_USUARIO' =>$_SESSION['usuario']['id'],
+					'MOVIMIENTO'=>'Encontraste la palabra "'.$_SESSION['concurso']['palabras'][$key]['PALABRA'].'"',
+					'PALABRAS' => serialize($_SESSION['concurso']['palabras'])
+				);
+				$this->ConcursosModel->crear_historial($parametros);
 			}
 		}
 	}
@@ -134,14 +150,29 @@ class Ajax_Concurso extends CI_Controller {
 	{
 		$hay_ganador = $this->ConcursosModel->ganador($_SESSION['concurso']['id_concurso']);
 		if(!empty($hay_ganador['ID_GANADOR'])){
-			echo 'Completaste la frase, pero ya hubo un ganador';
+			$parametros = array(
+				'ID_CONCURSO'=>$_SESSION['concurso']['id_concurso'],
+				'ID_USUARIO' =>$_SESSION['usuario']['id'],
+				'MOVIMIENTO'=>'Ordenaste las palabras, pero ya había un ganador.',
+				'PALABRAS' => serialize($_SESSION['concurso']['palabras']),
+				'ORDEN'=>'si'
+			);
+			$this->ConcursosModel->crear_historial($parametros);
 		}else{
 			$parametros = array(
 				'ID_GANADOR'=>$_SESSION['concurso']['id'],
 				'FECHA_GANADOR'=> date('Y-m-d h:i:s')
 			);
 			$this->ConcursosModel->actualizar($_SESSION['concurso']['id_concurso'],$parametros);
-			echo 'HAS GANADO!';
+			//
+			$parametros = array(
+				'ID_CONCURSO'=>$_SESSION['concurso']['id_concurso'],
+				'ID_USUARIO' =>$_SESSION['usuario']['id'],
+				'MOVIMIENTO'=>'Felicidades fuiste el primero en encontrar y ordenar todas las palabras',
+				'PALABRAS' => serialize($_SESSION['concurso']['palabras']),
+				'ORDEN'=>'si'
+			);
+			$this->ConcursosModel->crear_historial($parametros);
 		}
 	}
 }

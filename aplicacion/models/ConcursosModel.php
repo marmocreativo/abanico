@@ -52,6 +52,11 @@ class ConcursosModel extends CI_Model {
     $this->db->insert('concurso',$parametros);
     return $this->db->insert_id();
   }
+  
+  function crear_historial($parametros){
+    $this->db->insert('concurso_historial',$parametros);
+    return $this->db->insert_id();
+  }
   /*
     * Actualizo una entrada
     * $id es el identificador de la entrada

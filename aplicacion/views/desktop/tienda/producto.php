@@ -78,11 +78,15 @@
                         $frase = unserialize($concurso['FRASE']);
                         $relacion_palabras_productos = array();
                         $palabra_escondida = '';
+                        $palabra_encontrada = false;
                         foreach($frase as $palabra){
                           if($palabra['ID']==$producto['ID_PRODUCTO']){
                             foreach($_SESSION['concurso']['palabras'] as $palabras_sesion){
                               if($palabras_sesion['ID']==$palabra['ID']&&$palabras_sesion['ENCONTRADA']=='no'){
                                 $palabra_escondida = '<span class="palabra_encontrada animated tada infinite" style="animation-delay: 2s; cursor: pointer; display:inline-block;" data-palabra="'.$palabra['PALABRA'].'" data-id="'.$palabra['ID'].'">'.$palabra['PALABRA'].'</span>';
+                              }
+                              if($palabras_sesion['ID']==$palabra['ID']&&$palabras_sesion['ENCONTRADA']=='si'){
+                                $palabra_encontrada = true;
                               }
                             }
                           }
@@ -227,6 +231,7 @@
             </div>
             <div class="col-4">
               <h5><?php echo $titulo; ?></h5>
+              <?php if($palabra_encontrada){ echo '<div class="contenedor_palabra_encontrada animated tada">Ya has encontrado la palabra escondida en este produco :D</div>';}; ?>
               <hr>
               <?php echo $descripcion_corta; ?>
               <hr>

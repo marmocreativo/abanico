@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-    <div class="row py-4" style="min-height:50px" id="concurso_sortable" data-numero-palabras="<?php echo count($_SESSION['concurso']['palabras']); ?>">
+    <div class="row py-4" style="min-height:50px" id="" data-numero-palabras="<?php echo count($_SESSION['concurso']['palabras']); ?>">
       <?php if(isset($_SESSION['concurso']['palabras'])&&!empty($_SESSION['concurso']['palabras'])){ shuffle($_SESSION['concurso']['palabras']); ?>
         <?php $i=0;  foreach($_SESSION['concurso']['palabras'] as $key => $palabra){ ?>
           <?php if($palabra['ENCONTRADA']=='si'){ ?>
