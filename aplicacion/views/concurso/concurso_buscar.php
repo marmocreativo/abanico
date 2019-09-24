@@ -27,6 +27,7 @@
           ?>
           <h3>Palabras encontradas</h3>
           <h3 class="display-3"><?php echo $palabras_encontradas; ?>/<?php echo $palabras; ?></h3>
+          <button type="button" class="btn btn-primary-6 btn-block" name="button" data-toggle="modal" data-target="#como_participar"> <i class="fa fa-question-circle"></i> ¿Como participar?</button>
         </div>
       </div>
     </div>
@@ -36,7 +37,7 @@
           <?php if($palabra['ENCONTRADA']=='si'){ ?>
             <?php
               if($key==$palabra['ORDEN']){
-                $clase_visible= 'border border-info bg-info text-white correcto';
+                $clase_visible= 'border border-info text-info incorrecto';
               }else{
                 $clase_visible= 'border border-info text-info incorrecto';
               }
@@ -54,6 +55,42 @@
         <?php } ?>
 
     <?php } ?>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="como_participar" tabindex="-1" role="dialog" aria-labelledby="como_participar" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="como_participar_slides" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="<?php echo base_url('assets/global/img/concurso/concurso_1.jpg'); ?>" alt="Paso 1">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="<?php echo base_url('assets/global/img/concurso/concurso_2.jpg'); ?>" alt="Paso 2">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="<?php echo base_url('assets/global/img/concurso/concurso_3.jpg'); ?>" alt="Paso 3">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="<?php echo base_url('assets/global/img/concurso/concurso_4.jpg'); ?>" alt="Paso 4">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="<?php echo base_url('assets/global/img/concurso/concurso_5.jpg'); ?>" alt="Paso 5">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#como_participar_slides" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#como_participar_slides" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+          </div>
+      </div>
     </div>
   </div>
 </div>

@@ -3967,3 +3967,1272 @@ DEBUG - 2019-09-24 13:51:38 --> Session: "sess_save_path" is empty; using "sessi
 DEBUG - 2019-09-24 13:51:39 --> Total execution time: 0.0996
 DEBUG - 2019-09-24 13:51:39 --> Total execution time: 0.1358
 DEBUG - 2019-09-24 13:51:39 --> Total execution time: 0.1644
+DEBUG - 2019-09-24 15:21:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:21:37 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:21:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:21:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:21:38 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:21:38 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:21:38 --> Total execution time: 0.4650
+DEBUG - 2019-09-24 15:21:38 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:21:38 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:21:38 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:21:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:21:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:21:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:21:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:21:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:21:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:21:38 --> Total execution time: 0.1004
+DEBUG - 2019-09-24 15:21:38 --> Total execution time: 0.1273
+DEBUG - 2019-09-24 15:21:39 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:21:39 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:21:39 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:21:39 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:21:39 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:21:39 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:21:39 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:21:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:21:39 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:21:39 --> UTF-8 Support Enabled
+ERROR - 2019-09-24 15:21:39 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:21:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:21:39 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:21:39 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:21:39 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:21:39 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:21:39 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:21:39 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:22:00 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:00 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:22:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:00 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:22:04 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:04 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:22:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:22:08 --> Severity: Error --> Maximum execution time of 30 seconds exceeded E:\xampp\htdocs\abanico-master\sistema\libraries\Session\drivers\Session_files_driver.php 212
+ERROR - 2019-09-24 15:22:08 --> Severity: Warning --> Unknown: Cannot call session save handler in a recursive manner Unknown 0
+ERROR - 2019-09-24 15:22:08 --> Severity: Warning --> Unknown: Failed to write session data using user defined save handler. (session.save_path: E:\xampp\tmp) Unknown 0
+ERROR - 2019-09-24 15:22:09 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:22:09 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:22:09 --> Total execution time: 9.0177
+ERROR - 2019-09-24 15:22:09 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:22:09 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:22:09 --> Total execution time: 5.4791
+DEBUG - 2019-09-24 15:22:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:22:26 --> Total execution time: 0.1533
+DEBUG - 2019-09-24 15:22:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:22:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:22:26 --> Total execution time: 0.1125
+DEBUG - 2019-09-24 15:22:26 --> Total execution time: 0.1298
+DEBUG - 2019-09-24 15:22:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:22:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:28 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:22:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:22:28 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:22:28 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:22:28 --> Total execution time: 0.4520
+DEBUG - 2019-09-24 15:22:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:22:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:22:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:22:29 --> Total execution time: 0.0984
+DEBUG - 2019-09-24 15:22:29 --> Total execution time: 0.1287
+DEBUG - 2019-09-24 15:22:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:29 --> Total execution time: 0.1616
+ERROR - 2019-09-24 15:22:29 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:22:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:29 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:22:29 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:22:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:22:29 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:22:29 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:22:29 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:22:29 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:22:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:22:29 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:22:29 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:26:16 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:16 --> Total execution time: 0.2923
+DEBUG - 2019-09-24 15:26:17 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:17 --> Total execution time: 0.0892
+DEBUG - 2019-09-24 15:26:19 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:19 --> Total execution time: 0.1765
+DEBUG - 2019-09-24 15:26:19 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:20 --> Total execution time: 0.0847
+DEBUG - 2019-09-24 15:26:21 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:21 --> Total execution time: 0.1253
+DEBUG - 2019-09-24 15:26:21 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:21 --> Total execution time: 0.0967
+DEBUG - 2019-09-24 15:26:40 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:40 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:40 --> Total execution time: 0.1012
+DEBUG - 2019-09-24 15:26:40 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:40 --> Total execution time: 0.0894
+DEBUG - 2019-09-24 15:26:42 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:42 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:26:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:42 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:26:42 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:26:42 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:26:42 --> Total execution time: 0.7553
+DEBUG - 2019-09-24 15:26:43 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:43 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:43 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:43 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:43 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:43 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:43 --> Total execution time: 0.1023
+DEBUG - 2019-09-24 15:26:43 --> Total execution time: 0.1337
+DEBUG - 2019-09-24 15:26:43 --> Total execution time: 0.1571
+DEBUG - 2019-09-24 15:26:43 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:43 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:26:43 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:26:43 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:43 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:26:43 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:26:43 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:43 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:43 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:44 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:26:44 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:26:44 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:26:44 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:26:44 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:44 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:26:44 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:26:45 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:45 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:45 --> Total execution time: 0.1027
+DEBUG - 2019-09-24 15:26:45 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:45 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:45 --> Total execution time: 0.1051
+DEBUG - 2019-09-24 15:26:45 --> Total execution time: 0.1321
+DEBUG - 2019-09-24 15:26:46 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:46 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:46 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:46 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:46 --> Total execution time: 0.1562
+DEBUG - 2019-09-24 15:26:47 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:47 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:47 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:47 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:47 --> Total execution time: 0.1810
+DEBUG - 2019-09-24 15:26:47 --> Total execution time: 0.2053
+DEBUG - 2019-09-24 15:26:49 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:49 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:26:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:26:50 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:26:50 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:26:50 --> Total execution time: 0.5718
+DEBUG - 2019-09-24 15:26:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:50 --> Total execution time: 0.0884
+DEBUG - 2019-09-24 15:26:50 --> Total execution time: 0.1323
+DEBUG - 2019-09-24 15:26:50 --> Total execution time: 0.1556
+DEBUG - 2019-09-24 15:26:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:51 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:26:51 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:26:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:51 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:26:51 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:26:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:51 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:26:51 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:26:51 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:26:51 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:26:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:51 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:26:51 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:26:58 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:58 --> Total execution time: 0.1308
+DEBUG - 2019-09-24 15:26:58 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:58 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:26:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:26:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:26:58 --> Total execution time: 0.0963
+DEBUG - 2019-09-24 15:26:59 --> Total execution time: 0.1325
+DEBUG - 2019-09-24 15:27:00 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:00 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:00 --> Total execution time: 0.2564
+DEBUG - 2019-09-24 15:27:01 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:01 --> Total execution time: 0.1074
+DEBUG - 2019-09-24 15:27:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:03 --> Total execution time: 0.1220
+DEBUG - 2019-09-24 15:27:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:03 --> Total execution time: 0.1103
+DEBUG - 2019-09-24 15:27:09 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:09 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:10 --> Total execution time: 0.3410
+DEBUG - 2019-09-24 15:27:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:10 --> Total execution time: 0.1310
+DEBUG - 2019-09-24 15:27:10 --> Total execution time: 0.1576
+DEBUG - 2019-09-24 15:27:11 --> Total execution time: 0.1832
+DEBUG - 2019-09-24 15:27:23 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:23 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:23 --> Total execution time: 0.1519
+DEBUG - 2019-09-24 15:27:23 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:23 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:23 --> Total execution time: 0.0974
+DEBUG - 2019-09-24 15:27:27 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:27 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:27 --> Total execution time: 0.3908
+DEBUG - 2019-09-24 15:27:27 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:27 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:27 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:27 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:27:27 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:27 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:27 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:27 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:27 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:27:27 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:28 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:28 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:27:28 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:28 --> UTF-8 Support Enabled
+ERROR - 2019-09-24 15:27:28 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:28 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:28 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:28 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:28 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:28 --> Total execution time: 0.0808
+DEBUG - 2019-09-24 15:27:28 --> Total execution time: 0.1082
+DEBUG - 2019-09-24 15:27:28 --> Total execution time: 0.1403
+DEBUG - 2019-09-24 15:27:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:29 --> Total execution time: 0.3792
+DEBUG - 2019-09-24 15:27:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:29 --> Total execution time: 0.1020
+DEBUG - 2019-09-24 15:27:29 --> Total execution time: 0.1450
+DEBUG - 2019-09-24 15:27:29 --> Total execution time: 0.1795
+DEBUG - 2019-09-24 15:27:34 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:35 --> Total execution time: 0.3580
+DEBUG - 2019-09-24 15:27:35 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:35 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:35 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:35 --> Total execution time: 0.0984
+DEBUG - 2019-09-24 15:27:35 --> Total execution time: 0.1318
+DEBUG - 2019-09-24 15:27:35 --> Total execution time: 0.1715
+DEBUG - 2019-09-24 15:27:47 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:47 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:47 --> Total execution time: 0.3691
+DEBUG - 2019-09-24 15:27:47 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:47 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:47 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:47 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:27:47 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:47 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:47 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:47 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:47 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:27:47 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:48 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:48 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:48 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:48 --> UTF-8 Support Enabled
+ERROR - 2019-09-24 15:27:48 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:48 --> UTF-8 Support Enabled
+ERROR - 2019-09-24 15:27:48 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:27:48 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:48 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:48 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:48 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:48 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:48 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:48 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:48 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:48 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:48 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:48 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:48 --> Total execution time: 0.1210
+DEBUG - 2019-09-24 15:27:48 --> Total execution time: 0.1216
+DEBUG - 2019-09-24 15:27:48 --> Total execution time: 0.1837
+DEBUG - 2019-09-24 15:27:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:51 --> Total execution time: 0.3394
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:51 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:27:51 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:51 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:27:51 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+ERROR - 2019-09-24 15:27:51 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:27:51 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:27:51 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:51 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:27:51 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:27:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:27:51 --> Total execution time: 0.0955
+DEBUG - 2019-09-24 15:27:51 --> Total execution time: 0.1326
+DEBUG - 2019-09-24 15:27:51 --> Total execution time: 0.1565
+DEBUG - 2019-09-24 15:29:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:29:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:29:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:29:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:29:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:29:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:29:32 --> Total execution time: 0.3166
+DEBUG - 2019-09-24 15:29:33 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:29:33 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:29:33 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:29:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:29:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:29:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:29:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:29:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:29:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:29:33 --> Total execution time: 0.0988
+DEBUG - 2019-09-24 15:29:33 --> Total execution time: 0.1356
+DEBUG - 2019-09-24 15:29:33 --> Total execution time: 0.1818
+DEBUG - 2019-09-24 15:29:36 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:29:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:29:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:29:36 --> Total execution time: 0.1515
+DEBUG - 2019-09-24 15:29:36 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:29:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:29:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:29:36 --> Total execution time: 0.1051
+DEBUG - 2019-09-24 15:30:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:30:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:30:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:30:51 --> Total execution time: 0.3535
+DEBUG - 2019-09-24 15:30:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:30:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:30:51 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:30:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:30:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:30:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:30:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:30:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:30:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:30:51 --> Total execution time: 0.0949
+DEBUG - 2019-09-24 15:30:51 --> Total execution time: 0.1334
+DEBUG - 2019-09-24 15:30:51 --> Total execution time: 0.1588
+DEBUG - 2019-09-24 15:31:09 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:09 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:10 --> Total execution time: 0.3631
+DEBUG - 2019-09-24 15:31:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:10 --> Total execution time: 0.3957
+DEBUG - 2019-09-24 15:31:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:11 --> Total execution time: 0.1108
+DEBUG - 2019-09-24 15:31:11 --> Total execution time: 0.1469
+DEBUG - 2019-09-24 15:31:11 --> Total execution time: 0.1824
+DEBUG - 2019-09-24 15:31:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:11 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:31:11 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:11 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:11 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:31:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:11 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:31:11 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:11 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:31:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:11 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:11 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:11 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:11 --> Total execution time: 0.1412
+DEBUG - 2019-09-24 15:31:11 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:11 --> Total execution time: 0.1712
+ERROR - 2019-09-24 15:31:11 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:31:11 --> Total execution time: 0.1879
+DEBUG - 2019-09-24 15:31:13 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:13 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:13 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:31:13 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:31:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:13 --> Total execution time: 0.1458
+DEBUG - 2019-09-24 15:31:13 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:13 --> Total execution time: 0.1020
+DEBUG - 2019-09-24 15:31:15 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:15 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:15 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:15 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:31:15 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:15 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:15 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:31:17 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:17 --> Total execution time: 0.1576
+DEBUG - 2019-09-24 15:31:17 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:17 --> Total execution time: 0.0960
+DEBUG - 2019-09-24 15:31:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:28 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:31:28 --> 404 Page Not Found: Assets/global
+DEBUG - 2019-09-24 15:31:31 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:31 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:31 --> Total execution time: 0.2698
+DEBUG - 2019-09-24 15:31:31 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:31 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:31 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:31 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:31 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:31:32 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:32 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:32 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:32 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:32 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:32 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:31:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:31:32 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:32 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:31:32 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:31:32 --> 404 Page Not Found: Assets/global
+DEBUG - 2019-09-24 15:31:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:31:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:31:32 --> Total execution time: 0.0962
+DEBUG - 2019-09-24 15:31:32 --> Total execution time: 0.1462
+DEBUG - 2019-09-24 15:31:32 --> Total execution time: 0.1930
+DEBUG - 2019-09-24 15:32:15 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:15 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:15 --> Total execution time: 0.1838
+DEBUG - 2019-09-24 15:32:16 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:16 --> Total execution time: 0.0907
+DEBUG - 2019-09-24 15:32:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:26 --> Total execution time: 0.0991
+DEBUG - 2019-09-24 15:32:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:26 --> Total execution time: 0.0979
+DEBUG - 2019-09-24 15:32:26 --> Total execution time: 0.1303
+DEBUG - 2019-09-24 15:32:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:28 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:28 --> Total execution time: 0.1543
+DEBUG - 2019-09-24 15:32:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:29 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:29 --> Total execution time: 0.1240
+DEBUG - 2019-09-24 15:32:29 --> Total execution time: 0.2201
+DEBUG - 2019-09-24 15:32:30 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:30 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:31 --> Total execution time: 0.0957
+DEBUG - 2019-09-24 15:32:31 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:31 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:31 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:31 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:31 --> Total execution time: 0.1033
+DEBUG - 2019-09-24 15:32:31 --> Total execution time: 0.1362
+DEBUG - 2019-09-24 15:32:34 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:34 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:34 --> Total execution time: 0.1376
+DEBUG - 2019-09-24 15:32:35 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:35 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:35 --> Total execution time: 0.0975
+DEBUG - 2019-09-24 15:32:35 --> Total execution time: 0.1826
+DEBUG - 2019-09-24 15:32:36 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:36 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:32:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:32:36 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:32:36 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:32:36 --> Total execution time: 0.5072
+DEBUG - 2019-09-24 15:32:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:32:37 --> Total execution time: 0.1064
+DEBUG - 2019-09-24 15:32:37 --> Total execution time: 0.1457
+DEBUG - 2019-09-24 15:32:37 --> Total execution time: 0.1957
+DEBUG - 2019-09-24 15:32:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:37 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:32:37 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:32:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:37 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:32:37 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:32:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:32:37 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:32:37 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:32:37 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:32:37 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:32:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:32:37 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:32:37 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:34:09 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:34:09 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:34:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:34:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:34:10 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:34:10 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:34:10 --> Total execution time: 0.5185
+DEBUG - 2019-09-24 15:34:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:34:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:34:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:34:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:34:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:34:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:34:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:34:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:34:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:34:10 --> Total execution time: 0.0964
+DEBUG - 2019-09-24 15:34:10 --> Total execution time: 0.1291
+DEBUG - 2019-09-24 15:34:10 --> Total execution time: 0.1527
+DEBUG - 2019-09-24 15:34:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:34:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:34:10 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:34:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:34:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:34:10 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:34:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:34:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:34:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:34:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:34:10 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:34:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:34:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:34:10 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:34:10 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:34:10 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:34:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:34:10 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:35:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:35:32 --> Total execution time: 0.3556
+DEBUG - 2019-09-24 15:35:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:32 --> UTF-8 Support Enabled
+ERROR - 2019-09-24 15:35:32 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:35:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:32 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:35:32 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:35:32 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:35:32 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:35:32 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:35:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:32 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:32 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:35:33 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:35:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:35:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:35:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:35:33 --> Total execution time: 0.0981
+DEBUG - 2019-09-24 15:35:33 --> Total execution time: 0.1375
+DEBUG - 2019-09-24 15:35:33 --> Total execution time: 0.1758
+DEBUG - 2019-09-24 15:35:33 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:33 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:35:33 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:35:33 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:33 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:33 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:33 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:35:33 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:35:33 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:35:33 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:35:39 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:35:39 --> Total execution time: 0.4455
+DEBUG - 2019-09-24 15:35:39 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:39 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:35:39 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:35:39 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:39 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:39 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:39 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:39 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:35:39 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:35:39 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:35:39 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:35:39 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:35:40 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:40 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:40 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:40 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:40 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:35:40 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:35:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:35:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:35:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:35:40 --> Total execution time: 0.1229
+DEBUG - 2019-09-24 15:35:40 --> Total execution time: 0.1270
+DEBUG - 2019-09-24 15:35:40 --> Total execution time: 0.1721
+DEBUG - 2019-09-24 15:35:40 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:40 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:35:40 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:35:40 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:40 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:40 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:35:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:35:40 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:35:40 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:35:40 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:35:40 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:25 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:25 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:36:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:25 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:36:26 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:36:26 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:36:26 --> Total execution time: 0.6046
+DEBUG - 2019-09-24 15:36:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:36:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:36:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:36:26 --> Total execution time: 0.0972
+DEBUG - 2019-09-24 15:36:26 --> Total execution time: 0.1338
+DEBUG - 2019-09-24 15:36:26 --> Total execution time: 0.1525
+DEBUG - 2019-09-24 15:36:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:26 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:26 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:26 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:26 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:26 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:26 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:26 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:26 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:26 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:26 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:26 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:27 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:27 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:37 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:36:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:36:37 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:36:37 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:36:37 --> Total execution time: 0.4919
+DEBUG - 2019-09-24 15:36:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:37 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:36:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:36:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:36:37 --> Total execution time: 0.0919
+DEBUG - 2019-09-24 15:36:37 --> Total execution time: 0.1335
+DEBUG - 2019-09-24 15:36:37 --> Total execution time: 0.1608
+DEBUG - 2019-09-24 15:36:38 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:38 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:38 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:38 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:38 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:38 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:38 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:38 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:38 --> UTF-8 Support Enabled
+ERROR - 2019-09-24 15:36:38 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:38 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:38 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:36:38 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:38 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:38 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:38 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:57 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:57 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:36:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:36:57 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:36:57 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:36:57 --> Total execution time: 0.4569
+DEBUG - 2019-09-24 15:36:57 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:57 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:57 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:36:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:36:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:36:58 --> Total execution time: 0.0854
+DEBUG - 2019-09-24 15:36:58 --> Total execution time: 0.1331
+DEBUG - 2019-09-24 15:36:58 --> Total execution time: 0.1568
+DEBUG - 2019-09-24 15:36:58 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:58 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:58 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:58 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:58 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:58 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:58 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:58 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:58 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:36:58 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:58 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:36:58 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:36:58 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:36:58 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:36:58 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:36:58 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:37:02 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:02 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:37:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:37:02 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:37:02 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:37:02 --> Total execution time: 0.5570
+DEBUG - 2019-09-24 15:37:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:03 --> Total execution time: 0.0886
+DEBUG - 2019-09-24 15:37:03 --> Total execution time: 0.1249
+DEBUG - 2019-09-24 15:37:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:03 --> Total execution time: 0.1502
+ERROR - 2019-09-24 15:37:03 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:37:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:03 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:37:03 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:37:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:03 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:37:03 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:37:03 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:37:03 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:37:03 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:37:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:03 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:37:03 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:37:07 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:08 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:08 --> Total execution time: 0.1374
+DEBUG - 2019-09-24 15:37:08 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:08 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:08 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:08 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:08 --> Total execution time: 0.1036
+DEBUG - 2019-09-24 15:37:08 --> Total execution time: 0.1357
+DEBUG - 2019-09-24 15:37:09 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:09 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:09 --> Total execution time: 0.0928
+DEBUG - 2019-09-24 15:37:09 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:09 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:09 --> Total execution time: 0.1209
+DEBUG - 2019-09-24 15:37:09 --> Total execution time: 0.1602
+DEBUG - 2019-09-24 15:37:13 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:13 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:13 --> Total execution time: 0.1076
+DEBUG - 2019-09-24 15:37:13 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:13 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:13 --> Total execution time: 0.0972
+DEBUG - 2019-09-24 15:37:13 --> Total execution time: 0.2080
+DEBUG - 2019-09-24 15:37:14 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:14 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:37:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:14 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:37:15 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:37:15 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:37:15 --> Total execution time: 0.4704
+DEBUG - 2019-09-24 15:37:15 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:15 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:15 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:15 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:15 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:15 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:37:15 --> Total execution time: 0.0903
+DEBUG - 2019-09-24 15:37:15 --> Total execution time: 0.1336
+DEBUG - 2019-09-24 15:37:15 --> Total execution time: 0.1645
+DEBUG - 2019-09-24 15:37:15 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:15 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:37:15 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:37:15 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:15 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:37:15 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:37:15 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:37:16 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:16 --> UTF-8 Support Enabled
+ERROR - 2019-09-24 15:37:16 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:37:16 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:37:16 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:37:16 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:37:16 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:37:16 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:37:16 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:37:16 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:38:06 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:38:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:38:06 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:38:06 --> Total execution time: 0.1454
+DEBUG - 2019-09-24 15:38:07 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:38:07 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:38:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:38:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:38:07 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:38:07 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:38:07 --> Total execution time: 0.0816
+DEBUG - 2019-09-24 15:38:07 --> Total execution time: 0.1218
+DEBUG - 2019-09-24 15:41:52 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:52 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:41:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:41:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:41:52 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:41:52 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:41:52 --> Total execution time: 0.4915
+DEBUG - 2019-09-24 15:41:52 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:52 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:52 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:41:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:41:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:41:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:41:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:41:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:41:52 --> Total execution time: 0.1243
+DEBUG - 2019-09-24 15:41:52 --> Total execution time: 0.1429
+DEBUG - 2019-09-24 15:41:53 --> Total execution time: 0.1718
+DEBUG - 2019-09-24 15:41:53 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:53 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:41:53 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:41:53 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:53 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:41:53 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:41:53 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:53 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:53 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:41:53 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:41:53 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:41:53 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:41:53 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:41:53 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:41:53 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:53 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:41:53 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:41:55 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:41:55 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:41:55 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:41:55 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:41:55 --> Total execution time: 0.0948
+DEBUG - 2019-09-24 15:41:55 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:55 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:41:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:41:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:41:55 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:41:55 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:41:55 --> Total execution time: 0.1076
+DEBUG - 2019-09-24 15:41:55 --> Total execution time: 0.1416
+DEBUG - 2019-09-24 15:43:44 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:43:45 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:43:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:43:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:43:45 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:43:45 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:43:45 --> Total execution time: 0.4833
+DEBUG - 2019-09-24 15:46:55 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:46:55 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:46:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:46:55 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:46:56 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:46:56 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:46:56 --> Total execution time: 0.7469
+DEBUG - 2019-09-24 15:46:56 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:46:56 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:46:56 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:46:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:46:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:46:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:46:56 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:46:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:46:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:46:57 --> Total execution time: 0.1298
+DEBUG - 2019-09-24 15:46:57 --> Total execution time: 0.1571
+DEBUG - 2019-09-24 15:46:57 --> Total execution time: 0.1949
+DEBUG - 2019-09-24 15:46:57 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:46:57 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:46:57 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:46:57 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:46:57 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:46:57 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:46:57 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:46:57 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:46:57 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:46:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:46:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:46:57 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:46:57 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:46:57 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:46:57 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:46:57 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:46:57 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:46:57 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:47:01 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:47:01 --> Total execution time: 0.1001
+DEBUG - 2019-09-24 15:47:01 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:01 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:47:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:47:01 --> Total execution time: 0.1122
+DEBUG - 2019-09-24 15:47:01 --> Total execution time: 0.1335
+DEBUG - 2019-09-24 15:47:02 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:47:02 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:47:03 --> Total execution time: 0.1131
+DEBUG - 2019-09-24 15:47:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:03 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:47:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:47:03 --> Total execution time: 0.1723
+DEBUG - 2019-09-24 15:47:03 --> Total execution time: 0.1936
+DEBUG - 2019-09-24 15:47:49 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:49 --> No URI present. Default controller set.
+DEBUG - 2019-09-24 15:47:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-09-24 15:47:50 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 255
+ERROR - 2019-09-24 15:47:50 --> Severity: Notice --> Undefined variable: premio E:\xampp\htdocs\abanico-master\aplicacion\views\desktop\tienda\pagina_inicio.php 263
+DEBUG - 2019-09-24 15:47:50 --> Total execution time: 0.4689
+DEBUG - 2019-09-24 15:47:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:47:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:47:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-09-24 15:47:50 --> Total execution time: 0.0929
+DEBUG - 2019-09-24 15:47:50 --> Total execution time: 0.1250
+DEBUG - 2019-09-24 15:47:50 --> Total execution time: 0.1614
+DEBUG - 2019-09-24 15:47:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:50 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:47:50 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:47:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:50 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:47:50 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:47:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-09-24 15:47:50 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:47:50 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:47:50 --> 404 Page Not Found: Contenido/img
+ERROR - 2019-09-24 15:47:50 --> 404 Page Not Found: Contenido/img
+DEBUG - 2019-09-24 15:47:50 --> UTF-8 Support Enabled
+DEBUG - 2019-09-24 15:47:50 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-09-24 15:47:50 --> 404 Page Not Found: Contenido/img

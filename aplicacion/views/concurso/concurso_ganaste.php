@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-6 col-md-2">
         <div class="imagen_concurso">
-          <img src="<?php echo base_url('assets/global/img/concurso/ganaste.png'); ?>" class="img-fluid" alt="">
+          <img src="<?php echo base_url('assets/global/img/concurso/ganaste.png'); ?>" class="img-fluid animated bounce" alt="">
         </div>
       </div>
       <div class="col-12 col-md-8 text-center">

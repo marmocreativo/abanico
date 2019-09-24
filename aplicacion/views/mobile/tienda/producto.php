@@ -18,6 +18,8 @@
   }
   // Variables de paquete
   $paquete = $this->PlanesModel->plan_activo_usuario($producto['ID_USUARIO'],'productos');
+
+  $palabra_encontrada = false;
 ?>
 <div class="bxInfoContent bxDetalle pb-4">
   <div class="container">

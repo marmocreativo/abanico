@@ -3,16 +3,16 @@
     <div class="row justify-content-center">
       <div class="col-6 col-md-2">
         <div class="imagen_concurso">
-          <img src="<?php echo base_url('assets/global/img/concurso/perdiste.png'); ?>" class="img-fluid" alt="">
+          <img src="<?php echo base_url('assets/global/img/concurso/perdiste.png'); ?>" class="img-fluid animated wobble" alt="">
         </div>
       </div>
       <div class="col-12 col-md-8 text-center">
         <div class="row align-items-center h-75">
           <div class="col-12">
-            <h1 class="titulo-concurso">Alguien ha ganado antes</h1>
+            <h1 class="titulo-concurso">Ya hay un ganador.</h1>
           </div>
           <div class="col-12">
-            <h2 class="subtitulo-concurso">Parece que alguien ha logrado completar el reto antes que tú, muchas gracias por participar</h2>
+            <h2 class="subtitulo-concurso">Alguien ha logrado completar el reto antes que tú, muchas gracias por participar.</h2>
           </div>
         </div>
       </div>
