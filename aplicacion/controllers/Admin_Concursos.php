@@ -49,7 +49,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	}
 	public function resultados()
 	{
-			$this->data['concursos'] = $this->ConcursosModel->lista('','','','');
+			$this->data['concurso'] = $this->ConcursosModel->detalles($_GET['id']);
 			$this->data['concursantes'] = $this->ConcursosModel->concursantes($_GET['id'],'','','','');
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);

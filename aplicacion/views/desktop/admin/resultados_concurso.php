@@ -38,9 +38,22 @@
         </div>
         <div class="card-body py-0">
           <div class="row py-3">
+            <div class="col-12 mb-3 border-bottom border-primary">
+              <h5>Cantidad de Concursantes: <?php echo count($concursantes); ?></h5>
+                <h5>Ganador</h5>
+                <?php $datos_ganador = $this->UsuariosModel->detalles($concurso['ID_GANADOR']); ?>
+                <h3><?php echo $datos_ganador['USUARIO_NOMBRE'].' '.$datos_ganador['USUARIO_APELLIDOS']; ?> | <?php echo date('h:i:s a', strtotime($concurso['FECHA_GANADOR'])); ?></h3>
+            </div>
             <?php foreach($concursantes as $concursante){ ?>
+              <?php
+                if($concursante->ID_USUARIO==$concurso['ID_GANADOR']){
+                  $borde = 'border-danger';
+                }else{
+                  $borde = 'border-primary';
+                }
+              ?>
               <div class="col-12 col-md-6">
-                <div class="p-2 border border-primary mb-3">
+                <div class="p-2 border <?php echo $borde; ?> mb-3">
                   <?php $datos_concursante = $this->UsuariosModel->detalles($concursante->ID_USUARIO); ?>
                   <h5><?php echo $datos_concursante['USUARIO_NOMBRE'].' '.$datos_concursante['USUARIO_APELLIDOS']; ?></h5>
                   <p>Correo: <a href="mailto:<?php echo $datos_concursante['USUARIO_CORREO']; ?>"><?php echo $datos_concursante['USUARIO_CORREO']; ?></a> </p>
@@ -49,7 +62,7 @@
                   <h5>Historial de movimientos</h5>
                   <ul class="list">
                     <?php foreach($historial as $movimiento){ ?>
-                    <li><b><?php echo $movimiento->MOVIMIENTO; ?></b> | <?php echo date('h:i:s', strtotime($movimiento->FECHA_REGISTRO)); ?></li>
+                    <li><b><?php echo $movimiento->MOVIMIENTO; ?></b> | <?php echo date('h:i:s a', strtotime($movimiento->FECHA_REGISTRO)); ?></li>
                   <?php } ?>
                   </ul>
                 </div>
