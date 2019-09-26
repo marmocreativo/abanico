@@ -25,6 +25,33 @@ class ConcursosModel extends CI_Model {
     return $query->result();
   }
 
+  // Concursantes
+  function concursantes($id_concurso,$parametros,$orden,$limite){
+    if(!empty($parametros)){
+      $this->db->or_like($parametros);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $this->db->where('ID_CONCURSO',$id_concurso);
+    $this->db->group_by('ID_USUARIO');
+    $query = $this->db->get('concurso_historial');
+    return $query->result();
+  }
+
+  // Historial
+  // Concursantes
+  function historial($id_concurso,$id_usuario){
+    $this->db->order_by('FECHA_REGISTRO ASC');
+    $this->db->where('ID_CONCURSO',$id_concurso);
+    $this->db->where('ID_USUARIO',$id_usuario);
+    $query = $this->db->get('concurso_historial');
+    return $query->result();
+  }
+
   /*
     * Obtengo todos los detalles de una sola entrada
  */
@@ -52,7 +79,7 @@ class ConcursosModel extends CI_Model {
     $this->db->insert('concurso',$parametros);
     return $this->db->insert_id();
   }
-  
+
   function crear_historial($parametros){
     $this->db->insert('concurso_historial',$parametros);
     return $this->db->insert_id();

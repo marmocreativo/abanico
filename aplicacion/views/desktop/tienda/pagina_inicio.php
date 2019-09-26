@@ -232,150 +232,25 @@
 <?php $no_carrusel++; } ?>
 
 
-<div class="fila fila-gris p-0" id="Concursos">
+<div class="fila fila-gris p-0" id="Concursos" style="min-height:400px;">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-4 border-right py-5 bg-primary-17 col-twits">
-        <div class="px-3">
-          <div class="col d-flex align-items-center">
-            <div class="contenedor-ganador text-center">
-              <img src="<?php echo base_url('assets/global/img/borrego_03.jpg'); ?>" class="img-fluid" alt="">
-            </div>
-            <!--
-            <div class="contenedor-ganador text-center">
-              <div class="container-fluid head-ganador">
-                <div class="titulo-ganador text-white">
-                  Próximamente
-                </div>
-              </div>
-              <div class="nombre-ganador text-white">
-                <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
-                Concursos en redes sociales<br>
-                <!- -
-                <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
-                Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
-                <- ->
-                <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
-              </div>
-              <div class="premio-ganador text-primary">
-
-                <!--
-                Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
-              - ->
-              </div>
-            </div>
-          -->
-        </div>
-          <!--
-          <a href="https://twitter.com/intent/tweet?button_hashtag=AbanicoSiempreLoMejor&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #AbanicoSiempreLoMejor</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          <a class="twitter-timeline" href="https://twitter.com/stMaRmO/timelines/1106610018290417664?ref_src=twsrc%5Etfw">AbanicoDatosCuriosos - Curated tweets by stMaRmO</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        -->
-        </div>
-      </div>
       <div class="col-8 cont-ganador">
-        <?php if($this->PremiosModel->verificar_ganador()){ $premio = $this->PremiosModel->ultimo_ganador(); ?>
-        <div class="row">
-          <div class="col">
-            <div class="img-ganador">
-              <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid h-100" alt="">
-            </div>
-          </div>
-          <div class="col d-flex align-items-center">
-            <div class="contenedor-ganador text-center">
-              <div class="container-fluid head-ganador">
-                <div class="titulo-ganador">
-                  Gran concurso por inauguración
-                </div>
-              </div>
-              <div class="nombre-ganador" style="font-size:1em; line-height:1.5em;">
-                <a href="https://abanicoytu.com/publicacion/bases-concurso-inaugural">
+            <div class="contenedor-ganador text-center" style="padding-top:10%; padding-bottom:10%">
+              <div class="" style="font-size:1em; line-height:1.5em;">
                 <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
-                <div style="text-align:left; line-height:2.5em;">
-                  <i class="fa fa-check"> </i> Regístrate del 8 de julio al 23 de septiembre de 2019.<br>
-                  <i class="fa fa-check"> </i> El 24 de semptiembre inicia sesión. <br>
-                  <i class="fa fa-check"> </i> Encuentra las palabras escondidas dentro de la descripción de los productos.<br>
-                  <i class="fa fa-check"> </i> Da doble click en las palabras y júntalas en la parte superior de la pantalla<br>
-                  <i class="fa fa-check"> </i> Ordena las palabras que encontraste hasta formar la frase correcta<br>
-                  <i class="fa fa-check"> </i> ¡ LISTO ! TU puedes ser el ganador de los $10,000.00 MN<br>
+                <div style="text-align:center; line-height:2.5em;">
+                  <h1>Gracias por participar en nuestro concurso inaugural</h1>
+                  <h5 class="my-4">La frase completa fue:</h5>
+                  <h3>"El dinosaurio se cubría del sol con una sombrilla y su novia la tortuga se refrescaba con su abanico mientras sorprendidos observaban al pungüino tomando su café."</h3>
                 </div>
-                <h4>UNO NUNCA SABE</h4>
-
-                <!--
-                <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
-                Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b><br>
-                <-->
                 <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
-                </a>
-              </div>
-              <div class="premio-ganador text-primary">
-                <!--
-                Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
-              -->
               </div>
             </div>
           </div>
-        </div>
-      <?php }else{ ?>
-        <?php
-          $pedido_ganador = $this->PedidosModel->pedido_ganador(date('Y-m-d'));
-          if(!empty($pedido_ganador)){
-            $premios = $this->PremiosModel->lista(['PREMIO_GANADOR'=>0],'PREMIO_FECHA_DISPONIBLE DESC',1);
-            foreach($premios as $premio){
-               $this->PremiosModel->guardar_ganador($premio->ID_PREMIO,$pedido_ganador['ID_USUARIO']);
-            }
-          ?>
-          <?php $premio = $this->PremiosModel->ultimo_ganador(); ?>
-            <div class="row">
-              <div class="col">
-                <img src="contenido/img/publicaciones/<?php echo $premio['PREMIO_IMAGEN']; ?>" class="img-fluid h-100" alt="">
-              </div>
-              <div class="col">
-                <div class="contenedor-ganador">
-
-                  <div class="fecha-ganador">
-                    <span><?php echo date('d', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?></span> <?php echo date('M', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?> <?php echo date('Y', strtotime($premio['PREMIO_FECHA_DISPONIBLE'])); ?>
-                  </div>
-                  <div class="titulo-ganador">
-                    Por Inauguración
-                  </div>
-                  <div class="nombre-ganador">
-                    Regístrate y Gana.<br>
-                    <!--
-                    <?php $ganador = $this->UsuariosModel->detalles($premio['PREMIO_GANADOR']); ?>
-                    Felicidades<br><b><?php echo $ganador['USUARIO_NOMBRE'].' '.$ganador['USUARIO_APELLIDOS']; ?></b>
-                  -->
-                  </div>
-                  <div class="premio-ganador">
-                    Premio en efectivo
-                    <!--
-                    Ganador de un <?php echo $premio['PREMIO_TITULO']; ?>
-                  -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          <?php }else{ $premios = $this->PremiosModel->lista(['PREMIO_GANADOR'=>0],'PREMIO_FECHA_DISPONIBLE DESC',1);
-          foreach($premios as $premio){
-          ?>
-            <div class="row">
-              <div class="col">
-                <img src="contenido/img/publicaciones/<?php echo $premio->PREMIO_IMAGEN; ?>" class="img-fluid" alt="">
-              </div>
-              <div class="col">
-                <div class="contenedor-ganador">
-                  <p> <small>Aún no Hay Ganador: Próximo concurso</small> </p>
-                  <div class="fecha-ganador">
-                    <span><?php echo date('d', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?></span> <?php echo date('M', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?> <?php echo date('Y', strtotime($premio->PREMIO_FECHA_DISPONIBLE)); ?>
-                  </div>
-                  <div class="titulo-ganador">
-                    Compra y Gana un  <?php echo $premio->PREMIO_TITULO; ?>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <?php } ?>
-        <?php  } // termina condicional de pedido ganador  ?>
-      <?php } ?>
+      <div class="col-4 py-5 border border-primary-6 my-4 text-center" style="border-style:dashed !important">
+        <h4>Muchas Felicidades a Alejandro Marquina.</h4>
+        <h5 class="my-4">Quien encontró y ordenó la frase a las 5:30:48 pm.</h5>
       </div>
     </div>
   </div>

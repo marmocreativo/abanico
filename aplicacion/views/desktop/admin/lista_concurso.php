@@ -67,8 +67,9 @@
                 <td><?php echo $concurso->FECHA_FIN; ?></td>
                 <td>
                   <div class="btn-group float-right">
-                    <a href="<?php echo base_url('admin/concursos/actualizar?id='.$concurso->ID); ?>" class="btn btn-sm btn-warning" title="Editar Dirección"> <span class="fa fa-pencil-alt"></span> </a>
-                    <button data-enlace='<?php echo base_url('admin/concursos/borrar?id='.$concurso->ID); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Dirección"> <span class="fa fa-trash"></span> </button>
+                    <a href="<?php echo base_url('admin/concursos/resultados?id='.$concurso->ID); ?>" class="btn btn-sm btn-info" title="Resultados Concurso"> <span class="fa fa-clipboard"></span> </a>
+                    <a href="<?php echo base_url('admin/concursos/actualizar?id='.$concurso->ID); ?>" class="btn btn-sm btn-warning" title="Editar Concurso"> <span class="fa fa-pencil-alt"></span> </a>
+                    <button data-enlace='<?php echo base_url('admin/concursos/borrar?id='.$concurso->ID); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Concurso"> <span class="fa fa-trash"></span> </button>
                   </div>
                 </td>
               </tr>

@@ -23,6 +23,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		// Cargo el modelo
 		$this->load->model('ConcursosModel');
+		$this->load->model('UsuariosModel');
 		$this->load->model('EstadisticasModel');
 		$this->load->model('NotificacionesModel');
 		$this->load->model('ProductosModel');
@@ -42,9 +43,17 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function index()
 	{
 			$this->data['concursos'] = $this->ConcursosModel->lista('','','','');
-
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_concurso',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+	}
+	public function resultados()
+	{
+			$this->data['concursos'] = $this->ConcursosModel->lista('','','','');
+			$this->data['concursantes'] = $this->ConcursosModel->concursantes($_GET['id'],'','','','');
+
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/resultados_concurso',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
 	public function crear()
