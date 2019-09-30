@@ -249,6 +249,7 @@
             </div>
           </div>
       <div class="col-4 py-5 border border-primary-6 my-4 text-center" style="border-style:dashed !important">
+        <img src="<?php echo base_url('assets/global/img/ganador_concurso.jpg'); ?>" class="img-fluid mb-3" alt="">
         <h4>Muchas Felicidades a Alejandro Marquina.</h4>
         <h5 class="my-4">Quien encontró y ordenó la frase a las 5:30:48 pm.</h5>
       </div>
