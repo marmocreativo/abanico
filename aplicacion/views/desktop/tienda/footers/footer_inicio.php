@@ -182,7 +182,7 @@
          $('.flexslider').flexslider({
            animation: "slide",
            animationLoop: true,
-           itemWidth: 300,
+           itemWidth: 200,
            itemMargin: 20,
            pausePlay: false,
            start: function(slider){
