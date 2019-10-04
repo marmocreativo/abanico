@@ -182,8 +182,8 @@
          $('.flexslider').flexslider({
            animation: "slide",
            animationLoop: true,
-           itemWidth: 200,
-           itemMargin: 20,
+           itemWidth: 250,
+           itemMargin: 25,
            pausePlay: false,
            start: function(slider){
              $('body').removeClass('loading');
