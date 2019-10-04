@@ -719,4 +719,11 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			redirect(base_url('proceso_pago_1'));
 		}
 	}
+
+	public function paypal_test()
+	{
+
+		echo 'Sigo en ceros';
+
+	}
 }
