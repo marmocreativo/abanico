@@ -720,10 +720,56 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}
 	}
 
-	public function paypal_test()
+	public function paypal_test_back()
 	{
 
-		echo 'Sigo en ceros';
+		// Llamo la biblioteca
+		require 'aplicacion/libraries/PayPal-PHP-SDK/autoload.php';
 
+		// Contexto de la api
+		$apiContext = new \PayPal\Rest\ApiContext(
+        new \PayPal\Auth\OAuthTokenCredential(
+            'AT8N8rczYaHnQt4fJFppsMIcCdzD4POW_AoS-U7PPjXcMUhz_XfFH5Sy9XjWCG-SfLWQ6Jz2agmEAb1u',     // ClientID
+            'EGv9jn7TYO2k7AsgBUEm6XzNakEoOZA3szBQXJcJOrOwLxWbjOnLo7TtpNjenyaOcabDavGY7TBysv7K'      // ClientSecret
+        )
+			);
+
+			// Creo un pago
+			$payer = new \PayPal\Api\Payer();
+			$payer->setPaymentMethod('paypal');
+
+			$amount = new \PayPal\Api\Amount();
+			$amount->setTotal('500.00');
+			$amount->setCurrency('MXN');
+
+			$transaction = new \PayPal\Api\Transaction();
+			$transaction->setAmount($amount);
+
+			$redirectUrls = new \PayPal\Api\RedirectUrls();
+			$redirectUrls->setReturnUrl(base_url('proceso_pago/paypal_exitoso'))
+			    ->setCancelUrl(base_url('proceso_pago/paypal_cancelar'));
+
+			$payment = new \PayPal\Api\Payment();
+			$payment->setIntent('sale')
+			    ->setPayer($payer)
+			    ->setTransactions(array($transaction))
+			    ->setRedirectUrls($redirectUrls);
+
+				// Hago la llamada
+
+				try {
+				    $payment->create($apiContext);
+				    //echo $payment;
+
+				    //echo "\n\nRedireccionar a la URL aprovación: " . $payment->getApprovalLink() . "\n";
+						$approvalUrl = $payment->getApprovalLink();
+						echo "Created Payment Using PayPal. Please visit the URL to Approve.", "Payment", "<a href='$approvalUrl' >$approvalUrl</a>";
+				}
+				catch (\PayPal\Exception\PayPalConnectionException $ex) {
+				    // This will print the detailed information on the exception.
+				    //REALLY HELPFUL FOR DEBUGGING
+				    echo $ex->getData();
+				}
 	}
+
 }

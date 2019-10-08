@@ -362,6 +362,13 @@
                                   <h3 style="margin:0;color:#af3193;"><strong>Monto a pagar</strong><br />$<?php echo number_format($_POST['ImporteTotal'],2); ?> <?php echo $_POST['Divisa']; ?></h4>
                                 </td>
                                 <td colspan="2" style="vertical-align:middle; font-size:16px; border-left:solid 1px lightgrey">
+                                  <?php
+                                    $importe_final = $_POST['ImporteTotal'];
+
+                                    if($_POST['ImporteTotal']>=100000){
+                                      $importe_final = $_POST['ImporteTotal']/0.91;
+                                    }
+                                  ?>
                                   <form class="d-flex justify-content-end" id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                                       <input type="hidden" name="cmd" value="_xclick">
                                       <!--
@@ -370,11 +377,14 @@
                                       <input type="hidden" name="business" value="abanico0918@aol.com">
                                       <input type="hidden" name="item_name" value="Abanico <?php echo $_POST['Folio']; ?>">
                                       <input type="hidden" name="item_number" value="<?php echo $_POST['Folio']; ?>">
-                                      <input type="hidden" name="amount" value="<?php echo $_POST['ImporteTotal']; ?>">
+                                      <input type="hidden" name="amount" value="<?php echo $importe_final; ?>">
                                       <input type="hidden" name="currency_code" value="<?php echo $_POST['Divisa']; ?>">
                                       <input type="hidden" name="return" value="<?php echo base_url('proceso_pago_4?pago=paypal'); ?>">
                                       <button type="submit" class="btn btn-primary btn-lg btn-block"><?php echo $this->lang->line('proceso_pago_3_paypal'); ?> <span class="fab fa-paypal"></span></button>
                                   </form>
+                                  <?php if($_POST['ImporteTotal']>=100000){ ?>
+                                    <p class="text-center">Si lo deseas puedes pagar esta compra a 3 o 6 <b>meses sin intereses</b> <br>(+ Comisión del 9%)</p>
+                                  <?php } ?>
                                 </td>
                               </tr>
                               <tr>

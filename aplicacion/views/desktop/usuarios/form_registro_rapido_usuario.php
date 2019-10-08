@@ -22,11 +22,13 @@
               <?php } ?>
                 <form class="" action="<?php echo base_url('usuario/registro_rapido/registro_usuario');?>" method="post">
                   <input type="hidden" name="UrlRedirect" value="<?php echo base_url('categoria'); ?>">
+                  <!--
                   <div class="row">
                     <div class="col mb-3">
                       <img src="<?php echo base_url('assets/global/img/registro_concurso.jpg'); ?>" class="img-fluid" alt="">
                     </div>
                   </div>
+                -->
                   <div class="row">
                     <div class="col">
                        <div class="form-group">

@@ -71,6 +71,11 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
 				$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 
+				$this->data['titulo'] = 'Abanico siempre lo mejor';
+				$this->data['descripcion'] = 'Compra y vende artículos por internet';
+				$this->data['keywords'] = '';
+				$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
 		 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		 		$this->load->view($this->data['dispositivo'].'/tienda/favoritos_productos',$this->data);
 		 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);

@@ -156,7 +156,7 @@
 													</div>
 												</a>
 												<div class="kt-notification__custom kt-space-between">
-													<a href="<?php echo base_url('login/cerrar'); ?>" target="_blank" class="btn btn-clean btn-sm btn-bold">Cerrar Sesión</a>
+													<a href="<?php echo base_url('login/cerrar'); ?>" target="" class="btn btn-clean btn-sm btn-bold">Cerrar Sesión</a>
 												</div>
 											</div>
 

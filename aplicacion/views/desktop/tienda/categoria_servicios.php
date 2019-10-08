@@ -143,7 +143,7 @@
                             <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
                               <a href="<?php echo base_url('servicio/favorito?id='.$servicio->ID_SERVICIO); ?>" class="btn btn-outline<?php echo $primary; ?>" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
                             <?php }else{ ?>
-                              <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$servicio->ID_SERVICIO)); ?>" class="btn btn-outline<?php echo $primary; ?>" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
+                              <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id_producto='.$servicio->ID_SERVICIO)); ?>" class="btn btn-outline<?php echo $primary; ?>" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
                             <?php } ?>
                           </div>
                           <div class="text-center">

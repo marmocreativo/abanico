@@ -407,9 +407,9 @@
               </div>
             </a>
             <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
-            <a href="<?php echo base_url('producto/favorito?id='.$producto->ID_PRODUCTO); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+            <a href="<?php echo base_url('producto/favorito?id_producto='.$producto->ID_PRODUCTO); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
             <?php }else{ ?>
-              <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id='.$producto->ID_PRODUCTO)); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+              <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id_producto='.$producto->ID_PRODUCTO)); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
             <?php } ?>
           </div>
         </li>
