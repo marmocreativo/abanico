@@ -19,6 +19,8 @@ $route['translate_uri_dashes'] = FALSE;
 // Rutas de Administrador
 $route['admin/concursos'] = 'Admin_Concursos';
 $route['admin/concursos/(:any)'] = 'Admin_Concursos/$1';
+$route['admin/cupones'] = 'Admin_Cupones';
+$route['admin/cupones/(:any)'] = 'Admin_Cupones/$1';
 $route['admin/corte_planes'] = 'Admin_CortePlanes';
 $route['admin/corte_planes/(:any)'] = 'Admin_CortePlanes/$1';
 $route['admin/corte_vendedores'] = 'Admin_CorteVendedores';
@@ -174,6 +176,8 @@ $route['proceso_pago_3_paypal'] = 'Proceso_Pago/paso3_paypal';
 $route['proceso_pago_3'] = 'Proceso_Pago/paso3';
 $route['proceso_pago_2'] = 'Proceso_Pago/paso2';
 $route['proceso_pago_1'] = 'Proceso_Pago/paso1';
+$route['canjear_cupon'] = 'Proceso_Pago/canjear_cupon';
+$route['eliminar_cupon'] = 'Proceso_Pago/eliminar_cupon';
 $route['carrito'] = 'Proceso_Pago';
 // Sobreescribir demo
 

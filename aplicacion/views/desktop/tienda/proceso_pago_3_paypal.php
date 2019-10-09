@@ -365,8 +365,8 @@
                                   <?php
                                     $importe_final = $_POST['ImporteTotal'];
 
-                                    if($_POST['ImporteTotal']>=100000){
-                                      $importe_final = $_POST['ImporteTotal']/0.91;
+                                    if($_POST['ImporteTotal']>=$op['importe_minimo_meses']){
+                                      $importe_final = $_POST['ImporteTotal']/$op['calculo_porcentaje_meses'];
                                     }
                                   ?>
                                   <form class="d-flex justify-content-end" id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -382,8 +382,8 @@
                                       <input type="hidden" name="return" value="<?php echo base_url('proceso_pago_4?pago=paypal'); ?>">
                                       <button type="submit" class="btn btn-primary btn-lg btn-block"><?php echo $this->lang->line('proceso_pago_3_paypal'); ?> <span class="fab fa-paypal"></span></button>
                                   </form>
-                                  <?php if($_POST['ImporteTotal']>=100000){ ?>
-                                    <p class="text-center">Si lo deseas puedes pagar esta compra a 3 o 6 <b>meses sin intereses</b> <br>(+ Comisión del 9%)</p>
+                                  <?php if($_POST['ImporteTotal']>=$op['importe_minimo_meses']){ ?>
+                                    <p class="text-center">Si lo deseas puedes pagar esta compra a <?php echo $op['cantidad_meses']; ?> <b>meses sin intereses</b> <br>(+ Comisión del <?php echo $op['comision_meses']; ?>%)</p>
                                   <?php } ?>
                                 </td>
                               </tr>

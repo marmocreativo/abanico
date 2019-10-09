@@ -39,18 +39,49 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('PlanesModel');
 		$this->load->model('PagosPedidosModel');
 		$this->load->model('DivisasModel');
+		$this->load->model('CuponesModel');
 
 		//var_dump($_SESSION['pedido']);
 	}
 	public function index()
 	{
-		// Aún no se que poner aquí
 		// Limpio la sesión del pedido
 		$_SESSION['pedido'] = array();
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_carrito',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 	}
+
+	public function canjear_cupon()
+	{
+		// Limpio la sesión del pedido
+		$_SESSION['cupon']=array();
+
+		if(isset($_POST['Codigo'])&&!empty($_POST['Codigo'])){
+			$codigo = $_POST['Codigo'];
+			$cupon = $this->CuponesModel->detalles_codigo($codigo);
+
+			if(!empty($cupon)){
+				$_SESSION['cupon']['codigo'] = $cupon['CODIGO'];
+				$_SESSION['cupon']['productos'] = $cupon['PRODUCTOS'];
+				$_SESSION['cupon']['tipo'] = $cupon['TIPO_DESCUENTO'];
+				$_SESSION['cupon']['descuento'] = $cupon['DESCUENTO'];
+			}else{
+				$this->session->set_flashdata('alerta', 'Tu código no es válido o la fecha de vigencia ha pasado');
+			}
+		}
+		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_carrito',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
+	}
+
+	public function eliminar_cupon()
+	{
+		unset($_SESSION['cupon']);
+		// Limpio la sesión del pedido
+		redirect(base_url('carrito'));
+	}
+
 	public function paso1()
 	{
 		if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){

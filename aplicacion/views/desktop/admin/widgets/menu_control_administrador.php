@@ -111,6 +111,9 @@
           <a href="<?php echo base_url('admin/divisas'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-money-bill"></i></i><span class="kt-menu__link-text">Divisas</span></a>
         </li>
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+          <a href="<?php echo base_url('admin/cupones'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-ticket-alt"></i></i><span class="kt-menu__link-text">Cupones</span></a>
+        </li>
+        <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
           <a href="<?php echo base_url('admin/paises'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-globe-americas"></i></i><span class="kt-menu__link-text">Paises</span></a>
         </li>
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
