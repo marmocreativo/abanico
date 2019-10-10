@@ -69,11 +69,11 @@
             </div>
             <div class="form-group">
               <label for="FechaInicio">Fecha de Inicio</label>
-              <input type="datetime-local" class="form-control" name="FechaInicio" id="FechaInicio" placeholder="" required value="<?=!form_error('FechaInicio')?set_value('FechaInicio'):''?>">
+              <input type="date" class="form-control" name="FechaInicio" id="FechaInicio" placeholder="" required value="<?=!form_error('FechaInicio')?set_value('FechaInicio'):''?>">
             </div>
             <div class="form-group">
               <label for="FechaFinal">Fecha Final</label>
-              <input type="datetime-local" class="form-control" name="FechaFinal" id="FechaFinal" placeholder="" required value="<?=!form_error('FechaFinal')?set_value('FechaFinal'):''?>">
+              <input type="date" class="form-control" name="FechaFinal" id="FechaFinal" placeholder="" required value="<?=!form_error('FechaFinal')?set_value('FechaFinal'):''?>">
             </div>
             <div class="form-group">
               <label for="LimitePorUsuario">Limite por usuario</label>

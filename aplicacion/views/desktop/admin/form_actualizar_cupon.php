@@ -70,11 +70,11 @@
             </div>
             <div class="form-group">
               <label for="FechaInicio">Fecha de Inicio</label>
-              <input type="datetime-local" class="form-control" name="FechaInicio" id="FechaInicio" placeholder="" required value="<?php echo date('Y-m-d\TH:i:s',strtotime($cupon['FECHA_INICIO'])); ?>">
+              <input type="date" class="form-control" name="FechaInicio" id="FechaInicio" placeholder="" required value="<?php echo date('Y-m-d',strtotime($cupon['FECHA_INICIO'])); ?>">
             </div>
             <div class="form-group">
               <label for="FechaFinal">Fecha Final</label>
-              <input type="datetime-local" class="form-control" name="FechaFinal" id="FechaFinal" placeholder="" required value="<?php echo date('Y-m-d\TH:i:s',strtotime($cupon['FECHA_FINAL'])); ?>">
+              <input type="date" class="form-control" name="FechaFinal" id="FechaFinal" placeholder="" required value="<?php echo date('Y-m-d',strtotime($cupon['FECHA_FINAL'])); ?>">
             </div>
             <div class="form-group">
               <label for="LimitePorUsuario">Limite por usuario</label>

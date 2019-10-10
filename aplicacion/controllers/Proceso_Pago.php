@@ -55,29 +55,33 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function canjear_cupon()
 	{
 		// Limpio la sesión del pedido
-		$_SESSION['cupon']=array();
 
-		if(isset($_POST['Codigo'])&&!empty($_POST['Codigo'])){
-			$codigo = $_POST['Codigo'];
+		if(isset($_GET['Codigo'])&&!empty($_GET['Codigo'])){
+			$codigo = $_GET['Codigo'];
 			$cupon = $this->CuponesModel->detalles_codigo($codigo);
 
 			if(!empty($cupon)){
-				$_SESSION['cupon']['codigo'] = $cupon['CODIGO'];
-				$_SESSION['cupon']['productos'] = $cupon['PRODUCTOS'];
-				$_SESSION['cupon']['tipo'] = $cupon['TIPO_DESCUENTO'];
-				$_SESSION['cupon']['descuento'] = $cupon['DESCUENTO'];
+				$_SESSION['carrito']['cupon_codigo'] = $cupon['CODIGO'];
+				$_SESSION['carrito']['cupon_productos'] = $cupon['PRODUCTOS'];
+				$_SESSION['carrito']['cupon_tipo'] = $cupon['TIPO_DESCUENTO'];
+				$_SESSION['carrito']['cupon_descuento'] = $cupon['DESCUENTO'];
 			}else{
 				$this->session->set_flashdata('alerta', 'Tu código no es válido o la fecha de vigencia ha pasado');
 			}
 		}
+
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_carrito',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
+
 	}
 
 	public function eliminar_cupon()
 	{
-		unset($_SESSION['cupon']);
+		unset($_SESSION['carrito']['cupon_codigo']);
+		unset($_SESSION['carrito']['cupon_productos']);
+		unset($_SESSION['carrito']['cupon_tipo']);
+		unset($_SESSION['carrito']['cupon_descuento']);
 		// Limpio la sesión del pedido
 		redirect(base_url('carrito'));
 	}

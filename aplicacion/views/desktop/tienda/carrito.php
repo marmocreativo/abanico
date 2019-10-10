@@ -101,45 +101,6 @@
     </tr>
   </tbody>
 </table>
-<?php retro_alimentacion(); ?>
-<div class="border-info p-3 m-3" style="border:1px; border-style:dashed;">
-  <?php if(isset($_SESSION['cupon']['codigo'])&&!empty($_SESSION['cupon']['codigo'])){ ?>
-    <div class="row">
-      <div class="col-3">
-        <h5>Cupón: <b><?php echo $_SESSION['cupon']['codigo']; ?></b></h5>
-      </div>
-      <div class="col-8">
-        <?php
-          if($_SESSION['cupon']['tipo']=='porcentaje'){
-            $descuento = $_SESSION['cupon']['descuento'].'% de descuento';
-          }else{
-            $descuento = '$'.$_SESSION['cupon']['descuento'].' MXN de descuento';
-          }
-          if($_SESSION['cupon']['productos']=='todos'){
-            $detalles = '<small> En cualquier producto</small>';
-          }else{
-            $detalles = '<small> En productos vendidos por Abanico</small>';
-          }
-          echo '<h5>'.$descuento.$detalles.'</h5>';
-        ?>
-      </div>
-      <div class="col-1">
-        <a href="<?php echo base_url('eliminar_cupon'); ?>" class="btn btn-sm btn-outline-info "> <i class="fa fa-times"></i> </a>
-      </div>
-    </div>
-  <?php }else{ ?>
-    <form class="" action="<?php echo base_url('canjear_cupon'); ?>" method="post">
-    <div class="row">
-      <div class="col-12 form-inline d-flex justify-content-center">
-        <div class="form-group">
-          <input type="text" class="form-control form-control-sm" placeholder="Código del cupón" name="Codigo" value="">
-        </div>
-        <button type="submit" class="btn btn-sm btn-info"> <i class="fa fa-ticket-alt"></i> Validar</button>
-      </div>
-    </div>
-    </form>
-  <?php } ?>
-</div>
 <div class="linea-colores-delgada">
   <div class="barra-color barra-azul"></div>
   <div class="barra-color barra-rosa"></div>
