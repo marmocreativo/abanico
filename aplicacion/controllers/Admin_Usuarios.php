@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Admin_Usuarios extends CI_Controller {
 
 	public function __construct(){
@@ -245,5 +248,66 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->view($this->data['dispositivo'].'/admin/perfil_usuario',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
+
+		/*
+* EXCEL
+*/
+public function excel()
+{
+	if(!isset($_GET['tipo_usuario'])||empty($_GET['tipo_usuario'])){ $this->data['tipo_usuario']=''; }else{ $this->data['tipo_usuario']=$_GET['tipo_usuario']; }
+	$this->data['usuarios'] = $this->UsuariosModel->lista_admin('',$this->data['tipo_usuario'],'','');
+
+	$spreadsheet = new Spreadsheet();
+	$sheet = $spreadsheet->getActiveSheet();
+	// Estilos encabezado
+	$sheet->getStyle('A2:F2')
+	->getFill()
+	->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+	->getStartColor()
+	->setARGB('3c8dbc');
+
+	$spreadsheet->getActiveSheet()->getStyle('A2:F2')
+	->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+
+	$spreadsheet->getActiveSheet()->getStyle('A2:F2')
+	->getAlignment()->setWrapText(true);
+	$spreadsheet->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+	$spreadsheet->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+	$spreadsheet->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+	$spreadsheet->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+	$spreadsheet->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+	$spreadsheet->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
+
+	$sheet->setCellValue('A1', 'ID');
+	$sheet->setCellValue('B1', 'Nombre');
+	$sheet->setCellValue('C1', 'Apellidos');
+	$sheet->setCellValue('D1', 'Correo');
+	$sheet->setCellValue('E1', 'Tipo de Usuario');
+	$sheet->setCellValue('F1', 'Lista de correos');
+
+	$i = 3;
+	foreach($this->data['usuarios'] as $usuario){
+
+		// Creo la fila con Excel
+		$sheet->setCellValue('A'.$i, $usuario->ID_USUARIO);
+		$sheet->setCellValue('B'.$i, $usuario->USUARIO_NOMBRE);
+		$sheet->setCellValue('C'.$i, $usuario->USUARIO_APELLIDOS);
+		$sheet->setCellValue('D'.$i, $usuario->USUARIO_CORREO);
+		$sheet->setCellValue('E'.$i, $usuario->USUARIO_TIPO);
+		$sheet->setCellValue('F'.$i, $usuario->USUARIO_LISTA_DE_CORREO);
+	$i ++;
+	}
+
+	$writer = new Xlsx($spreadsheet);
+
+	$filename = 'usuarios_abanico_'.date('d-m-Y H:i');
+
+	header('Content-Type: application/vnd.ms-excel');
+	header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"');
+	header('Cache-Control: max-age=0');
+
+	$writer->save('php://output'); // download file
+
+	}
 
 }

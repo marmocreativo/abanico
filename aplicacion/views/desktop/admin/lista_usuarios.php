@@ -54,6 +54,7 @@
             </div>
             <div class="opciones d-flex align-items-center">
               <div class="btn-group btn-sm">
+                <a href="<?php echo base_url('admin/usuarios/excel'); ?>" class="btn btn-info btn-sm"> <span class="fa fa-download"></span> Descargar </a>
                 <a href="<?php echo base_url('admin/usuarios/crear?tipo_usuario='.$tipo_usuario); ?>" class="btn btn-success btn-sm"> <span class="fa fa-plus"></span> Nuevo Usuario </a>
               </div>
 

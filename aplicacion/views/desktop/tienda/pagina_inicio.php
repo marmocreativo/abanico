@@ -97,12 +97,12 @@
 
    ?>
 
-  <div class="fila py-5 <?php if($no_carrusel % 2 == 0){ echo "fila-gris";  }else{ echo 'bg-light'; }  ?>">
+  <div class="fila py-2 <?php if($no_carrusel % 2 == 0){ echo "fila-gris";  }else{ echo 'bg-light'; }  ?>">
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-          <h2 class="car-titulo text-center text-primary pb-3 mb-3"><img alt="" src="<?php echo base_url(); ?>assets/global/img/decor_izq.png" width="25px"><?php echo $carrusel->TITULO ?><img alt="" src="<?php echo base_url(); ?>assets/global/img/decor_der.png" width="25px"></h2>
-          <h4 class="text-center border-top py-3 mb-3"><?php echo $carrusel->DESCRIPCION ?></h4>
+          <h2 class="car-titulo text-center text-primary pb-1 mb-0"><img alt="" src="<?php echo base_url(); ?>assets/global/img/decor_izq.png" width="25px"><?php echo $carrusel->TITULO ?><img alt="" src="<?php echo base_url(); ?>assets/global/img/decor_der.png" width="25px"></h2>
+          <h5 class="text-center border-top py-3 mb-3"><?php echo $carrusel->DESCRIPCION ?></h5>
           <section class="slider">
           <div class="flexslider carousel">
             <ul class="slides">
@@ -222,7 +222,7 @@
         </section>
         <?php if($carrusel->ENLACE!=''){ ?>
         <div class="text-center">
-          <a href="<?php echo $carrusel->ENLACE; ?>" class="btn btn-primary btn-lg">Ver más</a>
+          <a href="<?php echo $carrusel->ENLACE; ?>" class="btn btn-primary">Ver más</a>
         </div>
       <?php } ?>
         </div>

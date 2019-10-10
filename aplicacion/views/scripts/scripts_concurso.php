@@ -81,6 +81,7 @@ jQuery('.palabra_encontrada').on('click',function(){
   window.scrollTo(0, 0);
 });
 
+/*
 // Set the date we're counting down to
 var countDownDate = new Date("September 24, 2019 17:00:00").getTime();
 
@@ -111,6 +112,7 @@ var x = setInterval(function() {
     document.getElementById("cuenta_regresiva").innerHTML = "Ahora!";
   }
 }, 1000);
+*/
 
 
 </script>

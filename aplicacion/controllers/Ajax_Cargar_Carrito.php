@@ -207,6 +207,8 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 		$this->data['envio_pedido_abanico'] = $_GET['ImporteEnvioParcial'];
 		$this->data['envio_pedido_total'] = $_GET['ImporteEnvioTotal'];
 		$this->data['pedido_tienda'] = $_GET['PedidoTienda'];
+		$this->data['importe_descuento'] = $_GET['ImporteDescuento'];
+		$this->data['descripcion_descuento'] = $_GET['DescripcionDescuento'];
 		$this->data['importe_total'] = $_GET['ImporteTotal'];
 		$this->data['id_transportista_abanico'] = $_GET['IdTransportistaAbanico'];
 		$this->data['nombre_transportista_abanico'] = $_GET['NombreTransportistaAbanico'];

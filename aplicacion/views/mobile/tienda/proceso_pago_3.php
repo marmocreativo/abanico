@@ -66,6 +66,8 @@
                     $solo_productos_contra_entrega = true;
                     $solo_productos_envio_gratuito = true;
                     $transportista_gratuito = 3;
+                    $importe_descuento = 0;
+                    $descripcion_descuento = '';
                     $pedidos_tienda = array();
                   ?>
                   <div class="col-12">
@@ -168,6 +170,34 @@
                       </tbody>
                     </table>
                     </div>
+                    <?php if(isset($_SESSION['carrito']['cupon_codigo'])&&!empty($_SESSION['carrito']['cupon_codigo'])&&$_SESSION['carrito']['cupon_productos']=='abanico'){ ?>
+                      <div class="border-info p-3 m-3" style="border:1px; border-style:dashed;">
+                      <div class="row">
+                        <div class="col-3">
+                          <h5 class="m-0">Cupón: <b><?php echo $_SESSION['carrito']['cupon_codigo']; ?></b></h5>
+                        </div>
+                        <div class="col-8">
+                          <?php
+                            if($_SESSION['carrito']['cupon_tipo']=='porcentaje'){
+                              $descuento = $_SESSION['carrito']['cupon_descuento'].'% de descuento';
+                            }else{
+                              $descuento = '$'.$_SESSION['carrito']['cupon_descuento'].' MXN de descuento';
+                            }
+                            if($_SESSION['carrito']['cupon_productos']=='todos'){
+                              $detalles = '<small> En cualquier producto</small>';
+                            }else{
+                              $detalles = '<small> En productos vendidos por Abanico</small>';
+                            }
+                            $descripcion_descuento = $_SESSION['carrito']['cupon_codigo'].' '.$descuento.$detalles;
+                            echo '<h5 class="m-0">'.$descuento.$detalles.'</h5>';
+                          ?>
+                        </div>
+                        <div class="col-1">
+                          <a href="<?php echo base_url('eliminar_cupon'); ?>" class="btn btn-sm btn-outline-info "> <i class="fa fa-times"></i> </a>
+                        </div>
+                      </div>
+                      </div>
+                    <?php } ?>
                     <span class="datos_tienda datos_tienda_abanico" id="tienda-<?php echo $datos_tienda['ID_TIENDA'];?>"
                     data-id-tienda='<?php echo $datos_tienda['ID_TIENDA'];?>'
                     data-nombre-tienda='<?php echo $datos_tienda['TIENDA_NOMBRE'];?>'
@@ -192,6 +222,25 @@
                     // Cálculos Finales
                       $peso_pedido_abanico += $suma_peso;
                       $importe_pedido_abanico += $suma_productos;
+
+
+                        // Si hay yb cupón abanico
+                        if(isset($_SESSION['carrito']['cupon_codigo'])&&$_SESSION['carrito']['cupon_productos']=='abanico'){
+
+                          switch ($_SESSION['carrito']['cupon_tipo']) {
+                            case 'porcentaje':
+                              $importe_descuento = $importe_pedido_abanico*($_SESSION['carrito']['cupon_descuento']/100);
+                              $importe_pedido_abanico = $importe_pedido_abanico-$importe_descuento;
+                              break;
+
+                            case 'importe':
+                              $importe_descuento = $_SESSION['divisa']['conversion']*($_SESSION['carrito']['cupon_descuento']);
+                              $importe_pedido_abanico = $importe_pedido_abanico-$importe_descuento;
+                              break;
+                          }
+                        }
+
+
                       if($solo_productos_contra_entrega&&$detalles_direccion['DIRECCION_PAIS']=='Estados Unidos'){
                         $envio_abanico = null;
                         $mejor_envio_abanico = null;
@@ -383,10 +432,115 @@
                     ?>
                   <?php } // Termina el bucle de tiendas ?>
                   </div>
+                  <?php if(isset($_SESSION['carrito']['cupon_codigo'])&&!empty($_SESSION['carrito']['cupon_codigo'])&&$_SESSION['carrito']['cupon_productos']=='todos'){ ?>
+                    <div class="border-info p-3 m-3" style="border:1px; border-style:dashed;">
+                    <div class="row">
+                      <div class="col-3">
+                        <h5 class="m-0">Cupón: <b><?php echo $_SESSION['carrito']['cupon_codigo']; ?></b></h5>
+                      </div>
+                      <div class="col-8">
+                        <?php
+                          if($_SESSION['carrito']['cupon_tipo']=='porcentaje'){
+                            $descuento = $_SESSION['carrito']['cupon_descuento'].'% de descuento';
+                          }else{
+                            $descuento = '$'.$_SESSION['carrito']['cupon_descuento'].' MXN de descuento';
+                          }
+                          if($_SESSION['carrito']['cupon_productos']=='todos'){
+                            $detalles = '<small> En cualquier producto</small>';
+                          }else{
+                            $detalles = '<small> En productos vendidos por Abanico</small>';
+                          }
+                          $descripcion_descuento = $_SESSION['carrito']['cupon_codigo'].' '.$descuento.$detalles;
+                          echo '<h5 class="m-0">'.$descuento.$detalles.'</h5>';
+                        ?>
+                      </div>
+                      <div class="col-1">
+                        <a href="<?php echo base_url('eliminar_cupon'); ?>" class="btn btn-sm btn-outline-info "> <i class="fa fa-times"></i> </a>
+                      </div>
+                    </div>
+                    </div>
+                  <?php } ?>
+
+                  <?php if(!isset($_SESSION['carrito']['cupon_codigo'])){ ?>
+                    <div class="border-info p-3 m-3" style="border:1px; border-style:dashed;">
+                      <form class="" action="<?php echo base_url('canjear_cupon'); ?>" method="get">
+                      <div class="row">
+                        <div class="col-12 form-inline d-flex justify-content-center">
+                          <div class="form-group">
+                            <input type="text" class="form-control form-control-sm" placeholder="Código del cupón" name="Codigo" value="">
+                          </div>
+                          <button type="submit" class="btn btn-sm btn-info"> <i class="fa fa-ticket-alt"></i> Validar</button>
+                        </div>
+                      </div>
+                      </form>
+                    </div>
+                  <?php } ?>
+
+                  <?php if(isset($_SESSION['carrito']['cupon_codigo'])&&!empty($_SESSION['carrito']['cupon_codigo'])&&$_SESSION['carrito']['cupon_productos']=='todos'){ ?>
+                    <div class="border-info p-3 m-3" style="border:1px; border-style:dashed;">
+                    <div class="row">
+                      <div class="col-3">
+                        <h5 class="m-0">Cupón: <b><?php echo $_SESSION['carrito']['cupon_codigo']; ?></b></h5>
+                      </div>
+                      <div class="col-8">
+                        <?php
+                          if($_SESSION['carrito']['cupon_tipo']=='porcentaje'){
+                            $descuento = $_SESSION['carrito']['cupon_descuento'].'% de descuento';
+                          }else{
+                            $descuento = '$'.$_SESSION['carrito']['cupon_descuento'].' MXN de descuento';
+                          }
+                          if($_SESSION['carrito']['cupon_productos']=='todos'){
+                            $detalles = '<small> En cualquier producto</small>';
+                          }else{
+                            $detalles = '<small> En productos vendidos por Abanico</small>';
+                          }
+                          $descripcion_descuento = $_SESSION['carrito']['cupon_codigo'].' '.$descuento.$detalles;
+                          echo '<h5 class="m-0">'.$descuento.$detalles.'</h5>';
+                        ?>
+                      </div>
+                      <div class="col-1">
+                        <a href="<?php echo base_url('eliminar_cupon'); ?>" class="btn btn-sm btn-outline-info "> <i class="fa fa-times"></i> </a>
+                      </div>
+                    </div>
+                    </div>
+                  <?php } ?>
+
+                  <?php if(!isset($_SESSION['carrito']['cupon_codigo'])){ ?>
+                    <div class="border-info p-3 m-3" style="border:1px; border-style:dashed;">
+                      <form class="" action="<?php echo base_url('canjear_cupon'); ?>" method="get">
+                      <div class="row">
+                        <div class="col-12 form-inline d-flex justify-content-center">
+                          <div class="form-group">
+                            <input type="text" class="form-control form-control-sm" placeholder="Código del cupón" name="Codigo" value="">
+                          </div>
+                          <button type="submit" class="btn btn-sm btn-info"> <i class="fa fa-ticket-alt"></i> Validar</button>
+                        </div>
+                      </div>
+                      </form>
+                    </div>
+                  <?php } ?>
+
                   <?php
                   // Cálculos Finales
                   $peso_pedido_total = $peso_pedido_abanico+$peso_pedido_tiendas;
                   $importe_pedido_total = $importe_pedido_abanico+$importe_pedido_tiendas;
+
+                  // Si hay yb cupón abanico
+                  if(isset($_SESSION['carrito']['cupon_codigo'])&&$_SESSION['carrito']['cupon_productos']=='todos'){
+
+                    switch ($_SESSION['carrito']['cupon_tipo']) {
+                      case 'porcentaje':
+                        $importe_descuento = $importe_pedido_total*($_SESSION['carrito']['cupon_descuento']/100);
+                        $importe_pedido_total = $importe_pedido_total-$importe_descuento;
+                        break;
+
+                      case 'importe':
+                        $importe_descuento = $_SESSION['divisa']['conversion']*($_SESSION['carrito']['cupon_descuento']);
+                        $importe_pedido_total = $importe_pedido_total-$importe_descuento;
+                        break;
+                    }
+                  }
+
                   $envio_pedido_total = $envio_pedido_abanico+$envio_pedido_tiendas;
                   $importe_total = $importe_pedido_total+$envio_pedido_total;
                   if(!empty($mejor_envio_abanico)){
@@ -401,6 +555,8 @@
                   <div class="p-3 border border-danger" id="PedidoAjax"
                     data-id-direccion='<?php echo $detalles_direccion['ID_DIRECCION']; ?>'
                     data-importe-pedido-parcial='<?php echo $importe_pedido_abanico; ?>'
+                    data-importe-descuento='<?php echo $importe_descuento; ?>'
+                    data-descripcion-descuento='<?php echo $descripcion_descuento; ?>'
                     data-importe-pedido-total='<?php echo $importe_pedido_total; ?>'
                     data-importe-envio-parcial='<?php echo $envio_pedido_abanico; ?>'
                     data-importe-envio-tiendas='<?php echo $envio_pedido_tiendas; ?>'

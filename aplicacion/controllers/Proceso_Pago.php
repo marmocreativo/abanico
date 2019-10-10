@@ -70,9 +70,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			}
 		}
 
-		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_pago',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/proceso_pago_carrito',$this->data);
-		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
+		redirect(base_url('carrito'));
 
 	}
 
@@ -251,6 +249,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$NombreTransportista = $_SESSION['pedido']['NombreTransportista'];
 			$ComisionServicioFinancieroPorcentaje = $_SESSION['pedido']['ComisionServicioFinancieroPorcentaje'];
 			$ComisionServicioFinancieroFijo = $_SESSION['pedido']['ComisionServicioFinancieroFijo'];
+			$ImporteDescuento = $_SESSION['pedido']['ImporteDescuento'];
+			$DescripcionDescuento = $_SESSION['pedido']['DescripcionDescuento'];
 			$ImporteTotal = $_SESSION['pedido']['ImporteTotal'];
 			$FormaPago = $_SESSION['pedido']['FormaPago'];
 			$EstadoPago = $_SESSION['pedido']['EstadoPago'];
@@ -275,6 +275,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$NombreTransportista = $_POST['NombreTransportista'];
 			$ComisionServicioFinancieroPorcentaje = $_POST['ComisionServicioFinancieroPorcentaje'];
 			$ComisionServicioFinancieroFijo = $_POST['ComisionServicioFinancieroFijo'];
+			$ImporteDescuento = $_POST['ImporteDescuento'];
+			$DescripcionDescuento = $_POST['DescripcionDescuento'];
 			$ImporteTotal = $_POST['ImporteTotal'];
 			$FormaPago = $_POST['FormaPago'];
 			$EstadoPago = $_POST['EstadoPago'];
@@ -299,6 +301,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			'PEDIDO_IMPORTE_ENVIO_TOTAL' => $ImporteEnvioTotal,
 			'PEDIDO_ID_TRANSPORTISTA' => $IdTransportista,
 			'PEDIDO_NOMBRE_TRANSPORTISTA' => $NombreTransportista,
+			'PEDIDO_IMPORTE_DESCUENTO' => $ImporteDescuento,
+			'PEDIDO_DESCUENTO_DESCRIPCION' => $DescripcionDescuento,
 			'PEDIDO_IMPORTE_TOTAL' => $ImporteTotal,
 			'PEDIDO_FORMA_PAGO' => $FormaPago,
 			'PEDIDO_ESTADO_PAGO' => $EstadoPago,

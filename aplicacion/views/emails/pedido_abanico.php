@@ -423,6 +423,15 @@
                                       <td style="width:20%; text-align:right;"><h5>Importe Productos:</h5></td>
                                       <td style="width:20%; text-align:right;"><h5>$<strong><?php echo number_format($pedido ['PEDIDO_IMPORTE_PRODUCTOS_TOTAL'],2); ?></strong><?php echo $pedido['PEDIDO_DIVISA']; ?></h5></td>
                                   </tr>
+                                  <?php if(!empty($pedido ['PEDIDO_DESCUENTO_DESCRIPCION'])){ ?>
+                                  <tr>
+                                    <td style="width:20%; text-align:right;"></td>
+                                    <td style="width:20%; text-align:right;"></td>
+                                    <td style="width:20%; text-align:right;"></td>
+                                      <td style="width:20%; text-align:right;"><h5>Cupón Descuento:</h5></td>
+                                      <td style="width:20%; text-align:right;"><h5><strong><?php echo $pedido ['PEDIDO_DESCUENTO_DESCRIPCION']; ?></strong></h5></td>
+                                  </tr>
+                                  <?php } ?>
                                   <tr>
                                     <td style="width:20%; text-align:right;"></td>
                                     <td style="width:20%; text-align:right;"></td>

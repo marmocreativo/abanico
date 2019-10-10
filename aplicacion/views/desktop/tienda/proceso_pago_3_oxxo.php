@@ -425,6 +425,8 @@
                 $_SESSION['pedido']['PedidosTiendas'] = $_POST['PedidosTiendas'];
                 $_SESSION['pedido']['ComisionServicioFinancieroPorcentaje'] = $_POST['ComisionServicioFinancieroPorcentaje'];
                 $_SESSION['pedido']['ComisionServicioFinancieroFijo'] = $_POST['ComisionServicioFinancieroFijo'];
+                $_SESSION['pedido']['ImporteDescuento'] = $_POST['ImporteDescuento'];
+                $_SESSION['pedido']['DescripcionDescuento'] = $_POST['DescripcionDescuento'];
                 $_SESSION['pedido']['ImporteTotal'] = $_POST['ImporteTotal'];
                 $_SESSION['pedido']['IdTransportista'] = $_POST['IdTransportista'];
                 $_SESSION['pedido']['NombreTransportista'] = $_POST['NombreTransportista'];

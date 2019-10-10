@@ -416,6 +416,8 @@
                       <input type="hidden" name="PedidosTiendas" value="<?php echo $_POST['PedidosTiendas']; ?>">
                       <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="<?php echo $_POST['ComisionServicioFinancieroPorcentaje']; ?>">
                       <input type="hidden" name="ComisionServicioFinancieroFijo" value="<?php echo $_POST['ComisionServicioFinancieroFijo']; ?>">
+                      <input type="hidden" name="ImporteDescuento" value="<?php echo $_POST['ImporteDescuento']; ?>">
+                      <input type="hidden" name="DescripcionDescuento" value="<?php echo $_POST['DescripcionDescuento']; ?>">
                       <input type="hidden" name="ImporteTotal" value="<?php echo $_POST['ImporteTotal']; ?>">
                       <input type="hidden" name="IdTransportista" value="<?php echo $_POST['IdTransportista']; ?>">
                       <input type="hidden" name="NombreTransportista" value="<?php echo $_POST['NombreTransportista']; ?>">

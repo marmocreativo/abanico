@@ -55,6 +55,8 @@
     <input type="hidden" name="PedidosTiendas" value="<?php echo $pedido_tienda ; ?>">
     <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="0">
     <input type="hidden" name="ComisionServicioFinancieroFijo" value="0">
+    <input type="hidden" name="ImporteDescuento" value="<?php echo $importe_descuento ; ?>">
+    <input type="hidden" name="DescripcionDescuento" value="<?php echo $descripcion_descuento ; ?>">
     <input type="hidden" name="ImporteTotal" value="<?php echo $importe_total ; ?>">
     <input type="hidden" name="IdTransportista" value="<?php echo $id_transportista_abanico ; ?>">
     <input type="hidden" name="NombreTransportista" value="<?php echo $nombre_transportista_abanico ; ?>">
@@ -85,6 +87,8 @@
     ?>
     <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="<?php echo $porcentaje_servicio_financiero; ?>">
     <input type="hidden" name="ComisionServicioFinancieroFijo" value="<?php echo $fijo_servicio_financiero; ?>">
+    <input type="hidden" name="ImporteDescuento" value="<?php echo $importe_descuento ; ?>">
+    <input type="hidden" name="DescripcionDescuento" value="<?php echo $descripcion_descuento ; ?>">
     <input type="hidden" name="ImporteTotal" value="<?php echo $importe_total ; ?>">
     <input type="hidden" name="IdTransportista" value="<?php echo $id_transportista_abanico ; ?>">
     <input type="hidden" name="NombreTransportista" value="<?php echo $nombre_transportista_abanico ; ?>">
@@ -113,6 +117,8 @@
     ?>
     <input type="hidden" name="ComisionServicioFinancieroPorcentaje" value="<?php echo $porcentaje_servicio_financiero; ?>">
     <input type="hidden" name="ComisionServicioFinancieroFijo" value="<?php echo $fijo_servicio_financiero; ?>">
+    <input type="hidden" name="ImporteDescuento" value="<?php echo $importe_descuento ; ?>">
+    <input type="hidden" name="DescripcionDescuento" value="<?php echo $descripcion_descuento ; ?>">
     <input type="hidden" name="ImporteTotal" value="<?php echo $importe_total ; ?>">
     <input type="hidden" name="IdTransportista" value="<?php echo $id_transportista_abanico ; ?>">
     <input type="hidden" name="NombreTransportista" value="<?php echo $nombre_transportista_abanico ; ?>">

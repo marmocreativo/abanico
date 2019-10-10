@@ -15,6 +15,8 @@ function cargar_pedido(){
   var importe_envio_parcial = jQuery('#PedidoAjax').attr('data-importe-envio-parcial');
   var importe_envio_total = jQuery('#PedidoAjax').attr('data-importe-envio-total');
   var pedido_tienda = jQuery('#PedidoAjax').attr('data-pedido-tienda');
+  var importe_descuento = jQuery('#PedidoAjax').attr('data-importe-descuento');
+  var descripcion_descuento = jQuery('#PedidoAjax').attr('data-descripcion-descuento');
   var importe_total = jQuery('#PedidoAjax').attr('data-importe-total');
   var id_transportista_abanico = jQuery('#PedidoAjax').attr('data-id-transportista');
   var nombre_transportista_abanico = jQuery('#PedidoAjax').attr('data-nombre-transportista');
@@ -30,6 +32,8 @@ function cargar_pedido(){
       ImporteEnvioParcial: importe_envio_parcial,
       ImporteEnvioTotal: importe_envio_total,
       PedidoTienda: pedido_tienda,
+      ImporteDescuento: importe_descuento,
+      DescripcionDescuento: descripcion_descuento,
       ImporteTotal: importe_total,
       IdTransportistaAbanico: id_transportista_abanico,
       NombreTransportistaAbanico: nombre_transportista_abanico
