@@ -75,6 +75,51 @@
   </div>
 </div>
 </div>
+<?php
+  $cuadricula = $this->SlidersModel->slide_nombre_lenguaje('fijas',$_SESSION['lenguaje']['iso']);
+  $cuadritos = $this->SlidesModel->lista_activos(['ID_SLIDER'=>$cuadricula['ID_SLIDER']],'ORDEN ASC','');
+?>
+  <div class="row justify-content-center fila bg-light">
+    <div class="col-9">
+      <div class="row">
+        <?php foreach($cuadritos as $cuadrito){ ?>
+          <div class="col-6 mb-2">
+            <a href="<?php echo $cuadrito->SLIDE_ENLACE; ?>">
+            <div class="card">
+              <div class="card-body p-1">
+                <div class="row">
+                  <div class="col-3">
+                    <img src="<?php echo base_url('contenido/img/slider/'.$cuadrito->SLIDE_IMAGEN); ?>" class="img-fluid" alt="">
+                  </div>
+                  <div class="col-9 ">
+                    <div class="row align-items-center">
+                      <?php if(!empty($cuadrito->SLIDE_TITULO)){ ?>
+                      <div class="col-12">
+                        <h3 ><?php echo $cuadrito->SLIDE_TITULO; ?></h3>
+                      </div>
+                      <?php } ?>
+                      <?php if(!empty($cuadrito->SLIDE_SUBTITULO)){ ?>
+                      <div class="col-12">
+                      <h5 ><?php echo $cuadrito->SLIDE_SUBTITULO; ?></h5>
+                      </div>
+                      <?php } ?>
+                      <?php if(!empty($cuadrito->SLIDE_BOTON)){ ?>
+                      <div class="col-12">
+                      <p ><?php echo $cuadrito->SLIDE_BOTON; ?></p>
+                      </div>
+                      <?php } ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
+
 <?php $no_carrusel = 0; $carruseles = $this->CarruselesModel->lista(['ESTADO'=>'activo'],'ORDEN ASC',''); ?>
 
 <?php foreach($carruseles as $carrusel){ ?>
@@ -230,28 +275,79 @@
     </div>
   </div>
 <?php $no_carrusel++; } ?>
-
-
-<div class="fila fila-gris p-0" id="Concursos" style="min-height:400px;">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-8 cont-ganador">
-            <div class="contenedor-ganador text-center" style="padding-top:10%; padding-bottom:10%">
-              <div class="" style="font-size:1em; line-height:1.5em;">
-                <img cl src="<?php echo base_url(); ?>assets/global/img/abanico_flor_arriba.png" alt="Logo" width="50px"><br>
-                <div style="text-align:center; line-height:2.5em;">
-                  <h1>Gracias por participar en nuestro concurso inaugural</h1>
-                  <h5 class="my-4">La frase completa fue:</h5>
-                  <h3>"El dinosaurio se cubría del sol con una sombrilla y su novia la tortuga se refrescaba con su abanico mientras sorprendidos observaban al pungüino tomando su café."</h3>
+<div class="fila bg-light py-3 mb-3">
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <div class="row">
+        <div class="col-md-3 col-lg-3 col-xl-3">
+            <!-- Start Blurb -->
+            <div class="row mb-2">
+                <div class="col text-center">
+                    <div class="rounded-circle text-info d-inline-block">
+                        <i class="fa fa-truck fa-4x m-3 p-3" aria-hidden="true"></i>
+                    </div>
                 </div>
-                <img src="<?php echo base_url(); ?>assets/global/img/abanico_flor_abajo.png" alt="Logo" width="50px">
-              </div>
             </div>
-          </div>
-      <div class="col-4 py-5 border border-primary-6 my-4 text-center" style="border-style:dashed !important">
-        <img src="<?php echo base_url('assets/global/img/ganador_concurso.jpg'); ?>" class="img-fluid mb-3" alt="">
-        <h4>Muchas Felicidades a Alejandro Marquina.</h4>
-        <h5 class="my-4">Quien encontró y ordenó la frase a las 5:30:48 pm.</h5>
+            <div class="row">
+                <div class="col text-center">
+                    <strong>Envío gratis</strong><br>
+                    en productos seleccionados
+                </div>
+            </div>
+            <!-- End Blurb -->
+        </div>
+        <div class="col-md-3 col-lg-3 col-xl-3">
+            <!-- Start Blurb -->
+            <div class="row mb-2">
+                <div class="col text-center">
+                    <div class="rounded-circle text-info d-inline-block">
+                        <i class="fa fa-money-bill-wave fa-4x m-3 p-3" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <strong>Métodos de pago</strong><br>
+                    Efectivo, depósitos bancarios, PayPal
+                </div>
+            </div>
+            <!-- End Blurb -->
+        </div>
+
+        <div class="col-md-3 col-lg-3 col-xl-3">
+            <!-- Start Blurb -->
+            <div class="row mb-2">
+                <div class="col text-center">
+                    <div class="rounded-circle text-info d-inline-block">
+                        <i class="fab fa-paypal fa-4x m-3 p-3" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <strong>Meses sin intereses</strong><br>
+                    Hasta 6 meses pagando con PayPal
+                </div>
+            </div>
+            <!-- End Blurb -->
+        </div>
+        <div class="col-md-3 col-lg-3 col-xl-3">
+            <!-- Start Blurb -->
+            <div class="row mb-2">
+                <div class="col text-center">
+                    <div class="rounded-circle text-info d-inline-block">
+                        <i class="fa fa-shield-alt fa-4x m-3 p-3" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <strong>Compra segura</strong><br>
+                    Garantia de compra y envio
+                </div>
+            </div>
+            <!-- End Blurb -->
+        </div>
       </div>
     </div>
   </div>
