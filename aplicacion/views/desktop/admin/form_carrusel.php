@@ -1,4 +1,10 @@
 
+<?php
+	$tabla = 'productos';
+	if(isset($_GET['tabla'])&&!empty($_GET['tabla'])){
+		$tabla = $_GET['tabla'];
+	}
+?>
 	<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-grid--stretch">
 		<div class="kt-container kt-body kt-grid kt-grid--ver" id="kt_body">
 			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
@@ -58,7 +64,7 @@
                 </div>
 								<div class="row">
                     <!-- inicia categoria -->
-										<?php $categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],'productos','',''); ?>
+										<?php $categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0],$tabla,'',''); ?>
 										<?php $i = 1; foreach($categorias as $categoria){ ?>
 											<div class="col-12 card"> <!-- Título y botón de categoría -->
 												<div class="card-header" id="heading<?php echo $i; ?>">

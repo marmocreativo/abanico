@@ -13,7 +13,7 @@ class CarruselesModel extends CI_Model {
  */
   function lista($parametros,$orden,$limite){
     if(!empty($parametros)){
-      $this->db->or_like($parametros);
+      $this->db->where($parametros);
     }
     if(!empty($orden)){
       $this->db->order_by($orden);

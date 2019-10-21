@@ -83,7 +83,7 @@
     <div class="col-9">
       <div class="row">
         <?php foreach($cuadritos as $cuadrito){ ?>
-          <div class="col-6 mb-2">
+          <div class="col-4 mb-2">
             <a href="<?php echo $cuadrito->SLIDE_ENLACE; ?>">
             <div class="card">
               <div class="card-body p-1">
@@ -95,12 +95,12 @@
                     <div class="row align-items-center">
                       <?php if(!empty($cuadrito->SLIDE_TITULO)){ ?>
                       <div class="col-12">
-                        <h3 ><?php echo $cuadrito->SLIDE_TITULO; ?></h3>
+                        <h4 ><?php echo $cuadrito->SLIDE_TITULO; ?></h4>
                       </div>
                       <?php } ?>
                       <?php if(!empty($cuadrito->SLIDE_SUBTITULO)){ ?>
                       <div class="col-12">
-                      <h5 ><?php echo $cuadrito->SLIDE_SUBTITULO; ?></h5>
+                      <h6 ><?php echo $cuadrito->SLIDE_SUBTITULO; ?></h6>
                       </div>
                       <?php } ?>
                       <?php if(!empty($cuadrito->SLIDE_BOTON)){ ?>
@@ -133,6 +133,8 @@
     }
     $parametros_or = array();
     $parametros_and = array();
+    $parametros_or_servicios = array();
+    $parametros_and_servicios = array();
     if($carrusel->ORIGEN!=''){
       $parametros_and['PRODUCTO_ORIGEN'] = $carrusel->ORIGEN;
     }
@@ -155,14 +157,17 @@
                 switch ($carrusel->TIPO) {
                   case 'todos':
                     $productos = $this->ProductosModel->lista_activos($parametros_or,$parametros_and,'',$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
+                    $servicios =  $this->ServiciosModel->lista_activos($parametros_or,$parametros_and,'',$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
 
                     break;
                   case 'incluyente':
                     $productos = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$id_categorias,$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
+                    $servicios =  $this->ServiciosModel->lista_categoria_activos($parametros_or_servicios,$parametros_and_servicios,$id_categorias,$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
 
                     break;
                   case 'excluyente':
                     $productos = $this->ProductosModel->lista_no_categoria_activos($parametros_or,$parametros_and,$id_categorias,$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
+                    $servicios =  $this->ServiciosModel->lista_no_categoria_activos($parametros_or_servicios,$parametros_and_servicios,$id_categorias,$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
 
                     break;
                 }
@@ -262,6 +267,56 @@
                 </div>
     	    		</li>
               <?php } ?>
+              <?php foreach($servicios as $servicio){ ?>
+                <?php
+                // Variables de Traducción
+                if($_SESSION['lenguaje']['iso']==$servicio->LENGUAJE){
+                  $titulo = $servicio->SERVICIO_NOMBRE;
+                }else{
+                  $traduccion = $this->TraduccionesModel->lista($servicio->ID_SERVICIO,'servicio',$_SESSION['lenguaje']['iso']);
+                  if(!empty($traduccion)){
+                    $titulo = $traduccion['TITULO'];
+                  }else{
+                    $titulo = $servicio->SERVICIO_NOMBRE;
+                  }
+                }
+                // Variables de Paquete
+                $paquete = $this->PlanesModel->plan_activo_usuario($servicio->ID_USUARIO,'servicios');
+                if($paquete==null){
+                  $visible = 'd-none';
+                }else{
+                  $visible = '';
+                }
+                ?>
+              <li class="<?php echo $visible; ?>">
+                <div class="cuadricula-productos">
+                  <?php $galeria = $this->GaleriasModel->galeria_portada($servicio->ID_SERVICIO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_servicios'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+                  <a href="<?php echo base_url('servicio?id='.$servicio->ID_SERVICIO); ?>" class="enlace-principal">
+                    <div class="imagen-producto">
+                        <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>
+                        <div class="overlay-producto <?php echo 'bg'.$primary; ?>"></div>
+                    </div>
+                  </a>
+                    <div class="product-content text-center">
+                      <?php
+                      $promedio = $this->CalificacionesServiciosModel->promedio_calificaciones_producto($servicio->ID_SERVICIO);
+                      $cantidad = $this->CalificacionesServiciosModel->conteo_calificaciones_producto($servicio->ID_SERVICIO);
+                      ?>
+                        <ul class="rating">
+                          <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
+                          <?php for($i = 1; $i<=$estrellas; $i++){ ?>
+                            <li class="fa fa-star"></li>
+                          <?php } ?>
+                          <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+                            <li class="far fa-star"></li>
+                          <?php } ?>
+                          <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
+                        </ul>
+                        <h3 class="title <?php echo 'text'.$primary; ?>" title="<?php echo $titulo; ?>"><?php echo word_limiter($titulo,10); ?></h3>
+                    </div>
+                </div>
+    	    		</li>
+              <?php } ?>
             </ul>
           </div>
         </section>
@@ -284,7 +339,7 @@
             <div class="row mb-2">
                 <div class="col text-center">
                     <div class="rounded-circle text-info d-inline-block">
-                        <i class="fa fa-truck fa-4x m-3 p-3" aria-hidden="true"></i>
+                        <i class="fa fa-truck fa-2x m-3 p-3" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -301,7 +356,7 @@
             <div class="row mb-2">
                 <div class="col text-center">
                     <div class="rounded-circle text-info d-inline-block">
-                        <i class="fa fa-money-bill-wave fa-4x m-3 p-3" aria-hidden="true"></i>
+                        <i class="fa fa-money-bill-wave fa-2x m-3 p-3" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -319,7 +374,7 @@
             <div class="row mb-2">
                 <div class="col text-center">
                     <div class="rounded-circle text-info d-inline-block">
-                        <i class="fab fa-paypal fa-4x m-3 p-3" aria-hidden="true"></i>
+                        <i class="fab fa-paypal fa-2x m-3 p-3" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -336,7 +391,7 @@
             <div class="row mb-2">
                 <div class="col text-center">
                     <div class="rounded-circle text-info d-inline-block">
-                        <i class="fa fa-shield-alt fa-4x m-3 p-3" aria-hidden="true"></i>
+                        <i class="fa fa-shield-alt fa-2x m-3 p-3" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>

@@ -35,7 +35,8 @@
             </div>
             <div class="opciones d-flex align-items-center">
               <div class="btn-group btn-sm">
-                <a href="<?php echo base_url('admin/carruseles/crear'); ?>" class="btn btn-success btn-sm"> <span class="fa fa-plus"></span> Nuevo Carrusel </a>
+                <a href="<?php echo base_url('admin/carruseles/crear'); ?>" class="btn btn-success btn-sm"> <span class="fa fa-plus"></span> Nuevo Carrusel Productos </a>
+                <a href="<?php echo base_url('admin/carruseles/crear?tabla=servicios'); ?>" class="btn btn-info btn-sm"> <span class="fa fa-plus"></span> Nuevo Carrusel Servicios</a>
               </div>
 
             </div>
@@ -50,7 +51,7 @@
                   <th class="text-left">Categorias</th>
                   <th class="text-left">Origen</th>
                   <th class="text-left">Artesanal</th>
-                  <th class="text-left">Ordenar productos por:</th>
+                  <th class="text-left">Ordenar por:</th>
                   <th class="text-left">Limite</th>
                   <th class="text-left">Estado</th>
                   <th class="text-right">Controles</th>
