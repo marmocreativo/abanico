@@ -22,13 +22,13 @@
               <?php } ?>
                 <form class="" action="<?php echo base_url('usuario/registro_rapido/registro_usuario');?>" method="post">
                   <input type="hidden" name="UrlRedirect" value="<?php echo base_url('categoria'); ?>">
-                  <!--
+
                   <div class="row">
                     <div class="col mb-3">
-                      <img src="<?php echo base_url('assets/global/img/registro_concurso.jpg'); ?>" class="img-fluid" alt="">
+                      <img src="<?php echo base_url('assets/global/img/registro_concurso_tortuga.jpg'); ?>" class="img-fluid" alt="">
                     </div>
                   </div>
-                -->
+
                   <div class="row">
                     <div class="col">
                        <div class="form-group">
@@ -67,7 +67,7 @@
             <div class="card-footer">
               <nav class="nav justify-content-center nav-fill">
                 <a class="nav-link" href="<?php echo base_url('login');?>"> <span class="fa fa-pen-square"></span> <?php echo $this->lang->line('usuario_formulario_registro_iniciar_sesion'); ?></a>
-                <a class="nav-link" href="<?php echo base_url('publicacion/bases-concurso-inaugural');?>"> <span class="fa fa-gift"></span> Más información sobre el concurso</a>
+                <a class="nav-link" href="<?php echo base_url('publicacion/bases-concurso-por-un-planeta-limpio');?>"> <span class="fa fa-gift"></span> Más información sobre el concurso</a>
               </nav>
             </div>
           </div>
