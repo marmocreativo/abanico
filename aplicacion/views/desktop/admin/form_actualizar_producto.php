@@ -411,7 +411,7 @@
                                 </td>
                                 <td class="text-right">
                                   <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-sm btn-danger borrar_galeria" data-id-galeria='<?php echo $galeria->ID_GALERIA; ?>'><span class="fa fa-trash-alt"></span></button>
+                                    <button type="button" data-enlace="<?php echo base_url('admin/productos/borrar_galeria')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-danger borrar_entrada" title="Eliminar"> <span class="fa fa-trash"></span> </button>
                                   </div>
                                 </td>
                               </tr>
