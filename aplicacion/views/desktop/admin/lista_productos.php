@@ -110,7 +110,17 @@
                 <td class="text-left">
                   <img src="<?php echo base_url($ruta_portada); ?>" width="50">
                 </td>
-                <td class="text-left"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo word_limiter($producto->PRODUCTO_NOMBRE,10); ?></span></td>
+                <td class="text-left">
+                  <span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo word_limiter($producto->PRODUCTO_NOMBRE,10); ?></span>
+                  <p>
+                    <?php if(!empty($producto->META_TITULO)){ $color='text-success'; $icono='fa-check-circle';}else{ $color='text-danger'; $icono='fa-circle'; }  ?>
+                    <i class="far <?php echo $icono.' '.$color; ?>" title="meta título"></i>
+                    <?php if(!empty($producto->META_DESCRIPCION)){ $color='text-success'; $icono='fa-check-circle';}else{ $color='text-danger'; $icono='fa-circle'; }  ?>
+                    <i class="far <?php echo $icono.' '.$color; ?>" title="meta descripción"></i>
+                    <?php if(!empty($producto->META_KEYWORDS)){ $color='text-success'; $icono='fa-check-circle';}else{ $color='text-danger'; $icono='fa-circle'; }  ?>
+                    <i class="far <?php echo $icono.' '.$color; ?>" title="meta keywords"></i>
+                  </p>
+                </td>
                 <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo $producto->PRODUCTO_MODELO; ?></span></td>
                 <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> $<?php echo $producto->PRODUCTO_PRECIO; ?> <small>MXN</small></span></td>
                 <td class="text-center">
