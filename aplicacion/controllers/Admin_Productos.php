@@ -401,7 +401,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			}else{
 				$this->data['producto'] = $this->ProductosModel->detalles($_GET['id']);
 			}
-			$this->data['usuarios'] = $this->UsuariosModel->lista([ 'USUARIO_ESTADO'=>'activo' ],'','','');
+			$this->data['usuarios'] = $this->UsuariosModel->lista([ 'USUARIO_ESTADO'=>'activo' ],'','','','');
 			$this->data['usuario_producto'] = $this->UsuariosModel->detalles($this->data['producto']['ID_USUARIO']);
 			$this->data['tienda'] = $this->TiendasModel->tienda_usuario($this->data['usuario_producto']['ID_USUARIO']);
 			$this->data['galerias'] = $this->GaleriasModel->lista($_GET['id'],'ORDEN ASC','');

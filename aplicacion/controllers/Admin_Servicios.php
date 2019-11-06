@@ -240,7 +240,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
     }else{
 
 			$this->data['servicio'] = $this->ServiciosModel->detalles($_GET['id']);
-			$this->data['usuarios'] = $this->UsuariosModel->lista([ 'USUARIO_ESTADO'=>'activo' ],'','','');
+			$this->data['usuarios'] = $this->UsuariosModel->lista([ 'USUARIO_ESTADO'=>'activo' ],'','','','');
 			$this->data['usuario_servicio'] = $this->UsuariosModel->detalles($this->data['servicio']['ID_USUARIO']);
 			$this->data['perfil'] = $this->PerfilServiciosModel->perfil_usuario($this->data['usuario_servicio']['ID_USUARIO']);
 			$this->data['galerias'] = $this->GaleriasServiciosModel->lista($_GET['id'],'','5');

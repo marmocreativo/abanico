@@ -52,7 +52,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 			// Tipo de Uusario por defecto
 			if(!isset($_GET['tipo_usuario'])||empty($_GET['tipo_usuario'])){ $this->data['tipo_usuario']=''; }else{ $this->data['tipo_usuario']=$_GET['tipo_usuario']; }
-			$this->data['usuarios'] = $this->UsuariosModel->lista_admin('',$this->data['tipo_usuario'],'','');
+			$this->data['usuarios'] = $this->UsuariosModel->lista_admin('','',$this->data['tipo_usuario'],'','');
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_usuarios',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
@@ -62,13 +62,26 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 		// Tipo de Uusario por defecto
 		if(!isset($_GET['tipo_usuario'])||empty($_GET['tipo_usuario'])){ $this->data['tipo_usuario']='usr-1'; }else{ $this->data['tipo_usuario']=$_GET['tipo_usuario']; }
-		if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
-			$parametros = array(
-				'USUARIO_NOMBRE'=>$_GET['Busqueda'],
-				'USUARIO_APELLIDOS'=>$_GET['Busqueda'],
-				'USUARIO_CORREO'=>$_GET['Busqueda'],
-			);
-			$this->data['usuarios'] = $this->UsuariosModel->lista($parametros,$_GET['tipo_usuario'],'','');
+		if(isset($_GET['Busqueda'])){
+
+			if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
+				$parametros = array(
+					'USUARIO_NOMBRE'=>$_GET['Busqueda'],
+					'USUARIO_APELLIDOS'=>$_GET['Busqueda'],
+					'USUARIO_CORREO'=>$_GET['Busqueda'],
+				);
+			}else{
+				$parametros = '';
+			}
+
+			$fechas = array();
+			if(isset($_GET['FechaDesde'])&&!empty($_GET['FechaDesde'])){
+				$fechas['USUARIO_FECHA_REGISTRO >='] = $_GET['FechaDesde'];
+			}
+			if(isset($_GET['FechaHasta'])&&!empty($_GET['FechaHasta'])){
+				$fechas['USUARIO_FECHA_REGISTRO <='] = $_GET['FechaHasta'];
+			}
+			$this->data['usuarios'] = $this->UsuariosModel->lista_admin($parametros,$fechas,$_GET['tipo_usuario'],'','');
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/lista_usuarios',$this->data);
@@ -255,21 +268,41 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 public function excel()
 {
 	if(!isset($_GET['tipo_usuario'])||empty($_GET['tipo_usuario'])){ $this->data['tipo_usuario']=''; }else{ $this->data['tipo_usuario']=$_GET['tipo_usuario']; }
-	$this->data['usuarios'] = $this->UsuariosModel->lista_admin('',$this->data['tipo_usuario'],'','');
+
+	if(isset($_GET['Busqueda'])&&!empty($_GET['Busqueda'])){
+		$parametros = array(
+			'USUARIO_NOMBRE'=>$_GET['Busqueda'],
+			'USUARIO_APELLIDOS'=>$_GET['Busqueda'],
+			'USUARIO_CORREO'=>$_GET['Busqueda'],
+		);
+	}else{
+		$parametros = '';
+	}
+
+	$fechas = array();
+	if(isset($_GET['FechaDesde'])&&!empty($_GET['FechaDesde'])){
+		$fechas['USUARIO_FECHA_REGISTRO >='] = $_GET['FechaDesde'];
+	}
+	if(isset($_GET['FechaHasta'])&&!empty($_GET['FechaHasta'])){
+		$fechas['USUARIO_FECHA_REGISTRO <='] = $_GET['FechaHasta'];
+	}
+
+	$this->data['usuarios'] = $this->UsuariosModel->lista_admin($parametros,$fechas,$this->data['tipo_usuario'],'','');
+
 
 	$spreadsheet = new Spreadsheet();
 	$sheet = $spreadsheet->getActiveSheet();
 	// Estilos encabezado
-	$sheet->getStyle('A2:F2')
+	$sheet->getStyle('A1:G1')
 	->getFill()
 	->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
 	->getStartColor()
 	->setARGB('3c8dbc');
 
-	$spreadsheet->getActiveSheet()->getStyle('A2:F2')
+	$spreadsheet->getActiveSheet()->getStyle('A1:G1')
 	->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
 
-	$spreadsheet->getActiveSheet()->getStyle('A2:F2')
+	$spreadsheet->getActiveSheet()->getStyle('A1:G1')
 	->getAlignment()->setWrapText(true);
 	$spreadsheet->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
 	$spreadsheet->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
@@ -284,6 +317,7 @@ public function excel()
 	$sheet->setCellValue('D1', 'Correo');
 	$sheet->setCellValue('E1', 'Tipo de Usuario');
 	$sheet->setCellValue('F1', 'Lista de correos');
+	$sheet->setCellValue('G1', 'Fecha de registro');
 
 	$i = 3;
 	foreach($this->data['usuarios'] as $usuario){
@@ -295,6 +329,7 @@ public function excel()
 		$sheet->setCellValue('D'.$i, $usuario->USUARIO_CORREO);
 		$sheet->setCellValue('E'.$i, $usuario->USUARIO_TIPO);
 		$sheet->setCellValue('F'.$i, $usuario->USUARIO_LISTA_DE_CORREO);
+		$sheet->setCellValue('G'.$i, $usuario->USUARIO_FECHA_REGISTRO);
 	$i ++;
 	}
 
@@ -307,6 +342,7 @@ public function excel()
 	header('Cache-Control: max-age=0');
 
 	$writer->save('php://output'); // download file
+
 
 	}
 

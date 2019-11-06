@@ -47,14 +47,22 @@
                 </div>
                 <div class="form-group">
                   <label for="Busqueda" class="sr-only">Busqueda</label>
-                  <input type="text" class="form-control form-control-sm" id="Busqueda" name="Busqueda" placeholder="Buscar">
+                  <input type="text" class="form-control form-control-sm" id="Busqueda" name="Busqueda" placeholder="Nombre o Correo" value="<?php if(isset($_GET['Busqueda'])){ echo $_GET['Busqueda']; } ?>">
+                </div>
+                <div class="form-group">
+                  <label for="FechaDesde">Desde</label>
+                  <input type="date" class="form-control form-control-sm" name="FechaDesde" value="<?php if(isset($_GET['FechaDesde'])){ echo $_GET['FechaDesde']; } ?>">
+                </div>
+                <div class="form-group">
+                  <label for="FechaHasta">Hasta</label>
+                  <input type="date" class="form-control form-control-sm" name="FechaHasta" value="<?php if(isset($_GET['FechaHasta'])){ echo $_GET['FechaHasta']; } ?>">
                 </div>
                 <button type="submit" class="btn btn<?php echo $primary ?> btn-sm"> <span class="fa fa-search"></span> </button>
               </form>
             </div>
             <div class="opciones d-flex align-items-center">
               <div class="btn-group btn-sm">
-                <a href="<?php echo base_url('admin/usuarios/excel'); ?>" class="btn btn-info btn-sm"> <span class="fa fa-download"></span> Descargar </a>
+                <a href="<?php echo base_url('admin/usuarios/excel'.'?'.$_SERVER['QUERY_STRING']); ?>" class="btn btn-info btn-sm"> <span class="fa fa-download"></span> Descargar </a>
                 <a href="<?php echo base_url('admin/usuarios/crear?tipo_usuario='.$tipo_usuario); ?>" class="btn btn-success btn-sm"> <span class="fa fa-plus"></span> Nuevo Usuario </a>
               </div>
 

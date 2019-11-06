@@ -11,9 +11,12 @@ class UsuariosModel extends CI_Model {
     * $orden indicará la Columna y si es ascendente o descendente
     * $limite Solo se usará si hay una cantidad limite de productos a mostrar
  */
-  function lista($parametros,$tipo_usuario,$orden,$limite){
+  function lista($parametros,$fechas,$tipo_usuario,$orden,$limite){
     if(!empty($parametros)){
       $this->db->or_like($parametros);
+    }
+    if(!empty($fechas)){
+      $this->db->where($fechas);
     }
     if(!empty($tipo_usuario)){
       $this->db->where('USUARIO_TIPO', $tipo_usuario);
@@ -28,9 +31,12 @@ class UsuariosModel extends CI_Model {
     $query = $this->db->get('usuarios');
     return $query->result();
   }
-  function lista_admin($parametros,$tipo_usuario,$orden,$limite){
+  function lista_admin($parametros,$fechas,$tipo_usuario,$orden,$limite){
     if(!empty($parametros)){
       $this->db->or_like($parametros);
+    }
+    if(!empty($fechas)){
+      $this->db->where($fechas);
     }
     if(!empty($tipo_usuario)){
       $this->db->where('USUARIO_TIPO', $tipo_usuario);
