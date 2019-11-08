@@ -199,6 +199,10 @@
                   <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>" class="enlace-principal">
                     <div class="imagen-producto">
                       <div class="contenedor-etiquetas">
+
+                        <?php if($producto->PRODUCTO_CANTIDAD<='0'){ ?>
+                          <span class="etiqueta-agotado">Agotado</span>
+                        <?php } ?>
                         <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
                           <span class="etiqueta-1"><?php echo $this->lang->line('etiquetas_productos_mexico'); ?></span>
                         <?php } ?>
@@ -210,6 +214,7 @@
                         <?php } ?>
                       </div>
                         <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>
+
                         <div class="overlay-producto <?php echo 'bg'.$primary; ?>"></div>
                         <div class="boton-ver">
                           <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
