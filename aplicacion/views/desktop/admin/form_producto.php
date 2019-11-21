@@ -119,7 +119,7 @@
                         <div class="col">
                           <div class="form-group">
                             <label for="CantidadProducto"><?php echo $this->lang->line('usuario_form_producto_cantidad'); ?></label>
-                            <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="1" value="1">
+                            <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="0" value="1">
                           </div>
                         </div>
                       </div>
