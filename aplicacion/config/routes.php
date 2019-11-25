@@ -19,6 +19,8 @@ $route['translate_uri_dashes'] = FALSE;
 // Rutas de Administrador
 $route['admin/concursos'] = 'Admin_Concursos';
 $route['admin/concursos/(:any)'] = 'Admin_Concursos/$1';
+$route['admin/concursos_foto'] = 'Admin_Concursos_Foto';
+$route['admin/concursos_foto/(:any)'] = 'Admin_Concursos_Foto/$1';
 $route['admin/cupones'] = 'Admin_Cupones';
 $route['admin/cupones/(:any)'] = 'Admin_Cupones/$1';
 $route['admin/corte_planes'] = 'Admin_CortePlanes';
@@ -137,6 +139,8 @@ $route['premios/(:any)'] = 'Tienda_Premios/vista/$1';
 $route['publicacion/(:any)'] = 'Tienda_Publicaciones/index/$1';
 $route['concursos'] = 'Tienda_Concursos';
 $route['concursos/(:any)'] = 'Tienda_Concursos/$1';
+$route['concursos_foto'] = 'Tienda_Concursos_Foto';
+$route['concursos_foto/(:any)'] = 'Tienda_Concursos_Foto/$1';
 $route['datos_curiosos'] = 'Tienda_Datos_Curiosos';
 $route['datos_curiosos/(:any)'] = 'Tienda_Datos_Curiosos/$1';
 $route['test'] = 'Tienda_Test';

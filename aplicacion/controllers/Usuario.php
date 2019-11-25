@@ -23,7 +23,7 @@ class Usuario extends CI_Controller {
   }
 	public function index()
 	{
-		if(verificar_sesion()){
+		if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
 			$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/panel_usuario',$this->data);
 			$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);

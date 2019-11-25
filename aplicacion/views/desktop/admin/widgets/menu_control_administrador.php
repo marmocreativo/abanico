@@ -137,6 +137,9 @@
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
           <a href="<?php echo base_url('admin/concursos'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-gift"></i></i><span class="kt-menu__link-text">Concursos</span></a>
         </li>
+        <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+          <a href="<?php echo base_url('admin/concursos_foto'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-camera"></i></i><span class="kt-menu__link-text">Concursos Foto</span></a>
+        </li>
       </ul>
     </div>
   </li>
