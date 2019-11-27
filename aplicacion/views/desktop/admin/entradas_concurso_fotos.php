@@ -35,7 +35,37 @@
           <div class="opciones">
           </div>
         </div>
-        <div class="card-body py-0">
+        <div class="card-body">
+          <div class="row">
+            <?php   foreach($entradas_concurso as $entrada){ ?>
+            <div class="col-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <img src="<?php echo base_url('contenido/img/publicaciones/'.$entrada->ARCHIVO); ?>" class="img-fluid" alt="">
+                </div>
+                <div class="card-footer">
+                  <p>Marcar como:</p>
+                  <div class="btn-group">
+                    <?php if($entrada->VALIDO=='si'){ ?>
+                    <a href="<?php echo base_url('admin/concursos_foto/validar'); ?>" class="btn btn-sm btn-danger"> NO VALIDO</a>
+                    <?php } ?>
+                    <?php if($entrada->VALIDO=='no'){ ?>
+                    <a href="<?php echo base_url('admin/concursos_foto/validar'); ?>" class="btn btn-sm btn-primary"> VALIDO</a>
+                    <?php } ?>
+                    <?php if($entrada->VALIDO=='si'){ ?>
+                      <?php if($entrada->GANADOR=='no'){ ?>
+                      <a href="<?php echo base_url('admin/concursos_foto/ganador'); ?>" class="btn btn-sm btn-success"> GANADOR</a>
+                      <?php } ?>
+                      <?php if($entrada->GANADOR=='si'){ ?>
+                      <a href="<?php echo base_url('admin/concursos_foto/ganador'); ?>" class="btn btn-sm btn-warning"> NO GANADOR</a>
+                      <?php } ?>
+                  <?php } // Si valido ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+          </div>
         </div>
       </div>
     </div>

@@ -50,7 +50,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function entradas()
 	{
 			$this->data['concurso'] = $this->ConcursosFotoModel->detalles($_GET['id']);
-			$this->data['entradas'] = $this->ConcursosFotoModel->entradas($_GET['id'],'','','','');
+				$this->data['entradas_concurso'] = $this->ConcursosFotoModel->entradas($this->data['concurso']['ID']);
 
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/entradas_concurso_fotos',$this->data);
@@ -107,6 +107,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_concurso_foto',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
+	}
+
+	public function validar()
+	{
+		$this->ConcursosFotoModel->validar($_GET['id'],$_GET['id_concurso'],$_GET['valido']);
+		redirect(base_url('admin/concursos_foto/entradas?id='.$_GET['id_concurso']));
 	}
 
 	public function borrar()
