@@ -76,6 +76,20 @@ class ConcursosFotoModel extends CI_Model {
     $this->db->where('ID',$id);
     return $this->db->update('concurso_foto',$parametros);
   }
+
+  function validar($id,$id_concurso,$estado){
+    if($estado=='si'){ $nuevo_estado = 'no'; }
+    if($estado=='no'){ $nuevo_estado = 'si'; }
+    $this->db->where('ID',$id);
+    return $this->db->update('concurso_foto_entradas',['VALIDO'=> $nuevo_estado]);
+  }
+
+  function ganador($id,$id_concurso,$estado){
+    if($estado=='si'){ $nuevo_estado = 'no'; }
+    if($estado=='no'){ $nuevo_estado = 'si'; }
+    $this->db->where('ID',$id);
+    return $this->db->update('concurso_foto_entradas',['GANADOR'=> $nuevo_estado]);
+  }
   /*
     * Borro una entrada
     * $id es el identificador de la entrada

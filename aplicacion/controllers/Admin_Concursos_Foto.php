@@ -115,6 +115,12 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		redirect(base_url('admin/concursos_foto/entradas?id='.$_GET['id_concurso']));
 	}
 
+	public function ganador()
+	{
+		$this->ConcursosFotoModel->ganador($_GET['id'],$_GET['id_concurso'],$_GET['ganador']);
+		redirect(base_url('admin/concursos_foto/entradas?id='.$_GET['id_concurso']));
+	}
+
 	public function borrar()
 	{
 		$concurso = $this->ConcursosModel->detalles($_GET['id']);
