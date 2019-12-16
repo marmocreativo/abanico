@@ -53,6 +53,7 @@ class TransportistasRangosModel extends CI_Model {
       $this->db->where('transportistas_disponibilidad.TRANSPORTISTA_ESTADO',$estado);
       $this->db->group_by('transportistas_rangos.ID_TRANSPORTISTA');
       $this->db->order_by('IMPORTE ASC');
+      $this->db->limit(3);
     $query = $this->db->get('transportistas_rangos');
     return $query->result();
   }

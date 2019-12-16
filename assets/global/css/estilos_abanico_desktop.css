@@ -378,7 +378,7 @@ color: #FF6600;
 }
 .cuadricula-productos a .etiqueta-agotado{
   display: block;
-  width: 100%;
+  width: 120%;
   text-align: center;
   padding: 2px 15px 2px 20px;
   margin-bottom: 8px;
@@ -425,6 +425,11 @@ color: #FF6600;
 .cuadricula-productos a .etiqueta-agotado:before{
   border-bottom: solid 8px transparent;
   border-left: solid 10px #b62b38;
+}
+.etiqueta-agotado{
+  transform: translateY(125px) translateX(18px)rotate(35deg);
+  -webkit-transform: translateY(125px) translateX(18px)rotate(35deg);
+  -moz-transform: translateY(125px) translateX(18px)rotate(35deg);
 }
 .imagen-producto span.etiqueta-artesanal {
     padding-top: 0;

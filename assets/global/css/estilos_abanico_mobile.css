@@ -376,6 +376,22 @@ html, body{
   max-width: 30px;
   text-align: right;
 }
+.contenedorEtiquetas .etiqueta-agotado{
+  background-color: #dc3545;
+  display: block;
+  width: 120%;
+  text-align: center;
+  padding: 2px 15px 2px 20px;
+  margin-bottom: 8px;
+  margin-left: 75%;
+  font-size: 0.8em;
+  color: #fff;
+  position: relative;
+  right: 0 !important;
+  bottom: 0 !important;
+  border-radius: 0 !important;
+}
+
 
 .sliderProductos.favoritos .contenedorEtiquetas .etiqueta-1,
 .sliderProductos.favoritos .contenedorEtiquetas .etiqueta-2,

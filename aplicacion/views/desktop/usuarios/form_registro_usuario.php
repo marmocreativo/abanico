@@ -17,6 +17,7 @@
               <h4><?php echo $this->lang->line('usuario_formulario_registro_instrucciones'); ?></h4>
             </div>
             <div class="card-body">
+              <?php retro_alimentacion(); ?>
               <?php if(!empty(validation_errors())){ ?>
                 <div class="alert alert-danger">
                   <?php echo validation_errors(); ?>
@@ -72,6 +73,16 @@
                        <input type="text" class="form-control" id="OtroContacto" name="OtroContacto" placeholder="" value="<?=!form_error('OtroContacto')?set_value('OtroContacto'):''?>">
                      </div>
                    </div>
+                   <script src="https://www.google.com/recaptcha/api.js?render=6LdiDcgUAAAAAESUj4C8u00DMeEWJfj8lBLQrv61"></script>
+       						 <script>
+       						 grecaptcha.ready(function() {
+       								grecaptcha.execute('6LdiDcgUAAAAAESUj4C8u00DMeEWJfj8lBLQrv61', {action: 'homepage'}).then(function(token) {
+       									var recaptchaResponse = document.getElementById('recaptchaResponse');
+       									recaptchaResponse.value = token;
+       								});
+       						});
+       						 </script>
+                   <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                    <div class="form-check">
                      <input type="checkbox" class="form-check-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
                      <label class="form-check-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_formulario_registro_terminos_y_condiciones'); ?></label>

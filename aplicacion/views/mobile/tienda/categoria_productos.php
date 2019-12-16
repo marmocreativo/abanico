@@ -177,6 +177,10 @@
                       <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                         <span class="etiqueta-3"><?php echo $this->lang->line('etiquetas_productos_oferta'); ?></span>
                       <?php } ?>
+
+                        <?php if($producto->PRODUCTO_CANTIDAD<='0'){ ?>
+                          <span class="etiqueta-agotado">Agotado</span>
+                        <?php } ?>
                     </div>
                   </div>
                   <div class="product-content text-left p-3">

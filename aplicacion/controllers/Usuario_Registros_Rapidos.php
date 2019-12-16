@@ -64,6 +64,22 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		if($this->form_validation->run())
 		{
+			/*RECAPTCHA*/
+			$recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+				$recaptcha_secret = '6LdiDcgUAAAAAJXBLDa4q1uW-Eu3-I1OSWeY3opF';
+				$recaptcha_response = $_POST['recaptcha_response'];
+				$recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+				$recaptcha = json_decode($recaptcha);
+				if($recaptcha->score >= 0.6){
+					$enviar_mensaje = true;
+				}else{
+					$enviar_mensaje = false;
+				}
+			/*RECAPTCHA*/
+			if(!$enviar_mensaje){
+				$this->session->set_flashdata('alerta', 'Parece que no podemos comprobar que seas un humano, por favor comunícate con nosotros.');
+				redirect(base_url('usuario/registrar'));
+			}
 			/*
 			+ Éxito de validación de formulario
 			*/
@@ -160,6 +176,22 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		if($this->form_validation->run())
 		{
+			/*RECAPTCHA*/
+			$recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+				$recaptcha_secret = '6LdiDcgUAAAAAJXBLDa4q1uW-Eu3-I1OSWeY3opF';
+				$recaptcha_response = $_POST['recaptcha_response'];
+				$recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+				$recaptcha = json_decode($recaptcha);
+				if($recaptcha->score >= 0.6){
+					$enviar_mensaje = true;
+				}else{
+					$enviar_mensaje = false;
+				}
+			/*RECAPTCHA*/
+			if(!$enviar_mensaje){
+				$this->session->set_flashdata('alerta', 'Parece que no podemos comprobar que seas un humano, por favor comunícate con nosotros.');
+				redirect(base_url('usuario/registrar'));
+			}
 			/*
 			+ Éxito de validación de formulario
 			*/
@@ -320,6 +352,23 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		if($this->form_validation->run())
 		{
+
+			/*RECAPTCHA*/
+			$recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+				$recaptcha_secret = '6LdiDcgUAAAAAJXBLDa4q1uW-Eu3-I1OSWeY3opF';
+				$recaptcha_response = $_POST['recaptcha_response'];
+				$recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+				$recaptcha = json_decode($recaptcha);
+				if($recaptcha->score >= 0.6){
+					$enviar_mensaje = true;
+				}else{
+					$enviar_mensaje = false;
+				}
+			/*RECAPTCHA*/
+			if(!$enviar_mensaje){
+				$this->session->set_flashdata('alerta', 'Parece que no podemos comprobar que seas un humano, por favor comunícate con nosotros.');
+				redirect(base_url('usuario/registrar'));
+			}
 			/*
 			+ Éxito de validación de formulario
 			*/

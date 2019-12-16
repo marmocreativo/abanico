@@ -1,4 +1,4 @@
-<div class="contenido_principal">
+ <div class="contenido_principal">
   <div class="fila fila-titulo">
     <div class="container-fluid">
       <div class="row">
@@ -59,6 +59,18 @@
                      <input type="checkbox" class="form-check-input" id="TerminosyCondiciones" name="TerminosyCondiciones" required>
                      <label class="form-check-label" for="TerminosyCondiciones"><?php echo $this->lang->line('usuario_formulario_registro_terminos_y_condiciones'); ?></label>
                    </div>
+                   <!-- Captcha -->
+  						<script src="https://www.google.com/recaptcha/api.js?render=6LdiDcgUAAAAAESUj4C8u00DMeEWJfj8lBLQrv61"></script>
+  						 <script>
+  						 grecaptcha.ready(function() {
+  								grecaptcha.execute('6LdiDcgUAAAAAESUj4C8u00DMeEWJfj8lBLQrv61', {action: 'homepage'}).then(function(token) {
+  									var recaptchaResponse = document.getElementById('recaptchaResponse');
+  									recaptchaResponse.value = token;
+  								});
+  						});
+  						 </script>
+						 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+						<!-- /Captcha -->
                    <a href="<?php echo base_url('publicacion/terminos-y-condiciones-de-servicio-para-usuarios-nil'); ?>" target="_blank">Términos y condiciones</a>
                    <hr>
                    <button type="submit" class="btn btn-primary btn-block"><?php echo $this->lang->line('usuario_formulario_registro_registrarme'); ?></button>
