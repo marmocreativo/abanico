@@ -5,25 +5,7 @@ class EstadisticasModel extends CI_Model {
       parent::__construct();
       // Función Construct
   }
-  /*
-    * Enlisto todas las entradas
-    * $parametros Debe ser un array de Columnas y Valores, Busco usando la función LIKE
-    * $orden indicará la Columna y si es ascendente o descendente
-    * $limite Solo se usará si hay una cantidad limite de productos a mostrar
- */
-  function lista($parametros,$orden,$limite){
-    if(!empty($parametros)){
-      $this->db->or_like($parametros);
-    }
-    if(!empty($orden)){
-      $this->db->order_by($orden);
-    }
-    if(!empty($limite)){
-      $this->db->limit($limite);
-    }
-    $query = $this->db->get('divisas');
-    return $query->result();
-  }
+
   /*
     * Creo una nueva entrada usando los parámetros
  */
@@ -94,6 +76,14 @@ class EstadisticasModel extends CI_Model {
      ->group_by('categorias_productos.ID_CATEGORIA')
      ->get()->result_array();
    return $data;
+  }
+  /*
+  *Conteo veces vistas
+  */
+  function conteo_vistas_ip($ip,$id){
+      $this->db->where(['VISTA_IP'=>$ip,'VISTA_TIPO'=>'producto','ID_OBJETO'=>$id]);
+      $query = $this->db->get('vistas_generales');
+      return $query->num_rows();
   }
 
   /*
