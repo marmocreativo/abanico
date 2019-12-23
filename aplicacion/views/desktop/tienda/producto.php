@@ -29,8 +29,15 @@
     if(!isset($_SESSION['descuento_flash'])){
       $_SESSION['descuento_flash']['hora']=date('H:i:s');
       $_SESSION['descuento_flash']['producto']=$producto['ID_PRODUCTO'];
+    }else{
+      if($_SESSION['descuento_flash']['producto']==$producto['ID_PRODUCTO']){
+        $hora_limite_descuento = date('H:i:s', strtotime("+15 minutes", strtotime($_SESSION['descuento_flash']['hora']) ) );
+      }else{
+        $hora_limite_descuento = null;
+      }
     }
-    $hora_limite_descuento = date('H:i:s', strtotime("+15 minutes", strtotime($_SESSION['descuento_flash']['hora']) ) );
+  }else{
+    $hora_limite_descuento = null;
   }
 ?>
 
