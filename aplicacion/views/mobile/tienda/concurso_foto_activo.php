@@ -6,7 +6,7 @@
         <p><?php echo $concurso_activo['DESCRIPCION']; ?> </p>
         <hr>
         <div class="row justify-content-center">
-          <div class="col-4">
+          <div class="col-9">
             <?php retro_alimentacion(); ?>
             <form class="" action="<?php echo base_url('concursos_foto/subir'); ?>" method="post" enctype="multipart/form-data">
               <input type="hidden" name="IdConcurso" value="<?php echo $concurso_activo['ID']; ?>">

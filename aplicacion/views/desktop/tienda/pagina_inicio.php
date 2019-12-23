@@ -412,7 +412,7 @@
     </div>
   </div>
 </div>
-
+<!--
 <div class="fila py-3 mb-3" id="Concursos">
   <div class="row">
     <div class="col text-center">
@@ -422,6 +422,7 @@
     </div>
   </div>
 </div>
+-->
 
 <!-- Modal de flujos -->
 
