@@ -342,17 +342,6 @@
      </div>
    </div>
  </div>
-
- <div class="fila py-3 mb-3" id="Concursos">
-   <div class="row">
-     <div class="col text-center">
-       <a href="https://www.abanicoytu.com/publicacion/bases-concurso-por-un-planeta-limpio">
-       <img src="<?php echo base_url('assets/global/img/registro_concurso_tortuga.jpg'); ?>" width="100%" alt="">
-       </a>
-     </div>
-   </div>
- </div>
-
 <!-- Modal de flujos -->
 
 <!-- Modal -->

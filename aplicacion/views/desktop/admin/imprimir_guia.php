@@ -9,38 +9,42 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style media="print">
       h2{
-        font-size: 12px;
+        font-size: 30px;
       }
       h4{
-        font-size: 11px;
+        font-size: 30px;
       }
       p{
-        font-size: 9px;
+        font-size: 24px;
+      }
+      .parrafo-peque{
+        font-size: 12px;
       }
     </style>
     <title>Guia</title>
   </head>
-  <body style="width:500px;">
+  <body>
     <div class="container-fluid">
+      <?php if(isset($_GET['copias'])&&!empty($_GET['copias'])){ $copias = $_GET['copias']; }else{ $copias = 2;} ?>
       <div class="row mt-3">
-        <div class="col-12 p-0">
+        <?php for($i=1; $i<=$copias; $i++){ ?>
+        <div class="col-6 p-0">
           <table class="table table-bordered">
             <tr>
               <td>
-                <h2>Abanico<br> <small>Siempre lo mejor</small></h2>
-                <h4>Copia para Remitente</h4>
+                <h2>Abanico <small>Siempre lo mejor</small></h2>
               </td>
             </tr>
             <tr>
               <td>
                 <h4>Destinatario</h4>
-                <p> <b>Nombre:</b> <br><?php echo $guia['GUIA_NOMBRE'] ?></p>
-                <p> <b>Dirección:</b> <br><?php echo $guia['GUIA_DIRECCION'] ?></p>
-                <p> <b>Teléfono:</b> <br><?php echo $guia['GUIA_TELEFONO'] ?></p>
-                <p> <b>Correo:</b> <br><?php echo $guia['GUIA_CORREO'] ?></p>
+                <p> <?php echo $guia['GUIA_NOMBRE'] ?></p>
+                <p> <?php echo $guia['GUIA_DIRECCION'] ?></p>
+                <p> <?php echo $guia['GUIA_TELEFONO'] ?></p>
+                <p> <?php echo $guia['GUIA_CORREO'] ?></p>
                 <h4>Remitente</h4>
-                <p> <b>Nombre:</b> <br>ABANICO SIEMPRE LO MEJOR </p>
-                <p> <b>Dirección:</b> <br>GREGORIO V GELATI 14 DEPTO.  5, COLONIA SAN MIGUEL CHAPULTEPEC, DELEGACIÓN MIGUEL HIDALGO, CP 11850, CIUDAD DE MÉXICO</p>
+                <p class="parrafo-peque"> ABANICO SIEMPRE LO MEJOR </p>
+                <p class="parrafo-peque"> GREGORIO V GELATI 14 DEPTO.  5, COLONIA SAN MIGUEL CHAPULTEPEC, DELEGACIÓN MIGUEL HIDALGO, CP 11850, CIUDAD DE MÉXICO</p>
               </td>
             </tr>
             <tr>
@@ -56,72 +60,7 @@
             </tr>
           </table>
         </div>
-        <div class="col-12 p-0">
-          <table class="table table-bordered">
-            <tr>
-              <td>
-                <h2>Abanico<br> <small>Siempre lo mejor</small></h2>
-                <h4>Copia para Envio</h4>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h4>Destinatario</h4>
-                <p> <b>Nombre:</b> <br><?php echo $guia['GUIA_NOMBRE'] ?></p>
-                <p> <b>Dirección:</b> <br><?php echo $guia['GUIA_DIRECCION'] ?></p>
-                <p> <b>Teléfono:</b> <br><?php echo $guia['GUIA_TELEFONO'] ?></p>
-                <p> <b>Correo:</b> <br><?php echo $guia['GUIA_CORREO'] ?></p>
-                <h4>Remitente</h4>
-                <p> <b>Nombre:</b> <br>ABANICO SIEMPRE LO MEJOR </p>
-                <p> <b>Dirección:</b> <br>GREGORIO V GELATI 14 DEPTO.  5, COLONIA SAN MIGUEL CHAPULTEPEC, DELEGACIÓN MIGUEL HIDALGO, CP 11850, CIUDAD DE MÉXICO</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-              <h4><b>No.</b> <?php echo $guia['GUIA_CODIGO']; ?></h4>
-              <?php
-              require_once(APPPATH.'libraries/barcode/BarcodeGenerator.php');
-          		require_once(APPPATH.'libraries/barcode/BarcodeGeneratorHTML.php');
-          		$generator = new Picqer\Barcode\BarcodeGeneratorHTML();
-          		echo $generator->getBarcode($guia['GUIA_CODIGO'], $generator::TYPE_CODE_128);
-              ?>
-            </td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-12 p-0">
-          <table class="table table-bordered">
-            <tr>
-              <td>
-                <h2>Abanico<br> <small>Siempre lo mejor</small></h2>
-                <h4>Copia para Vendedor</h4>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h4>Destinatario</h4>
-                <p> <b>Nombre:</b> <br><?php echo $guia['GUIA_NOMBRE'] ?></p>
-                <p> <b>Dirección:</b> <br><?php echo $guia['GUIA_DIRECCION'] ?></p>
-                <p> <b>Teléfono:</b> <br><?php echo $guia['GUIA_TELEFONO'] ?></p>
-                <p> <b>Correo:</b> <br><?php echo $guia['GUIA_CORREO'] ?></p>
-                <h4>Remitente</h4>
-                <p> <b>Nombre:</b> <br>ABANICO SIEMPRE LO MEJOR </p>
-                <p> <b>Dirección:</b> <br>GREGORIO V GELATI 14 DEPTO.  5, COLONIA SAN MIGUEL CHAPULTEPEC, DELEGACIÓN MIGUEL HIDALGO, CP 11850, CIUDAD DE MÉXICO</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-              <h4><b>No.</b> <?php echo $guia['GUIA_CODIGO']; ?></h4>
-              <?php
-              require_once(APPPATH.'libraries/barcode/BarcodeGenerator.php');
-          		require_once(APPPATH.'libraries/barcode/BarcodeGeneratorHTML.php');
-          		$generator = new Picqer\Barcode\BarcodeGeneratorHTML();
-          		echo $generator->getBarcode($guia['GUIA_CODIGO'], $generator::TYPE_CODE_128);
-              ?>
-            </td>
-            </tr>
-          </table>
-        </div>
+      <?php } ?>
       </div>
     </div>
 
