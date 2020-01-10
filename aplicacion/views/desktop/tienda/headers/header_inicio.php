@@ -139,7 +139,7 @@
                       }
                     }
                   ?>
-                <a class="nav-link <?php if($i==0){ echo 'active';} ?> text<?php echo $categoria->CATEGORIA_COLOR; ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
+                <a class="nav-link <?php if($i==0){ echo 'active';} ?> text<?php echo $categoria->CATEGORIA_COLOR; ?> <?php if($categoria->CATEGORIA_MOSTRAR!='no mostrar' ){ echo 'd-none'; } ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
                   <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $titulo; ?>
                 </a>
                 <?php ++$i;  } ?>
