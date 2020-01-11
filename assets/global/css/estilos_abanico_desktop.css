@@ -358,9 +358,11 @@ color: #FF6600;
 .cuadricula-productos .contenedor-etiquetas{
   display: block;
   width: 100%;
+  min-height: 350px;
   position: absolute;
   top: 10px;
   z-index: 9;
+  overflow: hidden;
 }
 .cuadricula-productos a .etiqueta-1, .cuadricula-productos a .etiqueta-2, .cuadricula-productos a .etiqueta-3, .cuadricula-productos a .etiqueta-agotado{
   display: block;
@@ -378,7 +380,7 @@ color: #FF6600;
 }
 .cuadricula-productos a .etiqueta-agotado{
   display: block;
-  width: 120%;
+  width: 160%;
   text-align: center;
   padding: 2px 15px 2px 20px;
   margin-bottom: 8px;
@@ -386,8 +388,8 @@ color: #FF6600;
   font-size: 0.8em;
   color: #fff;
   position: relative;
-  right: 0 !important;
-  bottom: 0 !important;
+  right: -50px !important;
+  bottom: -20px !important;
   border-radius: 0 !important;
 }
 .cuadricula-productos a .etiqueta-1{

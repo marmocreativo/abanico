@@ -65,8 +65,8 @@
                <div class="row">
 								 <div class="col">
                    <div class="form-group">
-                     <label for="AdminCategoria">Mostrar en menú</label>
-                     <select class="form-control" id="AdminCategoria" name="AdminCategoria">
+                     <label for="MostrarCategoria">Mostrar en menú</label>
+                     <select class="form-control" id="MostrarCategoria" name="MostrarCategoria">
                        <option value="mostrar" <?php if($categoria['CATEGORIA_MOSTRAR']=='mostrar'){ echo 'selected'; } ?>>Mostrar en menú</option>
                        <option value="no mostrar" <?php if($categoria['CATEGORIA_MOSTRAR']=='no mostrar'){ echo 'selected'; } ?>>No mostrar en menú</option>
 											 <option value="productos" <?php if($categoria['CATEGORIA_MOSTRAR']=='productos'){ echo 'selected'; } ?>>Mostrar productos en menú</option>

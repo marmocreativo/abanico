@@ -61,8 +61,8 @@
                <div class="row">
                  <div class="col">
                    <div class="form-group">
-                     <label for="AdminCategoria">Mostrar en menú</label>
-                     <select class="form-control" id="AdminCategoria" name="AdminCategoria">
+                     <label for="MostrarCategoria">Mostrar en menú</label>
+                     <select class="form-control" id="MostrarCategoria" name="MostrarCategoria">
                        <option value="mostrar" >Mostrar en menú</option>
                        <option value="no mostrar" >No mostrar en menú</option>
 											 <option value="productos" >Mostrar productos en menú</option>
