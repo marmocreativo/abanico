@@ -759,6 +759,14 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}
 	}
 
+	public function paypal_button()
+	{
+	$this->load->view('paypal_test',$this->data);
+
+
+	}
+
+
 	public function paypal_test_back()
 	{
 

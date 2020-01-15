@@ -34,7 +34,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('PublicacionesModel');
   }
 
-	public function url_productos()
+	public function paypal()
 	{
 		/*
 		$productos = $this->ProductosModel->lista('','','','');
@@ -57,28 +57,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PRODUCTO_URL'=>$url
 			);
 			$this->ProductosModel->actualizar($producto->ID_PRODUCTO,$parametros);
-		}
-		*/
-	}
-	public function url_categorias()
-	{
-		/*
-		$categorias = $this->CategoriasModel->lista('','','','');
-		foreach($categorias as $categoria){
-			$titulo = $categoria->CATEGORIA_NOMBRE;
-			$url = url_title(convert_accented_characters($titulo),'-',TRUE);
-			$unico = 'si';
-			$existe = $this->CategoriasModel->lista_avanzada('',['ID_CATEGORIA !='=>$categoria->ID_CATEGORIA, 'CATEGORIA_URL'=>$url],'','',1);
-			if(!empty($existe)){
-				$url = $url.'-'.url_title(easy_slug(2),'-',TRUE);
-				$unico = 'no';
-			}
-			echo $titulo.' | <b>'.$unico.'</b> | '.$url;
-			echo '<br>';
-			$parametros = array(
-				'CATEGORIA_URL'=>$url
-			);
-			$this->CategoriasModel->actualizar($categoria->ID_CATEGORIA,$parametros);
 		}
 		*/
 	}

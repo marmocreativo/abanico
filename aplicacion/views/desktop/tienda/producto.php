@@ -24,6 +24,7 @@
 
 
 <?php
+  /*
   $numero_visitas= $this->EstadisticasModel->conteo_vistas_ip($this->input->ip_address(),$producto['ID_PRODUCTO']);
   if($numero_visitas>3){
     if(!isset($_SESSION['descuento_flash'])){
@@ -39,6 +40,7 @@
   }else{
     $hora_limite_descuento = null;
   }
+  */
 ?>
 
 <div class="contenido_principal">
@@ -284,17 +286,21 @@
                     $precio_display = $producto['PRODUCTO_PRECIO'];
 
                   }
+                  /*
                   if(date('H:i:s')<=$hora_limite_descuento){
                     $precio_lista = $producto['PRODUCTO_PRECIO'];
                     $precio_venta = $producto['PRODUCTO_PRECIO']-($producto['PRODUCTO_PRECIO']*0.10);
                     $precio_display = $producto['PRODUCTO_PRECIO']-($producto['PRODUCTO_PRECIO']*0.10);
                   }
+                  */
                  ?>
               <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
               <h5 class="product-price-descuento"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista ,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h5>
               <?php } ?>
 
-              <?php if(date('H:i:s')<=$hora_limite_descuento){ ?>
+              <?php //if(date('H:i:s')<=$hora_limite_descuento){
+                  if(false){
+                  ?>
 
                 <h4 class="product-price animated pulse infinite" >
                   <small><?php echo $_SESSION['divisa']['signo']; ?></small>
@@ -362,7 +368,7 @@
                       data-envio-gratuito='<?php echo $producto['PRODUCTO_ENVIO_GRATUITO']; ?>'
                       data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
                       data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
-                      data-detalles-producto='<?php if(date('H:i:s')<=$hora_limite_descuento){ echo 'Descuento relámpago'; }?>'
+                      data-detalles-producto='<?php if(false){ echo 'Descuento relámpago'; }?>'
                       data-precio-producto='<?php echo $precio_venta; ?>'
                       data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
                       data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'
@@ -393,7 +399,7 @@
               </div>
             <?php }else{ ?>
               <div class="p-4 my-3 text-center border <?php echo 'border'.$primary.' '.'text'.$primary; ?>">
-                Compra con nosotros a partir del 15 julio del 2019.
+                Compra no disponible por el momento
               </div>
             <?php } ?>
 

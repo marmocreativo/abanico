@@ -369,19 +369,38 @@
                                       $importe_final = $_POST['ImporteTotal']/$op['calculo_porcentaje_meses'];
                                     }
                                   ?>
-                                  <form class="d-flex justify-content-end" id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                      <input type="hidden" name="cmd" value="_xclick">
-                                      <!--
-                                      <input type="hidden" name="business" value="marmocreativo@gmail.com">
-                                      -->
-                                      <input type="hidden" name="business" value="abanico0918@aol.com">
-                                      <input type="hidden" name="item_name" value="Abanico <?php echo $_POST['Folio']; ?>">
-                                      <input type="hidden" name="item_number" value="<?php echo $_POST['Folio']; ?>">
-                                      <input type="hidden" name="amount" value="<?php echo $importe_final; ?>">
-                                      <input type="hidden" name="currency_code" value="<?php echo $_POST['Divisa']; ?>">
-                                      <input type="hidden" name="return" value="<?php echo base_url('proceso_pago_4?pago=paypal'); ?>">
-                                      <button type="submit" class="btn btn-primary btn-lg btn-block"><?php echo $this->lang->line('proceso_pago_3_paypal'); ?> <span class="fab fa-paypal"></span></button>
-                                  </form>
+
+                                  <script
+                                		src="https://www.paypal.com/sdk/js?client-id=AQnGrY_RQ_xwqe4WM0TXetYzjKN-miotIf8KVxkknBP1n5fxLQOOy2epQmeTwZ04KzV7yhPjQRIl_Vpo&currency=<?php echo $_POST['Divisa']; ?>&disable-funding=card"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+                                	</script>
+                                  <div id="paypal-espere" class="alert alert-primary text-center d-none"> <h4><i class="fas fa-spinner fa-spin "></i> Por favor espere</h4> </div>
+                                  <div id="paypal-error" class="d-none"> <h5>Por favor vuelve a intentarlo</h5> </div>
+                                  <div id="paypal-cancel" class="d-none"> <h5>Haz cancelado el pago por favor vuelve a intentarlo</h5> </div>
+                                  <div id="paypal-button-container"></div>
+                                  <script>
+                                	  paypal.Buttons({
+                                	    createOrder: function(data, actions) {
+                                	      // This function sets up the details of the transaction, including the amount and line item details.
+                                	      return actions.order.create({
+                                	        purchase_units: [{
+                                						description: 'Abanico <?php echo $_POST['Folio']; ?>',
+                                	          amount: {
+                                	            value: '<?php echo $importe_final; ?>'
+                                	          }
+                                	        }]
+                                	      });
+                                	    },
+                                			onApprove: function(data, actions) {
+                                        return actions.order.capture().then(function(details) {
+                                          // Call your server to save the transaction
+                                          var mensaje = document.getElementById("paypal-espere");
+                                          mensaje.classList.remove("d-none");
+                                          window.location.href = "<?php echo base_url('proceso_pago_4?pago=paypal'); ?>";
+                                        });
+                                      }
+                                	  }).render('#paypal-button-container');
+                                	  //This function displays Smart Payment Buttons on your web page.
+                                	</script>
                                   <?php if($_POST['ImporteTotal']>=$op['importe_minimo_meses']){ ?>
                                     <p class="text-center">Si lo deseas puedes pagar esta compra a <?php echo $op['cantidad_meses']; ?> <b>meses sin intereses</b> <br>(+ Comisión del <?php echo $op['comision_meses']; ?>%)</p>
                                   <?php } ?>
