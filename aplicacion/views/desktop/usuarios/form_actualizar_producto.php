@@ -54,40 +54,19 @@
                   <div class="row border-top border-bottom my-1 mb-5 py-1 bg-gray">
                     <div class="col">
                       <div class="btn-group float-right">
-                        <button type="submit" class="btn btn-outline-success btn-sm" name="Guardar" value="salir"> <span class="fa fa-chevron-left"></span> <span class="fa fa-chevron-left"></span> Guardar y ver todos los productos</button>
-                        <button type="submit" class="btn btn-success btn-sm" name="Guardar" value="tienda"> <span class="fa fa-chevron-left"></span> Guardar y ver los productos de <b><?php echo $tienda['TIENDA_NOMBRE'];  ?></b> </button>
+                        <button type="submit" class="btn btn-outline-success btn-sm" name="Guardar" value="salir"> <span class="fa fa-chevron-left"></span> <span class="fa fa-chevron-left"></span> Guardar y ver mis productos</button>
                         <button type="submit" class="btn btn-outline-primary btn-sm" name="Guardar" value="combinaciones"> <span class="fa fa-sitemap"></span> Guardar y editar <b>combinaciones</b></button>
                         <button type="submit" class="btn btn-primary btn-sm" name="Guardar" value="guardar"> <span class="fa fa-save"></span> Guardar y seguir editando</button>
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col">
+                    <div class="col-4">
                       <div class="form-group">
                         <label for="EstadoProducto"> <i class="fa fa-check-circle"></i> Estado del Producto</label>
                         <select class="form-control" id="EstadoProducto" name="EstadoProducto" placeholder="">
                           <option value="activo" <?php if($producto['PRODUCTO_ESTADO']=='activo'){ echo 'selected';} ?> >Publicado</option>
                           <option value="inactivo" <?php if($producto['PRODUCTO_ESTADO']=='inactivo'){ echo 'selected';} ?>>Borrador</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-group">
-                        <label for="ContraEntregaProducto"><i class="fa fa-money-bill"></i> Pago a contra entrega</label>
-                        <select class="form-control" id="ContraEntregaProducto" name="ContraEntregaProducto" placeholder="">
-                          <option value="no" <?php if($producto['PRODUCTO_CONTRA_ENTREGA']=='no'){ echo 'selected';} ?> >No</option>
-                          <option value="si" <?php if($producto['PRODUCTO_CONTRA_ENTREGA']=='si'){ echo 'selected';} ?>>Si</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-group">
-                        <label for="EnvioGratuitoProducto"><i class="fa fa-truck"></i> Envio Gratuito con Transportista:</label>
-                        <select class="form-control" name="EnvioGratuitoProducto">
-                          <option value="no">Ninguno</option>
-                          <?php foreach($transportistas as $transportista){ ?>
-                            <option value="<?php echo $transportista->ID_TRANSPORTISTA; ?>" <?php if($producto['PRODUCTO_ENVIO_GRATUITO']==$transportista->ID_TRANSPORTISTA){ echo 'selected';} ?>><?php echo $transportista->TRANSPORTISTA_NOMBRE; ?></option>
-                          <?php } ?>
                         </select>
                       </div>
                     </div>
@@ -409,14 +388,14 @@
                               </td>
                               <td class="text-center">
                                 <?php if($galeria->GALERIA_PORTADA=='si'){ ?>
-                                  <a href="<?php echo base_url('admin/productos/portada')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
+                                  <a href="<?php echo base_url('usuario/productos/portada')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
                                 <?php }else{ ?>
-                                  <a href="<?php echo base_url('admin/productos/portada')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
+                                  <a href="<?php echo base_url('usuario/productos/portada')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
                                 <?php } ?>
                               </td>
                               <td class="text-right">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                  <button type="button" data-enlace="<?php echo base_url('admin/productos/borrar_galeria')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-danger borrar_entrada" title="Eliminar"> <span class="fa fa-trash"></span> </button>
+                                  <button type="button" data-enlace="<?php echo base_url('usuario/productos/borrar_galeria')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-danger borrar_entrada" title="Eliminar"> <span class="fa fa-trash"></span> </button>
                                 </div>
                               </td>
                             </tr>

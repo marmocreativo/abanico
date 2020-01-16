@@ -24,8 +24,9 @@
 
 
 <?php
-  /*
+
   $numero_visitas= $this->EstadisticasModel->conteo_vistas_ip($this->input->ip_address(),$producto['ID_PRODUCTO']);
+  $hora_limite_descuento = null;
   if($numero_visitas>3){
     if(!isset($_SESSION['descuento_flash'])){
       $_SESSION['descuento_flash']['hora']=date('H:i:s');
@@ -33,14 +34,10 @@
     }else{
       if($_SESSION['descuento_flash']['producto']==$producto['ID_PRODUCTO']){
         $hora_limite_descuento = date('H:i:s', strtotime("+15 minutes", strtotime($_SESSION['descuento_flash']['hora']) ) );
-      }else{
-        $hora_limite_descuento = null;
       }
     }
-  }else{
-    $hora_limite_descuento = null;
   }
-  */
+
 ?>
 
 <div class="contenido_principal">
@@ -286,28 +283,32 @@
                     $precio_display = $producto['PRODUCTO_PRECIO'];
 
                   }
-                  /*
-                  if(date('H:i:s')<=$hora_limite_descuento){
-                    $precio_lista = $producto['PRODUCTO_PRECIO'];
-                    $precio_venta = $producto['PRODUCTO_PRECIO']-($producto['PRODUCTO_PRECIO']*0.10);
-                    $precio_display = $producto['PRODUCTO_PRECIO']-($producto['PRODUCTO_PRECIO']*0.10);
+                  if(!is_null($hora_limite_descuento)){
+                    if(date('H:i:s')<=$hora_limite_descuento){
+                      $precio_lista = $producto['PRODUCTO_PRECIO'];
+                      $precio_venta = $producto['PRODUCTO_PRECIO']-($producto['PRODUCTO_PRECIO']*0.10);
+                      $precio_display = $producto['PRODUCTO_PRECIO']-($producto['PRODUCTO_PRECIO']*0.10);
+                    }
                   }
-                  */
+
                  ?>
               <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
-              <h5 class="product-price-descuento"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista ,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h5>
+
               <?php } ?>
-
-              <?php //if(date('H:i:s')<=$hora_limite_descuento){
-                  if(false){
-                  ?>
-
-                <h4 class="product-price animated pulse infinite" >
-                  <small><?php echo $_SESSION['divisa']['signo']; ?></small>
-                    <span id="Precio_Producto" ><?php echo number_format( $precio_display,2); ?></span>
-                  <small><?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?> </small>
-                </h4>
-                <h6 class="text-succsess">Oferta <i class="fas fa-bolt"></i> : vigencia <?php echo $hora_limite_descuento; ?></h6>
+              <?php if(date('H:i:s')<=$hora_limite_descuento){ ?>
+                <?php
+                $limite = new DateTime($hora_limite_descuento);
+                $ahora = new DateTime();
+                ?>
+                <div class="text-center">
+                  <h3 id="reloj" data-hora-inicio='<?php echo $ahora->format('Y M d, H:i:s'); ?>' data-hora-fin="<?php echo $limite->format('Y M d, H:i:s'); ?>"></h3>
+                  <h5 class="product-price-descuento"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista ,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></h5>
+                  <h3 class="product-price animated pulse infinite" >
+                    <small><?php echo $_SESSION['divisa']['signo']; ?></small>
+                      <span id="Precio_Producto" ><?php echo number_format( $precio_display,2); ?></span>
+                    <small><?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?> </small>
+                  </h3>
+                </div>
               <?php }else{ ?>
                 <h4 class="product-price" >
                   <small><?php echo $_SESSION['divisa']['signo']; ?></small>
@@ -315,7 +316,7 @@
                   <small><?php echo $producto['PRODUCTO_DIVISA_DEFAULT']; ?> </small>
                 </h4>
               <?php } ?>
-              <div class="row my-3">
+              <div class="row my-3" id="contenedor-botones-compra">
                   <?php if(!empty($combinaciones)){ ?>
                   <div class="col">
                     <div class="form-group">
@@ -335,6 +336,13 @@
                           }else{
                             $precio_venta_combinacion = $combinacion->COMBINACION_PRECIO;
                             $precio_display_combinacion = $combinacion->COMBINACION_PRECIO;
+                          }
+
+                          if(!is_null($hora_limite_descuento)){
+                            if(date('H:i:s')<=$hora_limite_descuento){
+                              $precio_venta_combinacion = $precio_venta_combinacion-($precio_venta_combinacion*0.10);
+                              $precio_display_combinacion = $precio_display_combinacion-($precio_display_combinacion*0.10);
+                            }
                           }
                          ?>
                         <option value="<?php echo  $combinacion->COMBINACION_OPCION; ?>"
@@ -368,7 +376,7 @@
                       data-envio-gratuito='<?php echo $producto['PRODUCTO_ENVIO_GRATUITO']; ?>'
                       data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
                       data-peso-producto='<?php echo $producto['PRODUCTO_PESO']; ?>'
-                      data-detalles-producto='<?php if(false){ echo 'Descuento relámpago'; }?>'
+                      data-detalles-producto='<?php if(!is_null($hora_limite_descuento)&&date('H:i:s')<=$hora_limite_descuento){ echo 'Descuento relámpago'; }?>'
                       data-precio-producto='<?php echo $precio_venta; ?>'
                       data-id-tienda='<?php echo $tienda['ID_TIENDA']; ?>'
                       data-nombre-tienda='<?php echo $tienda['TIENDA_NOMBRE']; ?>'

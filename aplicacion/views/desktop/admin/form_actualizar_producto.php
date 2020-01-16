@@ -41,7 +41,7 @@
 
                   <form class="" action="<?php echo base_url('admin/productos/actualizar'); ?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="TipoProducto" value="<?php echo $tipo_producto; ?>">
-                    <input type="hidden" name="IdUsuario" value="<?php echo $id_usuario; ?>">
+                    <input type="hidden" name="IdUsuario" value="<?php echo $producto['ID_USUARIO']; ?>">
                     <input type="hidden" name="IdTienda" value="<?php echo $tienda['ID_TIENDA']; ?>">
                     <input type="hidden" name="Identificador" value="<?php echo $_GET['id']; ?>">
                     <input type="hidden" name="UrlProducto" value="<?php echo $producto['PRODUCTO_URL']; ?>">
@@ -404,9 +404,9 @@
                                 </td>
                                 <td class="text-center">
                                   <?php if($galeria->GALERIA_PORTADA=='si'){ ?>
-                                    <a href="<?php echo base_url('admin/productos/portada')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
+                                    <a href="<?php echo base_url('usuario/productos/portada')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-outline-success"> <span class="fa fa-check-circle"></span> </a>
                                   <?php }else{ ?>
-                                    <a href="<?php echo base_url('admin/productos/portada')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
+                                    <a href="<?php echo base_url('usuario/productos/portada')."?id=".$galeria->ID_GALERIA."&id_producto=".$galeria->ID_PRODUCTO; ?>" class="btn btn-sm btn-outline-danger"> <span class="fa fa-times-circle"></span> </a>
                                   <?php } ?>
                                 </td>
                                 <td class="text-right">
