@@ -161,6 +161,7 @@
 									<h6> <i class="fa fa-comments"></i> Comentarios</h6>
 									<p><?php echo $pedido['PEDIDO_COMENTARIOS']; ?></p>
 								<?php }else{ ?>
+									<a href="<?php echo base_url('admin/pedidos/solicitar_calificacion?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-primary btn-block">Solicitar comentarios <i class="fa fa-envelope"></i> </a>
 								<?php } ?>
 							</div>
 						</div>

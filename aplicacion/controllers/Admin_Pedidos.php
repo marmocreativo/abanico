@@ -135,6 +135,58 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
       redirect(base_url('admin/pedidos/detalles?id_pedido=').$this->input->post('IdPedido'));
 	}
+	public function solicitar_calificacion()
+	{
+		$datos_pedido = $this->PedidosModel->detalles($this->input->get('id_pedido'));
+
+		// Preparo correo de revisión
+
+		$this->data['info'] = array();
+
+		$this->data['info']['Titulo'] = 'Nos gustaría conocer su opinión | '.$datos_pedido['PEDIDO_FOLIO'];
+		$this->data['info']['Nombre'] = $datos_pedido['PEDIDO_NOMBRE'];
+		$this->data['info']['Mensaje'] = '<p>Nos gustaría que nos diréras tu opinión sobre los productos que compraste así como de nuestro servicio.</p>';
+		$this->data['info']['TextoBoton'] = 'Calificar y dar opiniones';
+		$this->data['info']['EnlaceBoton'] = base_url('usuario/pedidos/calificar?id_pedido='.$datos_pedido['ID_PEDIDO']);
+		// Pedido General
+		$mensaje_abanico = $this->load->view('emails/mensaje_general',$this->data,true);
+
+		// Envio correos Generales
+		// Datos para enviar por correo
+		// Config General
+
+		$config['protocol']    = 'smtp';
+		$config['smtp_host']    = $this->data['op']['mailer_host'];
+		$config['smtp_port']    = $this->data['op']['mailer_port'];
+		$config['smtp_timeout'] = '7';
+		$config['smtp_user']    = $this->data['op']['mailer_user'];
+		$config['smtp_pass']    = $this->data['op']['mailer_pass'];
+		$config['charset']    = 'utf-8';
+		$config['mailtype'] = 'html'; // or html
+		$config['validation'] = TRUE; // bool whether to validate email or not
+
+		$this->email->initialize($config);
+
+		// Envio correo comprobante
+		$this->email->clear();
+		$this->email->from($this->data['op']['mailer_user'], 'Abanico Siempre lo Mejor');
+		$this->email->to($datos_pedido['PEDIDO_CORREO']);
+
+
+		$this->email->subject('Nos gustaría conocer tu opinión '.$datos_pedido['PEDIDO_FOLIO']);
+		$this->email->message($mensaje_abanico);
+		// envio el correo
+
+		if($this->email->send()){
+			$this->session->set_flashdata('exito', 'Comentarios solicitados por correo');
+			redirect(base_url('admin/pedidos/detalles?id_pedido='.$this->input->get('id_pedido')));
+		}else{
+			$this->session->set_flashdata('advertencia', 'No se pudo enviar el correo, por favor inténtelo mas tarde');
+			redirect(base_url('admin/pedidos/detalles?id_pedido='.$this->input->get('id_pedido')));
+		}
+	}
+
+
 	public function subir_comprobante()
 	{
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){

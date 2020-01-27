@@ -371,12 +371,6 @@
                                       </table>
                                     </td>
                                   </tr>
-                                  <tr>
-                                    <td style="text-align:center">
-                                      <h5>No olvides seguirnos en nuestrá página de Facebook el 30 de Noviembre llevaremos a cabo una actividad donde podrás ganar un juego de popotes metálicos :D</h5>
-                                      <img src="<?php echo base_url('assets/global/img/registro_concurso_tortuga.jpg'); ?>" width="300px" alt="">
-                                    </td>
-                                  </tr>
                                 </tbody>
                               </table>
                             </td>

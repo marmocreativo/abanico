@@ -455,7 +455,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$this->email->message($ficha_pago);
 				// envio el correo
 
-				//$this->email->send();
+				$this->email->send();
 
 			}
 
@@ -469,7 +469,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->email->message($mensaje_usuario);
 			// envio el correo
 
-			//$this->email->send();
+			$this->email->send();
 
 			// Envio correo Abanico
 			$this->email->clear();
@@ -480,7 +480,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->email->message($mensaje_abanico);
 			// envio el correo
 
-			//$this->email->send();
+			$this->email->send();
 			// IF OXXO
 			if(isset($_GET['pago'])&&$_GET['pago']=='oxxo'){
 
@@ -586,7 +586,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					$this->email->message($mensaje_oxxo);
 					// envio el correo
 
-					//$this->email->send();
+					$this->email->send();
 				}
 
 			} // termina IF OXXO
@@ -634,7 +634,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$this->email->message($mensaje_abanico);
 				// envio el correo
 
-				//$this->email->send();
+				$this->email->send();
 			}
 
 			// Correos por tienda
@@ -652,7 +652,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$this->email->message($mensaje_tienda);
 				// envio el correo
 
-				//$this->email->send();
+				$this->email->send();
 			}
 
 
