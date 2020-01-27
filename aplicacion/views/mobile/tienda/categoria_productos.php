@@ -168,6 +168,9 @@
                   <div class="imagen-producto">
                     <img class="spanImg mr-1" src="<?php echo base_url($ruta_portada); ?>"></img>
                     <div class="contenedorEtiquetas">
+                      <?php if($producto->PRODUCTO_CANTIDAD<='0'){ ?>
+                        <span class="etiqueta-agotado-cuadricula">Agotado</span>
+                      <?php } ?>
                       <?php if($producto->PRODUCTO_ARTESANAL=='si'){ ?>
                         <span class="etiqueta-artesanal"><img src="<?php echo base_url('assets/global/img/artesanal.png'); ?>" class="img-fluid"></span>
                       <?php } ?>
@@ -177,10 +180,6 @@
                       <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                         <span class="etiqueta-3"><?php echo $this->lang->line('etiquetas_productos_oferta'); ?></span>
                       <?php } ?>
-
-                        <?php if($producto->PRODUCTO_CANTIDAD<='0'){ ?>
-                          <span class="etiqueta-agotado">Agotado</span>
-                        <?php } ?>
                     </div>
                   </div>
                   <div class="product-content text-left p-3">

@@ -292,9 +292,6 @@
                   }
 
                  ?>
-              <?php if(!empty($producto['PRODUCTO_PRECIO_LISTA'])&&$producto['PRODUCTO_PRECIO_LISTA']>$producto['PRODUCTO_PRECIO']){ ?>
-
-              <?php } ?>
               <?php if(date('H:i:s')<=$hora_limite_descuento){ ?>
                 <?php
                 $limite = new DateTime($hora_limite_descuento);
@@ -577,11 +574,22 @@
                   <section class="slider">
                   <div class="flexslider carousel">
                     <ul class="slides">
-                      <?php foreach($categorias_específicas as $slug => $limite){ ?>
-                        <?php
-                        $categoria = $this->CategoriasModel->detalles_slug($slug);
-                        $productos = $this->ProductosModel->lista_categoria_activos('',['productos.ID_PRODUCTO !='=>$producto['ID_PRODUCTO']],[$categoria['ID_CATEGORIA']],'',$limite);
-                        ?>
+                      <?php
+                      switch ($carrusel->TIPO) {
+                        case 'todos':
+                          $productos = $this->ProductosModel->lista_activos($parametros_or,$parametros_and,'',$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
+
+                          break;
+                        case 'incluyente':
+                          $productos = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$id_categorias,$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
+
+                          break;
+                        case 'excluyente':
+                          $productos = $this->ProductosModel->lista_no_categoria_activos($parametros_or,$parametros_and,$id_categorias,$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
+
+                          break;
+                      }
+                      ?>
                       <?php foreach($productos as $producto){ ?>
                         <?php
                         // Variables de Traducción
@@ -603,35 +611,28 @@
                           $visible = '';
                         }
                         ?>
-                      <li class="<?php echo $visible; ?>">
-                        <div class="cuadricula-productos">
-                          <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-                          <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>" class="enlace-principal">
+                      <li>
+                        <div class="card <?php echo $visible; ?>">
+                          <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>">
                             <div class="imagen-producto">
-                              <div class="contenedor-etiquetas">
-                                <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
-                                  <span class="etiqueta-1"><?php echo $this->lang->line('etiquetas_productos_mexico'); ?></span>
-                                <?php } ?>
-                                <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
-                                  <span class="etiqueta-3"><?php echo $this->lang->line('etiquetas_productos_oferta'); ?></span>
+                              <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+                              <img class="spanImg" src="<?php echo base_url($ruta_portada); ?>"></img>
+                              <div class="contenedorEtiquetas">
+                                <?php if($producto->PRODUCTO_CANTIDAD<='0'){ ?>
+                                  <span class="etiqueta-agotado">Agotado</span>
                                 <?php } ?>
                                 <?php if($producto->PRODUCTO_ARTESANAL=='si'){ ?>
-                                  <span class="etiqueta-artesanal"><img src="<?php echo base_url('assets/global/img/artesanal.png'); ?>"></span>
+                                  <span class="etiqueta-artesanal"><img src="<?php echo base_url('assets/global/img/artesanal.png'); ?>" class="img-fluid"></span>
+                                <?php } ?>
+                                <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
+                                  <span class="etiqueta-1">Méx</span>
+                                <?php } ?>
+                                <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                                  <span class="etiqueta-3">Oferta</span>
                                 <?php } ?>
                               </div>
-                                <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>
-                                <div class="overlay-producto <?php echo 'bg'.$primary; ?>"></div>
-                                <div class="boton-ver">
-                                  <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
-                                <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
-                                  <a href="<?php echo base_url('producto/favorito?id_producto='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
-                                <?php }else{ ?>
-                                  <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id_producto='.$producto->ID_PRODUCTO)); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
-                                <?php } ?>
-                                </div>
                             </div>
-                            </a>
-                            <div class="product-content text-center">
+                            <div class="product-content text-center py-3">
                               <?php
                               $promedio = $this->CalificacionesModel->promedio_calificaciones_producto($producto->ID_PRODUCTO);
                               $cantidad = $this->CalificacionesModel->conteo_calificaciones_producto($producto->ID_PRODUCTO);
@@ -641,35 +642,48 @@
                                 if($producto->PRODUCTO_DIVISA_DEFAULT!='MXN'){
                                   $precio_lista = $producto->PRODUCTO_PRECIO_LISTA/$cambio_divisa_default['DIVISA_CONVERSION'];
                                   $precio_venta = $producto->PRODUCTO_PRECIO/$cambio_divisa_default['DIVISA_CONVERSION'];
+                                  $precio_display = $producto->PRODUCTO_PRECIO;
                                 }else{
                                   $precio_lista = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO_LISTA;
                                   $precio_venta = $_SESSION['divisa']['conversion']*$producto->PRODUCTO_PRECIO;
+                                  $precio_display = $producto->PRODUCTO_PRECIO;
                                 }
                               }else{
                                 $precio_lista = $producto->PRODUCTO_PRECIO_LISTA;
                                 $precio_venta = $producto->PRODUCTO_PRECIO;
+                                $precio_display = $producto->PRODUCTO_PRECIO;
                               }
                               ?>
-                                <ul class="rating">
-                                  <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
-                                  <?php for($i = 1; $i<=$estrellas; $i++){ ?>
-                                    <li class="fa fa-star"></li>
-                                  <?php } ?>
-                                  <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
-                                    <li class="far fa-star"></li>
-                                  <?php } ?>
-                                  <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
-                                </ul>
-                                <h3 class="title <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
-                                <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
-                                  <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_lista,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small> </div>
+                              <ul class="rating">
+                                <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
+                                <?php for($i = 1; $i<=$estrellas; $i++){ ?>
+                                  <li class="fa fa-star"></li>
                                 <?php } ?>
-                                <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_venta,2); ?> <small><?php echo $_SESSION['divisa']['iso']; ?> </small></div>
+                                <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
+                                  <li class="far fa-star"></li>
+                                <?php } ?>
+                                <li class="text-dark">(<?php echo $cantidad; ?> calif)</li>
+                              </ul>
+                              <h6 class="<?php echo 'text'.$primary; ?>"><?php echo word_limiter($titulo,10); ?></h6>
+                              <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
+                                <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small> </div>
+                              <?php } ?>
+                              <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_display,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small></div>
+                              <?php if($producto->PRODUCTO_ENVIO_GRATUITO!='no'){ ?>
+                              <div class="p-1 border border-success rounded" style="border-style:dashed !important">
+                                <span style="font-size:12px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i></span>
+                              </div>
+                              <?php } ?>
                             </div>
+                          </a>
+                          <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
+                          <a href="<?php echo base_url('producto/favorito?id_producto='.$producto->ID_PRODUCTO); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+                          <?php }else{ ?>
+                            <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id_producto='.$producto->ID_PRODUCTO)); ?>" class="btnFavorito" title="Añadir a Favoritos"> <span class="far fa-heart text-primary-6"></span> </a>
+                          <?php } ?>
                         </div>
-            	    		</li>
+                      </li>
                       <?php } ?>
-                    <?php }// Bucle de categrias específicas ?>
                     </ul>
                   </div>
                 </section>

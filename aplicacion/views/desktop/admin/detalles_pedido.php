@@ -77,66 +77,61 @@
                 </div>
               </div>
             </div>
-            <div class="card">
+            <div class="card my-2">
               <div class="card-header">
                 <h6><i class="fa fa-money-bill"></i>Pagos:</h6>
 								<p>Forma de pago: <b><?php echo $pedido['PEDIDO_FORMA_PAGO'] ?></b> | Divisa: <b><?php echo $pedido['PEDIDO_DIVISA'] ?></b> | Tipo de Cambio: <b><?php echo $pedido['PEDIDO_CONVERSION'] ?></b></p>
               </div>
               <div class="card-body">
-                <table class="table table-sm table-bordered">
-                  <thead>
-                    <tr>
-                      <th>Fecha</th>
-                      <th>Método de Pago</th>
-                      <th>Folio</th>
-                      <th>Documento</th>
-                      <th>Importe</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach($pagos as $pago){ ?>
-                    <tr>
-                      <td><?php echo $pago->PAGO_FECHA_REGISTRO; ?> </td>
-                      <td><?php echo $pago->PAGO_FORMA; ?> </td>
-                      <td><?php echo $pago->PAGO_FOLIO; ?> </td>
-                      <td>
-                        <img src="<?php echo base_url('contenido/adjuntos/pedidos/').$pago->PAGO_ARCHIVO; ?>" alt="" width="100">
-                      <hr>
-                      <a href="<?php echo base_url('contenido/adjuntos/pedidos/').$pago->PAGO_ARCHIVO; ?>" target="_blank" class="btn btn-outline-success btn-sm">Descargar</a></td>
-                      <td>$<?php echo number_format($pago->PAGO_IMPORTE,2,'.',','); ?>
-                      </td>
-                    </tr>
-                    <?php } ?>
-                  </tbody>
-                </table>
-                <!--
-                <form class="" action="<?php echo base_url('admin/pedidos/pagar'); ?>" method="post">
-                <table class="table table-sm">
-                  <thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <input type="datetime-local" class="form-control" name="FechaPago" value="<?php echo date('Y-m-d H:i:s'); ?>">
-                      </td>
-                      <td>
-                        <select class="form-control" name="EstadoPedido">
-                          <option value="Transferencia Bancaria">Transferencia Bancaria</option>
-                        </select>
-                      </td>
-                      <td><input type="text" class="form-control" name="FolioPago" value=""></td>
-                      <td>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">$</span>
-                          </div>
-                          <input type="number" step="0.01" class="form-control" name="FolioPago" value="0.00">
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                </form>
-              -->
+
+								<?php if($pedido['PEDIDO_ESTADO_PAGO']!='Pagado'){ ?>
+									<div class="col-12">
+										<form class="form-inline" action="<?php echo base_url('admin/pedidos/subir_comprobante'); ?>" method="post" enctype="multipart/form-data">
+
+											<input type="hidden" name="IdPedido" value="<?php echo $pedido['ID_PEDIDO']; ?>">
+											<input type="hidden" name="PedidoImporte" value="<?php echo $pedido['PEDIDO_IMPORTE_TOTAL']; ?>">
+											<input type="hidden" name="FormaPago" value="Transferencia Bancaria">
+											<input type="hidden" name="DescripcionPago" value="Comprobante de administrador">
+											<input type="hidden" name="EstadoPago" value="Pagado">
+											<div class="form-group mb-3">
+												<label for="FolioPago"><?php echo $this->lang->line('usuario_detalles_pago_folio'); ?></label>
+												<input type="text" class="form-control" name="FolioPago" value="">
+											</div>
+											<div class="form-group mb-3">
+												<label for="ArchivoPago"><?php echo $this->lang->line('usuario_detalles_pago_archivo'); ?></label>
+												<input type="file" class="form-control" name="ArchivoPago" value="" required>
+											</div>
+											<button type="submit" class="btn btn-primary float-right" name="button"> <i class="fa fa-upload"></i> <?php echo $this->lang->line('usuario_detalles_pago_subir'); ?></button>
+										</form>
+									</div>
+								<?php }else{ ?>
+									<table class="table table-sm table-bordered">
+	                  <thead>
+	                    <tr>
+	                      <th>Fecha</th>
+	                      <th>Método de Pago</th>
+	                      <th>Folio</th>
+	                      <th>Documento</th>
+	                      <th>Importe</th>
+	                    </tr>
+	                  </thead>
+	                  <tbody>
+	                    <?php foreach($pagos as $pago){ ?>
+	                    <tr>
+	                      <td><?php echo $pago->PAGO_FECHA_REGISTRO; ?> </td>
+	                      <td><?php echo $pago->PAGO_FORMA; ?> </td>
+	                      <td><?php echo $pago->PAGO_FOLIO; ?> </td>
+	                      <td>
+	                        <img src="<?php echo base_url('contenido/adjuntos/pedidos/').$pago->PAGO_ARCHIVO; ?>" alt="" width="100">
+	                      <hr>
+	                      <a href="<?php echo base_url('contenido/adjuntos/pedidos/').$pago->PAGO_ARCHIVO; ?>" target="_blank" class="btn btn-outline-success btn-sm">Descargar</a></td>
+	                      <td>$<?php echo number_format($pago->PAGO_IMPORTE,2,'.',','); ?>
+	                      </td>
+	                    </tr>
+	                    <?php } ?>
+	                  </tbody>
+	                </table>
+								<?php } ?>
               </div>
             </div>
           </div>
@@ -160,6 +155,15 @@
                 </p>
               </div>
             </div>
+						<div class="card  border-info">
+							<div class="card-body text-center">
+								<?php if(!empty($pedido['PEDIDO_COMENTARIOS'])){ ?>
+									<h6> <i class="fa fa-comments"></i> Comentarios</h6>
+									<p><?php echo $pedido['PEDIDO_COMENTARIOS']; ?></p>
+								<?php }else{ ?>
+								<?php } ?>
+							</div>
+						</div>
           </div>
         </div>
         <div class="row">

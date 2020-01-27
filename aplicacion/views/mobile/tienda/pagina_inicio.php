@@ -82,40 +82,32 @@
   <div class="row justify-content-center fila bg-light">
     <div class="col-9">
       <div class="row">
-        <?php foreach($cuadritos as $cuadrito){ ?>
-          <div class="col-12 mb-2">
+        <?php $i=0; foreach($cuadritos as $cuadrito){ ?>
+          <div class="col-12 mb-2 animated fadeInLeft" style="animation-delay:<?php echo $i; ?>00ms">
             <a href="<?php echo $cuadrito->SLIDE_ENLACE; ?>">
-            <div class="card">
+            <div class="card bg-primary-<?php echo rand(1, 15); ?> text-white">
               <div class="card-body p-1">
                 <div class="row">
-                  <div class="col-3">
+                  <div class="col-12">
                     <img src="<?php echo base_url('contenido/img/slider/'.$cuadrito->SLIDE_IMAGEN); ?>" class="img-fluid" alt="">
                   </div>
-                  <div class="col-9 ">
-                    <div class="row align-items-center">
+                  <div class="col-12 text-center mt-3">
                       <?php if(!empty($cuadrito->SLIDE_TITULO)){ ?>
-                      <div class="col-12">
-                        <h3 ><?php echo $cuadrito->SLIDE_TITULO; ?></h3>
-                      </div>
+                        <h5 ><?php echo $cuadrito->SLIDE_TITULO; ?></h5>
                       <?php } ?>
                       <?php if(!empty($cuadrito->SLIDE_SUBTITULO)){ ?>
-                      <div class="col-12">
-                      <h5 ><?php echo $cuadrito->SLIDE_SUBTITULO; ?></h5>
-                      </div>
+                      <h6 ><?php echo $cuadrito->SLIDE_SUBTITULO; ?></h6>
                       <?php } ?>
                       <?php if(!empty($cuadrito->SLIDE_BOTON)){ ?>
-                      <div class="col-12">
                       <p ><?php echo $cuadrito->SLIDE_BOTON; ?></p>
-                      </div>
                       <?php } ?>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
             </a>
           </div>
-        <?php } ?>
+        <?php $i++; } ?>
       </div>
     </div>
   </div>
@@ -195,6 +187,9 @@
                   <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
                   <img class="spanImg" src="<?php echo base_url($ruta_portada); ?>"></img>
                   <div class="contenedorEtiquetas">
+                    <?php if($producto->PRODUCTO_CANTIDAD<='0'){ ?>
+                      <span class="etiqueta-agotado">Agotado</span>
+                    <?php } ?>
                     <?php if($producto->PRODUCTO_ARTESANAL=='si'){ ?>
                       <span class="etiqueta-artesanal"><img src="<?php echo base_url('assets/global/img/artesanal.png'); ?>" class="img-fluid"></span>
                     <?php } ?>

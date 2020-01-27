@@ -29,6 +29,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->model('PedidosModel');
 			$this->load->model('PedidosTiendasModel');
 			$this->load->model('PedidosProductosModel');
+			$this->load->model('ProductosModel');
+			$this->load->model('CalificacionesModel');
 			$this->load->model('GuiasPedidosModel');
 			$this->load->model('PagosPedidosModel');
 			$this->load->model('DevolucionesModel');
@@ -67,6 +69,57 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/detalles_pedido',$this->data);
 				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+	}
+	public function calificar()
+	{
+			// Debo redireccionar
+			if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
+				$this->session->set_flashdata('alerta', 'Debes iniciar sesión para continuar');
+				redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
+			}
+
+			$this->form_validation->set_rules('Identificador', 'Forma de Pago', 'required', array( 'required' => 'Debes designar la %s'));
+
+			if($this->form_validation->run())
+			{
+
+				$parametros = array(
+					'PEDIDO_COMENTARIOS'=>$this->input->post('Comentario'),
+					'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s')
+				);
+				// Actualizo Pedido
+				$this->PedidosModel->actualizar($this->input->post('Identificador'),$parametros);
+
+				foreach($this->input->post('EstrellasCalificacion')as $id_producto => $calificacion){
+					$detalles_producto = $this->ProductosModel->detalles($id_producto);
+					$parametros = array(
+			 			 'ID_PRODUCTO'=>$id_producto,
+			 			 'ID_USUARIO'=>$detalles_producto['ID_USUARIO'],
+			 			 'ID_USUARIO_CALIFICADOR'=>$this->input->post('IdCalificador'),
+			 			 'CALIFICACION_ESTRELLAS'=>$calificacion,
+			 			 'CALIFICACION_COMENTARIO'=>'',
+			 			 'CALIFICACION_ESTADO'=>'activo',
+			 			 'CALIFICACION_FECHA_REGISTRO'=> date('Y-m-d H:i:s'),
+			 		 );
+			 		 $this->CalificacionesModel->crear($parametros);
+				}
+
+				redirect(base_url('usuario/pedidos/calificar?id_pedido='.$this->input->post('Identificador')));
+
+			}else{
+				// Obtengo los datos de mi tiendas
+				$this->data['pedido'] = $this->PedidosModel->detalles($_GET['id_pedido']);
+				$this->data['usuario'] = $this->UsuariosModel->detalles($_SESSION['usuario']['id']);
+				$this->data['productos'] = $this->PedidosProductosModel->lista(['ID_PEDIDO'=>$_GET['id_pedido']],'','');
+				$this->data['tiendas'] = $this->PedidosTiendasModel->lista_tiendas($_GET['id_pedido']);
+				$this->data['guias_abanico'] = $this->GuiasPedidosModel->lista(['ID_PEDIDO'=>$_GET['id_pedido']],'','');
+				$this->data['pagos'] = $this->PagosPedidosModel->lista($_GET['id_pedido']);
+				$this->load->view($this->data['dispositivo'].'/usuarios/headers/header',$this->data);
+				$this->load->view($this->data['dispositivo'].'/usuarios/calificar_pedido',$this->data);
+				$this->load->view($this->data['dispositivo'].'/usuarios/footers/footer',$this->data);
+			}
+
+
 	}
 
 	public function subir_comprobante()

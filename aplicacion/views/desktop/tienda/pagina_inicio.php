@@ -80,42 +80,34 @@
   $cuadritos = $this->SlidesModel->lista_activos(['ID_SLIDER'=>$cuadricula['ID_SLIDER']],'ORDEN ASC','');
 ?>
   <div class="row justify-content-center fila bg-light">
-    <div class="col-9">
+    <div class="col-10">
       <div class="row">
-        <?php foreach($cuadritos as $cuadrito){ ?>
-          <div class="col-4 mb-2">
+        <?php $i=0; foreach($cuadritos as $cuadrito){ ?>
+          <div class="col-4 mb-2 animated fadeInUp" style="animation-delay:<?php echo $i; ?>00ms">
             <a href="<?php echo $cuadrito->SLIDE_ENLACE; ?>">
-            <div class="card">
+            <div class="card bg-primary-<?php echo rand(1, 15); ?> text-white" style="box-shadow: 0px 3px 16px #00000045;">
               <div class="card-body p-1">
                 <div class="row">
-                  <div class="col-3">
-                    <img src="<?php echo base_url('contenido/img/slider/'.$cuadrito->SLIDE_IMAGEN); ?>" class="img-fluid" alt="">
+                  <div class="col-5">
+                    <img src="<?php echo base_url('contenido/img/slider/'.$cuadrito->SLIDE_IMAGEN); ?>" class="img-fluid" style="box-shadow: 0px 3px 16px #00000045;">
                   </div>
-                  <div class="col-9 ">
-                    <div class="row align-items-center">
+                  <div class="col-7 my-auto">
                       <?php if(!empty($cuadrito->SLIDE_TITULO)){ ?>
-                      <div class="col-12">
-                        <h4 ><?php echo $cuadrito->SLIDE_TITULO; ?></h4>
-                      </div>
+                        <h6 ><?php echo $cuadrito->SLIDE_TITULO; ?></h6>
                       <?php } ?>
                       <?php if(!empty($cuadrito->SLIDE_SUBTITULO)){ ?>
-                      <div class="col-12">
                       <h6 ><?php echo $cuadrito->SLIDE_SUBTITULO; ?></h6>
-                      </div>
                       <?php } ?>
                       <?php if(!empty($cuadrito->SLIDE_BOTON)){ ?>
-                      <div class="col-12">
                       <p ><?php echo $cuadrito->SLIDE_BOTON; ?></p>
-                      </div>
                       <?php } ?>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
             </a>
           </div>
-        <?php } ?>
+        <?php $i++; } ?>
       </div>
     </div>
   </div>

@@ -655,6 +655,22 @@ jQuery(function() {
 
 });
 
+/*
+-----------------
+Calificación Estrellas
+-----------------
+*/
+jQuery(function() {
+   jQuery('.multi_estrellas').starrr({
+     emptyClass: 'far fa-star',
+    change: function(e, value){
+      var index = jQuery(this).attr('data-index');
+      jQuery(this).children().val(value);
+     }
+   });
+
+});
+
    // CARRITO
  /*
  -----------------

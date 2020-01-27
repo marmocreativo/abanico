@@ -379,7 +379,7 @@ html, body{
 .contenedorEtiquetas .etiqueta-agotado{
   background-color: #dc3545;
   display: block;
-  width: 120%;
+  width: 500%;
   text-align: center;
   padding: 2px 15px 2px 20px;
   margin-bottom: 8px;
@@ -387,9 +387,32 @@ html, body{
   font-size: 0.8em;
   color: #fff;
   position: relative;
-  right: 0 !important;
+  left: -320px !important;
   bottom: 0 !important;
   border-radius: 0 !important;
+}
+.contenedorEtiquetas .etiqueta-agotado{
+  transform: translateY(125px) translateX(18px)rotate(35deg);
+  -webkit-transform: translateY(125px) translateX(18px)rotate(35deg);
+  -moz-transform: translateY(125px) translateX(18px)rotate(35deg);
+}
+
+.contenedorEtiquetas .etiqueta-agotado-cuadricula{
+  background-color: #dc3545;
+  display: block;
+    width: 600px;
+  text-align: center;
+  padding: 2px 15px 2px 20px;
+  color: #fff;
+  position: absolute;
+  left: -337px !important;
+top: -59px !important;
+  border-radius: 0 !important;
+}
+.contenedorEtiquetas .etiqueta-agotado-cuadricula{
+  transform: translateY(125px) translateX(18px)rotate(35deg);
+  -webkit-transform: translateY(125px) translateX(18px)rotate(35deg);
+  -moz-transform: translateY(125px) translateX(18px)rotate(35deg);
 }
 
 
@@ -569,6 +592,7 @@ html, body{
 .vistaProductos .bx{
   display: block;
   position: relative;
+  overflow: hidden;
 }
 
 .vistaProductos .imagen-producto{
@@ -605,6 +629,7 @@ html, body{
   top: 0;
   right: 0;
   margin-top: .5rem;
+  min-width: 20px;
 }
 
 .vistaProductos .contenedorEtiquetas .etiqueta-1,

@@ -315,7 +315,6 @@
     																			name="CategoriaProducto[]"
     																			class="custom-control-input"
     																			value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
-    																			<?php if(in_array($segunda_categoria->ID_CATEGORIA,$categorias_seleccionadas)){ echo 'checked'; } ?>
     																			data-padre='<?php echo 'collapse'.$i; ?>'
     																			>
     															<label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>

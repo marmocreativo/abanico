@@ -47,7 +47,7 @@
                 <form class="" action="<?php echo base_url('usuario/productos/actualizar'); ?>" method="post" enctype="multipart/form-data">
                   <input type="hidden" name="TipoProducto" value="<?php echo $tipo_producto; ?>">
                   <input type="hidden" name="IdUsuario" value="<?php echo $producto['ID_USUARIO']; ?>">
-                  <input type="hidden" name="IdTienda" value="<?php echo $tienda['ID_TIENDA']; ?>">
+                  <input type="hidden" name="IdTienda" value="<?php echo $producto['ID_TIENDA']; ?>">
                   <input type="hidden" name="Identificador" value="<?php echo $_GET['id']; ?>">
                   <input type="hidden" name="UrlProducto" value="<?php echo $producto['PRODUCTO_URL']; ?>">
                   <input type="hidden" name="SeccionActiva" id="SeccionActiva" value="">
