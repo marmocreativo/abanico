@@ -562,7 +562,7 @@
           <!-- Slider productos relacionados -->
           <?php
             $categorias_específicas = [
-              $categoria_producto['CATEGORIA_URL']=>'10'
+              $categoria_producto['CATEGORIA_URL']=>$categoria_producto['ID_CATEGORIA']
             ];
            ?>
 
@@ -575,20 +575,7 @@
                   <div class="flexslider carousel">
                     <ul class="slides">
                       <?php
-                      switch ($carrusel->TIPO) {
-                        case 'todos':
-                          $productos = $this->ProductosModel->lista_activos($parametros_or,$parametros_and,'',$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
-
-                          break;
-                        case 'incluyente':
-                          $productos = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,$id_categorias,$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
-
-                          break;
-                        case 'excluyente':
-                          $productos = $this->ProductosModel->lista_no_categoria_activos($parametros_or,$parametros_and,$id_categorias,$carrusel->ORDEN_PRODUCTOS,$carrusel->LIMITE);
-
-                          break;
-                      }
+                      $productos = $this->ProductosModel->lista_categoria_activos('','',$categorias_específicas,'','5');
                       ?>
                       <?php foreach($productos as $producto){ ?>
                         <?php
