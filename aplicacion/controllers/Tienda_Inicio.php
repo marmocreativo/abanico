@@ -13,7 +13,7 @@ class Tienda_Inicio extends CI_Controller {
 $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		// Variables defaults
-		$this->data['primary'] = "-primary";
+		$this->data['primary'] = "-danger";
 
 		if($this->agent->is_mobile()){
 			$this->data['dispositivo']  = "mobile";

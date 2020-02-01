@@ -49,26 +49,26 @@
     <div class="row">
       <div class="col border-right">
         <a href="<?php echo base_url('categoria/servicios'); ?>" class="d-flex justify-content-center align-items-center">
-          <div class="car-icono text-primary"> <span class="fa fa-tools"></span> </div>
-          <div class="car-titulo"><?php echo $this->lang->line('inicio_menu_destacados_servicios'); ?></div>
+          <div class="car-icono text<?php echo $primary ?>"> <span class="fa fa-tools"></span> </div>
+          <div class="car-titulo text<?php echo $primary ?>"><?php echo $this->lang->line('inicio_menu_destacados_servicios'); ?></div>
         </a>
       </div>
       <div class="col">
         <a href="<?php echo base_url('categoria'); ?>"  class="d-flex justify-content-center align-items-center">
-          <div class="car-icono text-primary"> <span class="fa fa-box"></span> </div>
-          <div class="car-titulo"><?php echo $this->lang->line('inicio_menu_destacados_productos'); ?></div>
+          <div class="car-icono text<?php echo $primary ?>"> <span class="fa fa-box"></span> </div>
+          <div class="car-titulo text<?php echo $primary ?>"><?php echo $this->lang->line('inicio_menu_destacados_productos'); ?></div>
         </a>
       </div>
       <div class="col border-left">
         <a href="<?php echo base_url('usuario/registrar'); ?>" class="d-flex justify-content-center align-items-center">
-          <div class="car-icono text-primary"> <span class="fa fa-handshake"></span> </div>
-          <div class="car-titulo"><?php echo $this->lang->line('inicio_menu_destacados_unete'); ?></div>
+          <div class="car-icono text<?php echo $primary ?>"> <span class="fa fa-handshake"></span> </div>
+          <div class="car-titulo text<?php echo $primary ?>"><?php echo $this->lang->line('inicio_menu_destacados_unete'); ?></div>
         </a>
       </div>
       <div class="col border-left">
         <a href="#Concursos" class="d-flex justify-content-center align-items-center">
-          <div class="car-icono text-primary"> <span class="fa fa-gift"></span> </div>
-          <div class="car-titulo">Concurso</div>
+          <div class="car-icono text<?php echo $primary ?>"> <span class="fa fa-gift"></span> </div>
+          <div class="car-titulo text<?php echo $primary ?>">Concurso</div>
         </a>
       </div>
     </div>

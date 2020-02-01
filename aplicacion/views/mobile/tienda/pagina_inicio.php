@@ -173,12 +173,16 @@
               }
             }
             // Variables de Paquete
+            /*
             $paquete = $this->PlanesModel->plan_activo_usuario($producto->ID_USUARIO,'productos');
             if($paquete==null){
               $visible = 'd-none';
             }else{
               $visible = '';
             }
+            */
+            $visible = '';
+
             ?>
           <li>
             <div class="card <?php echo $visible; ?>">
