@@ -1179,3 +1179,104 @@ border-top: solid 9px #980500;
   border: dashed 1px red;
   border-radius: 5px;
 }
+
+/* ESTILOS ICONOS FLOTANTES */
+/* KEYFRAMES */
+
+@-webkit-keyframes animateBubble {
+    0% {
+        bottom: -100px;
+
+    }
+    100% {
+        bottom: 200%;
+
+    }
+}
+
+@-moz-keyframes animateBubble {
+  0% {
+      bottom: -100px;
+  }
+  100% {
+      bottom: 200%;
+  }
+}
+
+@keyframes animateBubble {
+  0% {
+      bottom: -100px;
+  }
+  100% {
+      bottom: 200%;
+  }
+}
+
+@-webkit-keyframes sideWays {
+    0% {
+        margin-left:0px;
+    }
+    100% {
+        margin-left:50px;
+    }
+}
+
+@-moz-keyframes sideWays {
+    0% {
+        margin-left:0px;
+    }
+    100% {
+        margin-left:50px;
+    }
+}
+
+@keyframes sideWays {
+    0% {
+        margin-left:0px;
+    }
+    100% {
+        margin-left:50px;
+    }
+}
+
+@-webkit-keyframes wobbleIcon {
+    0% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(20deg);
+    }
+}
+
+@-moz-keyframes wobbleIcon {
+    0% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(20deg);
+    }
+}
+
+@keyframes wobbleIcon {
+    0% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(20deg);
+    }
+}
+
+
+
+
+.icono-flotante{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  left: 0;
+  -webkit-animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate, wobbleIcon 800ms ease-in-out infinite alternate;
+	-moz-animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate, wobbleIcon 800ms ease-in-out infinite alternate;
+	animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate, wobbleIcon 800ms ease-in-out infinite alternate;
+  z-index: 2000;
+}

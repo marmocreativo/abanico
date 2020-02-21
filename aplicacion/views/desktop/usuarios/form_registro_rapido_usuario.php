@@ -25,7 +25,7 @@
 
                   <div class="row">
                     <div class="col mb-3">
-                      <img src="<?php echo base_url('assets/global/img/registro_concurso_tortuga.jpg'); ?>" class="img-fluid" alt="">
+                      <img src="<?php echo base_url('assets/global/img/registro_concurso_tortuga_2.jpg'); ?>" class="img-fluid" alt="">
                     </div>
                   </div>
 

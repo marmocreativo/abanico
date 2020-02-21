@@ -23,7 +23,7 @@
                 <form class="" action="<?php echo base_url('usuario/registro_rapido/registro_usuario');?>" method="post">
                   <div class="row">
                     <div class="col-12">
-                      <img src="<?php echo base_url('assets/global/img/registro_concurso_tortuga.jpg'); ?>" class="img-fluid" alt="">
+                      <img src="<?php echo base_url('assets/global/img/registro_concurso_tortuga_2.jpg'); ?>" class="img-fluid" alt="">
                        <div class="form-group">
                          <label for="NombreUsuario"><?php echo $this->lang->line('usuario_formulario_registro_nombre'); ?></label>
                          <input type="text" class="form-control form-control-sm" id="NombreUsuario" name="NombreUsuario" placeholder="" value="<?=!form_error('NombreUsuario')?set_value('NombreUsuario'):''?>">

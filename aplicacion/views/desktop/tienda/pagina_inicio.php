@@ -409,12 +409,15 @@
   <div class="row">
     <div class="col text-center">
       <a href="https://www.abanicoytu.com/publicacion/bases-concurso-por-un-planeta-limpio">
-      <img src="<?php echo base_url('assets/global/img/registro_concurso_tortuga.jpg'); ?>" width="900" alt="">
+      <img src="<?php echo base_url('assets/global/img/registro_concurso_tortuga_2.jpg'); ?>" width="900" alt="">
       </a>
     </div>
   </div>
 </div>
 -->
+<div class="icono-flotante" style="left: <?php echo random_int(0, 90) ?>%">
+<img src="<?php echo base_url('assets/global/img/corazon.png'); ?>" width="100px" alt="">
+</div>
 
 <!-- Modal de flujos -->
 
