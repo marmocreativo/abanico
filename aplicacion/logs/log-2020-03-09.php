@@ -2457,3 +2457,20 @@ DEBUG - 2020-03-09 18:13:50 --> Session: "sess_save_path" is empty; using "sessi
 DEBUG - 2020-03-09 18:13:50 --> Total execution time: 0.1494
 DEBUG - 2020-03-09 18:13:50 --> Total execution time: 0.1853
 DEBUG - 2020-03-09 18:13:50 --> Total execution time: 0.2138
+DEBUG - 2020-03-09 19:24:19 --> UTF-8 Support Enabled
+DEBUG - 2020-03-09 19:24:19 --> No URI present. Default controller set.
+DEBUG - 2020-03-09 19:24:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-09 19:24:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-09 19:24:20 --> Total execution time: 1.1556
+DEBUG - 2020-03-09 19:24:21 --> UTF-8 Support Enabled
+DEBUG - 2020-03-09 19:24:21 --> UTF-8 Support Enabled
+DEBUG - 2020-03-09 19:24:21 --> UTF-8 Support Enabled
+DEBUG - 2020-03-09 19:24:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-09 19:24:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-09 19:24:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-09 19:24:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-09 19:24:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-09 19:24:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-09 19:24:21 --> Total execution time: 0.1262
+DEBUG - 2020-03-09 19:24:21 --> Total execution time: 0.1369
+DEBUG - 2020-03-09 19:24:21 --> Total execution time: 0.1781
