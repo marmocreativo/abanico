@@ -416,7 +416,7 @@
 </div>
 -->
 <!--
-<div class="icono-flotante" style="left: <?php echo random_int(0, 90) ?>%">
+<div class="icono-flotante" style="left: <?php echo rand(0, 90) ?>%">
 <img src="<?php echo base_url('assets/global/img/corazon.png'); ?>" width="100px" alt="">
 </div>
 -->

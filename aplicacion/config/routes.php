@@ -132,6 +132,8 @@ $route['login'] = 'Autenticacion';
 $route['login/(:any)'] = 'Autenticacion/$1';
 
 // Rutas de tienda
+$route['venta_mayoreo'] = 'Tienda_Mayoreo';
+$route['venta_mayoreo/(:any)'] = 'Tienda_Mayoreo/$1';
 $route['planes'] = 'Tienda_Planes';
 $route['planes/(:any)'] = 'Tienda_Planes/$1';
 $route['premios'] = 'Tienda_Premios';
