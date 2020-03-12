@@ -121,6 +121,21 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$pass = password_hash($this->input->post('PassUsuario'), PASSWORD_DEFAULT);
 
+			if(!empty($_FILES['ImagenUsuario']['name'])){
+
+				$archivo = $_FILES['ImagenUsuario']['tmp_name'];
+				$ancho = $this->data['op']['ancho_imagenes_producto'];
+				$alto = $this->data['op']['alto_imagenes_producto'];
+				$calidad = 80;
+				$nombre = 'usuario-'.uniqid();
+				$destino = 'contenido/img/usuarios';
+				// Subo la imagen y obtengo el nombre Default si va vacía
+				$imagen = subir_imagen_abanico($archivo,$ancho,$alto,$calidad,$nombre,$destino);
+
+			}else{
+				$imagen = 'default.jpg';
+			}
+
       $parametros = array(
 				'ID_USUARIO' => $id_usuario,
 				'USUARIO_NOMBRE' => $this->input->post('NombreUsuario'),
@@ -132,6 +147,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'USUARIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s'),
 				'USUARIO_FECHA_NACIMIENTO' => $this->input->post('FechaNacimientoUsuario'),
 				'USUARIO_TIPO' => $this->input->post('TipoUsuario'),
+				'USUARIO_IMAGEN' => $imagen,
 				'USUARIO_ESTADO' => $this->input->post('EstadoUsuario'),
       );
 
@@ -162,6 +178,22 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		if($this->form_validation->run())
 		{
+			if(!empty($_FILES['ImagenUsuario']['name'])){
+
+				$archivo = $_FILES['ImagenUsuario']['tmp_name'];
+				$ancho = $this->data['op']['ancho_imagenes_producto'];
+				$alto = $this->data['op']['alto_imagenes_producto'];
+				$calidad = 80;
+				$nombre = 'usuario-'.uniqid();
+				$destino = 'contenido/img/usuarios/';
+				// Subo la imagen y obtengo el nombre Default si va vacía
+				$imagen = subir_imagen_abanico($archivo,$ancho,$alto,$calidad,$nombre,$destino);
+
+			}else{
+				$imagen = $this->input->post('ImagenUsuarioAnterior');
+			}
+
+
 			$parametros = array(
 				'USUARIO_NOMBRE' => $this->input->post('NombreUsuario'),
 				'USUARIO_APELLIDOS' => $this->input->post('ApellidosUsuario'),
@@ -169,6 +201,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'USUARIO_TELEFONO' => $this->input->post('TelefonoUsuario'),
 				'USUARIO_LISTA_DE_CORREO' => $lista_correo,
 				'USUARIO_FECHA_NACIMIENTO' => $this->input->post('FechaNacimientoUsuario'),
+				'USUARIO_IMAGEN' => $imagen,
 				'USUARIO_FECHA_ACTUALIZACION' => date('Y-m-d H:i:s')
 			);
 			if(null!==$this->input->post('PassUsuario')&&!empty($this->input->post('PassUsuario'))){ $parametros['USUARIO_PASSWORD']= $pass; };

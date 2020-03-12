@@ -127,9 +127,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['keywords'] = $this->data['categoria']['META_KEYWORDS'];
 			$this->data['imagen'] = base_url('contenido/img/categorias/completo/'.$this->data['categoria']['CATEGORIA_IMAGEN']);
 
-	 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
-	 		$this->load->view($this->data['dispositivo'].'/tienda/categoria_productos',$this->data);
-	 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
+	 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+	 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/categoria_productos',$this->data);
+	 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
 		}else{
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
 			$this->data['categorias_hijas'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
@@ -142,9 +142,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['keywords'] = '';
 			$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
 
-	 		$this->load->view($this->data['dispositivo'].'/tienda_inicio/headers/header_inicio',$this->data);
-	 		$this->load->view($this->data['dispositivo'].'/tienda_inicio/categoria_productos',$this->data);
-	 		$this->load->view($this->data['dispositivo'].'/tienda_inicio/footers/footer_inicio',$this->data);
+	 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+	 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/categoria_productos',$this->data);
+	 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
 		}
 
  	}

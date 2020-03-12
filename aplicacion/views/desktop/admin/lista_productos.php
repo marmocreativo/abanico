@@ -97,7 +97,7 @@
               <tr>
                 <th class="text-left">Imágen</th>
                 <th class="text-left">Nombre</th>
-                <th class="text-center">Modelo</th>
+                <th class="text-center">Stock</th>
                 <th class="text-center">Precio</th>
                 <th class="text-center">Estado</th>
                 <th class="text-right">Controles</th>
@@ -121,7 +121,9 @@
                     <i class="far <?php echo $icono.' '.$color; ?>" title="meta keywords"></i>
                   </p>
                 </td>
-                <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo $producto->PRODUCTO_MODELO; ?></span></td>
+                <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo $producto->PRODUCTO_CANTIDAD; ?> <br>
+                  <span style="font-size:12px; font-weight:bold;"> <?php if($producto->PRODUCTO_MAYOREO=='si'){ echo 'Mayoreo'; }else{ echo 'Solo online'; } ?></span>
+                </span></td>
                 <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> $<?php echo $producto->PRODUCTO_PRECIO; ?> <small>MXN</small></span></td>
                 <td class="text-center">
                   <?php if($producto->PRODUCTO_ESTADO=='activo'){ ?>

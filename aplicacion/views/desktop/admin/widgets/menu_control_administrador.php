@@ -97,6 +97,9 @@
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
           <a href="<?php echo base_url('admin/usuarios?tipo_usuario=adm-6'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-user-lock"></i></i><span class="kt-menu__link-text">Administradores</span></a>
         </li>
+        <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+          <a href="<?php echo base_url('admin/usuarios?tipo_usuario=may-7'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-user-lock"></i></i><span class="kt-menu__link-text">Vendedores Mayoreo</span></a>
+        </li>
       </ul>
     </div>
   </li>

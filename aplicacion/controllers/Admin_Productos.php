@@ -169,6 +169,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PRODUCTO_PESO_NETO'=> $this->input->post('PesoNetoProducto'),
 				'PRODUCTO_TIPO'=> $this->input->post('TipoProducto'),
 				'PRODUCTO_CONDICION'=> $this->input->post('CondicionProducto'),
+				'PRODUCTO_MAYOREO'=> $this->input->post('MayoreoProducto'),
 				'PRODUCTO_ESTADO'=> $this->input->post('EstadoProducto'),
 				'ORDEN'=> '1'
 			);
@@ -323,6 +324,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PRODUCTO_PESO_NETO'=> $this->input->post('PesoNetoProducto'),
 				'PRODUCTO_TIPO'=> $this->input->post('TipoProducto'),
 				'PRODUCTO_CONDICION'=> $this->input->post('CondicionProducto'),
+				'PRODUCTO_MAYOREO'=> $this->input->post('MayoreoProducto'),
 				'PRODUCTO_ESTADO'=> $this->input->post('EstadoProducto'),
 				'ORDEN'=> '1'
 			);

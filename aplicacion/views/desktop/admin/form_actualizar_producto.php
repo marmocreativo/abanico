@@ -76,6 +76,15 @@
                         </div>
                       </div>
                       <div class="col">
+        								<div class="form-group">
+        									<label for="MayoreoProducto"><i class="fa fa-money-bill"></i> Disponible en mayoreo</label>
+        									<select class="form-control" id="MayoreoProducto" name="MayoreoProducto" placeholder="">
+        										<option value="no" <?php if($producto['PRODUCTO_MAYOREO']=='no'){ echo 'selected';} ?>>No</option>
+        										<option value="si" <?php if($producto['PRODUCTO_MAYOREO']=='si'){ echo 'selected';} ?>>Si</option>
+        									</select>
+        								</div>
+        							</div>
+                      <div class="col">
                         <div class="form-group">
                           <label for="EnvioGratuitoProducto"><i class="fa fa-truck"></i> Envio Gratuito con Transportista:</label>
                           <select class="form-control" name="EnvioGratuitoProducto">

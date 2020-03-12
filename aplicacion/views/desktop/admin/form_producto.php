@@ -76,6 +76,15 @@
 							</div>
 							<div class="col">
 								<div class="form-group">
+									<label for="MayoreoProducto"><i class="fa fa-money-bill"></i> Disponible en mayoreo</label>
+									<select class="form-control" id="MayoreoProducto" name="MayoreoProducto" placeholder="">
+										<option value="no" >No</option>
+										<option value="si">Si</option>
+									</select>
+								</div>
+							</div>
+							<div class="col">
+								<div class="form-group">
 									<label for="EnvioGratuitoProducto"><i class="fa fa-truck"></i> Envio Gratuito con Transportista:</label>
 									<select class="form-control" name="EnvioGratuitoProducto">
 										<option value="no">Ninguno</option>
@@ -339,7 +348,7 @@
 																			name="CategoriaProducto[]"
 																			class="custom-control-input"
 																			value="<?php echo $segunda_categoria->ID_CATEGORIA; ?>"
-																			
+
 																			data-padre='<?php echo 'collapse'.$i; ?>'
 																			>
 															<label class="custom-control-label h6" for="categoria-<?php echo $segunda_categoria->ID_CATEGORIA; ?>">-<?php echo $segunda_categoria->CATEGORIA_NOMBRE; ?></label>

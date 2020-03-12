@@ -43,6 +43,7 @@
                     <option value="vns-4" <?php if($tipo_usuario=='vns-4'){ echo 'selected'; } ?> >Vendedores y Servidores</option>
                     <option value="tec-5" <?php if($tipo_usuario=='tec-5'){ echo 'selected'; } ?> >Técnicos</option>
                     <option value="adm-6" <?php if($tipo_usuario=='adm-6'){ echo 'selected'; } ?> >Administradores</option>
+                    <option value="may-7" <?php if($tipo_usuario=='may-7'){ echo 'selected'; } ?> >Vendedores Mayoreo</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -72,6 +73,7 @@
             <table class="table table-hover table-striped">
               <thead class="text-light bg<?php echo $primary; ?>">
                 <tr>
+                  <th class="text-left">Foto</th>
                   <th class="text-left">Nombre</th>
                   <th class="text-center">Correo</th>
                   <th class="text-center">Tipo de Usuario</th>
@@ -82,6 +84,7 @@
               <tbody>
                 <?php foreach($usuarios as $usuario){ ?>
                 <tr>
+                  <td> <img src="<?php echo base_url('contenido/img/usuarios/'.$usuario->USUARIO_IMAGEN); ?>" width="50" alt=""> </td>
                   <td class="text-left"><span style="<?php if($usuario->USUARIO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"><?php echo $usuario->USUARIO_NOMBRE.' '.$usuario->USUARIO_APELLIDOS; ?></span></td>
                   <td class="text-center"><span style="<?php if($usuario->USUARIO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"><?php echo $usuario->USUARIO_CORREO; ?></span></td>
                     <td class="text-center">
@@ -104,6 +107,9 @@
                             break;
                             case 'adm-6':
                               $tipo = '<span class="badge badge-danger">Administrador</span>';
+                            break;
+                            case 'may-7':
+                              $tipo = '<span class="badge badge-success">Vendedor Mayoreo</span>';
                             break;
 
                           }

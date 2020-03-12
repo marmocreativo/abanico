@@ -54,7 +54,7 @@
               </div>
               <hr>
             <?php } ?>
-              <form class="" action="<?php echo base_url('admin/usuarios/crear'); ?>" method="post">
+              <form class="" action="<?php echo base_url('admin/usuarios/crear'); ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="TipoUsuario" value="<?php echo $tipo_usuario; ?>">
                 <div class="row">
                   <div class="col">
@@ -95,6 +95,10 @@
                     </div>
                     <div class="border p-2">
                       <h4 class="h5">Datos Opcionales</h4>
+                      <div class="form-group">
+      									<label for="ImagenUsuario">Añadir Foto</label>
+      									<input type="file" class="form-control" id="ImagenUsuario" name="ImagenUsuario">
+      								</div>
                       <div class="form-group">
                         <label for="TelefonoUsuario">Teléfono</label>
                         <input type="text" class="form-control" id="TelefonoUsuario" name="TelefonoUsuario" placeholder="" value="<?=!form_error('TelefonoUsuario')?set_value('TelefonoUsuario'):''?>">
