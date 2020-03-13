@@ -154,6 +154,40 @@ class ProductosModel extends CI_Model {
     $query = $this->db->get('productos');
     return $query->result();
   }
+
+  /*
+    * Enlisto todas las entradas
+    * $parametros Debe ser un array de Columnas y Valores, Busco usando la función LIKE
+    * $orden indicará la Columna y si es ascendente o descendente
+    * $limite Solo se usará si hay una cantidad limite de productos a mostrar
+ */
+  function lista_mayoreo($parametros_or,$parametros_and,$id_usuario,$orden,$limite){
+    if(!empty($parametros_or)){
+      $this->db->group_start();
+      $this->db->or_like($parametros_or);
+      $this->db->group_end();
+    }
+    if(!empty($parametros_and)){
+      $this->db->group_start();
+      $this->db->where($parametros_and);
+      $this->db->group_end();
+    }
+    if(!empty($id_usuario)){
+      $this->db->where('ID_USUARIO', $id_usuario);
+    }
+    if(!empty($orden)){
+      $this->db->order_by($orden);
+    }else{
+      $this->db->order_by(date('d'),'ASC');
+    }
+    if(!empty($limite)){
+      $this->db->limit($limite);
+    }
+    $this->db->where('PRODUCTO_ESTADO', 'activo');
+    $this->db->where('PRODUCTO_MAYOREO', 'si');
+    $query = $this->db->get('productos');
+    return $query->result();
+  }
   /*
     * Enlisto todas las entradas
     * $parametros Debe ser un array de Columnas y Valores, Busco usando la función LIKE

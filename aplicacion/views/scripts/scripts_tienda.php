@@ -388,6 +388,60 @@ jQuery('#BotonCompraRapida').on('click',function(e){
      }
   });
 });
+
+jQuery('.BotonEnLista').on('click',function(e){
+  // Leo las variables del botón
+  var id_producto = jQuery(this).attr('data-id-producto');
+  var nombre_producto = jQuery(this).attr('data-nombre-producto');
+  var imagen_producto = jQuery(this).attr('data-imagen-producto');
+  var peso_producto = jQuery(this).attr('data-peso-producto');
+  var detalles_producto = jQuery(this).attr('data-detalles-producto');
+  var sku = jQuery(this).attr('data-sku');
+  var cantidad_max = jQuery(this).attr('data-cantidad-max');
+  var divisa_default = jQuery(this).attr('data-divisa-default');
+  var contra_entrega = jQuery(this).attr('data-contra-entrega');
+  var envio_gratuito = jQuery(this).attr('data-envio-gratuito');
+  var cantidad_producto = jQuery('#CantidadProducto').val();
+  var precio_producto = jQuery(this).attr('data-precio-producto');
+  var id_tienda = jQuery(this).attr('data-id-tienda');
+  var nombre_tienda = jQuery(this).attr('data-nombre-tienda');
+
+  //console.log(detalles_producto);
+
+  // Envio la información por ajax
+  jQuery.ajax({
+    method: "POST",
+    url: "<?php echo base_url('ajax/carrito/cargar'); ?>",
+    dataType: "text",
+    data: {
+      IdProducto: id_producto,
+      NombreProducto: nombre_producto,
+      ImagenProducto: imagen_producto,
+      PesoProducto: peso_producto,
+      DetallesProducto: detalles_producto,
+      Sku: sku,
+      CantidadMaxima: cantidad_max,
+      DivisaDefault: divisa_default,
+      ContraEntrega: contra_entrega,
+      EnvioGratuito: envio_gratuito,
+      CantidadProducto: cantidad_producto,
+      PrecioProducto: precio_producto,
+      IdTienda: id_tienda,
+      NombreTienda: nombre_tienda
+    },
+
+    beforeSend: function(){
+      jQuery('.CargarCarrito').html('<div class="p4 text-center"><h3><i class="fa fa-spinner fa-pulse"></i> Por favor espere...</h3></div>');
+    },
+    success : function(texto)
+     {
+        jQuery('.CargarCarrito').load("<?php echo base_url('ajax/carrito'); ?>");
+          jQuery('#BotonComprarAhora').removeClass('disabled');
+          jQuery('#BotonComprarAhora').attr('aria-disabled','false');
+        jQuery('#ModalCarrito').modal();
+     }
+  });
+});
 // Mostrar carrito si se solicita
 <?php if(isset($_SESSION['modal_carrito'])&&$_SESSION['modal_carrito']=='mostrar'){ ?>
   jQuery('#ModalCarrito').modal();

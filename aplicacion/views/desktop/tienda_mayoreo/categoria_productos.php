@@ -22,7 +22,7 @@
       </div> -->
     </div>
     <div class="row">
-    <div class="col-2 d-none d-sm-block fila filtro-cont">
+    <div class="col-2 d-none">
       <form class="" action="<?php echo base_url($origen_formulario) ?>" method="get">
         <?php if($origen_formulario=='categoria'&&!empty($categoria)){ ?>
           <input type="hidden" name="slug" value="<?php echo $categoria['CATEGORIA_URL']; ?>">
@@ -70,33 +70,10 @@
         </div>
         </form>
       </div>
-      <div class="col">
-        <div class="card-deck">
+      <div class="row">
           <?php
           // Verificación de productos
-          $hay_productos = false;
-          if(empty($productos)&&isset($categoria)){
-              // Busco categorías hijas
-        			$categorias_segundo_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria['ID_CATEGORIA']],'productos','','');
-              foreach ($categorias_segundo_nivel as $categoria_segunda){
-                $productos_segundo = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,[$categoria_segunda->ID_CATEGORIA],$orden,'');
-                if(!empty($productos_segundo)) {
-                  $hay_productos = true;
-                  $productos = array_merge($productos, $productos_segundo);
-                }
-
-                $categorias_tercer_nivel = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$categoria_segunda->ID_CATEGORIA],'productos','','');
-
-                foreach ($categorias_tercer_nivel as $categoria_tercera){
-                  $productos_tercer = $this->ProductosModel->lista_categoria_activos($parametros_or,$parametros_and,[$categoria_tercera->ID_CATEGORIA],$orden,'');
-                  if(!empty($productos_tercer)) {
-                    $hay_productos = true;
-                    $productos = array_merge($productos, $productos_tercer);
-                  }
-
-                } // Categorias de Tercer nivel
-              } // Categorias de Segundo Nivel
-            }else{  $hay_productos = true;  }
+          $hay_productos = true;
             ?>
             <!-- CUADRICULA DE PRODUCTOS -->
             <?php foreach($productos as $producto){ ?>
@@ -112,45 +89,14 @@
                     $titulo = $producto->PRODUCTO_NOMBRE;
                   }
                 }
-                // Variables de Paquete
-                $paquete = $this->PlanesModel->plan_activo_usuario($producto->ID_USUARIO,'productos');
-                if($paquete==null){
-                  $visible = 'd-none';
-                }else{
-                  $visible = '';
-                }
                 ?>
-                <div class="col-xl-3 col-md-4 col-sm-4 col-6 mb-3 <?php echo $visible; ?>">
+                <div class="col-12 col-md-4 col-lg-3 mb-3">
                   <div class="cuadricula-productos">
                     <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-                    <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>" class="enlace-principal">
+                    <!-- <a href="<?php echo base_url('tienda-mayoreo/producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>" class="enlace-principal"> -->
+                    <a href="javascript:void(0);">
                       <div class="imagen-producto">
-                        <div class="contenedor-etiquetas">
-
-                          <?php if($producto->PRODUCTO_CANTIDAD<='0'){ ?>
-                            <span class="etiqueta-agotado">Agotado</span>
-                          <?php } ?>
-                          <?php if($producto->PRODUCTO_ORIGEN=='México'){ ?>
-                            <span class="etiqueta-1"><?php echo $this->lang->line('etiquetas_productos_mexico'); ?></span>
-                          <?php } ?>
-                          <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
-                            <span class="etiqueta-3"><?php echo $this->lang->line('etiquetas_productos_oferta'); ?></span>
-                          <?php } ?>
-                          <?php if($producto->PRODUCTO_ARTESANAL=='si'){ ?>
-                            <span class="etiqueta-artesanal"><img src="<?php echo base_url('assets/global/img/artesanal.png'); ?>"></span>
-                          <?php } ?>
-                        </div>
                           <span  style="background-image:url(<?php echo base_url($ruta_portada); ?>)"></span>
-
-                          <div class="overlay-producto <?php echo 'bg'.$primary; ?>"><div class="overlay-producto-in"></div></div>
-                          <div class="boton-ver">
-                            <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Ver Producto"> <span class="fa fa-eye"></span> </a>
-                          <?php if(verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){ ?>
-                            <a href="<?php echo base_url('producto/favorito?id_producto='.$producto->ID_PRODUCTO); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
-                          <?php }else{ ?>
-                            <a href="<?php echo base_url('login?url_redirect='.base_url('producto/favorito?id_producto='.$producto->ID_PRODUCTO)); ?>" class="botones-flotantes border border-white rounded" title="Añadir a Favoritos"> <span class="fa fa-heart"></span> </a>
-                          <?php } ?>
-                          </div>
                       </div>
                       </a>
                       <div class="product-content text-center">
@@ -180,31 +126,50 @@
                           <?php if(!empty($producto->PRODUCTO_PRECIO_LISTA)&&$producto->PRODUCTO_PRECIO<$producto->PRODUCTO_PRECIO_LISTA){ ?>
                             <div class="price-list"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($producto->PRODUCTO_PRECIO_LISTA,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small> </div>
                           <?php } ?>
-                          <div class="price"><small><?php echo $_SESSION['divisa']['signo']; ?></small> <?php echo number_format($precio_display,2); ?> <small><?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?> </small></div>
-                          <ul class="rating">
-                            <?php $estrellas = round($promedio['CALIFICACION_ESTRELLAS']); $estrellas_restan= 5-$estrellas; ?>
-                            <?php for($i = 1; $i<=$estrellas; $i++){ ?>
-                              <li class="fa fa-star "></li>
+                          <?php $rangos_precios = $this->ProductosRangosMayoreoModel->lista_unidades($producto->ID_PRODUCTO);?>
+                          <table class="table">
+                            <?php foreach($rangos_precios as $rango){ ?>
+                            <tr>
+                              <td><?php echo $rango->RANGO_MIN; ?> - <?php echo $rango->RANGO_MAX; ?> <?php echo $rango->RANGO_UNIDAD; ?></td>
+                              <td>$<?php echo $rango->RANGO_PRECIO_UNIDAD; ?></td>
+                            </tr>
                             <?php } ?>
-                            <?php for($i = 1; $i<=$estrellas_restan; $i++){ ?>
-                              <li class="far fa-star "></li>
-                            <?php } ?>
-                            <li class="fa text-dark">(<?php echo $cantidad; ?>)</li>
-                          </ul>
-                          <?php if($producto->PRODUCTO_ENVIO_GRATUITO!='no'){ ?>
-                          <div class="p-1 border border-success rounded" style="border-style:dashed !important">
-                            <span style="font-size:12px;" class="text-success"> Envío gratis <i class="fa fa-truck"></i></span>
+                          </table>
+                          <div class="py-3">
+                            <div class="col-12">
+                              <div class="form-group">
+                                <label for="" class="sr-only"><?php echo $this->lang->line('pagina_producto_formulario_cantidad'); ?></label>
+                                <input type="number" class="form-control" name="CantidadProducto" id='CantidadProducto' min="1" max="<?php echo $producto->PRODUCTO_CANTIDAD; ?>" value="<?php echo $producto->PRODUCTO_CANTIDAD_MINIMA; ?>">
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <button class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block BotonEnLista"
+                                  data-id-producto='<?php echo $producto->ID_PRODUCTO; ?>'
+                                  data-nombre-producto='<?php echo $titulo; ?>'
+                                  data-sku='<?php echo $producto->PRODUCTO_SKU; ?>'
+                                  data-cantidad-max='<?php echo $producto->PRODUCTO_CANTIDAD; ?>'
+                                  data-divisa-default='<?php echo $producto->PRODUCTO_DIVISA_DEFAULT; ?>'
+                                  data-contra-entrega='no'
+                                  data-envio-gratuito='no'
+                                  data-imagen-producto='<?php echo base_url($ruta_portada) ?>'
+                                  data-peso-producto='<?php echo $producto->PRODUCTO_PESO; ?>'
+                                  data-detalles-producto=''
+                                  data-precio-producto='<?php echo $precio_venta; ?>'
+                                  data-id-tienda='1'
+                                  data-nombre-tienda='Abanico Mayoreo'
+                                  >
+                                 <span class="fa fa-shopping-cart"></span> <?php echo $this->lang->line('pagina_producto_formulario_al_carrito'); ?></button>
+                            </div>
                           </div>
-                          <?php } ?>
+
                       </div>
                   </div>
               </div>
             <?php } ?>
             <!-- /CUADRICULA DE PRODUCTOS -->
-        </div>
         <?php if(!$hay_productos){ ?>
           <div class="border border-default p-3 text-center">
-            <a href="<?php echo base_url('usuario/registrar'); ?>"><h3>Sé el primero en ofrecer productos en esta categoría.</h3></a>
+            <a href="<?php echo base_url('usuario/registrar'); ?>"><h3>Por el momento no tenemos productos de mayoreo</h3></a>
           </div>
         <?php } ?>
       </div>

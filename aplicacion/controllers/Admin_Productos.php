@@ -231,6 +231,10 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					redirect(base_url('admin/productos_combinaciones?id='.$producto_id));
 					break;
 
+				case 'rangos':
+					redirect(base_url('admin/productos_rangos_mayoreo?id='.$producto_id));
+					break;
+
 				default:
 					redirect(base_url('admin/productos/actualizar?id='.$producto_id));
 					break;
@@ -388,6 +392,9 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 				case 'combinaciones':
 					redirect(base_url('admin/productos_combinaciones?id='.$this->input->post('Identificador')));
+					break;
+				case 'rangos':
+					redirect(base_url('admin/productos_rangos_mayoreo?id='.$this->input->post('Identificador')));
 					break;
 
 				default:

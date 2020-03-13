@@ -11,7 +11,7 @@
                <div class="col-5">
                  <div class="bxImg mb-2">
                    <a href="#">
-                     <img class="spanImg" src="<?php echo $producto['imagen_producto'];  ?>"></img>
+                     <img class="img-fluid" src="<?php echo $producto['imagen_producto'];  ?>"></img>
                    </a>
                  </div>
                  <p><strong><?php echo $this->lang->line('carrito_cantidad'); ?></strong></p>

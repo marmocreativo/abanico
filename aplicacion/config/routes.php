@@ -81,6 +81,8 @@ $route['admin/productos'] = 'Admin_Productos';
 $route['admin/productos/(:any)'] = 'Admin_Productos/$1';
 $route['admin/productos_combinaciones'] = 'Admin_Productos_Combinaciones';
 $route['admin/productos_combinaciones/(:any)'] = 'Admin_Productos_Combinaciones/$1';
+$route['admin/productos_rangos_mayoreo'] = 'Admin_Productos_Rangos_Mayoreo';
+$route['admin/productos_rangos_mayoreo/(:any)'] = 'Admin_Productos_Rangos_Mayoreo/$1';
 $route['admin'] = 'Admin_Desktop';
 $route['admin/(:any)'] = 'Admin_Desktop/$1';
 // Rutas de Usuario
@@ -132,8 +134,7 @@ $route['login'] = 'Autenticacion';
 $route['login/(:any)'] = 'Autenticacion/$1';
 
 // Rutas de tienda
-$route['tienda-mayoreo'] = 'Tienda_Mayoreo';
-$route['tienda-mayoreo/(:any)'] = 'Tienda_Mayoreo/$1';
+
 $route['planes'] = 'Tienda_Planes';
 $route['planes/(:any)'] = 'Tienda_Planes/$1';
 $route['premios'] = 'Tienda_Premios';
@@ -170,6 +171,8 @@ $route['busqueda'] = 'Tienda_Busqueda';
 $route['busqueda/(:any)'] = 'Tienda_Busqueda/$1';
 $route['auto'] = 'Auto_hooks';
 $route['auto/(:any)'] = 'Auto_hooks/$1';
+$route['tienda-mayoreo'] = 'Tienda_Mayoreo';
+$route['tienda-mayoreo/(:any)'] = 'Tienda_Mayoreo/$1';
 
 // Proceso de Pago
 //$route['proceso_pago_3'] = 'Proceso_Pago/paso3';
