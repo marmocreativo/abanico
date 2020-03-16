@@ -343,6 +343,7 @@
                           }
                          ?>
                         <option value="<?php echo  $combinacion->COMBINACION_OPCION; ?>"
+                          data-id-combinacion='<?php echo $combinacion->ID_COMBINACION; ?>'
                           data-precio-producto='<?php echo $combinacion->COMBINACION_PRECIO; ?>'
                           data-peso-producto='<?php echo $combinacion->COMBINACION_PESO; ?>'
                           data-imagen-producto='<?php echo $combinacion->COMBINACION_IMAGEN; ?>'
@@ -365,6 +366,7 @@
                 <div class="col-12">
                   <button class="btn <?php echo 'btn-outline'.$primary; ?> btn- btn-block" id="BotonComprar"
                       data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
+                      data-id-combinacion=''
                       data-nombre-producto='<?php echo $titulo; ?>'
                       data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
                       data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'
@@ -385,6 +387,7 @@
                       <hr>
                       <button class="btn <?php echo 'btn'.$primary; ?> btn- btn-block" id="BotonCompraRapida"
                           data-id-producto='<?php echo $producto['ID_PRODUCTO']; ?>'
+                          data-id-combinacion=''
                           data-nombre-producto='<?php echo $titulo; ?>'
                           data-sku='<?php echo $producto['PRODUCTO_SKU']; ?>'
                           data-cantidad-max='<?php echo $producto['PRODUCTO_CANTIDAD']; ?>'

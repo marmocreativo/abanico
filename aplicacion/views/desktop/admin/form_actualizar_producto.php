@@ -52,7 +52,6 @@
                           <button type="submit" class="btn btn-outline-success btn-sm" name="Guardar" value="salir"> <span class="fa fa-chevron-left"></span> <span class="fa fa-chevron-left"></span> Guardar y ver todos los productos</button>
                           <button type="submit" class="btn btn-success btn-sm" name="Guardar" value="tienda"> <span class="fa fa-chevron-left"></span> Guardar y ver los productos de <b><?php echo $tienda['TIENDA_NOMBRE'];  ?></b> </button>
                           <button type="submit" class="btn btn-outline-primary btn-sm" name="Guardar" value="combinaciones"> <span class="fa fa-sitemap"></span> Guardar y editar <b>combinaciones</b></button>
-                          <button type="submit" class="btn btn-outline-primary btn-sm" name="Guardar" value="rangos"> <span class="fa fa-sitemap"></span> Guardar y editar <b>Rangos Mayoreo</b></button>
                           <button type="submit" class="btn btn-primary btn-sm" name="Guardar" value="guardar"> <span class="fa fa-save"></span> Guardar y seguir editando</button>
                         </div>
                       </div>
@@ -164,9 +163,27 @@
                       </div>
                       <div class="col">
                         <div class="form-group">
-                          <label for="CantidadProducto"><?php echo $this->lang->line('usuario_form_producto_cantidad'); ?></label>
-                          <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="0" value="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>">
+                          <label for="PrecioMayoreoProducto">Precio Mayoreo <small>Opcional</small></label>
+                          <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">$</div>
+                            </div>
+                          <input type="number" step="0.01" min="0.00" class="form-control" id="PrecioMayoreoProducto" name="PrecioMayoreoProducto" placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO_MAYOREO']; ?>">
+                          </div>
                         </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="CantidadProducto"><?php echo $this->lang->line('usuario_form_producto_cantidad'); ?></label>
+                          <?php $hay_combinaciones = $this->GeneralModel->campo_existe('productos_combinaciones',['ID_PRODUCTO'=>$producto['ID_PRODUCTO']]); ?>
+                          <?php if($hay_combinaciones){ ?>
+                            <input type="hidden" name="CantidadProducto" value="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>">
+                            <p><b>Cantidad en stock: <?php echo $producto['PRODUCTO_CANTIDAD']; ?></b>, <br><small>los productos con combinaciones se debe actualizar individualmente.</small></p>
+                          <?php }else{ ?>
+                            <input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="0" value="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>">
+                          <?php } ?>
+                        </div>
+                        <input type="hidden" name="CantidadProductoAnterior" value="<?php echo $producto['PRODUCTO_CANTIDAD']; ?>">
                       </div>
                     </div>
                     <div class="row mb-3">

@@ -32,6 +32,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('NotificacionesModel');
 		$this->load->model('TransportistasModel');
 		$this->load->model('PlanesModel');
+		$this->load->model('GeneralModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -152,6 +153,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PRODUCTO_MPN'=> $this->input->post('MpnProducto'),
 				'PRODUCTO_PRECIO'=> $this->input->post('PrecioProducto'),
 				'PRODUCTO_PRECIO_LISTA'=> $this->input->post('PrecioListaProducto'),
+				'PRODUCTO_PRECIO_MAYOREO'=> $this->input->post('PrecioMayoreoProducto'),
 				'PRODUCTO_DIVISA_DEFAULT'=> $this->input->post('DivisaDefaultProducto'),
 				'PRODUCTO_CONTRA_ENTREGA'=> $this->input->post('ContraEntregaProducto'),
 				'PRODUCTO_ENVIO_GRATUITO'=> $this->input->post('EnvioGratuitoProducto'),
@@ -175,6 +177,25 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			);
 			// Creo el Producto
 			$producto_id = $this->ProductosModel->crear($parametros);
+
+			// Ajustar cantidades
+			$cantidad_anterior = 0;
+			$cantidad_nueva = $this->input->post('CantidadProducto');
+
+			$parametros_movimiento = array(
+				'ORIGEN'=>'administrador',
+				'ID_PEDIDO'=>'',
+				'ID_PRODUCTO'=>$producto_id,
+				'ID_COMBINACION'=>'',
+				'TIPO_MOVIMIENTO'=>'creacion',
+				'DETALLES'=>'Producto creado',
+				'CANTIDAD_ORIGINAL'=>$cantidad_anterior,
+				'CANTIDAD_FINAL'=>$cantidad_nueva,
+				'FECHA'=>date('Y-m-d H:i:s'),
+				'ID_USUARIO'=>$_SESSION['usuario']['id']
+			);
+
+			$movimiento = $this->GeneralModel->crear('movimientos',$parametros_movimiento);
 
 			// Reviso si llegó Imagen
 			if(!empty($_FILES['ImagenProducto']['name'])){
@@ -311,6 +332,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PRODUCTO_MPN'=> $this->input->post('MpnProducto'),
 				'PRODUCTO_PRECIO'=> $this->input->post('PrecioProducto'),
 				'PRODUCTO_PRECIO_LISTA'=> $this->input->post('PrecioListaProducto'),
+				'PRODUCTO_PRECIO_MAYOREO'=> $this->input->post('PrecioMayoreoProducto'),
 				'PRODUCTO_DIVISA_DEFAULT'=> $this->input->post('DivisaDefaultProducto'),
 				'PRODUCTO_CONTRA_ENTREGA'=> $this->input->post('ContraEntregaProducto'),
 				'PRODUCTO_ENVIO_GRATUITO'=> $this->input->post('EnvioGratuitoProducto'),
@@ -334,6 +356,27 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			);
 			// Creo el Producto
 			$producto_id = $this->ProductosModel->actualizar($this->input->post('Identificador'),$parametros);
+
+			// Ajustar cantidades
+			$cantidad_anterior = $this->input->post('CantidadProductoAnterior');
+			$cantidad_nueva = $this->input->post('CantidadProducto');
+
+			if($cantidad_nueva!=$cantidad_anterior){
+				$parametros_movimiento = array(
+					'ORIGEN'=>'administrador',
+					'ID_PEDIDO'=>'',
+					'ID_PRODUCTO'=>$this->input->post('Identificador'),
+					'ID_COMBINACION'=>'',
+					'TIPO_MOVIMIENTO'=>'actualizacion',
+					'DETALLES'=>'Ajuste del producto desde el administrador',
+					'CANTIDAD_ORIGINAL'=>$cantidad_anterior,
+					'CANTIDAD_FINAL'=>$cantidad_nueva,
+					'FECHA'=>date('Y-m-d H:i:s'),
+					'ID_USUARIO'=>$_SESSION['usuario']['id']
+				);
+
+				$movimiento = $this->GeneralModel->crear('movimientos',$parametros_movimiento);
+			}
 
 			// Reviso si llegó Imagen
 			if(!empty($_FILES['ImagenProducto']['name'])){

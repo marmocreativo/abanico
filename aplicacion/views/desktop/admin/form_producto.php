@@ -162,6 +162,17 @@
 							</div>
 							<div class="col">
 								<div class="form-group">
+									<label for="PrecioMayoreoProducto">Precio Mayoreo <small>Opcional</small></label>
+									<div class="input-group mb-2">
+										<div class="input-group-prepend">
+											<div class="input-group-text">$</div>
+										</div>
+									<input type="number" step="0.01" min="" class="form-control" id="PrecioMayoreoProducto" name="PrecioMayoreoProducto" placeholder="" value="">
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="form-group">
 									<label for="CantidadProducto"><?php echo $this->lang->line('usuario_form_producto_cantidad'); ?></label>
 									<input type="number" class="form-control" id="CantidadProducto" required name="CantidadProducto" placeholder="" min="0" value="">
 								</div>

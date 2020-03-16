@@ -52,9 +52,21 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		// Variables comunes
   }
 
+	public function index()
+	{
+		$this->data['titulo'] = 'Sistema de ventas mayoreo';
+		$this->data['descripcion'] = 'Administración y pedidos';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
 
-	 public function index()
- 	{
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/pagina_inicio',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+	}
+
+
+	 public function productos()
+ {
 		$parametros_or = array();
 		$parametros_and = array();
 		// Orden
@@ -114,16 +126,16 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			}
 		}
 	 // OfertaBusqueda
-	if(isset($_GET['OfertaBusqueda'])){
-		$parametros_and['PRODUCTO_PRECIO_LISTA >'] = 0;
-	}
-	// Artesanales
- if(isset($_GET['ArtesanalBusqueda'])){
-	 $parametros_and['PRODUCTO_ARTESANAL'] = 'si';
- }
+		if(isset($_GET['OfertaBusqueda'])){
+			$parametros_and['PRODUCTO_PRECIO_LISTA >'] = 0;
+		}
+		// Artesanales
+	 if(isset($_GET['ArtesanalBusqueda'])){
+		 $parametros_and['PRODUCTO_ARTESANAL'] = 'si';
+	 }
 
- $this->data['parametros_or'] = $parametros_or;
- $this->data['parametros_and'] = $parametros_and;
+ 	$this->data['parametros_or'] = $parametros_or;
+ 	$this->data['parametros_and'] = $parametros_and;
   $this->data['orden'] = $orden;
 
 		if(isset($_GET['slug'])&&!empty($_GET['slug'])){
@@ -158,6 +170,106 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/categoria_productos',$this->data);
 	 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
 		}
-
  	}
+
+	public function lista_empresas()
+	{
+		$this->data['titulo'] = 'Sistema de ventas mayoreo';
+		$this->data['descripcion'] = 'Administración y pedidos';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		if(!null==$this->input->get('busqueda')){
+			$this->data['empresas'] = $this->GeneralModel->lista('empresas',[
+				'EMPRESA_NOMBRE'=>$this->input->get('busqueda'),
+				'RFC'=>$this->input->get('busqueda'),
+				'CONTACTO_NOMBRE'=>$this->input->get('busqueda'),
+				'CONTACTO_APELLIDOS'=>$this->input->get('busqueda'),
+				'CONTACTO_CORREO'=>$this->input->get('busqueda')
+			],['ESTADO'=>'activo'],'ID DESC','','');
+		}else{
+			$this->data['empresas'] = $this->GeneralModel->lista('empresas','',['ESTADO'=>'activo'],'ID DESC','','');
+		}
+
+
+
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/lista_empresas',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+	}
+
+	public function crear_empresa()
+	{
+		$this->data['titulo'] = 'Crear empresa';
+		$this->data['descripcion'] = 'Registros de empresas';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->form_validation->set_rules('NombreEmpresa', 'Nombre de la empresa', 'required', array( 'required' => 'Debes designar el %s.' ));
+		$this->form_validation->set_rules('CorreoContacto', 'Correo de contacto', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+    {
+
+			$parametros = array(
+				'EMPRESA_NOMBRE' => $this->input->post('NombreEmpresa'),
+				'RAZON_SOCIAL' => $this->input->post('RazonSocialEmpresa'),
+				'RFC' => $this->input->post('RfcEmpresa'),
+				'DOMICILIO' => $this->input->post('DireccionEmpresa'),
+				'TELEFONO' => $this->input->post('TelefonoContacto'),
+				'CONTACTO_NOMBRE' => $this->input->post('NombreContacto'),
+				'CONTACTO_APELLIDOS' => $this->input->post('ApellidosContacto'),
+				'CONTACTO_CORREO' => $this->input->post('CorreoContacto')
+			);
+
+			$id_empresa = $this->GeneralModel->crear('empresas',$parametros);
+
+			$this->session->set_flashdata('exito', 'Empresa creada correctamente');
+      redirect(base_url('tienda-mayoreo/lista_empresas'));
+
+    }else{
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/form_empresas',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+		}
+	}
+
+	public function actualizar_empresa()
+	{
+		$this->data['titulo'] = 'Crear empresa';
+		$this->data['descripcion'] = 'Registros de empresas';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->form_validation->set_rules('NombreEmpresa', 'Nombre de la empresa', 'required', array( 'required' => 'Debes designar el %s.' ));
+		$this->form_validation->set_rules('CorreoContacto', 'Correo de contacto', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+		{
+
+			$parametros = array(
+				'EMPRESA_NOMBRE' => $this->input->post('NombreEmpresa'),
+				'RAZON_SOCIAL' => $this->input->post('RazonSocialEmpresa'),
+				'RFC' => $this->input->post('RfcEmpresa'),
+				'DOMICILIO' => $this->input->post('DireccionEmpresa'),
+				'TELEFONO' => $this->input->post('TelefonoContacto'),
+				'CONTACTO_NOMBRE' => $this->input->post('NombreContacto'),
+				'CONTACTO_APELLIDOS' => $this->input->post('ApellidosContacto'),
+				'CONTACTO_CORREO' => $this->input->post('CorreoContacto')
+			);
+
+			$id_empresa = $this->GeneralModel->actualizar('empresas',['ID'=>$this->input->post('Identificador')],$parametros);
+
+			$this->session->set_flashdata('exito', 'Empresa creada correctamente');
+			redirect(base_url('tienda-mayoreo/lista_empresas'));
+
+		}else{
+
+			$this->data['empresa']  = $this->GeneralModel->detalles('empresas',['ID'=>$_GET['id_empresa']]);
+
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/form_actualizar_empresas',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+		}
+	}
 }

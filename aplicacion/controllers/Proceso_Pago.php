@@ -40,6 +40,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('PagosPedidosModel');
 		$this->load->model('DivisasModel');
 		$this->load->model('CuponesModel');
+		$this->load->model('ProductosCombinacionesModel');
+		$this->load->model('GeneralModel');
 
 		//var_dump($_SESSION['pedido']);
 	}
@@ -406,14 +408,84 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$producto_id = $this->PedidosProductosModel->crear($parametros_productos);
 
 				$producto_a_actualizar = $this->ProductosModel->detalles($producto['id_producto']);
-				$nueva_cantidad = $producto_a_actualizar['PRODUCTO_CANTIDAD']-$producto['cantidad_producto'];
-				if($nueva_cantidad<0){
-					$nueva_cantidad = 0;
+				$combinacion_a_actualizar = $this->GeneralModel->detalles('productos_combinaciones',['ID_COMBINACION'=>$producto['id_combinacion']]);
+
+				if(empty($combinacion_a_actualizar)){
+					$nueva_cantidad = $producto_a_actualizar['PRODUCTO_CANTIDAD']-$producto['cantidad_producto'];
+					if($nueva_cantidad<0){
+						$nueva_cantidad = 0;
+					}
+					$cantidad = array(
+						'PRODUCTO_CANTIDAD'=>$nueva_cantidad
+					);
+					$this->ProductosModel->actualizar($producto['id_producto'],$cantidad);
+
+					// Ajustar cantidades
+					$movimiento_cantidad_anterior = $producto_a_actualizar['PRODUCTO_CANTIDAD'];
+					$movimiento_cantidad_nueva = $nueva_cantidad;
+
+					if($movimiento_cantidad_nueva!=$movimiento_cantidad_anterior){
+						$parametros_movimiento = array(
+							'ORIGEN'=>'online',
+							'ID_PEDIDO'=>$pedido_id,
+							'ID_PRODUCTO'=>$producto['id_producto'],
+							'ID_COMBINACION'=>$producto['id_combinacion'],
+							'TIPO_MOVIMIENTO'=>'compra',
+							'DETALLES'=>'Compra pedido '.$folio,
+							'CANTIDAD_ORIGINAL'=>$movimiento_cantidad_anterior,
+							'CANTIDAD_FINAL'=>$movimiento_cantidad_nueva,
+							'FECHA'=>date('Y-m-d H:i:s'),
+							'ID_USUARIO'=>$_SESSION['usuario']['id']
+						);
+
+						$movimiento = $this->GeneralModel->crear('movimientos',$parametros_movimiento);
+					}
+
+				}else{
+
+					$nueva_cantidad = $combinacion_a_actualizar['COMBINACION_CANTIDAD']-$producto['cantidad_producto'];
+
+					$parametros_cantidad_combinacion = array(
+						'COMBINACION_CANTIDAD'=>$nueva_cantidad
+					);
+
+					$this->GeneralModel->actualizar('productos_combinaciones',['ID_COMBINACION'=>$producto['id_combinacion']],$parametros_cantidad_combinacion);
+
+					// Ajustar cantidades
+					$cantidades_combinaciones = $this->GeneralModel->lista('productos_combinaciones','',['ID_PRODUCTO'=>$producto['id_producto']],'','','');
+					$detalles_producto =  $this->GeneralModel->detalles('productos',['ID_PRODUCTO'=>$producto['id_producto']]);
+
+					$movimiento_cantidad_anterior = $detalles_producto['PRODUCTO_CANTIDAD'];
+					$movimiento_cantidad_nueva = 0;
+					foreach($cantidades_combinaciones as $cantidad){
+						$movimiento_cantidad_nueva += $cantidad->COMBINACION_CANTIDAD;
+					}
+
+					if($movimiento_cantidad_nueva!=$movimiento_cantidad_anterior){
+						$parametros_movimiento = array(
+							'ORIGEN'=>'online',
+							'ID_PEDIDO'=>'',
+							'ID_PRODUCTO'=>$producto['id_producto'],
+							'ID_COMBINACION'=>$producto['id_combinacion'],
+							'TIPO_MOVIMIENTO'=>'compra',
+							'DETALLES'=>'Compra pedido '.$folio,
+							'CANTIDAD_ORIGINAL'=>$movimiento_cantidad_anterior,
+							'CANTIDAD_FINAL'=>$movimiento_cantidad_nueva,
+							'FECHA'=>date('Y-m-d H:i:s'),
+							'ID_USUARIO'=>$_SESSION['usuario']['id']
+						);
+
+						$movimiento = $this->GeneralModel->crear('movimientos',$parametros_movimiento);
+						$parametros_cantidad_producto = array(
+							'PRODUCTO_CANTIDAD'=>$movimiento_cantidad_nueva
+						);
+
+
+						$this->GeneralModel->actualizar('productos',['ID_PRODUCTO'=>$producto['id_producto']],$parametros_cantidad_producto);
+					}
+
 				}
-				$cantidad = array(
-					'PRODUCTO_CANTIDAD'=>$nueva_cantidad
-				);
-				$this->ProductosModel->actualizar($producto['id_producto'],$cantidad);
+
 
 			}
 

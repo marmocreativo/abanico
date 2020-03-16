@@ -58,6 +58,11 @@
                       <div class="col">
                         <div class="border p-3 mb-3">
                           <form class="" action="<?php echo base_url('admin/productos_combinaciones/actualizar'); ?>" method="post" enctype="multipart/form-data">
+                            <div class="row pt-3">
+                              <div class="col">
+                                <button type="submit" class="btn btn-primary float-right"> <span class="fa fa-save"></span> Actualizar Combinación</button>
+                              </div>
+                            </div>
                             <input type="hidden" name="Identificador" value="<?php echo $_GET['id']; ?>">
                             <input type="hidden" name="IdProducto" value="<?php echo $combinacion['ID_PRODUCTO']; ?>">
                             <h6> <i class="fa fa-sitemap"></i> Editar Combinación</h6>
@@ -82,6 +87,17 @@
                                       <div class="input-group-text">$</div>
                                     </div>
                                   <input type="text" class="form-control" id="PrecioCombinacion" name="PrecioCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_PRECIO']; ?>">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label for="PrecioMayoreoCombinacion">Precio de Mayoreo</label>
+                                  <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                      <div class="input-group-text">$</div>
+                                    </div>
+                                  <input type="text" class="form-control" id="PrecioMayoreoCombinacion" name="PrecioMayoreoCombinacion" placeholder="" value="<?php echo $combinacion['COMBINACION_PRECIO_MAYOREO']; ?>">
                                   </div>
                                 </div>
                               </div>

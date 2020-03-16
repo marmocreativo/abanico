@@ -24,7 +24,6 @@
             <!--begin:: Widgets/Trends-->
             <div class="kt-portlet kt-portlet--head--noborder kt-portlet--height-fluid">
               <div class="kt-portlet__body">
-
                   <?php retro_alimentacion(); ?>
                   <?php if(!empty(validation_errors())){ ?>
                     <div class="alert alert-danger">
@@ -42,7 +41,41 @@
                       </div>
                     </div>
                     <div class="col">
-                      <div class="border p-3 mb-3">
+                      <h5> <i class="fa fa-sitemap"></i> Combinaciones actuales</h5>
+                      <table class="table table-sm">
+                        <thead>
+                          <tr>
+                            <th>Grupo</th>
+                            <th>Opción</th>
+                            <th>Cantidad</th>
+                            <th>Peso Total</th>
+                            <th>Precio</th>
+                            <th>Precio Mayoreo</th>
+                            <th>Imagen</th>
+                            <th class="text-right">Controles</th>
+                          </tr>
+                        </thead>
+                        <tbody class="ui-sortable" data-tabla="productos_combinaciones" data-columna="ID_COMBINACION">
+                          <?php foreach($combinaciones as $combinacion){ ?>
+                          <tr id="item-<?php echo $combinacion->ID_COMBINACION; ?>" class="ui-sortable-handle">
+                            <td><?php echo $combinacion->COMBINACION_GRUPO; ?></td>
+                            <td><?php echo $combinacion->COMBINACION_OPCION; ?></td>
+                            <td><?php echo $combinacion->COMBINACION_CANTIDAD; ?></td>
+                            <td><?php echo $combinacion->COMBINACION_PESO; ?>Kg</td>
+                            <td>$<?php echo $combinacion->COMBINACION_PRECIO; ?></td>
+                            <td>$<?php echo $combinacion->COMBINACION_PRECIO_MAYOREO; ?></td>
+                            <td><img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$combinacion->COMBINACION_IMAGEN) ?>" width="50px;"></td>
+                            <td>
+                              <div class="btn-group float-right">
+                                <a href="<?php echo base_url('admin/productos_combinaciones/actualizar?id='.$combinacion->ID_COMBINACION); ?>" class="btn btn-sm btn-warning" title="Editar Combinacion"> <span class="fa fa-pencil-alt"></span> </a>
+                                <button data-enlace='<?php echo base_url('admin/productos_combinaciones/borrar?id='.$combinacion->ID_COMBINACION); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Combinacion"> <span class="fa fa-trash"></span> </button>
+                              </div>
+                            </td>
+                          </tr>
+                        <?php } ?>
+                        </tbody>
+                      </table>
+                      <div class="border p-3 my-3">
                         <form class="" action="<?php echo base_url('admin/productos_combinaciones/crear'); ?>" method="post" enctype="multipart/form-data">
                           <input type="hidden" name="IdProducto" value="<?php echo $_GET['id']; ?>">
                           <h6> <i class="fa fa-sitemap"></i> Nueva Combinación</h6>
@@ -74,6 +107,17 @@
                                     <div class="input-group-text">$</div>
                                   </div>
                                 <input type="text" class="form-control" id="PrecioCombinacion" name="PrecioCombinacion" required placeholder="" value="<?php echo $producto['PRODUCTO_PRECIO']; ?>">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="PrecioMayoreoCombinacion">Precio de Mayoreo <small>Opcional</small></label>
+                                <div class="input-group mb-2">
+                                  <div class="input-group-prepend">
+                                    <div class="input-group-text">$</div>
+                                  </div>
+                                <input type="text" class="form-control" id="PrecioMayoreoCombinacion" name="PrecioMayoreoCombinacion" placeholder="" value="0.00">
                                 </div>
                               </div>
                             </div>
@@ -174,38 +218,6 @@
                           </div>
                         </form>
                       </div>
-                      <h5> <i class="fa fa-sitemap"></i> Combinaciones actuales</h5>
-                      <table class="table table-sm">
-                        <thead>
-                          <tr>
-                            <th>Grupo</th>
-                            <th>Opción</th>
-                            <th>Cantidad</th>
-                            <th>Peso Total</th>
-                            <th>Precio</th>
-                            <th>Imagen</th>
-                            <th class="text-right">Controles</th>
-                          </tr>
-                        </thead>
-                        <tbody class="ui-sortable" data-tabla="productos_combinaciones" data-columna="ID_COMBINACION">
-                          <?php foreach($combinaciones as $combinacion){ ?>
-                          <tr id="item-<?php echo $combinacion->ID_COMBINACION; ?>" class="ui-sortable-handle">
-                            <td><?php echo $combinacion->COMBINACION_GRUPO; ?></td>
-                            <td><?php echo $combinacion->COMBINACION_OPCION; ?></td>
-                            <td><?php echo $combinacion->COMBINACION_CANTIDAD; ?></td>
-                            <td><?php echo $combinacion->COMBINACION_PESO; ?>Kg</td>
-                            <td>$<?php echo $combinacion->COMBINACION_PRECIO; ?></td>
-                            <td><img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$combinacion->COMBINACION_IMAGEN) ?>" width="100px;"></td>
-                            <td>
-                              <div class="btn-group float-right">
-                                <a href="<?php echo base_url('admin/productos_combinaciones/actualizar?id='.$combinacion->ID_COMBINACION); ?>" class="btn btn-sm btn-warning" title="Editar Combinacion"> <span class="fa fa-pencil-alt"></span> </a>
-                                <button data-enlace='<?php echo base_url('admin/productos_combinaciones/borrar?id='.$combinacion->ID_COMBINACION); ?>' class="btn btn-sm btn-danger borrar_entrada" title="Eliminar Combinacion"> <span class="fa fa-trash"></span> </button>
-                              </div>
-                            </td>
-                          </tr>
-                        <?php } ?>
-                        </tbody>
-                      </table>
                     </div>
                     <div class="col-12 border-top border-bottom my-1 mb-5 py-1 bg-gray">
                       <div class="btn-group float-right">

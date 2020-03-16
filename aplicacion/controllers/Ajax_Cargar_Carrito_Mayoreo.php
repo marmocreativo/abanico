@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ajax_Cargar_Carrito extends CI_Controller {
+class Ajax_Cargar_Carrito_Mayoreo extends CI_Controller {
 
 	public function __construct(){
     parent::__construct();
@@ -42,7 +42,6 @@ class Ajax_Cargar_Carrito extends CI_Controller {
 			if(!$existe){
 				$_SESSION['carrito']['productos'][] = [
 					'id_producto'=> $_POST['IdProducto'],
-					'id_combinacion'=> $_POST['IdCombinacion'],
 					'nombre_producto'=> $_POST['NombreProducto'],
 					'imagen_producto'=> $_POST['ImagenProducto'],
 					'peso_producto'=> $_POST['PesoProducto'],

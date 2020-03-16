@@ -46,19 +46,12 @@
         <div class="row">
           <div class="col">
             <ul class="list-inline mb-0">
-              <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://www.facebook.com/abanicoytu/"> <i class="fab fa-facebook"></i> </a></li>
-              <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://twitter.com/abanicoytu"><i class="fab fa-twitter"></i></a></li>
-              <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="https://www.instagram.com/abanicoytu"><i class="fab fa-instagram"></i></a></li>
               <li class="list-inline-item"><a class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-white" target="_blank" href="tel:<?php echo $op['telefono_sitio']; ?>"><i class="fa fa-phone"></i> <?php echo $op['telefono_sitio']; ?></a></li>
             </ul>
           </div>
           <div class="col">
             <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
-              <?php $this->load->view('desktop/tienda/widgets/menu_notificaciones'); ?>
-              <?php $this->load->view('desktop/tienda/widgets/menu_divisa'); ?>
-              <?php $this->load->view('desktop/tienda/widgets/menu_lenguaje'); ?>
               <?php $this->load->view('desktop/tienda/widgets/menu_usuario'); ?>
-              <button type="button" class="btn btn-sm <?php echo 'btn-link'.$primary; ?> text-light" data-toggle="modal" data-target="#ModalAyuda" style="background:transparent;"><i class="far fa-question-circle"></i></button>
             </div>
           </div>
         </div>
@@ -67,7 +60,7 @@
     <div class="menu-principal">
       <nav class="navbar navbar-expand">
         <div class="d-flex justify-content-arround align-items-center">
-          <a class="navbar-brand mr-1" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
+          <a class="navbar-brand mr-1" href="<?php echo base_url('tienda-mayoreo'); ?>"><img src="<?php echo base_url(); ?>assets/global/img/logo.png" alt=""></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -85,7 +78,7 @@
                 }
               }
             ?>
-            <button type="button" class="btn btn-sm btn-carrito <?php echo 'btn-link'.$primary; ?> text-primary" data-toggle="modal" data-target="#ModalCarrito" style="background:transparent;"> <span class="fa fa-shopping-cart text-primary-1"></span> <?php echo $this->lang->line('header_boton_carrito'); ?> (<?php echo $conteo_carrito; ?>)</button>
+            <button type="button" class="btn btn-sm btn-carrito <?php echo 'btn-link'.$primary; ?> text-primary" data-toggle="modal" data-target="#ModalCarritoMayoreo" style="background:transparent;"> <span class="fa fa-shopping-cart text-primary-1"></span> <?php echo $this->lang->line('header_boton_carrito'); ?> (<?php echo $conteo_carrito; ?>)</button>
           </li>
         </ul>
       </nav>

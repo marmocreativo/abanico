@@ -10,44 +10,7 @@ class GeneralModel extends CI_Model {
       // Función Construct
   }
 
-  /*
-    * Conteo de las entradas
- */
-  function conteo($tabla,$tablas_join,$parametros_or,$parametros_and,$agrupar){
-    // Si envio datos Join
-    if(!empty($tablas_join)&&!empty($tablas_join)){
-      $alias = '';
-      foreach($tablas_join as $tabla_join => $condicion_join){
-        /*
-        if($tabla_join=='categorias_objetos'){
-          $alias .= ', categorias_objetos.TIPO as CATEGORIA_TIPO';
-        }
-        $this->db->join($tabla_join, $condicion_join);
-        */
-      }
-      $this->db->select($tabla.'.*',$alias);
-    }
-	if(!empty($agrupar)){
-      $this->db->group_by($agrupar);
-    }
-    // Parametros
-    if(!empty($parametros_or)){
-      $this->db->group_start();
-      $this->db->or_like($parametros_or);
-      $this->db->group_end();
-    }
-    if(!empty($parametros_and)){
-      $this->db->group_start();
-      $this->db->where($parametros_and);
-      $this->db->group_end();
-    }
 
-    $query = $this->db->count_all_results($tabla);
-    return $query;
-  }
-  /*
-    * Enlisto todas las entradas
- */
  function lista($tabla,$parametros_or,$parametros_and,$orden,$limite,$offset){
 
    if(!empty($parametros_or)){
@@ -72,35 +35,7 @@ class GeneralModel extends CI_Model {
   /*
     * Enlisto todas las entradas
  */
-  function lista_join($tabla,$tablas_join,$parametros_or,$parametros_and,$orden,$limite,$offset,$agrupar){
-    // Join
-    if(!empty($tablas_join)){
-      foreach($tablas_join as $tabla_join => $condicion_join){
-        $this->db->join($tabla_join, $condicion_join);
-      }
-    }
 
-    // Parametros
-    if(!empty($parametros_or)){
-      $this->db->group_start();
-      $this->db->or_like($parametros_or);
-      $this->db->group_end();
-    }
-    if(!empty($parametros_and)){
-      $this->db->group_start();
-      $this->db->where($parametros_and);
-      $this->db->group_end();
-    }
-    if(!empty($orden)){
-      $this->db->order_by($orden);
-    }
-    if(!empty($limite)){
-      $this->db->limit($limite,$offset);
-    }
-    $this->db->group_by($agrupar);
-    $query = $this->db->get($tabla);
-    return $query->result();
-  }
   /*
     * Enlisto las entradas de forma agrupada por una columna
  */
@@ -202,25 +137,7 @@ class GeneralModel extends CI_Model {
     $this->db->where($parametros);
     return $this->db->update($tabla,array('ESTADO'=>$estado_final));
   }
-  /*
-    * Estadísticas
-  */
-  /*
-  * Más Vistos
-  */
-  function mas_vistos($parametros_and,$limite){
-    $this->db->select('*');
-     $this->db->select('COUNT(ID) as cantidad_total');
-     $this->db->from('vistas');
-     $this->db->order_by('cantidad_total','desc');
-     if(!empty($parametros_and)){
-       $this->db->where($parametros_and);
-      }
-     $this->db->limit($limite);
-     $this->db->group_by(['TITULO']);
-     $datos = $this->db->get()->result_array();
-   return $datos;
-  }
+
 
   /*
   *Conteo algo
@@ -232,24 +149,6 @@ class GeneralModel extends CI_Model {
       return $query->num_rows();
   }
 
-  /*
-  * Vistas por día
-  */
-  function conteo_vistas_por_dia($parametros_and,$limite){
-    $this->db->select('*');
-     $this->db->select('COUNT(ID) as cantidad_total');
-     $this->db->from('vistas');
-     $this->db->order_by('cantidad_total','desc');
-     if(!empty($parametros_and)){
-       $this->db->where($parametros_and);
-      }
-      if(!empty($limite)){
-       $this->db->limit($limite);
-      }
-     $this->db->group_by(['FECHA']);
-     $datos = $this->db->get()->row_array();
-   return $datos;
-  }
 
 
 }

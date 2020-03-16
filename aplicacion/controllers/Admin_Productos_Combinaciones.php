@@ -29,6 +29,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('GaleriasModel');
 		$this->load->model('EstadisticasModel');
 		$this->load->model('NotificacionesModel');
+		$this->load->model('GeneralModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -91,6 +92,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'COMBINACION_GRUPO'=> $this->input->post('GrupoCombinacion'),
 				'COMBINACION_OPCION'=> $this->input->post('OpcionCombinacion'),
 				'COMBINACION_PRECIO'=> $this->input->post('PrecioCombinacion'),
+				'COMBINACION_PRECIO_MAYOREO'=> $this->input->post('PrecioMayoreoCombinacion'),
 				'COMBINACION_CANTIDAD'=> $this->input->post('CantidadCombinacion'),
 				'COMBINACION_IMAGEN'=> $this->input->post('ImagenCombinacion'),
 				'COMBINACION_ANCHO'=> $this->input->post('AnchoCombinacion'),
@@ -101,6 +103,40 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			);
 			// Creo el Producto
 			$combinacion_id = $this->ProductosCombinacionesModel->crear($parametros);
+
+			// Ajustar cantidades
+			$cantidades_combinaciones = $this->GeneralModel->lista('productos_combinaciones','',['ID_PRODUCTO'=>$this->input->post('IdProducto')],'','','');
+			$detalles_producto =  $this->GeneralModel->detalles('productos',['ID_PRODUCTO'=>$this->input->post('IdProducto')]);
+			$cantidad_anterior = $detalles_producto['PRODUCTO_CANTIDAD'];
+			$cantidad_nueva = 0;
+			foreach($cantidades_combinaciones as $cantidad){
+				$cantidad_nueva += $cantidad->COMBINACION_CANTIDAD;
+			}
+
+			if($cantidad_nueva!=$cantidad_anterior){
+				$parametros_movimiento = array(
+					'ORIGEN'=>'administrador',
+					'ID_PEDIDO'=>'',
+					'ID_PRODUCTO'=>$this->input->post('IdProducto'),
+					'ID_COMBINACION'=>$combinacion_id,
+					'TIPO_MOVIMIENTO'=>'actualizacion',
+					'DETALLES'=>$this->input->post('GrupoCombinacion').' '.$this->input->post('OpcionCombinacion').' Actualizada desde el administrador',
+					'CANTIDAD_ORIGINAL'=>$cantidad_anterior,
+					'CANTIDAD_FINAL'=>$cantidad_nueva,
+					'FECHA'=>date('Y-m-d H:i:s'),
+					'ID_USUARIO'=>$_SESSION['usuario']['id']
+				);
+
+				$movimiento = $this->GeneralModel->crear('movimientos',$parametros_movimiento);
+
+				$parametros_producto = array(
+					'PRODUCTO_CANTIDAD'=>$cantidad_nueva
+				);
+
+				$this->GeneralModel->actualizar('productos',['ID_PRODUCTO'=>$this->input->post('IdProducto')],$parametros_producto);
+			}
+
+
 
 			// Mensaje Retroalimentación
 			$this->session->set_flashdata('exito', 'Combinación Creado!');
@@ -127,6 +163,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					'COMBINACION_GRUPO'=> $this->input->post('GrupoCombinacion'),
 					'COMBINACION_OPCION'=> $this->input->post('OpcionCombinacion'),
 					'COMBINACION_PRECIO'=> $this->input->post('PrecioCombinacion'),
+					'COMBINACION_PRECIO_MAYOREO'=> $this->input->post('PrecioMayoreoCombinacion'),
 					'COMBINACION_CANTIDAD'=> $this->input->post('CantidadCombinacion'),
 					'COMBINACION_IMAGEN'=> $this->input->post('ImagenCombinacion'),
 					'COMBINACION_ANCHO'=> $this->input->post('AnchoCombinacion'),
@@ -135,8 +172,39 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					'COMBINACION_PESO'=> $this->input->post('PesoCombinacion'),
 					'COMBINACION_PESO_NETO'=> $this->input->post('PesoNetoCombinacion')
 				);
-				// Creo el Producto
-				$producto_id = $this->ProductosCombinacionesModel->actualizar($this->input->post('Identificador'),$parametros);
+				// Actualizo la combinación
+				 $this->ProductosCombinacionesModel->actualizar($this->input->post('Identificador'),$parametros);
+
+				// Ajustar cantidades
+				$cantidades_combinaciones = $this->GeneralModel->lista('productos_combinaciones','',['ID_PRODUCTO'=>$this->input->post('IdProducto')],'','','');
+				$detalles_producto =  $this->GeneralModel->detalles('productos',['ID_PRODUCTO'=>$this->input->post('IdProducto')]);
+				$cantidad_anterior = $detalles_producto['PRODUCTO_CANTIDAD'];
+				$cantidad_nueva = 0;
+				foreach($cantidades_combinaciones as $cantidad){
+					$cantidad_nueva += $cantidad->COMBINACION_CANTIDAD;
+				}
+
+				if($cantidad_nueva!=$cantidad_anterior){
+					$parametros_movimiento = array(
+						'ORIGEN'=>'administrador',
+						'ID_PEDIDO'=>'',
+						'ID_PRODUCTO'=>$this->input->post('IdProducto'),
+						'ID_COMBINACION'=>$this->input->post('Identificador'),
+						'TIPO_MOVIMIENTO'=>'actualizacion',
+						'DETALLES'=>$this->input->post('GrupoCombinacion').' '.$this->input->post('OpcionCombinacion').' Actualizada desde el administrador',
+						'CANTIDAD_ORIGINAL'=>$cantidad_anterior,
+						'CANTIDAD_FINAL'=>$cantidad_nueva,
+						'FECHA'=>date('Y-m-d H:i:s'),
+						'ID_USUARIO'=>$_SESSION['usuario']['id']
+					);
+
+					$movimiento = $this->GeneralModel->crear('movimientos',$parametros_movimiento);
+					$parametros_producto = array(
+						'PRODUCTO_CANTIDAD'=>$cantidad_nueva
+					);
+
+					$this->GeneralModel->actualizar('productos',['ID_PRODUCTO'=>$this->input->post('IdProducto')],$parametros_producto);
+				}
 
 				// Mensaje Feedback
 					$this->session->set_flashdata('exito', 'Actualización correcta');
@@ -162,6 +230,37 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
         if(isset($combinacion['ID_COMBINACION']))
         {
             $this->ProductosCombinacionesModel->borrar($_GET['id']);
+
+						// Ajustar cantidades
+						$cantidades_combinaciones = $this->GeneralModel->lista('productos_combinaciones','',['ID_PRODUCTO'=>$combinacion['ID_PRODUCTO']],'','','');
+						$detalles_producto =  $this->GeneralModel->detalles('productos',['ID_PRODUCTO'=>$combinacion['ID_PRODUCTO']]);
+						$cantidad_anterior = $detalles_producto['PRODUCTO_CANTIDAD'];
+						$cantidad_nueva = 0;
+						foreach($cantidades_combinaciones as $cantidad){
+							$cantidad_nueva += $cantidad->COMBINACION_CANTIDAD;
+						}
+
+						if($cantidad_nueva!=$cantidad_anterior){
+							$parametros_movimiento = array(
+								'ORIGEN'=>'administrador',
+								'ID_PEDIDO'=>'',
+								'ID_PRODUCTO'=>$combinacion['ID_PRODUCTO'],
+								'ID_COMBINACION'=>$combinacion['ID_COMBINACION'],
+								'TIPO_MOVIMIENTO'=>'actualizacion',
+								'DETALLES'=>$combinacion['COMBINACION_GRUPO'].' '.$combinacion['COMBINACION_OPCION'].' Eliminada desde el administrador',
+								'CANTIDAD_ORIGINAL'=>$cantidad_anterior,
+								'CANTIDAD_FINAL'=>$cantidad_nueva,
+								'FECHA'=>date('Y-m-d H:i:s'),
+								'ID_USUARIO'=>$_SESSION['usuario']['id']
+							);
+
+							$movimiento = $this->GeneralModel->crear('movimientos',$parametros_movimiento);
+							$parametros_producto = array(
+								'PRODUCTO_CANTIDAD'=>$cantidad_nueva
+							);
+
+							$this->GeneralModel->actualizar('productos',['ID_PRODUCTO'=>$this->input->post('IdProducto')],$parametros_producto);
+						}
 						// Mensaje de Feedback
 						$this->session->set_flashdata('exito', 'Combinación Borrada');
 						// Redirección
