@@ -172,6 +172,26 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}
  	}
 
+	public function lista_pedidos()
+	{
+		$this->data['titulo'] = 'Sistema de ventas mayoreo';
+		$this->data['descripcion'] = 'Administración y pedidos';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		if(!null==$this->input->get('id_comprador')){
+			$this->data['pedidos'] = $this->GeneralModel->lista('pedidos_mayoreo',[
+				'PEDIDO_FOLIO'=>$this->input->get('busqueda'),
+			],['ID_COMPRADOR'=>$this->input->get('id_comprador'),],'PEDIDO_FECHA_REGISTRO DESC','','');
+		}else{
+			$this->data['pedidos'] = $this->GeneralModel->lista('pedidos_mayoreo','','','PEDIDO_FECHA_REGISTRO DESC','','');
+		}
+
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/lista_pedidos',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+	}
+
 	public function lista_empresas()
 	{
 		$this->data['titulo'] = 'Sistema de ventas mayoreo';
@@ -190,8 +210,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}else{
 			$this->data['empresas'] = $this->GeneralModel->lista('empresas','',['ESTADO'=>'activo'],'ID DESC','','');
 		}
-
-
 
 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/lista_empresas',$this->data);
@@ -269,6 +287,453 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
 			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/form_actualizar_empresas',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+		}
+	}
+
+	public function pedido_confirmacion()
+	{
+		$this->data['titulo'] = 'Confirmación de pedido';
+		$this->data['descripcion'] = 'Administración y pedidos';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->data['empresas'] = $this->GeneralModel->lista('empresas','',['ESTADO'=>'activo'],'ID DESC','','');
+
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/pedido_confirmacion',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+	}
+
+	public function crear_pedido()
+	{
+		switch ($_POST['Comprador']) {
+			case 'auto':
+					$id_comprador = $_SESSION['usuario']['id'];
+					$nombre_comprador = $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'];
+					$correo_comprador = $_SESSION['usuario']['correo'];
+					$telefono_comprador = $_SESSION['usuario']['correo'];
+					$direccion_comprador = $_SESSION['usuario']['correo'];
+				break;
+			case 'nueva':
+					$parametros = array(
+						'EMPRESA_NOMBRE' => $this->input->post('NombreEmpresa'),
+						'RAZON_SOCIAL' => $this->input->post('RazonSocialEmpresa'),
+						'RFC' => $this->input->post('RfcEmpresa'),
+						'DOMICILIO' => $this->input->post('DireccionEmpresa'),
+						'TELEFONO' => $this->input->post('TelefonoContacto'),
+						'CONTACTO_NOMBRE' => $this->input->post('NombreContacto'),
+						'CONTACTO_APELLIDOS' => $this->input->post('ApellidosContacto'),
+						'CONTACTO_CORREO' => $this->input->post('CorreoContacto')
+					);
+
+					$id_empresa = $this->GeneralModel->crear('empresas',$parametros);
+
+
+					$id_comprador = $id_empresa;
+					$nombre_comprador = $this->input->post('NombreContacto').' '.$this->input->post('ApellidosContacto');
+					$correo_comprador = $this->input->post('CorreoContacto');
+					$telefono_comprador = $this->input->post('TelefonoContacto');
+					$direccion_comprador = $this->input->post('DireccionEmpresa');
+				break;
+
+			default:
+					$this->data['empresa']  = $this->GeneralModel->detalles('empresas',['ID'=>$_POST['Comprador']]);
+					$id_comprador = $this->data['empresa']['ID'];
+					$nombre_comprador = $this->data['empresa']['CONTACTO_NOMBRE'].' '.$this->data['empresa']['CONTACTO_APELLIDOS'];
+					$correo_comprador = $this->data['empresa']['CONTACTO_CORREO'];
+					$telefono_comprador = $this->data['empresa']['TELEFONO'];
+					$direccion_comprador = $this->data['empresa']['DOMICILIO'];
+				break;
+		}
+
+		// Creo el pedido
+
+		$parametros_pedido = array(
+			'PEDIDO_FOLIO'=>folio_pedido(),
+			'ID_VENDEDOR'=>$_SESSION['usuario']['id'],
+			'ID_COMPRADOR'=>$id_comprador,
+			'PEDIDO_NOMBRE'=>$nombre_comprador,
+			'PEDIDO_CORREO'=>$correo_comprador,
+			'PEDIDO_TELEFONO'=>$telefono_comprador,
+			'PEDIDO_DIRECCION'=>$direccion_comprador,
+			'PEDIDO_ESTADO_PAGO'=>'pendiente',
+			'PEDIDO_ESTADO_PEDIDO'=>'pendiente',
+			'PEDIDO_FECHA_REGISTRO'=>date('Y-m-d H:i:s'),
+			'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s'),
+		);
+
+		$id_pedido = $this->GeneralModel->crear('pedidos_mayoreo',$parametros_pedido);
+
+		// Cargo los productos al pedido
+		$suma_total = 0;
+
+		// Bucle de Pedidos Productos
+		foreach($_SESSION['carrito']['productos'] as $producto){
+				// variables de precio
+
+					$precio_venta = $producto['precio_producto'];
+					$suma = $producto['cantidad_producto']*$producto['precio_producto'];
+
+
+			$parametros_productos = array(
+				'ID_PEDIDO'=>$id_pedido,
+				'ID_PRODUCTO'=>$producto['id_producto'],
+				'PRODUCTO_NOMBRE'=>$producto['nombre_producto'],
+				'PRODUCTO_DETALLES'=>$producto['detalles_producto'],
+				'PRODUCTO_IMAGEN'=>$producto['imagen_producto'],
+				'CANTIDAD'=>$producto['cantidad_producto'],
+				'IMPORTE'=>number_format($precio_venta,2,'.',''),
+				'IMPORTE_TOTAL'=>number_format($producto['cantidad_producto']*$precio_venta,2,'.',''),
+			);
+			$this->GeneralModel->crear('pedidos_mayoreo_productos',$parametros_productos);
+
+			$producto_a_actualizar = $this->ProductosModel->detalles($producto['id_producto']);
+			$combinacion_a_actualizar = $this->GeneralModel->detalles('productos_combinaciones',['ID_COMBINACION'=>$producto['id_combinacion']]);
+
+			if(empty($combinacion_a_actualizar)){
+				$nueva_cantidad = $producto_a_actualizar['PRODUCTO_CANTIDAD']-$producto['cantidad_producto'];
+				if($nueva_cantidad<0){
+					$nueva_cantidad = 0;
+				}
+				$cantidad = array(
+					'PRODUCTO_CANTIDAD'=>$nueva_cantidad
+				);
+				$this->ProductosModel->actualizar($producto['id_producto'],$cantidad);
+
+				// Ajustar cantidades
+				$movimiento_cantidad_anterior = $producto_a_actualizar['PRODUCTO_CANTIDAD'];
+				$movimiento_cantidad_nueva = $nueva_cantidad;
+
+				if($movimiento_cantidad_nueva!=$movimiento_cantidad_anterior){
+					$parametros_movimiento = array(
+						'ORIGEN'=>'mayoreo',
+						'ID_PEDIDO'=>$id_pedido,
+						'ID_PRODUCTO'=>$producto['id_producto'],
+						'ID_COMBINACION'=>$producto['id_combinacion'],
+						'TIPO_MOVIMIENTO'=>'pedido',
+						'DETALLES'=>'Compra pedido '.$folio,
+						'CANTIDAD_ORIGINAL'=>$movimiento_cantidad_anterior,
+						'CANTIDAD_FINAL'=>$movimiento_cantidad_nueva,
+						'FECHA'=>date('Y-m-d H:i:s'),
+						'ID_USUARIO'=>$_SESSION['usuario']['id']
+					);
+
+					$movimiento = $this->GeneralModel->crear('movimientos',$parametros_movimiento);
+				}
+
+			}else{
+
+				$nueva_cantidad = $combinacion_a_actualizar['COMBINACION_CANTIDAD']-$producto['cantidad_producto'];
+
+				$parametros_cantidad_combinacion = array(
+					'COMBINACION_CANTIDAD'=>$nueva_cantidad
+				);
+
+				$this->GeneralModel->actualizar('productos_combinaciones',['ID_COMBINACION'=>$producto['id_combinacion']],$parametros_cantidad_combinacion);
+
+				// Ajustar cantidades
+				$cantidades_combinaciones = $this->GeneralModel->lista('productos_combinaciones','',['ID_PRODUCTO'=>$producto['id_producto']],'','','');
+				$detalles_producto =  $this->GeneralModel->detalles('productos',['ID_PRODUCTO'=>$producto['id_producto']]);
+
+				$movimiento_cantidad_anterior = $detalles_producto['PRODUCTO_CANTIDAD'];
+				$movimiento_cantidad_nueva = 0;
+				foreach($cantidades_combinaciones as $cantidad){
+					$movimiento_cantidad_nueva += $cantidad->COMBINACION_CANTIDAD;
+				}
+
+				if($movimiento_cantidad_nueva!=$movimiento_cantidad_anterior){
+					$parametros_movimiento = array(
+						'ORIGEN'=>'mayoreo',
+						'ID_PEDIDO'=>$id_pedido,
+						'ID_PRODUCTO'=>$producto['id_producto'],
+						'ID_COMBINACION'=>$producto['id_combinacion'],
+						'TIPO_MOVIMIENTO'=>'pedido',
+						'DETALLES'=>'Compra pedido '.$folio,
+						'CANTIDAD_ORIGINAL'=>$movimiento_cantidad_anterior,
+						'CANTIDAD_FINAL'=>$movimiento_cantidad_nueva,
+						'FECHA'=>date('Y-m-d H:i:s'),
+						'ID_USUARIO'=>$_SESSION['usuario']['id']
+					);
+
+					$movimiento = $this->GeneralModel->crear('movimientos',$parametros_movimiento);
+					$parametros_cantidad_producto = array(
+						'PRODUCTO_CANTIDAD'=>$movimiento_cantidad_nueva
+					);
+					$this->GeneralModel->actualizar('productos',['ID_PRODUCTO'=>$producto['id_producto']],$parametros_cantidad_producto);
+				}
+			} // Termina la actualizacion de combinaciones y productos
+			$suma_total += $suma;
+		} // Termina el bucle de productos
+
+		// Actualizo importe_total
+
+		$importe = array(
+			'	PEDIDO_IMPORTE_TOTAL' =>$suma_total
+		);
+
+		$this->GeneralModel->actualizar('pedidos_mayoreo',['ID_PEDIDO'=>$id_pedido],$importe);
+
+		unset($_SESSION['carrito']['tiendas']);
+		unset($_SESSION['carrito']['productos']);
+		unset($_SESSION['pedido']);
+		$_SESSION['carrito']['productos']=array();
+		$_SESSION['carrito']['tiendas']=array();
+		$_SESSION['pedido']=array();
+
+		// Confirmo y redirecciono
+		$this->session->set_flashdata('exito', 'Pedido creado correctamente');
+		redirect(base_url('tienda-mayoreo/pedido_firma?id_pedido='.$id_pedido));
+
+	}
+
+	public function pedido_firma()
+	{
+		$this->data['titulo'] = 'Firma de pedido';
+		$this->data['descripcion'] = 'Administración y pedidos';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->data['pedido'] = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$_GET['id_pedido']]);
+		$this->data['productos_pedido'] = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$_GET['id_pedido']],'ID DESC','','');
+
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/pedido_firma',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+	}
+
+	public function firmar_pedido()
+	{
+		$parametros_pedido = array(
+			'PEDIDO_TIPO'=>$this->input->post('TipoPedido'),
+			'PEDIDO_ESTADO_PEDIDO'=>'confirmado'
+		);
+
+		$this->GeneralModel->actualizar('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->post('Identificador')],$parametros_pedido);
+
+		// Confirmo y redirecciono
+		$this->session->set_flashdata('exito', 'Pedido creado correctamente');
+		redirect(base_url('tienda-mayoreo/pedido_detalles?id_pedido='.$this->input->post('Identificador')));
+	}
+
+	public function pedido_detalles()
+	{
+		$this->data['titulo'] = 'Detalles del pedido';
+		$this->data['descripcion'] = 'Administración y pedidos';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->data['pedido'] = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$_GET['id_pedido']]);
+		$this->data['productos_pedido'] = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$_GET['id_pedido']],'ID DESC','','');
+
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/pedido_detalles',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+	}
+	public function pedido_actualizar()
+	{
+		$this->data['titulo'] = 'Actualizar Pedido';
+		$this->data['descripcion'] = 'Registros de empresas';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->form_validation->set_rules('Identificador', 'Id del pedido', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+		{
+
+			$parametros_pedido = array(
+				'PEDIDO_NOMBRE'=>$this->input->post('NombrePedido'),
+				'PEDIDO_CORREO'=>$this->input->post('CorreoPedido'),
+				'PEDIDO_TELEFONO'=>$this->input->post('TelefonoPedido'),
+				'PEDIDO_DIRECCION'=>$this->input->post('DireccionPedido'),
+				'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s'),
+			);
+
+			$this->GeneralModel->actualizar('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->post('Identificador')],$parametros_pedido);
+
+			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
+			redirect(base_url('tienda-mayoreo/pedido_detalles?id_pedido='.$this->input->post('Identificador')));
+
+		}else{
+
+			$this->data['pedido'] = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$_GET['id_pedido']]);
+			$this->data['productos_pedido'] = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$_GET['id_pedido']],'ID DESC','','');
+
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/form_actualizar_pedido',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+		}
+
+	}
+	public function pedido_envio()
+	{
+		$this->data['titulo'] = 'Actualizar Pedido';
+		$this->data['descripcion'] = 'Registros de empresas';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->form_validation->set_rules('Identificador', 'Id del pedido', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+		{
+
+			$importe_productos = $this->input->post('ImporteProductosParcialPedido');
+			$importe_impuestos = $this->input->post('ImporteImpuestosPedido');
+			$importe_envio = $this->input->post('ImporteEnvioTotalPedido');
+
+			$importe_total = $importe_productos+$importe_impuestos+$importe_envio;
+
+			$parametros_pedido = array(
+				'PEDIDO_NOMBRE_TRANSPORTISTA'=>$this->input->post('NombreTransportistaPedido'),
+				'PEDIDO_IMPORTE_ENVIO_TOTAL'=>$this->input->post('ImporteEnvioTotalPedido'),
+				'PEDIDO_IMPORTE_TOTAL'=>$importe_total,
+				'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s'),
+			);
+
+			$this->GeneralModel->actualizar('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->post('Identificador')],$parametros_pedido);
+
+			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
+			redirect(base_url('tienda-mayoreo/pedido_detalles?id_pedido='.$this->input->post('Identificador')));
+
+		}else{
+
+			$this->data['pedido'] = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$_GET['id_pedido']]);
+			$this->data['productos_pedido'] = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$_GET['id_pedido']],'ID DESC','','');
+
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/form_envio_pedido',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+		}
+
+	}
+	public function pedido_impuestos()
+	{
+		$this->data['titulo'] = 'Actualizar Pedido';
+		$this->data['descripcion'] = 'Registros de empresas';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->form_validation->set_rules('Identificador', 'Id del pedido', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+		{
+
+			$importe_productos = $this->input->post('ImporteProductosParcialPedido');
+			$importe_impuestos = $this->input->post('ImporteImpuestosPedido');
+			$importe_envio = $this->input->post('ImporteEnvioTotalPedido');
+
+			$importe_total = $importe_productos+$importe_impuestos+$importe_envio;
+
+			$parametros_pedido = array(
+				'PEDIDO_IMPORTE_IMPUESTOS'=>$this->input->post('ImporteImpuestosPedido'),
+				'PEDIDO_IMPUESTO_DETALLES'=>$this->input->post('ImpuestoDetallesPedido'),
+				'PEDIDO_IMPORTE_TOTAL'=>$importe_total,
+				'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s'),
+			);
+
+			$this->GeneralModel->actualizar('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->post('Identificador')],$parametros_pedido);
+
+			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
+			redirect(base_url('tienda-mayoreo/pedido_detalles?id_pedido='.$this->input->post('Identificador')));
+
+		}else{
+
+			$this->data['pedido'] = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$_GET['id_pedido']]);
+			$this->data['productos_pedido'] = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$_GET['id_pedido']],'ID DESC','','');
+
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/form_impuestos_pedido',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+		}
+
+	}
+
+	public function pedido_precios()
+	{
+		$this->data['titulo'] = 'Actualizar Pedido';
+		$this->data['descripcion'] = 'Registros de empresas';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->form_validation->set_rules('Identificador', 'Id del pedido', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+		{
+
+			$suma = $this->input->post('Cantidad')*$this->input->post('Importe');
+			$parametros_precio = array(
+				'CANTIDAD'=>$this->input->post('Cantidad'),
+				'IMPORTE'=>$this->input->post('Importe'),
+				'IMPORTE_TOTAL'=>$suma
+			);
+
+			$productos = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$this->input->post('Identificador')],'ID DESC','','');
+
+			$suma_productos = 0;
+			foreach($productos as $producto){
+				$suma_productos+=($producto->CANTIDAD*$producto->IMPORTE);
+			};
+
+			$this->GeneralModel->actualizar('pedidos_mayoreo_productos',['ID'=>$this->input->post('IdProducto')],$parametros_precio);
+
+			$importe_productos = $suma_productos;
+			$importe_impuestos = $this->input->post('ImporteImpuestosPedido');
+			$importe_envio = $this->input->post('ImporteEnvioTotalPedido');
+
+			$importe_total = $importe_productos+$importe_impuestos+$importe_envio;
+			$parametros_pedido = array(
+				'PEDIDO_IMPORTE_PRODUCTOS_PARCIAL'=>$importe_productos,
+				'PEDIDO_IMPORTE_TOTAL'=>$importe_total,
+				'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s'),
+			);
+
+			$this->GeneralModel->actualizar('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->post('Identificador')],$parametros_pedido);
+
+			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
+			redirect(base_url('tienda-mayoreo/pedido_detalles?id_pedido='.$this->input->post('Identificador')));
+
+		}else{
+
+			$this->data['pedido'] = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$_GET['id_pedido']]);
+			$this->data['productos_pedido'] = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$_GET['id_pedido']],'ID DESC','','');
+
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/form_precios_pedido',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+		}
+
+	}
+
+	public function pedido_pago()
+	{
+		$this->data['titulo'] = 'Actualizar Pedido';
+		$this->data['descripcion'] = 'Registros de empresas';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->form_validation->set_rules('Identificador', 'Id del pedido', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+		{
+			$parametros_pedido = array(
+				'PEDIDO_FORMA_PAGO'=>$this->input->post('FormaPagoPedido'),
+				'PEDIDO_ESTADO_PAGO'=>$this->input->post('EstadoPagoPedido'),
+				'PEDIDO_ESTADO_PEDIDO'=>'pagado',
+			);
+
+			$this->GeneralModel->actualizar('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->post('Identificador')],$parametros_pedido);
+
+			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
+			redirect(base_url('tienda-mayoreo/pedido_detalles?id_pedido='.$this->input->post('Identificador')));
+
+		}else{
+
+			$this->data['pedido'] = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$_GET['id_pedido']]);
+			$this->data['productos_pedido'] = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$_GET['id_pedido']],'ID DESC','','');
+
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/pedido_pago',$this->data);
 			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
 		}
 	}

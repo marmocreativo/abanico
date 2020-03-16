@@ -128,6 +128,8 @@ $route['ajax/concurso/(:any)'] = 'Ajax_Concurso/$1';
 $route['ajax/concurso'] = 'Ajax_Concurso';
 $route['ajax/carrito'] = 'Ajax_Cargar_Carrito';
 $route['ajax/carrito/(:any)'] = 'Ajax_Cargar_Carrito/$1';
+$route['ajax/carrito_mayoreo'] = 'Ajax_Cargar_Carrito_Mayoreo';
+$route['ajax/carrito_mayoreo/(:any)'] = 'Ajax_Cargar_Carrito_Mayoreo/$1';
 
 // Rutas de Autenticacion
 $route['login'] = 'Autenticacion';

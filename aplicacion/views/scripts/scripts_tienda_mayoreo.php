@@ -45,20 +45,12 @@ function cargar_pedido(){
   });
 }
 
-// Desactivo el boton de Comprar si no hay productos
-jQuery( document ).ready( function(){
-  var cantidad_productos = <?php echo count($_SESSION['carrito']['productos']); ?>;
-  if (cantidad_productos==0){
-    jQuery('.BotonEnLista').addClass('disabled');
-    jQuery('.BotonEnLista').attr('aria-disabled','true');
-  }
-} );
-
 
 
 jQuery('.BotonEnLista').on('click',function(e){
   // Leo las variables del botón
   var id_producto = jQuery(this).attr('data-id-producto');
+  var id_combinacion = jQuery(this).attr('data-id-combinacion');
   var nombre_producto = jQuery(this).attr('data-nombre-producto');
   var imagen_producto = jQuery(this).attr('data-imagen-producto');
   var peso_producto = jQuery(this).attr('data-peso-producto');
@@ -68,7 +60,7 @@ jQuery('.BotonEnLista').on('click',function(e){
   var divisa_default = jQuery(this).attr('data-divisa-default');
   var contra_entrega = jQuery(this).attr('data-contra-entrega');
   var envio_gratuito = jQuery(this).attr('data-envio-gratuito');
-  var cantidad_producto = jQuery('#CantidadProducto').val();
+  var cantidad_producto = jQuery('.cantidad_producto[data-id-producto="'+id_producto+'"]').val();
   var precio_producto = jQuery(this).attr('data-precio-producto');
   var id_tienda = jQuery(this).attr('data-id-tienda');
   var nombre_tienda = jQuery(this).attr('data-nombre-tienda');
@@ -82,6 +74,7 @@ jQuery('.BotonEnLista').on('click',function(e){
     dataType: "text",
     data: {
       IdProducto: id_producto,
+      IdCombinacion: id_combinacion,
       NombreProducto: nombre_producto,
       ImagenProducto: imagen_producto,
       PesoProducto: peso_producto,
@@ -210,7 +203,7 @@ jQuery('.CargarCarritoMayoreo').on('blur', '.form-cantidad-carrito', function() 
           }
        });
         jQuery('.CargarCarritoMayoreo').load("<?php echo base_url('ajax/carrito_mayoreo'); ?>");
-        jQuery('#ModalCarrito').modal();
+        jQuery('#ModalCarritoMayoreo').modal();
      }
   });
 });
@@ -246,7 +239,7 @@ jQuery('.CargarCarritoMayoreo').on('click', '.boton-eliminar-carrito', function(
           }
        });
         jQuery('.CargarCarritoMayoreo').load("<?php echo base_url('ajax/carrito_mayoreo'); ?>");
-        jQuery('#ModalCarrito').modal();
+        jQuery('#ModalCarritoMayoreo').modal();
      }
   });
 });
@@ -266,5 +259,95 @@ jQuery('#BotonVaciar').on('click',function(e){
      }
   });
 });
+
+/*
+-----------------
+VARIACIONES
+-----------------
+*/
+// Al cargar
+
+$( ".CombinacionProducto" ).each(function( index ) {
+  var id_producto = $(this).find(':selected').attr('data-id-producto');
+  var id_combinacion = $(this).find(':selected').attr('data-id-combinacion');
+  var precio = $(this).find(':selected').attr('data-precio-producto');
+  var cantidad_max = $(this).find(':selected').attr('data-cantidad-max');
+  var peso = $(this).find(':selected').attr('data-peso-producto');
+  var detalles = $(this).find(':selected').attr('data-detalles-producto');
+  var precio_visible = $(this).find(':selected').attr('data-precio-visible-producto');
+
+  var imagen = $(this).find(':selected').attr('data-imagen-producto');
+  if(imagen){
+    var nuevaImagen = '<?php echo base_url('contenido/img/productos/completo/'); ?>'+imagen;
+    jQuery('.imagen_producto[data-id-producto="'+id_producto+'"]').attr('src',nuevaImagen);
+  }
+
+  // Cambiar datos del boton
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-id-combinacion',id_combinacion);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-precio-producto',precio);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-cantidad-max',cantidad_max);
+  jQuery('.cantidad_producto[data-id-producto="'+id_producto+'"]').attr('max',cantidad_max);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-peso-producto',peso);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-detalles-producto',detalles);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-imagen-producto',nuevaImagen);
+
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-precio-producto',precio);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-cantidad-max',cantidad_max);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-peso-producto',peso);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-detalles-producto',detalles);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-imagen-producto',nuevaImagen);
+
+});
+
+
+
+// Al cambiar
+jQuery('.CombinacionProducto').on('change',function(e){
+  var id_producto = jQuery(this).find(':selected').attr('data-id-producto');
+  var id_combinacion = jQuery(this).find(':selected').attr('data-id-combinacion');
+  var precio = jQuery(this).find(':selected').attr('data-precio-producto');
+  var cantidad_max = jQuery(this).find(':selected').attr('data-cantidad-max');
+  var peso = jQuery(this).find(':selected').attr('data-peso-producto');
+  var detalles = jQuery(this).find(':selected').attr('data-detalles-producto');
+  // Cambiar Imagen
+
+  var imagen = jQuery(this).find(':selected').attr('data-imagen-producto');
+  if(imagen){
+    var nuevaImagen = '<?php echo base_url('contenido/img/productos/completo/'); ?>'+imagen;
+    jQuery('.imagen_producto[data-id-producto="'+id_producto+'"]').attr('src',nuevaImagen);
+  }
+  // Cambiar datos del boton
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-id-combinacion',id_combinacion);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-precio-producto',precio);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-cantidad-max',cantidad_max);
+  jQuery('.cantidad_producto[data-id-producto="'+id_producto+'"]').attr('max',cantidad_max);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-peso-producto',peso);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-detalles-producto',detalles);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-imagen-producto',nuevaImagen);
+
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-precio-producto',precio);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-cantidad-max',cantidad_max);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-peso-producto',peso);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-detalles-producto',detalles);
+  jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-imagen-producto',nuevaImagen);
+
+});
+
+// Ocultar formulario Empresa
+jQuery('.Comprador').on('change',function(e){
+  var comprador = jQuery(this).val();
+  if(comprador=='nueva'){
+    jQuery('#colapsar_form_empresa').removeClass('collapse');
+  }else{
+    jQuery('#colapsar_form_empresa').addClass('collapse');
+  }
+});
+
+
+// Firma
+var firma = document.querySelector("canvas");
+
+var signaturePad = new SignaturePad(firma);
+
 
 </script>

@@ -7,7 +7,7 @@ class Ajax_Cargar_Carrito_Mayoreo extends CI_Controller {
     parent::__construct();
 		$this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		if($this->agent->is_mobile()){
-			$this->data['dispositivo']  = "mobile";
+			$this->data['dispositivo']  = "desktop";
 		}else{
 			$this->data['dispositivo']  = "desktop";
 		}
@@ -20,7 +20,7 @@ class Ajax_Cargar_Carrito_Mayoreo extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view($this->data['dispositivo'].'/tienda/carrito',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/carrito',$this->data);
 	}
 
 	public function cargar()
@@ -42,6 +42,7 @@ class Ajax_Cargar_Carrito_Mayoreo extends CI_Controller {
 			if(!$existe){
 				$_SESSION['carrito']['productos'][] = [
 					'id_producto'=> $_POST['IdProducto'],
+					'id_combinacion'=> $_POST['IdCombinacion'],
 					'nombre_producto'=> $_POST['NombreProducto'],
 					'imagen_producto'=> $_POST['ImagenProducto'],
 					'peso_producto'=> $_POST['PesoProducto'],
@@ -50,7 +51,7 @@ class Ajax_Cargar_Carrito_Mayoreo extends CI_Controller {
 					'cantidad_max' => $_POST['CantidadMaxima'],
 					'divisa_default' => $_POST['DivisaDefault'],
 					'contra_entrega' => $_POST['ContraEntrega'],
-					'contra_entrega_pagar' => 'si',
+					'contra_entrega_pagar' => 'no',
 					'envio_gratuito' => $_POST['EnvioGratuito'],
 					'cantidad_producto' => $_POST['CantidadProducto'],
 					'precio_producto'=> $_POST['PrecioProducto'],

@@ -29,7 +29,10 @@
         </div>
       </div>
       <div class="modal-footer">
-        Botones
+        <div class="btn-group">
+          <button type="button" id="BotonVaciar" class="btn btn-link float-left"><i class="fas fa-trash text-primary-17"></i> <?php echo $this->lang->line('carrito_vaciar'); ?></button>
+          <a href="<?php echo base_url('tienda-mayoreo/pedido_confirmar'); ?>" id="BotonComprarAhora" class="btn btn-primary-17 text-white" aria-disabled="false">Confirmar Pedido</a>
+        </div>
       </div>
     </div>
   </div>
@@ -47,6 +50,7 @@
     <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
     <script defer src="<?php echo base_url(); ?>assets/tienda/js/flexslider/jquery.flexslider.js"></script>
     <script defer src="<?php echo base_url(); ?>assets/tienda/js/slider-pro-master/js/jquery.sliderPro.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 
     <?php $this->load->view('scripts/scripts_tienda_mayoreo');  ?>
     <?php $this->load->view('scripts/formularios_usuario');  ?>
