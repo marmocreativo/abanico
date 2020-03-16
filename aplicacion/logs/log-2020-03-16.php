@@ -6105,3 +6105,93 @@ DEBUG - 2020-03-16 09:18:00 --> Session: "sess_save_path" is empty; using "sessi
 DEBUG - 2020-03-16 09:18:00 --> Total execution time: 0.1356
 DEBUG - 2020-03-16 09:18:00 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
 DEBUG - 2020-03-16 09:18:00 --> Total execution time: 0.1517
+DEBUG - 2020-03-16 09:42:24 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:24 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:24 --> Total execution time: 0.4031
+DEBUG - 2020-03-16 09:42:25 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:25 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2020-03-16 09:42:25 --> 404 Page Not Found: Assets/global
+DEBUG - 2020-03-16 09:42:25 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:25 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:25 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:25 --> Total execution time: 0.1452
+DEBUG - 2020-03-16 09:42:25 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:25 --> Total execution time: 0.1749
+DEBUG - 2020-03-16 09:42:26 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:26 --> Total execution time: 0.1747
+DEBUG - 2020-03-16 09:42:26 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:26 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:26 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2020-03-16 09:42:26 --> 404 Page Not Found: Assets/global
+DEBUG - 2020-03-16 09:42:26 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:27 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:27 --> Total execution time: 0.1174
+DEBUG - 2020-03-16 09:42:27 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:27 --> Total execution time: 0.2024
+DEBUG - 2020-03-16 09:42:33 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:33 --> Total execution time: 0.1376
+DEBUG - 2020-03-16 09:42:33 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:33 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2020-03-16 09:42:33 --> 404 Page Not Found: Assets/global
+DEBUG - 2020-03-16 09:42:33 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:34 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:34 --> Total execution time: 0.1486
+DEBUG - 2020-03-16 09:42:34 --> Total execution time: 0.2114
+DEBUG - 2020-03-16 09:42:36 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:36 --> Total execution time: 0.1180
+DEBUG - 2020-03-16 09:42:37 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:37 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2020-03-16 09:42:37 --> 404 Page Not Found: Assets/global
+DEBUG - 2020-03-16 09:42:37 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:37 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:37 --> Total execution time: 0.1661
+DEBUG - 2020-03-16 09:42:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:37 --> Total execution time: 0.1768
+DEBUG - 2020-03-16 09:42:37 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:37 --> Total execution time: 0.1283
+DEBUG - 2020-03-16 09:42:38 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:38 --> UTF-8 Support Enabled
+ERROR - 2020-03-16 09:42:38 --> 404 Page Not Found: Assets/global
+DEBUG - 2020-03-16 09:42:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:38 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:38 --> Total execution time: 0.1390
+DEBUG - 2020-03-16 09:42:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:38 --> Total execution time: 0.1267
+DEBUG - 2020-03-16 09:42:41 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:41 --> Total execution time: 0.1135
+DEBUG - 2020-03-16 09:42:41 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:41 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:41 --> UTF-8 Support Enabled
+DEBUG - 2020-03-16 09:42:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2020-03-16 09:42:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2020-03-16 09:42:41 --> Total execution time: 0.1575
+DEBUG - 2020-03-16 09:42:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2020-03-16 09:42:41 --> 404 Page Not Found: Assets/global
+DEBUG - 2020-03-16 09:42:41 --> Total execution time: 0.1744
