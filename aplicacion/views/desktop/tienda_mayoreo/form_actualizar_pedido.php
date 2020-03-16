@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
           <label for="CorreoPedido">Correo</label>
-          <input type="text" class="form-control" name="CorreoPedido" value="<?php echo $pedido['PEDIDO_CORREO'] ?>" required>
+          <input type="text" class="form-control" name="CorreoPedido" value="<?php echo $pedido['PEDIDO_CORREO'] ?>">
         </div>
         <div class="form-group">
           <label for="TelefonoPedido">Teléfono</label>

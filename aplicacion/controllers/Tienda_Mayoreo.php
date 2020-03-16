@@ -360,6 +360,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			'PEDIDO_DIRECCION'=>$direccion_comprador,
 			'PEDIDO_ESTADO_PAGO'=>'pendiente',
 			'PEDIDO_ESTADO_PEDIDO'=>'pendiente',
+			'PEDIDO_TIPO'=>$this->input->post('TipoPedido'),
+			'PEDIDO_ESTADO_PEDIDO'=>'confirmado'
 			'PEDIDO_FECHA_REGISTRO'=>date('Y-m-d H:i:s'),
 			'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s'),
 		);
@@ -484,7 +486,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		// Confirmo y redirecciono
 		$this->session->set_flashdata('exito', 'Pedido creado correctamente');
-		redirect(base_url('tienda-mayoreo/pedido_firma?id_pedido='.$id_pedido));
+		redirect(base_url('tienda-mayoreo/pedido_detalles?id_pedido='.$id_pedido));
 
 	}
 
@@ -649,7 +651,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}
 
 	}
-
 	public function pedido_precios()
 	{
 		$this->data['titulo'] = 'Actualizar Pedido';

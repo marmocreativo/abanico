@@ -22,7 +22,7 @@
           </div>
           <div class="form-group">
             <label for="CorreoContacto">Correo <small> Persona de contacto </small></label>
-            <input type="text" class="form-control" name="CorreoContacto" value="" required>
+            <input type="text" class="form-control" name="CorreoContacto" value="">
           </div>
           <div class="form-group">
             <label for="TelefonoContacto">Teléfono <small> Persona de contacto </small></label>

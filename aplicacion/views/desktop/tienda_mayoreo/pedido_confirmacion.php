@@ -61,6 +61,16 @@
         </div>
       </div>
       <div class="col-12 mb-3">
+        <div class="form-group">
+          <label for="TipoPedido">Este pedido será:</label>
+          <select class="form-control" name="TipoPedido">
+            <option value="pago_inmediato">Pago inmediato</option>
+            <option value="contra_entrega">Pago contra entrega</option>
+            <option value="comision">Productos a comision</option>
+          </select>
+        </div>
+        <label for="">Firma de confirmación:</label>
+        <canvas style="border: solid 1px #000; min-width:300px; max-width:1600px;"></canvas>
         <button type="submit" class="btn btn-primary-17 btn-lg btn-block text-white"> <i class="fa fa-check"></i> Confirmar </button>
       </div>
     </div>
