@@ -41,6 +41,7 @@
                           <div class="row">
                             <div class="col-12">
                               <?php $combinaciones = $this->GeneralModel->lista('productos_combinaciones','',['ID_PRODUCTO'=>$producto->ID_PRODUCTO],'ORDEN ASC','',''); ?>
+                              <?php if(!empty($combinaciones)){?>
                               <div class="form-group">
                                 <label for="CombinacionProducto" class="sr-only"><?php echo $this->lang->line('pagina_producto_formulario_opciones'); ?></label>
                                 <select class="form-control CombinacionProducto" name="CombinacionProducto">
@@ -59,11 +60,12 @@
                                 <?php } ?>
                                 </select>
                               </div>
+                              <?php } ?>
                             </div>
                             <div class="col-6">
                               <div class="form-group">
                                 <label for="" class="sr-only"><?php echo $this->lang->line('pagina_producto_formulario_cantidad'); ?></label>
-                                <input type="number" class="form-control cantidad_producto" data-id-producto='<?php echo $producto->ID_PRODUCTO; ?>' min="1" max="<?php echo $producto->PRODUCTO_CANTIDAD; ?>" value="<?php echo $producto->PRODUCTO_CANTIDAD_MINIMA; ?>">
+                                <input type="number" class="form-control cantidad_producto" data-id-producto='<?php echo $producto->ID_PRODUCTO; ?>' min="1" max="<?php echo $producto->PRODUCTO_CANTIDAD; ?>" value="1">
                               </div>
                             </div>
                             <div class="col-6">

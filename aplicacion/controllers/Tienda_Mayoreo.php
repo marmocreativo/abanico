@@ -44,7 +44,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			redirect(base_url('login?url_redirect='.base_url(uri_string().'?'.$_SERVER['QUERY_STRING'])));
 		}
 		// Verifico Permiso
-		if(!verificar_permiso(['ven-7','adm-6'])){
+		if(!verificar_permiso(['may-7','adm-6'])){
 			$this->session->set_flashdata('alerta', 'No tienes permiso de entrar en esa sección');
 			redirect(base_url('usuario'));
 		}
@@ -348,9 +348,10 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		}
 
 		// Creo el pedido
+		$folio = folio_pedido();
 
 		$parametros_pedido = array(
-			'PEDIDO_FOLIO'=>folio_pedido(),
+			'PEDIDO_FOLIO'=>$folio,
 			'ID_VENDEDOR'=>$_SESSION['usuario']['id'],
 			'ID_COMPRADOR'=>$id_comprador,
 			'PEDIDO_NOMBRE'=>$nombre_comprador,
@@ -667,7 +668,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'IMPORTE'=>$this->input->post('Importe'),
 				'IMPORTE_TOTAL'=>$suma
 			);
-
+			$this->GeneralModel->actualizar('pedidos_mayoreo_productos',['ID'=>$this->input->post('IdProducto')],$parametros_precio);
 			$productos = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$this->input->post('Identificador')],'ID DESC','','');
 
 			$suma_productos = 0;
@@ -675,7 +676,8 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$suma_productos+=($producto->CANTIDAD*$producto->IMPORTE);
 			};
 
-			$this->GeneralModel->actualizar('pedidos_mayoreo_productos',['ID'=>$this->input->post('IdProducto')],$parametros_precio);
+			//var_dump($suma_productos);
+
 
 			$importe_productos = $suma_productos;
 			$importe_impuestos = $this->input->post('ImporteImpuestosPedido');

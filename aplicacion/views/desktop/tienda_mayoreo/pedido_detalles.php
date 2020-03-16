@@ -63,18 +63,18 @@
               <td>$<?php echo $pedido['PEDIDO_IMPORTE_PRODUCTOS_PARCIAL'] ?></td>
             </tr>
             <tr>
-              <td>Importe envio <b><?php echo $pedido['PEDIDO_NOMBRE_TRANSPORTISTA'] ?></b></td>
-              <td>$<?php echo $pedido['PEDIDO_IMPORTE_ENVIO_TOTAL'] ?>
-                <?php if($pedido['PEDIDO_ESTADO_PAGO']=='pendiente'){ ?>
-                <a href="<?php echo base_url('tienda-mayoreo/pedido_envio?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-info"> <i class="fa fa-plus"></i> </a>
-                <?php } ?>
-              </td>
-            </tr>
-            <tr>
               <td>Impuestos <b><?php echo $pedido['PEDIDO_IMPUESTO_DETALLES'] ?></b></td>
               <td>$<?php echo $pedido['PEDIDO_IMPORTE_IMPUESTOS'] ?>
                 <?php if($pedido['PEDIDO_ESTADO_PAGO']=='pendiente'){ ?>
                 <a href="<?php echo base_url('tienda-mayoreo/pedido_impuestos?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-info"> <i class="fa fa-plus"></i> </a>
+                <?php } ?>
+              </td>
+            </tr>
+            <tr>
+              <td>Importe envio <b><?php echo $pedido['PEDIDO_NOMBRE_TRANSPORTISTA'] ?></b></td>
+              <td>$<?php echo $pedido['PEDIDO_IMPORTE_ENVIO_TOTAL'] ?>
+                <?php if($pedido['PEDIDO_ESTADO_PAGO']=='pendiente'){ ?>
+                <a href="<?php echo base_url('tienda-mayoreo/pedido_envio?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-info"> <i class="fa fa-plus"></i> </a>
                 <?php } ?>
               </td>
             </tr>

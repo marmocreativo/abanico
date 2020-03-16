@@ -223,7 +223,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	{
 		// Obtengo los datos de usuario
 
-		$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
 		$this->form_validation->set_rules('PassUsuario', 'Contraseña', 'required', array('required' => 'Debes escribir tu %s.'));
 		$this->form_validation->set_rules('PassUsuarioConf', 'Contraseña Confirmación', 'required|matches[PassUsuario]', array(
 			'required' => 'Debes confirmar la Contraseña',
@@ -242,7 +241,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				// Mensaje de feedback
 				$this->session->set_flashdata('exito', 'Contraseña actualizada correctamente');
 				// redirección
-				redirect(base_url('admin/usuarios/perfil?id_usuario='.$id));
+				redirect(base_url('admin/usuarios/perfil?id_usuario='.$this->input->post('Identificador')));
 		}else{
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_pass',$this->data);

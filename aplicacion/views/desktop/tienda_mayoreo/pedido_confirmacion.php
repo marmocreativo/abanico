@@ -12,7 +12,7 @@
           <div class="form-group">
             <label for="Comprador">Comprador</label>
             <select class="form-control Comprador" name="Comprador">
-              <option value="auto">Auto compra</option>
+              <option value="auto">Venta directa</option>
               <option value="nueva">Nueva empresa</option>
               <?php foreach($empresas as $empresa){ ?>
                 <option value="<?php echo $empresa->ID; ?>"><?php echo $empresa->EMPRESA_NOMBRE.' '.$empresa->RFC; ?></option>

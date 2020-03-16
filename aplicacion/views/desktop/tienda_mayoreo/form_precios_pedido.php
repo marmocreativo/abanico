@@ -8,7 +8,7 @@
     <?php foreach($productos_pedido as $producto){ ?>
     <form class="" action="<?php echo base_url('tienda-mayoreo/pedido_precios'); ?>" method="post">
     <input type="hidden" name="Identificador" value="<?php echo $pedido['ID_PEDIDO']; ?>">
-    <input type="hidden" name="IdProducto" value="<?php echo $pedido['ID_PEDIDO']; ?>">
+    <input type="hidden" name="IdProducto" value="<?php echo $producto->ID; ?>">
     <input type="hidden" name="ImporteImpuestosPedido" value="<?php echo $pedido['PEDIDO_IMPORTE_IMPUESTOS']; ?>">
     <input type="hidden" name="ImporteEnvioTotalPedido" value="<?php echo $pedido['PEDIDO_IMPORTE_ENVIO_TOTAL']; ?>">
     <div class="row">

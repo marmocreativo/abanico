@@ -4,7 +4,6 @@
     <div class="row">
       <div class="col text-center py-4">
         <h1>Lista de pedidos</h1>
-        <a href="<?php echo base_url('tienda-mayoreo/crear_empresa'); ?>" class="btn btn-outline-success"> <i class="fas fa-plus"></i> Agregar una nueva empresa</a>
       </div>
     </div>
     <div class="row">
