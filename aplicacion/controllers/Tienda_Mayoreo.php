@@ -361,7 +361,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			'PEDIDO_ESTADO_PAGO'=>'pendiente',
 			'PEDIDO_ESTADO_PEDIDO'=>'pendiente',
 			'PEDIDO_TIPO'=>$this->input->post('TipoPedido'),
-			'PEDIDO_ESTADO_PEDIDO'=>'confirmado'
+			'PEDIDO_ESTADO_PEDIDO'=>'confirmado',
 			'PEDIDO_FECHA_REGISTRO'=>date('Y-m-d H:i:s'),
 			'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s'),
 		);

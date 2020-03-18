@@ -43,6 +43,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('PlanesModel');
 		$this->load->model('DivisasModel');
 		$this->load->model('CarruselesModel');
+		$this->load->model('GeneralModel');
   }
 
 	public function index()
@@ -62,6 +63,26 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/pagina_inicio',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
+	}
+	public function vendedores_autorizados()
+	{
+		$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
+		$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
+		$this->data['productos'] = $this->ProductosModel->lista_activos(['ID_USUARIO'=>$this->data['op']['id_usuario_destacado']],'','','',10);
+		$this->data['productos_recientes'] = $this->ProductosModel->lista_activos('','','','PRODUCTO_FECHA_REGISTRO DESC',10);
+		$this->data['servicios'] = $this->ServiciosModel->lista_activos('','','','','');
+		$this->data['slider'] = $this->SlidersModel->slide_nombre_lenguaje('inicio',$_SESSION['lenguaje']['iso']);
+		$this->data['slides'] = $this->SlidesModel->lista_activos(['ID_SLIDER'=>$this->data['slider']['ID_SLIDER']],'ORDEN ASC','');
+		$this->data['vendedores_autorizados'] = $this->GeneralModel->lista('usuarios','',['USUARIO_TIPO'=>'may-7','USUARIO_ESTADO'=>'activo'],'','','');
+
+		$this->data['titulo'] = 'Vendedores autorizados abanico';
+		$this->data['descripcion'] = 'Compra y vende artículos por internet';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->load->view($this->data['dispositivo'].'/tienda/headers/header_inicio',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda/lista_vendedores_autorizados',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda/footers/footer_inicio',$this->data);
 	}
 	public function no_encontrada()
