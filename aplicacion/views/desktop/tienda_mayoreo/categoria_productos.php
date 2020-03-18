@@ -49,7 +49,7 @@
                                   <option value="<?php echo  $combinacion->COMBINACION_OPCION; ?>"
                                     data-id-producto='<?php echo $combinacion->ID_PRODUCTO; ?>'
                                     data-id-combinacion='<?php echo $combinacion->ID_COMBINACION; ?>'
-                                    data-precio-producto='<?php echo $combinacion->COMBINACION_PRECIO; ?>'
+                                    data-precio-producto='<?php echo $combinacion->COMBINACION_PRECIO_MAYOREO; ?>'
                                     data-peso-producto='<?php echo $combinacion->COMBINACION_PESO; ?>'
                                     data-imagen-producto='<?php echo $combinacion->COMBINACION_IMAGEN; ?>'
                                     data-cantidad-max='<?php echo $combinacion->COMBINACION_CANTIDAD; ?>'
