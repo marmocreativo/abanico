@@ -10,16 +10,16 @@
     <div class="row">
       <div class="col-12">
           <div class="form-group">
-            <label for="Comprador">Comprador</label>
+            <label for="Comprador">¿Quién está haciendo la compra?</label>
             <select class="form-control Comprador" name="Comprador">
-              <option value="auto">Venta directa</option>
               <option value="nueva">Nueva empresa</option>
+              <option value="auto">Venta directa</option>
               <?php foreach($empresas as $empresa){ ?>
                 <option value="<?php echo $empresa->ID; ?>"><?php echo $empresa->EMPRESA_NOMBRE.' '.$empresa->RFC; ?></option>
               <?php } ?>
             </select>
           </div>
-          <div id="colapsar_form_empresa" class="collapse">
+          <div id="colapsar_form_empresa">
             <div class="form-group">
               <label for="NombreEmpresa">Nombre de la empresa</label>
               <input type="text" class="form-control" name="NombreEmpresa" value="" required>
@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
               <label for="CorreoContacto">Correo <small> Persona de contacto </small></label>
-              <input type="text" class="form-control" name="CorreoContacto" value="" required>
+              <input type="text" class="form-control" name="CorreoContacto" value="">
             </div>
             <div class="form-group">
               <label for="TelefonoContacto">Teléfono <small> Persona de contacto </small></label>
@@ -62,7 +62,7 @@
       </div>
       <div class="col-12 mb-3">
         <div class="form-group">
-          <label for="TipoPedido">Este pedido será:</label>
+          <label for="TipoPedido">Cuando se pagará este pedido?:</label>
           <select class="form-control" name="TipoPedido">
             <option value="pago_inmediato">Pago inmediato</option>
             <option value="contra_entrega">Pago contra entrega</option>

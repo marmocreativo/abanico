@@ -179,17 +179,117 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->data['keywords'] = '';
 		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
 
-		if(!null==$this->input->get('id_comprador')){
-			$this->data['pedidos'] = $this->GeneralModel->lista('pedidos_mayoreo',[
-				'PEDIDO_FOLIO'=>$this->input->get('busqueda'),
-			],['ID_COMPRADOR'=>$this->input->get('id_comprador'),],'PEDIDO_FECHA_REGISTRO DESC','','');
+		if(!null==$this->input->get('id_empresa')){
+			$this->data['pedidos'] = $this->GeneralModel->lista('pedidos_mayoreo','',[
+				'ID_COMPRADOR'=>$this->input->get('id_empresa')
+			],'ID_PEDIDO DESC','','');
 		}else{
-			$this->data['pedidos'] = $this->GeneralModel->lista('pedidos_mayoreo','','','PEDIDO_FECHA_REGISTRO DESC','','');
+			$this->data['pedidos'] = $this->GeneralModel->lista('pedidos_mayoreo','','','ID_PEDIDO DESC','','');
 		}
 
 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/lista_pedidos',$this->data);
 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+	}
+
+	public function lista_citas()
+	{
+		$this->data['titulo'] = 'Sistema de ventas mayoreo';
+		$this->data['descripcion'] = 'Administración y pedidos';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		if(!null==$this->input->get('id_empresa')){
+			$this->data['citas'] = $this->GeneralModel->lista('pedidos_mayoreo_citas','',[
+				'ID_COMPRADOR'=>$this->input->get('id_empresa')
+			],'ID_PEDIDO DESC','','');
+		}else{
+			$this->data['citas'] = $this->GeneralModel->lista('pedidos_mayoreo_citas','','','ID_PEDIDO DESC','','');
+		}
+
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/lista_citas',$this->data);
+		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+	}
+
+	public function crear_cita()
+	{
+		$this->data['titulo'] = 'Crear empresa';
+		$this->data['descripcion'] = 'Registros de empresas';
+		$this->data['keywords'] = '';
+		$this->data['imagen'] = base_url('assets/global/img/default_share.jpg');
+
+		$this->form_validation->set_rules('FechaCita', 'Fecha de la cita', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+    {
+
+			switch ($_POST['Comprador']) {
+				case 'auto':
+						$id_comprador = $_SESSION['usuario']['id'];
+						$nombre_comprador = $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'];
+						$correo_comprador = $_SESSION['usuario']['correo'];
+						$telefono_comprador = $_SESSION['usuario']['correo'];
+						$direccion_comprador = $_SESSION['usuario']['correo'];
+					break;
+				case 'nueva':
+						$parametros = array(
+							'EMPRESA_NOMBRE' => $this->input->post('NombreEmpresa'),
+							'RAZON_SOCIAL' => $this->input->post('RazonSocialEmpresa'),
+							'RFC' => $this->input->post('RfcEmpresa'),
+							'DOMICILIO' => $this->input->post('DireccionEmpresa'),
+							'TELEFONO' => $this->input->post('TelefonoContacto'),
+							'CONTACTO_NOMBRE' => $this->input->post('NombreContacto'),
+							'CONTACTO_APELLIDOS' => $this->input->post('ApellidosContacto'),
+							'CONTACTO_CORREO' => $this->input->post('CorreoContacto')
+						);
+
+						$id_empresa = $this->GeneralModel->crear('empresas',$parametros);
+
+
+						$id_comprador = $id_empresa;
+						$nombre_comprador = $this->input->post('NombreContacto').' '.$this->input->post('ApellidosContacto');
+						$correo_comprador = $this->input->post('CorreoContacto');
+						$telefono_comprador = $this->input->post('TelefonoContacto');
+						$direccion_comprador = $this->input->post('DireccionEmpresa');
+					break;
+
+				default:
+						$this->data['empresa']  = $this->GeneralModel->detalles('empresas',['ID'=>$_POST['Comprador']]);
+						$id_comprador = $this->data['empresa']['ID'];
+						$nombre_comprador = $this->data['empresa']['CONTACTO_NOMBRE'].' '.$this->data['empresa']['CONTACTO_APELLIDOS'];
+						$correo_comprador = $this->data['empresa']['CONTACTO_CORREO'];
+						$telefono_comprador = $this->data['empresa']['TELEFONO'];
+						$direccion_comprador = $this->data['empresa']['DOMICILIO'];
+					break;
+			}
+
+			$hora = $this->input->post('Hora').':'.$this->input->post('Minutos').' '.$this->input->post('AmPm');
+
+			$parametros_cita = array(
+				'ID_VENDEDOR'=>$_SESSION['usuario']['id'],
+				'ID_COMPRADOR'=>$id_comprador,
+				'PEDIDO_NOMBRE'=>$nombre_comprador,
+				'PEDIDO_CORREO'=>$correo_comprador,
+				'PEDIDO_TELEFONO'=>$telefono_comprador,
+				'PEDIDO_DIRECCION'=>$direccion_comprador,
+				'PEDIDO_FECHA_REGISTRO'=>date('Y-m-d H:i:s'),
+				'PEDIDO_FECHA_CITA'=>$this->input->post('FechaCita'),
+				'PEDIDO_HORA_CITA'=>$hora,
+			);
+
+			$id_empresa = $this->GeneralModel->crear('pedidos_mayoreo_citas',$parametros_cita);
+
+			$this->session->set_flashdata('exito', 'Cita agendada correctamente');
+      redirect(base_url('tienda-mayoreo/lista_citas'));
+
+    }else{
+
+			$this->data['empresas'] = $this->GeneralModel->lista('empresas','',['ESTADO'=>'activo'],'ID DESC','','');
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/headers/header_inicio',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/form_cita',$this->data);
+			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
+		}
 	}
 
 	public function lista_empresas()

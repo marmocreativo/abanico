@@ -7,23 +7,31 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-6 col-md-3 mb-3">
+      <div class="col-6 col-md-3 mb-3 h-100">
         <a href="<?php echo base_url('tienda-mayoreo/productos'); ?>">
-          <div class="sistema_mayoreo bg-primary text-white text-center  py-4">
+          <div class="sistema_mayoreo bg-success text-white text-center  py-4">
             <i class="fas fa-shopping-cart fa-3x"></i>
             <h2 class="h4 mt-3">Hacer un pedido nuevo</h2>
           </div>
         </a>
       </div>
-      <div class="col-6 col-md-3 mb-3">
+      <div class="col-6 col-md-3 mb-3 h-100">
         <a href="<?php echo base_url('tienda-mayoreo/lista_pedidos'); ?>">
-          <div class="sistema_mayoreo bg-primary text-white text-center  py-4">
+          <div class="sistema_mayoreo bg-warning text-white text-center  py-4">
             <i class="fas fa-list fa-3x"></i>
             <h2 class="h4 mt-3">Historial de pedidos</h2>
           </div>
         </a>
       </div>
-      <div class="col-6 col-md-3 mb-3">
+      <div class="col-6 col-md-3 mb-3 h-100">
+        <a href="<?php echo base_url('tienda-mayoreo/lista_citas'); ?>">
+        <div class="sistema_mayoreo bg-info text-white text-center  py-4">
+          <i class="fas fa-calendar-alt fa-3x"></i>
+          <h2 class="h4 mt-3">Citas</h2>
+        </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-3 mb-3 h-100">
         <a href="<?php echo base_url('tienda-mayoreo/lista_empresas'); ?>">
         <div class="sistema_mayoreo bg-primary text-white text-center  py-4">
           <i class="fas fa-building fa-3x"></i>
