@@ -21,6 +21,12 @@
         <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
           <a href="<?php echo base_url('admin/corte_planes'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-file-invoice"></i></i><span class="kt-menu__link-text">Corte de Planes</span></a>
         </li>
+        <li class="kt-menu__item kt-menu__item--submenu border-top" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+          <a href="<?php echo base_url('admin/pedidos/lista_pedidos_mayoreo'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-file-invoice"></i></i><span class="kt-menu__link-text">Lista de pedidos Mayoreo</span></a>
+        </li>
+        <li class="kt-menu__item kt-menu__item--submenu border-top" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+          <a href="<?php echo base_url('admin/pedidos/lista_empresas'); ?>" class="kt-menu__link "><i class="kt-menu__link-bullet"><i class="fa fa-file-invoice"></i></i><span class="kt-menu__link-text">Lista de empresas</span></a>
+        </li>
       </ul>
     </div>
   </li>

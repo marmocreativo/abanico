@@ -6,7 +6,6 @@
         <h3>Pedido folio: <b><?php echo $pedido['PEDIDO_FOLIO']; ?></b></h3>
       </div>
     </div>
-    <input type="hidden" name="Identificador" value="<?php echo $pedido['ID_PEDIDO']; ?>">
     <div class="row">
       <div class="col-12">
         <table class="table table-sm">

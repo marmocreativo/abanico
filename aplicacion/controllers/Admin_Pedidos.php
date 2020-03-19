@@ -32,6 +32,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 		$this->load->model('DevolucionesModel');
 		$this->load->model('EstadisticasModel');
 		$this->load->model('NotificacionesModel');
+		$this->load->model('GeneralModel');
 
 		// Verifico Sesión
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -329,4 +330,86 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
       redirect(base_url('admin/pedidos/detalles?id_pedido=').$this->input->post('IdPedido'));
 	}
+
+	public function lista_pedidos_mayoreo()
+	{
+
+		$parametros = array();
+
+		if(!null==$this->input->get('Fecha')){
+			$parametros['PEDIDO_FECHA_REGISTRO >'] = $this->input->get('Fecha');
+			$parametros['PEDIDO_FECHA_REGISTRO <'] = date('Y-m-d',strtotime($this->input->get('Fecha').' + 1 day'));
+		}else{
+			$parametros['PEDIDO_FECHA_REGISTRO >'] = date('Y-m-d');
+			$parametros['PEDIDO_FECHA_REGISTRO <'] = date('Y-m-d',strtotime(date('Y-m-d').' + 1 day'));
+		}
+		if(!null==$this->input->get('id_empresa')){ $parametros['ID_COMPRADOR'] = $this->input->get('id_empresa'); }
+
+		$this->data['pedidos'] = $this->GeneralModel->lista('pedidos_mayoreo','',$parametros,'ID_PEDIDO DESC','','');
+
+		$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+		$this->load->view($this->data['dispositivo'].'/admin/lista_pedidos_mayoreo',$this->data);
+		$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+	}
+	public function detalles_pedido_mayoreo()
+	{
+
+			$this->data['pedido'] = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$_GET['id_pedido']]);
+			$this->data['productos_pedido'] = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$_GET['id_pedido']],'ID DESC','','');
+
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/detalles_pedido_mayoreo',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+	}
+
+	public function lista_empresas()
+	{
+		if(!null==$this->input->get('busqueda')){
+			$this->data['empresas'] = $this->GeneralModel->lista('empresas',[
+				'EMPRESA_NOMBRE'=>$this->input->get('busqueda'),
+				'RFC'=>$this->input->get('busqueda'),
+				'CONTACTO_NOMBRE'=>$this->input->get('busqueda'),
+				'CONTACTO_APELLIDOS'=>$this->input->get('busqueda'),
+				'CONTACTO_CORREO'=>$this->input->get('busqueda')
+			],['ESTADO'=>'activo'],'ID DESC','','');
+		}else{
+			$this->data['empresas'] = $this->GeneralModel->lista('empresas','',['ESTADO'=>'activo'],'ID DESC','','');
+		}
+
+		$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+		$this->load->view($this->data['dispositivo'].'/admin/lista_empresas',$this->data);
+		$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+	}
+
+	public function crear_empresa()
+	{
+		$this->form_validation->set_rules('NombreEmpresa', 'Nombre de la empresa', 'required', array( 'required' => 'Debes designar el %s.' ));
+		$this->form_validation->set_rules('CorreoContacto', 'Correo de contacto', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+    {
+
+			$parametros = array(
+				'EMPRESA_NOMBRE' => $this->input->post('NombreEmpresa'),
+				'RAZON_SOCIAL' => $this->input->post('RazonSocialEmpresa'),
+				'RFC' => $this->input->post('RfcEmpresa'),
+				'DOMICILIO' => $this->input->post('DireccionEmpresa'),
+				'TELEFONO' => $this->input->post('TelefonoContacto'),
+				'CONTACTO_NOMBRE' => $this->input->post('NombreContacto'),
+				'CONTACTO_APELLIDOS' => $this->input->post('ApellidosContacto'),
+				'CONTACTO_CORREO' => $this->input->post('CorreoContacto')
+			);
+
+			$id_empresa = $this->GeneralModel->crear('empresas',$parametros);
+
+			$this->session->set_flashdata('exito', 'Empresa creada correctamente');
+      redirect(base_url('admin/pedidos/lista_empresas'));
+
+    }else{
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/form_empresas',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+		}
+	}
+
 }
