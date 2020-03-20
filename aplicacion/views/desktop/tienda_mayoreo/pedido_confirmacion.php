@@ -10,27 +10,24 @@
     <div class="row">
       <div class="col-12">
           <div class="form-group">
-            <label for="Comprador">¿Quién está haciendo la compra?</label>
+            <label for="Comprador">¿Quién compra?</label>
             <select class="form-control Comprador" name="Comprador">
-              <option value="nueva">Nueva empresa</option>
-              <option value="auto">Venta directa</option>
+              <option value="nueva">Nuevo Cliente</option>
+              <optgroup label="Negocios registrados">
               <?php foreach($empresas as $empresa){ ?>
                 <option value="<?php echo $empresa->ID; ?>"><?php echo $empresa->EMPRESA_NOMBRE.' '.$empresa->RFC; ?></option>
               <?php } ?>
+              </optgroup>
             </select>
           </div>
           <div id="colapsar_form_empresa">
             <div class="form-group">
-              <label for="NombreEmpresa">Nombre de la empresa</label>
+              <label for="NombreEmpresa">Nombre del negocio</label>
               <input type="text" class="form-control" name="NombreEmpresa" value="" required>
             </div>
             <div class="form-group">
-              <label for="NombreContacto">Nombre <small> Persona de contacto </small></label>
+              <label for="NombreContacto">Nombre del cliente<small> Persona de contacto </small></label>
               <input type="text" class="form-control" name="NombreContacto" value="">
-            </div>
-            <div class="form-group">
-              <label for="ApellidosContacto">Apellidos <small> Persona de contacto </small></label>
-              <input type="text" class="form-control" name="ApellidosContacto" value="">
             </div>
             <div class="form-group">
               <label for="CorreoContacto">Correo <small> Persona de contacto </small></label>
@@ -40,19 +37,17 @@
               <label for="TelefonoContacto">Teléfono <small> Persona de contacto </small></label>
               <input type="text" class="form-control" name="TelefonoContacto" value="">
             </div>
-            <hr>
             <div class="form-group">
-              <label for="RazonSocialEmpresa">Razón Social <small>(Para facturación)</small></label>
-              <input type="text" class="form-control" name="RazonSocialEmpresa" value="">
+              <label for="DireccionPedido">Dirección donde se deja el producto</label>
+              <textarea name="DireccionPedido" class="form-control" rows="5"></textarea>
             </div>
-            <div class="form-group">
-              <label for="RfcEmpresa">RFC <small>(Para facturación)</small></label>
-              <input type="text" class="form-control" name="RfcEmpresa" value="">
-            </div>
-            <div class="form-group">
-              <label for="DireccionEmpresa">Direccion <small>(Para facturación)</small></label>
-              <textarea name="DireccionEmpresa" class="form-control" rows="5"></textarea>
-            </div>
+          </div>
+          <div class="form-group">
+            <label for="Factura">¿Va a requerir factura?</label>
+            <select class="form-control" name="Factura">
+              <option value="no">No requiere factura</option>
+              <option value="">Si requiere factura</option>
+            </select>
           </div>
       </div>
       <div class="col-12">
@@ -62,11 +57,18 @@
       </div>
       <div class="col-12 mb-3">
         <div class="form-group">
-          <label for="TipoPedido">Cuando se pagará este pedido?:</label>
-          <select class="form-control" name="TipoPedido">
-            <option value="pago_inmediato">Pago inmediato</option>
-            <option value="contra_entrega">Pago contra entrega</option>
-            <option value="comision">Productos a comision</option>
+          <label for="DejasProducto">¿Dejas los producto en este momento?</label>
+          <select class="form-control" name="DejasProducto">
+            <option value="si">Si</option>
+            <option value="no">No, Se entregará después</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="PagarAhora">¿Te pagarán en este momento?</label>
+          <select class="form-control" name="PagarAhora">
+            <option value="si_efectivo">Si, en efectivo</option>
+            <option value="no_contra_entrega">No, pagarán al recibir los productos</option>
+            <option value="no_comision">No, se quedan a comisión</option>
           </select>
         </div>
         <label for="">Firma de confirmación:</label>

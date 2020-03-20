@@ -30,8 +30,13 @@
       </div>
       <div class="modal-footer">
         <div class="btn-group">
-          <button type="button" id="BotonVaciar" class="btn btn-link float-left"><i class="fas fa-trash text-primary-17"></i> <?php echo $this->lang->line('carrito_vaciar'); ?></button>
-          <a href="<?php echo base_url('tienda-mayoreo/pedido_confirmacion'); ?>" id="BotonComprarAhora" class="btn btn-primary-17 text-white" aria-disabled="false">Confirmar Pedido</a>
+            <button type="button" class="btn btn-sm btn-outline-success" data-dismiss="modal" aria-label="Close">
+              Seguir comprando
+            </button>
+            <button type="button" id="BotonVaciar" class="btn btn-link btn-sm"><i class="fas fa-trash text-primary-17"></i> Vaciar carrito</button>
+            <a href="<?php echo base_url('tienda-mayoreo/pedido_confirmacion'); ?>" id="BotonComprarAhora" class="btn btn-primary-17 text-white btn-sm" aria-disabled="false">Confirmar Pedido</a>
+        </div>
+        <div class="btn-group">
         </div>
       </div>
     </div>

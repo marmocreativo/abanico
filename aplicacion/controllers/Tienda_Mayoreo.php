@@ -408,13 +408,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function crear_pedido()
 	{
 		switch ($_POST['Comprador']) {
-			case 'auto':
-					$id_comprador = $_SESSION['usuario']['id'];
-					$nombre_comprador = $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'];
-					$correo_comprador = $_SESSION['usuario']['correo'];
-					$telefono_comprador = $_SESSION['usuario']['correo'];
-					$direccion_comprador = $_SESSION['usuario']['correo'];
-				break;
 			case 'nueva':
 					$parametros = array(
 						'EMPRESA_NOMBRE' => $this->input->post('NombreEmpresa'),
@@ -431,6 +424,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 
 					$id_comprador = $id_empresa;
+					$nombre_empresa = $this->input->post('NombreEmpresa');
 					$nombre_comprador = $this->input->post('NombreContacto').' '.$this->input->post('ApellidosContacto');
 					$correo_comprador = $this->input->post('CorreoContacto');
 					$telefono_comprador = $this->input->post('TelefonoContacto');
@@ -440,12 +434,66 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			default:
 					$this->data['empresa']  = $this->GeneralModel->detalles('empresas',['ID'=>$_POST['Comprador']]);
 					$id_comprador = $this->data['empresa']['ID'];
+					$nombre_empresa = $this->data['empresa']['EMPRESA_NOMBRE'];
 					$nombre_comprador = $this->data['empresa']['CONTACTO_NOMBRE'].' '.$this->data['empresa']['CONTACTO_APELLIDOS'];
 					$correo_comprador = $this->data['empresa']['CONTACTO_CORREO'];
 					$telefono_comprador = $this->data['empresa']['TELEFONO'];
 					$direccion_comprador = $this->data['empresa']['DOMICILIO'];
 				break;
 		}
+
+		$pedido_tipo = 'venta_directa';
+		$estado_pedido = 'finalizado';
+		$estado_pago = 'pagado';
+		$forma_pago = 'efectivo';
+		$fecha_pago = date('Y-m-d H:i:s');
+
+		$requiere_factura = $this->input->post('Factura');
+		$dejas_producto = $this->input->post('DejasProducto');
+		$pagar_ahora = $this->input->post('PagarAhora');
+
+		// Tipos posibles de pedido
+			// venta_directa
+			// pedido
+			// comision
+
+			if($dejas_producto=='si'&&$pagar_ahora=='no_comision'){
+				$pedido_tipo = 'comision';
+			}
+
+			if($dejas_producto=='no'){
+				$pedido_tipo = 'pedido';
+			}
+
+
+		// Estado del pedido
+			// finalizado
+			// pedido
+			// comision
+
+			if($dejas_producto=='si'&&$pagar_ahora=='no_comision'){
+				$estado_pedido = 'comision';
+			}
+
+			if($dejas_producto=='no'){
+				$estado_pedido = 'pedido';
+			}
+
+		// Forma de pago
+			// efectivo
+			// transferencia
+		// Estado del pago
+			// pagado
+			// pendiente
+
+			if($pagar_ahora=='no_contra_entrega'||$pagar_ahora=='no_comision'){
+				$forma_pago = '';
+				$estado_pago = 'pendiente';
+				$fecha_pago = null;
+			}
+
+
+
 
 		// Creo el pedido
 		$folio = folio_pedido();
@@ -454,14 +502,17 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			'PEDIDO_FOLIO'=>$folio,
 			'ID_VENDEDOR'=>$_SESSION['usuario']['id'],
 			'ID_COMPRADOR'=>$id_comprador,
+			'PEDIDO_NOMBRE_EMPRESA'=>$nombre_empresa,
 			'PEDIDO_NOMBRE'=>$nombre_comprador,
 			'PEDIDO_CORREO'=>$correo_comprador,
 			'PEDIDO_TELEFONO'=>$telefono_comprador,
 			'PEDIDO_DIRECCION'=>$direccion_comprador,
-			'PEDIDO_ESTADO_PAGO'=>'pendiente',
-			'PEDIDO_ESTADO_PEDIDO'=>'pendiente',
-			'PEDIDO_TIPO'=>$this->input->post('TipoPedido'),
-			'PEDIDO_ESTADO_PEDIDO'=>'confirmado',
+			'PEDIDO_ESTADO_PAGO'=>$estado_pago,
+			'PEDIDO_ESTADO_PEDIDO'=>$estado_pedido,
+			'PEDIDO_TIPO'=>$pedido_tipo,
+			'PEDIDO_ESTADO_PAGO'=>$estado_pago,
+			'PEDIDO_FORMA_PAGO'=>$forma_pago,
+			'FECHA_PAGO'=>$fecha_pago,
 			'PEDIDO_FECHA_REGISTRO'=>date('Y-m-d H:i:s'),
 			'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s'),
 		);
