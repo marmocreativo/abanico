@@ -103,6 +103,15 @@
                               </div>
                               <div class="col">
                                 <div class="form-group">
+                                  <label for="CombinacionMostrarMayoreo">Mostrar en:</label>
+                                  <select class="form-control" name="CombinacionMostrarMayoreo">
+                                    <option value="si" <?php if($combinacion['COMBINACION_MOSTRAR_MAYOREO']=='si'){ echo 'selected'; } ?>>Tienda Online y Mayoreo</option>
+                                    <option value="no" <?php if($combinacion['COMBINACION_MOSTRAR_MAYOREO']=='no'){ echo 'selected'; } ?>>Solo Online</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
                                   <label for="CantidadCombinacion">Cantidad en Existencia </label>
                                     <input type="number" class="form-control" id="CantidadCombinacion" name="CantidadCombinacion" required placeholder="" value="<?php echo $combinacion['COMBINACION_CANTIDAD']; ?>">
                                 </div>

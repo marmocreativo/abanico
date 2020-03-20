@@ -95,6 +95,9 @@
           <div class="col-6 mb-3">
             <a href="<?php echo base_url('tienda-mayoreo/pedido_pago?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-success btn-block"> Pagar</a>
           </div>
+          <div class="col-6 mb-3">
+            <a href="<?php echo base_url('tienda-mayoreo'); ?>" class="btn btn-sm btn-info btn-block"> Salir</a>
+          </div>
         </div>
       </div>
     <?php }else{ ?>

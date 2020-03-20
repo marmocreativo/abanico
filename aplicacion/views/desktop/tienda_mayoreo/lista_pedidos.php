@@ -33,7 +33,7 @@
                     <td>Folio:<br>
                     <b><?php echo $pedido->PEDIDO_FOLIO; ?></b></td>
                     <td>Fecha:<br>
-                    <b><?php echo date('d / M / Y',strtotime($pedido->PEDIDO_FECHA_REGISTRO)); ?></b></td>
+                    <b><?php echo date('d / M / Y H:i',strtotime($pedido->PEDIDO_FECHA_REGISTRO)); ?></b></td>
                   </tr>
                 </table>
               </div>

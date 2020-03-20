@@ -51,6 +51,7 @@
                             <th>Peso Total</th>
                             <th>Precio</th>
                             <th>Precio Mayoreo</th>
+                            <th>Mostrar en:</th>
                             <th>Imagen</th>
                             <th class="text-right">Controles</th>
                           </tr>
@@ -64,6 +65,18 @@
                             <td><?php echo $combinacion->COMBINACION_PESO; ?>Kg</td>
                             <td>$<?php echo $combinacion->COMBINACION_PRECIO; ?></td>
                             <td>$<?php echo $combinacion->COMBINACION_PRECIO_MAYOREO; ?></td>
+                            <td>
+                              <?php
+                                switch ($combinacion->COMBINACION_MOSTRAR_MAYOREO) {
+                                  case 'si':
+                                    echo 'Online y Mayoreo';
+                                    break;
+                                  case 'no':
+                                    echo 'Solo Online';
+                                    break;
+                                }
+                              ?>
+                            </td>
                             <td><img src="<?php echo base_url($op['ruta_imagenes_producto'].'completo/'.$combinacion->COMBINACION_IMAGEN) ?>" width="50px;"></td>
                             <td>
                               <div class="btn-group float-right">
@@ -119,6 +132,15 @@
                                   </div>
                                 <input type="text" class="form-control" id="PrecioMayoreoCombinacion" name="PrecioMayoreoCombinacion" placeholder="" value="0.00">
                                 </div>
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="CombinacionMostrarMayoreo">Mostrar en:</label>
+                                <select class="form-control" name="CombinacionMostrarMayoreo">
+                                  <option value="si">Tienda Online y Mayoreo</option>
+                                  <option value="no">Solo Online</option>
+                                </select>
                               </div>
                             </div>
                             <div class="col">

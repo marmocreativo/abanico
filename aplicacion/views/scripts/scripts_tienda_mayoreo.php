@@ -286,7 +286,8 @@ $( ".CombinacionProducto" ).each(function( index ) {
   jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-id-combinacion',id_combinacion);
   jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-precio-producto',precio);
   jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-cantidad-max',cantidad_max);
-  jQuery('.cantidad_producto[data-id-producto="'+id_producto+'"]').attr('max',cantidad_max);
+  jQuery('.cantidad_maxima_visible[data-id-producto="'+id_producto+'"]').html(cantidad_max);
+  jQuery('.cantidad_maxima_visible[data-id-producto="'+id_producto+'"]').attr('max',cantidad_max);
   jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-peso-producto',peso);
   jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-detalles-producto',detalles);
   jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-imagen-producto',nuevaImagen);
@@ -321,6 +322,7 @@ jQuery('.CombinacionProducto').on('change',function(e){
   jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-precio-producto',precio);
   jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-cantidad-max',cantidad_max);
   jQuery('.cantidad_producto[data-id-producto="'+id_producto+'"]').attr('max',cantidad_max);
+  jQuery('.cantidad_maxima_visible[data-id-producto="'+id_producto+'"]').html(cantidad_max);
   jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-peso-producto',peso);
   jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-detalles-producto',detalles);
   jQuery('.BotonEnLista[data-id-producto="'+id_producto+'"]').attr('data-imagen-producto',nuevaImagen);

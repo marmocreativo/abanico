@@ -36,11 +36,13 @@
                         </div>
                         <div class="col-8">
                           <h3 class="h6 <?php echo 'text'.$primary; ?>"><?php echo $titulo; ?></h3>
+                          <p>Disponibles: <span class="cantidad_maxima_visible" data-id-producto='<?php echo $producto->ID_PRODUCTO; ?>'><?php echo $producto->PRODUCTO_CANTIDAD; ?></span></p>
                         </div>
                         <div class="col-12 mt-2">
+                          <?php if($producto->PRODUCTO_CANTIDAD>0){ ?>
                           <div class="row">
                             <div class="col-12">
-                              <?php $combinaciones = $this->GeneralModel->lista('productos_combinaciones','',['ID_PRODUCTO'=>$producto->ID_PRODUCTO],'ORDEN ASC','',''); ?>
+                              <?php $combinaciones = $this->GeneralModel->lista('productos_combinaciones','',['ID_PRODUCTO'=>$producto->ID_PRODUCTO,'COMBINACION_MOSTRAR_MAYOREO'=>'si'],'ORDEN ASC','',''); ?>
                               <?php if(!empty($combinaciones)){?>
                               <div class="form-group">
                                 <label for="CombinacionProducto" class="sr-only"><?php echo $this->lang->line('pagina_producto_formulario_opciones'); ?></label>
@@ -87,6 +89,9 @@
                                  <i class="fa fa-plus"></i>  <span class="fa fa-shopping-cart"></span> </button>
                             </div>
                           </div>
+                        <?php }else{ ?>
+                          <p>Por el momento no hay existencias.</p>
+                        <?php } ?>
                         </div>
                       </div>
                     </div>
