@@ -10,7 +10,11 @@
       <div class="col-12">
         <table class="table table-sm">
           <tr>
-            <td>Nombre:</td>
+            <td>Nombre Negocio:</td>
+            <td><?php echo $pedido['PEDIDO_NOMBRE_EMPRESA'] ?></td>
+          </tr>
+          <tr>
+            <td>Nombre Cliente:</td>
             <td><?php echo $pedido['PEDIDO_NOMBRE'] ?></td>
           </tr>
           <tr>
@@ -26,6 +30,23 @@
             <td><?php echo $pedido['PEDIDO_DIRECCION'] ?></td>
           </tr>
         </table>
+        <div class="row bg-light py-3">
+          <div class="col-6 mb-3 text-center">
+            Tipo: <b><?php echo $pedido['PEDIDO_TIPO']; ?></b>
+          </div>
+          <div class="col-6 mb-3 text-center">
+            Estado: <b><?php echo $pedido['PEDIDO_ESTADO_PEDIDO']; ?></b>
+          </div>
+          <div class="col text-center">
+            Pago: <b><?php echo $pedido['PEDIDO_FORMA_PAGO']; ?> / <?php echo $pedido['PEDIDO_ESTADO_PAGO']; ?></b><br>
+          </div>
+          <div class="col text-center">
+            Factura: <b><?php echo $pedido['PEDIDO_REQUIERE_FACTURA']; ?></b><br>
+          </div>
+        </div>
+        <?php if($pedido['PEDIDO_ESTADO_PEDIDO']!='finalizado'){ ?>
+        <a href="<?php echo base_url('tienda-mayoreo/pedido_actualizar?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-warning btn-block"> Actualizar datos</a>
+        <?php } ?>
         <hr>
           <table class="table table-striped table-bordered table-sm">
             <tr>
@@ -55,6 +76,9 @@
               </tr>
             <?php }?>
           </table>
+          <?php if($pedido['PEDIDO_ESTADO_PEDIDO']!='finalizado'){ ?>
+          <a href="<?php echo base_url('tienda-mayoreo/pedido_precios?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-success btn-block"> Cambiar precios</a>
+          <?php } ?>
           <hr>
           <table class="table table-bordered">
             <tr>
@@ -69,6 +93,7 @@
                 <?php } ?>
               </td>
             </tr>
+            <!--
             <tr>
               <td>Importe envio <b><?php echo $pedido['PEDIDO_NOMBRE_TRANSPORTISTA'] ?></b></td>
               <td>$<?php echo $pedido['PEDIDO_IMPORTE_ENVIO_TOTAL'] ?>
@@ -77,34 +102,36 @@
                 <?php } ?>
               </td>
             </tr>
+          -->
             <tr>
               <td>Importe Total</td>
               <td>$<?php echo $pedido['PEDIDO_IMPORTE_TOTAL'] ?></td>
             </tr>
           </table>
       </div>
-      <?php if($pedido['PEDIDO_ESTADO_PAGO']=='pendiente'){ ?>
       <div class="col-12">
         <div class="row justify-content-center">
           <div class="col-6 mb-3">
-            <a href="<?php echo base_url('tienda-mayoreo/pedido_actualizar?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-warning btn-block"> Actualizar datos</a>
-          </div>
-          <div class="col-6 mb-3">
-            <a href="<?php echo base_url('tienda-mayoreo/pedido_precios?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-success btn-block"> Cambiar precios</a>
-          </div>
-          <div class="col-6 mb-3">
-            <a href="<?php echo base_url('tienda-mayoreo/pedido_pago?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-success btn-block"> Pagar</a>
+            <?php if($pedido['PEDIDO_TIPO']=='pedido'&&$pedido['PEDIDO_ESTADO_PEDIDO']=='pedido'){ ?>
+              <a href="<?php echo base_url('tienda-mayoreo/form_entregar_pedido?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-success btn-block"> Entregar pedido</a>
+            <?php } ?>
+            <?php if($pedido['PEDIDO_TIPO']=='comision'&&$pedido['PEDIDO_ESTADO_PEDIDO']=='comision'){ ?>
+            <a href="<?php echo base_url('tienda-mayoreo/form_finalizar_comision?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-success btn-block"> Finalizar comisión</a>
+            <?php } ?>
+            <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='finalizado'&&$pedido['PEDIDO_ESTADO_PAGO']=='pagado'){ ?>
+              <h6>PEDIDO FINALIZADO <i class="fa fa-check-circle"></i> </h6>
+            <?php } ?>
+            <?php if($pedido['PEDIDO_ESTADO_PEDIDO']=='finalizado'&&$pedido['PEDIDO_ESTADO_PAGO']=='pendiente'){ ?>
+              <a href="<?php echo base_url('tienda-mayoreo/pedido_pago?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-success btn-block"> Confirmar pago</a>
+            <?php } ?>
           </div>
           <div class="col-6 mb-3">
             <a href="<?php echo base_url('tienda-mayoreo'); ?>" class="btn btn-sm btn-info btn-block"> Salir</a>
           </div>
         </div>
+
+        <a href="<?php echo base_url('tienda-mayoreo/pedido_recibo?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-block btn-outline-success my-2"> <i class="fa fa-envelope"></i> Enviar recibo por correo</a>
       </div>
-    <?php }else{ ?>
-      <div class="col-12 text-center">
-        <h3>Pedido Completo y Pagado</h3>
-      </div>
-    <?php } ?>
     </div>
   </div>
 </div>

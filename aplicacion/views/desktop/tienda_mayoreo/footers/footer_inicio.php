@@ -34,7 +34,7 @@
               Seguir comprando
             </button>
             <button type="button" id="BotonVaciar" class="btn btn-link btn-sm"><i class="fas fa-trash text-primary-17"></i> Vaciar carrito</button>
-            <a href="<?php echo base_url('tienda-mayoreo/pedido_confirmacion'); ?>" id="BotonComprarAhora" class="btn btn-primary-17 text-white btn-sm" aria-disabled="false">Confirmar Pedido</a>
+            <a href="<?php echo base_url('tienda-mayoreo/form_confirmacion'); ?>" id="BotonComprarAhora" class="btn btn-primary-17 text-white btn-sm" aria-disabled="false">Confirmar Pedido</a>
         </div>
         <div class="btn-group">
         </div>

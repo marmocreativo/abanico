@@ -17,6 +17,9 @@
             </div>
           </div>
         <?php } ?>
+        <div class="col-4 text-center">
+          <h5>Próximamente aquí podrás ver los datos de nuestros vendedores oficiales.</h5>
+        </div>
         </div>
       </div>
     </div>

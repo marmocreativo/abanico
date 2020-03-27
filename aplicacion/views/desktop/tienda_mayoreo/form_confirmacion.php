@@ -46,7 +46,7 @@
             <label for="Factura">¿Va a requerir factura?</label>
             <select class="form-control" name="Factura">
               <option value="no">No requiere factura</option>
-              <option value="">Si requiere factura</option>
+              <option value="si">Si requiere factura</option>
             </select>
           </div>
       </div>
@@ -58,11 +58,50 @@
       <div class="col-12 mb-3">
         <div class="form-group">
           <label for="DejasProducto">¿Dejas los producto en este momento?</label>
-          <select class="form-control" name="DejasProducto">
+          <select class="form-control" id="DejasProducto" name="DejasProducto">
             <option value="si">Si</option>
             <option value="no">No, Se entregará después</option>
           </select>
         </div>
+        <!-- Espacio para fecha -->
+        <div id="fecha_entrega" class="collapse">
+          <div class="form-group">
+            <label for="FechaEntrega">Dia</label>
+            <input type="date" name="FechaEntrega" class="form-control" value="">
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <p>Hora</p>
+            </div>
+            <div class="col pr-1">
+              <div class="form-group">
+                <select class="form-control" name="Hora">
+                  <?php for($i=1; $i<=12; $i++){?>
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                  <?php } ?>
+                </select>
+              </div>
+            </div>
+            <div class="col p-1">
+              <div class="form-group">
+                <select class="form-control" name="Minutos">
+                  <?php for($i=0; $i<=59; $i+=5){?>
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                  <?php } ?>
+                </select>
+              </div>
+            </div>
+            <div class="col pl-1">
+              <div class="form-group">
+                <select class="form-control" name="AmPm">
+                  <option value="am">AM</option>
+                  <option value="pm">PM</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Espacio para fecha -->
         <div class="form-group">
           <label for="PagarAhora">¿Te pagarán en este momento?</label>
           <select class="form-control" name="PagarAhora">

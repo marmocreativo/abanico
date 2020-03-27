@@ -345,6 +345,16 @@ jQuery('.Comprador').on('change',function(e){
   }
 });
 
+// Ocultar formulario Fecha entrega
+jQuery('#DejasProducto').on('change',function(e){
+  var dejas_producto = jQuery(this).val();
+  if(dejas_producto =='no'){
+    jQuery('#fecha_entrega').removeClass('collapse');
+  }else{
+    jQuery('#fecha_entrega').addClass('collapse');
+  }
+});
+
 
 // Firma
 var firma = document.querySelector("canvas");

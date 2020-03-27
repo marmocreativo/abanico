@@ -7,19 +7,20 @@
       </div>
     </div>
       <div class="row">
-        <div class="col-6">
+        <div class="col-12 mb-3">
           <form class="" action="<?php echo base_url('tienda-mayoreo/pedido_pago'); ?>" method="post">
             <input type="hidden" name="Identificador" value="<?php echo $pedido['ID_PEDIDO']; ?>">
-            <input type="hidden" name="FormaPagoPedido" value="Pago en Efectivo">
-            <input type="hidden" name="EstadoPagoPedido" value="Pagado">
-            <button type="submit" class="btn btn-success btn-block"> Pago en Efectivo</button>
+            <input type="hidden" name="FormaPagoPedido" value="transferencia">
+            <input type="hidden" name="EstadoPagoPedido" value="pagado">
+            <button type="submit" class="btn btn-success btn-block"> Confirmar Depósito o Transferencia</button>
           </form>
         </div>
-        <div class="col-6">
+        <div class="col-12 mb-3">
           <form class="" action="<?php echo base_url('tienda-mayoreo/pedido_pago'); ?>" method="post">
             <input type="hidden" name="Identificador" value="<?php echo $pedido['ID_PEDIDO']; ?>">
-            <input type="hidden" name="FormaPagoPedido" value="Pendiente">
-            <button type="submit" class="btn btn-success btn-block"> Depósito o Transferencia</button>
+            <input type="hidden" name="FormaPagoPedido" value="efectivo">
+            <input type="hidden" name="EstadoPagoPedido" value="pagado">
+            <button type="submit" class="btn btn-success btn-block"> Se pagó en Efectivo</button>
           </form>
         </div>
       </div>

@@ -13,13 +13,13 @@
       <div class="col-12">
         <div class="form-group">
           <label for="ImpuestoDetallesPedido">Descripcion de los impuestos </label>
-          <input type="text" class="form-control" name="ImpuestoDetallesPedido" value="<?php echo $pedido['PEDIDO_IMPUESTO_DETALLES'] ?>" required>
+          <input type="text" class="form-control" name="ImpuestoDetallesPedido" value="<?php if(!empty($pedido['PEDIDO_IMPUESTO_DETALLES'])){ echo $pedido['PEDIDO_IMPUESTO_DETALLES']; } else { echo 'IVA 16%'; } ?>" required>
         </div>
         <div class="form-group">
-          <label for="ImporteImpuestosPedido">Importe Impuestos</label>
-          <input type="text" class="form-control" name="ImporteImpuestosPedido" value="<?php echo $pedido['PEDIDO_IMPORTE_IMPUESTOS'] ?>" required>
+          <label for="ImporteImpuestosPedido">Porcentaje Impuestos</label>
+          <input type="text" class="form-control" name="ImporteImpuestosPedido" value=" <?php if(!empty($pedido['PEDIDO_IMPORTE_IMPUESTOS'])){ echo $pedido['PEDIDO_IMPUESTO_PORCENTAJE']; } else { echo '16'; } ?>" required>
         </div>
-        <button type="submit" class="btn btn-primary-17 btn-lg btn-block"> <i class="fa fa-save"></i> Actualizar </button>
+        <button type="submit" class="btn btn-primary-17 btn-lg btn-block"> <i class="fa fa-save"></i> Confirmar impuestos </button>
       </div>
     </div>
     </form>

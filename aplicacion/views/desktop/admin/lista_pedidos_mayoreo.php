@@ -56,7 +56,7 @@
           <div class="formulario">
             <form class="form-inline" action="<?php echo base_url('admin/pedidos/lista_pedidos_mayoreo'); ?>" method="get">
               <div class="form-group mx-2">
-                <label for="Fecha"> Mes </label>
+                <label for="Fecha"> Fecha </label>
                 <input type="date" class="form-control" name="Fecha" value="<?php if(isset($_GET['Fecha'])){ echo $_GET['Fecha'];}else{ echo date('Y-m-d'); } ?>">
               </div>
               <button type="submit" class="btn btn-primary btn-sm"> <i class="fa fa-search"></i> Buscar</button>
