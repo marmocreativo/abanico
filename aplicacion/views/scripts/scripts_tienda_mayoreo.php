@@ -357,9 +357,12 @@ jQuery('#DejasProducto').on('change',function(e){
 
 
 // Firma
-var firma = document.querySelector("canvas");
+if(jQuery('canvas').lenght>0){
 
-var signaturePad = new SignaturePad(firma);
+  var firma = document.querySelector("canvas");
+
+  var signaturePad = new SignaturePad(firma);
+}
 
 
 </script>

@@ -53,10 +53,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/localization/messages_es.js"></script>
     <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
+    <script src="<?php echo base_url(); ?>assets/global/js/sweetalert2/sweetalert2.all.min.js"></script>
     <script defer src="<?php echo base_url(); ?>assets/tienda/js/flexslider/jquery.flexslider.js"></script>
     <script defer src="<?php echo base_url(); ?>assets/tienda/js/slider-pro-master/js/jquery.sliderPro.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 
+    <?php $this->load->view('scripts/alertas_usuario');  ?>
     <?php $this->load->view('scripts/scripts_tienda_mayoreo');  ?>
     <?php $this->load->view('scripts/formularios_usuario');  ?>
 

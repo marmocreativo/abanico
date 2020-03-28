@@ -779,7 +779,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$importe_productos = 0;
 			$importe_impuestos = 0;
 
-			foreach($productos_pedido as $producto_ped){ $suma = $producto_ped->CANTIDAD*$producto_ped->IMPORTE_TOTAL; $importe_productos+=$suma; }
+			foreach($productos_pedido as $producto_ped){ $suma = $producto_ped->CANTIDAD*$producto_ped->IMPORTE; $importe_productos+=$suma; }
 
 			if(!empty($pedido['PEDIDO_IMPUESTO_DETALLES'])){ $importe_impuestos=($importe_productos*16)/100; }
 
@@ -1058,5 +1058,18 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/pedido_pago',$this->data);
 			$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/footers/footer_inicio',$this->data);
 		}
+	}
+	public function pedido_recibo()
+	{
+		$this->session->set_flashdata('exito', 'Recibo enviado correctamente');
+		redirect(base_url('tienda-mayoreo/pedido_detalles?id_pedido='.$this->input->get('id_pedido')));
+	}
+	public function pedido_borrar()
+	{
+			$this->GeneralModel->borrar('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->get('id')]);
+			$this->GeneralModel->borrar('pedidos_mayoreo_productos',['ID_PEDIDO'=>$this->input->get('id')]);
+			$this->session->set_flashdata('exito', 'Pedido borrado correctamente');
+			redirect(base_url('tienda-mayoreo/lista_pedidos'));
+
 	}
 }

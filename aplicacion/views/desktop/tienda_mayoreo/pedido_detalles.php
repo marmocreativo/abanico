@@ -129,8 +129,10 @@
             <a href="<?php echo base_url('tienda-mayoreo'); ?>" class="btn btn-sm btn-info btn-block"> Salir</a>
           </div>
         </div>
-
         <a href="<?php echo base_url('tienda-mayoreo/pedido_recibo?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-block btn-outline-success my-2"> <i class="fa fa-envelope"></i> Enviar recibo por correo</a>
+        <button data-enlace='<?php echo base_url('tienda-mayoreo/pedido_borrar?id='.$pedido['ID_PEDIDO']); ?>' class="btn btn-link text-danger btn-block borrar_entrada" title="Cancelar Pedido">
+          Borrar pedido
+        </button>
       </div>
     </div>
   </div>
