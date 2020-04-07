@@ -110,8 +110,10 @@
             <option value="no_comision">No, se quedan a comisión</option>
           </select>
         </div>
+        <!--
         <label for="">Firma de confirmación:</label>
         <canvas style="border: solid 1px #000; min-width:300px; max-width:1600px;"></canvas>
+      -->
         <button type="submit" class="btn btn-primary-17 btn-lg btn-block text-white"> <i class="fa fa-check"></i> Confirmar </button>
       </div>
     </div>

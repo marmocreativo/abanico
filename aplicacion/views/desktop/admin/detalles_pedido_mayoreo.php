@@ -28,25 +28,41 @@
   <div class="row">
 		<div class="col">
 			<?php retro_alimentacion(); ?>
-			<div class="row">
-	      <div class="col text-center py-4">
-	        <h3>Pedido folio: <b><?php echo $pedido['PEDIDO_FOLIO']; ?></b></h3>
-	      </div>
-	    </div>
 	    <div class="row">
-	      <div class="col-12">
-	        <table class="table table-sm">
+	      <div class="col-9">
+	        <table class="table table-bordered table-sm">
+						<tr>
+							<td>
+								Folio: <b><?php echo $pedido['PEDIDO_FOLIO'] ?></b>
+							</td>
+							<td>
+								Estado: <b><?php echo $pedido['PEDIDO_ESTADO_PEDIDO'] ?></b>
+							</td>
+							<td>
+								Fecha registro: <b><?php echo date('d / M / Y', strtotime($pedido['PEDIDO_FECHA_REGISTRO'])) ?></b>
+							</td>
+						</tr>
 	          <tr>
-	            <td>Nombre:</td>
-	            <td><b><?php echo $pedido['PEDIDO_NOMBRE'] ?></b></td>
-							<td>Correo:</td>
-	            <td><b><?php echo $pedido['PEDIDO_CORREO'] ?></b></td>
-							<td>Teléfono:</td>
-	            <td><b><?php echo $pedido['PEDIDO_TELEFONO'] ?></b></td>
+	            <td>Cliente:<br>
+								<b><?php echo $pedido['PEDIDO_NOMBRE_EMPRESA'] ?></b><br>
+								<?php echo $pedido['PEDIDO_NOMBRE'] ?>
+
+							</td>
+							<td>Correo:<br>
+								<b><?php echo $pedido['PEDIDO_CORREO'] ?></b>
+							</td>
+							<td>Teléfono:<br>
+								<b><?php echo $pedido['PEDIDO_TELEFONO'] ?></b>
+							</td>
 	          </tr>
 	          <tr>
-							<td>Direccion:</td>
-	            <td colspan="6"><?php echo $pedido['PEDIDO_DIRECCION'] ?></td>
+							<td colspan="3">Direccion:<br>
+								<?php echo $pedido['PEDIDO_DIRECCION'] ?>
+							</td>
+	          </tr>
+						<tr>
+							<td colspan="3">Tipo: <b><?php echo $pedido['PEDIDO_TIPO'] ?></b>
+							</td>
 	          </tr>
 	        </table>
 	        <hr>
@@ -60,7 +76,7 @@
 	            <?php foreach($productos_pedido as $producto){ ?>
 	              <tr>
 	                <td>
-	                  <img src="<?php echo $producto->PRODUCTO_IMAGEN;  ?>" width="100px;">
+	                  <img src="<?php echo $producto->PRODUCTO_IMAGEN;  ?>" width="50px;">
 	                </td>
 	                <td>
 	                  <?php echo $producto->PRODUCTO_NOMBRE; ?><br>
@@ -93,29 +109,34 @@
 	              </td>
 	            </tr>
 	            <tr>
-	              <td>Importe envio <b><?php echo $pedido['PEDIDO_NOMBRE_TRANSPORTISTA'] ?></b></td>
-	              <td>$<?php echo $pedido['PEDIDO_IMPORTE_ENVIO_TOTAL'] ?>
-	                <?php if($pedido['PEDIDO_ESTADO_PAGO']=='pendiente'){ ?>
-	                <a href="<?php echo base_url('tienda-mayoreo/pedido_envio?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-info"> <i class="fa fa-plus"></i> </a>
-	                <?php } ?>
-	              </td>
-	            </tr>
-	            <tr>
 	              <td>Importe Total</td>
 	              <td>$<?php echo $pedido['PEDIDO_IMPORTE_TOTAL'] ?></td>
 	            </tr>
+							<tr>
+								<td>
+									Estado del pago: <b><?php echo $pedido['PEDIDO_ESTADO_PAGO'] ?></b><br>
+									Forma de pago: <b><?php echo $pedido['PEDIDO_FORMA_PAGO'] ?></b>
+
+								</td>
+								<td>Fecha de pago: <b><?php if($pedido['FECHA_PAGO']!='0000-00-00 00:00:00' && $pedido['FECHA_PAGO'] !=null ){ echo date('d / M / Y', strtotime($pedido['FECHA_PAGO'])); }?></td>
+							</tr>
 	          </table>
 	      </div>
-	      <div class="col-12">
+	      <div class="col-3">
 	        <div class="row justify-content-center">
-	          <div class="col">
-	            <a href="<?php echo base_url('tienda-mayoreo/pedido_actualizar?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-warning btn-block"> Actualizar datos</a>
+	          <div class="col-12 mb-3">
+	            <a href="<?php echo base_url('admin/pedidos/pedido_mayoreo_actualizar?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-warning btn-block"> Actualizar datos</a>
 	          </div>
-	          <div class="col">
-	            <a href="<?php echo base_url('tienda-mayoreo/pedido_precios?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-success btn-block"> Cambiar precios</a>
+	          <div class="col-12 mb-3">
+	            <a href="<?php echo base_url('admin/pedidos/pedido_mayoreo_precios?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-success btn-block"> Cambiar precios</a>
 	          </div>
-	          <div class="col">
-	            <a href="<?php echo base_url('tienda-mayoreo/pedido_pago?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-success btn-block"> Pagar</a>
+						<div class="col-12 mb-3">
+	            <a href="<?php echo base_url('admin/pedidos/pedido_mayoreo_recibo?id_pedido='.$pedido['ID_PEDIDO']); ?>" class="btn btn-sm btn-outline-success btn-block"> Enviar recibo por correo</a>
+	          </div>
+						<div class="col-12 mb-3">
+							<button data-enlace='<?php echo base_url('admin/pedidos/pedido_mayoreo_borrar?id='.$pedido['ID_PEDIDO']); ?>' class="btn btn-outline-danger btn-block borrar_entrada" title="Cancelar Pedido">
+			          Borrar pedido
+			        </button>
 	          </div>
 	        </div>
 	      </div>

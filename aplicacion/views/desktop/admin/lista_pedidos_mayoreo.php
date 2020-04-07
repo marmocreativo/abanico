@@ -71,6 +71,7 @@
               <tr>
                 <th>Folio</th>
                 <th>Cliente</th>
+                <th>Productos</th>
                 <th>Importe</th>
                 <th>Fecha</th>
                 <th>Estado del pedido</th>
@@ -82,7 +83,22 @@
               <?php foreach($pedidos as $pedido){ ?>
               <tr>
                 <td><?php echo $pedido->PEDIDO_FOLIO; ?></td>
-                <td><?php echo $pedido->PEDIDO_NOMBRE; ?></td>
+                <td>
+                  <b><?php echo $pedido->PEDIDO_NOMBRE_EMPRESA; ?></b><br>
+                  <?php echo $pedido->PEDIDO_NOMBRE; ?>
+                </td>
+                <td>
+                  <?php $productos = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$pedido->ID_PEDIDO],'','',''); ?>
+                  <table class="table table-striped table-bordered table-sm">
+                    <tr>
+                    <?php foreach($productos as $producto){ ?>
+                        <td class="text-center">
+                          <img src="<?php echo $producto->PRODUCTO_IMAGEN;  ?>" width="30px;"><br><b>X<?php echo $producto->CANTIDAD; ?></b>
+                        </td>
+                    <?php }?>
+                    </tr>
+                  </table>
+                </td>
                 <td>$<?php echo $pedido->PEDIDO_IMPORTE_TOTAL; ?></td>
                 <td><?php echo date('d / M / Y', strtotime($pedido->PEDIDO_FECHA_REGISTRO)); ?></td>
                 <td>

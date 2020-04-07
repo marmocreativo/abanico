@@ -186,8 +186,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			redirect(base_url('admin/pedidos/detalles?id_pedido='.$this->input->get('id_pedido')));
 		}
 	}
-
-
 	public function subir_comprobante()
 	{
 		if(!verificar_sesion($this->data['op']['tiempo_inactividad_sesion'])){
@@ -286,7 +284,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				$this->session->set_flashdata('alerta', 'No se pudo subir el archivo');
 				redirect(base_url('admin/pedidos/detalles?id_pedido='.$this->input->post('IdPedido')));
 			}
-}
+		}
 	public function guia()
 	{
 			$this->form_validation->set_rules('IdPedido', 'Número de Orden del Pedido', 'required', array('required' => 'Debes escribir tu %s.'));
@@ -362,6 +360,165 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 	}
 
+	public function pedido_mayoreo_actualizar()
+	{
+		$this->form_validation->set_rules('Identificador', 'Id del pedido', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+		{
+
+			$pedido = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->post('Identificador')]);
+
+			// Cálculo de impuestos
+			$factura = 'no';
+			$impuestos_detalles = '';
+			$importe_productos = $pedido['PEDIDO_IMPORTE_PRODUCTOS_PARCIAL'];
+			$importe_impuestos = 0;
+
+			if($this->input->post('PedidoImpuestosPorcentaje')=='16'){
+				$impuestos_detalles = 'IVA 16%';
+				$importe_impuestos = ($importe_productos*$this->input->post('PedidoImpuestosPorcentaje'))/100;
+				$factura = 'si';
+			}
+
+			$importe_total = $importe_productos+$importe_impuestos;
+
+			if(isset($_POST['ActualizarEmpresa'])){
+				$parametros_empresa = array(
+					'EMPRESA_NOMBRE'=>$this->input->post('PedidoNombreEmpresa'),
+					'DOMICILIO'=>$this->input->post('PedidoDireccion'),
+					'TELEFONO'=>$this->input->post('PedidoTelefono'),
+					'CONTACTO_NOMBRE'=>$this->input->post('PedidoNombreCliente'),
+					'CONTACTO_CORREO'=>$this->input->post('PedidoCorreo'),
+				);
+
+				$this->GeneralModel->actualizar('empresas',['ID'=>$this->input->post('IdComprador')],$parametros_empresa);
+			}
+
+
+			$parametros_pedido = array(
+				'ID_COMPRADOR'=>$this->input->post('IdComprador'),
+				'PEDIDO_NOMBRE_EMPRESA'=>$this->input->post('PedidoNombreEmpresa'),
+				'PEDIDO_NOMBRE'=>$this->input->post('PedidoNombreCliente'),
+				'PEDIDO_CORREO'=>$this->input->post('PedidoCorreo'),
+				'PEDIDO_TELEFONO'=>$this->input->post('PedidoTelefono'),
+				'PEDIDO_DIRECCION'=>$this->input->post('PedidoDireccion'),
+				'PEDIDO_IMPUESTO_DETALLES'=>$impuestos_detalles,
+				'PEDIDO_IMPUESTO_PORCENTAJE'=>$this->input->post('PedidoImpuestosPorcentaje'),
+				'PEDIDO_IMPORTE_IMPUESTOS'=>$importe_impuestos,
+				'PEDIDO_IMPORTE_TOTAL'=>$importe_total,
+				'PEDIDO_FORMA_PAGO'=>$this->input->post('PedidoFormaPago'),
+				'PEDIDO_ESTADO_PAGO'=>$this->input->post('PedidoEstadoPago'),
+				'PEDIDO_ESTADO_PEDIDO'=>$this->input->post('PedidoEstado'),
+				'PEDIDO_TIPO'=>$this->input->post('PedidoTipo'),
+				'FECHA_PAGO'=>date('Y-m-d H:i:s', strtotime($this->input->post('FechaPago'))),
+				'PEDIDO_REQUIERE_FACTURA'=>$factura,
+				'PEDIDO_FECHA_REGISTRO'=>date('Y-m-d H:i:s', strtotime($this->input->post('PedidoFechaCreacion'))),
+				'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s'),
+			);
+
+			$this->GeneralModel->actualizar('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->post('Identificador')],$parametros_pedido);
+
+			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
+			redirect(base_url('admin/pedidos/detalles_pedido_mayoreo?id_pedido='.$this->input->post('Identificador')));
+
+		}else{
+
+			$this->data['pedido'] = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$_GET['id_pedido']]);
+			$this->data['productos_pedido'] = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$_GET['id_pedido']],'ID DESC','','');
+
+
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_pedido_mayoreo',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+		}
+
+	}
+
+	public function pedido_mayoreo_precios()
+	{
+		$this->form_validation->set_rules('Identificador', 'Id del pedido', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+		{
+
+			$suma = $this->input->post('Cantidad')*$this->input->post('Importe');
+			$parametros_precio = array(
+				'CANTIDAD'=>$this->input->post('Cantidad'),
+				'IMPORTE'=>$this->input->post('Importe'),
+				'IMPORTE_TOTAL'=>$suma
+			);
+			$this->GeneralModel->actualizar('pedidos_mayoreo_productos',['ID'=>$this->input->post('IdProducto')],$parametros_precio);
+			$productos = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$this->input->post('Identificador')],'ID DESC','','');
+
+			$pedido = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->post('Identificador')]);
+
+			$suma_productos = 0;
+			foreach($productos as $producto){
+				$suma_productos+= $producto->CANTIDAD*$producto->IMPORTE;
+			};
+
+			//var_dump($suma_productos);
+
+			$importe_productos = $suma_productos;
+
+			if(!empty($pedido['PEDIDO_IMPUESTO_DETALLES'])){
+				$porcentaje_impuestos = 16;
+			}else{
+				$porcentaje_impuestos = 0;
+			}
+
+			$importe_impuestos = ($importe_productos*$porcentaje_impuestos)/100;
+			$importe_total = $importe_productos+$importe_impuestos;
+
+
+
+			if(!empty($pedido['PEDIDO_IMPUESTO_DETALLES'])){
+
+				$importe = array(
+					'PEDIDO_IMPORTE_PRODUCTOS_PARCIAL' =>$importe_productos,
+					'PEDIDO_IMPORTE_IMPUESTOS' =>$importe_impuestos,
+					'PEDIDO_IMPORTE_TOTAL' =>$importe_total
+				);
+
+			}else{
+
+				$importe = array(
+					'PEDIDO_IMPORTE_PRODUCTOS_PARCIAL' =>$importe_productos,
+					'PEDIDO_IMPORTE_TOTAL' =>$importe_productos
+				);
+			}
+
+			$this->GeneralModel->actualizar('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->post('Identificador')],$importe);
+
+			$this->session->set_flashdata('exito', 'Pedido actualizado correctamente');
+			redirect(base_url('admin/pedidos/detalles_pedido_mayoreo?id_pedido='.$this->input->post('Identificador')));
+
+		}else{
+
+			$this->data['pedido'] = $this->GeneralModel->detalles('pedidos_mayoreo',['ID_PEDIDO'=>$_GET['id_pedido']]);
+			$this->data['productos_pedido'] = $this->GeneralModel->lista('pedidos_mayoreo_productos','',['ID_PEDIDO'=>$_GET['id_pedido']],'ID DESC','','');
+
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/form_precios_pedido_mayoreo',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+		}
+
+	}
+	public function pedido_mayoreo_recibo()
+	{
+		$this->session->set_flashdata('exito', 'Recibo enviado correctamente');
+		redirect(base_url('admin/pedidos/detalles_pedido_mayoreo?id_pedido='.$this->input->get('id_pedido')));
+	}
+	public function pedido_mayoreo_borrar()
+	{
+			$this->GeneralModel->borrar('pedidos_mayoreo',['ID_PEDIDO'=>$this->input->get('id')]);
+			$this->GeneralModel->borrar('pedidos_mayoreo_productos',['ID_PEDIDO'=>$this->input->get('id')]);
+			$this->session->set_flashdata('exito', 'Pedido borrado correctamente');
+			redirect(base_url('admin/pedidos/lista_pedidos_mayoreo'));
+
+	}
+
 	public function lista_empresas()
 	{
 		if(!null==$this->input->get('busqueda')){
@@ -408,6 +565,39 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
     }else{
 			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/form_empresas',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
+		}
+	}
+	public function actualizar_empresa()
+	{
+		$this->form_validation->set_rules('NombreEmpresa', 'Nombre de la empresa', 'required', array( 'required' => 'Debes designar el %s.' ));
+		$this->form_validation->set_rules('CorreoContacto', 'Correo de contacto', 'required', array( 'required' => 'Debes designar el %s.' ));
+
+		if($this->form_validation->run())
+		{
+
+			$parametros = array(
+				'EMPRESA_NOMBRE' => $this->input->post('NombreEmpresa'),
+				'RAZON_SOCIAL' => $this->input->post('RazonSocialEmpresa'),
+				'RFC' => $this->input->post('RfcEmpresa'),
+				'DOMICILIO' => $this->input->post('DireccionEmpresa'),
+				'TELEFONO' => $this->input->post('TelefonoContacto'),
+				'CONTACTO_NOMBRE' => $this->input->post('NombreContacto'),
+				'CONTACTO_APELLIDOS' => $this->input->post('ApellidosContacto'),
+				'CONTACTO_CORREO' => $this->input->post('CorreoContacto')
+			);
+
+			$id_empresa = $this->GeneralModel->actualizar('empresas',['ID'=>$this->input->post('Identificador')],$parametros);
+
+			$this->session->set_flashdata('exito', 'Empresa creada correctamente');
+			redirect(base_url('admin/pedidos/lista_empresas'));
+
+		}else{
+
+			$this->data['empresa']  = $this->GeneralModel->detalles('empresas',['ID'=>$_GET['id_empresa']]);
+
+			$this->load->view($this->data['dispositivo'].'/admin/headers/header',$this->data);
+			$this->load->view($this->data['dispositivo'].'/admin/form_actualizar_empresas',$this->data);
 			$this->load->view($this->data['dispositivo'].'/admin/footers/footer',$this->data);
 		}
 	}

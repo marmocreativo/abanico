@@ -54,6 +54,9 @@
 	        <table class="table table-sm table-striped">
 	          <tr>
 	            <th>Empresa</th>
+							<th>Correo</th>
+							<th>Teléfono</th>
+							<th>Domicilio</th>
 	            <th class="text-center">Controles</th>
 	          </tr>
 	          <?php foreach($empresas as $empresa){ ?>
@@ -62,15 +65,15 @@
 	              <h6><?php echo $empresa->EMPRESA_NOMBRE; ?></h6>
 	              <p><b><?php echo $empresa->RFC; ?></b></p>
 								<p><b><?php echo $empresa->RAZON_SOCIAL; ?></b></p>
-								<p><b><?php echo $empresa->DOMICILIO; ?></b></p>
 	              <p>
 	                <?php echo $empresa->CONTACTO_NOMBRE.' '.$empresa->CONTACTO_APELLIDOS; ?><br>
-	                <?php echo $empresa->CONTACTO_CORREO; ?>
 	              </p>
 	            </td>
+							<td><?php echo $empresa->CONTACTO_CORREO; ?></td>
+							<td><?php echo $empresa->TELEFONO; ?></td>
+							<td><?php echo $empresa->DOMICILIO; ?></td>
 	            <td>
 								<div class="btn-group float-right">
-									<a href="<?php echo base_url('admin/pedidos/lista_pedidos_mayoreo?id_empresa='.$empresa->ID); ?>" class="btn btn-success"> <i class="fas fa-shopping-bag"></i> Pedidos</a>
 		              <a href="<?php echo base_url('admin/pedidos/actualizar_empresa?id_empresa='.$empresa->ID); ?>" class="btn btn-warning"> <i class="fas fa-pencil-alt"></i> Editar</a>
 								</div>
 	            </td>
