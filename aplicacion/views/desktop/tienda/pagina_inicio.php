@@ -10,7 +10,7 @@
       <?php $i = 0; foreach($slides as $slide){ ?>
       <div class="carousel-item <?php if($i==0){ echo 'active'; } ?>">
         <div class="contenedor-texto-slide align-middle">
-          <div class="texto-slide row align-items-center mx-0">
+          <div class="texto-slide row align-items-center mx-0" style="background-color: rgba(255,255,255,0.86);">
             <?php if(!empty($slide->SLIDE_TITULO)){ ?>
               <div class="col-12">
 
@@ -66,9 +66,9 @@
         </a>
       </div>
       <div class="col border-left">
-        <a href="#Concursos" class="d-flex justify-content-center align-items-center">
-          <div class="car-icono text<?php echo $primary ?>"> <span class="fa fa-gift"></span> </div>
-          <div class="car-titulo text<?php echo $primary ?>">Concurso</div>
+        <a href="https://www.abanicoblog.com" class="d-flex justify-content-center align-items-center" target="_blank">
+          <div class="car-icono text<?php echo $primary ?>"> <span class="far fa-newspaper"></span> </div>
+          <div class="car-titulo text<?php echo $primary ?>">Blog</div>
         </a>
       </div>
     </div>

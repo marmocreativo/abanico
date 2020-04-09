@@ -67,9 +67,9 @@
         </a>
       </div>
       <div class="col-6 mt-3">
-        <a href="#Concursos" class="d-flex justify-content-center align-items-center">
-          <div class="car-icono text-primary"> <span class="fa fa-gift"></span> </div>
-          <div class="car-titulo">Concurso</div>
+        <a href="https://www.abanicoblog.com" class="d-flex justify-content-center align-items-center" target="_blank">
+          <div class="car-icono text-primary"> <span class="far fa-newspaper"></span> </div>
+          <div class="car-titulo">Blog</div>
         </a>
       </div>
     </div>
