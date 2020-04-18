@@ -179,7 +179,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				break;
 
 			default:
-					$this->data['empresa']  = $this->GeneralModel->detalles('empresas',['ID'=>$id_empresa]);
+					$this->data['empresa']  = $this->GeneralModel->detalles('empresas',['ID'=>$_POST['Comprador']]);
 					$id_comprador = $this->data['empresa']['ID'];
 					$nombre_empresa = $this->data['empresa']['EMPRESA_NOMBRE'];
 					$nombre_comprador = $this->data['empresa']['CONTACTO_NOMBRE'].' '.$this->data['empresa']['CONTACTO_APELLIDOS'];

@@ -70,12 +70,18 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			}
 
+			if(isset($_POST['Tablas'])&&!empty($_POST['Tablas'])){
+				$tablas = $_POST['Tablas'];
+			}else{
+				$tablas = 'productos';
+			}
+
 			// Parametros de la dirección
 			$parametros = array(
 				'TITULO' => $this->input->post('Titulo'),
 				'DESCRIPCION' => $this->input->post('Descripcion'),
 				'TIPO' => $this->input->post('Tipo'),
-				'TABLAS' => $this->input->post('Tablas'),
+				'TABLAS' => $tablas,
 				'CATEGORIAS' => $categorias,
 				'ORIGEN' => $this->input->post('Origen'),
 				'ARTESANAL' => $this->input->post('Artesanal'),
