@@ -56,10 +56,24 @@
           <div class="formulario">
             <form class="form-inline" action="<?php echo base_url('admin/pedidos/lista_pedidos_mayoreo'); ?>" method="get">
               <div class="form-group mx-2">
-                <label for="Fecha"> Fecha </label>
-                <input type="date" class="form-control" name="Fecha" value="<?php if(isset($_GET['Fecha'])){ echo $_GET['Fecha'];}else{ echo date('Y-m-d'); } ?>">
+                <label for="Fecha" class="mr-2"> Fecha </label>
+                <select class="form-control form-control-sm" name="Fecha">
+                  <option value="January" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='January'){ echo 'selected'; } ?>>Enero</option>
+                  <option value="February" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='February'){ echo 'selected'; } ?>>Febrero</option>
+                  <option value="March" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='March'){ echo 'selected'; } ?>>Marzo</option>
+                  <option value="April" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='April'){ echo 'selected'; } ?>>Abril</option>
+                  <option value="May" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='May'){ echo 'selected'; } ?>>Mayo</option>
+                  <option value="June" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='June'){ echo 'selected'; } ?>>Junio</option>
+                  <option value="July" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='July'){ echo 'selected'; } ?>>Julio</option>
+                  <option value="August" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='August'){ echo 'selected'; } ?>>Agosto</option>
+                  <option value="September" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='September'){ echo 'selected'; } ?>>Septiembre</option>
+                  <option value="October" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='October'){ echo 'selected'; } ?>>Octubre</option>
+                  <option value="November" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='November'){ echo 'selected'; } ?>>Noviembre</option>
+                  <option value="December" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='December'){ echo 'selected'; } ?>>Diciembre</option>
+                </select>
               </div>
               <button type="submit" class="btn btn-primary btn-sm"> <i class="fa fa-search"></i> Buscar</button>
+              <a href="<?php echo base_url('admin/pedidos/nuevo_pedido_mayoreo'); ?>" class="ml-2 btn btn-success btn-sm">Nuevo pedido</a>
             </form>
           </div>
           <div class="opciones d-flex">

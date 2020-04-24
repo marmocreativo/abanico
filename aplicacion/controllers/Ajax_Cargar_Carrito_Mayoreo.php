@@ -22,6 +22,10 @@ class Ajax_Cargar_Carrito_Mayoreo extends CI_Controller {
 	{
 		$this->load->view($this->data['dispositivo'].'/tienda_mayoreo/carrito',$this->data);
 	}
+	public function admin()
+	{
+		$this->load->view($this->data['dispositivo'].'/admin/carrito',$this->data);
+	}
 
 	public function cargar()
 	{
