@@ -78,8 +78,9 @@
 								<div class="form-group">
 									<label for="MayoreoProducto"><i class="fa fa-money-bill"></i> Disponible en mayoreo</label>
 									<select class="form-control" id="MayoreoProducto" name="MayoreoProducto" placeholder="">
-										<option value="no" >No</option>
-										<option value="si">Si</option>
+										<option value="no">Solo Online</option>
+										<option value="mayoreo">Solo Mayoreo</option>
+										<option value="si">Online y Mayoreo</option>
 									</select>
 								</div>
 							</div>

@@ -122,7 +122,7 @@
                   </p>
                 </td>
                 <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> <?php echo $producto->PRODUCTO_CANTIDAD; ?> <br>
-                  <span style="font-size:12px; font-weight:bold;"> <?php if($producto->PRODUCTO_MAYOREO=='si'){ echo 'Mayoreo'; }else{ echo 'Solo online'; } ?></span>
+                  <span style="font-size:12px; font-weight:bold;"> <?php if($producto->PRODUCTO_MAYOREO=='si'){ echo 'Online y Mayoreo'; } if($producto->PRODUCTO_MAYOREO=='no'){ echo 'Solo online'; } if($producto->PRODUCTO_MAYOREO=='mayoreo'){ echo 'Solo mayoreo'; } ?></span>
                 </span></td>
                 <td class="text-center"><span style="<?php if($producto->PRODUCTO_ESTADO=='borrado'){ echo 'text-decoration:line-through;';} ?>"> $<?php echo $producto->PRODUCTO_PRECIO; ?> <small>MXN</small></span></td>
                 <td class="text-center">

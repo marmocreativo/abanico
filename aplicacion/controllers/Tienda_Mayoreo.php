@@ -101,6 +101,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['categorias_hijas'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 			$this->data['productos'] = $this->ProductosModel->lista_mayoreo($parametros_or,$parametros_and,'',$orden,'');
+			//echo $this->db->last_query();
 			$this->data['origen_formulario'] = 'categoria';
 
 			$this->data['titulo'] = 'Todos los productos | Abanico siempre lo mejor';
