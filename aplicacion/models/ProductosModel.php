@@ -27,8 +27,8 @@ class ProductosModel extends CI_Model {
       $this->db->limit($limite);
     }
     $this->db->where('PRODUCTO_ESTADO !=','borrado');
-    $this->db->where('PRODUCTO_MAYOREO', 'si');
-    $this->db->or_where('PRODUCTO_MAYOREO', 'no');
+    //$this->db->where('PRODUCTO_MAYOREO', 'si');
+    //$this->db->or_where('PRODUCTO_MAYOREO', 'no');
     $query = $this->db->get('productos');
     return $query->result();
   }
@@ -93,8 +93,8 @@ class ProductosModel extends CI_Model {
       $this->db->limit($limite);
     }
     $query = $this->db->get('productos');
-    $this->db->where('PRODUCTO_MAYOREO', 'si');
-    $this->db->or_where('PRODUCTO_MAYOREO', 'no');
+    //$this->db->where('PRODUCTO_MAYOREO', 'si');
+    //$this->db->or_where('PRODUCTO_MAYOREO', 'no');
     return $query->result();
   }
   /*
@@ -122,8 +122,8 @@ class ProductosModel extends CI_Model {
     }
     $this->db->group_start();
     $this->db->where('PRODUCTO_ESTADO', 'activo');
-    $this->db->where('PRODUCTO_MAYOREO', 'si');
-    $this->db->or_where('PRODUCTO_MAYOREO', 'no');
+    //$this->db->where('PRODUCTO_MAYOREO', 'si');
+    //$this->db->or_where('PRODUCTO_MAYOREO', 'no');
     $this->db->group_end();
     $query = $this->db->get('productos');
     return $query->result();
@@ -157,8 +157,8 @@ class ProductosModel extends CI_Model {
       $this->db->limit($limite);
     }
     $this->db->where('PRODUCTO_ESTADO', 'activo');
-    $this->db->where('PRODUCTO_MAYOREO', 'si');
-    $this->db->or_where('PRODUCTO_MAYOREO', 'no');
+    //$this->db->where('PRODUCTO_MAYOREO', 'si');
+    //$this->db->or_where('PRODUCTO_MAYOREO', 'no');
     $query = $this->db->get('productos');
     return $query->result();
   }
@@ -192,8 +192,8 @@ class ProductosModel extends CI_Model {
       $this->db->limit($limite);
     }
     $this->db->where('PRODUCTO_ESTADO', 'activo');
-    $this->db->where('PRODUCTO_MAYOREO', 'si');
-    $this->db->or_where('PRODUCTO_MAYOREO', 'mayoreo');
+    //$this->db->where('PRODUCTO_MAYOREO', 'si');
+    //$this->db->or_where('PRODUCTO_MAYOREO', 'mayoreo');
     $query = $this->db->get('productos');
     return $query->result();
   }
