@@ -727,7 +727,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PEDIDO_TIPO'=>$this->input->post('PedidoTipo'),
 				'FECHA_PAGO'=>date('Y-m-d H:i:s', strtotime($this->input->post('FechaPago'))),
 				'PEDIDO_REQUIERE_FACTURA'=>$factura,
-				'PEDIDO_FECHA_REGISTRO'=>date('Y-m-d H:i:s', strtotime($this->input->post('PedidoFechaCreacion'))),
+				//'PEDIDO_FECHA_REGISTRO'=>date('Y-m-d H:i:s', strtotime($this->input->post('PedidoFechaCreacion'))),
 				'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s'),
 			);
 

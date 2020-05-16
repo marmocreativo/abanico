@@ -26,9 +26,12 @@ class ProductosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
+    $this->db->group_start();
+      $this->db->or_where('PRODUCTO_MAYOREO', 'si');
+      $this->db->or_where('PRODUCTO_MAYOREO', 'no');
+    $this->db->group_end();
     $this->db->where('PRODUCTO_ESTADO !=','borrado');
-    //$this->db->where('PRODUCTO_MAYOREO', 'si');
-    //$this->db->or_where('PRODUCTO_MAYOREO', 'no');
+
     $query = $this->db->get('productos');
     return $query->result();
   }
@@ -93,8 +96,10 @@ class ProductosModel extends CI_Model {
       $this->db->limit($limite);
     }
     $query = $this->db->get('productos');
-    //$this->db->where('PRODUCTO_MAYOREO', 'si');
-    //$this->db->or_where('PRODUCTO_MAYOREO', 'no');
+    $this->db->group_start();
+      $this->db->where('PRODUCTO_MAYOREO', 'si');
+      $this->db->or_where('PRODUCTO_MAYOREO', 'no');
+    $this->db->group_end();
     return $query->result();
   }
   /*
@@ -121,10 +126,10 @@ class ProductosModel extends CI_Model {
       $this->db->limit($limite);
     }
     $this->db->group_start();
-    $this->db->where('PRODUCTO_ESTADO', 'activo');
-    //$this->db->where('PRODUCTO_MAYOREO', 'si');
-    //$this->db->or_where('PRODUCTO_MAYOREO', 'no');
+      $this->db->where('PRODUCTO_MAYOREO', 'si');
+      $this->db->or_where('PRODUCTO_MAYOREO', 'no');
     $this->db->group_end();
+    $this->db->where('PRODUCTO_ESTADO', 'activo');
     $query = $this->db->get('productos');
     return $query->result();
   }
@@ -156,9 +161,12 @@ class ProductosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
+    $this->db->group_start();
+      $this->db->or_where('PRODUCTO_MAYOREO', 'si');
+      $this->db->or_where('PRODUCTO_MAYOREO', 'no');
+    $this->db->group_end();
     $this->db->where('PRODUCTO_ESTADO', 'activo');
-    //$this->db->where('PRODUCTO_MAYOREO', 'si');
-    //$this->db->or_where('PRODUCTO_MAYOREO', 'no');
+
     $query = $this->db->get('productos');
     return $query->result();
   }
@@ -191,9 +199,12 @@ class ProductosModel extends CI_Model {
     if(!empty($limite)){
       $this->db->limit($limite);
     }
+
+    $this->db->group_start();
+      $this->db->or_where('PRODUCTO_MAYOREO', 'si');
+      $this->db->or_where('PRODUCTO_MAYOREO', 'mayoreo');
+    $this->db->group_end();
     $this->db->where('PRODUCTO_ESTADO', 'activo');
-    //$this->db->where('PRODUCTO_MAYOREO', 'si');
-    //$this->db->or_where('PRODUCTO_MAYOREO', 'mayoreo');
     $query = $this->db->get('productos');
     return $query->result();
   }

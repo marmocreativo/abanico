@@ -59,8 +59,11 @@
 											</div>
 											<div class="col-12 col-sm-3">
 												<div class="form-group">
-													<label for="PedidoFechaCreacion">Fecha creación del pedido</label>
-													<input type="datetime-local" class="form-control form-control-sm" name="PedidoFechaCreacion" value="<?php echo date('Y-m-d\TH:i:s', strtotime($pedido['PEDIDO_FECHA_REGISTRO'])); ?>">
+													<label for="PedidoFechaCreacion">Fecha creación del pedido <br> <?php echo $pedido['PEDIDO_FECHA_REGISTRO']; ?></label>
+													<input type="hidden" name="PedidoFechaCreacion" value="<?php echo $pedido['PEDIDO_FECHA_REGISTRO']; ?>">
+													<!--
+														<input type="datetime-local" class="form-control form-control-sm" name="PedidoFechaCreacion" value="<?php echo date('Y-m-d\TH:i:s', strtotime($pedido['PEDIDO_FECHA_REGISTRO'])); ?>">
+													-->
 												</div>
 											</div>
 										</div>
