@@ -214,7 +214,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 					$direccion_id = $this->DireccionesModel->crear($parametros_direccion);
 				}
 				// Registro la dirección en la perfil_servicios
-				echo $this->input->post('Identificador');
+				//echo $this->input->post('Identificador');
 				$perfil_servicios_id = $this->PerfilServiciosModel->actualizar($this->input->post('Identificador'),array('ID_DIRECCION'=>$direccion_id));
 				// Reviso los permisos del Usuario
  			 $usuario = $this->UsuariosModel->detalles($this->input->post('IdUsuario'));
@@ -240,7 +240,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
  			 // Redirección
 
 				$this->session->set_flashdata('exito', 'Perfil Actualizado');
-				redirect(base_url('admin/usuarios/perfil?id_usuario='.$this->input->post('IdUsuario')));
+				redirect(base_url('admin/perfiles_servicios/actualizar?id_usuario='.$this->input->post('IdUsuario').'&id_perfil='.$this->input->post('Identificador')));
     }else{
 			$this->data['usuario'] = $this->UsuariosModel->detalles($_GET['id_usuario']);
 			$this->data['perfil'] = $this->PerfilServiciosModel->detalles($_GET['id_perfil']);

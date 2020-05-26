@@ -727,7 +727,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 				'PEDIDO_TIPO'=>$this->input->post('PedidoTipo'),
 				'FECHA_PAGO'=>date('Y-m-d H:i:s', strtotime($this->input->post('FechaPago'))),
 				'PEDIDO_REQUIERE_FACTURA'=>$factura,
-				//'PEDIDO_FECHA_REGISTRO'=>date('Y-m-d H:i:s', strtotime($this->input->post('PedidoFechaCreacion'))),
+				'PEDIDO_FECHA_REGISTRO'=>date('Y-m-d H:i:s', strtotime($this->input->post('PedidoFechaCreacion'))),
 				'PEDIDO_FECHA_ACTUALIZACION'=>date('Y-m-d H:i:s'),
 			);
 
@@ -885,7 +885,6 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 	public function actualizar_empresa()
 	{
 		$this->form_validation->set_rules('NombreEmpresa', 'Nombre de la empresa', 'required', array( 'required' => 'Debes designar el %s.' ));
-		$this->form_validation->set_rules('CorreoContacto', 'Correo de contacto', 'required', array( 'required' => 'Debes designar el %s.' ));
 
 		if($this->form_validation->run())
 		{
@@ -903,7 +902,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 			$id_empresa = $this->GeneralModel->actualizar('empresas',['ID'=>$this->input->post('Identificador')],$parametros);
 
-			$this->session->set_flashdata('exito', 'Empresa creada correctamente');
+			$this->session->set_flashdata('exito', 'Empresa actualizada correctamente');
 			redirect(base_url('admin/pedidos/lista_empresas'));
 
 		}else{

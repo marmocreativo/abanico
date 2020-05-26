@@ -165,9 +165,10 @@ $route['producto/calificar'] = 'Tienda_Producto/calificar';
 $route['producto/contacto'] = 'Tienda_Producto/contacto';
 $route['producto/favorito'] = 'Tienda_Producto/favorito';
 $route['producto/quitar_favorito'] = 'Tienda_Producto/quitar_favorito';
+$route['producto/vista_previa'] = 'Tienda_Producto/vista_previa';
 $route['producto/(:any)'] = 'Tienda_Producto';
 $route['producto/(:any)/(:num)'] = 'Tienda_Producto';
-$route['producto/vista_previa'] = 'Tienda_Producto/vista_previa';
+
 $route['servicio'] = 'Tienda_Servicio';
 $route['servicio/(:any)'] = 'Tienda_Servicio/$1';
 $route['busqueda'] = 'Tienda_Busqueda';

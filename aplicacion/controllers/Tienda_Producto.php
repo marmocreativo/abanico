@@ -49,7 +49,6 @@ class Tienda_Producto extends CI_Controller {
 		if(isset($_GET['id'])){
 			$id_producto = $_GET['id'];
 			$datos_desde_id = $this->ProductosModel->detalles($id_producto);
-			echo 'producto con ID';
 			redirect(base_url('producto/'.$datos_desde_id['PRODUCTO_URL'].'/'.$datos_desde_id['ID_PRODUCTO']));
 		}
 		if(null !==$this->uri->segment(3, 0) ){
@@ -124,6 +123,10 @@ class Tienda_Producto extends CI_Controller {
  	}
 	public function vista_previa()
  {
+	 if(isset($_GET['id'])){
+		 $id_producto = $_GET['id'];
+		 $datos_desde_id = $this->ProductosModel->detalles($id_producto);
+	 }
 	 $this->data['producto'] = $this->ProductosModel->detalles($id_producto);
 	 $this->data['portada'] = $this->GaleriasModel->galeria_portada($id_producto);
 	 $this->data['galerias'] = $this->GaleriasModel->galeria_producto($id_producto);

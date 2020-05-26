@@ -187,9 +187,8 @@
           <li>
             <div class="card <?php echo $visible; ?>">
               <a href="<?php echo base_url('producto/'.$producto->PRODUCTO_URL.'/'.$producto->ID_PRODUCTO); ?>">
-                <div class="imagen-producto">
-                  <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
-                  <img class="spanImg" src="<?php echo base_url($ruta_portada); ?>"></img>
+                <?php $galeria = $this->GaleriasModel->galeria_portada($producto->ID_PRODUCTO); if(empty($galeria)){ $ruta_portada = $op['ruta_imagenes_producto'].'completo/default.jpg'; }else{ $ruta_portada = $op['ruta_imagenes_producto'].'completo/'.$galeria['GALERIA_ARCHIVO']; } ?>
+                <div class="imagen-producto" style=" height:350px; background-image:url('<?php echo base_url($ruta_portada); ?>'); background-size: contain; background-position:center; background-repeat:no-repeat;">
                   <div class="contenedorEtiquetas">
                     <?php if($producto->PRODUCTO_CANTIDAD<='0'){ ?>
                       <span class="etiqueta-agotado">Agotado</span>

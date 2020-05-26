@@ -105,7 +105,7 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 			$this->data['categorias'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'productos','','');
 			$this->data['categorias_servicios'] = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>0,'CATEGORIA_ESTADO'=>'activo'],'servicios','','');
 			$this->data['categoria'] = $this->CategoriasModel->detalles_slug($_GET['slug']);
-			$this->data['servicios'] = $this->ServiciosModel->lista_categoria_activos($parametros_or,$parametros_and,$this->data['categoria']['ID_CATEGORIA'],$orden,'');
+			$this->data['servicios'] = $this->ServiciosModel->lista_categoria_activos($parametros_or,$parametros_and,[$this->data['categoria']['ID_CATEGORIA']],$orden,'');
 			$this->data['primary'] = $this->data['categoria']['CATEGORIA_COLOR'];
 			$this->data['origen_formulario'] = 'categoria/servicios';
 

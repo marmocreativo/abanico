@@ -336,7 +336,7 @@
                       }
                     }
                   ?>
-                <a class="nav-link <?php if($i==0){ echo 'active';} ?> text<?php echo $categoria->CATEGORIA_COLOR; ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
+                <a class="nav-link <?php if($i==0){ echo 'active';} ?> text<?php echo $categoria->CATEGORIA_COLOR; ?> <?php if($categoria->CATEGORIA_MOSTRAR=='no mostrar' ){ echo 'd-none'; } ?>" id="menu-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" data-toggle="pill" href="#cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>" role="tab" aria-controls='cont-categoria-<?php echo $categoria->ID_CATEGORIA; ?>' aria-selected="true">
                   <i class="<?php echo $categoria->CATEGORIA_ICONO; ?>"></i> <?php echo $titulo; ?>
                 </a>
                 <?php ++$i;  } ?>
@@ -365,7 +365,7 @@
                             }
                           ?>
                           <div class="col-4">
-                            <h4><a href="<?php echo base_url('categoria/servicios?slug='.$segunda_categoria->CATEGORIA_URL); ?>" class="text<?php echo $segunda_categoria->CATEGORIA_COLOR; ?>">
+                            <h4><a href="<?php echo base_url('categoria/servicios?slug='.$segunda_categoria->CATEGORIA_URL); ?>" class="text<?php echo $segunda_categoria->CATEGORIA_COLOR; ?> <?php if($segunda_categoria->CATEGORIA_MOSTRAR=='no mostrar' ){ echo 'd-none'; } ?>">
                               <?php echo $titulo_segundo; ?>
                             </a></h4>
                             <?php   $tercero_categorias = $this->CategoriasModel->lista(['CATEGORIA_PADRE'=>$segunda_categoria->ID_CATEGORIA,'CATEGORIA_ESTADO'=>'activo'],$segunda_categoria->CATEGORIA_TIPO,'',''); ?>
@@ -384,7 +384,7 @@
                                     }
                                   }
                                 ?>
-                                <li> <a href="<?php echo base_url('categoria?slug='.$tercera_categoria->CATEGORIA_URL); ?>"><?php echo $titulo_tercero;  ?></a></li>
+                                <li class="<?php if($tercera_categoria->CATEGORIA_MOSTRAR=='no mostrar' ){ echo 'd-none'; } ?>"> <a href="<?php echo base_url('categoria?slug='.$tercera_categoria->CATEGORIA_URL); ?>"><?php echo $titulo_tercero;  ?></a></li>
                               <?php } ?>
                             </ul>
                           </div>
