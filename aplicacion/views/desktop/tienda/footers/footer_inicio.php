@@ -180,6 +180,7 @@
     <script type="text/javascript">
        $(window).on('load',function(){
          $('.flexslider').flexslider({
+           slideshow: false,
            animation: "slide",
            animationLoop: true,
            itemWidth: 250,

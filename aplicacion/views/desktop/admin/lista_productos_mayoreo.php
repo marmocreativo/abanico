@@ -149,7 +149,7 @@
 
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
               <form class="" action="<?php echo base_url('admin/pedidos/crear_pedido_mayoreo'); ?>" method="post">
                 <div class="row">
                   <div class="col-12">

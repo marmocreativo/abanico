@@ -32,7 +32,7 @@
           </div>
         </div>
       </td>
-      <td style="vertical-align:middle">
+      <td style="vertical-align:middle; width:30%;">
         <div class="input-group input-group-sm">
           <div class="input-group-prepend">
             <button class="btn btn-outline-primary boton-disminuir-carrito" type="button" data-id-producto = '<?php echo $producto['id_producto']; ?>' data-detalles-producto = '<?php echo $producto['detalles_producto']; ?>'>-</button>
