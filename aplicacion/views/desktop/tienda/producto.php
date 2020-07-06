@@ -27,7 +27,7 @@
 
   $numero_visitas= $this->EstadisticasModel->conteo_vistas_ip($this->input->ip_address(),$producto['ID_PRODUCTO']);
   $hora_limite_descuento = null;
-  if($numero_visitas>3){
+if(/*$numero_visitas>3*/ false){
     if(!isset($_SESSION['descuento_flash'])){
       $_SESSION['descuento_flash']['hora']=date('H:i:s');
       $_SESSION['descuento_flash']['producto']=$producto['ID_PRODUCTO'];

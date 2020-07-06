@@ -80,8 +80,6 @@
   $cuadritos = $this->SlidesModel->lista_activos(['ID_SLIDER'=>$cuadricula['ID_SLIDER']],'ORDEN ASC','');
 ?>
   <div class="row justify-content-center fila bg-light">
-    <div class="col-10">
-      <div class="row">
         <?php $i=0; foreach($cuadritos as $cuadrito){ ?>
           <div class="col-4 mb-2 animated fadeInUp" style="animation-delay:<?php echo $i; ?>00ms">
             <a href="<?php echo $cuadrito->SLIDE_ENLACE; ?>">
@@ -108,8 +106,6 @@
             </a>
           </div>
         <?php $i++; } ?>
-      </div>
-    </div>
   </div>
 
 <?php $no_carrusel = 0; $carruseles = $this->CarruselesModel->lista(['ESTADO'=>'activo'],'ORDEN ASC',''); ?>
