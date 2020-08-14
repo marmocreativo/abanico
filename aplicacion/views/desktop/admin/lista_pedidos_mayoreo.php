@@ -55,9 +55,20 @@
           </div>
           <div class="formulario">
             <form class="form-inline" action="<?php echo base_url('admin/pedidos/lista_pedidos_mayoreo'); ?>" method="get">
+              <?php $empresas = $this->GeneralModel->lista('empresas','',['ESTADO'=>'activo'],'ID DESC','',''); ?>
+              <div class="form-group mx-2">
+                <label for="Fecha" class="mr-2"> Empresa </label>
+                <select class="form-control form-control-sm" name="id_empresa">
+                  <option value="" >Todas</option>
+                  <?php foreach($empresas as $empresa){ ?>
+                  <option value="<?php echo $empresa->ID; ?>" <?php if (isset($_GET['id_empresa'])&&$_GET['id_empresa']==$empresa->ID){ echo 'selected'; } ?>><?php echo $empresa->EMPRESA_NOMBRE; ?></option>
+                <?php } ?>
+                </select>
+              </div>
               <div class="form-group mx-2">
                 <label for="Fecha" class="mr-2"> Fecha </label>
                 <select class="form-control form-control-sm" name="Fecha">
+                  <option value="cualquiera" >Cualquier fecha</option>
                   <option value="January" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='January'){ echo 'selected'; } ?>>Enero</option>
                   <option value="February" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='February'){ echo 'selected'; } ?>>Febrero</option>
                   <option value="March" <?php if (isset($_GET['Fecha'])&&$_GET['Fecha']=='March'){ echo 'selected'; } ?>>Marzo</option>

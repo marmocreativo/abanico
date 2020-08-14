@@ -339,17 +339,19 @@ $this->lang->load('front_end', $_SESSION['lenguaje']['iso']);
 
 		$parametros = array();
 
-		if(!null==$this->input->get('Fecha')){
-			$mes = $this->input->get('Fecha');
-		}else{
-			 $mes = date('F');
-		}
-		$mes_desde = date('Y-m-01',strtotime($mes));
-		$mes_hasta = date('Y-m-01',strtotime($mes.' + 1 month'));
 
-			$parametros['PEDIDO_FECHA_REGISTRO >='] = $mes_desde;
-			$parametros['PEDIDO_FECHA_REGISTRO <='] = $mes_hasta;
+			if(!null==$this->input->get('Fecha')&&$this->input->get('Fecha')!='cualquiera'){
+				if(!null==$this->input->get('Fecha')){
+					$mes = $this->input->get('Fecha');
+				}else{
+					 $mes = date('F');
+				}
+				$mes_desde = date('Y-m-01',strtotime($mes));
+				$mes_hasta = date('Y-m-01',strtotime($mes.' + 1 month'));
 
+					$parametros['PEDIDO_FECHA_REGISTRO >='] = $mes_desde;
+					$parametros['PEDIDO_FECHA_REGISTRO <='] = $mes_hasta;
+			}
 		if(!null==$this->input->get('id_empresa')){ $parametros['ID_COMPRADOR'] = $this->input->get('id_empresa'); }
 
 		$this->data['pedidos'] = $this->GeneralModel->lista('pedidos_mayoreo','',$parametros,'ID_PEDIDO DESC','','');
