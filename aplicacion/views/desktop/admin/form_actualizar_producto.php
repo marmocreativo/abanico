@@ -81,7 +81,7 @@
         									<select class="form-control" id="MayoreoProducto" name="MayoreoProducto" placeholder="">
         										<option value="no" <?php if($producto['PRODUCTO_MAYOREO']=='no'){ echo 'selected';} ?>>Solo Online</option>
         										<option value="mayoreo" <?php if($producto['PRODUCTO_MAYOREO']=='mayoreo'){ echo 'selected';} ?>>Solo Mayoreo</option>
-                            <option value="si" <?php if($producto['PRODUCTO_MAYOREO']=='si'){ echo 'selected';} ?>>Online y Mayoreo</option>
+												<option value="si" <?php if($producto['PRODUCTO_MAYOREO']=='si'){ echo 'selected';} ?>>Online y Mayoreo</option>
         									</select>
         								</div>
         							</div>
